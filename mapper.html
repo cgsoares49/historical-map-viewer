@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapper — Historical Map Viewer</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: #1a1a2e; color: #e0e0e0; font-family: monospace; font-size: 13px; }
+
+        #layout { display: flex; height: 100vh; }
+
+        #sidebar {
+            width: 220px;
+            min-width: 220px;
+            background: #16213e;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            overflow-y: auto;
+        }
+
+        #sidebar h1 { font-size: 16px; color: #00c8f0; letter-spacing: 2px; margin-bottom: 4px; }
+        #sidebar h2 { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+
+        label { display: block; margin-bottom: 2px; color: #aaa; }
+        input[type=number], input[type=text] {
+            width: 100%;
+            background: #0f3460;
+            border: 1px solid #333;
+            color: #e0e0e0;
+            padding: 4px 6px;
+            font-family: monospace;
+            font-size: 13px;
+        }
+
+        button {
+            width: 100%;
+            padding: 7px;
+            background: #00c8f0;
+            color: #000;
+            border: none;
+            font-family: monospace;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            letter-spacing: 1px;
+        }
+        button:hover { background: #00a8d0; }
+        button:disabled { background: #444; color: #888; cursor: default; }
+
+        #status { color: #888; font-size: 11px; min-height: 32px; line-height: 1.5; }
+        #tile-count { color: #00c8f0; font-size: 11px; }
+
+        #map-container { flex: 1; position: relative; overflow: hidden; }
+        canvas { display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    </style>
+</head>
+<body>
+<div id="layout">
+    <div id="sidebar">
+        <h1>MAPPER</h1>
+        <div style="color:#555; font-size:11px;">Historical Map Viewer</div>
+
+        <h2>Map Center</h2>
+        <label>Longitude (°E)
+            <input type="number" id="centerLon" value="50" min="-180" max="180" step="1">
+        </label>
+        <label>Latitude (°N)
+            <input type="number" id="centerLat" value="30" min="-90" max="90" step="1">
+        </label>
+
+        <h2>View</h2>
+        <label>Zoom (0 = full world)
+            <input type="number" id="zoom" value="11" min="0" max="20" step="1">
+        </label>
+
+        <h2>Date</h2>
+        <label>Year (BCE = negative)
+            <input type="number" id="mapDate" value="-2399" step="1">
+        </label>
+
+        <button id="btnDisplay">DISPLAY</button>
+
+        <div id="status">Press Display to render map.</div>
+        <div id="tile-count"></div>
+
+        <h2>Display</h2>
+        <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
+            <input type="checkbox" id="showBorders" checked> Borders
+        </label>
+        <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
+            <input type="checkbox" id="showDots"> Dots
+        </label>
+
+        <h2>Debug</h2>
+        <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
+            <input type="checkbox" id="showGrid"> Tile grid
+        </label>
+    </div>
+
+    <div id="map-container">
+        <canvas id="mapCanvas"></canvas>
+        <canvas id="overlay"></canvas>
+    </div>
+</div>
+
+<script src="js/projection.js"></script>
+<script src="js/tiles.js"></script>
+<script src="js/dataloader.js"></script>
+<script src="js/colormatcher.js"></script>
+<script src="js/renderer.js"></script>
+<script>
+// ── Canvas setup ───────────────────────────────────────────────────────────────
+const container = document.getElementById('map-container');
+const canvas    = document.getElementById('mapCanvas');
+const overlay   = document.getElementById('overlay');
+const ctx       = canvas.getContext('2d');
+const octx      = overlay.getContext('2d');
+
+function resizeCanvases() {
+    canvas.width  = overlay.width  = container.clientWidth;
+    canvas.height = overlay.height = container.clientHeight;
+}
+resizeCanvases();
+window.addEventListener('resize', () => { resizeCanvases(); scheduleRender(); });
+
+// ── Shared objects ─────────────────────────────────────────────────────────────
+const tileManager = new TileManager();
+const loader      = new DataLoader();
+let   colorLookup = null;   // set after primaries load
+let   mapRenderer = null;
+
+// Load primaries and offsets at startup
+Promise.all([
+    loader.loadPrimaries('primaries.txt'),
+    loader.loadOffsets('newoffsets.txt'),
+]).then(([primaries, offsets]) => {
+    colorLookup = new ColorLookup(primaries, offsets);
+    mapRenderer = new MapRenderer(loader, tileManager, colorLookup);
+    document.getElementById('status').textContent =
+        `${primaries.size} countries, ${offsets.length} offsets loaded. Press Display to render.`;
+});
+
+// ── Controls ───────────────────────────────────────────────────────────────────
+function getInputs() {
+    return {
+        centerLon: parseFloat(document.getElementById('centerLon').value) || 0,
+        centerLat: parseFloat(document.getElementById('centerLat').value) || 0,
+        zoom:      parseFloat(document.getElementById('zoom').value)      || 0,
+        year:      parseFloat(document.getElementById('mapDate').value)   || 2000,
+    };
+}
+
+function getProjection() {
+    const { centerLon, centerLat, zoom } = getInputs();
+    return new MapProjection(centerLon, centerLat, zoom, canvas.width, canvas.height);
+}
+
+document.getElementById('btnDisplay').addEventListener('click', scheduleRender);
+document.querySelectorAll('input').forEach(input => {
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') scheduleRender(); });
+});
+document.getElementById('showBorders').addEventListener('change', scheduleRender);
+document.getElementById('showDots').addEventListener('change', scheduleRender);
+document.getElementById('showGrid').addEventListener('change', drawOverlay);
+
+// ── Render pipeline ────────────────────────────────────────────────────────────
+let renderPending = false;
+
+function scheduleRender() {
+    if (!mapRenderer) {
+        document.getElementById('status').textContent = 'Still loading color data…';
+        return;
+    }
+    if (renderPending) return;
+    renderPending = true;
+    requestAnimationFrame(doRender);
+}
+
+async function doRender() {
+    renderPending = false;
+    const btn = document.getElementById('btnDisplay');
+    const statusEl = document.getElementById('status');
+    const countEl  = document.getElementById('tile-count');
+
+    btn.disabled = true;
+    statusEl.textContent = 'Loading tiles…';
+
+    const { year } = getInputs();
+    const proj = getProjection();
+    const tileList = tileManager.getTiles(proj);
+    countEl.textContent = `${tileList.length} tiles`;
+
+    try {
+        const showBorders = document.getElementById('showBorders').checked;
+        const showDots    = document.getElementById('showDots').checked;
+        await mapRenderer.render(ctx, proj, year, showBorders, showDots, (done, total) => {
+            statusEl.textContent = `Rendering… ${done}/${total} tiles`;
+        });
+        drawOverlay();
+        const yearLabel = year < 0 ? `${Math.abs(year)} BCE` : `${year} CE`;
+        statusEl.textContent = `${yearLabel} — ${tileList.length} tiles`;
+    } catch (err) {
+        statusEl.textContent = `Error: ${err.message}`;
+        console.error(err);
+    }
+
+    btn.disabled = false;
+}
+
+// ── Overlay: optional tile grid + reference lines ──────────────────────────────
+function drawOverlay() {
+    const proj = getProjection();
+    octx.clearRect(0, 0, overlay.width, overlay.height);
+
+    if (document.getElementById('showGrid').checked) {
+        const tiles = tileManager.getTiles(proj);
+        tiles.forEach((tile, i) => {
+            const p1 = proj.geoToPixel(tile.geoLon, tile.geoLat + 5);
+            const p2 = proj.geoToPixel(tile.geoLon + tile.tileWidth, tile.geoLat);
+            const x = Math.floor(p1.x), y = Math.floor(p1.y);
+            const w = Math.ceil(p2.x) - x, h = Math.ceil(p2.y) - y;
+
+            octx.strokeStyle = 'rgba(255,255,255,0.25)';
+            octx.lineWidth = 1;
+            octx.strokeRect(x + 0.5, y + 0.5, w - 1, h - 1);
+
+            if (w > 60 && h > 20) {
+                octx.fillStyle = 'rgba(255,255,255,0.55)';
+                octx.font = '9px monospace';
+                octx.fillText(`${tile.latStr}/${tile.lonStr}`, x + 4, y + 12);
+            }
+        });
+
+        // Reference lines: prime meridian and equator
+        _drawRefLine(proj, 0, true,  'rgba(255,255,0,0.4)');
+        _drawRefLine(proj, 0, false, 'rgba(255,120,0,0.4)');
+    }
+}
+
+function _drawRefLine(proj, value, isLon, color) {
+    if (isLon && (value < proj.lon1 || value > proj.lon2)) return;
+    if (!isLon && (value < proj.lat1 || value > proj.lat2)) return;
+    octx.strokeStyle = color;
+    octx.lineWidth = 1;
+    octx.setLineDash([4, 4]);
+    octx.beginPath();
+    if (isLon) {
+        const x = proj.geoToPixel(value, 0).x;
+        octx.moveTo(x, 0); octx.lineTo(x, overlay.height);
+    } else {
+        const y = proj.geoToPixel(0, value).y;
+        octx.moveTo(0, y); octx.lineTo(overlay.width, y);
+    }
+    octx.stroke();
+    octx.setLineDash([]);
+}
+</script>
+</body>
+</html>
