@@ -83,9 +83,12 @@ class TileManager {
                     tileWidth,
                     latStr,
                     lonStr,
-                    coastsFile:   `coasts/${latStr}/CST${lonStr}.PRN`,
-                    polsFile:     `pols/${latStr}/POL${lonStr}.PRN`,
-                    polareasFile: `polareas/${latStr}/PAR${lonStr}.ASC`
+                    coastsFile:    `coasts/${latStr}/CST${lonStr}.PRN`,
+                    polsFile:      `pols/${latStr}/POL${lonStr}.PRN`,
+                    polareasFile:  `polareas/${latStr}/PAR${lonStr}.ASC`,
+                    citiesFile:    `cities/${latStr}/CIT${lonStr}.TXT`,
+                    inwaterFile:   `inwaters/${latStr}/IWA${lonStr}.PRN`,
+                    niwFile:       `niw/${latStr}/NIW${lonStr}.ASC`,
                 });
             }
         }

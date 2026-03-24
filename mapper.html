@@ -2,106 +2,514 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Mapper — Historical Map Viewer</title>
+    <title>mapper.NET — Historical Map Viewer</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background: #1a1a2e; color: #e0e0e0; font-family: monospace; font-size: 13px; }
-
-        #layout { display: flex; height: 100vh; }
-
-        #sidebar {
-            width: 220px;
-            min-width: 220px;
-            background: #16213e;
-            padding: 12px;
+        body {
+            background: #1a1a2e;
+            color: #e0e0e0;
+            font-family: monospace;
+            font-size: 12px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            overflow-y: auto;
+            height: 100vh;
+            overflow: hidden;
         }
 
-        #sidebar h1 { font-size: 16px; color: #00c8f0; letter-spacing: 2px; margin-bottom: 4px; }
-        #sidebar h2 { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
-
-        label { display: block; margin-bottom: 2px; color: #aaa; }
-        input[type=number], input[type=text] {
-            width: 100%;
-            background: #0f3460;
-            border: 1px solid #333;
-            color: #e0e0e0;
-            padding: 4px 6px;
-            font-family: monospace;
-            font-size: 13px;
+        /* ── Toolbar ────────────────────────────────────────────────────────── */
+        #toolbar {
+            background: #d4edda;
+            border-bottom: 2px solid #0f3460;
+            padding: 3px 4px;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            gap: 0;
+            flex-shrink: 0;
+            overflow-x: auto;
+            overflow-y: hidden;
+            min-height: 0;
         }
 
-        button {
-            width: 100%;
-            padding: 7px;
-            background: #00c8f0;
-            color: #000;
-            border: none;
-            font-family: monospace;
-            font-size: 13px;
-            font-weight: bold;
-            cursor: pointer;
+        .tb-group {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 3px 7px 3px 5px;
+            gap: 3px;
+            border-right: 1px solid #2a3a5e;
+            flex-shrink: 0;
+        }
+        .tb-group:last-child { border-right: none; }
+
+        .tb-label {
+            font-size: 10px;
+            color: #6080a0;
+            text-transform: uppercase;
             letter-spacing: 1px;
+            line-height: 1;
+            margin-bottom: 1px;
+            white-space: nowrap;
         }
-        button:hover { background: #00a8d0; }
-        button:disabled { background: #444; color: #888; cursor: default; }
 
-        #status { color: #888; font-size: 11px; min-height: 32px; line-height: 1.5; }
-        #tile-count { color: #00c8f0; font-size: 11px; }
+        .tb-row {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 3px;
+            white-space: nowrap;
+        }
 
+        .tb-lbl {
+            color: #8090a8;
+            font-size: 11px;
+            white-space: nowrap;
+        }
+
+        /* Inputs */
+        input[type=number], input[type=text], select {
+            background: #0b2040;
+            border: 1px solid #2a3a5e;
+            color: #e0e0e0;
+            padding: 2px 4px;
+            font-family: monospace;
+            font-size: 12px;
+            height: 22px;
+        }
+        input[readonly] { color: #88bb88; background: #081828; cursor: default; }
+        input:disabled, select:disabled { opacity: 0.4; cursor: default; }
+
+        select { cursor: pointer; }
+
+        /* Checkboxes */
+        .tb-check {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #8090a8;
+            cursor: pointer;
+            white-space: nowrap;
+            font-size: 11px;
+            line-height: 1.6;
+        }
+        .tb-check input[type=checkbox] {
+            width: auto; height: auto;
+            cursor: pointer;
+            accent-color: #00c8f0;
+            border: none;
+            background: none;
+            padding: 0;
+        }
+        .tb-check.disabled { opacity: 0.38; cursor: default; }
+        .tb-check.disabled input { cursor: default; }
+
+        /* Buttons */
+        button {
+            background: #0b2040;
+            color: #c8d8e8;
+            border: 1px solid #2a3a5e;
+            font-family: monospace;
+            font-size: 12px;
+            cursor: pointer;
+            padding: 2px 7px;
+            height: 22px;
+            white-space: nowrap;
+        }
+        button:hover:not(:disabled) { background: #1a4a80; border-color: #00c8f0; }
+        button:disabled { opacity: 0.38; cursor: default; }
+
+        /* Styled buttons matching VB colors */
+        .btn-display {
+            background: #004400;
+            color: #88ff88;
+            border-color: #006600;
+            font-weight: bold;
+            font-size: 13px;
+            height: 42px;
+            padding: 0 14px;
+        }
+        .btn-display:hover:not(:disabled) { background: #006600; border-color: #00cc00; }
+
+        .btn-world {
+            background: #2a2a3a;
+            color: #9090b0;
+            border-color: #3a3a5a;
+            height: 20px;
+            font-size: 11px;
+            padding: 0 7px;
+        }
+        .btn-world:hover:not(:disabled) { background: #3a3a5a; border-color: #6060a0; }
+
+        .btn-step {
+            background: #440060;
+            color: #ff66ff;
+            border-color: #660088;
+            padding: 0 6px;
+        }
+        .btn-step:hover:not(:disabled) { background: #660088; border-color: #cc00cc; }
+
+        .btn-play {
+            background: #004400;
+            color: #66cc66;
+            border-color: #006600;
+        }
+        .btn-play:hover:not(:disabled) { background: #006600; }
+        .btn-play.anim-active {
+            background: #00aa00;
+            color: #ffffff;
+            border-color: #00ff00;
+        }
+
+        .btn-home {
+            background: #003344;
+            color: #00ddff;
+            border-color: #005566;
+        }
+        .btn-home:hover:not(:disabled) { background: #005566; border-color: #00ccff; }
+
+        .btn-abort {
+            background: #440000;
+            color: #ff6666;
+            border-color: #660000;
+            font-size: 11px;
+            padding: 0 6px;
+        }
+        .btn-abort:hover:not(:disabled) { background: #660000; }
+
+        .btn-save {
+            background: #440060;
+            color: #ff66ff;
+            border-color: #660088;
+            font-size: 11px;
+        }
+        .btn-save:hover:not(:disabled) { background: #660088; }
+
+        /* Pan grid */
+        .pan-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 26px);
+            grid-template-rows: repeat(3, 26px);
+            gap: 2px;
+        }
+        .pan-btn {
+            width: 26px; height: 26px;
+            padding: 0;
+            background: #003800;
+            color: #88ee88;
+            border: 1px solid #005500;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-family: monospace;
+        }
+        .pan-btn:hover { background: #006600; border-color: #00cc00; }
+        .pan-center {
+            width: 26px; height: 26px;
+            display: flex; align-items: center; justify-content: center;
+            color: #2a3a2a; font-size: 14px;
+            user-select: none;
+        }
+
+        /* Date display */
+        #mapDate {
+            font-size: 17px;
+            font-weight: bold;
+            width: 100px;
+            text-align: center;
+            color: #ffffff;
+            height: 30px;
+            background: #050f20;
+            border-color: #3a5a7a;
+        }
+
+        /* Pointer readouts */
+        .ptr-ro {
+            width: 70px;
+            font-size: 11px;
+            height: 20px;
+        }
+
+        /* Status text */
+        #status {
+            background: #050f20;
+            border: 1px solid #2a3a5e;
+            color: #9090a8;
+            padding: 2px 5px;
+            font-size: 11px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            min-width: 180px;
+            height: 22px;
+        }
+
+        /* Progress bar */
+        #progress-bar {
+            height: 6px;
+            background: #050f20;
+            border: 1px solid #2a3a5e;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        #progress-fill {
+            height: 100%;
+            background: #00c8f0;
+            width: 0%;
+            transition: width 0.1s;
+        }
+
+        /* ── Map container ────────────────────────────────────────────────── */
         #map-container { flex: 1; position: relative; overflow: hidden; }
         canvas { display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        /* ── Floating navigation panel ────────────────────────────────────── */
+        #nav-container {
+            position: absolute;
+            bottom: 18px;
+            right: 18px;
+            z-index: 20;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 6px;
+            pointer-events: all;
+        }
+        #nav-trigger {
+            width: 32px; height: 32px;
+            background: rgba(14, 22, 46, 0.90);
+            border: 1px solid #00c8f0;
+            border-radius: 6px;
+            display: flex; align-items: center; justify-content: center;
+            color: #00c8f0;
+            font-size: 18px;
+            cursor: pointer;
+            user-select: none;
+        }
+        #nav-panel {
+            background: rgba(14, 22, 46, 0.94);
+            border: 1px solid #00c8f0;
+            border-radius: 6px;
+            padding: 8px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            user-select: none;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(6px);
+            transition: opacity 0.18s ease, transform 0.18s ease;
+        }
+        #nav-container:hover #nav-panel {
+            opacity: 1;
+            pointer-events: all;
+            transform: translateY(0);
+        }
+        .nav-label { font-size: 10px; color: #00c8f0; letter-spacing: 1px; text-transform: uppercase; }
+        #nav-zoom-row {
+            display: flex; align-items: center; gap: 5px; width: 100%;
+        }
+        #nav-zoom-row span { font-size: 11px; color: #aaa; width: 12px; text-align: center; }
+        #nav-zoom { flex: 1; accent-color: #00c8f0; cursor: pointer; }
+        #nav-zoom-val { font-size: 10px; color: #888; min-width: 48px; text-align: center; }
     </style>
 </head>
 <body>
-<div id="layout">
-    <div id="sidebar">
-        <h1>MAPPER</h1>
-        <div style="color:#555; font-size:11px;">Historical Map Viewer</div>
 
-        <h2>Map Center</h2>
-        <label>Longitude (°E)
-            <input type="number" id="centerLon" value="50" min="-180" max="180" step="1">
-        </label>
-        <label>Latitude (°N)
-            <input type="number" id="centerLat" value="30" min="-90" max="90" step="1">
-        </label>
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<!--  TOOLBAR                                                               -->
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<div id="toolbar">
 
-        <h2>View</h2>
-        <label>Zoom (0 = full world)
-            <input type="number" id="zoom" value="11" min="0" max="20" step="1">
-        </label>
-
-        <h2>Date</h2>
-        <label>Year (BCE = negative)
-            <input type="number" id="mapDate" value="-2399" step="1">
-        </label>
-
-        <button id="btnDisplay">DISPLAY</button>
-
-        <div id="status">Press Display to render map.</div>
-        <div id="tile-count"></div>
-
-        <h2>Display</h2>
-        <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
-            <input type="checkbox" id="showBorders" checked> Borders
-        </label>
-        <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
-            <input type="checkbox" id="showDots"> Dots
-        </label>
-
-        <h2>Debug</h2>
-        <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
-            <input type="checkbox" id="showGrid"> Tile grid
-        </label>
+    <!-- ── Date ── -->
+    <div class="tb-group">
+        <div class="tb-label">Date</div>
+        <div class="tb-row">
+            <input type="text" id="mapDate" value="-2400" title="Map year (negative = BCE)">
+        </div>
+        <div class="tb-row">
+            <button class="btn-step" id="btnStepBack" title="Step back one interval">-1</button>
+            <button class="btn-step" id="btnStepFwd"  title="Step forward one interval">+1</button>
+        </div>
+        <div class="tb-row">
+            <input type="number" id="yrPerStep" value="0.1" min="0.1" step="0.1" title="Years per step" style="width:52px;">
+            <span class="tb-lbl">yr/step</span>
+        </div>
     </div>
 
-    <div id="map-container">
-        <canvas id="mapCanvas"></canvas>
-        <canvas id="overlay"></canvas>
+    <!-- ── Run ── -->
+    <div class="tb-group">
+        <div class="tb-label">Run</div>
+        <div class="tb-row">
+            <button class="btn-play" id="btnReverse" title="Run backward">&lt;=</button>
+            <button class="btn-play" id="btnPlay"    title="Run forward">=&gt;</button>
+        </div>
+        <div class="tb-row">
+            <input type="number" id="secPerYr" value="2" min="0.1" step="0.1" title="Seconds per year" style="width:38px;">
+            <span class="tb-lbl">sec/y</span>
+        </div>
+    </div>
+
+    <!-- ── Center + Display ── -->
+    <div class="tb-group">
+        <div class="tb-label">Center Coordinates</div>
+        <div class="tb-row">
+            <span class="tb-lbl" style="width:22px;">Lon</span>
+            <input type="number" id="centerLon" value="0" min="-180" max="180" step="1" style="width:72px;" title="Center longitude">
+            <span class="tb-lbl" style="width:22px;">Lat</span>
+            <input type="number" id="centerLat" value="0" min="-90" max="90" step="1"   style="width:72px;" title="Center latitude">
+        </div>
+        <div class="tb-row" style="margin-top:2px; gap:5px;">
+            <button class="btn-display" id="btnDisplay">Display</button>
+            <button class="btn-world"   id="btnWorld" style="height:42px;">WORLD<br>VIEW</button>
+        </div>
+    </div>
+
+    <!-- ── Pan ── -->
+    <div class="tb-group">
+        <div class="tb-label">Pan</div>
+        <div class="pan-grid">
+            <button class="pan-btn" id="pan-nw" title="Pan Northwest">↖</button>
+            <button class="pan-btn" id="pan-n"  title="Pan North">↑</button>
+            <button class="pan-btn" id="pan-ne" title="Pan Northeast">↗</button>
+            <button class="pan-btn" id="pan-w"  title="Pan West">←</button>
+            <div class="pan-center">✛</div>
+            <button class="pan-btn" id="pan-e"  title="Pan East">→</button>
+            <button class="pan-btn" id="pan-sw" title="Pan Southwest">↙</button>
+            <button class="pan-btn" id="pan-s"  title="Pan South">↓</button>
+            <button class="pan-btn" id="pan-se" title="Pan Southeast">↘</button>
+        </div>
+        <div class="tb-row" style="margin-top:1px;">
+            <span class="tb-lbl">Factor</span>
+            <input type="number" id="panFactor" value="1.0" min="0.1" step="0.1" style="width:46px;" title="Pan step multiplier">
+        </div>
+    </div>
+
+    <!-- ── Zoom ── -->
+    <div class="tb-group">
+        <div class="tb-label">Zoom</div>
+        <select id="zoom" style="width:88px;" title="Zoom level">
+            <option value="0">0  (360°)</option>
+            <option value="1">1  (180°)</option>
+            <option value="2">2  (120°)</option>
+            <option value="3">3   (90°)</option>
+            <option value="4">4   (72°)</option>
+            <option value="5">5   (60°)</option>
+            <option value="7" selected>7   (45°)</option>
+            <option value="11">11  (30°)</option>
+            <option value="17">17  (20°)</option>
+            <option value="23">23  (15°)</option>
+            <option value="35">35  (10°)</option>
+            <option value="59">59   (6°)</option>
+            <option value="71">71   (5°)</option>
+            <option value="119">119  (3°)</option>
+            <option value="179">179  (2°)</option>
+            <option value="359">359  (1°)</option>
+            <option value="719">719 (0.5°)</option>
+        </select>
+        <button class="btn-home" id="btnHome" style="width:88px; margin-top:3px;">HOME</button>
+    </div>
+
+    <!-- ── Pointer Coords ── -->
+    <div class="tb-group">
+        <div class="tb-label">Pointer</div>
+        <div class="tb-row">
+            <span class="tb-lbl" style="width:10px;">X</span>
+            <input type="text" id="ptrX" class="ptr-ro" readonly value="" title="Pointer longitude">
+        </div>
+        <div class="tb-row">
+            <span class="tb-lbl" style="width:10px;">Y</span>
+            <input type="text" id="ptrY" class="ptr-ro" readonly value="" title="Pointer latitude">
+        </div>
+        <div class="tb-row" style="margin-top:1px;">
+            <input type="text" id="horScale"  class="ptr-ro" readonly value="" title="Horizontal span (degrees)">
+            <input type="text" id="vertScale" class="ptr-ro" readonly value="" title="Vertical span (degrees)">
+        </div>
+        <div class="tb-lbl" style="font-size:10px;">horiz° / vert°</div>
+    </div>
+
+    <!-- ── Status ── -->
+    <div class="tb-group" style="flex:1; min-width:200px; max-width:320px;">
+        <div class="tb-label">Status</div>
+        <div id="status">Press Display to render map.</div>
+        <div id="progress-bar" style="margin-top:1px;"><div id="progress-fill"></div></div>
+        <div class="tb-row" style="margin-top:2px;">
+            <div id="tile-count" style="color:#00c8f0;font-size:10px;flex:1;"></div>
+            <button class="btn-abort" id="btnAbort" disabled>ABORT</button>
+        </div>
+    </div>
+
+    <!-- ── Draw options ── -->
+    <div class="tb-group">
+        <div class="tb-label">Draw</div>
+        <label class="tb-check"><input type="checkbox" id="showCoasts" checked> Coasts</label>
+        <label class="tb-check"><input type="checkbox" id="showInlandWaters"> Inland waters</label>
+        <label class="tb-check disabled"><input type="checkbox" disabled> Rivers</label>
+        <label class="tb-check"><input type="checkbox" id="showBorders" checked> Boundaries</label>
+        <label class="tb-check"><input type="checkbox" id="showGrid"> Tile grid</label>
+        <label class="tb-check disabled"><input type="checkbox" disabled> Grid labels</label>
+    </div>
+
+    <!-- ── Show options ── -->
+    <div class="tb-group">
+        <div class="tb-label">Show</div>
+        <label class="tb-check"><input type="checkbox" id="showCities" checked> Cities</label>
+        <label class="tb-check"><input type="checkbox" id="showCityNames"> City names</label>
+        <label class="tb-check disabled"><input type="checkbox" disabled> Area names</label>
+        <label class="tb-check"><input type="checkbox" id="showDots" checked> Tribal dots</label>
+        <div class="tb-row" style="margin-top:2px;">
+            <span class="tb-lbl">Detail</span>
+            <input type="number" id="cityDetail" value="10" min="0" max="99" style="width:42px;">
+        </div>
+    </div>
+
+    <!-- ── Min pixels / Save ── -->
+    <div class="tb-group">
+        <div class="tb-label">Min Pixels</div>
+        <input type="number" id="minPixels" value="5000" style="width:72px;" disabled>
+        <div class="tb-row" style="margin-top:3px;">
+            <button class="btn-save" id="btnSave" style="width:54px;">Save Map</button>
+            <select id="saveRes" style="width:42px;height:22px;font-size:11px;" title="Save resolution multiplier">
+                <option value="1">1×</option>
+                <option value="2" selected>2×</option>
+                <option value="3">3×</option>
+                <option value="4">4×</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- ── Pixel color (debug readout) ── -->
+    <div class="tb-group">
+        <div class="tb-label">Pixel Color</div>
+        <div id="txtPixelColor" style="width:220px;min-height:20px;background:#081828;border:1px solid #2a3a5e;color:#88bb88;padding:2px 4px;font-family:monospace;font-size:12px;white-space:nowrap;overflow:hidden;"></div>
+        <div class="tb-row" style="margin-top:2px;">
+            <input type="text" id="txtRed"   readonly value="" style="width:35px;color:#ff6666;" title="Red">
+            <input type="text" id="txtGreen" readonly value="" style="width:35px;color:#66ff66;" title="Green">
+            <input type="text" id="txtBlue"  readonly value="" style="width:35px;color:#6699ff;" title="Blue">
+        </div>
+    </div>
+
+</div><!-- #toolbar -->
+
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<!--  MAP                                                                   -->
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<div id="map-container">
+    <canvas id="mapCanvas"></canvas>
+    <canvas id="overlay"></canvas>
+
+    <!-- Floating nav panel (zoom slider) -->
+    <div id="nav-container">
+        <div id="nav-panel">
+            <div class="nav-label">Zoom</div>
+            <div id="nav-zoom-row">
+                <span title="Zoom out">−</span>
+                <input type="range" id="nav-zoom" min="0" max="16" step="1" value="6">
+                <span title="Zoom in">+</span>
+            </div>
+            <div id="nav-zoom-val">45°</div>
+        </div>
+        <div id="nav-trigger" title="Zoom">⊕</div>
     </div>
 </div>
 
@@ -111,7 +519,7 @@
 <script src="js/colormatcher.js"></script>
 <script src="js/renderer.js"></script>
 <script>
-// ── Canvas setup ───────────────────────────────────────────────────────────────
+// ── Canvas setup ────────────────────────────────────────────────────────────
 const container = document.getElementById('map-container');
 const canvas    = document.getElementById('mapCanvas');
 const overlay   = document.getElementById('overlay');
@@ -125,24 +533,62 @@ function resizeCanvases() {
 resizeCanvases();
 window.addEventListener('resize', () => { resizeCanvases(); scheduleRender(); });
 
-// ── Shared objects ─────────────────────────────────────────────────────────────
+// ── Selection rectangle state ────────────────────────────────────────────────
+let contextProjection = new MapProjection(0, 0, 0, canvas.width, canvas.height);
+
+let selDragging     = false;
+let selDragStartX   = 0, selDragStartY   = 0;
+let selDragStartLon = 0, selDragStartLat = 0;
+
+// ── Shared objects ───────────────────────────────────────────────────────────
 const tileManager = new TileManager();
 const loader      = new DataLoader();
-let   colorLookup = null;   // set after primaries load
-let   mapRenderer = null;
+let   colorLookup  = null;
+let   mapRenderer  = null;
+let   colorNameMap = new Map();  // packed RGB integer → full area name
 
-// Load primaries and offsets at startup
+// Build reverse lookup from rendered tile PAR data for a given projection + year.
+// Tiles are already cached after render so this is fast.
+// Full area names (e.g. "France - Corsica") come from PAR dateRange.name as-is.
+async function rebuildColorNameMap(proj, year) {
+    colorNameMap = new Map();
+    const showCities = document.getElementById('showCities').checked;
+    const cityDetail = parseInt(document.getElementById('cityDetail').value) || 10;
+    const tiles = tileManager.getTiles(proj);
+    await Promise.all(tiles.map(async tileDesc => {
+        const { par, cities } = await loader.loadTile(tileDesc);
+        for (const entry of par) {
+            if (entry.dotPoint) continue;
+            const dateMatch = matchDate(entry.dateRanges, year);
+            if (!dateMatch || !dateMatch.name) continue;
+            const rgb = colorLookup.resolve(dateMatch);
+            if (!rgb) continue;
+            const key = rgb.r | (rgb.g << 8) | (rgb.b << 16);
+            if (!colorNameMap.has(key)) colorNameMap.set(key, dateMatch.name);
+        }
+        // Cities are drawn on top, so their entries overwrite country entries for the same key.
+        if (showCities) {
+            for (const city of cities) {
+                const match = matchDate(city.dateRanges, year);
+                if (!match || match.detCode <= 0 || match.detCode > cityDetail) continue;
+                const { r, g, b } = colorLookup.resolveCityRgb(match.colorIndex);
+                const key = r | (g << 8) | (b << 16);
+                colorNameMap.set(key, match.name);
+            }
+        }
+    }));
+}
+
 Promise.all([
     loader.loadPrimaries('primaries.txt'),
     loader.loadOffsets('newoffsets.txt'),
-]).then(([primaries, offsets]) => {
+]).then(async ([primaries, offsets]) => {
     colorLookup = new ColorLookup(primaries, offsets);
     mapRenderer = new MapRenderer(loader, tileManager, colorLookup);
-    document.getElementById('status').textContent =
-        `${primaries.size} countries, ${offsets.length} offsets loaded. Press Display to render.`;
+    await renderWorldContext();
 });
 
-// ── Controls ───────────────────────────────────────────────────────────────────
+// ── Read inputs ──────────────────────────────────────────────────────────────
 function getInputs() {
     return {
         centerLon: parseFloat(document.getElementById('centerLon').value) || 0,
@@ -157,15 +603,222 @@ function getProjection() {
     return new MapProjection(centerLon, centerLat, zoom, canvas.width, canvas.height);
 }
 
+// ── Toolbar control wiring ───────────────────────────────────────────────────
 document.getElementById('btnDisplay').addEventListener('click', scheduleRender);
-document.querySelectorAll('input').forEach(input => {
+
+document.getElementById('btnWorld').addEventListener('click', async () => {
+    if (!mapRenderer) return;
+    document.getElementById('btnWorld').disabled = true;
+    await renderWorldContext();
+    document.getElementById('btnWorld').disabled = false;
+});
+
+// Step back / forward: subtract or add yr/step to the date
+document.getElementById('btnStepBack').addEventListener('click', () => {
+    const step = parseFloat(document.getElementById('yrPerStep').value) || 0.1;
+    const cur  = parseFloat(document.getElementById('mapDate').value)   || 0;
+    document.getElementById('mapDate').value = Math.round((cur - step) * 10) / 10;
+    scheduleRender();
+});
+document.getElementById('btnStepFwd').addEventListener('click', () => {
+    const step = parseFloat(document.getElementById('yrPerStep').value) || 0.1;
+    const cur  = parseFloat(document.getElementById('mapDate').value)   || 0;
+    document.getElementById('mapDate').value = Math.round((cur + step) * 10) / 10;
+    scheduleRender();
+});
+
+// Animation
+let animating = false;
+let animDir   = 0;
+
+async function runAnimation() {
+    const yearEl  = document.getElementById('mapDate');
+    const stepEl  = document.getElementById('yrPerStep');
+    const secEl   = document.getElementById('secPerYr');
+    const playBtn = document.getElementById('btnPlay');
+    const revBtn  = document.getElementById('btnReverse');
+    while (animating) {
+        const step = parseFloat(stepEl.value) || 1;
+        const cur  = parseFloat(yearEl.value) || 0;
+        yearEl.value = Math.round((cur + animDir * step) * 10) / 10;
+        await doRender(true);
+        if (!animating) break;
+        const delay = (parseFloat(secEl.value) || 1) * 1000;
+        await new Promise(r => setTimeout(r, delay));
+    }
+    playBtn.classList.remove('anim-active');
+    revBtn .classList.remove('anim-active');
+}
+
+function startAnimation(dir) {
+    const playBtn = document.getElementById('btnPlay');
+    const revBtn  = document.getElementById('btnReverse');
+    if (animating && animDir === dir) {
+        // Same button pressed again — stop
+        animating = false;
+        return;
+    }
+    animating = false;   // stop any running loop first
+    animDir   = dir;
+    animating = true;
+    playBtn.classList.toggle('anim-active', dir ===  1);
+    revBtn .classList.toggle('anim-active', dir === -1);
+    runAnimation();
+}
+
+document.getElementById('btnPlay'   ).addEventListener('click', () => startAnimation( 1));
+document.getElementById('btnReverse').addEventListener('click', () => startAnimation(-1));
+
+// Save Map
+document.getElementById('btnSave').addEventListener('click', async () => {
+    const { year } = getInputs();
+    const yearLabel = year < 0 ? `${Math.abs(year)}BCE` : `${year}CE`;
+    const filename  = `map_${yearLabel}.png`;
+    const scale     = parseInt(document.getElementById('saveRes').value) || 2;
+
+    // Render at N× resolution into an offscreen canvas, then save that
+    const W = canvas.width  * scale;
+    const H = canvas.height * scale;
+    const offscreen = document.createElement('canvas');
+    offscreen.width  = W;
+    offscreen.height = H;
+    const octxSave  = offscreen.getContext('2d');
+
+    const proj = getProjection();
+    const hiProj = new MapProjection(proj.centerLon, proj.centerLat, proj.zoom, W, H);
+    const { year: yr } = getInputs();
+    const showBorders       = document.getElementById('showBorders'      ).checked;
+    const showDots          = document.getElementById('showDots'         ).checked;
+    const showCoasts        = document.getElementById('showCoasts'       ).checked;
+    const showCities        = document.getElementById('showCities'       ).checked;
+    const showCityNames     = document.getElementById('showCityNames'    ).checked;
+    const cityDetail        = parseInt(document.getElementById('cityDetail').value) || 10;
+    const showInlandWaters  = document.getElementById('showInlandWaters' ).checked;
+
+    document.getElementById('status').textContent = 'Saving…';
+    try {
+        await mapRenderer.render(octxSave, hiProj, yr, showBorders, showDots, null, showCoasts, showCities, showCityNames, cityDetail, showInlandWaters);
+    } catch (e) {
+        document.getElementById('status').textContent = `Save error: ${e.message}`;
+        return;
+    }
+
+    offscreen.toBlob(async blob => {
+        if (window.showSaveFilePicker) {
+            try {
+                const handle = await window.showSaveFilePicker({
+                    suggestedName: filename,
+                    types: [{ description: 'PNG Image', accept: { 'image/png': ['.png'] } }],
+                });
+                const writable = await handle.createWritable();
+                await writable.write(blob);
+                await writable.close();
+            } catch (e) {
+                if (e.name !== 'AbortError') console.error(e);
+            }
+        } else {
+            const url = URL.createObjectURL(blob);
+            const a   = document.createElement('a');
+            a.href     = url;
+            a.download = filename;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+        document.getElementById('status').textContent = `Saved: ${filename}`;
+    }, 'image/png');
+});
+
+// Home: reset to default view
+document.getElementById('btnHome').addEventListener('click', () => {
+    document.getElementById('centerLon').value = 0;
+    document.getElementById('centerLat').value = 0;
+    document.getElementById('zoom').value = 7;
+    syncNavSlider();
+    drawOverlay();
+});
+
+// Pan buttons: move by (factor × 25%) of current viewport
+function pan(dLon, dLat) {
+    const inp    = getInputs();
+    const factor = parseFloat(document.getElementById('panFactor').value) || 1.0;
+    const degX   = 360 / (inp.zoom + 1);
+    const degY   = 180 / (inp.zoom + 1);
+    const newLon = Math.max(-180, Math.min(180, inp.centerLon + dLon * degX * 0.25 * factor));
+    const newLat = Math.max(-90,  Math.min(90,  inp.centerLat + dLat * degY * 0.25 * factor));
+    document.getElementById('centerLon').value = Math.round(newLon * 10) / 10;
+    document.getElementById('centerLat').value = Math.round(newLat * 10) / 10;
+    scheduleRender();
+}
+
+document.getElementById('pan-n' ).addEventListener('click', e => { e.stopPropagation(); pan( 0,  1); });
+document.getElementById('pan-s' ).addEventListener('click', e => { e.stopPropagation(); pan( 0, -1); });
+document.getElementById('pan-e' ).addEventListener('click', e => { e.stopPropagation(); pan( 1,  0); });
+document.getElementById('pan-w' ).addEventListener('click', e => { e.stopPropagation(); pan(-1,  0); });
+document.getElementById('pan-ne').addEventListener('click', e => { e.stopPropagation(); pan( 1,  1); });
+document.getElementById('pan-nw').addEventListener('click', e => { e.stopPropagation(); pan(-1,  1); });
+document.getElementById('pan-se').addEventListener('click', e => { e.stopPropagation(); pan( 1, -1); });
+document.getElementById('pan-sw').addEventListener('click', e => { e.stopPropagation(); pan(-1, -1); });
+
+// Enter key on any input triggers render
+document.querySelectorAll('input[type=number], input[type=text]:not([readonly])').forEach(input => {
     input.addEventListener('keydown', e => { if (e.key === 'Enter') scheduleRender(); });
 });
-document.getElementById('showBorders').addEventListener('change', scheduleRender);
-document.getElementById('showDots').addEventListener('change', scheduleRender);
-document.getElementById('showGrid').addEventListener('change', drawOverlay);
 
-// ── Render pipeline ────────────────────────────────────────────────────────────
+// Checkbox changes
+document.getElementById('showBorders'     ).addEventListener('change', scheduleRender);
+document.getElementById('showDots'        ).addEventListener('change', scheduleRender);
+document.getElementById('showCoasts'      ).addEventListener('change', scheduleRender);
+document.getElementById('showInlandWaters').addEventListener('change', scheduleRender);
+document.getElementById('showCities'    ).addEventListener('change', scheduleRender);
+document.getElementById('showCityNames' ).addEventListener('change', scheduleRender);
+document.getElementById('cityDetail'    ).addEventListener('change', scheduleRender);
+document.getElementById('showGrid'   ).addEventListener('change', drawOverlay);
+
+// Redraw overlay when zoom or center changes
+document.getElementById('zoom').addEventListener('change', () => { syncNavSlider(); drawOverlay(); });
+['centerLon', 'centerLat'].forEach(id => {
+    document.getElementById(id).addEventListener('input', drawOverlay);
+});
+
+// Scale readout: update whenever zoom changes
+function updateScaleDisplay() {
+    const { zoom } = getInputs();
+    const degX = 360 / (zoom + 1);
+    const degY = degX * canvas.height / canvas.width;
+    document.getElementById('horScale' ).value = degX.toFixed(2);
+    document.getElementById('vertScale').value = degY.toFixed(2);
+}
+document.getElementById('zoom').addEventListener('change', updateScaleDisplay);
+updateScaleDisplay();
+
+// ── World context render ─────────────────────────────────────────────────────
+async function renderWorldContext() {
+    contextProjection = new MapProjection(0, 0, 0, canvas.width, canvas.height);
+    colorNameMap = new Map();  // BMP pixel colors don't match computed colors
+    const statusEl = document.getElementById('status');
+    await new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => {
+            // Fill water color first (visible above/below image on wide canvases)
+            ctx.fillStyle = '#5ba3d9';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            // Place BMP at exactly the pixel region the projection maps to
+            // lon -180..+180, lat -90..+90 so the image aligns with the selection rect
+            const tl = contextProjection.geoToPixel(-180,  90);
+            const br = contextProjection.geoToPixel( 180, -90);
+            ctx.drawImage(img, tl.x, tl.y, br.x - tl.x, br.y - tl.y);
+            resolve();
+        };
+        img.onerror = reject;
+        img.src = 'no_tiles%202000AD.bmp';
+    });
+    const { year } = getInputs();
+    const yearLabel = year < 0 ? `${Math.abs(year)} BCE` : `${year} CE`;
+    statusEl.textContent = `${yearLabel} — click or drag the rectangle to select a region, then press Display.`;
+    drawOverlay();
+}
+
+// ── Render pipeline ──────────────────────────────────────────────────────────
 let renderPending = false;
 
 function scheduleRender() {
@@ -175,70 +828,232 @@ function scheduleRender() {
     }
     if (renderPending) return;
     renderPending = true;
-    requestAnimationFrame(doRender);
+    requestAnimationFrame(() => doRender());
 }
 
-async function doRender() {
+async function doRender(skipColorMap = false) {
     renderPending = false;
-    const btn = document.getElementById('btnDisplay');
-    const statusEl = document.getElementById('status');
-    const countEl  = document.getElementById('tile-count');
+    const btn       = document.getElementById('btnDisplay');
+    const statusEl  = document.getElementById('status');
+    const countEl   = document.getElementById('tile-count');
+    const fillEl    = document.getElementById('progress-fill');
 
     btn.disabled = true;
     statusEl.textContent = 'Loading tiles…';
+    fillEl.style.width = '0%';
 
     const { year } = getInputs();
     const proj = getProjection();
+    contextProjection = proj;
     const tileList = tileManager.getTiles(proj);
     countEl.textContent = `${tileList.length} tiles`;
 
     try {
-        const showBorders = document.getElementById('showBorders').checked;
-        const showDots    = document.getElementById('showDots').checked;
+        const showBorders      = document.getElementById('showBorders'      ).checked;
+        const showDots         = document.getElementById('showDots'         ).checked;
+        const showCoasts       = document.getElementById('showCoasts'       ).checked;
+        const showCities       = document.getElementById('showCities'       ).checked;
+        const showCityNames    = document.getElementById('showCityNames'    ).checked;
+        const cityDetail       = parseInt(document.getElementById('cityDetail').value) || 10;
+        const showInlandWaters = document.getElementById('showInlandWaters' ).checked;
         await mapRenderer.render(ctx, proj, year, showBorders, showDots, (done, total) => {
-            statusEl.textContent = `Rendering… ${done}/${total} tiles`;
-        });
+            statusEl.textContent = `Rendering… ${done}/${total}`;
+            fillEl.style.width = `${Math.round(100 * done / total)}%`;
+        }, showCoasts, showCities, showCityNames, cityDetail, showInlandWaters);
         drawOverlay();
+        fillEl.style.width = '100%';
         const yearLabel = year < 0 ? `${Math.abs(year)} BCE` : `${year} CE`;
         statusEl.textContent = `${yearLabel} — ${tileList.length} tiles`;
+        if (!skipColorMap) await rebuildColorNameMap(proj, year);
     } catch (err) {
         statusEl.textContent = `Error: ${err.message}`;
         console.error(err);
     }
 
     btn.disabled = false;
+    updateScaleDisplay();
 }
 
-// ── Overlay: optional tile grid + reference lines ──────────────────────────────
+// ── Overlay: tile grid + selection rect ─────────────────────────────────────
 function drawOverlay() {
     const proj = getProjection();
     octx.clearRect(0, 0, overlay.width, overlay.height);
 
     if (document.getElementById('showGrid').checked) {
         const tiles = tileManager.getTiles(proj);
-        tiles.forEach((tile, i) => {
+        tiles.forEach(tile => {
             const p1 = proj.geoToPixel(tile.geoLon, tile.geoLat + 5);
             const p2 = proj.geoToPixel(tile.geoLon + tile.tileWidth, tile.geoLat);
             const x = Math.floor(p1.x), y = Math.floor(p1.y);
             const w = Math.ceil(p2.x) - x, h = Math.ceil(p2.y) - y;
-
             octx.strokeStyle = 'rgba(255,255,255,0.25)';
             octx.lineWidth = 1;
             octx.strokeRect(x + 0.5, y + 0.5, w - 1, h - 1);
-
             if (w > 60 && h > 20) {
                 octx.fillStyle = 'rgba(255,255,255,0.55)';
                 octx.font = '9px monospace';
                 octx.fillText(`${tile.latStr}/${tile.lonStr}`, x + 4, y + 12);
             }
         });
-
-        // Reference lines: prime meridian and equator
         _drawRefLine(proj, 0, true,  'rgba(255,255,0,0.4)');
         _drawRefLine(proj, 0, false, 'rgba(255,120,0,0.4)');
     }
+
+    _drawSelectionRect();
 }
 
+function _getSelectionPixelRect() {
+    if (!contextProjection) return null;
+    const { centerLon, centerLat, zoom } = getInputs();
+    const selDegX = 360 / (zoom + 1);
+    // Vertical span matches the canvas aspect ratio (same scale for lat and lon)
+    const selDegY = selDegX * canvas.height / canvas.width;
+    const p1 = contextProjection.geoToPixel(centerLon - selDegX / 2, centerLat + selDegY / 2);
+    const p2 = contextProjection.geoToPixel(centerLon + selDegX / 2, centerLat - selDegY / 2);
+    return { x: p1.x, y: p1.y, w: p2.x - p1.x, h: p2.y - p1.y };
+}
+
+function _drawSelectionRect() {
+    const r = _getSelectionPixelRect();
+    if (!r) return;
+    const fillsCanvas = r.w >= overlay.width - 2 && r.h >= overlay.height - 2;
+
+    octx.save();
+    octx.strokeStyle = 'rgba(255, 210, 0, 0.95)';
+    octx.lineWidth   = 2;
+    octx.setLineDash([]);
+    if (!fillsCanvas) {
+        octx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+        octx.fillRect(r.x, r.y, r.w, r.h);
+    }
+    octx.strokeRect(r.x + 0.5, r.y + 0.5, r.w - 1, r.h - 1);
+    octx.restore();
+}
+
+// ── Selection rect mouse interaction ────────────────────────────────────────
+function _inSelectionRect(mx, my) {
+    const r = _getSelectionPixelRect();
+    if (!r) return false;
+    return mx >= r.x && mx <= r.x + r.w && my >= r.y && my <= r.y + r.h;
+}
+
+overlay.addEventListener('mousedown', e => {
+    if (!contextProjection) return;
+    const mx = e.offsetX, my = e.offsetY;
+    if (_inSelectionRect(mx, my)) {
+        selDragging     = true;
+        selDragStartX   = mx;
+        selDragStartY   = my;
+        const inp = getInputs();
+        selDragStartLon = inp.centerLon;
+        selDragStartLat = inp.centerLat;
+        overlay.style.cursor = 'grabbing';
+    } else {
+        const geo = contextProjection.pixelToGeo(mx, my);
+        const lon = Math.max(-180, Math.min(180, Math.round(geo.lon * 10) / 10));
+        const lat = Math.max(-90,  Math.min(90,  Math.round(geo.lat * 10) / 10));
+        document.getElementById('centerLon').value = lon;
+        document.getElementById('centerLat').value = lat;
+        const r = _getSelectionPixelRect();
+        const fillsCanvas = r && r.w >= overlay.width - 2 && r.h >= overlay.height - 2;
+        if (fillsCanvas && mapRenderer) {
+            renderWorldContext();
+        } else {
+            drawOverlay();
+        }
+    }
+});
+
+overlay.addEventListener('mousemove', e => {
+    const mx = e.offsetX, my = e.offsetY;
+    if (selDragging && contextProjection) {
+        const dLon =  (mx - selDragStartX) / contextProjection.xScale;
+        const dLat = -(my - selDragStartY) / contextProjection.yScale;
+        const lon = Math.max(-180, Math.min(180, Math.round((selDragStartLon + dLon) * 10) / 10));
+        const lat = Math.max(-90,  Math.min(90,  Math.round((selDragStartLat + dLat) * 10) / 10));
+        document.getElementById('centerLon').value = lon;
+        document.getElementById('centerLat').value = lat;
+        drawOverlay();
+    } else {
+        const r2 = _getSelectionPixelRect();
+        const rectFills = r2 && r2.w >= overlay.width - 2 && r2.h >= overlay.height - 2;
+        overlay.style.cursor = (!rectFills && _inSelectionRect(mx, my)) ? 'grab' : 'crosshair';
+        // Pointer coordinate readout
+        if (contextProjection) {
+            const geo = contextProjection.pixelToGeo(mx, my);
+            document.getElementById('ptrX').value = geo.lon.toFixed(2) + '°';
+            document.getElementById('ptrY').value = geo.lat.toFixed(2) + '°';
+        }
+        // Pixel color readout — sample map canvas directly
+        const px = ctx.getImageData(mx, my, 1, 1).data;
+        const r = px[0], g = px[1], b = px[2];
+        document.getElementById('txtRed'  ).value = r;
+        document.getElementById('txtGreen').value = g;
+        document.getElementById('txtBlue' ).value = b;
+        if (colorNameMap) {
+            const key  = r | (g << 8) | (b << 16);
+            const name = colorNameMap.get(key) || '';
+            document.getElementById('txtPixelColor').textContent = name;
+        }
+    }
+});
+
+overlay.addEventListener('mouseup',    () => { selDragging = false; overlay.style.cursor = 'crosshair'; });
+overlay.addEventListener('mouseleave', () => {
+    selDragging = false;
+    overlay.style.cursor = '';
+    document.getElementById('ptrX').value = '';
+    document.getElementById('ptrY').value = '';
+    document.getElementById('txtPixelColor').textContent = '';
+    document.getElementById('txtRed'       ).value = '';
+    document.getElementById('txtGreen'     ).value = '';
+    document.getElementById('txtBlue'      ).value = '';
+});
+
+overlay.style.cursor = 'crosshair';
+
+// ── Floating nav zoom slider ─────────────────────────────────────────────────
+// VB zoom items: [0,1,2,3,4,5,7,11,17,23,35,59,71,119,179,359,719]
+const ZOOM_LEVELS = [0, 1, 2, 3, 4, 5, 7, 11, 17, 23, 35, 59, 71, 119, 179, 359, 719];
+
+const navZoom    = document.getElementById('nav-zoom');
+const navZoomVal = document.getElementById('nav-zoom-val');
+
+function zoomToLevelIndex(z) {
+    let best = 0, bestDist = Infinity;
+    ZOOM_LEVELS.forEach((v, i) => {
+        const d = Math.abs(v - z);
+        if (d < bestDist) { bestDist = d; best = i; }
+    });
+    return best;
+}
+
+function syncNavSlider() {
+    const z = parseFloat(document.getElementById('zoom').value) || 0;
+    const idx = zoomToLevelIndex(z);
+    navZoom.value = idx;
+    const degX = (360 / (z + 1)).toFixed(1);
+    navZoomVal.textContent = `${degX}°`;
+}
+
+navZoom.addEventListener('input', () => {
+    const idx = parseInt(navZoom.value);
+    const z   = ZOOM_LEVELS[idx];
+    document.getElementById('zoom').value = z;
+    const degX = (360 / (z + 1)).toFixed(1);
+    navZoomVal.textContent = `${degX}°`;
+    updateScaleDisplay();
+    drawOverlay();
+});
+
+// Sync on load
+syncNavSlider();
+
+// Prevent nav container mouse events leaking to overlay canvas
+document.getElementById('nav-container').addEventListener('mousedown', e => e.stopPropagation());
+document.getElementById('nav-container').addEventListener('click',     e => e.stopPropagation());
+
+// ── Reference line helper ────────────────────────────────────────────────────
 function _drawRefLine(proj, value, isLon, color) {
     if (isLon && (value < proj.lon1 || value > proj.lon2)) return;
     if (!isLon && (value < proj.lat1 || value > proj.lat2)) return;

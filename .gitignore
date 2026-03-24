@@ -1,0 +1,25 @@
+# ── Tile data directories (large, not tracked) ──────────────────────────────
+coasts/
+pols/
+polareas/
+inwaters/
+niw/
+cities/
+counties/
+rivers/
+
+# ── VB.NET build artifacts ───────────────────────────────────────────────────
+mapper.NET.dll
+mapper.NET.exe
+mapper.NET.pdb
+mapper.NET.deps.json
+mapper.NET.runtimeconfig.json
+mapper.NET.runtimeconfig.dev.json
+
+# ── Misc data / work files ───────────────────────────────────────────────────
+Work Area/
+NVALUES.DAT
+offsets.txt
+mapper.ini
+make_shortcut.vbs
+*.bmp

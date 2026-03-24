@@ -42,16 +42,19 @@ class DataLoader {
 
     // ── Public API ──────────────────────────────────────────────────────────────
 
-    // Fetch and parse all three tile files for a tile descriptor from TileManager.
-    // Returns { cst, pol, par } where each is an array of parsed objects.
+    // Fetch and parse all tile files for a tile descriptor from TileManager.
+    // Returns { cst, pol, par, cities, iwa, niw } where each is an array of parsed objects.
     // Missing files (404) silently return empty arrays.
     async loadTile(tile) {
-        const [cst, pol, par] = await Promise.all([
+        const [cst, pol, par, cities, iwa, niw] = await Promise.all([
             this._fetchAndParse(tile.coastsFile,   this._parseCstPol.bind(this)),
             this._fetchAndParse(tile.polsFile,      this._parseCstPol.bind(this)),
             this._fetchAndParse(tile.polareasFile,  this._parsePar.bind(this)),
+            this._fetchAndParse(tile.citiesFile,    this._parseCities.bind(this)),
+            this._fetchAndParse(tile.inwaterFile,   this._parseIwa.bind(this)),
+            this._fetchAndParse(tile.niwFile,       this._parseNiw.bind(this)),
         ]);
-        return { cst, pol, par };
+        return { cst, pol, par, cities, iwa, niw };
     }
 
     // Load primaries.txt → Map<lowercaseName, {r,g,b}>
@@ -153,20 +156,34 @@ class DataLoader {
             }
 
             // Points
+            // pointCount is the LOGICAL count (after [xN] expansion).
+            // "[xN] lon lat" means repeat (lon,lat) N times — one physical line counts as N logical points.
             const pointCount = parseInt(lines[i++]);
             const points = [];
-            for (let pt = 0; pt < pointCount; pt++) {
+            let logicalPt = 0;
+            while (logicalPt < pointCount) {
                 if (i >= lines.length) break;
-                // Coordinates may be "lon lat", "lon , lat", or "[xN] lon lat"
                 const raw = lines[i++].trim().split(/[\s,]+/).filter(t => t.length > 0);
-                // Skip [xN] repeat-count prefix if present
-                const off = raw[0].startsWith('[') ? 1 : 0;
+                let off = 0;
+                let repeat = 1;
+                if (raw[0] && raw[0].startsWith('[')) {
+                    const m = raw[0].match(/\[x(\d+)\]/i);
+                    if (m) repeat = parseInt(m[1]);
+                    off = 1;
+                }
                 if (raw.length - off >= 2) {
                     const lon = parseFloat(raw[off]);
                     const lat = parseFloat(raw[off + 1]);
                     if (!isNaN(lon) && !isNaN(lat)) {
-                        points.push({ lon, lat });
+                        for (let k = 0; k < repeat && logicalPt < pointCount; k++) {
+                            points.push({ lon, lat });
+                            logicalPt++;
+                        }
+                    } else {
+                        logicalPt += repeat;
                     }
+                } else {
+                    logicalPt++;
                 }
             }
 
@@ -206,13 +223,17 @@ class DataLoader {
 
             // Polygon references
             // numRefs < 0 signals a "dot" entry: one lon\tlat coordinate follows instead of poly refs
-            const numRefs = parseInt(lines[i++]);
+            // Use parseFloat so that values like -0.9 (not just -1, -2, -3) are correctly negative
+            const numRefs = parseFloat(lines[i++]);
             const polyRefs = [];
             let dotPoint = null;
+            let dotDiameter = 1;
             if (numRefs < 0) {
-                // Dot entry: one "lon\tlat" coordinate follows
+                // Dot entry: one "lon\tlat" coordinate follows.
+                // The absolute value of numRefs is the circle diameter in degrees.
                 const coords = lines[i++].trim().split(/[\s,]+/);
                 dotPoint = { lon: parseFloat(coords[0]), lat: parseFloat(coords[1]) };
+                dotDiameter = Math.abs(numRefs) / 10;
             } else {
                 for (let r = 0; r < numRefs; r++) {
                     if (i >= lines.length) break;
@@ -223,9 +244,64 @@ class DataLoader {
                 }
             }
 
-            entries.push({ entryIndex, areaType, dateRanges, polyRefs, dotPoint });
+            entries.push({ entryIndex, areaType, dateRanges, polyRefs, dotPoint, dotDiameter });
         }
         return entries;
+    }
+
+    // Parse CIT*.TXT city tile files.
+    //
+    // Format per entry:
+    //   <entry_index>           ← ignored
+    //   <numDateRanges>
+    //   For each date range:
+    //     <from>  ,  <to>
+    //     <name>
+    //     <colorIndex>
+    //     <symCode>             ← float: ≥0 = filled circle(s), <0 = X mark
+    //     <detCode>             ← int: >0 = draw, 0 = skip
+    //   <numCoords>             ← always 1; ignored
+    //   <lon>  <lat>            ← tab/space/comma separated
+    //
+    // Returns: [ { dateRanges:[{from,to,name,colorIndex,symCode,detCode}], lon, lat }, … ]
+    _parseCities(text) {
+        const lines = this._lines(text);
+        if (!lines.length) return [];
+
+        let i = 0;
+        const cityCount = parseInt(lines[i++]);
+        if (!cityCount || cityCount <= 0) return [];
+
+        const cities = [];
+        for (let c = 0; c < cityCount; c++) {
+            if (i >= lines.length) break;
+
+            i++;  // entry index (ignored)
+
+            const numDateRanges = parseInt(lines[i++]);
+            const dateRanges = [];
+            for (let d = 0; d < numDateRanges; d++) {
+                if (i + 4 >= lines.length) break;
+                const { from, to } = this._parseDateRange(lines[i++]);
+                const name       = lines[i++];
+                const colorIndex = parseInt(lines[i++]);
+                const symCode    = parseFloat(lines[i++]);
+                const detCode    = parseInt(lines[i++]);
+                dateRanges.push({ from, to, name, colorIndex, symCode, detCode });
+            }
+
+            i++;  // numCoords (always 1, ignored)
+
+            if (i >= lines.length) break;
+            const parts = lines[i++].trim().split(/[\s,\t]+/).filter(t => t.length > 0);
+            const lon = parseFloat(parts[0]);
+            const lat = parseFloat(parts[1]);
+
+            if (!isNaN(lon) && !isNaN(lat)) {
+                cities.push({ dateRanges, lon, lat });
+            }
+        }
+        return cities;
     }
 
     // Parse "date_from  ,  date_to" → { from: number, to: number }
@@ -235,5 +311,137 @@ class DataLoader {
             from: parseFloat(parts[0]),
             to:   parts.length > 1 ? parseFloat(parts[1]) : 9999
         };
+    }
+
+    // Parse IWA (InWater Areas) tile files.
+    //
+    // Format:
+    //   <group_count>
+    //   For each group (one water body):
+    //     <num_rings>
+    //     For each ring:
+    //       <ring_type>  <ring_index>
+    //       <num_date_ranges>
+    //       <date_from>  ,  <date_to>       ← always -9999..9990 in practice
+    //       7                               ← constant field, ignored
+    //       <point_count>
+    //       <lon>  <lat>  (repeated)
+    //
+    // Ring 1 = outer water boundary; rings 2+ = island inner rings.
+    // Returns: [ { rings: [ { ringType, ringIndex, points:[{lon,lat}] } ] } ]
+    _parseIwa(text) {
+        const lines = this._lines(text);
+        if (!lines.length) return [];
+
+        let i = 0;
+        const groupCount = parseInt(lines[i++]);
+        if (!groupCount) return [];
+
+        const groups = [];
+        for (let g = 0; g < groupCount; g++) {
+            if (i >= lines.length) break;
+            const numRings = parseInt(lines[i++]);
+            const rings = [];
+            for (let r = 0; r < numRings; r++) {
+                if (i >= lines.length) break;
+
+                const header  = lines[i++].trim().split(/\s+/);
+                const ringType  = parseInt(header[0]);
+                const ringIndex = header.length > 1 ? parseInt(header[1]) : r + 1;
+
+                const numDates = parseInt(lines[i++]);
+                for (let d = 0; d < numDates; d++) {
+                    if (i < lines.length) i++;   // skip date range lines
+                }
+                i++;  // skip constant "7" field
+
+                const pointCount = parseInt(lines[i++]);
+                const points = [];
+                let logicalPt = 0;
+                while (logicalPt < pointCount) {
+                    if (i >= lines.length) break;
+                    const raw = lines[i++].trim().split(/[\s,]+/).filter(t => t.length > 0);
+                    let off = 0, repeat = 1;
+                    if (raw[0] && raw[0].startsWith('[')) {
+                        const m = raw[0].match(/\[x(\d+)\]/i);
+                        if (m) repeat = parseInt(m[1]);
+                        off = 1;
+                    }
+                    if (raw.length - off >= 2) {
+                        const lon = parseFloat(raw[off]);
+                        const lat = parseFloat(raw[off + 1]);
+                        if (!isNaN(lon) && !isNaN(lat)) {
+                            for (let k = 0; k < repeat && logicalPt < pointCount; k++) {
+                                points.push({ lon, lat });
+                                logicalPt++;
+                            }
+                        } else {
+                            logicalPt += repeat;
+                        }
+                    } else {
+                        logicalPt++;
+                    }
+                }
+                rings.push({ ringType, ringIndex, points });
+            }
+            groups.push({ rings });
+        }
+        return groups;
+    }
+
+    // Parse NIW (Named InWater) tile files.
+    //
+    // Format (similar to PAR but refs point to IWA rings instead of POL polygons):
+    //   <entry_count>
+    //   For each entry:
+    //     <entry_index>
+    //     <num_date_ranges>
+    //     For each date_range:
+    //       <date_from>  ,  <date_to>
+    //       <area_name>
+    //       <color_index>
+    //     <num_refs>
+    //     For each ref:
+    //       <iwa_group_index>  ,  <ring_index>   ← 1-based group position in IWA file
+    //
+    // Returns: [ { entryIndex, dateRanges:[{from,to,name,colorIndex}], refs:[{groupIndex,ringIndex}] } ]
+    _parseNiw(text) {
+        const lines = this._lines(text);
+        if (!lines.length) return [];
+
+        let i = 0;
+        const entryCount = parseInt(lines[i++]);
+        if (!entryCount) return [];
+
+        const entries = [];
+        for (let e = 0; e < entryCount; e++) {
+            if (i >= lines.length) break;
+
+            const entryIndex = parseInt(lines[i++]);
+
+            const numDateRanges = parseInt(lines[i++]);
+            const dateRanges = [];
+            for (let d = 0; d < numDateRanges; d++) {
+                if (i + 2 >= lines.length) break;
+                const { from, to } = this._parseDateRange(lines[i++]);
+                const name       = lines[i++];
+                const colorIndex = parseInt(lines[i++]);
+                dateRanges.push({ from, to, name, colorIndex });
+            }
+
+            const numRefs = parseInt(lines[i++]);
+            const refs = [];
+            for (let r = 0; r < numRefs; r++) {
+                if (i >= lines.length) break;
+                const parts = lines[i++].split(',');
+                refs.push({
+                    groupIndex: parseInt(parts[0]),
+                    ringIndex:  parts.length > 1 ? parseInt(parts[1]) : 1,
+                });
+            }
+
+            entries.push({ entryIndex, dateRanges, refs });
+        }
+        return entries;
     }
 }

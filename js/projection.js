@@ -18,19 +18,22 @@ class MapProjection {
         this.canvasWidth = canvasWidth;
         this.canvasHeight = canvasHeight;
 
-        // Degrees of longitude/latitude visible on screen
+        // Degrees of longitude visible on screen (controlled by zoom)
         this.degX = 360 / (zoom + 1);
-        this.degY = 180 / (zoom + 1);
+
+        // Single scale (pixels per degree) derived from horizontal span.
+        // xScale === yScale so that 1° longitude == 1° latitude in pixels.
+        this.xScale = canvasWidth / this.degX;
+        this.yScale = this.xScale;
+
+        // Vertical span follows from the scale and canvas height
+        this.degY = canvasHeight / this.yScale;
 
         // Viewport bounds in geographic coordinates
         this.lon1 = centerLon - this.degX / 2;
         this.lon2 = centerLon + this.degX / 2;
         this.lat1 = centerLat - this.degY / 2;
         this.lat2 = centerLat + this.degY / 2;
-
-        // Pixels per degree
-        this.xScale = canvasWidth  / (this.lon2 - this.lon1);
-        this.yScale = canvasHeight / (this.lat2 - this.lat1);
     }
 
     // Geographic → pixel

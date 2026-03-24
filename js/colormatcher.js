@@ -73,4 +73,15 @@ class ColorLookup {
         const c = this.resolve(dateRange);
         return c ? `rgb(${c.r},${c.g},${c.b})` : fallback;
     }
+
+    // City symbols use the offset value directly as the full RGB color (no primaries base).
+    // Matches VB: intC = intRedoffset(intOffset) with no intCCred addition.
+    resolveCityRgb(colorIndex) {
+        return this._offsets[colorIndex] ?? { r: 0, g: 0, b: 0 };
+    }
+
+    cityColor(colorIndex) {
+        const { r, g, b } = this.resolveCityRgb(colorIndex);
+        return `rgb(${r},${g},${b})`;
+    }
 }
