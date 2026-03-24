@@ -234,14 +234,20 @@ class MapRenderer {
     // ── Rivers ─────────────────────────────────────────────────────────────────
 
     // Draws rivers after all tiles are loaded, chaining adjacent tile segments
-    // into single continuous paths.  River polys in neighbouring tiles share
-    // their boundary endpoint exactly; by merging them into one path the
-    // per-segment stroke endpoints at tile boundaries are eliminated, removing
-    // the vertical-line artifact without creating any gaps.
+    // into single continuous paths.  Adjacent polys share their boundary
+    // endpoint exactly (end of A == start of B); merging them into one path
+    // eliminates per-segment stroke endpoints at tile boundaries.
+    //
+    // The key subtlety: polys are in file order, so a poly that STARTS at a
+    // tile boundary may appear before the poly that ENDS there.  Processing it
+    // first would start a new stroke right at the boundary.  We therefore
+    // identify "chain heads" — polys whose start point is not the end point of
+    // any other loaded poly — and only begin chains from those.  Polys that
+    // have a predecessor are reached later when their predecessor is processed.
     _drawRiversConnected(ctx, projection, allPolys) {
         if (!allPolys.length) return;
 
-        // Map: "lon,lat" key → list of poly indices whose FIRST point is there
+        // startMap: first-point key → list of poly indices
         const startMap = new Map();
         for (let i = 0; i < allPolys.length; i++) {
             const pts = allPolys[i].points;
@@ -251,33 +257,47 @@ class MapRenderer {
             startMap.get(key).push(i);
         }
 
+        // hasPredecessor: poly indices whose first point is the END of some other poly.
+        // These are continuations — they must not start a new chain on their own.
+        const hasPredecessor = new Set();
+        for (let i = 0; i < allPolys.length; i++) {
+            const pts = allPolys[i].points;
+            if (!pts.length) continue;
+            const last   = pts[pts.length - 1];
+            const endKey = `${last.lon.toFixed(4)},${last.lat.toFixed(4)}`;
+            for (const j of (startMap.get(endKey) || [])) hasPredecessor.add(j);
+        }
+
         const visited = new Set();
         ctx.strokeStyle = RIVER_COLOR;
         ctx.lineWidth   = _lineWidth(projection, 0.5);
 
-        for (let i = 0; i < allPolys.length; i++) {
-            if (visited.has(i)) continue;
-            visited.add(i);
-
-            // Build chain: follow end→start connections across tile boundaries
-            let currentPts = allPolys[i].points;
+        const drawChain = (startIdx) => {
+            visited.add(startIdx);
+            let currentPts = allPolys[startIdx].points;
             const chainPts = [...currentPts];
-
             while (true) {
-                const last = currentPts[currentPts.length - 1];
+                const last   = currentPts[currentPts.length - 1];
                 const endKey = `${last.lon.toFixed(4)},${last.lat.toFixed(4)}`;
                 const nexts  = startMap.get(endKey) || [];
                 const nextIdx = nexts.find(j => !visited.has(j));
                 if (nextIdx === undefined) break;
                 visited.add(nextIdx);
                 currentPts = allPolys[nextIdx].points;
-                // Skip the first point of the continuation — it's the shared boundary
-                // point already present as the last point of chainPts.
+                // Skip index 0 — shared boundary point already at end of chainPts
                 for (let k = 1; k < currentPts.length; k++) chainPts.push(currentPts[k]);
             }
-
             const path = this._buildPath(projection, chainPts, false);
             if (path) ctx.stroke(path);
+        };
+
+        // First pass: true chain heads (no predecessor among loaded polys)
+        for (let i = 0; i < allPolys.length; i++) {
+            if (!visited.has(i) && !hasPredecessor.has(i)) drawChain(i);
+        }
+        // Second pass: anything unreached (viewport-edge orphans or cycles)
+        for (let i = 0; i < allPolys.length; i++) {
+            if (!visited.has(i)) drawChain(i);
         }
     }
 
