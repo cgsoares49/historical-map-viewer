@@ -24,6 +24,7 @@
 // It does NOT fill CST polygons separately; the PAR political fills cover all land.
 
 const WATER_COLOR  = '#5ba3d9';
+const RIVER_COLOR  = '#4a90d9';
 const COAST_COLOR  = '#5a4020';
 const BORDER_COLOR = '#3a2010';
 
@@ -48,7 +49,7 @@ class MapRenderer {
     // showCoasts: draw coastline strokes (disable for overview renders)
     // onTileDrawn(done, total): progress callback (optional)
     // Tiles are loaded and painted in batches so the map fills in progressively.
-    async render(ctx, projection, year, showBorders, showDots, onTileDrawn, showCoasts = true, showCities = false, showCityNames = false, cityDetail = 10, showInlandWaters = false) {
+    async render(ctx, projection, year, showBorders, showDots, onTileDrawn, showCoasts = true, showCities = false, showCityNames = false, cityDetail = 10, showInlandWaters = false, showRivers = false) {
         const { width: W, height: H } = ctx.canvas;
 
         // Water background
@@ -66,11 +67,12 @@ class MapRenderer {
             const batch = tileDescs.slice(start, start + BATCH);
             const loaded = await Promise.all(batch.map(t => this._loader.loadTile(t)));
             for (let j = 0; j < batch.length; j++) {
-                const { cst, pol, par, cities, iwa, niw } = loaded[j];
+                const { cst, pol, par, cities, iwa, niw, riv } = loaded[j];
                 this._drawPoliticalFill(ctx, projection, cst, pol, par, year, showDots);
                 if (showInlandWaters) this._drawInlandWaters(ctx, projection, iwa, niw, year);
-                if (showCoasts)  this._drawCoastOutlines(ctx, projection, cst, year);
-                if (showBorders) this._drawBorders(ctx, projection, pol, year);
+                if (showRivers)       this._drawRivers(ctx, projection, riv);
+                if (showCoasts)       this._drawCoastOutlines(ctx, projection, cst, year);
+                if (showBorders)      this._drawBorders(ctx, projection, pol, year);
                 if (showDots)    this._drawDots(ctx, projection, par, year);
                 if (showCities) {
                     this._drawCities(ctx, projection, cities, year, cityDetail);
@@ -219,6 +221,20 @@ class MapRenderer {
             ctx.arc(x, y, radiusPx, 0, Math.PI * 2);
             ctx.fillStyle = fillColor;
             ctx.fill();
+        }
+    }
+
+    // ── Rivers ─────────────────────────────────────────────────────────────────
+
+    // Draws river polylines from RIV tile data as open strokes.
+    // Rivers have no time dependency (always date range -9999..9990).
+    _drawRivers(ctx, projection, riv) {
+        if (!riv || !riv.length) return;
+        ctx.strokeStyle = RIVER_COLOR;
+        ctx.lineWidth   = _lineWidth(projection, 0.5);
+        for (const poly of riv) {
+            const path = this._buildPath(projection, poly.points, false);
+            if (path) ctx.stroke(path);
         }
     }
 

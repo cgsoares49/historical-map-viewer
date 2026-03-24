@@ -46,15 +46,16 @@ class DataLoader {
     // Returns { cst, pol, par, cities, iwa, niw } where each is an array of parsed objects.
     // Missing files (404) silently return empty arrays.
     async loadTile(tile) {
-        const [cst, pol, par, cities, iwa, niw] = await Promise.all([
+        const [cst, pol, par, cities, iwa, niw, riv] = await Promise.all([
             this._fetchAndParse(tile.coastsFile,   this._parseCstPol.bind(this)),
             this._fetchAndParse(tile.polsFile,      this._parseCstPol.bind(this)),
             this._fetchAndParse(tile.polareasFile,  this._parsePar.bind(this)),
             this._fetchAndParse(tile.citiesFile,    this._parseCities.bind(this)),
             this._fetchAndParse(tile.inwaterFile,   this._parseIwa.bind(this)),
             this._fetchAndParse(tile.niwFile,       this._parseNiw.bind(this)),
+            this._fetchAndParse(tile.riversFile,    this._parseRivers.bind(this)),
         ]);
-        return { cst, pol, par, cities, iwa, niw };
+        return { cst, pol, par, cities, iwa, niw, riv };
     }
 
     // Load primaries.txt → Map<lowercaseName, {r,g,b}>
@@ -302,6 +303,73 @@ class DataLoader {
             }
         }
         return cities;
+    }
+
+    // Parse RIV (Rivers) tile files.
+    //
+    // Format:
+    //   <poly_count>
+    //   For each poly:
+    //     <poly_type>  ,  <poly_index>
+    //     <num_date_ranges>
+    //     <date_from>  ,  <date_to>      ← always -9999..9990
+    //     7                              ← constant field, ignored
+    //     <point_count>
+    //     <lon>  <lat>  (repeated)
+    //
+    // Returns: [ { polyType, polyIndex, points:[{lon,lat}] } ]
+    _parseRivers(text) {
+        const lines = this._lines(text);
+        if (!lines.length) return [];
+
+        let i = 0;
+        const polyCount = parseInt(lines[i++]);
+        if (!polyCount) return [];
+
+        const polys = [];
+        for (let p = 0; p < polyCount; p++) {
+            if (i >= lines.length) break;
+
+            const header    = lines[i++].split(',');
+            const polyType  = parseInt(header[0]);
+            const polyIndex = header.length > 1 ? parseInt(header[1]) : p + 1;
+
+            const numDates = parseInt(lines[i++]);
+            for (let d = 0; d < numDates; d++) {
+                if (i < lines.length) i++;   // skip date range lines (always -9999..9990)
+            }
+            i++;  // skip constant "7" field
+
+            const pointCount = parseInt(lines[i++]);
+            const points = [];
+            let logicalPt = 0;
+            while (logicalPt < pointCount) {
+                if (i >= lines.length) break;
+                const raw = lines[i++].trim().split(/[\s,]+/).filter(t => t.length > 0);
+                let off = 0, repeat = 1;
+                if (raw[0] && raw[0].startsWith('[')) {
+                    const m = raw[0].match(/\[x(\d+)\]/i);
+                    if (m) repeat = parseInt(m[1]);
+                    off = 1;
+                }
+                if (raw.length - off >= 2) {
+                    const lon = parseFloat(raw[off]);
+                    const lat = parseFloat(raw[off + 1]);
+                    if (!isNaN(lon) && !isNaN(lat)) {
+                        for (let k = 0; k < repeat && logicalPt < pointCount; k++) {
+                            points.push({ lon, lat });
+                            logicalPt++;
+                        }
+                    } else {
+                        logicalPt += repeat;
+                    }
+                } else {
+                    logicalPt++;
+                }
+            }
+            polys.push({ polyType, polyIndex, points });
+        }
+        return polys;
     }
 
     // Parse "date_from  ,  date_to" → { from: number, to: number }

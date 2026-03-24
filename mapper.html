@@ -444,7 +444,7 @@
         <div class="tb-label">Draw</div>
         <label class="tb-check"><input type="checkbox" id="showCoasts" checked> Coasts</label>
         <label class="tb-check"><input type="checkbox" id="showInlandWaters"> Inland waters</label>
-        <label class="tb-check disabled"><input type="checkbox" disabled> Rivers</label>
+        <label class="tb-check"><input type="checkbox" id="showRivers"> Rivers</label>
         <label class="tb-check"><input type="checkbox" id="showBorders" checked> Boundaries</label>
         <label class="tb-check"><input type="checkbox" id="showGrid"> Tile grid</label>
         <label class="tb-check disabled"><input type="checkbox" disabled> Grid labels</label>
@@ -694,10 +694,11 @@ document.getElementById('btnSave').addEventListener('click', async () => {
     const showCityNames     = document.getElementById('showCityNames'    ).checked;
     const cityDetail        = parseInt(document.getElementById('cityDetail').value) || 10;
     const showInlandWaters  = document.getElementById('showInlandWaters' ).checked;
+    const showRivers        = document.getElementById('showRivers'       ).checked;
 
     document.getElementById('status').textContent = 'Saving…';
     try {
-        await mapRenderer.render(octxSave, hiProj, yr, showBorders, showDots, null, showCoasts, showCities, showCityNames, cityDetail, showInlandWaters);
+        await mapRenderer.render(octxSave, hiProj, yr, showBorders, showDots, null, showCoasts, showCities, showCityNames, cityDetail, showInlandWaters, showRivers);
     } catch (e) {
         document.getElementById('status').textContent = `Save error: ${e.message}`;
         return;
@@ -769,6 +770,7 @@ document.getElementById('showBorders'     ).addEventListener('change', scheduleR
 document.getElementById('showDots'        ).addEventListener('change', scheduleRender);
 document.getElementById('showCoasts'      ).addEventListener('change', scheduleRender);
 document.getElementById('showInlandWaters').addEventListener('change', scheduleRender);
+document.getElementById('showRivers'      ).addEventListener('change', scheduleRender);
 document.getElementById('showCities'    ).addEventListener('change', scheduleRender);
 document.getElementById('showCityNames' ).addEventListener('change', scheduleRender);
 document.getElementById('cityDetail'    ).addEventListener('change', scheduleRender);
@@ -856,10 +858,11 @@ async function doRender(skipColorMap = false) {
         const showCityNames    = document.getElementById('showCityNames'    ).checked;
         const cityDetail       = parseInt(document.getElementById('cityDetail').value) || 10;
         const showInlandWaters = document.getElementById('showInlandWaters' ).checked;
+        const showRivers       = document.getElementById('showRivers'       ).checked;
         await mapRenderer.render(ctx, proj, year, showBorders, showDots, (done, total) => {
             statusEl.textContent = `Rendering… ${done}/${total}`;
             fillEl.style.width = `${Math.round(100 * done / total)}%`;
-        }, showCoasts, showCities, showCityNames, cityDetail, showInlandWaters);
+        }, showCoasts, showCities, showCityNames, cityDetail, showInlandWaters, showRivers);
         drawOverlay();
         fillEl.style.width = '100%';
         const yearLabel = year < 0 ? `${Math.abs(year)} BCE` : `${year} CE`;

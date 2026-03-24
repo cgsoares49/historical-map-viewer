@@ -89,6 +89,7 @@ class TileManager {
                     citiesFile:    `cities/${latStr}/CIT${lonStr}.TXT`,
                     inwaterFile:   `inwaters/${latStr}/IWA${lonStr}.PRN`,
                     niwFile:       `niw/${latStr}/NIW${lonStr}.ASC`,
+                    riversFile:    `rivers/${latStr}/RIV${lonStr}.PRN`,
                 });
             }
         }
