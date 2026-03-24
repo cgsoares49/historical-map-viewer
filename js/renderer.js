@@ -291,13 +291,37 @@ class MapRenderer {
             if (path) ctx.stroke(path);
         };
 
-        // First pass: true chain heads (no predecessor among loaded polys)
+        // First pass: true global chain heads (no predecessor among any loaded poly)
         for (let i = 0; i < allPolys.length; i++) {
             if (!visited.has(i) && !hasPredecessor.has(i)) drawChain(i);
         }
-        // Second pass: anything unreached (viewport-edge orphans or cycles)
-        for (let i = 0; i < allPolys.length; i++) {
-            if (!visited.has(i)) drawChain(i);
+
+        // Second pass: handle orphan clusters (chains whose global head is outside the
+        // loaded tile set).  Naïvely iterating in array order would start chains at
+        // interior boundary points — so reapply the hasPredecessor logic restricted to
+        // the unvisited subset to find the local head of each orphan cluster.
+        if (visited.size < allPolys.length) {
+            // Collect end-keys of every still-unvisited poly
+            const orphanEndKeys = new Set();
+            for (let i = 0; i < allPolys.length; i++) {
+                if (visited.has(i)) continue;
+                const pts = allPolys[i].points;
+                if (!pts.length) continue;
+                const last = pts[pts.length - 1];
+                orphanEndKeys.add(`${last.lon.toFixed(4)},${last.lat.toFixed(4)}`);
+            }
+            // Draw from orphan polys whose start is not any orphan's end (local heads)
+            for (let i = 0; i < allPolys.length; i++) {
+                if (visited.has(i)) continue;
+                const pts = allPolys[i].points;
+                if (!pts.length) continue;
+                const firstKey = `${pts[0].lon.toFixed(4)},${pts[0].lat.toFixed(4)}`;
+                if (!orphanEndKeys.has(firstKey)) drawChain(i);
+            }
+            // Final pass: cycles and anything still unreached
+            for (let i = 0; i < allPolys.length; i++) {
+                if (!visited.has(i)) drawChain(i);
+            }
         }
     }
 
