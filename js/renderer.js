@@ -60,9 +60,11 @@ class MapRenderer {
         const total = tileDescs.length;
 
         // Load and render in batches of 24 so the map paints progressively.
-        // allCities accumulates loaded city arrays for the label-placement pass.
+        // allCities accumulates city arrays for label placement.
+        // allRivPolys accumulates river segments for cross-tile chain merging.
         const BATCH = 24;
-        const allCities = [];
+        const allCities   = [];
+        const allRivPolys = [];
         for (let start = 0; start < total; start += BATCH) {
             const batch = tileDescs.slice(start, start + BATCH);
             const loaded = await Promise.all(batch.map(t => this._loader.loadTile(t)));
@@ -70,9 +72,9 @@ class MapRenderer {
                 const { cst, pol, par, cities, iwa, niw, riv } = loaded[j];
                 this._drawPoliticalFill(ctx, projection, cst, pol, par, year, showDots);
                 if (showInlandWaters) this._drawInlandWaters(ctx, projection, iwa, niw, year);
-                if (showRivers)       this._drawRivers(ctx, projection, riv);
                 if (showCoasts)       this._drawCoastOutlines(ctx, projection, cst, year);
                 if (showBorders)      this._drawBorders(ctx, projection, pol, year);
+                if (showRivers)       for (const p of riv) allRivPolys.push(p);
                 if (showDots)    this._drawDots(ctx, projection, par, year);
                 if (showCities) {
                     this._drawCities(ctx, projection, cities, year, cityDetail);
@@ -86,6 +88,11 @@ class MapRenderer {
         // Second pass: greedy label placement after all dots are drawn
         if (showCities && showCityNames) {
             this._placeAndDrawCityLabels(ctx, projection, allCities, year, cityDetail);
+        }
+
+        // River pass: draw after all tiles loaded so cross-tile segments can be chained
+        if (showRivers) {
+            this._drawRiversConnected(ctx, projection, allRivPolys);
         }
     }
 
@@ -226,28 +233,50 @@ class MapRenderer {
 
     // ── Rivers ─────────────────────────────────────────────────────────────────
 
-    // Draws river polylines from RIV tile data as open strokes.
-    // Rivers have no time dependency (always date range -9999..9990).
-    //
-    // Rivers are clipped to tile boundaries by the data generator, which adds an
-    // anchor point at the exact tile boundary longitude (always an integer degree)
-    // to the start/end of each segment.  When many river segments from adjacent
-    // tiles all terminate at the same x-pixel, their stroke endpoints pile up into
-    // a visible vertical line.  Stripping any leading/trailing point whose lon is
-    // within ε of an integer eliminates the concentration without a perceptible gap.
-    _drawRivers(ctx, projection, riv) {
-        if (!riv || !riv.length) return;
+    // Draws rivers after all tiles are loaded, chaining adjacent tile segments
+    // into single continuous paths.  River polys in neighbouring tiles share
+    // their boundary endpoint exactly; by merging them into one path the
+    // per-segment stroke endpoints at tile boundaries are eliminated, removing
+    // the vertical-line artifact without creating any gaps.
+    _drawRiversConnected(ctx, projection, allPolys) {
+        if (!allPolys.length) return;
+
+        // Map: "lon,lat" key → list of poly indices whose FIRST point is there
+        const startMap = new Map();
+        for (let i = 0; i < allPolys.length; i++) {
+            const pts = allPolys[i].points;
+            if (!pts.length) continue;
+            const key = `${pts[0].lon.toFixed(4)},${pts[0].lat.toFixed(4)}`;
+            if (!startMap.has(key)) startMap.set(key, []);
+            startMap.get(key).push(i);
+        }
+
+        const visited = new Set();
         ctx.strokeStyle = RIVER_COLOR;
         ctx.lineWidth   = _lineWidth(projection, 0.5);
-        for (const poly of riv) {
-            let pts = poly.points;
-            // Trim tile-boundary anchor points (lon within ε of an integer degree)
-            const atBoundary = lon => Math.abs(lon - Math.round(lon)) < 0.0005;
-            if (pts.length > 1 && atBoundary(pts[0].lon))
-                pts = pts.slice(1);
-            if (pts.length > 1 && atBoundary(pts[pts.length - 1].lon))
-                pts = pts.slice(0, -1);
-            const path = this._buildPath(projection, pts, false);
+
+        for (let i = 0; i < allPolys.length; i++) {
+            if (visited.has(i)) continue;
+            visited.add(i);
+
+            // Build chain: follow end→start connections across tile boundaries
+            let currentPts = allPolys[i].points;
+            const chainPts = [...currentPts];
+
+            while (true) {
+                const last = currentPts[currentPts.length - 1];
+                const endKey = `${last.lon.toFixed(4)},${last.lat.toFixed(4)}`;
+                const nexts  = startMap.get(endKey) || [];
+                const nextIdx = nexts.find(j => !visited.has(j));
+                if (nextIdx === undefined) break;
+                visited.add(nextIdx);
+                currentPts = allPolys[nextIdx].points;
+                // Skip the first point of the continuation — it's the shared boundary
+                // point already present as the last point of chainPts.
+                for (let k = 1; k < currentPts.length; k++) chainPts.push(currentPts[k]);
+            }
+
+            const path = this._buildPath(projection, chainPts, false);
             if (path) ctx.stroke(path);
         }
     }
