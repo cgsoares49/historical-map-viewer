@@ -228,12 +228,26 @@ class MapRenderer {
 
     // Draws river polylines from RIV tile data as open strokes.
     // Rivers have no time dependency (always date range -9999..9990).
+    //
+    // Rivers are clipped to tile boundaries by the data generator, which adds an
+    // anchor point at the exact tile boundary longitude (always an integer degree)
+    // to the start/end of each segment.  When many river segments from adjacent
+    // tiles all terminate at the same x-pixel, their stroke endpoints pile up into
+    // a visible vertical line.  Stripping any leading/trailing point whose lon is
+    // within ε of an integer eliminates the concentration without a perceptible gap.
     _drawRivers(ctx, projection, riv) {
         if (!riv || !riv.length) return;
         ctx.strokeStyle = RIVER_COLOR;
         ctx.lineWidth   = _lineWidth(projection, 0.5);
         for (const poly of riv) {
-            const path = this._buildPath(projection, poly.points, false);
+            let pts = poly.points;
+            // Trim tile-boundary anchor points (lon within ε of an integer degree)
+            const atBoundary = lon => Math.abs(lon - Math.round(lon)) < 0.0005;
+            if (pts.length > 1 && atBoundary(pts[0].lon))
+                pts = pts.slice(1);
+            if (pts.length > 1 && atBoundary(pts[pts.length - 1].lon))
+                pts = pts.slice(0, -1);
+            const path = this._buildPath(projection, pts, false);
             if (path) ctx.stroke(path);
         }
     }
