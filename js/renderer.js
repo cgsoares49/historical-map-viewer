@@ -620,15 +620,34 @@ class MapRenderer {
         }
 
         // ── Build label list ──────────────────────────────────────────────
+        // For each group, compute the weighted centroid then snap to the nearest
+        // actual polygon centroid.  For contiguous territories this lands on the
+        // central tile; for scattered non-contiguous ones (e.g. Roman colonies)
+        // it picks the polygon closest to the center of the distribution rather
+        // than floating in empty space between members.
+        const _snapToNearest = (cx0, cy0, filterFn) => {
+            let bestDist = Infinity, bestX = cx0, bestY = cy0;
+            for (const e of entries) {
+                if (!filterFn(e)) continue;
+                const d = (e.cx - cx0) ** 2 + (e.cy - cy0) ** 2;
+                if (d < bestDist) { bestDist = d; bestX = e.cx; bestY = e.cy; }
+            }
+            return { x: bestX, y: bestY };
+        };
+
         const labels = [];
         for (const [root, g] of rootMap) {
             if (g.totalArea < minPixels) continue;
-            labels.push({ text: root, x: g.wcx / g.totalArea, y: g.wcy / g.totalArea, area: g.totalArea });
+            const cx0 = g.wcx / g.totalArea, cy0 = g.wcy / g.totalArea;
+            const { x, y } = _snapToNearest(cx0, cy0, e => e.name.split(' - ')[0] === root);
+            labels.push({ text: root, x, y, area: g.totalArea });
         }
         for (const [fullName, g] of subMap) {
             if (g.totalArea < minPixels) continue;
+            const cx0 = g.wcx / g.totalArea, cy0 = g.wcy / g.totalArea;
+            const { x, y } = _snapToNearest(cx0, cy0, e => e.name === fullName);
             const parts = fullName.split(' - ');
-            labels.push({ text: parts[parts.length - 1], x: g.wcx / g.totalArea, y: g.wcy / g.totalArea, area: g.totalArea });
+            labels.push({ text: parts[parts.length - 1], x, y, area: g.totalArea });
         }
 
         // Largest territories claim space first
