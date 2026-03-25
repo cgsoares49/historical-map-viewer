@@ -262,56 +262,6 @@
         #map-container { flex: 1; position: relative; overflow: hidden; }
         canvas { display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        /* ── Floating navigation panel ────────────────────────────────────── */
-        #nav-container {
-            position: absolute;
-            bottom: 18px;
-            right: 18px;
-            z-index: 20;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 6px;
-            pointer-events: all;
-        }
-        #nav-trigger {
-            width: 32px; height: 32px;
-            background: rgba(14, 22, 46, 0.90);
-            border: 1px solid #00c8f0;
-            border-radius: 6px;
-            display: flex; align-items: center; justify-content: center;
-            color: #00c8f0;
-            font-size: 18px;
-            cursor: pointer;
-            user-select: none;
-        }
-        #nav-panel {
-            background: rgba(14, 22, 46, 0.94);
-            border: 1px solid #00c8f0;
-            border-radius: 6px;
-            padding: 8px 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-            user-select: none;
-            opacity: 0;
-            pointer-events: none;
-            transform: translateY(6px);
-            transition: opacity 0.18s ease, transform 0.18s ease;
-        }
-        #nav-container:hover #nav-panel {
-            opacity: 1;
-            pointer-events: all;
-            transform: translateY(0);
-        }
-        .nav-label { font-size: 10px; color: #00c8f0; letter-spacing: 1px; text-transform: uppercase; }
-        #nav-zoom-row {
-            display: flex; align-items: center; gap: 5px; width: 100%;
-        }
-        #nav-zoom-row span { font-size: 11px; color: #aaa; width: 12px; text-align: center; }
-        #nav-zoom { flex: 1; accent-color: #00c8f0; cursor: pointer; }
-        #nav-zoom-val { font-size: 10px; color: #888; min-width: 48px; text-align: center; }
     </style>
 </head>
 <body>
@@ -498,19 +448,6 @@
     <canvas id="mapCanvas"></canvas>
     <canvas id="overlay"></canvas>
 
-    <!-- Floating nav panel (zoom slider) -->
-    <div id="nav-container">
-        <div id="nav-panel">
-            <div class="nav-label">Zoom</div>
-            <div id="nav-zoom-row">
-                <span title="Zoom out">−</span>
-                <input type="range" id="nav-zoom" min="0" max="16" step="1" value="6">
-                <span title="Zoom in">+</span>
-            </div>
-            <div id="nav-zoom-val">45°</div>
-        </div>
-        <div id="nav-trigger" title="Zoom">⊕</div>
-    </div>
 </div>
 
 <script src="js/projection.js"></script>
@@ -734,7 +671,6 @@ document.getElementById('btnHome').addEventListener('click', () => {
     document.getElementById('centerLon').value = 0;
     document.getElementById('centerLat').value = 0;
     document.getElementById('zoom').value = 7;
-    syncNavSlider();
     drawOverlay();
 });
 
@@ -777,7 +713,7 @@ document.getElementById('cityDetail'    ).addEventListener('change', scheduleRen
 document.getElementById('showGrid'   ).addEventListener('change', drawOverlay);
 
 // Redraw overlay when zoom or center changes
-document.getElementById('zoom').addEventListener('change', () => { syncNavSlider(); drawOverlay(); });
+document.getElementById('zoom').addEventListener('change', () => { drawOverlay(); });
 ['centerLon', 'centerLat'].forEach(id => {
     document.getElementById(id).addEventListener('input', drawOverlay);
 });
@@ -1019,9 +955,6 @@ overlay.style.cursor = 'crosshair';
 // VB zoom items: [0,1,2,3,4,5,7,11,17,23,35,59,71,119,179,359,719]
 const ZOOM_LEVELS = [0, 1, 2, 3, 4, 5, 7, 11, 17, 23, 35, 59, 71, 119, 179, 359, 719];
 
-const navZoom    = document.getElementById('nav-zoom');
-const navZoomVal = document.getElementById('nav-zoom-val');
-
 function zoomToLevelIndex(z) {
     let best = 0, bestDist = Infinity;
     ZOOM_LEVELS.forEach((v, i) => {
@@ -1031,30 +964,6 @@ function zoomToLevelIndex(z) {
     return best;
 }
 
-function syncNavSlider() {
-    const z = parseFloat(document.getElementById('zoom').value) || 0;
-    const idx = zoomToLevelIndex(z);
-    navZoom.value = idx;
-    const degX = (360 / (z + 1)).toFixed(1);
-    navZoomVal.textContent = `${degX}°`;
-}
-
-navZoom.addEventListener('input', () => {
-    const idx = parseInt(navZoom.value);
-    const z   = ZOOM_LEVELS[idx];
-    document.getElementById('zoom').value = z;
-    const degX = (360 / (z + 1)).toFixed(1);
-    navZoomVal.textContent = `${degX}°`;
-    updateScaleDisplay();
-    drawOverlay();
-});
-
-// Sync on load
-syncNavSlider();
-
-// Prevent nav container mouse events leaking to overlay canvas
-document.getElementById('nav-container').addEventListener('mousedown', e => e.stopPropagation());
-document.getElementById('nav-container').addEventListener('click',     e => e.stopPropagation());
 
 // ── Reference line helper ────────────────────────────────────────────────────
 function _drawRefLine(proj, value, isLon, color) {
