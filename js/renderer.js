@@ -545,7 +545,7 @@ class MapRenderer {
         for (const entry of par) {
             if (entry.areaType === 0 || entry.dotPoint) continue;
             const dateMatch = matchDate(entry.dateRanges, year);
-            if (!dateMatch || !dateMatch.name) continue;
+            if (!dateMatch || !dateMatch.name || dateMatch.name === 'UNKNOWN') continue;
             const { points, hasSegment } = this._buildCombinedPolygon(entry.polyRefs, cstByIndex, polByIndex);
             if (!hasSegment || points.length < 3) continue;
             result.push({ name: dateMatch.name, points });
