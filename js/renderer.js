@@ -25,8 +25,8 @@
 
 const WATER_COLOR  = '#5ba3d9';
 const RIVER_COLOR  = '#4a90d9';
-const COAST_COLOR  = '#3a2010';
-const BORDER_COLOR = '#3a2010';
+const COAST_COLOR  = '#000000';
+const BORDER_COLOR = '#000000';
 
 // Polygons whose matched date range starts before this year are content-creation
 // sentinel entries (e.g. -9997 "show all" mode) and are excluded from display.
@@ -144,7 +144,7 @@ class MapRenderer {
                 // stroking with the same fill color closes it. Coast/border strokes drawn
                 // later will cover this thin edge on actual country boundaries.
                 ctx.strokeStyle = fillColor;
-                ctx.lineWidth   = 2;
+                ctx.lineWidth   = 1;
                 ctx.stroke(path);
             }
         }
@@ -205,7 +205,7 @@ class MapRenderer {
     // Polygons outside the current year are silently skipped.
     _drawCoastOutlines(ctx, projection, cst, year) {
         ctx.strokeStyle = COAST_COLOR;
-        ctx.lineWidth   = _lineWidth(projection, 0.8);
+        ctx.lineWidth   = Math.max(1, _lineWidth(projection, 0.8));
         for (const poly of cst) {
             if (!matchDate(poly.dateRanges, year)) continue;
             const path = this._buildPath(projection, poly.points, false);  // open path — don't close tile-edge gap
