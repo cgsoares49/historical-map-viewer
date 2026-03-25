@@ -128,8 +128,15 @@ class MapRenderer {
 
             const path = this._buildPath(projection, combined);
             if (path) {
-                ctx.fillStyle = fillColor;
+                ctx.fillStyle   = fillColor;
                 ctx.fill(path, 'evenodd');   // GDI+ FillPolygon default = Alternate = evenodd
+                // Cover the ~0.5px anti-aliasing seam at tile-boundary connector edges.
+                // Canvas 2D AA leaves a thin gap where adjacent tile fills meet exactly;
+                // stroking with the same fill color closes it. Coast/border strokes drawn
+                // later will cover this thin edge on actual country boundaries.
+                ctx.strokeStyle = fillColor;
+                ctx.lineWidth   = 1;
+                ctx.stroke(path);
             }
         }
     }
