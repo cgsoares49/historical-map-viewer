@@ -25,7 +25,7 @@
 
 const WATER_COLOR  = '#5ba3d9';
 const RIVER_COLOR  = '#4a90d9';
-const COAST_COLOR  = '#5a4020';
+const COAST_COLOR  = '#3a2010';
 const BORDER_COLOR = '#3a2010';
 
 // Polygons whose matched date range starts before this year are content-creation
