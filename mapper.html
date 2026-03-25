@@ -457,15 +457,20 @@
 <script src="js/renderer.js"></script>
 <script>
 // ── Canvas setup ────────────────────────────────────────────────────────────
-const container = document.getElementById('map-container');
-const canvas    = document.getElementById('mapCanvas');
-const overlay   = document.getElementById('overlay');
-const ctx       = canvas.getContext('2d');
-const octx      = overlay.getContext('2d');
+const container  = document.getElementById('map-container');
+const canvas     = document.getElementById('mapCanvas');
+const overlay    = document.getElementById('overlay');
+const ctx        = canvas.getContext('2d');
+const octx       = overlay.getContext('2d');
+
+// Back-buffer for flicker-free rendering: all drawing goes here first,
+// then the completed frame is copied to the visible canvas in one drawImage.
+const backCanvas = document.createElement('canvas');
+const backCtx    = backCanvas.getContext('2d');
 
 function resizeCanvases() {
-    canvas.width  = overlay.width  = container.clientWidth;
-    canvas.height = overlay.height = container.clientHeight;
+    canvas.width  = overlay.width  = backCanvas.width  = container.clientWidth;
+    canvas.height = overlay.height = backCanvas.height = container.clientHeight;
 }
 resizeCanvases();
 window.addEventListener('resize', () => { resizeCanvases(); scheduleRender(); });
@@ -804,10 +809,12 @@ async function doRender(skipColorMap = false) {
         const showRivers        = document.getElementById('showRivers'        ).checked;
         const showCountryLabels = document.getElementById('showCountryLabels' ).checked;
         const minPixels         = parseInt(document.getElementById('minPixels').value) || 5000;
-        await mapRenderer.render(ctx, proj, year, showBorders, showDots, (done, total) => {
+        await mapRenderer.render(backCtx, proj, year, showBorders, showDots, (done, total) => {
             statusEl.textContent = `Rendering… ${done}/${total}`;
             fillEl.style.width = `${Math.round(100 * done / total)}%`;
+            ctx.drawImage(backCanvas, 0, 0);  // progressive flip: show each batch as it arrives
         }, showCoasts, showCities, showCityNames, cityDetail, showInlandWaters, showRivers, showCountryLabels, minPixels);
+        ctx.drawImage(backCanvas, 0, 0);  // final flip: ensure complete frame is visible
         drawOverlay();
         fillEl.style.width = '100%';
         const yearLabel = year < 0 ? `${Math.abs(year)} BCE` : `${year} CE`;
