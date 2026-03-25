@@ -275,7 +275,14 @@ class MapRenderer {
         const drawChain = (startIdx) => {
             visited.add(startIdx);
             let currentPts = allPolys[startIdx].points;
-            const chainPts = [...currentPts];
+            // If the first point is at exact integer-degree coordinates it is a tile
+            // boundary split point — real river points are never exactly integer degrees.
+            // Skipping it removes stroke endpoint artifacts at tributary-split boundaries.
+            const fp = currentPts[0];
+            const firstIsIntCoord = (fp.lon === Math.round(fp.lon) || fp.lat === Math.round(fp.lat));
+            const chainPts = (firstIsIntCoord && currentPts.length > 1)
+                ? currentPts.slice(1)
+                : [...currentPts];
             while (true) {
                 const last   = currentPts[currentPts.length - 1];
                 const endKey = `${last.lon.toFixed(4)},${last.lat.toFixed(4)}`;
