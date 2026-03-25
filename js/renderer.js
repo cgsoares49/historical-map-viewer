@@ -135,7 +135,7 @@ class MapRenderer {
                 // stroking with the same fill color closes it. Coast/border strokes drawn
                 // later will cover this thin edge on actual country boundaries.
                 ctx.strokeStyle = fillColor;
-                ctx.lineWidth   = 1;
+                ctx.lineWidth   = 2;
                 ctx.stroke(path);
             }
         }
