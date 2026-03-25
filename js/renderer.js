@@ -647,7 +647,7 @@ class MapRenderer {
         for (const { text, x, y } of labels) {
             if (x < 0 || x > W || y < 0 || y > H) continue;
 
-            const fontSize = Math.max(12, Math.min(20, Math.round(400 / projection.degX)));
+            const fontSize = Math.max(9, Math.min(13, Math.round(250 / projection.degX)));
             ctx.font = `bold ${fontSize}px Arial, sans-serif`;
             const w = ctx.measureText(text).width;
             const h = fontSize + 4;
