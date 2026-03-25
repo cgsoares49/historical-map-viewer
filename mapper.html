@@ -405,7 +405,7 @@
         <div class="tb-label">Show</div>
         <label class="tb-check"><input type="checkbox" id="showCities" checked> Cities</label>
         <label class="tb-check"><input type="checkbox" id="showCityNames"> City names</label>
-        <label class="tb-check disabled"><input type="checkbox" disabled> Area names</label>
+        <label class="tb-check"><input type="checkbox" id="showCountryLabels"> Country labels</label>
         <label class="tb-check"><input type="checkbox" id="showDots" checked> Tribal dots</label>
         <div class="tb-row" style="margin-top:2px;">
             <span class="tb-lbl">Detail</span>
@@ -416,7 +416,7 @@
     <!-- ── Min pixels / Save ── -->
     <div class="tb-group">
         <div class="tb-label">Min Pixels</div>
-        <input type="number" id="minPixels" value="5000" style="width:72px;" disabled>
+        <input type="number" id="minPixels" value="5000" min="100" style="width:72px;" disabled>
         <div class="tb-row" style="margin-top:3px;">
             <button class="btn-save" id="btnSave" style="width:54px;">Save Map</button>
             <select id="saveRes" style="width:42px;height:22px;font-size:11px;" title="Save resolution multiplier">
@@ -630,12 +630,14 @@ document.getElementById('btnSave').addEventListener('click', async () => {
     const showCities        = document.getElementById('showCities'       ).checked;
     const showCityNames     = document.getElementById('showCityNames'    ).checked;
     const cityDetail        = parseInt(document.getElementById('cityDetail').value) || 10;
-    const showInlandWaters  = document.getElementById('showInlandWaters' ).checked;
-    const showRivers        = document.getElementById('showRivers'       ).checked;
+    const showInlandWaters  = document.getElementById('showInlandWaters'  ).checked;
+    const showRivers        = document.getElementById('showRivers'        ).checked;
+    const showCountryLabels = document.getElementById('showCountryLabels' ).checked;
+    const minPixelsSave     = parseInt(document.getElementById('minPixels').value) || 5000;
 
     document.getElementById('status').textContent = 'Saving…';
     try {
-        await mapRenderer.render(octxSave, hiProj, yr, showBorders, showDots, null, showCoasts, showCities, showCityNames, cityDetail, showInlandWaters, showRivers);
+        await mapRenderer.render(octxSave, hiProj, yr, showBorders, showDots, null, showCoasts, showCities, showCityNames, cityDetail, showInlandWaters, showRivers, showCountryLabels, minPixelsSave);
     } catch (e) {
         document.getElementById('status').textContent = `Save error: ${e.message}`;
         return;
@@ -707,6 +709,11 @@ document.getElementById('showDots'        ).addEventListener('change', scheduleR
 document.getElementById('showCoasts'      ).addEventListener('change', scheduleRender);
 document.getElementById('showInlandWaters').addEventListener('change', scheduleRender);
 document.getElementById('showRivers'      ).addEventListener('change', scheduleRender);
+document.getElementById('showCountryLabels').addEventListener('change', function() {
+    document.getElementById('minPixels').disabled = !this.checked;
+    scheduleRender();
+});
+document.getElementById('minPixels'       ).addEventListener('change', scheduleRender);
 document.getElementById('showCities'    ).addEventListener('change', scheduleRender);
 document.getElementById('showCityNames' ).addEventListener('change', scheduleRender);
 document.getElementById('cityDetail'    ).addEventListener('change', scheduleRender);
@@ -793,12 +800,14 @@ async function doRender(skipColorMap = false) {
         const showCities       = document.getElementById('showCities'       ).checked;
         const showCityNames    = document.getElementById('showCityNames'    ).checked;
         const cityDetail       = parseInt(document.getElementById('cityDetail').value) || 10;
-        const showInlandWaters = document.getElementById('showInlandWaters' ).checked;
-        const showRivers       = document.getElementById('showRivers'       ).checked;
+        const showInlandWaters  = document.getElementById('showInlandWaters'  ).checked;
+        const showRivers        = document.getElementById('showRivers'        ).checked;
+        const showCountryLabels = document.getElementById('showCountryLabels' ).checked;
+        const minPixels         = parseInt(document.getElementById('minPixels').value) || 5000;
         await mapRenderer.render(ctx, proj, year, showBorders, showDots, (done, total) => {
             statusEl.textContent = `Rendering… ${done}/${total}`;
             fillEl.style.width = `${Math.round(100 * done / total)}%`;
-        }, showCoasts, showCities, showCityNames, cityDetail, showInlandWaters, showRivers);
+        }, showCoasts, showCities, showCityNames, cityDetail, showInlandWaters, showRivers, showCountryLabels, minPixels);
         drawOverlay();
         fillEl.style.width = '100%';
         const yearLabel = year < 0 ? `${Math.abs(year)} BCE` : `${year} CE`;

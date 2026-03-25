@@ -49,7 +49,7 @@ class MapRenderer {
     // showCoasts: draw coastline strokes (disable for overview renders)
     // onTileDrawn(done, total): progress callback (optional)
     // Tiles are loaded and painted in batches so the map fills in progressively.
-    async render(ctx, projection, year, showBorders, showDots, onTileDrawn, showCoasts = true, showCities = false, showCityNames = false, cityDetail = 10, showInlandWaters = false, showRivers = false) {
+    async render(ctx, projection, year, showBorders, showDots, onTileDrawn, showCoasts = true, showCities = false, showCityNames = false, cityDetail = 10, showInlandWaters = false, showRivers = false, showCountryLabels = false, minPixels = 5000) {
         const { width: W, height: H } = ctx.canvas;
 
         // Water background
@@ -60,25 +60,29 @@ class MapRenderer {
         const total = tileDescs.length;
 
         // Load and render in batches of 24 so the map paints progressively.
-        // allCities accumulates city arrays for label placement.
-        // allRivPolys accumulates river segments for cross-tile chain merging.
+        // allCities / allRivPolys / allCountryEntries accumulate cross-tile data.
         const BATCH = 24;
-        const allCities   = [];
-        const allRivPolys = [];
+        const allCities         = [];
+        const allRivPolys       = [];
+        const allCountryEntries = [];
         for (let start = 0; start < total; start += BATCH) {
             const batch = tileDescs.slice(start, start + BATCH);
             const loaded = await Promise.all(batch.map(t => this._loader.loadTile(t)));
             for (let j = 0; j < batch.length; j++) {
                 const { cst, pol, par, cities, iwa, niw, riv } = loaded[j];
                 this._drawPoliticalFill(ctx, projection, cst, pol, par, year, showDots);
-                if (showInlandWaters) this._drawInlandWaters(ctx, projection, iwa, niw, year);
-                if (showCoasts)       this._drawCoastOutlines(ctx, projection, cst, year);
-                if (showBorders)      this._drawBorders(ctx, projection, pol, year);
-                if (showRivers)       for (const p of riv) allRivPolys.push(p);
-                if (showDots)    this._drawDots(ctx, projection, par, year);
+                if (showInlandWaters)   this._drawInlandWaters(ctx, projection, iwa, niw, year);
+                if (showCoasts)         this._drawCoastOutlines(ctx, projection, cst, year);
+                if (showBorders)        this._drawBorders(ctx, projection, pol, year);
+                if (showRivers)         for (const p of riv) allRivPolys.push(p);
+                if (showDots)           this._drawDots(ctx, projection, par, year);
                 if (showCities) {
                     this._drawCities(ctx, projection, cities, year, cityDetail);
                     if (showCityNames) allCities.push(cities);
+                }
+                if (showCountryLabels) {
+                    const ld = this._collectTileLabelData(par, cst, pol, year);
+                    for (const d of ld) allCountryEntries.push(d);
                 }
             }
             if (onTileDrawn) onTileDrawn(start + batch.length, total);
@@ -93,6 +97,11 @@ class MapRenderer {
         // River pass: draw after all tiles loaded so cross-tile segments can be chained
         if (showRivers) {
             this._drawRiversConnected(ctx, projection, allRivPolys);
+        }
+
+        // Country label pass: drawn last so labels appear on top of everything
+        if (showCountryLabels) {
+            this._placeAndDrawCountryLabels(ctx, projection, allCountryEntries, minPixels);
         }
     }
 
@@ -516,6 +525,152 @@ class MapRenderer {
                     ctx.strokeText(name, lx, ly);
                     ctx.fillStyle   = '#000000';
                     ctx.fillText(name, lx, ly);
+                    break;
+                }
+            }
+        }
+    }
+
+    // ── Country / area labels ──────────────────────────────────────────────────
+
+    // Collect label geometry for one tile's PAR entries.
+    // Returns [{name, points}] for each matched non-dot entry that has real segments.
+    _collectTileLabelData(par, cst, pol, year) {
+        if (!par.length) return [];
+        const cstByIndex = new Map();
+        for (const p of cst) cstByIndex.set(p.polyIndex, p);
+        const polByIndex = new Map();
+        for (const p of pol) polByIndex.set(p.polyIndex, p);
+        const result = [];
+        for (const entry of par) {
+            if (entry.areaType === 0 || entry.dotPoint) continue;
+            const dateMatch = matchDate(entry.dateRanges, year);
+            if (!dateMatch || !dateMatch.name) continue;
+            const { points, hasSegment } = this._buildCombinedPolygon(entry.polyRefs, cstByIndex, polByIndex);
+            if (!hasSegment || points.length < 3) continue;
+            result.push({ name: dateMatch.name, points });
+        }
+        return result;
+    }
+
+    // Shoelace area centroid of a projected pixel polygon.
+    // Returns { area (px²), cx, cy } — area is always non-negative.
+    _pixelCentroid(px) {
+        const n = px.length;
+        let A2 = 0, cx = 0, cy = 0;
+        for (let i = 0; i < n; i++) {
+            const j = (i + 1) % n;
+            const cross = px[i].x * px[j].y - px[j].x * px[i].y;
+            A2 += cross;
+            cx += (px[i].x + px[j].x) * cross;
+            cy += (px[i].y + px[j].y) * cross;
+        }
+        const area = Math.abs(A2) / 2;
+        if (area < 0.5 || A2 === 0) return { area: 0, cx: 0, cy: 0 };
+        cx /= 3 * A2;   // signed A2 keeps the correct spatial direction
+        cy /= 3 * A2;
+        return { area, cx, cy };
+    }
+
+    // Place and draw country/territory labels after all tiles are loaded.
+    //
+    // Naming convention in PAR data: "France - Corsica" means Corsica is a
+    // sub-unit of France.  Labels:
+    //   • Root group ("France"): one label centered over ALL French territory
+    //     (including all "France - *" sub-unit polygons), text = root name.
+    //   • Sub-unit ("France - Corsica"): additional label if sub-unit area ≥
+    //     minPixels, text = last component ("Corsica").
+    //
+    // Both use the pixel-area centroid weighted across tiles.
+    _placeAndDrawCountryLabels(ctx, projection, allRawEntries, minPixels) {
+        if (!allRawEntries.length) return;
+
+        // Project each entry's polygon and compute pixel centroid + area
+        const entries = [];
+        for (const { name, points } of allRawEntries) {
+            const px = points.map(p => projection.geoToPixel(p.lon, p.lat));
+            const { area, cx, cy } = this._pixelCentroid(px);
+            if (area < 1) continue;
+            entries.push({ name, area, cx, cy });
+        }
+        if (!entries.length) return;
+
+        // ── Root-name groups ──────────────────────────────────────────────
+        // All entries share the first component of name as a root label.
+        const rootMap = new Map();  // root → { totalArea, wcx, wcy }
+        for (const { name, area, cx, cy } of entries) {
+            const root = name.split(' - ')[0];
+            if (!rootMap.has(root)) rootMap.set(root, { totalArea: 0, wcx: 0, wcy: 0 });
+            const g = rootMap.get(root);
+            g.totalArea += area;
+            g.wcx       += cx * area;
+            g.wcy       += cy * area;
+        }
+
+        // ── Sub-unit groups ───────────────────────────────────────────────
+        // Entries whose full name contains ' - ' also get an individual label.
+        const subMap = new Map();   // fullName → { totalArea, wcx, wcy }
+        for (const { name, area, cx, cy } of entries) {
+            if (!name.includes(' - ')) continue;
+            if (!subMap.has(name)) subMap.set(name, { totalArea: 0, wcx: 0, wcy: 0 });
+            const g = subMap.get(name);
+            g.totalArea += area;
+            g.wcx       += cx * area;
+            g.wcy       += cy * area;
+        }
+
+        // ── Build label list ──────────────────────────────────────────────
+        const labels = [];
+        for (const [root, g] of rootMap) {
+            if (g.totalArea < minPixels) continue;
+            labels.push({ text: root, x: g.wcx / g.totalArea, y: g.wcy / g.totalArea, area: g.totalArea });
+        }
+        for (const [fullName, g] of subMap) {
+            if (g.totalArea < minPixels) continue;
+            const parts = fullName.split(' - ');
+            labels.push({ text: parts[parts.length - 1], x: g.wcx / g.totalArea, y: g.wcy / g.totalArea, area: g.totalArea });
+        }
+
+        // Largest territories claim space first
+        labels.sort((a, b) => b.area - a.area);
+
+        // ── Greedy placement ──────────────────────────────────────────────
+        const W = ctx.canvas.width, H = ctx.canvas.height;
+        ctx.textBaseline = 'middle';
+
+        const placed = [];
+        const overlaps = r => placed.some(p =>
+            r.x < p.x + p.w && r.x + r.w > p.x &&
+            r.y < p.y + p.h && r.y + r.h > p.y
+        );
+
+        for (const { text, x, y } of labels) {
+            if (x < 0 || x > W || y < 0 || y > H) continue;
+
+            const fontSize = Math.max(12, Math.min(20, Math.round(400 / projection.degX)));
+            ctx.font = `bold ${fontSize}px Arial, sans-serif`;
+            const w = ctx.measureText(text).width;
+            const h = fontSize + 4;
+
+            // 5 candidates: centered on computed centroid, then 4 shifted positions
+            const candidates = [
+                { lx: x - w / 2,             ly: y             },
+                { lx: x - w / 2,             ly: y - h * 1.3   },
+                { lx: x - w / 2,             ly: y + h * 1.3   },
+                { lx: x - w / 2 + w * 0.7,   ly: y             },
+                { lx: x - w / 2 - w * 0.7,   ly: y             },
+            ];
+
+            for (const { lx, ly } of candidates) {
+                if (lx + w < -10 || lx > W + 10 || ly + h < -10 || ly > H + 10) continue;
+                const rect = { x: lx - 2, y: ly - h / 2 - 2, w: w + 4, h: h + 4 };
+                if (!overlaps(rect)) {
+                    placed.push(rect);
+                    ctx.lineWidth   = 3;
+                    ctx.strokeStyle = 'rgba(0,0,0,0.75)';
+                    ctx.strokeText(text, lx, ly);
+                    ctx.fillStyle   = '#ffffff';
+                    ctx.fillText(text, lx, ly);
                     break;
                 }
             }
