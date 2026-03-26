@@ -65,6 +65,7 @@ class MapRenderer {
         const allCities         = [];
         const allRivPolys       = [];
         const allCountryEntries = [];
+        const allDotPars        = [];
         for (let start = 0; start < total; start += BATCH) {
             const batch = tileDescs.slice(start, start + BATCH);
             const loaded = await Promise.all(batch.map(t => this._loader.loadTile(t)));
@@ -75,7 +76,7 @@ class MapRenderer {
                 if (showCoasts)         this._drawCoastOutlines(ctx, projection, cst, year);
                 if (showBorders)        this._drawBorders(ctx, projection, pol, year);
                 if (showRivers)         for (const p of riv) allRivPolys.push(p);
-                if (showDots)           this._drawDots(ctx, projection, par, year);
+                if (showDots)         { this._drawDots(ctx, projection, par, year); allDotPars.push({ par, cst, pol }); }
                 if (showCities) {
                     this._drawCities(ctx, projection, cities, year, cityDetail);
                     if (showCityNames) allCities.push(cities);
@@ -87,6 +88,11 @@ class MapRenderer {
             }
             if (onTileDrawn) onTileDrawn(start + batch.length, total);
             await new Promise(r => setTimeout(r, 0));
+        }
+
+        // Dot label pass: one label per unique name, drawn after all dots
+        if (showDots) {
+            this._drawDotLabels(ctx, projection, allDotPars, year);
         }
 
         // Second pass: greedy label placement after all dots are drawn
@@ -103,6 +109,87 @@ class MapRenderer {
         if (showCountryLabels) {
             this._placeAndDrawCountryLabels(ctx, projection, allCountryEntries, minPixels);
         }
+
+        // Date box: upper-right corner, matching VB style
+        this._drawDateBox(ctx, year);
+        // Watermark: bottom-right corner
+        this._drawWatermark(ctx);
+    }
+
+    // ── Date box ───────────────────────────────────────────────────────────────
+
+    // Convert a (possibly fractional) year to a display string using VB-style month ranges.
+    // Fractional part → two-month period (10 bi-monthly slots).
+    // Integer years show no month suffix.
+    _formatYear(year) {
+        // No year 0 in the historical calendar.
+        if (year === 0) year = -1;
+
+        const absYear = Math.abs(year);
+        const intYear = Math.floor(absYear);
+        const frac    = absYear - intYear;
+
+        if (year < 0) {
+            // BCE: frac=0 → Nov-Dec (year-end), frac=0.9 → Jan-Feb (year-start)
+            const MONTHS = [
+                'Nov-Dec', 'Jan-Feb', 'Feb-Mar', 'Mar-Apr', 'Apr-May',
+                'May-Jun', 'Jul-Aug', 'Aug-Sep', 'Sep-Oct', 'Oct-Nov',
+            ];
+            const corrFrac = frac > 0 ? 1 - frac : 0;
+            const idx      = Math.min(9, Math.round(corrFrac * 10));
+            return `${intYear} ${MONTHS[idx]} BCE`;
+        } else {
+            // CE: frac=0 → Jan-Feb (year-start), frac=0.9 → Nov-Dec (year-end)
+            const MONTHS = [
+                'Jan-Feb', 'Feb-Mar', 'Mar-Apr', 'Apr-May', 'May-Jun',
+                'Jul-Aug', 'Aug-Sep', 'Sep-Oct', 'Oct-Nov', 'Nov-Dec',
+            ];
+            const idx = Math.min(9, Math.round(frac * 10));
+            return `${intYear} ${MONTHS[idx]} CE`;
+        }
+    }
+
+    _drawDateBox(ctx, year) {
+        const label = this._formatYear(year);
+
+        ctx.save();
+        ctx.font = 'bold 14px Arial';
+        const textW  = ctx.measureText(label).width;
+        const padX   = 10;
+        const padY   = 8;
+        const boxW   = textW + padX * 2;
+        const boxH   = 14 + padY * 2;   // font size + padding
+        const margin = 8;
+        const x = ctx.canvas.width  - boxW - margin;
+        const y = margin;
+
+        // White fill
+        ctx.fillStyle = 'white';
+        ctx.fillRect(x, y, boxW, boxH);
+
+        // Black border (3px, matching VB)
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth   = 3;
+        ctx.strokeRect(x, y, boxW, boxH);
+
+        // Text
+        ctx.fillStyle   = 'black';
+        ctx.textBaseline = 'top';
+        ctx.fillText(label, x + padX, y + padY);
+        ctx.restore();
+    }
+
+    _drawWatermark(ctx) {
+        const now    = new Date();
+        const label  = `Soares Ancient History Mapping  ${now.toLocaleDateString()}`;
+        const margin = 6;
+        ctx.save();
+        ctx.font         = '11px Arial';
+        ctx.fillStyle    = 'black';
+        ctx.textBaseline = 'bottom';
+        ctx.textAlign    = 'right';
+        ctx.fillText(label, ctx.canvas.width - margin, ctx.canvas.height - margin);
+        ctx.restore();
     }
 
     // ── Political fill ─────────────────────────────────────────────────────────
@@ -238,13 +325,80 @@ class MapRenderer {
             const fillColor = this._colors.toCss(dateMatch, null, null);
             if (!fillColor) continue;
             const { x, y } = projection.geoToPixel(entry.dotPoint.lon, entry.dotPoint.lat);
-            // Radius in pixels = half the degree-diameter × pixels-per-degree
-            const radiusPx = Math.max(2, (entry.dotDiameter / 2) * projection.xScale);
+            // Radius scales with zoom; skip dots that would be sub-pixel at current zoom
+            const radiusPx = (entry.dotDiameter / 2) * projection.xScale;
+            if (radiusPx < 0.5) continue;
             ctx.beginPath();
             ctx.arc(x, y, radiusPx, 0, Math.PI * 2);
             ctx.fillStyle = fillColor;
             ctx.fill();
         }
+    }
+
+    // ── Dot labels ─────────────────────────────────────────────────────────────
+    // One label per unique dot name, placed to the right of one representative dot.
+
+    _drawDotLabels(ctx, projection, allDotPars, year) {
+        const W = ctx.canvas.width, H = ctx.canvas.height;
+        // Collect first visible dot pixel position per unique name.
+        const seen = new Map();   // name → {x, y, r}
+
+        for (const { par, cst, pol } of allDotPars) {
+            // Build polygon indexes for classic dot centroid computation
+            const cstByIndex = new Map();
+            for (const p of cst) cstByIndex.set(p.polyIndex, p);
+            const polByIndex = new Map();
+            for (const p of pol) polByIndex.set(p.polyIndex, p);
+
+            for (const entry of par) {
+                const dateMatch = matchDate(entry.dateRanges, year);
+                if (!dateMatch || !dateMatch.name) continue;
+                if (seen.has(dateMatch.name)) continue;
+
+                let x, y, r;
+
+                if (entry.dotPoint) {
+                    // Coordinate dot — position from file
+                    const px = projection.geoToPixel(entry.dotPoint.lon, entry.dotPoint.lat);
+                    x = px.x; y = px.y;
+                    r = (entry.dotDiameter / 2) * projection.xScale;
+                    if (r < 0.5) continue;
+                } else if (entry.areaType === 0 && entry.polyRefs && entry.polyRefs.length) {
+                    // Classic polygon-referenced dot — compute centroid of assembled polygon
+                    const { points } = this._buildCombinedPolygon(entry.polyRefs, cstByIndex, polByIndex);
+                    if (points.length === 0) continue;
+                    let sumX = 0, sumY = 0;
+                    for (const pt of points) {
+                        const px = projection.geoToPixel(pt.lon, pt.lat);
+                        sumX += px.x; sumY += px.y;
+                    }
+                    x = sumX / points.length;
+                    y = sumY / points.length;
+                    r = 4;
+                } else {
+                    continue;
+                }
+
+                if (x < -r || x > W + r || y < -r || y > H + r) continue;
+                seen.set(dateMatch.name, { x, y, r });
+            }
+        }
+
+        ctx.save();
+        ctx.font         = 'bold 10px Arial';
+        ctx.textBaseline = 'middle';
+        ctx.textAlign    = 'left';
+        for (const [name, { x, y, r }] of seen) {
+            const tx = x + r + 3;
+            const ty = y;
+            // White halo for legibility
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth   = 3;
+            ctx.strokeText(name, tx, ty);
+            ctx.fillStyle   = 'black';
+            ctx.fillText(name, tx, ty);
+        }
+        ctx.restore();
     }
 
     // ── Rivers ─────────────────────────────────────────────────────────────────
@@ -432,7 +586,8 @@ class MapRenderer {
             const { x: cx, y: cy } = projection.geoToPixel(city.lon, city.lat);
 
             if (symCode >= 0) {
-                const r      = Math.max(2, (symCode !== 0 ? (Math.abs(symCode) + 1) * BASE_DEG : BASE_DEG) * scale);
+                const r      = (symCode !== 0 ? (Math.abs(symCode) + 1) * BASE_DEG : BASE_DEG) * scale;
+                if (r < 0.5) continue;
                 const ndots  = symCode === 0 ? 3 : 1;
                 const offset = 2 * BASE_DEG * scale;
                 ctx.fillStyle = color;
@@ -445,7 +600,8 @@ class MapRenderer {
                     ctx.fill();
                 }
             } else {
-                const arm = Math.max(3, 0.05 * Math.abs(symCode) * scale) / Math.SQRT2;
+                const arm = (0.05 * Math.abs(symCode) * scale) / Math.SQRT2;
+                if (arm < 0.5) continue;
                 ctx.strokeStyle = color;
                 ctx.lineWidth   = 1;
                 ctx.beginPath(); ctx.moveTo(cx - arm, cy - arm); ctx.lineTo(cx + arm, cy + arm); ctx.stroke();

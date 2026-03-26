@@ -415,7 +415,11 @@ class DataLoader {
 
                 const header  = lines[i++].trim().split(/\s+/);
                 const ringType  = parseInt(header[0]);
-                const ringIndex = header.length > 1 ? parseInt(header[1]) : r + 1;
+                // Ring header format:
+                //   2 fields: ringType  globalOuterIndex   → ring 1 of a group (local index = 1)
+                //   3 fields: ringType  globalOuterIndex  localIndex → inner ring (local index = header[2])
+                // NIW refs use local ring indices, so we store the local index here.
+                const ringIndex = header.length > 2 ? parseInt(header[2]) : 1;
 
                 const numDates = parseInt(lines[i++]);
                 for (let d = 0; d < numDates; d++) {

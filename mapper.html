@@ -360,6 +360,16 @@
         <button class="btn-home" id="btnHome" style="width:88px; margin-top:3px;">HOME</button>
     </div>
 
+    <!-- ── Projection ── -->
+    <div class="tb-group">
+        <div class="tb-label">Projection</div>
+        <select id="projType" style="width:116px;" title="Map projection">
+            <option value="equirect" selected>Equirectangular</option>
+            <option value="robinson" disabled style="color:#aaa;">Robinson</option>
+            <option value="lcc">Lambert Conic</option>
+        </select>
+    </div>
+
     <!-- ── Pointer Coords ── -->
     <div class="tb-group">
         <div class="tb-label">Pointer</div>
@@ -393,7 +403,7 @@
     <div class="tb-group">
         <div class="tb-label">Draw</div>
         <label class="tb-check"><input type="checkbox" id="showCoasts" checked> Coasts</label>
-        <label class="tb-check"><input type="checkbox" id="showInlandWaters"> Inland waters</label>
+        <label class="tb-check"><input type="checkbox" id="showInlandWaters" checked> Inland waters</label>
         <label class="tb-check"><input type="checkbox" id="showRivers"> Rivers</label>
         <label class="tb-check"><input type="checkbox" id="showBorders" checked> Boundaries</label>
         <label class="tb-check"><input type="checkbox" id="showGrid"> Tile grid</label>
@@ -500,7 +510,6 @@ async function rebuildColorNameMap(proj, year) {
     await Promise.all(tiles.map(async tileDesc => {
         const { par, cities } = await loader.loadTile(tileDesc);
         for (const entry of par) {
-            if (entry.dotPoint) continue;
             const dateMatch = matchDate(entry.dateRanges, year);
             if (!dateMatch || !dateMatch.name) continue;
             const rgb = colorLookup.resolve(dateMatch);
@@ -542,6 +551,13 @@ function getInputs() {
 
 function getProjection() {
     const { centerLon, centerLat, zoom } = getInputs();
+    const projType = document.getElementById('projType').value;
+    if (projType === 'robinson') {
+        return new MapProjection(0, 0, 0, canvas.width, canvas.height, 'robinson');
+    }
+    if (projType === 'lcc') {
+        return new MapProjection(centerLon, centerLat, zoom, canvas.width, canvas.height, 'lcc');
+    }
     return new MapProjection(centerLon, centerLat, zoom, canvas.width, canvas.height);
 }
 
@@ -555,17 +571,24 @@ document.getElementById('btnWorld').addEventListener('click', async () => {
     document.getElementById('btnWorld').disabled = false;
 });
 
+// There is no year 0 in the historical calendar.
+// If the new value lands in (-1, 1), jump to 1 (CE) or -1 (BCE) based on direction of travel.
+function skipYear0(prev, next) {
+    if (next > -1 && next < 1) return next > prev ? 1 : -1;
+    return next;
+}
+
 // Step back / forward: subtract or add yr/step to the date
 document.getElementById('btnStepBack').addEventListener('click', () => {
     const step = parseFloat(document.getElementById('yrPerStep').value) || 0.1;
     const cur  = parseFloat(document.getElementById('mapDate').value)   || 0;
-    document.getElementById('mapDate').value = Math.round((cur - step) * 10) / 10;
+    document.getElementById('mapDate').value = skipYear0(cur, Math.round((cur - step) * 10) / 10);
     scheduleRender();
 });
 document.getElementById('btnStepFwd').addEventListener('click', () => {
     const step = parseFloat(document.getElementById('yrPerStep').value) || 0.1;
     const cur  = parseFloat(document.getElementById('mapDate').value)   || 0;
-    document.getElementById('mapDate').value = Math.round((cur + step) * 10) / 10;
+    document.getElementById('mapDate').value = skipYear0(cur, Math.round((cur + step) * 10) / 10);
     scheduleRender();
 });
 
@@ -582,7 +605,7 @@ async function runAnimation() {
     while (animating) {
         const step = parseFloat(stepEl.value) || 1;
         const cur  = parseFloat(yearEl.value) || 0;
-        yearEl.value = Math.round((cur + animDir * step) * 10) / 10;
+        yearEl.value = skipYear0(cur, Math.round((cur + animDir * step) * 10) / 10);
         await doRender(true);
         if (!animating) break;
         const delay = (parseFloat(secEl.value) || 1) * 1000;
@@ -627,7 +650,9 @@ document.getElementById('btnSave').addEventListener('click', async () => {
     const octxSave  = offscreen.getContext('2d');
 
     const proj = getProjection();
-    const hiProj = new MapProjection(proj.centerLon, proj.centerLat, proj.zoom, W, H);
+    const hiProj = proj.projType === 'robinson'
+        ? new MapProjection(0, 0, 0, W, H, 'robinson')
+        : new MapProjection(proj.centerLon, proj.centerLat, proj.zoom, W, H, proj.projType);
     const { year: yr } = getInputs();
     const showBorders       = document.getElementById('showBorders'      ).checked;
     const showDots          = document.getElementById('showDots'         ).checked;
@@ -707,6 +732,9 @@ document.getElementById('pan-sw').addEventListener('click', e => { e.stopPropaga
 document.querySelectorAll('input[type=number], input[type=text]:not([readonly])').forEach(input => {
     input.addEventListener('keydown', e => { if (e.key === 'Enter') scheduleRender(); });
 });
+
+// Projection change
+document.getElementById('projType').addEventListener('change', scheduleRender);
 
 // Checkbox changes
 document.getElementById('showBorders'     ).addEventListener('change', scheduleRender);
@@ -854,11 +882,19 @@ function drawOverlay() {
         _drawRefLine(proj, 0, false, 'rgba(255,120,0,0.4)');
     }
 
-    _drawSelectionRect();
+    // No selection rectangle in non-equirect modes
+    if (document.getElementById('projType').value === 'equirect') {
+        _drawSelectionRect();
+    }
+}
+
+function _isRobinson() {
+    const v = document.getElementById('projType').value;
+    return v === 'robinson' || v === 'lcc';
 }
 
 function _getSelectionPixelRect() {
-    if (!contextProjection) return null;
+    if (!contextProjection || _isRobinson()) return null;
     const { centerLon, centerLat, zoom } = getInputs();
     const selDegX = 360 / (zoom + 1);
     // Vertical span matches the canvas aspect ratio (same scale for lat and lon)
@@ -893,7 +929,7 @@ function _inSelectionRect(mx, my) {
 }
 
 overlay.addEventListener('mousedown', e => {
-    if (!contextProjection) return;
+    if (!contextProjection || _isRobinson()) return;
     const mx = e.offsetX, my = e.offsetY;
     if (_inSelectionRect(mx, my)) {
         selDragging     = true;
