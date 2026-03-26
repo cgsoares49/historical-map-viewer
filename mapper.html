@@ -323,7 +323,7 @@
             <button class="pan-btn" id="pan-n"  title="Pan North">↑</button>
             <button class="pan-btn" id="pan-ne" title="Pan Northeast">↗</button>
             <button class="pan-btn" id="pan-w"  title="Pan West">←</button>
-            <div class="pan-center">✛</div>
+            <div class="pan-center" id="pan-center" title="Zoom in" style="cursor:pointer;">✛</div>
             <button class="pan-btn" id="pan-e"  title="Pan East">→</button>
             <button class="pan-btn" id="pan-sw" title="Pan Southwest">↙</button>
             <button class="pan-btn" id="pan-s"  title="Pan South">↓</button>
@@ -331,7 +331,7 @@
         </div>
         <div class="tb-row" style="margin-top:1px;">
             <span class="tb-lbl">Factor</span>
-            <input type="number" id="panFactor" value="1.0" min="0.1" step="0.1" style="width:46px;" title="Pan step multiplier">
+            <input type="number" id="panFactor" value="1.0" min="0.1" step="0.1" style="width:46px;" title="Pan step multiplier (× 5°)">
         </div>
     </div>
 
@@ -356,7 +356,11 @@
             <option value="179">179  (2°)</option>
             <option value="359">359  (1°)</option>
             <option value="719">719 (0.5°)</option>
+            <option value="custom">Custom…</option>
         </select>
+        <input type="number" id="zoomCustom" value="" min="0" step="1"
+               style="display:none; width:88px; margin-top:2px;"
+               title="Enter custom zoom value">
         <button class="btn-home" id="btnHome" style="width:88px; margin-top:3px;">HOME</button>
     </div>
 
@@ -426,7 +430,7 @@
     <!-- ── Min pixels / Save ── -->
     <div class="tb-group">
         <div class="tb-label">Min Pixels</div>
-        <input type="number" id="minPixels" value="500" min="100" style="width:72px;" disabled>
+        <input type="number" id="minPixels" value="500" min="100" style="width:72px;">
         <div class="tb-row" style="margin-top:3px;">
             <button class="btn-save" id="btnSave" style="width:54px;">Save Map</button>
             <select id="saveRes" style="width:42px;height:22px;font-size:11px;" title="Save resolution multiplier">
@@ -544,7 +548,9 @@ function getInputs() {
     return {
         centerLon: parseFloat(document.getElementById('centerLon').value) || 0,
         centerLat: parseFloat(document.getElementById('centerLat').value) || 0,
-        zoom:      parseFloat(document.getElementById('zoom').value)      || 0,
+        zoom:      (document.getElementById('zoom').value === 'custom'
+                       ? parseFloat(document.getElementById('zoomCustom').value) || 0
+                       : parseFloat(document.getElementById('zoom').value))      || 0,
         year:      parseFloat(document.getElementById('mapDate').value)   || 2000,
     };
 }
@@ -698,26 +704,44 @@ document.getElementById('btnSave').addEventListener('click', async () => {
     }, 'image/png');
 });
 
-// Home: reset to default view
-document.getElementById('btnHome').addEventListener('click', () => {
+// Home: reset to default view and show world context
+document.getElementById('btnHome').addEventListener('click', async () => {
     document.getElementById('centerLon').value = 0;
     document.getElementById('centerLat').value = 0;
     document.getElementById('zoom').value = 7;
-    drawOverlay();
+    if (!mapRenderer) return;
+    const btn = document.getElementById('btnHome');
+    btn.disabled = true;
+    await renderWorldContext();
+    btn.disabled = false;
 });
 
-// Pan buttons: move by (factor × 25%) of current viewport
+// Pan buttons: move by factor × 5 degrees
 function pan(dLon, dLat) {
     const inp    = getInputs();
     const factor = parseFloat(document.getElementById('panFactor').value) || 1.0;
-    const degX   = 360 / (inp.zoom + 1);
-    const degY   = 180 / (inp.zoom + 1);
-    const newLon = Math.max(-180, Math.min(180, inp.centerLon + dLon * degX * 0.25 * factor));
-    const newLat = Math.max(-90,  Math.min(90,  inp.centerLat + dLat * degY * 0.25 * factor));
+    const step   = 5 * factor;
+    const newLon = Math.max(-180, Math.min(180, inp.centerLon + dLon * step));
+    const newLat = Math.max(-90,  Math.min(90,  inp.centerLat + dLat * step));
     document.getElementById('centerLon').value = Math.round(newLon * 10) / 10;
     document.getElementById('centerLat').value = Math.round(newLat * 10) / 10;
     scheduleRender();
 }
+
+const ZOOM_PRESETS = [0,1,2,3,4,5,7,11,17,23,35,59,71,119,179,359,719];
+document.getElementById('pan-center').addEventListener('click', e => {
+    e.stopPropagation();
+    const cur = getInputs().zoom;
+    const next = ZOOM_PRESETS.find(v => v > cur) ?? ZOOM_PRESETS[ZOOM_PRESETS.length - 1];
+    const sel = document.getElementById('zoom');
+    if (sel.value === 'custom') {
+        document.getElementById('zoomCustom').value = next;
+    } else {
+        const opt = [...sel.options].find(o => parseInt(o.value) === next);
+        if (opt) sel.value = next; else { sel.value = 'custom'; document.getElementById('zoomCustom').style.display=''; document.getElementById('zoomCustom').value = next; }
+    }
+    drawOverlay(); updateScaleDisplay(); scheduleRender();
+});
 
 document.getElementById('pan-n' ).addEventListener('click', e => { e.stopPropagation(); pan( 0,  1); });
 document.getElementById('pan-s' ).addEventListener('click', e => { e.stopPropagation(); pan( 0, -1); });
@@ -742,10 +766,7 @@ document.getElementById('showDots'        ).addEventListener('change', scheduleR
 document.getElementById('showCoasts'      ).addEventListener('change', scheduleRender);
 document.getElementById('showInlandWaters').addEventListener('change', scheduleRender);
 document.getElementById('showRivers'      ).addEventListener('change', scheduleRender);
-document.getElementById('showCountryLabels').addEventListener('change', function() {
-    document.getElementById('minPixels').disabled = !this.checked;
-    scheduleRender();
-});
+document.getElementById('showCountryLabels').addEventListener('change', scheduleRender);
 document.getElementById('minPixels'       ).addEventListener('change', scheduleRender);
 document.getElementById('showCities'    ).addEventListener('change', scheduleRender);
 document.getElementById('showCityNames' ).addEventListener('change', scheduleRender);
@@ -753,7 +774,15 @@ document.getElementById('cityDetail'    ).addEventListener('change', scheduleRen
 document.getElementById('showGrid'   ).addEventListener('change', drawOverlay);
 
 // Redraw overlay when zoom or center changes
-document.getElementById('zoom').addEventListener('change', () => { drawOverlay(); });
+document.getElementById('zoom').addEventListener('change', () => {
+    const isCustom = document.getElementById('zoom').value === 'custom';
+    const customEl = document.getElementById('zoomCustom');
+    customEl.style.display = isCustom ? '' : 'none';
+    if (isCustom) { customEl.focus(); return; }
+    drawOverlay();
+    updateScaleDisplay();
+});
+document.getElementById('zoomCustom').addEventListener('input', () => { drawOverlay(); updateScaleDisplay(); });
 ['centerLon', 'centerLat'].forEach(id => {
     document.getElementById(id).addEventListener('input', drawOverlay);
 });
@@ -766,7 +795,6 @@ function updateScaleDisplay() {
     document.getElementById('horScale' ).value = degX.toFixed(2);
     document.getElementById('vertScale').value = degY.toFixed(2);
 }
-document.getElementById('zoom').addEventListener('change', updateScaleDisplay);
 updateScaleDisplay();
 
 // ── World context render ─────────────────────────────────────────────────────
@@ -777,18 +805,20 @@ async function renderWorldContext() {
     await new Promise((resolve, reject) => {
         const img = new Image();
         img.onload = () => {
-            // Fill water color first (visible above/below image on wide canvases)
             ctx.fillStyle = '#5ba3d9';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            // Place BMP at exactly the pixel region the projection maps to
-            // lon -180..+180, lat -90..+90 so the image aligns with the selection rect
-            const tl = contextProjection.geoToPixel(-180,  90);
-            const br = contextProjection.geoToPixel( 180, -90);
+            // Derive the PNG's geographic lat extent from its natural dimensions
+            // (it was rendered at zoom=0 center=0,0 so degY = natH * 360 / natW).
+            // Project those bounds onto the display contextProjection so the image
+            // aligns correctly regardless of canvas size changes since the PNG was saved.
+            const pngProj = new MapProjection(0, 0, 0, img.naturalWidth, img.naturalHeight);
+            const tl = contextProjection.geoToPixel(-180,  pngProj.lat2);
+            const br = contextProjection.geoToPixel( 180,  pngProj.lat1);
             ctx.drawImage(img, tl.x, tl.y, br.x - tl.x, br.y - tl.y);
             resolve();
         };
         img.onerror = reject;
-        img.src = 'no_tiles%202000AD.bmp';
+        img.src = 'map_2000CE.png';
     });
     const { year } = getInputs();
     const yearLabel = year < 0 ? `${Math.abs(year)} BCE` : `${year} CE`;
