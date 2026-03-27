@@ -271,6 +271,18 @@
 <!-- ══════════════════════════════════════════════════════════════════════ -->
 <div id="toolbar">
 
+    <!-- ── Vibe Map ── -->
+    <div class="tb-group" style="min-width:200px;">
+        <div class="tb-label" style="color:#ffdd66; letter-spacing:1px;">✦ Vibe Map</div>
+        <div class="tb-row">
+            <input type="text" id="vibeInput" placeholder='Show France at 100 BCE'
+                   style="width:170px; font-size:11px; background:#1a1a2e; color:#eee; border:1px solid #555; padding:2px 4px;"
+                   title="Natural language map command">
+            <button id="vibeMic" style="width:22px; height:22px; padding:0; font-size:13px; background:#222; border:1px solid #555; cursor:pointer; margin-left:2px;" title="Voice input (Chrome/Edge)">🎤</button>
+        </div>
+        <div id="vibeStatus" style="font-size:10px; color:#aaa; min-height:13px; margin-top:1px;"></div>
+    </div>
+
     <!-- ── Date ── -->
     <div class="tb-group">
         <div class="tb-label">Date</div>
@@ -464,6 +476,7 @@
 
 </div>
 
+<script src="js/geodata.js"></script>
 <script src="js/projection.js"></script>
 <script src="js/tiles.js"></script>
 <script src="js/dataloader.js"></script>
@@ -796,6 +809,155 @@ function updateScaleDisplay() {
     document.getElementById('vertScale').value = degY.toFixed(2);
 }
 updateScaleDisplay();
+
+// ── Vibe Map command system ───────────────────────────────────────────────────
+
+function vibeSetStatus(msg, isError) {
+    const el = document.getElementById('vibeStatus');
+    el.textContent = msg;
+    el.style.color = isError ? '#ff6666' : '#aaffaa';
+}
+
+function vibeLookupPlace(name) {
+    // 1. Exact match
+    if (GEODATA[name]) return [name, GEODATA[name]];
+    // 2. Entry starts with query (e.g. "ancient egypt" matches "ancient egypt")
+    for (const [k, v] of Object.entries(GEODATA)) {
+        if (k.startsWith(name)) return [k, v];
+    }
+    // 3. Query starts with entry key (e.g. "frances" → no, but "france" → "france")
+    for (const [k, v] of Object.entries(GEODATA)) {
+        if (name.startsWith(k)) return [k, v];
+    }
+    // 4. Either contains the other
+    for (const [k, v] of Object.entries(GEODATA)) {
+        if (k.includes(name) || name.includes(k)) return [k, v];
+    }
+    return null;
+}
+
+function vibeParseDate(str) {
+    str = str.trim().toLowerCase().replace(/\./g, '');
+    const m = str.match(/^(-?\d+(?:\.\d+)?)\s*(bce?|bc|ce?|ad)?$/);
+    if (!m) return null;
+    let year = parseFloat(m[1]);
+    const suffix = m[2] || '';
+    if (suffix === 'bce' || suffix === 'bc') year = -year;
+    if (year === 0) year = -1;
+    return year;
+}
+
+function vibeZoomForBounds(minLon, minLat, maxLon, maxLat) {
+    const PADDING = 1.4;
+    const spanLon = (maxLon - minLon) * PADDING;
+    const spanLat = (maxLat - minLat) * PADDING;
+    // Need: degX >= spanLon  AND  degX*(h/w) >= spanLat
+    const aspect = canvas.width / canvas.height;
+    const neededDegX = Math.max(spanLon, spanLat * aspect);
+    const targetZoom = 360 / neededDegX - 1;
+    // Snap to largest preset <= targetZoom (so full region always fits)
+    let best = 0;
+    for (const p of ZOOM_PRESETS) {
+        if (p <= targetZoom) best = p;
+    }
+    return best;
+}
+
+function executeVibeCommand(text) {
+    let input = text.toLowerCase().trim();
+
+    // Strip leading verb
+    input = input.replace(/^(show\s+me|show|go\s+to|navigate\s+to|take\s+me\s+to|display|zoom\s+to)\s+/, '');
+
+    // Split "place at date"
+    let placeName = input, dateStr = null;
+    const atMatch = input.match(/^(.+?)\s+at\s+(.+)$/);
+    if (atMatch) {
+        placeName = atMatch[1].trim();
+        dateStr   = atMatch[2].trim();
+    }
+
+    // Look up place
+    const match = vibeLookupPlace(placeName);
+    if (!match) {
+        vibeSetStatus(`"${placeName}" not found`, true);
+        return;
+    }
+    const [foundName, bounds] = match;
+    const [minLon, minLat, maxLon, maxLat] = bounds;
+
+    // Parse optional date
+    let year = null;
+    if (dateStr) {
+        year = vibeParseDate(dateStr);
+        if (year === null) {
+            vibeSetStatus(`Can't parse date "${dateStr}"`, true);
+            return;
+        }
+    }
+
+    // Apply navigation
+    const centerLon = Math.round(((minLon + maxLon) / 2) * 10) / 10;
+    const centerLat = Math.round(((minLat + maxLat) / 2) * 10) / 10;
+    const zoom      = vibeZoomForBounds(minLon, minLat, maxLon, maxLat);
+
+    document.getElementById('centerLon').value = centerLon;
+    document.getElementById('centerLat').value = centerLat;
+    // Set zoom select; fall back to custom if not a preset value
+    const zoomSel = document.getElementById('zoom');
+    const zoomOpt = [...zoomSel.options].find(o => parseInt(o.value) === zoom);
+    if (zoomOpt) {
+        zoomSel.value = zoom;
+        document.getElementById('zoomCustom').style.display = 'none';
+    } else {
+        zoomSel.value = 'custom';
+        document.getElementById('zoomCustom').style.display = '';
+        document.getElementById('zoomCustom').value = zoom;
+    }
+
+    if (year !== null) {
+        document.getElementById('mapDate').value = year;
+    }
+
+    const yearLabel = year !== null
+        ? ` · ${year < 0 ? Math.abs(year) + ' BCE' : year + ' CE'}`
+        : '';
+    vibeSetStatus(`→ ${foundName}${yearLabel}`, false);
+
+    updateScaleDisplay();
+    scheduleRender();
+}
+
+// Input box: Enter to execute
+document.getElementById('vibeInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+        const val = document.getElementById('vibeInput').value.trim();
+        if (val) executeVibeCommand(val);
+    }
+});
+
+// Mic button: Web Speech API (Chrome/Edge)
+document.getElementById('vibeMic').addEventListener('click', () => {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) {
+        vibeSetStatus('Voice not supported (try Chrome/Edge)', true);
+        return;
+    }
+    const rec = new SR();
+    rec.lang = 'en-US';
+    rec.interimResults = false;
+    const btn = document.getElementById('vibeMic');
+    btn.textContent = '⏺';
+    btn.style.color = '#ff4444';
+    rec.onresult = e => {
+        const transcript = e.results[0][0].transcript;
+        document.getElementById('vibeInput').value = transcript;
+        executeVibeCommand(transcript);
+    };
+    rec.onerror = e => { vibeSetStatus(`Voice error: ${e.error}`, true); };
+    rec.onend   = () => { btn.textContent = '🎤'; btn.style.color = ''; };
+    rec.start();
+});
 
 // ── World context render ─────────────────────────────────────────────────────
 async function renderWorldContext() {
