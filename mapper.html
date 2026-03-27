@@ -860,15 +860,23 @@ function vibeZoomForBounds(minLon, minLat, maxLon, maxLat) {
 function executeVibeCommand(text) {
     let s = text.toLowerCase().trim();
 
-    // Step 1: extract date — digits + optional space + BCE/BC/CE/AD (space optional)
-    // e.g. "100BCE", "100 bce", "100ce", "2400 BC"
+    // Step 1: extract date — several accepted forms:
+    //   leading minus:  -100, -100bce, - 100  → BCE (minus always wins)
+    //   suffix only:    100BCE, 100 bce, 100ce, 2400 BC
     let year = null;
-    s = s.replace(/\b(\d+(?:\.\d+)?)\s*(bce?|bc|ce?|ad)\b/gi, (_, num, suffix) => {
-        let y = parseFloat(num);
-        if (/^(bce?|bc)$/i.test(suffix)) y = -y;
-        year = (y === 0) ? -1 : y;
+    s = s.replace(/-\s*(\d+(?:\.\d+)?)\s*(bce?|bc|ce?|ad)?\b/gi, (_, num) => {
+        year = -parseFloat(num);
+        if (year === 0) year = -1;
         return '';
     });
+    if (year === null) {
+        s = s.replace(/\b(\d+(?:\.\d+)?)\s*(bce?|bc|ce?|ad)\b/gi, (_, num, suffix) => {
+            let y = parseFloat(num);
+            if (/^(bce?|bc)$/i.test(suffix)) y = -y;
+            year = (y === 0) ? -1 : y;
+            return '';
+        });
+    }
     // Bare trailing number with no suffix (e.g. "france 1648") → treat as CE year
     if (year === null) {
         s = s.replace(/\b(\d{1,4})\s*$/, (_, num) => {
