@@ -821,41 +821,35 @@ function vibeSetStatus(msg, isError) {
 function vibeLookupPlace(name) {
     // 1. Exact match
     if (GEODATA[name]) return [name, GEODATA[name]];
-    // 2. Entry starts with query (e.g. "ancient egypt" matches "ancient egypt")
+    // 2. Key starts with name, or name starts with key
     for (const [k, v] of Object.entries(GEODATA)) {
-        if (k.startsWith(name)) return [k, v];
+        if (k.startsWith(name) || name.startsWith(k)) return [k, v];
     }
-    // 3. Query starts with entry key (e.g. "frances" → no, but "france" → "france")
-    for (const [k, v] of Object.entries(GEODATA)) {
-        if (name.startsWith(k)) return [k, v];
-    }
-    // 4. Either contains the other
+    // 3. Either contains the other
     for (const [k, v] of Object.entries(GEODATA)) {
         if (k.includes(name) || name.includes(k)) return [k, v];
     }
+    // 4. Try individual words and sub-phrases (longest match first)
+    const words = name.split(/\s+/);
+    for (let len = words.length - 1; len >= 1; len--) {
+        for (let i = 0; i <= words.length - len; i++) {
+            const sub = words.slice(i, i + len).join(' ');
+            if (GEODATA[sub]) return [sub, GEODATA[sub]];
+            for (const [k, v] of Object.entries(GEODATA)) {
+                if (k.startsWith(sub) || sub.startsWith(k)) return [k, v];
+            }
+        }
+    }
     return null;
-}
-
-function vibeParseDate(str) {
-    str = str.trim().toLowerCase().replace(/\./g, '');
-    const m = str.match(/^(-?\d+(?:\.\d+)?)\s*(bce?|bc|ce?|ad)?$/);
-    if (!m) return null;
-    let year = parseFloat(m[1]);
-    const suffix = m[2] || '';
-    if (suffix === 'bce' || suffix === 'bc') year = -year;
-    if (year === 0) year = -1;
-    return year;
 }
 
 function vibeZoomForBounds(minLon, minLat, maxLon, maxLat) {
     const PADDING = 1.4;
     const spanLon = (maxLon - minLon) * PADDING;
     const spanLat = (maxLat - minLat) * PADDING;
-    // Need: degX >= spanLon  AND  degX*(h/w) >= spanLat
     const aspect = canvas.width / canvas.height;
     const neededDegX = Math.max(spanLon, spanLat * aspect);
     const targetZoom = 360 / neededDegX - 1;
-    // Snap to largest preset <= targetZoom (so full region always fits)
     let best = 0;
     for (const p of ZOOM_PRESETS) {
         if (p <= targetZoom) best = p;
@@ -864,17 +858,38 @@ function vibeZoomForBounds(minLon, minLat, maxLon, maxLat) {
 }
 
 function executeVibeCommand(text) {
-    let input = text.toLowerCase().trim();
+    let s = text.toLowerCase().trim();
 
-    // Strip leading verb
-    input = input.replace(/^(show\s+me|show|go\s+to|navigate\s+to|take\s+me\s+to|display|zoom\s+to)\s+/, '');
+    // Step 1: extract date — digits + optional space + BCE/BC/CE/AD (space optional)
+    // e.g. "100BCE", "100 bce", "100ce", "2400 BC"
+    let year = null;
+    s = s.replace(/\b(\d+(?:\.\d+)?)\s*(bce?|bc|ce?|ad)\b/gi, (_, num, suffix) => {
+        let y = parseFloat(num);
+        if (/^(bce?|bc)$/i.test(suffix)) y = -y;
+        year = (y === 0) ? -1 : y;
+        return '';
+    });
+    // Bare trailing number with no suffix (e.g. "france 1648") → treat as CE year
+    if (year === null) {
+        s = s.replace(/\b(\d{1,4})\s*$/, (_, num) => {
+            const rest = s.replace(/\b\d{1,4}\s*$/, '').trim();
+            if (rest.length > 0) { year = parseInt(num); return ''; }
+            return _;
+        });
+    }
 
-    // Split "place at date"
-    let placeName = input, dateStr = null;
-    const atMatch = input.match(/^(.+?)\s+at\s+(.+)$/);
-    if (atMatch) {
-        placeName = atMatch[1].trim();
-        dateStr   = atMatch[2].trim();
+    // Step 2: strip verb
+    s = s.replace(/\b(show\s+me|show|go\s+to|navigate\s+to|take\s+me\s+to|display|zoom\s+to)\b/gi, '');
+
+    // Step 3: strip noise/connectors
+    s = s.replace(/\b(at|in|during|around|circa|by|the|a|an|of|what|was|is)\b/g, ' ');
+
+    // Step 4: normalize
+    const placeName = s.replace(/\s+/g, ' ').trim();
+
+    if (!placeName) {
+        vibeSetStatus('No place found', true);
+        return;
     }
 
     // Look up place
@@ -885,16 +900,6 @@ function executeVibeCommand(text) {
     }
     const [foundName, bounds] = match;
     const [minLon, minLat, maxLon, maxLat] = bounds;
-
-    // Parse optional date
-    let year = null;
-    if (dateStr) {
-        year = vibeParseDate(dateStr);
-        if (year === null) {
-            vibeSetStatus(`Can't parse date "${dateStr}"`, true);
-            return;
-        }
-    }
 
     // Apply navigation
     const centerLon = Math.round(((minLon + maxLon) / 2) * 10) / 10;
