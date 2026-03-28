@@ -840,13 +840,13 @@ function vibeSetStatus(msg, isError) {
 function vibeLookupPlace(name) {
     // 1. Exact match
     if (GEODATA[name]) return [name, GEODATA[name]];
-    // 2. Key starts with name, or name starts with key
+    // 2. Key starts with name, or name starts with key (skip very short keys to avoid false fuzzy hits)
     for (const [k, v] of Object.entries(GEODATA)) {
-        if (k.startsWith(name) || name.startsWith(k)) return [k, v];
+        if (k.startsWith(name) || (k.length >= 4 && name.startsWith(k))) return [k, v];
     }
-    // 3. Either contains the other
+    // 3. Either contains the other (same short-key guard)
     for (const [k, v] of Object.entries(GEODATA)) {
-        if (k.includes(name) || name.includes(k)) return [k, v];
+        if (k.includes(name) || (k.length >= 4 && name.includes(k))) return [k, v];
     }
     // 4. Try individual words and sub-phrases (longest match first)
     const words = name.split(/\s+/);
@@ -855,7 +855,7 @@ function vibeLookupPlace(name) {
             const sub = words.slice(i, i + len).join(' ');
             if (GEODATA[sub]) return [sub, GEODATA[sub]];
             for (const [k, v] of Object.entries(GEODATA)) {
-                if (k.startsWith(sub) || sub.startsWith(k)) return [k, v];
+                if (k.startsWith(sub) || (k.length >= 4 && sub.startsWith(k))) return [k, v];
             }
         }
     }
