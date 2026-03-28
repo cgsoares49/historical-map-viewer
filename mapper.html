@@ -859,7 +859,7 @@ function vibeZoomForBounds(minLon, minLat, maxLon, maxLat) {
 }
 
 function executeVibeCommand(text) {
-    let s = text.toLowerCase().trim();
+    let s = text.toLowerCase().trim().replace(/[.,!?;:]+/g, ' ');
 
     // Step 1: extract date — several accepted forms:
     //   leading minus:  -100, -100bce, - 100  → BCE (minus always wins)
