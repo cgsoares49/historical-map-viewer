@@ -881,6 +881,24 @@ function executeVibeCommand(text) {
     document.getElementById('vibeInput').value = '';
     let s = originalText.toLowerCase().replace(/[.,!?;:]+/g, ' ');
 
+    // Zoom in / zoom out — "zoom in", "zoom out", "zoom in 2", "zoom out 3"
+    const zoomMatch = s.match(/\bzoom\s+(in|out)(?:\s+(\d+))?\b/i);
+    if (zoomMatch) {
+        const dir    = zoomMatch[1].toLowerCase() === 'in' ? 1 : -1;
+        const steps  = parseInt(zoomMatch[2] || '1');
+        const cur    = getInputs().zoom;
+        let idx      = ZOOM_PRESETS.findIndex(v => v >= cur);
+        if (idx < 0) idx = ZOOM_PRESETS.length - 1;
+        idx = Math.max(0, Math.min(ZOOM_PRESETS.length - 1, idx + dir * steps));
+        const newZoom = ZOOM_PRESETS[idx];
+        const sel = document.getElementById('zoom');
+        sel.value = newZoom;
+        document.getElementById('zoomCustom').style.display = 'none';
+        drawOverlay(); updateScaleDisplay(); scheduleRender();
+        vibeAddHistory(originalText, `→ zoom ${newZoom} (${(360/(newZoom+1)).toFixed(1)}°)`, false);
+        return;
+    }
+
     // Step 1: extract date — several accepted forms:
     //   leading minus:  -100, -100bce, - 100  → BCE (minus always wins)
     //   suffix only:    100BCE, 100 bce, 100ce, 2400 BC
