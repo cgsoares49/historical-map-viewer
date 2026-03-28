@@ -952,27 +952,46 @@ document.getElementById('vibeInput').addEventListener('keydown', e => {
     }
 });
 
-// Mic button: Web Speech API (Chrome/Edge)
+// Mic button: toggle continuous voice listening (Chrome/Edge)
+let _micActive = false;
+let _micRec    = null;
 document.getElementById('vibeMic').addEventListener('click', () => {
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SR) {
-        vibeSetStatus('Voice not supported (try Chrome/Edge)', true);
+    if (!SR) { vibeSetStatus('Voice not supported (try Chrome/Edge)', true); return; }
+    const btn = document.getElementById('vibeMic');
+    if (_micActive) {
+        // Stop listening
+        _micActive = false;
+        if (_micRec) { _micRec.stop(); _micRec = null; }
+        btn.textContent = '🎤'; btn.style.color = '';
+        vibeSetStatus('Mic off', false);
         return;
     }
-    const rec = new SR();
-    rec.lang = 'en-US';
-    rec.interimResults = false;
-    const btn = document.getElementById('vibeMic');
-    btn.textContent = '⏺';
-    btn.style.color = '#ff4444';
-    rec.onresult = e => {
-        const transcript = e.results[0][0].transcript;
-        document.getElementById('vibeInput').value = transcript;
-        executeVibeCommand(transcript);
-    };
-    rec.onerror = e => { vibeSetStatus(`Voice error: ${e.error}`, true); };
-    rec.onend   = () => { btn.textContent = '🎤'; btn.style.color = ''; };
-    rec.start();
+    // Start continuous listening
+    _micActive = true;
+    btn.textContent = '⏺'; btn.style.color = '#ff4444';
+    vibeSetStatus('Listening…', false);
+
+    function startRec() {
+        if (!_micActive) return;
+        const rec = new SR();
+        _micRec = rec;
+        rec.lang = 'en-US';
+        rec.interimResults = false;
+        rec.onresult = e => {
+            const transcript = e.results[0][0].transcript.trim();
+            document.getElementById('vibeInput').value = transcript;
+            executeVibeCommand(transcript);
+        };
+        rec.onerror = e => {
+            if (e.error !== 'no-speech') vibeSetStatus(`Voice error: ${e.error}`, true);
+        };
+        rec.onend = () => {
+            if (_micActive) startRec(); // restart for next command
+        };
+        rec.start();
+    }
+    startRec();
 });
 
 // ── World context render ─────────────────────────────────────────────────────
