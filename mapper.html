@@ -343,7 +343,7 @@
         </div>
         <div class="tb-row" style="margin-top:1px;">
             <span class="tb-lbl">Factor</span>
-            <input type="number" id="panFactor" value="1.0" min="0.1" step="0.1" style="width:46px;" title="Pan step multiplier (× 5°)">
+            <input type="number" id="panFactor" value="0.5" min="0.1" step="0.1" style="width:46px;" title="Pan step multiplier (× viewport)">
         </div>
     </div>
 
@@ -729,13 +729,14 @@ document.getElementById('btnHome').addEventListener('click', async () => {
     btn.disabled = false;
 });
 
-// Pan buttons: move by factor × 5 degrees
+// Pan buttons: move by factor × viewport width/height
 function pan(dLon, dLat) {
     const inp    = getInputs();
     const factor = parseFloat(document.getElementById('panFactor').value) || 1.0;
-    const step   = 5 * factor;
-    const newLon = Math.max(-180, Math.min(180, inp.centerLon + dLon * step));
-    const newLat = Math.max(-90,  Math.min(90,  inp.centerLat + dLat * step));
+    const degX   = 360 / (inp.zoom + 1);
+    const degY   = degX * canvas.height / canvas.width;
+    const newLon = Math.max(-180, Math.min(180, inp.centerLon + dLon * degX * factor));
+    const newLat = Math.max(-90,  Math.min(90,  inp.centerLat + dLat * degY * factor));
     document.getElementById('centerLon').value = Math.round(newLon * 10) / 10;
     document.getElementById('centerLat').value = Math.round(newLat * 10) / 10;
     scheduleRender();
