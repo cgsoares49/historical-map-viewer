@@ -275,7 +275,7 @@
     <div class="tb-group" style="min-width:200px;">
         <div class="tb-label" style="color:#ffdd66; letter-spacing:1px;">✦ Vibe Map</div>
         <div class="tb-row">
-            <input type="text" id="vibeInput" placeholder='Show France at 100 BCE'
+            <input type="text" id="vibeInput" placeholder='Show France at 100 BCE' autofocus
                    style="width:170px; font-size:11px; background:#1a1a2e; color:#eee; border:1px solid #555; padding:2px 4px;"
                    title="Natural language map command">
             <button id="vibeMic" style="width:22px; height:22px; padding:0; font-size:13px; background:#222; border:1px solid #555; cursor:pointer; margin-left:2px;" title="Voice input (Chrome/Edge)">🎤</button>
@@ -766,8 +766,8 @@ document.getElementById('pan-nw').addEventListener('click', e => { e.stopPropaga
 document.getElementById('pan-se').addEventListener('click', e => { e.stopPropagation(); pan( 1, -1); });
 document.getElementById('pan-sw').addEventListener('click', e => { e.stopPropagation(); pan(-1, -1); });
 
-// Enter key on any input triggers render
-document.querySelectorAll('input[type=number], input[type=text]:not([readonly])').forEach(input => {
+// Enter key on any input triggers render (vibeInput has its own handler)
+document.querySelectorAll('input[type=number], input[type=text]:not([readonly]):not(#vibeInput)').forEach(input => {
     input.addEventListener('keydown', e => { if (e.key === 'Enter') scheduleRender(); });
 });
 
