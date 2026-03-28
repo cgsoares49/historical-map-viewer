@@ -878,7 +878,6 @@ function vibeZoomForBounds(minLon, minLat, maxLon, maxLat) {
 
 function executeVibeCommand(text) {
     const originalText = text.trim();
-    document.getElementById('vibeInput').value = '';
     let s = originalText.toLowerCase().replace(/[.,!?;:]+/g, ' ');
 
     // Zoom in / zoom out — "zoom in", "zoom out", "zoom in 2", "zoom out 3"
@@ -1022,20 +1021,12 @@ function executeVibeCommand(text) {
     if (shouldRender) scheduleRender();
 }
 
-// Input box: Enter to execute, or auto-execute 1.2s after last keystroke
-// (the debounce handles Wispr Flow / dictation tools that don't send Enter)
-let _vibeDebounce = null;
+// Input box: Enter to execute
 document.getElementById('vibeInput').addEventListener('keydown', e => {
-    clearTimeout(_vibeDebounce);
     if (e.key === 'Enter') {
         const val = document.getElementById('vibeInput').value.trim();
         if (val) executeVibeCommand(val);
     }
-});
-document.getElementById('vibeInput').addEventListener('input', () => {
-    clearTimeout(_vibeDebounce);
-    const val = document.getElementById('vibeInput').value.trim();
-    if (val) _vibeDebounce = setTimeout(() => executeVibeCommand(val), 1200);
 });
 
 // Mic button: toggle continuous voice listening (Chrome/Edge)
