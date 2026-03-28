@@ -183,7 +183,6 @@ const GEODATA = {
     'bangladesh':         [  88,  20,   93,  27],
     'sri lanka':          [  80,   6,   82,  10],
     'ceylon':             [  80,   6,   82,  10],
-    'myanmar':            [  92,  10,  102,  29],
 
     // ── Modern Countries — Americas ──────────────────────────────────────────
     'usa':                [-126,  24,  -66,  50],
