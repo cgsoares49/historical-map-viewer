@@ -899,6 +899,22 @@ function executeVibeCommand(text) {
         return;
     }
 
+    // Pan — "pan north", "pan left", "pan northeast", "pan n", etc.
+    const panDirs = {
+        north: [0, 1], south: [0, -1], east: [1, 0], west: [-1, 0],
+        northeast: [1, 1], northwest: [-1, 1], southeast: [1, -1], southwest: [-1, -1],
+        up: [0, 1], down: [0, -1], right: [1, 0], left: [-1, 0],
+        n: [0, 1], s: [0, -1], e: [1, 0], w: [-1, 0],
+        ne: [1, 1], nw: [-1, 1], se: [1, -1], sw: [-1, -1],
+    };
+    const panMatch = s.match(/\bpan\s+(north(?:east|west)?|south(?:east|west)?|east|west|up|down|left|right|ne|nw|se|sw|n|s|e|w)\b/i);
+    if (panMatch) {
+        const [dLon, dLat] = panDirs[panMatch[1].toLowerCase()];
+        pan(dLon, dLat);
+        vibeAddHistory(originalText, `→ panned ${panMatch[1].toLowerCase()}`, false);
+        return;
+    }
+
     // Step 1: extract date — several accepted forms:
     //   leading minus:  -100, -100bce, - 100  → BCE (minus always wins)
     //   suffix only:    100BCE, 100 bce, 100ce, 2400 BC
