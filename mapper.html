@@ -879,6 +879,7 @@ function vibeZoomForBounds(minLon, minLat, maxLon, maxLat) {
 
 function executeVibeCommand(text) {
     const originalText = text.trim();
+    document.getElementById('vibeInput').value = '';
     let s = originalText.toLowerCase().replace(/[.,!?;:]+/g, ' ');
 
     // Zoom in / zoom out — "zoom in", "zoom out", "zoom in 2", "zoom out 3"
