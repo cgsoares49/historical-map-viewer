@@ -280,7 +280,9 @@
                    title="Natural language map command">
             <button id="vibeMic" style="width:22px; height:22px; padding:0; font-size:13px; background:#222; border:1px solid #555; cursor:pointer; margin-left:2px;" title="Voice input (Chrome/Edge)">🎤</button>
         </div>
-        <div id="vibeStatus" style="font-size:10px; color:#aaa; min-height:13px; margin-top:1px;"></div>
+        <div id="vibeHistory"
+             style="width:194px; max-height:72px; overflow-y:auto; margin-top:2px;
+                    background:#0d0d1a; border:1px solid #333; font-size:10px; line-height:1.5;"></div>
     </div>
 
     <!-- ── Date ── -->
@@ -813,10 +815,25 @@ updateScaleDisplay();
 
 // ── Vibe Map command system ───────────────────────────────────────────────────
 
+function vibeAddHistory(cmd, result, isError) {
+    const hist = document.getElementById('vibeHistory');
+    const row = document.createElement('div');
+    row.style.cssText = 'padding:1px 4px; cursor:pointer; border-bottom:1px solid #222;';
+    row.style.color = isError ? '#ff8888' : '#aaffaa';
+    row.title = 'Click to re-execute';
+    row.innerHTML = `<span style="color:#888;">${cmd}</span> ${result}`;
+    row.addEventListener('click', () => {
+        document.getElementById('vibeInput').value = cmd;
+        executeVibeCommand(cmd);
+    });
+    hist.insertBefore(row, hist.firstChild); // newest at top
+    // Keep at most 20 entries
+    while (hist.children.length > 20) hist.removeChild(hist.lastChild);
+}
+
+// Keep vibeSetStatus as alias for errors before a command is known
 function vibeSetStatus(msg, isError) {
-    const el = document.getElementById('vibeStatus');
-    el.textContent = msg;
-    el.style.color = isError ? '#ff6666' : '#aaffaa';
+    vibeAddHistory('', msg, isError);
 }
 
 function vibeLookupPlace(name) {
@@ -859,7 +876,9 @@ function vibeZoomForBounds(minLon, minLat, maxLon, maxLat) {
 }
 
 function executeVibeCommand(text) {
-    let s = text.toLowerCase().trim().replace(/[.,!?;:]+/g, ' ');
+    const originalText = text.trim();
+    document.getElementById('vibeInput').value = '';
+    let s = originalText.toLowerCase().replace(/[.,!?;:]+/g, ' ');
 
     // Step 1: extract date — several accepted forms:
     //   leading minus:  -100, -100bce, - 100  → BCE (minus always wins)
@@ -899,14 +918,14 @@ function executeVibeCommand(text) {
 
     if (!placeName) {
         // "Go" / "Display" with no place — render current settings
-        if (shouldRender) { scheduleRender(); vibeSetStatus('→ rendering current view', false); }
+        if (shouldRender) { scheduleRender(); vibeAddHistory(originalText, '→ rendering current view', false); }
         return;
     }
 
     // Look up place
     const match = vibeLookupPlace(placeName);
     if (!match) {
-        vibeSetStatus(`"${placeName}" not found`, true);
+        vibeAddHistory(originalText, `"${placeName}" not found`, true);
         return;
     }
     const [foundName, bounds] = match;
@@ -938,18 +957,26 @@ function executeVibeCommand(text) {
     const yearLabel = year !== null
         ? ` · ${year < 0 ? Math.abs(year) + ' BCE' : year + ' CE'}`
         : '';
-    vibeSetStatus(`→ ${foundName}${yearLabel}${shouldRender ? '' : ' (say Go to render)'}`, false);
+    vibeAddHistory(originalText, `→ ${foundName}${yearLabel}${shouldRender ? '' : ' (say Go to render)'}`, false);
 
     updateScaleDisplay();
     if (shouldRender) scheduleRender();
 }
 
-// Input box: Enter to execute
+// Input box: Enter to execute, or auto-execute 1.2s after last keystroke
+// (the debounce handles Wispr Flow / dictation tools that don't send Enter)
+let _vibeDebounce = null;
 document.getElementById('vibeInput').addEventListener('keydown', e => {
+    clearTimeout(_vibeDebounce);
     if (e.key === 'Enter') {
         const val = document.getElementById('vibeInput').value.trim();
         if (val) executeVibeCommand(val);
     }
+});
+document.getElementById('vibeInput').addEventListener('input', () => {
+    clearTimeout(_vibeDebounce);
+    const val = document.getElementById('vibeInput').value.trim();
+    if (val) _vibeDebounce = setTimeout(() => executeVibeCommand(val), 1200);
 });
 
 // Mic button: toggle continuous voice listening (Chrome/Edge)
