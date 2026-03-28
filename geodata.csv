@@ -1,0 +1,202 @@
+Name,Category,MinLon,MinLat,MaxLon,MaxLat
+world,World / Oceans,-180,-90,180,90
+earth,World / Oceans,-180,-90,180,90
+africa,Continents,-18,-35,52,38
+europe,Continents,-25,34,45,72
+asia,Continents,26,1,180,78
+eurasia,Continents,-25,1,180,78
+north america,Continents,-170,15,-50,73
+south america,Continents,-82,-56,-34,15
+americas,Continents,-170,-56,-34,73
+australia,Continents,113,-44,154,-10
+oceania,Continents,110,-50,180,25
+antarctica,Continents,-180,-90,180,-60
+mesopotamia,Ancient / Historical,38,29,50,38
+fertile crescent,Ancient / Historical,35,29,50,38
+sumer,Ancient / Historical,43,29,48,33
+akkad,Ancient / Historical,42,32,47,36
+babylonia,Ancient / Historical,42,30,48,35
+babylon,Ancient / Historical,44,32,45,33
+assyria,Ancient / Historical,40,34,46,38
+nineveh,Ancient / Historical,43,36,44,37
+ancient egypt,Ancient / Historical,25,22,37,32
+nile valley,Ancient / Historical,29,12,36,32
+nubia,Ancient / Historical,25,10,40,25
+carthage,Ancient / Historical,9,36,11,37
+north africa,Ancient / Historical,-18,15,37,38
+levant,Ancient / Historical,34,29,37,36
+canaan,Ancient / Historical,34,29,36,34
+phoenicia,Ancient / Historical,34,33,37,36
+judea,Ancient / Historical,34,31,36,33
+israel (ancient),Ancient / Historical,34,29,36,34
+persia (ancient),Ancient / Historical,44,25,65,40
+achaemenid empire,Ancient / Historical,28,18,80,45
+anatolia,Ancient / Historical,26,36,45,42
+asia minor,Ancient / Historical,26,36,45,42
+ancient greece,Ancient / Historical,20,35,28,42
+ancient rome,Ancient / Historical,6,36,18,48
+roman empire,Ancient / Historical,-10,28,45,56
+gaul,Ancient / Historical,-5,42,10,52
+britannia,Ancient / Historical,-8,49,3,62
+iberia (ancient),Ancient / Historical,-10,35,5,45
+germania,Ancient / Historical,6,47,24,58
+scythia,Ancient / Historical,30,44,85,56
+pontic steppe,Ancient / Historical,28,44,55,52
+steppe,Ancient / Historical,30,45,120,58
+indus valley,Ancient / Historical,66,23,78,35
+ancient india,Ancient / Historical,60,8,90,38
+maurya empire,Ancient / Historical,60,8,90,38
+ancient china,Ancient / Historical,75,18,135,54
+arabia (ancient),Ancient / Historical,32,12,60,30
+arabian peninsula,Ancient / Historical,32,12,60,30
+near east,Ancient / Historical,30,25,60,42
+middle east,Ancient / Historical,25,15,65,42
+caucasus,Ancient / Historical,38,38,50,44
+central asia,Ancient / Historical,45,35,90,55
+horn of africa,Ancient / Historical,38,2,52,18
+sub-saharan africa,Ancient / Historical,-18,-35,52,20
+mali empire,Ancient / Historical,-15,8,10,22
+byzantine empire,Ancient / Historical,22,30,45,48
+ottoman empire,Ancient / Historical,22,20,55,48
+mongol empire,Ancient / Historical,30,18,135,58
+silk road,Ancient / Historical,40,30,120,45
+france,Europe,-5,41,10,52
+germany,Europe,6,47,15,56
+united kingdom,Europe,-8,49,2,61
+great britain,Europe,-8,49,2,61
+uk,Europe,-8,49,2,61
+britain,Europe,-8,49,2,61
+england,Europe,-6,50,2,56
+scotland,Europe,-8,54,-1,61
+wales,Europe,-5,51,-3,54
+ireland,Europe,-11,51,-5,56
+spain,Europe,-10,36,5,44
+portugal,Europe,-10,36,-6,42
+italy,Europe,6,36,19,48
+greece,Europe,20,35,27,42
+turkey,Europe,26,36,45,42
+ukraine,Europe,22,44,40,53
+russia,Europe,30,42,180,78
+poland,Europe,14,49,24,55
+sweden,Europe,10,55,25,69
+norway,Europe,4,57,31,71
+finland,Europe,20,59,32,70
+denmark,Europe,8,54,15,58
+netherlands,Europe,3,50,8,54
+belgium,Europe,2,49,7,52
+switzerland,Europe,6,45,11,48
+austria,Europe,9,46,18,49
+hungary,Europe,16,45,23,49
+romania,Europe,22,43,30,49
+bulgaria,Europe,22,41,29,44
+serbia,Europe,19,42,23,46
+croatia,Europe,13,42,20,47
+czech republic,Europe,12,48,19,52
+slovakia,Europe,16,47,23,50
+albania,Europe,19,39,21,43
+north macedonia,Europe,20,40,23,43
+bosnia,Europe,15,42,20,46
+slovenia,Europe,13,45,17,47
+latvia,Europe,21,55,28,58
+lithuania,Europe,21,53,27,57
+estonia,Europe,21,57,28,60
+belarus,Europe,23,51,33,56
+moldova,Europe,27,45,31,49
+iceland,Europe,-25,63,-13,67
+luxembourg,Europe,5,49,7,51
+egypt,Middle East / N. Africa,25,22,37,32
+israel,Middle East / N. Africa,34,29,36,34
+palestine,Middle East / N. Africa,34,29,36,34
+jordan,Middle East / N. Africa,35,29,40,34
+syria,Middle East / N. Africa,36,32,43,38
+lebanon,Middle East / N. Africa,35,33,37,35
+iraq,Middle East / N. Africa,38,29,49,38
+iran,Middle East / N. Africa,44,25,64,40
+saudi arabia,Middle East / N. Africa,36,15,56,33
+yemen,Middle East / N. Africa,43,12,55,19
+oman,Middle East / N. Africa,52,16,60,25
+uae,Middle East / N. Africa,51,22,56,27
+kuwait,Middle East / N. Africa,46,28,50,31
+qatar,Middle East / N. Africa,50,24,52,27
+bahrain,Middle East / N. Africa,50,25,51,27
+afghanistan,Middle East / N. Africa,61,29,75,39
+pakistan,Middle East / N. Africa,61,23,78,37
+morocco,Middle East / N. Africa,-14,27,2,36
+algeria,Middle East / N. Africa,-9,18,12,38
+libya,Middle East / N. Africa,9,19,26,34
+tunisia,Middle East / N. Africa,7,30,12,38
+sudan,Middle East / N. Africa,22,8,40,23
+ethiopia,Sub-Saharan Africa,33,3,48,18
+somalia,Sub-Saharan Africa,41,-2,52,12
+kenya,Sub-Saharan Africa,34,-5,42,5
+tanzania,Sub-Saharan Africa,29,-12,41,-1
+nigeria,Sub-Saharan Africa,2,4,15,14
+ghana,Sub-Saharan Africa,-4,4,2,12
+mali,Sub-Saharan Africa,-5,10,5,25
+south africa,Sub-Saharan Africa,16,-35,33,-22
+madagascar,Sub-Saharan Africa,44,-26,51,-12
+congo,Sub-Saharan Africa,11,-6,32,6
+angola,Sub-Saharan Africa,11,-19,25,-4
+mozambique,Sub-Saharan Africa,32,-27,41,-10
+zambia,Sub-Saharan Africa,21,-18,34,-8
+zimbabwe,Sub-Saharan Africa,25,-23,34,-15
+india,Asia,68,8,98,37
+china,Asia,73,18,135,54
+japan,Asia,129,30,146,46
+korea,Asia,124,33,132,43
+north korea,Asia,124,37,131,43
+south korea,Asia,125,34,130,39
+mongolia,Asia,87,41,120,52
+vietnam,Asia,102,8,110,24
+thailand,Asia,97,5,106,21
+myanmar,Asia,92,10,102,29
+burma,Asia,92,10,102,29
+cambodia,Asia,102,10,108,15
+laos,Asia,100,13,108,23
+indonesia,Asia,95,-11,141,6
+malaysia,Asia,100,1,120,7
+philippines,Asia,116,5,127,20
+uzbekistan,Asia,56,37,74,46
+kazakhstan,Asia,49,40,88,56
+georgia,Asia,40,41,47,44
+armenia,Asia,43,38,47,42
+azerbaijan,Asia,44,38,51,42
+nepal,Asia,80,26,89,31
+bangladesh,Asia,88,20,93,27
+sri lanka,Asia,80,6,82,10
+ceylon,Asia,80,6,82,10
+usa,Americas,-126,24,-66,50
+united states,Americas,-126,24,-66,50
+us,Americas,-126,24,-66,50
+america,Americas,-126,24,-66,50
+canada,Americas,-141,41,-52,84
+mexico,Americas,-118,14,-87,33
+brazil,Americas,-74,-34,-35,6
+argentina,Americas,-74,-56,-53,-21
+chile,Americas,-76,-56,-66,-17
+peru,Americas,-82,-19,-68,0
+colombia,Americas,-79,-5,-66,13
+venezuela,Americas,-74,0,-59,13
+cuba,Americas,-85,19,-74,24
+rome,Cities & Landmarks,11,41,14,43
+athens,Cities & Landmarks,23,37,24,38
+jerusalem,Cities & Landmarks,35,31,36,32
+nineveh,Cities & Landmarks,43,36,44,37
+ur,Cities & Landmarks,45,30,47,32
+babylon (city),Cities & Landmarks,44,32,45,33
+persepolis,Cities & Landmarks,52,29,53,31
+carthage (city),Cities & Landmarks,10,36,11,37
+alexandria,Cities & Landmarks,29,31,31,32
+istanbul,Cities & Landmarks,28,40,30,42
+constantinople,Cities & Landmarks,28,40,30,42
+byzantium,Cities & Landmarks,28,40,30,42
+london,Cities & Landmarks,-1,51,1,52
+paris,Cities & Landmarks,1,48,3,49
+berlin,Cities & Landmarks,13,52,14,53
+moscow,Cities & Landmarks,36,55,38,57
+cairo,Cities & Landmarks,31,29,32,31
+baghdad,Cities & Landmarks,44,33,45,34
+tehran,Cities & Landmarks,51,35,52,36
+delhi,Cities & Landmarks,76,28,78,29
+beijing,Cities & Landmarks,115,39,118,41
+new york,Cities & Landmarks,-75,40,-73,41
