@@ -931,7 +931,7 @@ function executeVibeCommand(text) {
         n: [0, 1], s: [0, -1], e: [1, 0], w: [-1, 0],
         ne: [1, 1], nw: [-1, 1], se: [1, -1], sw: [-1, -1],
     };
-    const panMatch = s.match(/\bpan\s+(north(?:east|west)?|south(?:east|west)?|east|west|up|down|left|right|ne|nw|se|sw|n|s|e|w)\b/i);
+    const panMatch = s.match(/\b(?:pan|plan)\s+(north(?:east|west)?|south(?:east|west)?|east|west|up|down|left|right|ne|nw|se|sw|n|s|e|w)\b/i);
     if (panMatch) {
         const [dLon, dLat] = panDirs[panMatch[1].toLowerCase()];
         pan(dLon, dLat);
