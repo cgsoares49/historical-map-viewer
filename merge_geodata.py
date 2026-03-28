@@ -49,7 +49,7 @@ lines.append('')
 lines.append('    // ── From primaries / PAR tile data ─────────────────────────────────────────')
 
 for name, minLon, minLat, maxLon, maxLat, earliest, latest in sorted(new_entries, key=lambda x: x[0].lower()):
-    key   = name.lower()
+    key    = name.lower().replace("'", "\\'")   # escape apostrophes in JS string
     coords = f"[{fmt(minLon):>5},{fmt(minLat):>5},{fmt(maxLon):>6},{fmt(maxLat):>5}]"
     comment = ''
     if earliest or latest:

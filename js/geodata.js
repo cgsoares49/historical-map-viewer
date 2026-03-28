@@ -421,8 +421,8 @@ const GEODATA = {
     'cypriot kingdoms':                [   30,   30,    35,   40],  // 1180 BCE–344 BCE
     'cyprus':                          [   30,   30,    35,   40],  // 1990 CE–present
     'cyzicus':                         [   24,   40,    30,   45],  // 323 BCE–279 BCE
-    'côte d'ivoire':                   [  -10,    0,     0,   15],  // 1990 CE–present
-    'd'mt':                            [   35,   10,    45,   20],  // 980 BCE–1 BCE
+    'côte d\'ivoire':                  [  -10,    0,     0,   15],  // 1990 CE–present
+    'd\'mt':                           [   35,   10,    45,   20],  // 980 BCE–1 BCE
     'dai':                             [  108,   35,   120,   45],  // 770 BCE–457 BCE
     'dai(2)':                          [  110,   30,   120,   35],  // 770 BCE–713 BCE
     'dali':                            [  105,   35,   110,   40],  // 550 BCE–1 BCE
@@ -725,7 +725,7 @@ const GEODATA = {
     'kingdom of qadesh':               [   35,   30,    40,   40],  // 1362 BCE–1336 BCE
     'kingdom of qatna':                [   35,   30,    40,   40],  // 1930 BCE–1444 BCE
     'kingdom of rome':                 [   12,   40,    18,   45],  // 725 BCE–509 BCE
-    'kingdom of sam'al':               [   35,   35,    40,   40],  // 920 BCE–604 BCE
+    'kingdom of sam\'al':              [   35,   35,    40,   40],  // 920 BCE–604 BCE
     'kingdom of sindica':              [   36,   40,    42,   50],  // 480 BCE–380 BCE
     'kingdom of sparta':               [   10,   30,    30,   45],  // 777 BCE–1 BCE
     'kingdom of syracuse':             [   10,   35,    25,   45],  // 304 BCE–289 BCE
@@ -1052,7 +1052,7 @@ const GEODATA = {
     'rong':                            [  110,   30,   120,   40],  // 770 BCE–593 BCE
     'rui':                             [  105,   30,   115,   40],  // 771 BCE–641 BCE
     'ruo':                             [  110,   30,   115,   35],  // 770 BCE–622 BCE
-    'ruo'ao revolt':                   [  110,   30,   115,   35],  // 605 BCE–604 BCE
+    'ruo\'ao revolt':                  [  110,   30,   115,   35],  // 605 BCE–604 BCE
     'rwanda':                          [   25,   -5,    35,    0],  // 1990 CE–present
     'saba':                            [   40,   10,    50,   20],  // 1100 BCE–1 BCE
     'sabines':                         [   12,   40,    18,   45],  // 800 BCE–438 BCE
