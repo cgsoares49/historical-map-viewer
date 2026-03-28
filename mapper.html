@@ -277,7 +277,8 @@
         <div class="tb-row">
             <input type="text" id="vibeInput" placeholder='Show France at 100 BCE' autofocus
                    style="width:170px; font-size:11px; background:#1a1a2e; color:#eee; border:1px solid #555; padding:2px 4px;"
-                   title="Natural language map command">
+                   title="Natural language map command"
+                   onkeydown="if(event.key==='Enter'){const v=this.value.trim();if(v)executeVibeCommand(v);}">
             <button id="vibeMic" style="width:22px; height:22px; padding:0; font-size:13px; background:#222; border:1px solid #555; cursor:pointer; margin-left:2px;" title="Voice input (Chrome/Edge)">🎤</button>
         </div>
         <div id="vibeHistory"
@@ -1021,13 +1022,7 @@ function executeVibeCommand(text) {
     if (shouldRender) scheduleRender();
 }
 
-// Input box: Enter to execute
-document.getElementById('vibeInput').addEventListener('keydown', e => {
-    if (e.key === 'Enter') {
-        const val = document.getElementById('vibeInput').value.trim();
-        if (val) executeVibeCommand(val);
-    }
-});
+// Input box: Enter handled inline on the element (onkeydown attribute)
 
 // Mic button: toggle continuous voice listening (Chrome/Edge)
 let _micActive = false;
