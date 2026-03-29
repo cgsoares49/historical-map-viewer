@@ -595,6 +595,7 @@ const loader      = new DataLoader();
 let   colorLookup  = null;
 let   mapRenderer  = null;
 let   colorNameMap = new Map();  // packed RGB integer → full area name
+let   lastHoveredCountry = null; // { name, x, y } — updated on mousemove
 
 // Build reverse lookup from rendered tile PAR data for a given projection + year.
 // Tiles are already cached after render so this is fast.
@@ -984,9 +985,10 @@ function executeVibeCommand(text) {
         return;
     }
 
-    // Info popup — "info", "info france"
+    // Info popup — "info", "info france", "info about rome", "info on X"
     if (/^\s*info\b/i.test(s)) {
-        const target = s.replace(/^\s*info\s*/i, '').trim();
+        // Strip "info" plus optional connectors
+        const target = s.replace(/^\s*info\b\s*(?:about|on|for|of|the)?\s*/i, '').trim();
         if (target) {
             const im = vibeLookupPlace(target);
             if (im) {
@@ -995,12 +997,16 @@ function executeVibeCommand(text) {
             } else {
                 vibeAddHistory(originalText, `"${target}" not found`, true);
             }
+        } else if (lastHoveredCountry) {
+            // Use the last country the cursor was over
+            showInfoPopup(lastHoveredCountry.name, lastHoveredCountry.x, lastHoveredCountry.y);
+            vibeAddHistory(originalText, `→ info: ${lastHoveredCountry.name}`, false);
         } else {
-            // Sample country at map center
+            // Fall back to map center sample
             const cx = canvas.width  / 2;
             const cy = canvas.height / 2;
             showInfoPopupAtPixel(cx, cy, Math.round(window.innerWidth / 2), Math.round(window.innerHeight / 3));
-            vibeAddHistory(originalText, '→ info at map center', false);
+            vibeAddHistory(originalText, '→ info at map center (hover a country first)', false);
         }
         return;
     }
@@ -1400,6 +1406,7 @@ overlay.addEventListener('mousemove', e => {
             const key  = r | (g << 8) | (b << 16);
             const name = colorNameMap.get(key) || '';
             document.getElementById('txtPixelColor').textContent = name;
+            if (name) lastHoveredCountry = { name, x: e.clientX, y: e.clientY };
         }
     }
 });
