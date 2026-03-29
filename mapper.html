@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mapper.NET — Historical Map Viewer</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: #1a1a2e;
+            color: #e0e0e0;
+            font-family: monospace;
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* ── Toolbar ────────────────────────────────────────────────────────── */
+        #toolbar {
+            background: #d4edda;
+            border-bottom: 2px solid #0f3460;
+            padding: 3px 4px;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            gap: 0;
+            flex-shrink: 0;
+            overflow-x: auto;
+            overflow-y: hidden;
+            min-height: 0;
+        }
+
+        .tb-group {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 3px 7px 3px 5px;
+            gap: 3px;
+            border-right: 1px solid #2a3a5e;
+            flex-shrink: 0;
+        }
+        .tb-group:last-child { border-right: none; }
+
+        .tb-label {
+            font-size: 10px;
+            color: #6080a0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1;
+            margin-bottom: 1px;
+            white-space: nowrap;
+        }
+
+        .tb-row {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 3px;
+            white-space: nowrap;
+        }
+
+        .tb-lbl {
+            color: #8090a8;
+            font-size: 11px;
+            white-space: nowrap;
+        }
+
+        /* Inputs */
+        input[type=number], input[type=text], select {
+            background: #0b2040;
+            border: 1px solid #2a3a5e;
+            color: #e0e0e0;
+            padding: 2px 4px;
+            font-family: monospace;
+            font-size: 12px;
+            height: 22px;
+        }
+        input[readonly] { color: #88bb88; background: #081828; cursor: default; }
+        input:disabled, select:disabled { opacity: 0.4; cursor: default; }
+
+        select { cursor: pointer; }
+
+        /* Checkboxes */
+        .tb-check {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #8090a8;
+            cursor: pointer;
+            white-space: nowrap;
+            font-size: 11px;
+            line-height: 1.6;
+        }
+        .tb-check input[type=checkbox] {
+            width: auto; height: auto;
+            cursor: pointer;
+            accent-color: #00c8f0;
+            border: none;
+            background: none;
+            padding: 0;
+        }
+        .tb-check.disabled { opacity: 0.38; cursor: default; }
+        .tb-check.disabled input { cursor: default; }
+
+        /* Buttons */
+        button {
+            background: #0b2040;
+            color: #c8d8e8;
+            border: 1px solid #2a3a5e;
+            font-family: monospace;
+            font-size: 12px;
+            cursor: pointer;
+            padding: 2px 7px;
+            height: 22px;
+            white-space: nowrap;
+        }
+        button:hover:not(:disabled) { background: #1a4a80; border-color: #00c8f0; }
+        button:disabled { opacity: 0.38; cursor: default; }
+
+        /* Styled buttons matching VB colors */
+        .btn-display {
+            background: #004400;
+            color: #88ff88;
+            border-color: #006600;
+            font-weight: bold;
+            font-size: 13px;
+            height: 42px;
+            padding: 0 14px;
+        }
+        .btn-display:hover:not(:disabled) { background: #006600; border-color: #00cc00; }
+
+        .btn-world {
+            background: #2a2a3a;
+            color: #9090b0;
+            border-color: #3a3a5a;
+            height: 20px;
+            font-size: 11px;
+            padding: 0 7px;
+        }
+        .btn-world:hover:not(:disabled) { background: #3a3a5a; border-color: #6060a0; }
+
+        .btn-step {
+            background: #440060;
+            color: #ff66ff;
+            border-color: #660088;
+            padding: 0 6px;
+        }
+        .btn-step:hover:not(:disabled) { background: #660088; border-color: #cc00cc; }
+
+        .btn-play {
+            background: #004400;
+            color: #66cc66;
+            border-color: #006600;
+        }
+        .btn-play:hover:not(:disabled) { background: #006600; }
+        .btn-play.anim-active {
+            background: #00aa00;
+            color: #ffffff;
+            border-color: #00ff00;
+        }
+
+        .btn-home {
+            background: #003344;
+            color: #00ddff;
+            border-color: #005566;
+        }
+        .btn-home:hover:not(:disabled) { background: #005566; border-color: #00ccff; }
+
+        .btn-abort {
+            background: #440000;
+            color: #ff6666;
+            border-color: #660000;
+            font-size: 11px;
+            padding: 0 6px;
+        }
+        .btn-abort:hover:not(:disabled) { background: #660000; }
+
+        .btn-save {
+            background: #440060;
+            color: #ff66ff;
+            border-color: #660088;
+            font-size: 11px;
+        }
+        .btn-save:hover:not(:disabled) { background: #660088; }
+
+        /* Pan grid */
+        .pan-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 26px);
+            grid-template-rows: repeat(3, 26px);
+            gap: 2px;
+        }
+        .pan-btn {
+            width: 26px; height: 26px;
+            padding: 0;
+            background: #003800;
+            color: #88ee88;
+            border: 1px solid #005500;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-family: monospace;
+        }
+        .pan-btn:hover { background: #006600; border-color: #00cc00; }
+        .pan-center {
+            width: 26px; height: 26px;
+            display: flex; align-items: center; justify-content: center;
+            color: #2a3a2a; font-size: 14px;
+            user-select: none;
+        }
+
+        /* Date display */
+        #mapDate {
+            font-size: 17px;
+            font-weight: bold;
+            width: 100px;
+            text-align: center;
+            color: #ffffff;
+            height: 30px;
+            background: #050f20;
+            border-color: #3a5a7a;
+        }
+
+        /* Pointer readouts */
+        .ptr-ro {
+            width: 70px;
+            font-size: 11px;
+            height: 20px;
+        }
+
+        /* Status text */
+        #status {
+            background: #050f20;
+            border: 1px solid #2a3a5e;
+            color: #9090a8;
+            padding: 2px 5px;
+            font-size: 11px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            min-width: 180px;
+            height: 22px;
+        }
+
+        /* Progress bar */
+        #progress-bar {
+            height: 6px;
+            background: #050f20;
+            border: 1px solid #2a3a5e;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        #progress-fill {
+            height: 100%;
+            background: #00c8f0;
+            width: 0%;
+            transition: width 0.1s;
+        }
+
+        /* ── Map container ────────────────────────────────────────────────── */
+        #map-container { flex: 1; position: relative; overflow: hidden; }
+        canvas { display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+    </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<!--  TOOLBAR                                                               -->
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<div id="toolbar">
+
+    <!-- ── Vibe Map ── -->
+    <div class="tb-group" style="min-width:200px;">
+        <div class="tb-label" style="color:#ffdd66; letter-spacing:1px;">✦ Vibe Map</div>
+        <div class="tb-row">
+            <input type="text" id="vibeInput" placeholder='Show France at 100 BCE' autofocus
+                   style="width:170px; font-size:11px; background:#1a1a2e; color:#eee; border:1px solid #555; padding:2px 4px;"
+                   title="Natural language map command"
+                   onkeydown="if(event.key==='Enter'){const v=this.value.trim();if(v)executeVibeCommand(v);}">
+            <button id="vibeMic" style="width:22px; height:22px; padding:0; font-size:13px; background:#222; border:1px solid #555; cursor:pointer; margin-left:2px;" title="Voice input (Chrome/Edge)">🎤</button>
+        </div>
+        <div id="vibeHistory"
+             style="width:194px; max-height:72px; overflow-y:auto; margin-top:2px;
+                    background:#0d0d1a; border:1px solid #333; font-size:10px; line-height:1.5;"></div>
+    </div>
+
+    <!-- ── Date ── -->
+    <div class="tb-group">
+        <div class="tb-label">Date</div>
+        <div class="tb-row">
+            <input type="text" id="mapDate" value="-2400" title="Map year (negative = BCE)">
+        </div>
+        <div class="tb-row">
+            <button class="btn-step" id="btnStepBack" title="Step back one interval">-1</button>
+            <button class="btn-step" id="btnStepFwd"  title="Step forward one interval">+1</button>
+        </div>
+        <div class="tb-row">
+            <input type="number" id="yrPerStep" value="0.1" min="0.1" step="0.1" title="Years per step" style="width:52px;">
+            <span class="tb-lbl">yr/step</span>
+        </div>
+    </div>
+
+    <!-- ── Run ── -->
+    <div class="tb-group">
+        <div class="tb-label">Run</div>
+        <div class="tb-row">
+            <button class="btn-play" id="btnReverse" title="Run backward">&lt;=</button>
+            <button class="btn-play" id="btnPlay"    title="Run forward">=&gt;</button>
+        </div>
+        <div class="tb-row">
+            <input type="number" id="secPerYr" value="2" min="0.1" step="0.1" title="Seconds per year" style="width:38px;">
+            <span class="tb-lbl">sec/y</span>
+        </div>
+    </div>
+
+    <!-- ── Center + Display ── -->
+    <div class="tb-group">
+        <div class="tb-label">Center Coordinates</div>
+        <div class="tb-row">
+            <span class="tb-lbl" style="width:22px;">Lon</span>
+            <input type="number" id="centerLon" value="0" min="-180" max="180" step="1" style="width:72px;" title="Center longitude">
+            <span class="tb-lbl" style="width:22px;">Lat</span>
+            <input type="number" id="centerLat" value="0" min="-90" max="90" step="1"   style="width:72px;" title="Center latitude">
+        </div>
+        <div class="tb-row" style="margin-top:2px; gap:5px;">
+            <button class="btn-display" id="btnDisplay">Display</button>
+            <button class="btn-world"   id="btnWorld" style="height:42px;">WORLD<br>VIEW</button>
+        </div>
+    </div>
+
+    <!-- ── Pan ── -->
+    <div class="tb-group">
+        <div class="tb-label">Pan</div>
+        <div class="pan-grid">
+            <button class="pan-btn" id="pan-nw" title="Pan Northwest">↖</button>
+            <button class="pan-btn" id="pan-n"  title="Pan North">↑</button>
+            <button class="pan-btn" id="pan-ne" title="Pan Northeast">↗</button>
+            <button class="pan-btn" id="pan-w"  title="Pan West">←</button>
+            <div class="pan-center" id="pan-center" title="Zoom in" style="cursor:pointer;">✛</div>
+            <button class="pan-btn" id="pan-e"  title="Pan East">→</button>
+            <button class="pan-btn" id="pan-sw" title="Pan Southwest">↙</button>
+            <button class="pan-btn" id="pan-s"  title="Pan South">↓</button>
+            <button class="pan-btn" id="pan-se" title="Pan Southeast">↘</button>
+        </div>
+        <div class="tb-row" style="margin-top:1px;">
+            <span class="tb-lbl">Factor</span>
+            <input type="number" id="panFactor" value="0.5" min="0.1" step="0.1" style="width:46px;" title="Pan step multiplier (× viewport)">
+        </div>
+    </div>
+
+    <!-- ── Zoom ── -->
+    <div class="tb-group">
+        <div class="tb-label">Zoom</div>
+        <select id="zoom" style="width:88px;" title="Zoom level">
+            <option value="0">0  (360°)</option>
+            <option value="1">1  (180°)</option>
+            <option value="2">2  (120°)</option>
+            <option value="3">3   (90°)</option>
+            <option value="4">4   (72°)</option>
+            <option value="5">5   (60°)</option>
+            <option value="7" selected>7   (45°)</option>
+            <option value="11">11  (30°)</option>
+            <option value="17">17  (20°)</option>
+            <option value="23">23  (15°)</option>
+            <option value="35">35  (10°)</option>
+            <option value="59">59   (6°)</option>
+            <option value="71">71   (5°)</option>
+            <option value="119">119  (3°)</option>
+            <option value="179">179  (2°)</option>
+            <option value="359">359  (1°)</option>
+            <option value="719">719 (0.5°)</option>
+            <option value="custom">Custom…</option>
+        </select>
+        <input type="number" id="zoomCustom" value="" min="0" step="1"
+               style="display:none; width:88px; margin-top:2px;"
+               title="Enter custom zoom value">
+        <button class="btn-home" id="btnHome" style="width:88px; margin-top:3px;">HOME</button>
+    </div>
+
+    <!-- ── Projection ── -->
+    <div class="tb-group">
+        <div class="tb-label">Projection</div>
+        <select id="projType" style="width:116px;" title="Map projection">
+            <option value="equirect" selected>Equirectangular</option>
+            <option value="robinson" disabled style="color:#aaa;">Robinson</option>
+            <option value="lcc">Lambert Conic</option>
+        </select>
+    </div>
+
+    <!-- ── Pointer Coords ── -->
+    <div class="tb-group">
+        <div class="tb-label">Pointer</div>
+        <div class="tb-row">
+            <span class="tb-lbl" style="width:10px;">X</span>
+            <input type="text" id="ptrX" class="ptr-ro" readonly value="" title="Pointer longitude">
+        </div>
+        <div class="tb-row">
+            <span class="tb-lbl" style="width:10px;">Y</span>
+            <input type="text" id="ptrY" class="ptr-ro" readonly value="" title="Pointer latitude">
+        </div>
+        <div class="tb-row" style="margin-top:1px;">
+            <input type="text" id="horScale"  class="ptr-ro" readonly value="" title="Horizontal span (degrees)">
+            <input type="text" id="vertScale" class="ptr-ro" readonly value="" title="Vertical span (degrees)">
+        </div>
+        <div class="tb-lbl" style="font-size:10px;">horiz° / vert°</div>
+    </div>
+
+    <!-- ── Status ── -->
+    <div class="tb-group" style="flex:1; min-width:200px; max-width:320px;">
+        <div class="tb-label">Status</div>
+        <div id="status">Press Display to render map.</div>
+        <div id="progress-bar" style="margin-top:1px;"><div id="progress-fill"></div></div>
+        <div class="tb-row" style="margin-top:2px;">
+            <div id="tile-count" style="color:#00c8f0;font-size:10px;flex:1;"></div>
+            <button class="btn-abort" id="btnAbort" disabled>ABORT</button>
+        </div>
+    </div>
+
+    <!-- ── Draw options ── -->
+    <div class="tb-group">
+        <div class="tb-label">Draw</div>
+        <label class="tb-check"><input type="checkbox" id="showCoasts" checked> Coasts</label>
+        <label class="tb-check"><input type="checkbox" id="showInlandWaters" checked> Inland waters</label>
+        <label class="tb-check"><input type="checkbox" id="showRivers"> Rivers</label>
+        <label class="tb-check"><input type="checkbox" id="showBorders" checked> Boundaries</label>
+        <label class="tb-check"><input type="checkbox" id="showGrid"> Tile grid</label>
+        <label class="tb-check disabled"><input type="checkbox" disabled> Grid labels</label>
+    </div>
+
+    <!-- ── Show options ── -->
+    <div class="tb-group">
+        <div class="tb-label">Show</div>
+        <label class="tb-check"><input type="checkbox" id="showCities" checked> Cities</label>
+        <label class="tb-check"><input type="checkbox" id="showCityNames"> City names</label>
+        <label class="tb-check"><input type="checkbox" id="showCountryLabels"> Country labels</label>
+        <label class="tb-check"><input type="checkbox" id="showDots" checked> Tribal dots</label>
+        <div class="tb-row" style="margin-top:2px;">
+            <span class="tb-lbl">Detail</span>
+            <input type="number" id="cityDetail" value="10" min="0" max="99" style="width:42px;">
+        </div>
+    </div>
+
+    <!-- ── Min pixels / Save ── -->
+    <div class="tb-group">
+        <div class="tb-label">Min Pixels</div>
+        <input type="number" id="minPixels" value="500" min="100" style="width:72px;">
+        <div class="tb-row" style="margin-top:3px;">
+            <button class="btn-save" id="btnSave" style="width:54px;">Save Map</button>
+            <select id="saveRes" style="width:42px;height:22px;font-size:11px;" title="Save resolution multiplier">
+                <option value="1">1×</option>
+                <option value="2" selected>2×</option>
+                <option value="3">3×</option>
+                <option value="4">4×</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- ── Pixel color (debug readout) ── -->
+    <div class="tb-group">
+        <div class="tb-label">Pixel Color</div>
+        <div id="txtPixelColor" style="width:220px;min-height:20px;background:#081828;border:1px solid #2a3a5e;color:#88bb88;padding:2px 4px;font-family:monospace;font-size:12px;white-space:nowrap;overflow:hidden;"></div>
+        <div class="tb-row" style="margin-top:2px;">
+            <input type="text" id="txtRed"   readonly value="" style="width:35px;color:#ff6666;" title="Red">
+            <input type="text" id="txtGreen" readonly value="" style="width:35px;color:#66ff66;" title="Green">
+            <input type="text" id="txtBlue"  readonly value="" style="width:35px;color:#6699ff;" title="Blue">
+        </div>
+    </div>
+
+</div><!-- #toolbar -->
+
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<!--  MAP                                                                   -->
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<div id="map-container">
+    <canvas id="mapCanvas"></canvas>
+    <canvas id="overlay"></canvas>
+
+</div>
+
+<script src="js/geodata.js"></script>
+<script src="js/projection.js"></script>
+<script src="js/tiles.js"></script>
+<script src="js/dataloader.js"></script>
+<script src="js/colormatcher.js"></script>
+<script src="js/renderer.js"></script>
+<script>
+// ── Canvas setup ────────────────────────────────────────────────────────────
+const container  = document.getElementById('map-container');
+const canvas     = document.getElementById('mapCanvas');
+const overlay    = document.getElementById('overlay');
+const ctx        = canvas.getContext('2d');
+const octx       = overlay.getContext('2d');
+
+// Back-buffer for flicker-free rendering: all drawing goes here first,
+// then the completed frame is copied to the visible canvas in one drawImage.
+const backCanvas = document.createElement('canvas');
+const backCtx    = backCanvas.getContext('2d');
+
+function resizeCanvases() {
+    canvas.width  = overlay.width  = backCanvas.width  = container.clientWidth;
+    canvas.height = overlay.height = backCanvas.height = container.clientHeight;
+}
+resizeCanvases();
+window.addEventListener('resize', () => { resizeCanvases(); scheduleRender(); });
+
+// ── Selection rectangle state ────────────────────────────────────────────────
+let contextProjection = new MapProjection(0, 0, 0, canvas.width, canvas.height);
+
+let selDragging     = false;
+let selDragStartX   = 0, selDragStartY   = 0;
+let selDragStartLon = 0, selDragStartLat = 0;
+
+// ── Shared objects ───────────────────────────────────────────────────────────
+const tileManager = new TileManager();
+const loader      = new DataLoader();
+let   colorLookup  = null;
+let   mapRenderer  = null;
+let   colorNameMap = new Map();  // packed RGB integer → full area name
+
+// Build reverse lookup from rendered tile PAR data for a given projection + year.
+// Tiles are already cached after render so this is fast.
+// Full area names (e.g. "France - Corsica") come from PAR dateRange.name as-is.
+async function rebuildColorNameMap(proj, year) {
+    colorNameMap = new Map();
+    const showCities = document.getElementById('showCities').checked;
+    const cityDetail = parseInt(document.getElementById('cityDetail').value) || 10;
+    const tiles = tileManager.getTiles(proj);
+    await Promise.all(tiles.map(async tileDesc => {
+        const { par, cities } = await loader.loadTile(tileDesc);
+        for (const entry of par) {
+            const dateMatch = matchDate(entry.dateRanges, year);
+            if (!dateMatch || !dateMatch.name) continue;
+            const rgb = colorLookup.resolve(dateMatch);
+            if (!rgb) continue;
+            const key = rgb.r | (rgb.g << 8) | (rgb.b << 16);
+            if (!colorNameMap.has(key)) colorNameMap.set(key, dateMatch.name);
+        }
+        // Cities are drawn on top, so their entries overwrite country entries for the same key.
+        if (showCities) {
+            for (const city of cities) {
+                const match = matchDate(city.dateRanges, year);
+                if (!match || match.detCode <= 0 || match.detCode > cityDetail) continue;
+                const { r, g, b } = colorLookup.resolveCityRgb(match.colorIndex);
+                const key = r | (g << 8) | (b << 16);
+                colorNameMap.set(key, match.name);
+            }
+        }
+    }));
+}
+
+Promise.all([
+    loader.loadPrimaries('primaries.txt'),
+    loader.loadOffsets('newoffsets.txt'),
+]).then(async ([primaries, offsets]) => {
+    colorLookup = new ColorLookup(primaries, offsets);
+    mapRenderer = new MapRenderer(loader, tileManager, colorLookup);
+    await renderWorldContext();
+});
+
+// ── Read inputs ──────────────────────────────────────────────────────────────
+function getInputs() {
+    return {
+        centerLon: parseFloat(document.getElementById('centerLon').value) || 0,
+        centerLat: parseFloat(document.getElementById('centerLat').value) || 0,
+        zoom:      (document.getElementById('zoom').value === 'custom'
+                       ? parseFloat(document.getElementById('zoomCustom').value) || 0
+                       : parseFloat(document.getElementById('zoom').value))      || 0,
+        year:      parseFloat(document.getElementById('mapDate').value)   || 2000,
+    };
+}
+
+function getProjection() {
+    const { centerLon, centerLat, zoom } = getInputs();
+    const projType = document.getElementById('projType').value;
+    if (projType === 'robinson') {
+        return new MapProjection(0, 0, 0, canvas.width, canvas.height, 'robinson');
+    }
+    if (projType === 'lcc') {
+        return new MapProjection(centerLon, centerLat, zoom, canvas.width, canvas.height, 'lcc');
+    }
+    return new MapProjection(centerLon, centerLat, zoom, canvas.width, canvas.height);
+}
+
+// ── Toolbar control wiring ───────────────────────────────────────────────────
+document.getElementById('btnDisplay').addEventListener('click', scheduleRender);
+
+document.getElementById('btnWorld').addEventListener('click', async () => {
+    if (!mapRenderer) return;
+    document.getElementById('btnWorld').disabled = true;
+    await renderWorldContext();
+    document.getElementById('btnWorld').disabled = false;
+});
+
+// There is no year 0 in the historical calendar.
+// If the new value lands in (-1, 1), jump to 1 (CE) or -1 (BCE) based on direction of travel.
+function skipYear0(prev, next) {
+    if (next > -1 && next < 1) return next > prev ? 1 : -1;
+    return next;
+}
+
+// Step back / forward: subtract or add yr/step to the date
+document.getElementById('btnStepBack').addEventListener('click', () => {
+    const step = parseFloat(document.getElementById('yrPerStep').value) || 0.1;
+    const cur  = parseFloat(document.getElementById('mapDate').value)   || 0;
+    document.getElementById('mapDate').value = skipYear0(cur, Math.round((cur - step) * 10) / 10);
+    scheduleRender();
+});
+document.getElementById('btnStepFwd').addEventListener('click', () => {
+    const step = parseFloat(document.getElementById('yrPerStep').value) || 0.1;
+    const cur  = parseFloat(document.getElementById('mapDate').value)   || 0;
+    document.getElementById('mapDate').value = skipYear0(cur, Math.round((cur + step) * 10) / 10);
+    scheduleRender();
+});
+
+// Animation
+let animating = false;
+let animDir   = 0;
+
+async function runAnimation() {
+    const yearEl  = document.getElementById('mapDate');
+    const stepEl  = document.getElementById('yrPerStep');
+    const secEl   = document.getElementById('secPerYr');
+    const playBtn = document.getElementById('btnPlay');
+    const revBtn  = document.getElementById('btnReverse');
+    while (animating) {
+        const step = parseFloat(stepEl.value) || 1;
+        const cur  = parseFloat(yearEl.value) || 0;
+        yearEl.value = skipYear0(cur, Math.round((cur + animDir * step) * 10) / 10);
+        await doRender(true);
+        if (!animating) break;
+        const delay = (parseFloat(secEl.value) || 1) * 1000;
+        await new Promise(r => setTimeout(r, delay));
+    }
+    playBtn.classList.remove('anim-active');
+    revBtn .classList.remove('anim-active');
+}
+
+function startAnimation(dir) {
+    const playBtn = document.getElementById('btnPlay');
+    const revBtn  = document.getElementById('btnReverse');
+    if (animating && animDir === dir) {
+        // Same button pressed again — stop
+        animating = false;
+        return;
+    }
+    animating = false;   // stop any running loop first
+    animDir   = dir;
+    animating = true;
+    playBtn.classList.toggle('anim-active', dir ===  1);
+    revBtn .classList.toggle('anim-active', dir === -1);
+    runAnimation();
+}
+
+document.getElementById('btnPlay'   ).addEventListener('click', () => startAnimation( 1));
+document.getElementById('btnReverse').addEventListener('click', () => startAnimation(-1));
+
+// Save Map
+document.getElementById('btnSave').addEventListener('click', async () => {
+    const { year } = getInputs();
+    const yearLabel = year < 0 ? `${Math.abs(year)}BCE` : `${year}CE`;
+    const filename  = `map_${yearLabel}.png`;
+    const scale     = parseInt(document.getElementById('saveRes').value) || 2;
+
+    // Render at N× resolution into an offscreen canvas, then save that
+    const W = canvas.width  * scale;
+    const H = canvas.height * scale;
+    const offscreen = document.createElement('canvas');
+    offscreen.width  = W;
+    offscreen.height = H;
+    const octxSave  = offscreen.getContext('2d');
+
+    const proj = getProjection();
+    const hiProj = proj.projType === 'robinson'
+        ? new MapProjection(0, 0, 0, W, H, 'robinson')
+        : new MapProjection(proj.centerLon, proj.centerLat, proj.zoom, W, H, proj.projType);
+    const { year: yr } = getInputs();
+    const showBorders       = document.getElementById('showBorders'      ).checked;
+    const showDots          = document.getElementById('showDots'         ).checked;
+    const showCoasts        = document.getElementById('showCoasts'       ).checked;
+    const showCities        = document.getElementById('showCities'       ).checked;
+    const showCityNames     = document.getElementById('showCityNames'    ).checked;
+    const cityDetail        = parseInt(document.getElementById('cityDetail').value) || 10;
+    const showInlandWaters  = document.getElementById('showInlandWaters'  ).checked;
+    const showRivers        = document.getElementById('showRivers'        ).checked;
+    const showCountryLabels = document.getElementById('showCountryLabels' ).checked;
+    const minPixelsSave     = parseInt(document.getElementById('minPixels').value) || 5000;
+
+    document.getElementById('status').textContent = 'Saving…';
+    try {
+        await mapRenderer.render(octxSave, hiProj, yr, showBorders, showDots, null, showCoasts, showCities, showCityNames, cityDetail, showInlandWaters, showRivers, showCountryLabels, minPixelsSave);
+    } catch (e) {
+        document.getElementById('status').textContent = `Save error: ${e.message}`;
+        return;
+    }
+
+    offscreen.toBlob(async blob => {
+        if (window.showSaveFilePicker) {
+            try {
+                const handle = await window.showSaveFilePicker({
+                    suggestedName: filename,
+                    types: [{ description: 'PNG Image', accept: { 'image/png': ['.png'] } }],
+                });
+                const writable = await handle.createWritable();
+                await writable.write(blob);
+                await writable.close();
+            } catch (e) {
+                if (e.name !== 'AbortError') console.error(e);
+            }
+        } else {
+            const url = URL.createObjectURL(blob);
+            const a   = document.createElement('a');
+            a.href     = url;
+            a.download = filename;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+        document.getElementById('status').textContent = `Saved: ${filename}`;
+    }, 'image/png');
+});
+
+// Home: reset to default view and show world context
+document.getElementById('btnHome').addEventListener('click', async () => {
+    document.getElementById('centerLon').value = 0;
+    document.getElementById('centerLat').value = 0;
+    document.getElementById('zoom').value = 7;
+    if (!mapRenderer) return;
+    const btn = document.getElementById('btnHome');
+    btn.disabled = true;
+    await renderWorldContext();
+    btn.disabled = false;
+});
+
+// Pan buttons: move by factor × viewport width/height
+function pan(dLon, dLat) {
+    const inp    = getInputs();
+    const factor = parseFloat(document.getElementById('panFactor').value) || 1.0;
+    const degX   = 360 / (inp.zoom + 1);
+    const degY   = degX * canvas.height / canvas.width;
+    const newLon = Math.max(-180, Math.min(180, inp.centerLon + dLon * degX * factor));
+    const newLat = Math.max(-90,  Math.min(90,  inp.centerLat + dLat * degY * factor));
+    document.getElementById('centerLon').value = Math.round(newLon * 10) / 10;
+    document.getElementById('centerLat').value = Math.round(newLat * 10) / 10;
+    scheduleRender();
+}
+
+const ZOOM_PRESETS = [0,1,2,3,4,5,7,11,17,23,35,59,71,119,179,359,719];
+document.getElementById('pan-center').addEventListener('click', e => {
+    e.stopPropagation();
+    const cur = getInputs().zoom;
+    const next = ZOOM_PRESETS.find(v => v > cur) ?? ZOOM_PRESETS[ZOOM_PRESETS.length - 1];
+    const sel = document.getElementById('zoom');
+    if (sel.value === 'custom') {
+        document.getElementById('zoomCustom').value = next;
+    } else {
+        const opt = [...sel.options].find(o => parseInt(o.value) === next);
+        if (opt) sel.value = next; else { sel.value = 'custom'; document.getElementById('zoomCustom').style.display=''; document.getElementById('zoomCustom').value = next; }
+    }
+    drawOverlay(); updateScaleDisplay(); scheduleRender();
+});
+
+document.getElementById('pan-n' ).addEventListener('click', e => { e.stopPropagation(); pan( 0,  1); });
+document.getElementById('pan-s' ).addEventListener('click', e => { e.stopPropagation(); pan( 0, -1); });
+document.getElementById('pan-e' ).addEventListener('click', e => { e.stopPropagation(); pan( 1,  0); });
+document.getElementById('pan-w' ).addEventListener('click', e => { e.stopPropagation(); pan(-1,  0); });
+document.getElementById('pan-ne').addEventListener('click', e => { e.stopPropagation(); pan( 1,  1); });
+document.getElementById('pan-nw').addEventListener('click', e => { e.stopPropagation(); pan(-1,  1); });
+document.getElementById('pan-se').addEventListener('click', e => { e.stopPropagation(); pan( 1, -1); });
+document.getElementById('pan-sw').addEventListener('click', e => { e.stopPropagation(); pan(-1, -1); });
+
+// Enter key on any input triggers render (vibeInput has its own handler)
+document.querySelectorAll('input[type=number], input[type=text]:not([readonly]):not(#vibeInput)').forEach(input => {
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') scheduleRender(); });
+});
+
+// Projection change
+document.getElementById('projType').addEventListener('change', scheduleRender);
+
+// Checkbox changes
+document.getElementById('showBorders'     ).addEventListener('change', scheduleRender);
+document.getElementById('showDots'        ).addEventListener('change', scheduleRender);
+document.getElementById('showCoasts'      ).addEventListener('change', scheduleRender);
+document.getElementById('showInlandWaters').addEventListener('change', scheduleRender);
+document.getElementById('showRivers'      ).addEventListener('change', scheduleRender);
+document.getElementById('showCountryLabels').addEventListener('change', scheduleRender);
+document.getElementById('minPixels'       ).addEventListener('change', scheduleRender);
+document.getElementById('showCities'    ).addEventListener('change', scheduleRender);
+document.getElementById('showCityNames' ).addEventListener('change', scheduleRender);
+document.getElementById('cityDetail'    ).addEventListener('change', scheduleRender);
+document.getElementById('showGrid'   ).addEventListener('change', drawOverlay);
+document.getElementById('mapDate'    ).addEventListener('change', scheduleRender);
+
+// Redraw overlay when zoom or center changes
+document.getElementById('zoom').addEventListener('change', () => {
+    const isCustom = document.getElementById('zoom').value === 'custom';
+    const customEl = document.getElementById('zoomCustom');
+    customEl.style.display = isCustom ? '' : 'none';
+    if (isCustom) { customEl.focus(); return; }
+    drawOverlay();
+    updateScaleDisplay();
+});
+document.getElementById('zoomCustom').addEventListener('input', () => { drawOverlay(); updateScaleDisplay(); });
+['centerLon', 'centerLat'].forEach(id => {
+    document.getElementById(id).addEventListener('input', drawOverlay);
+});
+
+// Scale readout: update whenever zoom changes
+function updateScaleDisplay() {
+    const { zoom } = getInputs();
+    const degX = 360 / (zoom + 1);
+    const degY = degX * canvas.height / canvas.width;
+    document.getElementById('horScale' ).value = degX.toFixed(2);
+    document.getElementById('vertScale').value = degY.toFixed(2);
+}
+updateScaleDisplay();
+
+// ── Vibe Map command system ───────────────────────────────────────────────────
+
+function vibeAddHistory(cmd, result, isError) {
+    const hist = document.getElementById('vibeHistory');
+    const row = document.createElement('div');
+    row.style.cssText = 'padding:1px 4px; cursor:pointer; border-bottom:1px solid #222;';
+    row.style.color = isError ? '#ff8888' : '#aaffaa';
+    row.title = 'Click to re-execute';
+    row.innerHTML = `<span style="color:#888;">${cmd}</span> ${result}`;
+    row.addEventListener('click', () => {
+        document.getElementById('vibeInput').value = cmd;
+        executeVibeCommand(cmd);
+    });
+    hist.insertBefore(row, hist.firstChild); // newest at top
+    // Keep at most 20 entries
+    while (hist.children.length > 20) hist.removeChild(hist.lastChild);
+}
+
+// Keep vibeSetStatus as alias for errors before a command is known
+function vibeSetStatus(msg, isError) {
+    vibeAddHistory('', msg, isError);
+}
+
+function vibeLookupPlace(name) {
+    // 1. Exact match
+    if (GEODATA[name]) return [name, GEODATA[name]];
+    // 2. Key starts with name, or name starts with key (skip very short keys to avoid false fuzzy hits)
+    for (const [k, v] of Object.entries(GEODATA)) {
+        if (k.startsWith(name) || (k.length >= 4 && name.startsWith(k))) return [k, v];
+    }
+    // 3. Either contains the other (same short-key guard)
+    for (const [k, v] of Object.entries(GEODATA)) {
+        if (k.includes(name) || (k.length >= 4 && name.includes(k))) return [k, v];
+    }
+    // 4. Try individual words and sub-phrases (longest match first)
+    const words = name.split(/\s+/);
+    for (let len = words.length - 1; len >= 1; len--) {
+        for (let i = 0; i <= words.length - len; i++) {
+            const sub = words.slice(i, i + len).join(' ');
+            if (GEODATA[sub]) return [sub, GEODATA[sub]];
+            for (const [k, v] of Object.entries(GEODATA)) {
+                if (k.startsWith(sub) || (k.length >= 4 && sub.startsWith(k))) return [k, v];
+            }
+        }
+    }
+    return null;
+}
+
+function vibeZoomForBounds(minLon, minLat, maxLon, maxLat) {
+    const PADDING = 1.4;
+    const spanLon = (maxLon - minLon) * PADDING;
+    const spanLat = (maxLat - minLat) * PADDING;
+    const aspect = canvas.width / canvas.height;
+    const neededDegX = Math.max(spanLon, spanLat * aspect);
+    const targetZoom = 360 / neededDegX - 1;
+    let best = 0;
+    for (const p of ZOOM_PRESETS) {
+        if (p <= targetZoom) best = p;
+    }
+    return best;
+}
+
+function executeVibeCommand(text) {
+    const originalText = text.trim();
+    document.getElementById('vibeInput').value = '';
+    let s = originalText.toLowerCase().replace(/[.,!?;:]+/g, ' ');
+
+    // Zoom in / zoom out — "zoom in", "zoom out", "zoom in 2", "zoom out 3"
+    const zoomMatch = s.match(/\bzoom\s+(in|out)(?:\s+(\d+))?\b/i);
+    if (zoomMatch) {
+        const dir    = zoomMatch[1].toLowerCase() === 'in' ? 1 : -1;
+        const steps  = parseInt(zoomMatch[2] || '1');
+        const cur    = getInputs().zoom;
+        let idx      = ZOOM_PRESETS.findIndex(v => v >= cur);
+        if (idx < 0) idx = ZOOM_PRESETS.length - 1;
+        idx = Math.max(0, Math.min(ZOOM_PRESETS.length - 1, idx + dir * steps));
+        const newZoom = ZOOM_PRESETS[idx];
+        const sel = document.getElementById('zoom');
+        sel.value = newZoom;
+        document.getElementById('zoomCustom').style.display = 'none';
+        drawOverlay(); updateScaleDisplay(); scheduleRender();
+        vibeAddHistory(originalText, `→ zoom ${newZoom} (${(360/(newZoom+1)).toFixed(1)}°)`, false);
+        return;
+    }
+
+    // Set date — "date 1648", "date 100 bce", "date -500"
+    const dateVerb = /^\s*date\b/i.test(s);
+    if (dateVerb) {
+        let dy = null;
+        const dm = s.match(/-\s*(\d+(?:\.\d+)?)/);
+        if (dm) { dy = -parseFloat(dm[1]); }
+        else {
+            const dm2 = s.match(/\b(\d+(?:\.\d+)?)\s*(bce?|bc)\b/i);
+            const dm3 = s.match(/\b(\d+(?:\.\d+)?)\s*(ce?|ad)?\b/i);
+            if (dm2) dy = -parseFloat(dm2[1]);
+            else if (dm3) dy = parseFloat(dm3[1]);
+        }
+        if (dy !== null) {
+            if (dy === 0) dy = -1;
+            document.getElementById('mapDate').value = dy;
+            scheduleRender();
+            const label = dy < 0 ? `${Math.abs(dy)} BCE` : `${dy} CE`;
+            vibeAddHistory(originalText, `→ date set to ${label}`, false);
+        } else {
+            vibeAddHistory(originalText, 'could not parse year', true);
+        }
+        return;
+    }
+
+    // Pan — "pan north", "pan left", "pan northeast", "pan n", etc.
+    const panDirs = {
+        north: [0, 1], south: [0, -1], east: [1, 0], west: [-1, 0],
+        northeast: [1, 1], northwest: [-1, 1], southeast: [1, -1], southwest: [-1, -1],
+        up: [0, 1], down: [0, -1], right: [1, 0], left: [-1, 0],
+        n: [0, 1], s: [0, -1], e: [1, 0], w: [-1, 0],
+        ne: [1, 1], nw: [-1, 1], se: [1, -1], sw: [-1, -1],
+    };
+    const panMatch = s.match(/\b(?:pan|plan)\s+(north(?:east|west)?|south(?:east|west)?|east|west|up|down|left|right|ne|nw|se|sw|n|s|e|w)\b/i);
+    if (panMatch) {
+        const [dLon, dLat] = panDirs[panMatch[1].toLowerCase()];
+        pan(dLon, dLat);
+        vibeAddHistory(originalText, `→ panned ${panMatch[1].toLowerCase()}`, false);
+        return;
+    }
+
+    // Step 1: extract date — several accepted forms:
+    //   leading minus:  -100, -100bce, - 100  → BCE (minus always wins)
+    //   suffix only:    100BCE, 100 bce, 100ce, 2400 BC
+    let year = null;
+    s = s.replace(/-\s*(\d+(?:\.\d+)?)\s*(bce?|bc|ce?|ad)?\b/gi, (_, num) => {
+        year = -parseFloat(num);
+        if (year === 0) year = -1;
+        return '';
+    });
+    if (year === null) {
+        s = s.replace(/\b(\d+(?:\.\d+)?)\s*(bce?|bc|ce?|ad)\b/gi, (_, num, suffix) => {
+            let y = parseFloat(num);
+            if (/^(bce?|bc)$/i.test(suffix)) y = -y;
+            year = (y === 0) ? -1 : y;
+            return '';
+        });
+    }
+    // Bare trailing number with no suffix (e.g. "france 1648") → treat as CE year
+    if (year === null) {
+        s = s.replace(/\b(\d{1,4})\s*$/, (_, num) => {
+            const rest = s.replace(/\b\d{1,4}\s*$/, '').trim();
+            if (rest.length > 0) { year = parseInt(num); return ''; }
+            return _;
+        });
+    }
+
+    // Step 2: detect render-triggering verbs, then strip all verbs
+    const shouldRender = true;
+    s = s.replace(/\b(show\s+me|show|go\s+to|go|navigate\s+to|take\s+me\s+to|display|zoom\s+to)\b/gi, '');
+
+    // Step 3: strip noise/connectors
+    s = s.replace(/\b(at|in|during|around|circa|by|the|a|an|of|what|was|is)\b/g, ' ');
+
+    // Step 4: normalize
+    const placeName = s.replace(/\s+/g, ' ').trim();
+
+    if (!placeName) {
+        // "Go" / "Display" with no place — render current settings
+        if (shouldRender) { scheduleRender(); vibeAddHistory(originalText, '→ rendering current view', false); }
+        return;
+    }
+
+    // Look up place
+    const match = vibeLookupPlace(placeName);
+    if (!match) {
+        vibeAddHistory(originalText, `"${placeName}" not found`, true);
+        return;
+    }
+    const [foundName, bounds] = match;
+    const [minLon, minLat, maxLon, maxLat] = bounds;
+
+    // Apply navigation
+    const centerLon = Math.round(((minLon + maxLon) / 2) * 10) / 10;
+    const centerLat = Math.round(((minLat + maxLat) / 2) * 10) / 10;
+    const zoom      = vibeZoomForBounds(minLon, minLat, maxLon, maxLat);
+
+    document.getElementById('centerLon').value = centerLon;
+    document.getElementById('centerLat').value = centerLat;
+    // Set zoom select; fall back to custom if not a preset value
+    const zoomSel = document.getElementById('zoom');
+    const zoomOpt = [...zoomSel.options].find(o => parseInt(o.value) === zoom);
+    if (zoomOpt) {
+        zoomSel.value = zoom;
+        document.getElementById('zoomCustom').style.display = 'none';
+    } else {
+        zoomSel.value = 'custom';
+        document.getElementById('zoomCustom').style.display = '';
+        document.getElementById('zoomCustom').value = zoom;
+    }
+
+    if (year !== null) {
+        document.getElementById('mapDate').value = year;
+    }
+
+    const yearLabel = year !== null
+        ? ` · ${year < 0 ? Math.abs(year) + ' BCE' : year + ' CE'}`
+        : '';
+    vibeAddHistory(originalText, `→ ${foundName}${yearLabel}`, false);
+
+    updateScaleDisplay();
+    if (shouldRender) scheduleRender();
+}
+
+// Input box: Enter handled inline on the element (onkeydown attribute)
+
+// Mic button: toggle continuous voice listening (Chrome/Edge)
+let _micActive = false;
+let _micRec    = null;
+document.getElementById('vibeMic').addEventListener('click', () => {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) { vibeSetStatus('Voice not supported (try Chrome/Edge)', true); return; }
+    const btn = document.getElementById('vibeMic');
+    if (_micActive) {
+        // Stop listening
+        _micActive = false;
+        if (_micRec) { _micRec.stop(); _micRec = null; }
+        btn.textContent = '🎤'; btn.style.color = '';
+        vibeSetStatus('Mic off', false);
+        return;
+    }
+    // Start continuous listening
+    _micActive = true;
+    btn.textContent = '⏺'; btn.style.color = '#ff4444';
+    vibeSetStatus('Listening…', false);
+
+    function startRec() {
+        if (!_micActive) return;
+        const rec = new SR();
+        _micRec = rec;
+        rec.lang = 'en-US';
+        rec.interimResults = false;
+        rec.onresult = e => {
+            const transcript = e.results[0][0].transcript.trim();
+            document.getElementById('vibeInput').value = transcript;
+            executeVibeCommand(transcript);
+        };
+        rec.onerror = e => {
+            if (e.error !== 'no-speech') vibeSetStatus(`Voice error: ${e.error}`, true);
+        };
+        rec.onend = () => {
+            if (_micActive) startRec(); // restart for next command
+        };
+        rec.start();
+    }
+    startRec();
+});
+
+// ── World context render ─────────────────────────────────────────────────────
+async function renderWorldContext() {
+    contextProjection = new MapProjection(0, 0, 0, canvas.width, canvas.height);
+    colorNameMap = new Map();  // BMP pixel colors don't match computed colors
+    const statusEl = document.getElementById('status');
+    await new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => {
+            ctx.fillStyle = '#5ba3d9';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            // Derive the PNG's geographic lat extent from its natural dimensions
+            // (it was rendered at zoom=0 center=0,0 so degY = natH * 360 / natW).
+            // Project those bounds onto the display contextProjection so the image
+            // aligns correctly regardless of canvas size changes since the PNG was saved.
+            const pngProj = new MapProjection(0, 0, 0, img.naturalWidth, img.naturalHeight);
+            const tl = contextProjection.geoToPixel(-180,  pngProj.lat2);
+            const br = contextProjection.geoToPixel( 180,  pngProj.lat1);
+            ctx.drawImage(img, tl.x, tl.y, br.x - tl.x, br.y - tl.y);
+            resolve();
+        };
+        img.onerror = reject;
+        img.src = 'map_2000CE.png';
+    });
+    const { year } = getInputs();
+    const yearLabel = year < 0 ? `${Math.abs(year)} BCE` : `${year} CE`;
+    statusEl.textContent = `${yearLabel} — click or drag the rectangle to select a region, then press Display.`;
+    drawOverlay();
+}
+
+// ── Render pipeline ──────────────────────────────────────────────────────────
+let renderPending = false;
+
+function scheduleRender() {
+    if (!mapRenderer) {
+        document.getElementById('status').textContent = 'Still loading color data…';
+        return;
+    }
+    if (renderPending) return;
+    renderPending = true;
+    requestAnimationFrame(() => doRender());
+}
+
+async function doRender(skipColorMap = false) {
+    renderPending = false;
+    const btn       = document.getElementById('btnDisplay');
+    const statusEl  = document.getElementById('status');
+    const countEl   = document.getElementById('tile-count');
+    const fillEl    = document.getElementById('progress-fill');
+
+    btn.disabled = true;
+    statusEl.textContent = 'Loading tiles…';
+    fillEl.style.width = '0%';
+
+    const { year } = getInputs();
+    const proj = getProjection();
+    contextProjection = proj;
+    const tileList = tileManager.getTiles(proj);
+    countEl.textContent = `${tileList.length} tiles`;
+
+    try {
+        const showBorders      = document.getElementById('showBorders'      ).checked;
+        const showDots         = document.getElementById('showDots'         ).checked;
+        const showCoasts       = document.getElementById('showCoasts'       ).checked;
+        const showCities       = document.getElementById('showCities'       ).checked;
+        const showCityNames    = document.getElementById('showCityNames'    ).checked;
+        const cityDetail       = parseInt(document.getElementById('cityDetail').value) || 10;
+        const showInlandWaters  = document.getElementById('showInlandWaters'  ).checked;
+        const showRivers        = document.getElementById('showRivers'        ).checked;
+        const showCountryLabels = document.getElementById('showCountryLabels' ).checked;
+        const minPixels         = parseInt(document.getElementById('minPixels').value) || 5000;
+        await mapRenderer.render(backCtx, proj, year, showBorders, showDots, (done, total) => {
+            statusEl.textContent = `Rendering… ${done}/${total}`;
+            fillEl.style.width = `${Math.round(100 * done / total)}%`;
+            ctx.drawImage(backCanvas, 0, 0);  // progressive flip: show each batch as it arrives
+        }, showCoasts, showCities, showCityNames, cityDetail, showInlandWaters, showRivers, showCountryLabels, minPixels);
+        ctx.drawImage(backCanvas, 0, 0);  // final flip: ensure complete frame is visible
+        drawOverlay();
+        fillEl.style.width = '100%';
+        const yearLabel = year < 0 ? `${Math.abs(year)} BCE` : `${year} CE`;
+        statusEl.textContent = `${yearLabel} — ${tileList.length} tiles`;
+        if (!skipColorMap) await rebuildColorNameMap(proj, year);
+    } catch (err) {
+        statusEl.textContent = `Error: ${err.message}`;
+        console.error(err);
+    }
+
+    btn.disabled = false;
+    updateScaleDisplay();
+}
+
+// ── Overlay: tile grid + selection rect ─────────────────────────────────────
+function drawOverlay() {
+    const proj = getProjection();
+    octx.clearRect(0, 0, overlay.width, overlay.height);
+
+    if (document.getElementById('showGrid').checked) {
+        const tiles = tileManager.getTiles(proj);
+        tiles.forEach(tile => {
+            const p1 = proj.geoToPixel(tile.geoLon, tile.geoLat + 5);
+            const p2 = proj.geoToPixel(tile.geoLon + tile.tileWidth, tile.geoLat);
+            const x = Math.floor(p1.x), y = Math.floor(p1.y);
+            const w = Math.ceil(p2.x) - x, h = Math.ceil(p2.y) - y;
+            octx.strokeStyle = 'rgba(255,255,255,0.25)';
+            octx.lineWidth = 1;
+            octx.strokeRect(x + 0.5, y + 0.5, w - 1, h - 1);
+            if (w > 60 && h > 20) {
+                octx.fillStyle = 'rgba(255,255,255,0.55)';
+                octx.font = '9px monospace';
+                octx.fillText(`${tile.latStr}/${tile.lonStr}`, x + 4, y + 12);
+            }
+        });
+        _drawRefLine(proj, 0, true,  'rgba(255,255,0,0.4)');
+        _drawRefLine(proj, 0, false, 'rgba(255,120,0,0.4)');
+    }
+
+    // No selection rectangle in non-equirect modes
+    if (document.getElementById('projType').value === 'equirect') {
+        _drawSelectionRect();
+    }
+}
+
+function _isRobinson() {
+    const v = document.getElementById('projType').value;
+    return v === 'robinson' || v === 'lcc';
+}
+
+function _getSelectionPixelRect() {
+    if (!contextProjection || _isRobinson()) return null;
+    const { centerLon, centerLat, zoom } = getInputs();
+    const selDegX = 360 / (zoom + 1);
+    // Vertical span matches the canvas aspect ratio (same scale for lat and lon)
+    const selDegY = selDegX * canvas.height / canvas.width;
+    const p1 = contextProjection.geoToPixel(centerLon - selDegX / 2, centerLat + selDegY / 2);
+    const p2 = contextProjection.geoToPixel(centerLon + selDegX / 2, centerLat - selDegY / 2);
+    return { x: p1.x, y: p1.y, w: p2.x - p1.x, h: p2.y - p1.y };
+}
+
+function _drawSelectionRect() {
+    const r = _getSelectionPixelRect();
+    if (!r) return;
+    const fillsCanvas = r.w >= overlay.width - 2 && r.h >= overlay.height - 2;
+
+    octx.save();
+    octx.strokeStyle = 'rgba(255, 210, 0, 0.95)';
+    octx.lineWidth   = 2;
+    octx.setLineDash([]);
+    if (!fillsCanvas) {
+        octx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+        octx.fillRect(r.x, r.y, r.w, r.h);
+    }
+    octx.strokeRect(r.x + 0.5, r.y + 0.5, r.w - 1, r.h - 1);
+    octx.restore();
+}
+
+// ── Selection rect mouse interaction ────────────────────────────────────────
+function _inSelectionRect(mx, my) {
+    const r = _getSelectionPixelRect();
+    if (!r) return false;
+    return mx >= r.x && mx <= r.x + r.w && my >= r.y && my <= r.y + r.h;
+}
+
+overlay.addEventListener('mousedown', e => {
+    if (!contextProjection || _isRobinson()) return;
+    const mx = e.offsetX, my = e.offsetY;
+    if (_inSelectionRect(mx, my)) {
+        selDragging     = true;
+        selDragStartX   = mx;
+        selDragStartY   = my;
+        const inp = getInputs();
+        selDragStartLon = inp.centerLon;
+        selDragStartLat = inp.centerLat;
+        overlay.style.cursor = 'grabbing';
+    } else {
+        const geo = contextProjection.pixelToGeo(mx, my);
+        const lon = Math.max(-180, Math.min(180, Math.round(geo.lon * 10) / 10));
+        const lat = Math.max(-90,  Math.min(90,  Math.round(geo.lat * 10) / 10));
+        document.getElementById('centerLon').value = lon;
+        document.getElementById('centerLat').value = lat;
+        const r = _getSelectionPixelRect();
+        const fillsCanvas = r && r.w >= overlay.width - 2 && r.h >= overlay.height - 2;
+        if (fillsCanvas && mapRenderer) {
+            renderWorldContext();
+        } else {
+            drawOverlay();
+        }
+    }
+});
+
+overlay.addEventListener('mousemove', e => {
+    const mx = e.offsetX, my = e.offsetY;
+    if (selDragging && contextProjection) {
+        const dLon =  (mx - selDragStartX) / contextProjection.xScale;
+        const dLat = -(my - selDragStartY) / contextProjection.yScale;
+        const lon = Math.max(-180, Math.min(180, Math.round((selDragStartLon + dLon) * 10) / 10));
+        const lat = Math.max(-90,  Math.min(90,  Math.round((selDragStartLat + dLat) * 10) / 10));
+        document.getElementById('centerLon').value = lon;
+        document.getElementById('centerLat').value = lat;
+        drawOverlay();
+    } else {
+        const r2 = _getSelectionPixelRect();
+        const rectFills = r2 && r2.w >= overlay.width - 2 && r2.h >= overlay.height - 2;
+        overlay.style.cursor = (!rectFills && _inSelectionRect(mx, my)) ? 'grab' : 'crosshair';
+        // Pointer coordinate readout
+        if (contextProjection) {
+            const geo = contextProjection.pixelToGeo(mx, my);
+            document.getElementById('ptrX').value = geo.lon.toFixed(2) + '°';
+            document.getElementById('ptrY').value = geo.lat.toFixed(2) + '°';
+        }
+        // Pixel color readout — sample map canvas directly
+        const px = ctx.getImageData(mx, my, 1, 1).data;
+        const r = px[0], g = px[1], b = px[2];
+        document.getElementById('txtRed'  ).value = r;
+        document.getElementById('txtGreen').value = g;
+        document.getElementById('txtBlue' ).value = b;
+        if (colorNameMap) {
+            const key  = r | (g << 8) | (b << 16);
+            const name = colorNameMap.get(key) || '';
+            document.getElementById('txtPixelColor').textContent = name;
+        }
+    }
+});
+
+overlay.addEventListener('mouseup',    () => { selDragging = false; overlay.style.cursor = 'crosshair'; });
+overlay.addEventListener('mouseleave', () => {
+    selDragging = false;
+    overlay.style.cursor = '';
+    document.getElementById('ptrX').value = '';
+    document.getElementById('ptrY').value = '';
+    document.getElementById('txtPixelColor').textContent = '';
+    document.getElementById('txtRed'       ).value = '';
+    document.getElementById('txtGreen'     ).value = '';
+    document.getElementById('txtBlue'      ).value = '';
+});
+
+overlay.style.cursor = 'crosshair';
+
+// ── Floating nav zoom slider ─────────────────────────────────────────────────
+// VB zoom items: [0,1,2,3,4,5,7,11,17,23,35,59,71,119,179,359,719]
+const ZOOM_LEVELS = [0, 1, 2, 3, 4, 5, 7, 11, 17, 23, 35, 59, 71, 119, 179, 359, 719];
+
+function zoomToLevelIndex(z) {
+    let best = 0, bestDist = Infinity;
+    ZOOM_LEVELS.forEach((v, i) => {
+        const d = Math.abs(v - z);
+        if (d < bestDist) { bestDist = d; best = i; }
+    });
+    return best;
+}
+
+
+// ── Reference line helper ────────────────────────────────────────────────────
+function _drawRefLine(proj, value, isLon, color) {
+    if (isLon && (value < proj.lon1 || value > proj.lon2)) return;
+    if (!isLon && (value < proj.lat1 || value > proj.lat2)) return;
+    octx.strokeStyle = color;
+    octx.lineWidth = 1;
+    octx.setLineDash([4, 4]);
+    octx.beginPath();
+    if (isLon) {
+        const x = proj.geoToPixel(value, 0).x;
+        octx.moveTo(x, 0); octx.lineTo(x, overlay.height);
+    } else {
+        const y = proj.geoToPixel(0, value).y;
+        octx.moveTo(0, y); octx.lineTo(overlay.width, y);
+    }
+    octx.stroke();
+    octx.setLineDash([]);
+}
+</script>
+</body>
+</html>

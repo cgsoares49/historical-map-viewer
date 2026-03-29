@@ -6,7 +6,7 @@ $listener.Prefixes.Add("http://localhost:$port/")
 $listener.Start()
 
 Write-Host "Server running at http://localhost:$port/"
-Write-Host "  Shooter game : http://localhost:$port/shooter/index.html"
+Write-Host "  Mapper       : http://localhost:$port/mapper/mapper.html"
 Write-Host "  Tic Tac Toe  : http://localhost:$port/tictactoe.html"
 Write-Host ""
 Write-Host "Press Ctrl+C to stop."
@@ -18,12 +18,12 @@ try {
         $res = $ctx.Response
 
         $urlPath = $req.Url.LocalPath
-        if ($urlPath -eq "/") { $urlPath = "/index.html" }
+        if ($urlPath -eq "/") { $urlPath = "/mapper/mapper.html" }
 
         $filePath = Join-Path $root $urlPath.TrimStart("/").Replace("/", "\")
 
         if (Test-Path $filePath -PathType Leaf) {
-            $ext = [System.IO.Path]::GetExtension($filePath)
+            $ext = [System.IO.Path]::GetExtension($filePath).ToLower()
             $mime = switch ($ext) {
                 ".html" { "text/html" }
                 ".js"   { "application/javascript" }
@@ -31,6 +31,9 @@ try {
                 ".png"  { "image/png" }
                 ".jpg"  { "image/jpeg" }
                 ".ico"  { "image/x-icon" }
+                ".txt"  { "text/plain; charset=utf-8" }
+                ".prn"  { "text/plain; charset=utf-8" }
+                ".asc"  { "text/plain; charset=utf-8" }
                 default { "application/octet-stream" }
             }
             $bytes = [System.IO.File]::ReadAllBytes($filePath)
