@@ -3,8 +3,8 @@ merge_geodata.py
 Merges geodata_from_par.csv into js/geodata.js.
 Hand-curated entries win; PAR entries are added only if the name
 (case-insensitive) is not already present.
-Earliest date stored as 5th array element (integer year, negative = BCE).
-Date range also appended as inline comment for readability.
+[minLon, minLat, maxLon, maxLat, earliestYear, latestYear] — years are
+integers (negative = BCE). Date range also kept as inline comment.
 """
 
 import os, csv, re
@@ -51,7 +51,8 @@ with open(PAR_CSV, encoding='utf-8', newline='') as f:
         earliest     = row['EarliestDate'].strip()
         latest       = row['LatestDate'].strip()
         earliest_yr  = parse_year_str(earliest)
-        new_entries.append((name, minLon, minLat, maxLon, maxLat, earliest, latest, earliest_yr))
+        latest_yr    = parse_year_str(latest)
+        new_entries.append((name, minLon, minLat, maxLon, maxLat, earliest, latest, earliest_yr, latest_yr))
 
 print(f"New entries to add: {len(new_entries)}")
 
@@ -64,9 +65,11 @@ lines = []
 lines.append('')
 lines.append('    // ── From primaries / PAR tile data ─────────────────────────────────────────')
 
-for name, minLon, minLat, maxLon, maxLat, earliest, latest, earliest_yr in sorted(new_entries, key=lambda x: x[0].lower()):
+for name, minLon, minLat, maxLon, maxLat, earliest, latest, earliest_yr, latest_yr in sorted(new_entries, key=lambda x: x[0].lower()):
     key    = name.lower().replace("'", "\\'")   # escape apostrophes in JS string
-    if earliest_yr is not None:
+    if earliest_yr is not None and latest_yr is not None:
+        coords = f"[{fmt(minLon):>5},{fmt(minLat):>5},{fmt(maxLon):>6},{fmt(maxLat):>5}, {earliest_yr}, {latest_yr}]"
+    elif earliest_yr is not None:
         coords = f"[{fmt(minLon):>5},{fmt(minLat):>5},{fmt(maxLon):>6},{fmt(maxLat):>5}, {earliest_yr}]"
     else:
         coords = f"[{fmt(minLon):>5},{fmt(minLat):>5},{fmt(maxLon):>6},{fmt(maxLat):>5}]"

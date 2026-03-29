@@ -262,6 +262,66 @@
         #map-container { flex: 1; position: relative; overflow: hidden; }
         canvas { display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
+        /* ── Info Popup ──────────────────────────────────────────────────── */
+        #infoPopup {
+            display: none;
+            position: fixed;
+            min-width: 220px;
+            max-width: 360px;
+            background: #0a1828;
+            border: 1px solid #00c8f0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.75);
+            z-index: 1000;
+            font-family: monospace;
+            font-size: 12px;
+            color: #e0e0e0;
+        }
+        #infoPopupHeader {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            background: #0f2840;
+            padding: 6px 8px 5px;
+            border-bottom: 1px solid #1a3a5e;
+            gap: 6px;
+        }
+        #infoPopupTitle {
+            color: #00eeff;
+            font-size: 13px;
+            font-weight: bold;
+            flex: 1;
+            word-break: break-word;
+        }
+        #infoPopupClose {
+            background: none;
+            border: none;
+            color: #507090;
+            font-size: 18px;
+            line-height: 1;
+            cursor: pointer;
+            padding: 0;
+            height: auto;
+            flex-shrink: 0;
+            margin-top: -1px;
+        }
+        #infoPopupClose:hover { color: #ff6666; background: none; border: none; }
+        #infoPopupBody {
+            padding: 7px 9px 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .info-section-label {
+            color: #507090;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 2px;
+        }
+        .info-section-value { color: #c0d8f0; line-height: 1.5; }
+        #infoPopupRefsVal a { color: #00c8f0; text-decoration: none; }
+        #infoPopupRefsVal a:hover { text-decoration: underline; }
+
     </style>
 </head>
 <body>
@@ -476,7 +536,24 @@
 <div id="map-container">
     <canvas id="mapCanvas"></canvas>
     <canvas id="overlay"></canvas>
+</div>
 
+<!-- ── Info Popup ── -->
+<div id="infoPopup">
+    <div id="infoPopupHeader">
+        <span id="infoPopupTitle"></span>
+        <button id="infoPopupClose" title="Dismiss (or type 'dismiss')">×</button>
+    </div>
+    <div id="infoPopupBody">
+        <div id="infoPopupDates" style="display:none;">
+            <div class="info-section-label">Temporal Extent</div>
+            <div id="infoPopupDatesVal" class="info-section-value"></div>
+        </div>
+        <div id="infoPopupRefs" style="display:none;">
+            <div class="info-section-label">References</div>
+            <div id="infoPopupRefsVal" class="info-section-value"></div>
+        </div>
+    </div>
 </div>
 
 <script src="js/geodata.js"></script>
@@ -900,6 +977,34 @@ function executeVibeCommand(text) {
         return;
     }
 
+    // Dismiss info popup — "dismiss"
+    if (/^\s*dismiss\b/i.test(s)) {
+        dismissInfoPopup();
+        vibeAddHistory(originalText, '→ dismissed', false);
+        return;
+    }
+
+    // Info popup — "info", "info france"
+    if (/^\s*info\b/i.test(s)) {
+        const target = s.replace(/^\s*info\s*/i, '').trim();
+        if (target) {
+            const im = vibeLookupPlace(target);
+            if (im) {
+                showInfoPopup(im[0], Math.round(window.innerWidth / 2), Math.round(window.innerHeight / 3));
+                vibeAddHistory(originalText, `→ info: ${im[0]}`, false);
+            } else {
+                vibeAddHistory(originalText, `"${target}" not found`, true);
+            }
+        } else {
+            // Sample country at map center
+            const cx = canvas.width  / 2;
+            const cy = canvas.height / 2;
+            showInfoPopupAtPixel(cx, cy, Math.round(window.innerWidth / 2), Math.round(window.innerHeight / 3));
+            vibeAddHistory(originalText, '→ info at map center', false);
+        }
+        return;
+    }
+
     // Set date — "date 1648", "date 100 bce", "date -500"
     const dateVerb = /^\s*date\b/i.test(s);
     if (dateVerb) {
@@ -1312,6 +1417,88 @@ overlay.addEventListener('mouseleave', () => {
 });
 
 overlay.style.cursor = 'crosshair';
+
+// ── Info Popup ───────────────────────────────────────────────────────────────
+function fmtYear(y) {
+    if (y === 1990.1) return 'present (~1990)';
+    return y < 0 ? `${Math.abs(y)} BCE` : `${y} CE`;
+}
+
+function showInfoPopup(rawName, screenX, screenY) {
+    // Try exact lowercase key, then strip region qualifiers ( " - ", " (", " – " )
+    const norm1 = rawName.toLowerCase().trim();
+    const norm2 = norm1.replace(/\s*[-–—(].*$/, '').trim();
+    const bounds = GEODATA[norm1] || GEODATA[norm2];
+    const refs   = (typeof GEODATA_REFS !== 'undefined')
+                   ? (GEODATA_REFS[norm1] || GEODATA_REFS[norm2] || [])
+                   : [];
+
+    document.getElementById('infoPopupTitle').textContent = rawName;
+
+    const datesEl    = document.getElementById('infoPopupDates');
+    const datesValEl = document.getElementById('infoPopupDatesVal');
+    if (bounds && bounds[4] !== undefined) {
+        const from = fmtYear(bounds[4]);
+        const to   = bounds[5] !== undefined ? fmtYear(bounds[5]) : null;
+        datesValEl.textContent = (to && to !== from) ? `${from} – ${to}` : from;
+        datesEl.style.display = '';
+    } else {
+        datesEl.style.display = 'none';
+    }
+
+    const refsEl    = document.getElementById('infoPopupRefs');
+    const refsValEl = document.getElementById('infoPopupRefsVal');
+    if (refs.length > 0) {
+        refsValEl.innerHTML = refs.map(r =>
+            /^https?:\/\//.test(r)
+                ? `<a href="${r}" target="_blank" rel="noopener">${r}</a>`
+                : r
+        ).join('<br>');
+        refsEl.style.display = '';
+    } else {
+        refsEl.style.display = 'none';
+    }
+
+    const popup = document.getElementById('infoPopup');
+    popup.style.left = (screenX + 14) + 'px';
+    popup.style.top  = (screenY + 14) + 'px';
+    popup.style.display = 'block';
+    // Clamp to viewport after layout
+    requestAnimationFrame(() => {
+        const pw = popup.offsetWidth, ph = popup.offsetHeight;
+        let left = screenX + 14, top = screenY + 14;
+        if (left + pw > window.innerWidth  - 8) left = Math.max(8, screenX - pw - 6);
+        if (top  + ph > window.innerHeight - 8) top  = Math.max(8, window.innerHeight - ph - 8);
+        popup.style.left = left + 'px';
+        popup.style.top  = top  + 'px';
+    });
+}
+
+function showInfoPopupAtPixel(px, py, screenX, screenY) {
+    if (!backCtx) return;
+    const imgData = backCtx.getImageData(Math.round(px), Math.round(py), 1, 1).data;
+    if (imgData[3] === 0) return;
+    const colorKey = imgData[0] | (imgData[1] << 8) | (imgData[2] << 16);
+    const name = colorNameMap.get(colorKey);
+    if (!name) return;
+    showInfoPopup(name, screenX, screenY);
+}
+
+function dismissInfoPopup() {
+    document.getElementById('infoPopup').style.display = 'none';
+}
+
+document.getElementById('infoPopupClose').addEventListener('click', dismissInfoPopup);
+
+overlay.addEventListener('contextmenu', e => {
+    e.preventDefault();
+    const rect   = canvas.getBoundingClientRect();
+    const scaleX = canvas.width  / rect.width;
+    const scaleY = canvas.height / rect.height;
+    const px = (e.clientX - rect.left) * scaleX;
+    const py = (e.clientY - rect.top)  * scaleY;
+    showInfoPopupAtPixel(px, py, e.clientX, e.clientY);
+});
 
 // ── Floating nav zoom slider ─────────────────────────────────────────────────
 // VB zoom items: [0,1,2,3,4,5,7,11,17,23,35,59,71,119,179,359,719]
