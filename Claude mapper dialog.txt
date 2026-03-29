@@ -1,0 +1,53 @@
+When I took a closer look at the map i find that in fact there are blue lines surrounding all tiles. However some of the blue lines ate fainter than others. For instance, the vertical line separating tiles 115/90 and 115/95 is very faint. Does this help?
+
+You must be careful to render the polygons or single element items in the exact order in which they appear in the PAR in order to not hace then overwritten.
+
+I have created an Interactive Map Program with a Visual Basic Program, which is shown in the mapper directory. At present it only runs on my laptop.
+
+For background information I would like you to look at my website historymaps.org to learn the background and history of my map program.
+  
+For our next project I want to create a version of mapper.NET that will run on the web and be available to anyone who wants to run it. 
+
+As a first step I want you to try to modularize this program and make a plan to create an interactive map program called Mapper, which will run on the web.
+
+For this you will use the data that is in the mapper subdirectory. Use the data structures and the data but do not change the data in any way.
+
+You will create a form using the pattern given in the mapper.net program with all the functionality of that form.
+
+I want to see a detailed plan with the modules to be developed.
+
+We need to do this slowly but accurately so that the finished web program Mapper has the same functionality as the program mapper.NET.
+
+If possible I would like to have an estimate of how many tokens or credits or dollars it's going to take to accomplish this goal.
+
+The program shall accept user input on the date and the center of the map. Note that BCE dates are give, in the files as negative. Alternatively the user can select an area of the map using a rectangle to outline the area to be drawn. The zoom factor and other items can be modified using the check boxes, et cetera, that are on the form.
+
+***********************
+
+
+"C:\My stuff\mapper\Work Area\VB2019 project mapper.NET\bin\Release\net5.0-windows\mapper.NET.exe"
+
+https://code.claude.com/docs/en/overview  
+Why doesn't it appear right away?
+
+
+http://localhost:8080/shooter/index.html
+
+Update the CLAUDE.md file to indicate that as you do work you need to commit to Git and push them to GitHub regularly with clean commit messages so we never lose the status and the work we have done.
+
+https://github.com/csoar/ClaudeCodeTest
+
+
+From now on, I would like you to make a new Git repository for this project. I would like to then make clean commit messages, save them locally and then push them to GitHub so that we always have a saved version of the project and it's easier for us to revert back in case we make any changes. Set up a GiiHub repository, configure everything and just use Git and GitHub for the rest of the project.
+
+I want you to create an interactive mapping program that  runs on the web and is based on the program mapper.net, which you will find in the mapper sub-directory.
+
+I want you to study the data structure of the files in the mapper sub-directory.  
+
+I want to create a simple top down shooter game that is runnable in the browser I want to have some sprites at least cool kinds of character animations I want my character to have a gun. I want enemies to be coming at him from different angles I want to be able to move the arrow keys and then use my mouse to point and click at the different enemies and shoot them. We should have levels, we should progress clearly, we should have a menu screen and we should keep it relatively simple and 2D retro style.
+
+Create a plan for this game, and then we'll start executing and coding it.
+
+I want to create a simple top-down shooter game that is runnable in the browser. I want to have some sprites or at least cool kinds of character animations. I want my character to have a gun. I want enemies to be coming at him from different angles. I want to be able to move the arrow keys and then use my mouse to point and click at the different enemies and shoot them. We should have levels. We should progress clearly. We should have a menu screen and we should keep it relatively simple and 2D retro style. 
+
+Create a plan for this game and then we'll start executing and coding it. 
