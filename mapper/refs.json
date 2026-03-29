@@ -1,0 +1,575 @@
+{
+  "africa": [
+    "https://en.wikipedia.org/wiki/Africa"
+  ],
+  "europe": [
+    "https://en.wikipedia.org/wiki/Europe"
+  ],
+  "asia": [
+    "https://en.wikipedia.org/wiki/Asia"
+  ],
+  "eurasia": [
+    "https://en.wikipedia.org/wiki/Eurasia"
+  ],
+  "north america": [
+    "https://en.wikipedia.org/wiki/North_America"
+  ],
+  "south america": [
+    "https://en.wikipedia.org/wiki/South_America"
+  ],
+  "americas": [
+    "https://en.wikipedia.org/wiki/Americas"
+  ],
+  "australia": [
+    "https://en.wikipedia.org/wiki/Australia_(continent)"
+  ],
+  "oceania": [
+    "https://en.wikipedia.org/wiki/Oceania"
+  ],
+  "antarctica": [
+    "https://en.wikipedia.org/wiki/Antarctica"
+  ],
+  "mesopotamia": [
+    "https://en.wikipedia.org/wiki/Mesopotamia"
+  ],
+  "fertile crescent": [
+    "https://en.wikipedia.org/wiki/Fertile_Crescent"
+  ],
+  "sumer": [
+    "https://en.wikipedia.org/wiki/Sumer"
+  ],
+  "akkad": [
+    "https://en.wikipedia.org/wiki/Akkad_(region)"
+  ],
+  "babylonia": [
+    "https://en.wikipedia.org/wiki/Babylonia"
+  ],
+  "babylon": [
+    "https://en.wikipedia.org/wiki/Babylon"
+  ],
+  "assyria": [
+    "https://en.wikipedia.org/wiki/Assyria"
+  ],
+  "nineveh": [
+    "https://en.wikipedia.org/wiki/Nineveh"
+  ],
+  "ancient egypt": [
+    "https://en.wikipedia.org/wiki/Ancient_Egypt"
+  ],
+  "nile valley": [
+    "https://en.wikipedia.org/wiki/Nile"
+  ],
+  "nubia": [
+    "https://en.wikipedia.org/wiki/Nubia"
+  ],
+  "carthage": [
+    "https://en.wikipedia.org/wiki/Carthage"
+  ],
+  "north africa": [
+    "https://en.wikipedia.org/wiki/North_Africa"
+  ],
+  "levant": [
+    "https://en.wikipedia.org/wiki/Levant"
+  ],
+  "canaan": [
+    "https://en.wikipedia.org/wiki/Canaan"
+  ],
+  "phoenicia": [
+    "https://en.wikipedia.org/wiki/Phoenicia"
+  ],
+  "judea": [
+    "https://en.wikipedia.org/wiki/Judea"
+  ],
+  "israel (ancient)": [
+    "https://en.wikipedia.org/wiki/Kingdom_of_Israel_(united_monarchy)"
+  ],
+  "persia (ancient)": [
+    "https://en.wikipedia.org/wiki/Persia"
+  ],
+  "achaemenid empire": [
+    "https://en.wikipedia.org/wiki/Achaemenid_Empire"
+  ],
+  "anatolia": [
+    "https://en.wikipedia.org/wiki/Anatolia"
+  ],
+  "asia minor": [
+    "https://en.wikipedia.org/wiki/Anatolia"
+  ],
+  "ancient greece": [
+    "https://en.wikipedia.org/wiki/Ancient_Greece"
+  ],
+  "ancient rome": [
+    "https://en.wikipedia.org/wiki/Ancient_Rome"
+  ],
+  "roman empire": [
+    "https://en.wikipedia.org/wiki/Roman_Empire"
+  ],
+  "gaul": [
+    "https://en.wikipedia.org/wiki/Gaul"
+  ],
+  "britannia": [
+    "https://en.wikipedia.org/wiki/Roman_Britain"
+  ],
+  "iberia (ancient)": [
+    "https://en.wikipedia.org/wiki/Iberian_Peninsula"
+  ],
+  "germania": [
+    "https://en.wikipedia.org/wiki/Germania"
+  ],
+  "scythia": [
+    "https://en.wikipedia.org/wiki/Scythia"
+  ],
+  "pontic steppe": [
+    "https://en.wikipedia.org/wiki/Pontic–Caspian_steppe"
+  ],
+  "steppe": [
+    "https://en.wikipedia.org/wiki/Eurasian_Steppe"
+  ],
+  "indus valley": [
+    "https://en.wikipedia.org/wiki/Indus_Valley_Civilisation"
+  ],
+  "ancient india": [
+    "https://en.wikipedia.org/wiki/History_of_India"
+  ],
+  "maurya empire": [
+    "https://en.wikipedia.org/wiki/Maurya_Empire"
+  ],
+  "ancient china": [
+    "https://en.wikipedia.org/wiki/History_of_China"
+  ],
+  "arabia (ancient)": [
+    "https://en.wikipedia.org/wiki/Arabian_Peninsula"
+  ],
+  "arabian peninsula": [
+    "https://en.wikipedia.org/wiki/Arabian_Peninsula"
+  ],
+  "near east": [
+    "https://en.wikipedia.org/wiki/Near_East"
+  ],
+  "middle east": [
+    "https://en.wikipedia.org/wiki/Middle_East"
+  ],
+  "caucasus": [
+    "https://en.wikipedia.org/wiki/Caucasus"
+  ],
+  "central asia": [
+    "https://en.wikipedia.org/wiki/Central_Asia"
+  ],
+  "horn of africa": [
+    "https://en.wikipedia.org/wiki/Horn_of_Africa"
+  ],
+  "sub-saharan africa": [
+    "https://en.wikipedia.org/wiki/Sub-Saharan_Africa"
+  ],
+  "mali empire": [
+    "https://en.wikipedia.org/wiki/Mali_Empire"
+  ],
+  "byzantine empire": [
+    "https://en.wikipedia.org/wiki/Byzantine_Empire"
+  ],
+  "ottoman empire": [
+    "https://en.wikipedia.org/wiki/Ottoman_Empire"
+  ],
+  "mongol empire": [
+    "https://en.wikipedia.org/wiki/Mongol_Empire"
+  ],
+  "silk road": [
+    "https://en.wikipedia.org/wiki/Silk_Road"
+  ],
+  "france": [
+    "https://en.wikipedia.org/wiki/France"
+  ],
+  "germany": [
+    "https://en.wikipedia.org/wiki/Germany"
+  ],
+  "united kingdom": [
+    "https://en.wikipedia.org/wiki/United_Kingdom"
+  ],
+  "great britain": [
+    "https://en.wikipedia.org/wiki/Great_Britain"
+  ],
+  "england": [
+    "https://en.wikipedia.org/wiki/England"
+  ],
+  "scotland": [
+    "https://en.wikipedia.org/wiki/Scotland"
+  ],
+  "wales": [
+    "https://en.wikipedia.org/wiki/Wales"
+  ],
+  "ireland": [
+    "https://en.wikipedia.org/wiki/Ireland"
+  ],
+  "spain": [
+    "https://en.wikipedia.org/wiki/Spain"
+  ],
+  "portugal": [
+    "https://en.wikipedia.org/wiki/Portugal"
+  ],
+  "italy": [
+    "https://en.wikipedia.org/wiki/Italy"
+  ],
+  "greece": [
+    "https://en.wikipedia.org/wiki/Greece"
+  ],
+  "turkey": [
+    "https://en.wikipedia.org/wiki/Turkey"
+  ],
+  "ukraine": [
+    "https://en.wikipedia.org/wiki/Ukraine"
+  ],
+  "russia": [
+    "https://en.wikipedia.org/wiki/Russia"
+  ],
+  "poland": [
+    "https://en.wikipedia.org/wiki/Poland"
+  ],
+  "sweden": [
+    "https://en.wikipedia.org/wiki/Sweden"
+  ],
+  "norway": [
+    "https://en.wikipedia.org/wiki/Norway"
+  ],
+  "finland": [
+    "https://en.wikipedia.org/wiki/Finland"
+  ],
+  "denmark": [
+    "https://en.wikipedia.org/wiki/Denmark"
+  ],
+  "netherlands": [
+    "https://en.wikipedia.org/wiki/Netherlands"
+  ],
+  "belgium": [
+    "https://en.wikipedia.org/wiki/Belgium"
+  ],
+  "switzerland": [
+    "https://en.wikipedia.org/wiki/Switzerland"
+  ],
+  "austria": [
+    "https://en.wikipedia.org/wiki/Austria"
+  ],
+  "hungary": [
+    "https://en.wikipedia.org/wiki/Hungary"
+  ],
+  "romania": [
+    "https://en.wikipedia.org/wiki/Romania"
+  ],
+  "bulgaria": [
+    "https://en.wikipedia.org/wiki/Bulgaria"
+  ],
+  "serbia": [
+    "https://en.wikipedia.org/wiki/Serbia"
+  ],
+  "croatia": [
+    "https://en.wikipedia.org/wiki/Croatia"
+  ],
+  "czech republic": [
+    "https://en.wikipedia.org/wiki/Czech_Republic"
+  ],
+  "slovakia": [
+    "https://en.wikipedia.org/wiki/Slovakia"
+  ],
+  "albania": [
+    "https://en.wikipedia.org/wiki/Albania"
+  ],
+  "north macedonia": [
+    "https://en.wikipedia.org/wiki/North_Macedonia"
+  ],
+  "bosnia": [
+    "https://en.wikipedia.org/wiki/Bosnia_and_Herzegovina"
+  ],
+  "slovenia": [
+    "https://en.wikipedia.org/wiki/Slovenia"
+  ],
+  "latvia": [
+    "https://en.wikipedia.org/wiki/Latvia"
+  ],
+  "lithuania": [
+    "https://en.wikipedia.org/wiki/Lithuania"
+  ],
+  "estonia": [
+    "https://en.wikipedia.org/wiki/Estonia"
+  ],
+  "belarus": [
+    "https://en.wikipedia.org/wiki/Belarus"
+  ],
+  "moldova": [
+    "https://en.wikipedia.org/wiki/Moldova"
+  ],
+  "iceland": [
+    "https://en.wikipedia.org/wiki/Iceland"
+  ],
+  "luxembourg": [
+    "https://en.wikipedia.org/wiki/Luxembourg"
+  ],
+  "egypt": [
+    "https://en.wikipedia.org/wiki/Egypt"
+  ],
+  "israel": [
+    "https://en.wikipedia.org/wiki/Israel"
+  ],
+  "palestine": [
+    "https://en.wikipedia.org/wiki/State_of_Palestine"
+  ],
+  "jordan": [
+    "https://en.wikipedia.org/wiki/Jordan"
+  ],
+  "syria": [
+    "https://en.wikipedia.org/wiki/Syria"
+  ],
+  "lebanon": [
+    "https://en.wikipedia.org/wiki/Lebanon"
+  ],
+  "iraq": [
+    "https://en.wikipedia.org/wiki/Iraq"
+  ],
+  "iran": [
+    "https://en.wikipedia.org/wiki/Iran"
+  ],
+  "saudi arabia": [
+    "https://en.wikipedia.org/wiki/Saudi_Arabia"
+  ],
+  "yemen": [
+    "https://en.wikipedia.org/wiki/Yemen"
+  ],
+  "oman": [
+    "https://en.wikipedia.org/wiki/Oman"
+  ],
+  "uae": [
+    "https://en.wikipedia.org/wiki/United_Arab_Emirates"
+  ],
+  "kuwait": [
+    "https://en.wikipedia.org/wiki/Kuwait"
+  ],
+  "qatar": [
+    "https://en.wikipedia.org/wiki/Qatar"
+  ],
+  "bahrain": [
+    "https://en.wikipedia.org/wiki/Bahrain"
+  ],
+  "afghanistan": [
+    "https://en.wikipedia.org/wiki/Afghanistan"
+  ],
+  "pakistan": [
+    "https://en.wikipedia.org/wiki/Pakistan"
+  ],
+  "morocco": [
+    "https://en.wikipedia.org/wiki/Morocco"
+  ],
+  "algeria": [
+    "https://en.wikipedia.org/wiki/Algeria"
+  ],
+  "libya": [
+    "https://en.wikipedia.org/wiki/Libya"
+  ],
+  "tunisia": [
+    "https://en.wikipedia.org/wiki/Tunisia"
+  ],
+  "sudan": [
+    "https://en.wikipedia.org/wiki/Sudan"
+  ],
+  "ethiopia": [
+    "https://en.wikipedia.org/wiki/Ethiopia"
+  ],
+  "somalia": [
+    "https://en.wikipedia.org/wiki/Somalia"
+  ],
+  "kenya": [
+    "https://en.wikipedia.org/wiki/Kenya"
+  ],
+  "tanzania": [
+    "https://en.wikipedia.org/wiki/Tanzania"
+  ],
+  "nigeria": [
+    "https://en.wikipedia.org/wiki/Nigeria"
+  ],
+  "ghana": [
+    "https://en.wikipedia.org/wiki/Ghana"
+  ],
+  "mali": [
+    "https://en.wikipedia.org/wiki/Mali"
+  ],
+  "south africa": [
+    "https://en.wikipedia.org/wiki/South_Africa"
+  ],
+  "madagascar": [
+    "https://en.wikipedia.org/wiki/Madagascar"
+  ],
+  "congo": [
+    "https://en.wikipedia.org/wiki/Democratic_Republic_of_the_Congo"
+  ],
+  "angola": [
+    "https://en.wikipedia.org/wiki/Angola"
+  ],
+  "mozambique": [
+    "https://en.wikipedia.org/wiki/Mozambique"
+  ],
+  "zambia": [
+    "https://en.wikipedia.org/wiki/Zambia"
+  ],
+  "zimbabwe": [
+    "https://en.wikipedia.org/wiki/Zimbabwe"
+  ],
+  "india": [
+    "https://en.wikipedia.org/wiki/India"
+  ],
+  "china": [
+    "https://en.wikipedia.org/wiki/China"
+  ],
+  "japan": [
+    "https://en.wikipedia.org/wiki/Japan"
+  ],
+  "korea": [
+    "https://en.wikipedia.org/wiki/Korea"
+  ],
+  "north korea": [
+    "https://en.wikipedia.org/wiki/North_Korea"
+  ],
+  "south korea": [
+    "https://en.wikipedia.org/wiki/South_Korea"
+  ],
+  "mongolia": [
+    "https://en.wikipedia.org/wiki/Mongolia"
+  ],
+  "vietnam": [
+    "https://en.wikipedia.org/wiki/Vietnam"
+  ],
+  "thailand": [
+    "https://en.wikipedia.org/wiki/Thailand"
+  ],
+  "myanmar": [
+    "https://en.wikipedia.org/wiki/Myanmar"
+  ],
+  "cambodia": [
+    "https://en.wikipedia.org/wiki/Cambodia"
+  ],
+  "laos": [
+    "https://en.wikipedia.org/wiki/Laos"
+  ],
+  "indonesia": [
+    "https://en.wikipedia.org/wiki/Indonesia"
+  ],
+  "malaysia": [
+    "https://en.wikipedia.org/wiki/Malaysia"
+  ],
+  "philippines": [
+    "https://en.wikipedia.org/wiki/Philippines"
+  ],
+  "uzbekistan": [
+    "https://en.wikipedia.org/wiki/Uzbekistan"
+  ],
+  "kazakhstan": [
+    "https://en.wikipedia.org/wiki/Kazakhstan"
+  ],
+  "georgia": [
+    "https://en.wikipedia.org/wiki/Georgia_(country)"
+  ],
+  "armenia": [
+    "https://en.wikipedia.org/wiki/Armenia"
+  ],
+  "azerbaijan": [
+    "https://en.wikipedia.org/wiki/Azerbaijan"
+  ],
+  "nepal": [
+    "https://en.wikipedia.org/wiki/Nepal"
+  ],
+  "bangladesh": [
+    "https://en.wikipedia.org/wiki/Bangladesh"
+  ],
+  "sri lanka": [
+    "https://en.wikipedia.org/wiki/Sri_Lanka"
+  ],
+  "united states": [
+    "https://en.wikipedia.org/wiki/United_States"
+  ],
+  "canada": [
+    "https://en.wikipedia.org/wiki/Canada"
+  ],
+  "mexico": [
+    "https://en.wikipedia.org/wiki/Mexico"
+  ],
+  "brazil": [
+    "https://en.wikipedia.org/wiki/Brazil"
+  ],
+  "argentina": [
+    "https://en.wikipedia.org/wiki/Argentina"
+  ],
+  "chile": [
+    "https://en.wikipedia.org/wiki/Chile"
+  ],
+  "peru": [
+    "https://en.wikipedia.org/wiki/Peru"
+  ],
+  "colombia": [
+    "https://en.wikipedia.org/wiki/Colombia"
+  ],
+  "venezuela": [
+    "https://en.wikipedia.org/wiki/Venezuela"
+  ],
+  "cuba": [
+    "https://en.wikipedia.org/wiki/Cuba"
+  ],
+  "rome": [
+    "https://en.wikipedia.org/wiki/Rome"
+  ],
+  "athens": [
+    "https://en.wikipedia.org/wiki/Athens"
+  ],
+  "jerusalem": [
+    "https://en.wikipedia.org/wiki/Jerusalem"
+  ],
+  "ur": [
+    "https://en.wikipedia.org/wiki/Ur"
+  ],
+  "babylon (city)": [
+    "https://en.wikipedia.org/wiki/Babylon"
+  ],
+  "persepolis": [
+    "https://en.wikipedia.org/wiki/Persepolis"
+  ],
+  "carthage (city)": [
+    "https://en.wikipedia.org/wiki/Carthage"
+  ],
+  "alexandria": [
+    "https://en.wikipedia.org/wiki/Alexandria"
+  ],
+  "istanbul": [
+    "https://en.wikipedia.org/wiki/Istanbul"
+  ],
+  "constantinople": [
+    "https://en.wikipedia.org/wiki/Constantinople"
+  ],
+  "byzantium": [
+    "https://en.wikipedia.org/wiki/Byzantium"
+  ],
+  "london": [
+    "https://en.wikipedia.org/wiki/London"
+  ],
+  "paris": [
+    "https://en.wikipedia.org/wiki/Paris"
+  ],
+  "berlin": [
+    "https://en.wikipedia.org/wiki/Berlin"
+  ],
+  "moscow": [
+    "https://en.wikipedia.org/wiki/Moscow"
+  ],
+  "cairo": [
+    "https://en.wikipedia.org/wiki/Cairo"
+  ],
+  "baghdad": [
+    "https://en.wikipedia.org/wiki/Baghdad"
+  ],
+  "tehran": [
+    "https://en.wikipedia.org/wiki/Tehran"
+  ],
+  "delhi": [
+    "https://en.wikipedia.org/wiki/Delhi"
+  ],
+  "beijing": [
+    "https://en.wikipedia.org/wiki/Beijing"
+  ],
+  "new york": [
+    "https://en.wikipedia.org/wiki/New_York_City"
+  ]
+}

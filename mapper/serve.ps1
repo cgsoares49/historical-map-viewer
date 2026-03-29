@@ -4,6 +4,7 @@ $port = 8080
 $mimeTypes = @{
     '.html' = 'text/html'
     '.js'   = 'application/javascript'
+    '.json' = 'application/json'
     '.css'  = 'text/css'
     '.txt'  = 'text/plain; charset=utf-8'
     '.prn'  = 'text/plain; charset=utf-8'
@@ -27,15 +28,35 @@ try {
 while ($listener.IsListening) {
     try {
         $ctx = $listener.GetContext()
+        $method    = $ctx.Request.HttpMethod
         $localPath = $ctx.Request.Url.LocalPath
         if ($localPath -eq '/') { $localPath = '/mapper.html' }
+
+        # ── POST /save-refs  (save refs.json) ────────────────────────────────
+        if ($method -eq 'POST' -and $localPath -eq '/save-refs') {
+            $reader = New-Object System.IO.StreamReader($ctx.Request.InputStream)
+            $body   = $reader.ReadToEnd()
+            $reader.Close()
+            $refsPath = Join-Path $root 'refs.json'
+            [System.IO.File]::WriteAllText($refsPath, $body, [System.Text.Encoding]::UTF8)
+            Write-Host "POST /save-refs  ($($body.Length) bytes)" -ForegroundColor Cyan
+            $ctx.Response.ContentType   = 'application/json'
+            $ctx.Response.StatusCode    = 200
+            $ok = [System.Text.Encoding]::UTF8.GetBytes('{"ok":true}')
+            $ctx.Response.ContentLength64 = $ok.Length
+            $ctx.Response.OutputStream.Write($ok, 0, $ok.Length)
+            $ctx.Response.OutputStream.Close()
+            continue
+        }
+
+        # ── GET  (serve static files) ────────────────────────────────────────
         $filePath = Join-Path $root ($localPath.TrimStart('/').Replace('/', '\'))
         Write-Host "GET $localPath"
         if (Test-Path $filePath -PathType Leaf) {
-            $ext = [System.IO.Path]::GetExtension($filePath).ToLower()
+            $ext  = [System.IO.Path]::GetExtension($filePath).ToLower()
             $mime = if ($mimeTypes[$ext]) { $mimeTypes[$ext] } else { 'application/octet-stream' }
             $bytes = [System.IO.File]::ReadAllBytes($filePath)
-            $ctx.Response.ContentType = $mime
+            $ctx.Response.ContentType     = $mime
             $ctx.Response.ContentLength64 = $bytes.Length
             $ctx.Response.OutputStream.Write($bytes, 0, $bytes.Length)
         } else {
