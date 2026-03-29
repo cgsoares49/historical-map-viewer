@@ -284,6 +284,8 @@
             padding: 6px 8px 5px;
             border-bottom: 1px solid #1a3a5e;
             gap: 6px;
+            cursor: move;
+            user-select: none;
         }
         #infoPopupTitle {
             color: #00eeff;
@@ -540,9 +542,9 @@
 
 <!-- ── Info Popup ── -->
 <div id="infoPopup">
-    <div id="infoPopupHeader">
+    <div id="infoPopupHeader" title="Drag to move">
         <span id="infoPopupTitle"></span>
-        <button id="infoPopupClose" title="Dismiss (or type 'dismiss')">×</button>
+        <button id="infoPopupClose" title="Dismiss">×</button>
     </div>
     <div id="infoPopupBody">
         <div id="infoPopupDates" style="display:none;">
@@ -552,6 +554,9 @@
         <div id="infoPopupRefs" style="display:none;">
             <div class="info-section-label">References</div>
             <div id="infoPopupRefsVal" class="info-section-value"></div>
+        </div>
+        <div style="text-align:right; margin-top:4px;">
+            <button id="infoPopupDismiss">Dismiss</button>
         </div>
     </div>
 </div>
@@ -1507,6 +1512,32 @@ function dismissInfoPopup() {
 }
 
 document.getElementById('infoPopupClose').addEventListener('click', dismissInfoPopup);
+document.getElementById('infoPopupDismiss').addEventListener('click', dismissInfoPopup);
+
+// Drag-to-move on the popup header
+(function () {
+    const popup  = document.getElementById('infoPopup');
+    const header = document.getElementById('infoPopupHeader');
+    let dragging = false, ox = 0, oy = 0;
+    header.addEventListener('mousedown', e => {
+        if (e.target === document.getElementById('infoPopupClose')) return;
+        dragging = true;
+        ox = e.clientX - popup.offsetLeft;
+        oy = e.clientY - popup.offsetTop;
+        e.preventDefault();
+    });
+    document.addEventListener('mousemove', e => {
+        if (!dragging) return;
+        let left = e.clientX - ox;
+        let top  = e.clientY - oy;
+        // Clamp to viewport
+        left = Math.max(0, Math.min(left, window.innerWidth  - popup.offsetWidth));
+        top  = Math.max(0, Math.min(top,  window.innerHeight - popup.offsetHeight));
+        popup.style.left = left + 'px';
+        popup.style.top  = top  + 'px';
+    });
+    document.addEventListener('mouseup', () => { dragging = false; });
+})();
 
 overlay.addEventListener('contextmenu', e => {
     e.preventDefault();
