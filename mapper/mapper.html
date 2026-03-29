@@ -1475,13 +1475,19 @@ function showInfoPopup(rawName, screenX, screenY) {
 }
 
 function showInfoPopupAtPixel(px, py, screenX, screenY) {
-    if (!backCtx) return;
-    const imgData = backCtx.getImageData(Math.round(px), Math.round(py), 1, 1).data;
-    if (imgData[3] === 0) return;
-    const colorKey = imgData[0] | (imgData[1] << 8) | (imgData[2] << 16);
-    const name = colorNameMap.get(colorKey);
-    if (!name) return;
-    showInfoPopup(name, screenX, screenY);
+    if (!backCtx) { showInfoPopup('(map not ready)', screenX, screenY); return; }
+    let name = null;
+    try {
+        const imgData = backCtx.getImageData(Math.round(px), Math.round(py), 1, 1).data;
+        if (imgData[3] > 0) {
+            const colorKey = imgData[0] | (imgData[1] << 8) | (imgData[2] << 16);
+            name = colorNameMap.get(colorKey) || null;
+        }
+    } catch (err) {
+        showInfoPopup(`(canvas error: ${err.message})`, screenX, screenY);
+        return;
+    }
+    showInfoPopup(name || '(water / no data)', screenX, screenY);
 }
 
 function dismissInfoPopup() {
