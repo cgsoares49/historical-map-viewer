@@ -3,7 +3,8 @@ merge_geodata.py
 Merges geodata_from_par.csv into js/geodata.js.
 Hand-curated entries win; PAR entries are added only if the name
 (case-insensitive) is not already present.
-Dates from the PAR data are appended as inline comments.
+Earliest date stored as 5th array element (integer year, negative = BCE).
+Date range also appended as inline comment for readability.
 """
 
 import os, csv, re
@@ -11,6 +12,20 @@ import os, csv, re
 MAPPER_DIR = os.path.dirname(os.path.abspath(__file__))
 GEODATA_JS  = os.path.join(MAPPER_DIR, 'js', 'geodata.js')
 PAR_CSV     = os.path.join(MAPPER_DIR, 'geodata_from_par.csv')
+
+def parse_year_str(s):
+    """Parse '2286 BCE' → -2286, '100 CE' → 100, '' → None."""
+    s = s.strip()
+    if not s:
+        return None
+    parts = s.split()
+    try:
+        y = int(parts[0])
+    except ValueError:
+        return None
+    if len(parts) >= 2 and parts[1].upper() == 'BCE':
+        return -y
+    return y
 
 # ── Read existing keys from geodata.js ───────────────────────────────────────
 with open(GEODATA_JS, encoding='utf-8') as f:
@@ -33,9 +48,10 @@ with open(PAR_CSV, encoding='utf-8', newline='') as f:
             maxLat = float(row['MaxLat'])
         except ValueError:
             continue
-        earliest = row['EarliestDate'].strip()
-        latest   = row['LatestDate'].strip()
-        new_entries.append((name, minLon, minLat, maxLon, maxLat, earliest, latest))
+        earliest     = row['EarliestDate'].strip()
+        latest       = row['LatestDate'].strip()
+        earliest_yr  = parse_year_str(earliest)
+        new_entries.append((name, minLon, minLat, maxLon, maxLat, earliest, latest, earliest_yr))
 
 print(f"New entries to add: {len(new_entries)}")
 
@@ -48,9 +64,12 @@ lines = []
 lines.append('')
 lines.append('    // ── From primaries / PAR tile data ─────────────────────────────────────────')
 
-for name, minLon, minLat, maxLon, maxLat, earliest, latest in sorted(new_entries, key=lambda x: x[0].lower()):
+for name, minLon, minLat, maxLon, maxLat, earliest, latest, earliest_yr in sorted(new_entries, key=lambda x: x[0].lower()):
     key    = name.lower().replace("'", "\\'")   # escape apostrophes in JS string
-    coords = f"[{fmt(minLon):>5},{fmt(minLat):>5},{fmt(maxLon):>6},{fmt(maxLat):>5}]"
+    if earliest_yr is not None:
+        coords = f"[{fmt(minLon):>5},{fmt(minLat):>5},{fmt(maxLon):>6},{fmt(maxLat):>5}, {earliest_yr}]"
+    else:
+        coords = f"[{fmt(minLon):>5},{fmt(minLat):>5},{fmt(maxLon):>6},{fmt(maxLat):>5}]"
     comment = ''
     if earliest or latest:
         comment = f"  // {earliest}–{latest}" if earliest and latest else f"  // {earliest or latest}"

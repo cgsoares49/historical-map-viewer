@@ -224,1094 +224,1094 @@ const GEODATA = {
     'new york':           [ -75,  40,  -73,  41],
 
     // ── From primaries / PAR tile data ─────────────────────────────────────────
-    '(marhashi)':                      [   45,   25,    60,   35],  // 2286 BCE–2005 BCE
-    'abhiras':                         [   70,   25,    75,   30],  // 610 BCE–317 BCE
-    'abilianikhi':                     [   42,   40,    48,   45],  // 880 BCE–591 BCE
-    'abisara':                         [   70,   30,    80,   35],  // 337 BCE–326 BCE
-    'aboriginal peoples':              [   95,  -45,   165,   20],  // 2400 BCE–1 BCE
-    'acarnania':                       [   20,   35,    25,   40],  // 695 BCE–1 BCE
-    'achaea':                          [   12,   35,    25,   45],  // 720 BCE–280 BCE
-    'achaean league':                  [   20,   35,    25,   40],  // 280 BCE–1 BCE
-    'achaeans':                        [   18,   35,    25,   45],  // 1100 BCE–492 BCE
-    'adena culture':                   [  -90,   35,   -75,   45],  // 800 BCE–1 BCE
-    'aegina':                          [   20,   35,    25,   40],  // 520 BCE–1 BCE
-    'aeniania':                        [   20,   35,    25,   40],  // 695 BCE–1 BCE
-    'aeolian league':                  [   25,   35,    30,   40],  // 696 BCE–513 BCE
-    'aeolians':                        [   18,   35,    42,   50],  // 1223 BCE–480 BCE
-    'aequi':                           [   12,   40,    18,   45],  // 800 BCE–302 BCE
-    'aetolia':                         [   20,   35,    25,   40],  // 695 BCE–370 CE
-    'aetolian league':                 [   20,   35,    25,   40],  // 309 BCE–1 BCE
-    'agathoclid ally':                 [   10,   35,    20,   45],  // 308 BCE–289 BCE
-    'ahhiya':                          [   25,   30,    35,   40],  // 1429 BCE–1202 BCE
-    'ainu':                            [  136,   40,   160,   55],  // 2400 BCE–1 BCE
-    'aitna':                           [   10,   35,    20,   40],  // 466 BCE–461 BCE
-    'akkadian empire':                 [   30,   25,    60,   40],  // 2311 BCE–2154 BCE
-    'akkadian tributary':              [   45,   25,    60,   40],  // 2297 BCE–2220 BCE
-    'akraephia':                       [   20,   35,    25,   40],  // 386 BCE–378 BCE
-    'akragas':                         [   10,   35,    20,   40],  // 500 BCE–1 BCE
-    'alasiya':                         [   30,   30,    35,   40],  // 1875 BCE–1200 BCE
-    'alavi':                           [   80,   25,    85,   30],  // 610 BCE–467 BCE
-    'albanians':                       [   42,   35,    54,   45],  // 612 BCE–1 BCE
-    'aleuts':                          [ -170,   55,  -150,   65],  // 2400 BCE–1 BCE
-    'alfaterni':                       [   12,   40,    18,   45],  // 438 BCE–1 BCE
-    'allabria':                        [   45,   35,    50,   40],  // 860 BCE–716 BCE
-    'allakappa':                       [   80,   25,    85,   30],  // 610 BCE–467 BCE
-    'allied armies of the eastern satraps': [   50,   30,    65,   40],  // 318 BCE–317 BCE
-    'alshe':                           [   40,   35,    45,   40],  // 1367 BCE–1240 BCE
-    'alzi':                            [   40,   35,    45,   40],  // 931 BCE–803 BCE
-    'amazonian peoples':               [  -80,  -15,   -40,   10],  // 2400 BCE–1 BCE
-    'ambashthas':                      [   70,   30,    75,   35],  // 610 BCE–400 BCE
-    'ambracia':                        [   20,   35,    25,   40],  // 365 BCE–294 BCE
-    'ammonites':                       [   35,   30,    40,   35],  // 1280 BCE–587 BCE
-    'amorite ebla':                    [   35,   30,    40,   40],  // 1900 BCE–1825 BCE
-    'amorite mari':                    [   35,   30,    45,   40],  // 2100 BCE–1760 BCE
-    'amorite tuttul':                  [   35,   35,    45,   40],  // 1900 BCE–1825 BCE
-    'amorites':                        [   35,   30,    50,   40],  // 2298 BCE–1081 BCE
-    'amurru':                          [   30,   30,    40,   40],  // 1728 BCE–968 BCE
-    'anarta':                          [   70,   20,    75,   25],  // 610 BCE–317 BCE
-    'andean peoples':                  [  -85,  -40,   -65,    5],  // 2400 BCE–1 BCE
-    'andhra':                          [   80,   15,    85,   20],  // 610 BCE–300 BCE
-    'andorra':                         [    0,   40,     6,   45],  // 1990 CE–present
-    'anga':                            [   80,   20,    90,   30],  // 775 BCE–530 BCE
-    'anshan':                          [   45,   25,    55,   35],  // 2348 BCE–653 BCE
-    'antandros':                       [   25,   35,    30,   40],  // 478 BCE–410 BCE
-    'anti macedon alliance':           [   20,   35,    25,   40],  // 338 BCE–338 BCE
-    'anti roman alliance':             [   12,   40,    18,   45],  // 341 BCE–338 BCE
-    'anti spartan alliance':           [   18,   30,    35,   45],  // 395 BCE–386 BCE
-    'antigonid ally':                  [   20,   30,    36,   45],  // 315 BCE–289 BCE
-    'antigonid kingdom':               [   15,   30,    50,   45],  // 306 BCE–281 CE
-    'antigua and barbuda':             [  -65,   15,   -60,   20],  // 1990 CE–present
-    'antipatrid ally':                 [   18,   35,    36,   45],  // 310 BCE–305 BCE
-    'anupa':                           [   75,   20,    80,   25],  // 610 BCE–348 BCE
-    'anuradhapura':                    [   75,    5,    85,   10],  // 325 BCE–1 BCE
-    'aparytae':                        [   70,   30,    75,   35],  // 610 BCE–543 BCE
-    'apollonia':                       [   18,   40,    24,   45],  // 490 BCE–283 BCE
-    'arabs':                           [   30,   15,    60,   35],  // 1000 BCE–1 BCE
-    'aram damascus':                   [   30,   25,    40,   40],  // 1145 BCE–605 BCE
-    'aram-naharim':                    [   35,   35,    40,   40],  // 1145 BCE–1105 BCE
-    'aram-zobah':                      [   35,   30,    40,   35],  // 1145 BCE–750 BCE
-    'aramaeans':                       [   35,   30,    50,   40],  // 1280 BCE–1 BCE
-    'arcadia':                         [   20,   35,    25,   40],  // 742 BCE–445 BCE
-    'arcadian league':                 [   20,   35,    25,   40],  // 370 BCE–1 BCE
-    'arctic marine mammal hunters':    [  100,   60,   192,   80],  // 2400 BCE–1 BCE
-    'arctic peoples':                  [ -170,   55,   -40,   75],  // 2400 BCE–1 BCE
-    'ardiaei':                         [   18,   40,    24,   45],  // 346 BCE–1 BCE
-    'argaric culture':                 [   -5,   35,     0,   40],  // 2200 BCE–1500 BCE
-    'argos':                           [   20,   35,    25,   40],  // 494 BCE–1 BCE
-    'aryan people':                    [   60,   25,    80,   40],  // 2050 BCE–531 BCE
-    'arzawa':                          [   24,   30,    40,   45],  // 1775 BCE–1201 BCE
-    'asinia':                          [   20,   35,    25,   40],  // 780 BCE–758 BCE
-    'assaka':                          [   75,   15,    85,   20],  // 725 BCE–300 BCE
-    'assakenoi':                       [   70,   30,    75,   40],  // 610 BCE–516 BCE
-    'assyrian kingdoms':               [   40,   30,    50,   40],  // 2303 BCE–1920 BCE
-    'assyrian revolt':                 [   40,   30,    45,   40],  // 1195 BCE–1055 BCE
-    'asvaka':                          [   70,   30,    75,   40],  // 610 BCE–516 BCE
-    'athamania':                       [   20,   35,    25,   40],  // 430 BCE–1 BCE
-    'athenian ally':                   [   25,   35,    30,   40],  // 384 BCE–378 BCE
-    'atropatene':                      [   40,   35,    54,   45],  // 319 BCE–1 BCE
-    'atuna':                           [   30,   35,    40,   40],  // 826 BCE–680 BCE
-    'audumbaras':                      [   70,   30,    80,   35],  // 600 BCE–323 BCE
-    'aurunci':                         [   12,   40,    18,   45],  // 800 BCE–334 BCE
-    'austro-asiatic peoples':          [   90,    5,   115,   25],  // 2400 BCE–1 BCE
-    'austronesians':                   [   95,  -20,   180,   30],  // 2400 BCE–1 BCE
-    'avanti':                          [   70,   20,    85,   30],  // 850 BCE–400 BCE
-    'azzi-hayasa':                     [   35,   35,    45,   45],  // 1505 BCE–1200 BCE
-    'ba':                              [  105,   25,   115,   35],  // 1075 BCE–316 BCE
-    'babylonia (chaldaeans)':          [   35,   25,    50,   40],  // 780 BCE–616 BCE
-    'babylonia (isin dynasty)':        [   40,   25,    55,   40],  // 1157 BCE–977 BCE
-    'babylonian revolt':               [   40,   25,    50,   35],  // 852 BCE–549 BCE
-    'babylonian tributary':            [   35,   30,    55,   40],  // 1763 BCE–1701 BCE
-    'bactrians':                       [   60,   30,    75,   40],  // 1700 BCE–545 BCE
-    'bahamas':                         [  -85,   20,   -70,   30],  // 1990 CE–present
-    'baipu':                           [  105,   25,   115,   35],  // 770 BCE–523 BCE
-    'balts':                           [    8,   50,    40,   60],  // 2050 BCE–1 BCE
-    'bantu peoples':                   [    5,  -10,    30,   10],  // 2000 BCE–1 BCE
-    'bao':                             [  105,   30,   110,   35],  // 771 BCE–500 BCE
-    'bao clan':                        [  115,   35,   120,   40],  // 500 BCE–481 BCE
-    'barbados':                        [  -60,   10,   -55,   15],  // 1990 CE–present
-    'bedouins':                        [   30,   25,    40,   35],  // 2048 BCE–843 BCE
-    'belize':                          [  -90,   15,   -85,   20],  // 1990 CE–present
-    'bell beaker peoples':             [   -8,   45,    32,   65],  // 2400 BCE–2050 BCE
-    'benin':                           [    0,    5,     5,   15],  // 1990 CE–present
-    'berbers':                         [  -15,   25,    15,   40],  // 2400 BCE–1 BCE
-    'bessaei':                         [   18,   40,    30,   45],  // 469 BCE–341 BCE
-    'bhagga':                          [   80,   25,    85,   30],  // 610 BCE–560 BCE
-    'bhojas':                          [   75,   20,    80,   25],  // 321 BCE–301 BCE
-    'bhutan':                          [   85,   25,    95,   30],  // 1990 CE–present
-    'bit agusi':                       [   35,   35,    40,   40],  // 900 BCE–605 BCE
-    'bit-adini':                       [   35,   35,    40,   40],  // 1076 BCE–857 BCE
-    'bit-bahiani':                     [   35,   35,    45,   40],  // 1076 BCE–896 BCE
-    'bit-halupe':                      [   35,   35,    45,   40],  // 1076 BCE–894 BCE
-    'bit-zamani':                      [   35,   35,    45,   40],  // 1025 BCE–882 BCE
-    'bithynia':                        [   24,   40,    36,   45],  // 323 BCE–1 BCE
-    'bithynians':                      [   24,   40,    36,   45],  // 696 BCE–552 BCE
-    'biyang':                          [  115,   30,   120,   35],  // 770 BCE–563 BCE
-    'bo':                              [  110,   30,   115,   35],  // 770 BCE–640 BCE
-    'boeotia':                         [   20,   35,    25,   40],  // 730 BCE–287 BCE
-    'bolivia':                         [  -70,  -25,   -55,   -5],  // 1990 CE–present
-    'bosnia and herzegovina':          [   12,   40,    24,   50],  // 1990 CE–present
-    'bosporan kingdom':                [   30,   40,    42,   50],  // 480 BCE–1 BCE
-    'botswana':                        [   15,  -30,    30,  -15],  // 1990 CE–present
-    'bottiaeans':                      [   18,   40,    24,   45],  // 650 BCE–492 BCE
-    'brahmana':                        [   80,   25,    85,   30],  // 610 BCE–467 BCE
-    'brunei':                          [  110,    0,   120,   10],  // 1990 CE–present
-    'bruttian league':                 [   12,   35,    20,   45],  // 356 BCE–1 BCE
-    'bruttians':                       [   15,   35,    20,   40],  // 450 BCE–400 BCE
-    'bruttii':                         [   15,   35,    20,   40],  // 500 BCE–436 BCE
-    'bu geng':                         [  110,   30,   115,   35],  // 770 BCE–533 BCE
-    'burkina faso':                    [  -10,    5,     5,   20],  // 1990 CE–present
-    'burundi':                         [   25,   -5,    35,    0],  // 1990 CE–present
-    'cai':                             [  110,   30,   120,   35],  // 770 BCE–447 BCE
-    'california peoples':              [ -126,   30,  -115,   45],  // 2400 BCE–1 BCE
-    'callatis':                        [   24,   40,    30,   45],  // 359 BCE–1 BCE
-    'cameroon':                        [    5,    0,    20,   15],  // 1990 CE–present
-    'campania':                        [   12,   40,    18,   45],  // 438 BCE–343 BCE
-    'campanians':                      [   10,   35,    15,   40],  // 370 BCE–344 BCE
-    'canaanites':                      [   30,   30,    40,   35],  // 1850 BCE–1115 BCE
-    'cao':                             [  110,   30,   120,   40],  // 770 BCE–487 BCE
-    'cape verde':                      [  -30,   10,   -20,   20],  // 1990 CE–present
-    'carduchii':                       [   40,   35,    45,   40],  // 385 BCE–384 BCE
-    'carians':                         [   25,   35,    30,   40],  // 1201 BCE–543 BCE
-    'caribbean peoples':               [  -85,    5,   -60,   30],  // 2400 BCE–1 BCE
-    'carthaginian ally':               [   -5,   30,    20,   40],  // 500 BCE–277 BCE
-    'carthaginian tributary':          [   10,   35,    15,   40],  // 405 BCE–375 BCE
-    'carystus':                        [   20,   35,    25,   40],  // 386 BCE–294 BCE
-    'catane':                          [   10,   35,    20,   40],  // 461 BCE–1 BCE
-    'caucasians':                      [   30,   35,    50,   45],  // 2400 BCE–690 BCE
-    'cedi':                            [   75,   20,    85,   30],  // 825 BCE–319 BCE
-    'celtic mercenaries':              [   18,   35,    35,   45],  // 276 BCE–274 BCE
-    'celto-ligurians':                 [  -16,   35,    24,   60],  // 2050 BCE–1 BCE
-    'celts':                           [    0,   35,    36,   55],  // 1250 BCE–1 BCE
-    'central african peoples':         [    5,  -10,    40,   15],  // 2400 BCE–1 BCE
-    'central african republic':        [   10,    0,    30,   15],  // 1990 CE–present
-    'chad':                            [   10,    5,    25,   25],  // 1990 CE–present
-    'chadian people':                  [    5,   10,    20,   20],  // 2250 BCE–1 BCE
-    'chalcidian league':               [   18,   35,    30,   45],  // 421 BCE–353 BCE
-    'chalcis':                         [   20,   35,    25,   40],  // 710 BCE–294 BCE
-    'chaldaea':                        [   40,   25,    50,   35],  // 800 BCE–790 BCE
-    'changdi':                         [  115,   35,   120,   40],  // 770 BCE–607 BCE
-    'chao':                            [  115,   30,   120,   35],  // 991 BCE–601 BCE
-    'chaonia':                         [   15,   35,    25,   45],  // 430 BCE–350 BCE
-    'chaonians':                       [   18,   40,    24,   45],  // 500 BCE–430 BCE
-    'chavin culture':                  [  -80,  -15,   -70,   -5],  // 900 BCE–1 BCE
-    'chen':                            [  110,   30,   120,   35],  // 770 BCE–479 BCE
-    'cheng':                           [  110,   35,   120,   40],  // 770 BCE–408 BCE
-    'chera':                           [   75,    5,    80,   15],  // 325 BCE–1 BCE
-    'chinchorro culture':              [  -75,  -25,   -65,  -15],  // 2400 BCE–1 BCE
-    'chios':                           [   25,   35,    30,   40],  // 386 BCE–1 BCE
-    'chola':                           [   75,   10,    85,   15],  // 325 BCE–1 BCE
-    'chorrera culture':                [  -85,   -5,   -75,    0],  // 1300 BCE–1 BCE
-    'chu':                             [  105,   20,   125,   40],  // 1075 BCE–1 BCE
-    'cilicia':                         [   30,   35,    40,   40],  // 588 BCE–539 BCE
-    'cimmerian kingdom':               [   25,   35,    42,   45],  // 654 BCE–637 BCE
-    'cimmerians':                      [   18,   35,    54,   50],  // 1450 BCE–1 BCE
-    'civil war':                       [   15,   35,   120,   40],  // 547 BCE–314 BCE
-    'clan warfare':                    [  115,   35,   120,   40],  // 546 BCE–532 BCE
-    'colchis':                         [   36,   40,    48,   45],  // 1250 BCE–1 BCE
-    'comoros':                         [   40,  -15,    50,  -10],  // 1990 CE–present
-    'cong':                            [  105,   30,   110,   35],  // 770 BCE–600 BCE
-    'corcyra':                         [   12,   35,    25,   45],  // 665 BCE–300 BCE
-    'corinthia':                       [   10,   35,    25,   45],  // 747 BCE–338 BCE
-    'coronea':                         [   20,   35,    25,   40],  // 386 BCE–378 BCE
-    'cossaeans':                       [   45,   30,    50,   35],  // 330 BCE–324 BCE
-    'costa rica':                      [  -90,    5,   -80,   15],  // 1990 CE–present
-    'cretan city states':              [   20,   30,    30,   40],  // 500 BCE–1 BCE
-    'croton':                          [   15,   35,    20,   40],  // 550 BCE–430 BCE
-    'cushitic people':                 [   35,    0,    55,   15],  // 1000 BCE–1 BCE
-    'cypriot kingdoms':                [   30,   30,    35,   40],  // 1180 BCE–344 BCE
-    'cyprus':                          [   30,   30,    35,   40],  // 1990 CE–present
-    'cyzicus':                         [   24,   40,    30,   45],  // 323 BCE–279 BCE
-    'côte d\'ivoire':                  [  -10,    0,     0,   15],  // 1990 CE–present
-    'd\'mt':                           [   35,   10,    45,   20],  // 980 BCE–1 BCE
-    'dai':                             [  108,   35,   120,   45],  // 770 BCE–457 BCE
-    'dai(2)':                          [  110,   30,   120,   35],  // 770 BCE–713 BCE
-    'dali':                            [  105,   35,   110,   40],  // 550 BCE–1 BCE
-    'dan':                             [  105,   25,   110,   35],  // 770 BCE–670 BCE
-    'dao':                             [  110,   30,   115,   35],  // 770 BCE–637 BCE
-    'daoi':                            [   48,   35,    60,   50],  // 329 BCE–1 BCE
-    'dapeng':                          [  115,   30,   120,   35],  // 1350 BCE–1208 BCE
-    'daradas':                         [   70,   35,    75,   40],  // 610 BCE–1 BCE
-    'dardani':                         [   18,   40,    24,   45],  // 800 BCE–1 BCE
-    'dasarnas':                        [   75,   20,    80,   25],  // 610 BCE–349 BCE
-    'dassaretis':                      [   18,   40,    24,   45],  // 500 BCE–399 BCE
-    'daunians':                        [   12,   40,    18,   45],  // 800 BCE–323 BCE
-    'dayenu':                          [   40,   35,    45,   40],  // 735 BCE–734 BCE
-    'delian league':                   [   10,   25,    42,   45],  // 479 BCE–404 BCE
-    'delphi':                          [   20,   35,    25,   40],  // 448 BCE–448 BCE
-    'deng':                            [  110,   30,   115,   35],  // 771 BCE–678 BCE
-    'desert cultures':                 [ -120,   20,   -95,   45],  // 2400 BCE–1 BCE
-    'di':                              [  105,   30,   120,   40],  // 770 BCE–407 BCE
-    'di(2)':                           [  100,   30,   110,   35],  // 771 BCE–361 BCE
-    'diauekhi':                        [   36,   35,    48,   45],  // 931 BCE–591 BCE
-    'dilmun':                          [   45,   20,    55,   30],  // 2400 BCE–1550 BCE
-    'djibouti':                        [   40,   10,    45,   15],  // 1990 CE–present
-    'dolopia':                         [   20,   35,    25,   40],  // 695 BCE–1 BCE
-    'domain of amphimakhos':           [   35,   30,    50,   40],  // 319 BCE–316 BCE
-    'domain of antigenes':             [   45,   25,    55,   35],  // 319 BCE–316 BCE
-    'domain of antigonus':             [   20,   25,    75,   45],  // 319 BCE–306 BCE
-    'domain of asandros':              [   25,   35,    35,   40],  // 319 BCE–314 BCE
-    'domain of cassander':             [   15,   35,    35,   45],  // 319 BCE–304 BCE
-    'domain of eudemus':               [   70,   25,    80,   35],  // 319 BCE–316 BCE
-    'domain of eumenes':               [   40,   25,    65,   40],  // 317 BCE–315 BCE
-    'domain of lysimakhos':            [   18,   40,    30,   50],  // 319 BCE–305 BCE
-    'domain of mithridates':           [   30,   35,    40,   45],  // 301 BCE–281 BCE
-    'domain of oxyartes':              [   65,   30,    75,   40],  // 319 BCE–307 BCE
-    'domain of peithon':               [   40,   30,    65,   40],  // 319 BCE–316 BCE
-    'domain of peithon (son of agenor)': [   65,   20,    75,   35],  // 319 BCE–316 BCE
-    'domain of peukestas':             [   45,   25,    60,   35],  // 319 BCE–315 BCE
-    'domain of philip':                [   50,   30,    65,   40],  // 319 BCE–318 BCE
-    'domain of philoxenos':            [   30,   35,    40,   40],  // 319 BCE–318 BCE
-    'domain of polyperchon':           [   20,   35,    30,   40],  // 316 BCE–309 BCE
-    'domain of ptolemy':               [   20,   20,    45,   40],  // 319 BCE–305 BCE
-    'domain of seleucus':              [   40,   25,    75,   40],  // 319 BCE–1 BCE
-    'domain of sibyrtios':             [   55,   25,    75,   35],  // 319 BCE–306 BCE
-    'domain of stasandros':            [   55,   25,    70,   40],  // 319 BCE–315 BCE
-    'domain of stasanor':              [   55,   30,    75,   45],  // 319 BCE–305 BCE
-    'domain of tlepolemos':            [   50,   25,    65,   35],  // 319 BCE–315 BCE
-    'dominica':                        [  -65,   15,   -60,   20],  // 1990 CE–present
-    'dominican republic':              [  -75,   15,   -65,   20],  // 1990 CE–present
-    'donghu':                          [  114,   40,   126,   50],  // 770 BCE–1 BCE
-    'dongyi peoples':                  [  115,   35,   125,   40],  // 1500 BCE–770 BCE
-    'dorians':                         [   10,   30,    35,   45],  // 1223 BCE–1 BCE
-    'doris':                           [   20,   35,    25,   40],  // 695 BCE–339 BCE
-    'dravidians':                      [   70,    5,    95,   30],  // 2400 BCE–1 BCE
-    'du':                              [  105,   30,   110,   35],  // 771 BCE–687 BCE
-    'duan':                            [  110,   30,   115,   40],  // 743 BCE–722 BCE
-    'duchy of jin':                    [  105,   30,   120,   45],  // 678 BCE–349 BCE
-    'dun':                             [  110,   30,   120,   35],  // 770 BCE–496 BCE
-    'dvaraka':                         [   65,   20,    75,   25],  // 610 BCE–317 BCE
-    'e':                               [  110,   25,   120,   35],  // 862 BCE–700 BCE
-    'east african peoples':            [   35,    0,    55,   15],  // 2400 BCE–1 BCE
-    'eastern guo':                     [  110,   30,   115,   35],  // 771 BCE–767 BCE
-    'eastern woodland peoples':        [  -96,   25,   -48,   55],  // 2400 BCE–1 BCE
-    'ecuador':                         [  -95,   -5,   -75,    5],  // 1990 CE–present
-    'edomites':                        [   30,   25,    40,   35],  // 1280 BCE–526 BCE
-    'egypt: (herakleopolis)':          [   30,   25,    35,   30],  // 755 BCE–726 BCE
-    'egypt: (hermopolis)':             [   30,   25,    35,   30],  // 755 BCE–726 BCE
-    'egypt: areas of unrest':          [   25,   20,    35,   35],  // 1991 BCE–410 BCE
-    'egypt: heracleopolitans':         [   25,   20,    35,   35],  // 2400 BCE–2040 BCE
-    'egypt: hyksos':                   [   25,   20,    40,   35],  // 1720 BCE–1565 BCE
-    'egypt: middle kingdom':           [   25,   20,    40,   35],  // 2040 BCE–1661 BCE
-    'egypt: new kingdom':              [   25,   15,    45,   40],  // 1567 BCE–1085 BCE
-    'egypt: old kdm':                  [   25,   20,    40,   35],  // 2400 BCE–2159 BCE
-    'egypt: rebellion of pedubast':    [   30,   20,    35,   30],  // 829 BCE–798 BCE
-    'egypt: revolt of amasis':         [   25,   30,    30,   35],  // 571 BCE–571 BCE
-    'egypt: tanites':                  [   30,   25,    35,   35],  // 1085 BCE–945 BCE
-    'egypt: thebans':                  [   25,   20,    35,   35],  // 2152 BCE–754 BCE
-    'egypt: thirtieth dynasty':        [   25,   20,    40,   35],  // 380 BCE–342 BCE
-    'egypt: twenty eighth dynasty':    [   25,   20,    35,   35],  // 404 BCE–399 BCE
-    'egypt: twenty fourth dynasty':    [   25,   25,    35,   35],  // 745 BCE–714 BCE
-    'egypt: twenty ninth dynasty':     [   25,   20,    35,   35],  // 399 BCE–380 BCE
-    'egypt: twenty second dynasty':    [   25,   20,    40,   35],  // 945 BCE–720 BCE
-    'egypt: twenty sixth dynasty':     [   20,   15,    40,   40],  // 672 BCE–525 BCE
-    'egypt: twenty sixth dynasty tributary': [   30,   30,    40,   35],  // 609 BCE–605 BCE
-    'egypt: twenty third dynasty':     [   30,   20,    35,   30],  // 880 BCE–755 BCE
-    'el paraiso culture':              [  -80,  -15,   -70,   -5],  // 2000 BCE–900 BCE
-    'el salvador':                     [  -95,   10,   -85,   15],  // 1990 CE–present
-    'elam':                            [   40,   25,    60,   40],  // 2355 BCE–520 BCE
-    'elamite tributary':               [   40,   30,    50,   40],  // 1769 BCE–693 BCE
-    'elimiotis':                       [   18,   40,    24,   45],  // 540 BCE–358 BCE
-    'elis':                            [   20,   35,    25,   40],  // 725 BCE–1 BCE
-    'ellipi':                          [   45,   30,    50,   35],  // 970 BCE–702 BCE
-    'elymians':                        [   10,   35,    15,   40],  // 1150 BCE–500 BCE
-    'enchele':                         [   18,   40,    24,   45],  // 650 BCE–500 BCE
-    'enzite':                          [   35,   35,    45,   40],  // 931 BCE–802 BCE
-    'eordaia':                         [   18,   40,    24,   45],  // 540 BCE–475 BCE
-    'epicnemidian locris':             [   18,   35,    25,   45],  // 695 BCE–1 BCE
-    'epidauria':                       [   20,   35,    25,   40],  // 780 BCE–670 BCE
-    'epirote ally':                    [   10,   35,    24,   45],  // 292 BCE–275 CE
-    'equatorial guinea':               [    5,   -5,    15,    5],  // 1990 CE–present
-    'er':                              [  110,   30,   115,   35],  // 770 BCE–700 BCE
-    'eretria':                         [   20,   35,    30,   40],  // 710 BCE–294 BCE
-    'eriakhi':                         [   42,   40,    48,   45],  // 880 BCE–703 BCE
-    'erikuakhi':                       [   40,   35,    48,   45],  // 880 BCE–706 BCE
-    'eritrea':                         [   35,   10,    45,   20],  // 1990 CE–present
-    'erligang culture':                [  105,   30,   120,   40],  // 1600 BCE–1400 BCE
-    'erlitou culture':                 [  105,   30,   120,   40],  // 1900 BCE–1600 BCE
-    'etiukhi':                         [   40,   35,    48,   45],  // 931 BCE–709 BCE
-    'etiuni':                          [   42,   40,    48,   45],  // 880 BCE–703 BCE
-    'etruria':                         [    6,   35,    20,   50],  // 760 BCE–1 BCE
-    'etruscans':                       [    6,   40,    18,   50],  // 1725 BCE–515 BCE
-    'euboea':                          [   20,   35,    25,   40],  // 446 BCE–309 BCE
-    'fan':                             [  115,   30,   120,   35],  // 770 BCE–504 BCE
-    'fan clan':                        [  110,   35,   115,   40],  // 500 BCE–491 BCE
-    'fan(2)':                          [  110,   35,   115,   40],  // 770 BCE–660 BCE
-    'fang':                            [  110,   30,   115,   35],  // 770 BCE–637 BCE
-    'fei':                             [  110,   35,   120,   40],  // 770 BCE–530 BCE
-    'feng':                            [  105,   30,   110,   35],  // 771 BCE–550 BCE
-    'fiji':                            [  175,  -25,   185,  -10],  // 1990 CE–present
-    'finns':                           [   10,   50,    72,   70],  // 2400 BCE–1 BCE
-    'gabon':                           [    5,   -5,    15,    5],  // 1990 CE–present
-    'gambia':                          [  -20,   10,   -10,   15],  // 1990 CE–present
-    'gandhara':                        [   70,   30,    80,   40],  // 975 BCE–517 BCE
-    'gao':                             [  115,   30,   120,   35],  // 770 BCE–721 BCE
-    'gao clan':                        [  115,   35,   120,   40],  // 500 BCE–489 BCE
-    'gaoluo':                          [  110,   35,   115,   40],  // 770 BCE–660 BCE
-    'garamantes':                      [   10,   25,    30,   30],  // 500 BCE–1 BCE
-    'ge':                              [  115,   30,   120,   35],  // 1750 BCE–593 BCE
-    'gedrosia':                        [   55,   25,    70,   35],  // 329 BCE–325 BCE
-    'gela':                            [   10,   35,    20,   40],  // 505 BCE–311 BCE
-    'geng':                            [  110,   35,   115,   40],  // 770 BCE–661 BCE
-    'genmou':                          [  115,   35,   120,   40],  // 770 BCE–600 BCE
-    'geshur':                          [   35,   30,    40,   35],  // 1151 BCE–988 BCE
-    'getae':                           [   24,   40,    30,   50],  // 469 BCE–1 BCE
-    'gilead':                          [   35,   30,    40,   35],  // 1151 BCE–740 BCE
-    'gilzanu':                         [   40,   35,    45,   40],  // 863 BCE–714 BCE
-    'gojoseon':                        [  120,   35,   126,   45],  // 770 BCE–280 BCE
-    'gong':                            [  105,   25,   115,   40],  // 770 BCE–280 BCE
-    'gong(2)':                         [  105,   25,   110,   30],  // 770 BCE–670 BCE
-    'great chiefs of the meshwesh':    [   30,   30,    35,   35],  // 745 BCE–726 BCE
-    'greek alliance':                  [   18,   30,    35,   45],  // 480 BCE–477 BCE
-    'greek mercenaries':               [   25,   30,    40,   40],  // 332 BCE–332 BCE
-    'greeks':                          [   24,   30,    48,   45],  // 630 BCE–400 BCE
-    'grenada':                         [  -65,   10,   -60,   15],  // 1990 CE–present
-    'gu':                              [  110,   30,   120,   40],  // 1750 BCE–700 BCE
-    'gu(2)':                           [  115,   35,   120,   40],  // 770 BCE–520 BCE
-    'guang':                           [  110,   30,   120,   35],  // 770 BCE–650 BCE
-    'guatemala':                       [  -95,   10,   -85,   20],  // 1990 CE–present
-    'gui':                             [  105,   30,   110,   35],  // 771 BCE–688 BCE
-    'guifang':                         [   95,   30,   115,   45],  // 1400 BCE–1 BCE
-    'guinea':                          [  -20,    5,    -5,   15],  // 1990 CE–present
-    'guinea bissau':                   [  -20,   10,   -10,   15],  // 1990 CE–present
-    'guo':                             [  115,   35,   120,   40],  // 770 BCE–670 BCE
-    'guo clan':                        [  115,   35,   120,   40],  // 500 BCE–489 BCE
-    'gurgum':                          [   35,   35,    40,   40],  // 1190 BCE–604 BCE
-    'guti':                            [   40,   30,    55,   40],  // 2348 BCE–1131 BCE
-    'guti tributary':                  [   40,   30,    50,   35],  // 2193 BCE–2119 BCE
-    'guyana':                          [  -65,    0,   -55,   10],  // 1990 CE–present
-    'guzanu':                          [   35,   35,    45,   40],  // 809 BCE–758 BCE
-    'guzhu':                           [  114,   35,   120,   45],  // 770 BCE–662 BCE
-    'haihayas':                        [   70,   20,    80,   25],  // 610 BCE–549 BCE
-    'haiti':                           [  -75,   15,   -70,   25],  // 1990 CE–present
-    'haliartos':                       [   20,   35,    25,   40],  // 386 BCE–378 BCE
-    'hamaranu':                        [   40,   30,    50,   35],  // 811 BCE–745 BCE
-    'han':                             [  115,   30,   120,   35],  // 770 BCE–615 BCE
-    'han(2)':                          [  110,   35,   115,   40],  // 770 BCE–757 BCE
-    'hann':                            [  110,   30,   120,   40],  // 453 BCE–1 BCE
-    'hann clan':                       [  110,   30,   115,   40],  // 500 BCE–453 BCE
-    'hapalla':                         [   30,   35,    35,   40],  // 1395 BCE–1385 BCE
-    'harhar':                          [   40,   30,    50,   35],  // 970 BCE–737 BCE
-    'harshi':                          [   40,   30,    50,   40],  // 1985 BCE–1600 BCE
-    'hattians':                        [   30,   35,    40,   45],  // 2199 BCE–1861 BCE
-    'hellenic league':                 [   20,   35,    30,   45],  // 323 BCE–322 BCE
-    'helmand and jiroft cultures':     [   55,   25,    70,   35],  // 2400 BCE–1750 BCE
-    'helot revolt':                    [   20,   35,    25,   40],  // 465 BCE–456 BCE
-    'heraklea pontica':                [   30,   40,    36,   45],  // 274 BCE–1 BCE
-    'hermionis':                       [   20,   35,    25,   40],  // 780 BCE–670 BCE
-    'hernici':                         [   12,   40,    18,   45],  // 600 BCE–358 BCE
-    'hilakku':                         [   30,   35,    35,   40],  // 836 BCE–635 BCE
-    'himera':                          [   10,   35,    20,   40],  // 472 BCE–409 BCE
-    'hindanu':                         [   35,   30,    45,   40],  // 1120 BCE–612 BCE
-    'hittites':                        [   24,   35,    42,   45],  // 2050 BCE–1180 BCE
-    'honduras':                        [  -90,   10,   -80,   20],  // 1990 CE–present
-    'hu':                              [  115,   30,   120,   35],  // 770 BCE–495 BCE
-    'hu(2)':                           [  110,   30,   115,   35],  // 770 BCE–763 BCE
-    'hu(3)':                           [  110,   30,   115,   35],  // 770 BCE–763 BCE
-    'hua':                             [  110,   30,   115,   35],  // 770 BCE–627 BCE
-    'huaiyi':                          [  115,   30,   125,   40],  // 770 BCE–512 BCE
-    'huaiyi peoples':                  [  110,   30,   125,   35],  // 1500 BCE–584 BCE
-    'huang':                           [  110,   30,   120,   35],  // 770 BCE–648 BCE
-    'hubushkia':                       [   40,   35,    45,   40],  // 863 BCE–698 BCE
-    'huo':                             [  110,   35,   115,   40],  // 770 BCE–661 BCE
-    'hupis(h)na':                      [   30,   35,    35,   40],  // 826 BCE–738 BCE
-    'hurrian kingdom':                 [   35,   35,    45,   40],  // 1615 BCE–1346 BCE
-    'hurrian kingdoms':                [   35,   35,    50,   40],  // 2217 BCE–1790 BCE
-    'hurrians':                        [   35,   30,    50,   40],  // 2400 BCE–863 BCE
-    'iapygii':                         [   12,   40,    18,   45],  // 500 BCE–318 BCE
-    'iberians':                        [  -12,   35,    48,   50],  // 1725 BCE–1 BCE
-    'idamaraz':                        [   40,   30,    45,   40],  // 1741 BCE–1615 BCE
-    'ikshvakus':                       [   80,   25,    85,   30],  // 364 BCE–361 BCE
-    'illyrian kingdom':                [   18,   40,    24,   45],  // 279 BCE–1 BCE
-    'illyrian tributary':              [   18,   40,    24,   45],  // 372 BCE–370 BCE
-    'illyrians':                       [   12,   40,    24,   50],  // 1725 BCE–1 BCE
-    'illyrioi':                        [   12,   40,    24,   45],  // 500 BCE–1 BCE
-    'imbros':                          [   24,   40,    30,   45],  // 281 BCE–1 BCE
-    'indo-aryans':                     [   65,   15,    90,   35],  // 1500 BCE–300 BCE
-    'indus valley civilization':       [   60,   20,    80,   35],  // 2400 BCE–1750 BCE
-    'indus valley peoples':            [   60,   20,    75,   30],  // 1750 BCE–775 BCE
-    'ionian league':                   [   20,   30,    36,   45],  // 690 BCE–478 BCE
-    'ionians':                         [    0,   35,    42,   50],  // 1202 BCE–1 BCE
-    'iranians':                        [   40,   25,    96,   55],  // 2400 BCE–531 BCE
-    'ishtu(a)nda':                     [   35,   35,    40,   40],  // 826 BCE–677 BCE
-    'israel/samaria':                  [   30,   30,    40,   35],  // 931 BCE–720 BCE
-    'israelites':                      [   30,   25,    40,   35],  // 1230 BCE–1035 BCE
-    'istros':                          [   24,   40,    30,   50],  // 359 BCE–313 BCE
-    'isuwa':                           [   35,   35,    45,   40],  // 1505 BCE–1434 BCE
-    'itabalhum':                       [   40,   35,    50,   40],  // 1850 BCE–1600 BCE
-    'italics':                         [    6,   35,    24,   50],  // 2050 BCE–450 BCE
-    'italiote league':                 [   10,   35,    25,   45],  // 430 BCE–1 BCE
-    'jamaica':                         [  -80,   15,   -75,   20],  // 1990 CE–present
-    'ji':                              [  110,   35,   115,   40],  // 770 BCE–658 BCE
-    'ji(2)':                           [  115,   35,   120,   40],  // 770 BCE–690 BCE
-    'ji(3)':                           [  115,   30,   120,   40],  // 770 BCE–721 BCE
-    'ji(4)':                           [  110,   30,   115,   35],  // 770 BCE–750 BCE
-    'ji(5)':                           [  114,   35,   120,   45],  // 770 BCE–769 BCE
-    'ji(6)':                           [  105,   30,   110,   35],  // 771 BCE–688 BCE
-    'jia':                             [  110,   35,   115,   40],  // 770 BCE–678 BCE
-    'jiang':                           [  110,   30,   115,   35],  // 770 BCE–623 BCE
-    'jiang qi':                        [  115,   35,   120,   40],  // 481 BCE–386 BCE
-    'jiang(2)':                        [  115,   30,   120,   35],  // 770 BCE–617 BCE
-    'jiao':                            [  110,   30,   115,   35],  // 770 BCE–700 BCE
-    'jie':                             [  115,   35,   120,   40],  // 770 BCE–599 BCE
-    'jin':                             [  105,   30,   120,   45],  // 770 BCE–456 BCE
-    'jomon culture':                   [  130,   30,   145,   40],  // 2400 BCE–1 BCE
-    'ju':                              [  115,   30,   125,   40],  // 770 BCE–431 BCE
-    'ju(2)':                           [  105,   30,   110,   35],  // 771 BCE–550 BCE
-    'judah':                           [   30,   25,    40,   35],  // 931 BCE–582 BCE
-    'judah tributary':                 [   30,   25,    40,   35],  // 794 BCE–736 BCE
-    'jun':                             [  105,   30,   115,   35],  // 770 BCE–611 BCE
-    'kaccha':                          [   65,   20,    75,   25],  // 610 BCE–317 BCE
-    'kadmuhu':                         [   35,   35,    45,   40],  // 1135 BCE–1111 BCE
-    'kalama':                          [   80,   25,    85,   30],  // 610 BCE–518 BCE
-    'kalasma':                         [   35,   35,    40,   40],  // 1324 BCE–1321 BCE
-    'kalaurian amphictiony':           [   20,   35,    25,   40],  // 670 BCE–494 BCE
-    'kalinga':                         [   80,   15,    90,   25],  // 700 BCE–1 BCE
-    'kamarina':                        [   10,   35,    15,   40],  // 466 BCE–405 BCE
-    'kamboja':                         [   65,   30,    75,   40],  // 700 BCE–535 BCE
-    'kappadokia':                      [   30,   35,    42,   45],  // 330 BCE–1 BCE
-    'karakhar':                        [   45,   30,    50,   35],  // 2072 BCE–1168 BCE
-    'karalla':                         [   45,   35,    50,   40],  // 717 BCE–706 BCE
-    'karmania':                        [   50,   25,    65,   35],  // 329 BCE–325 BCE
-    'karusha':                         [   80,   20,    85,   25],  // 610 BCE–301 BCE
-    'kasheyas':                        [   80,   20,    85,   30],  // 364 BCE–363 BCE
-    'kasi':                            [   80,   20,    85,   30],  // 850 BCE–565 BCE
-    'kaskas':                          [   30,   35,    42,   45],  // 1600 BCE–711 BCE
-    'kasmira':                         [   70,   30,    80,   40],  // 500 BCE–1 BCE
-    'kassites':                        [   35,   25,    55,   40],  // 2100 BCE–1157 BCE
-    'kekaya':                          [   70,   30,    75,   35],  // 950 BCE–516 BCE
-    'khoisan peoples':                 [   10,  -35,    45,    5],  // 2400 BCE–1 BCE
-    'khorasmia':                       [   54,   35,    66,   45],  // 329 BCE–1 BCE
-    'kimash':                          [   45,   30,    50,   35],  // 1752 BCE–1600 BCE
-    'kingdom of adab':                 [   35,   25,    55,   40],  // 2353 BCE–2253 BCE
-    'kingdom of adanaya':              [   30,   35,    40,   40],  // 1850 BCE–1518 BCE
-    'kingdom of akshak':               [   35,   30,    50,   40],  // 2371 BCE–2283 BCE
-    'kingdom of alakhtum':             [   35,   35,    40,   40],  // 2217 BCE–2199 BCE
-    'kingdom of andarig':              [   40,   35,    45,   40],  // 1825 BCE–1726 BCE
-    'kingdom of argos':                [   20,   35,    25,   40],  // 780 BCE–494 BCE
-    'kingdom of armenia':              [   35,   35,    50,   45],  // 323 BCE–1 BCE
-    'kingdom of arrapha':              [   40,   35,    50,   40],  // 1726 BCE–760 BCE
-    'kingdom of assyria':              [   30,   30,    50,   45],  // 1920 BCE–894 BCE
-    'kingdom of awan':                 [   45,   25,    55,   35],  // 2286 BCE–1169 BCE
-    'kingdom of babylon':              [   35,   25,    50,   40],  // 1897 BCE–482 BCE
-    'kingdom of carchemish':           [   35,   35,    40,   40],  // 1190 BCE–605 BCE
-    'kingdom of cyrene':               [    5,   30,    30,   40],  // 632 BCE–1 BCE
-    'kingdom of der':                  [   40,   30,    50,   35],  // 2075 BCE–1227 BCE
-    'kingdom of ebla':                 [   35,   30,    45,   40],  // 2380 BCE–2000 BCE
-    'kingdom of epirus':               [   10,   35,    30,   45],  // 330 BCE–1 BCE
-    'kingdom of eshnunna':             [   40,   30,    50,   40],  // 2026 BCE–1730 BCE
-    'kingdom of hamath':               [   35,   30,    40,   40],  // 1180 BCE–605 BCE
-    'kingdom of illyria':              [   15,   35,    25,   45],  // 399 BCE–1 BCE
-    'kingdom of irqata':               [   35,   30,    40,   40],  // 2279 BCE–2198 BCE
-    'kingdom of isin':                 [   40,   25,    55,   40],  // 2017 BCE–1794 BCE
-    'kingdom of israel':               [   30,   25,    40,   35],  // 1035 BCE–880 BCE
-    'kingdom of judah':                [   30,   30,    40,   35],  // 1004 BCE–964 BCE
-    'kingdom of kanesh':               [   30,   35,    40,   45],  // 1850 BCE–1617 BCE
-    'kingdom of kazallu':              [   40,   30,    50,   35],  // 2019 BCE–1789 BCE
-    'kingdom of kish':                 [   35,   30,    50,   40],  // 2380 BCE–1838 BCE
-    'kingdom of kisurra':              [   45,   30,    50,   35],  // 2138 BCE–2112 BCE
-    'kingdom of kummuh':               [   35,   35,    40,   40],  // 1190 BCE–607 BCE
-    'kingdom of kush':                 [   25,   15,    40,   35],  // 1775 BCE–1 BCE
-    'kingdom of kussara':              [   30,   35,    40,   45],  // 1800 BCE–1675 BCE
-    'kingdom of lagash':               [   45,   30,    55,   35],  // 2339 BCE–1920 BCE
-    'kingdom of larsa':                [   40,   30,    50,   35],  // 2270 BCE–1736 BCE
-    'kingdom of lysimakhos':           [   18,   35,    36,   50],  // 305 BCE–278 BCE
-    'kingdom of macedon':              [   15,   20,    80,   50],  // 650 BCE–294 BCE
-    'kingdom of macedonia':            [   18,   35,    30,   45],  // 277 BCE–1 BCE
-    'kingdom of malgium':              [   40,   30,    50,   35],  // 1935 BCE–1845 BCE
-    'kingdom of mari':                 [   35,   30,    50,   40],  // 2397 BCE–2190 BCE
-    'kingdom of melid':                [   35,   35,    40,   40],  // 1190 BCE–625 BCE
-    'kingdom of mitanni':              [   30,   30,    50,   40],  // 1585 BCE–1289 BCE
-    'kingdom of purushanda':           [   30,   35,    40,   40],  // 1775 BCE–1626 BCE
-    'kingdom of qadesh':               [   35,   30,    40,   40],  // 1362 BCE–1336 BCE
-    'kingdom of qatna':                [   35,   30,    40,   40],  // 1930 BCE–1444 BCE
-    'kingdom of rome':                 [   12,   40,    18,   45],  // 725 BCE–509 BCE
-    'kingdom of sam\'al':              [   35,   35,    40,   40],  // 920 BCE–604 BCE
-    'kingdom of sindica':              [   36,   40,    42,   50],  // 480 BCE–380 BCE
-    'kingdom of sparta':               [   10,   30,    30,   45],  // 777 BCE–1 BCE
-    'kingdom of syracuse':             [   10,   35,    25,   45],  // 304 BCE–289 BCE
-    'kingdom of terqa':                [   35,   30,    45,   40],  // 1741 BCE–1512 BCE
-    'kingdom of the grabaei':          [   18,   40,    24,   45],  // 429 BCE–295 BCE
-    'kingdom of tuttul':               [   35,   35,    45,   40],  // 2380 BCE–2196 BCE
-    'kingdom of tylis':                [   24,   40,    30,   45],  // 277 BCE–1 BCE
-    'kingdom of ugarit':               [   35,   35,    40,   40],  // 2348 BCE–1336 BCE
-    'kingdom of ur':                   [   40,   25,    55,   40],  // 2279 BCE–2005 BCE
-    'kingdom of uruk':                 [   35,   30,    50,   40],  // 2394 BCE–1809 BCE
-    'kingdom of zalpa':                [   30,   35,    42,   45],  // 1950 BCE–1632 BCE
-    'kios':                            [   24,   40,    30,   45],  // 274 BCE–1 BCE
-    'kirati':                          [   80,   25,    90,   30],  // 610 BCE–1 BCE
-    'kiribati':                        [ -175,  -15,   180,    5],  // 1990 CE–present
-    'kirruru':                         [   40,   35,    50,   40],  // 735 BCE–707 BCE
-    'kizzuwatna':                      [   30,   35,    40,   40],  // 1514 BCE–1419 BCE
-    'koliya':                          [   80,   25,    85,   30],  // 610 BCE–480 BCE
-    'konkana':                         [   70,   15,    75,   20],  // 610 BCE–1 BCE
-    'kopai':                           [   20,   35,    25,   40],  // 386 BCE–378 BCE
-    'koreans':                         [  125,   30,   130,   40],  // 2400 BCE–1 BCE
-    'kosala':                          [   80,   20,    85,   30],  // 950 BCE–465 BCE
-    'kotosh culture':                  [  -80,  -15,   -75,   -5],  // 2300 BCE–1199 BCE
-    'ksudrakas':                       [   70,   30,    75,   35],  // 610 BCE–325 BCE
-    'kuai':                            [  110,   30,   115,   35],  // 770 BCE–769 BCE
-    'kui':                             [  110,   30,   115,   35],  // 770 BCE–634 BCE
-    'kuninda':                         [   75,   30,    80,   35],  // 450 BCE–322 BCE
-    'kuntala':                         [   75,   15,    80,   20],  // 600 BCE–300 BCE
-    'kunti':                           [   75,   25,    80,   30],  // 610 BCE–535 BCE
-    'kunwu':                           [  110,   35,   115,   40],  // 1750 BCE–1603 BCE
-    'kuru':                            [   70,   25,    85,   35],  // 1150 BCE–500 BCE
-    'kush tributary':                  [   25,   25,    35,   35],  // 726 BCE–667 BCE
-    'kyme':                            [   12,   40,    18,   45],  // 500 BCE–1 BCE
-    'kyrgyzstan':                      [   65,   35,    84,   45],  // 1990 CE–present
-    'lagash':                          [   40,   30,    50,   35],  // 2397 BCE–2352 BCE
-    'lai':                             [  115,   35,   125,   40],  // 1039 BCE–567 BCE
-    'lai(2)':                          [  110,   30,   115,   35],  // 770 BCE–640 BCE
-    'laiyi':                           [  115,   35,   125,   40],  // 770 BCE–500 BCE
-    'land of bel-harran-beli-user':    [   35,   35,    45,   40],  // 753 BCE–744 BCE
-    'land of shamash-resha-user':      [   35,   30,    45,   40],  // 753 BCE–744 BCE
-    'land of tartanu shamshi-ilu':     [   35,   35,    40,   40],  // 753 BCE–744 BCE
-    'laqe':                            [   35,   30,    45,   40],  // 1080 BCE–608 BCE
-    'larak':                           [   40,   30,    50,   35],  // 2394 BCE–2283 BCE
-    'larissa':                         [   20,   35,    25,   40],  // 405 BCE–344 BCE
-    'latin league':                    [   12,   40,    18,   45],  // 730 BCE–341 BCE
-    'latins':                          [   12,   40,    18,   45],  // 800 BCE–377 BCE
-    'lauhitya':                        [   90,   25,    95,   30],  // 610 BCE–1 BCE
-    'league of argos':                 [   18,   35,    30,   45],  // 421 BCE–417 BCE
-    'lebadeia':                        [   20,   35,    25,   40],  // 386 BCE–378 BCE
-    'leichtenstein':                   [    6,   45,    12,   50],  // 1990 CE–present
-    'leontini':                        [   10,   35,    20,   40],  // 466 BCE–1 BCE
-    'lesbos':                          [   25,   35,    30,   40],  // 386 BCE–1 BCE
-    'lesotho':                         [   25,  -35,    30,  -25],  // 1990 CE–present
-    'li':                              [  115,   30,   120,   35],  // 770 BCE–538 BCE
-    'li rong':                         [  110,   35,   115,   40],  // 770 BCE–672 BCE
-    'li(2)':                           [  110,   35,   115,   40],  // 770 BCE–663 BCE
-    'li(3)':                           [  110,   30,   115,   35],  // 697 BCE–680 BCE
-    'liang':                           [  105,   30,   115,   40],  // 771 BCE–641 BCE
-    'liao':                            [  115,   30,   120,   35],  // 770 BCE–622 BCE
-    'liao(2)':                         [  110,   30,   115,   35],  // 770 BCE–700 BCE
-    'liberia':                         [  -15,    0,    -5,   10],  // 1990 CE–present
-    'liburnians':                      [   12,   40,    24,   45],  // 1000 BCE–1 BCE
-    'libyans':                         [   10,   25,    35,   35],  // 2400 BCE–1 BCE
-    'libyphoenices':                   [   10,   30,    25,   35],  // 500 BCE–1 BCE
-    'ligurians':                       [    0,   40,    12,   50],  // 800 BCE–1 BCE
-    'lingzhi':                         [  114,   35,   120,   45],  // 770 BCE–662 BCE
-    'linhu':                           [  102,   35,   115,   45],  // 770 BCE–1 BCE
-    'little guo':                      [  105,   30,   110,   35],  // 771 BCE–687 BCE
-    'liu':                             [  115,   30,   120,   35],  // 770 BCE–622 BCE
-    'locri':                           [   15,   35,    20,   40],  // 345 BCE–1 BCE
-    'longshan culture':                [  105,   30,   125,   40],  // 2400 BCE–1900 BCE
-    'loufan':                          [  108,   35,   115,   45],  // 770 BCE–307 BCE
-    'lower macedon':                   [   18,   40,    24,   45],  // 454 BCE–431 BCE
-    'lu':                              [  115,   30,   120,   40],  // 807 BCE–1 BCE
-    'lu(2)':                           [  110,   30,   115,   35],  // 770 BCE–688 BCE
-    'lu(3)':                           [  110,   30,   115,   35],  // 770 BCE–690 BCE
-    'lucani':                          [   12,   40,    18,   45],  // 500 BCE–436 BCE
-    'lucanians':                       [   12,   35,    20,   45],  // 450 BCE–1 BCE
-    'luhun rong':                      [  105,   30,   115,   35],  // 771 BCE–525 BCE
-    'lukka':                           [   25,   35,    35,   40],  // 1535 BCE–1235 BCE
+    '(marhashi)':                      [   45,   25,    60,   35, -2286],  // 2286 BCE–2005 BCE
+    'abhiras':                         [   70,   25,    75,   30, -610],  // 610 BCE–317 BCE
+    'abilianikhi':                     [   42,   40,    48,   45, -880],  // 880 BCE–591 BCE
+    'abisara':                         [   70,   30,    80,   35, -337],  // 337 BCE–326 BCE
+    'aboriginal peoples':              [   95,  -45,   165,   20, -2400],  // 2400 BCE–1 BCE
+    'acarnania':                       [   20,   35,    25,   40, -695],  // 695 BCE–1 BCE
+    'achaea':                          [   12,   35,    25,   45, -720],  // 720 BCE–280 BCE
+    'achaean league':                  [   20,   35,    25,   40, -280],  // 280 BCE–1 BCE
+    'achaeans':                        [   18,   35,    25,   45, -1100],  // 1100 BCE–492 BCE
+    'adena culture':                   [  -90,   35,   -75,   45, -800],  // 800 BCE–1 BCE
+    'aegina':                          [   20,   35,    25,   40, -520],  // 520 BCE–1 BCE
+    'aeniania':                        [   20,   35,    25,   40, -695],  // 695 BCE–1 BCE
+    'aeolian league':                  [   25,   35,    30,   40, -696],  // 696 BCE–513 BCE
+    'aeolians':                        [   18,   35,    42,   50, -1223],  // 1223 BCE–480 BCE
+    'aequi':                           [   12,   40,    18,   45, -800],  // 800 BCE–302 BCE
+    'aetolia':                         [   20,   35,    25,   40, -695],  // 695 BCE–370 CE
+    'aetolian league':                 [   20,   35,    25,   40, -309],  // 309 BCE–1 BCE
+    'agathoclid ally':                 [   10,   35,    20,   45, -308],  // 308 BCE–289 BCE
+    'ahhiya':                          [   25,   30,    35,   40, -1429],  // 1429 BCE–1202 BCE
+    'ainu':                            [  136,   40,   160,   55, -2400],  // 2400 BCE–1 BCE
+    'aitna':                           [   10,   35,    20,   40, -466],  // 466 BCE–461 BCE
+    'akkadian empire':                 [   30,   25,    60,   40, -2311],  // 2311 BCE–2154 BCE
+    'akkadian tributary':              [   45,   25,    60,   40, -2297],  // 2297 BCE–2220 BCE
+    'akraephia':                       [   20,   35,    25,   40, -386],  // 386 BCE–378 BCE
+    'akragas':                         [   10,   35,    20,   40, -500],  // 500 BCE–1 BCE
+    'alasiya':                         [   30,   30,    35,   40, -1875],  // 1875 BCE–1200 BCE
+    'alavi':                           [   80,   25,    85,   30, -610],  // 610 BCE–467 BCE
+    'albanians':                       [   42,   35,    54,   45, -612],  // 612 BCE–1 BCE
+    'aleuts':                          [ -170,   55,  -150,   65, -2400],  // 2400 BCE–1 BCE
+    'alfaterni':                       [   12,   40,    18,   45, -438],  // 438 BCE–1 BCE
+    'allabria':                        [   45,   35,    50,   40, -860],  // 860 BCE–716 BCE
+    'allakappa':                       [   80,   25,    85,   30, -610],  // 610 BCE–467 BCE
+    'allied armies of the eastern satraps': [   50,   30,    65,   40, -318],  // 318 BCE–317 BCE
+    'alshe':                           [   40,   35,    45,   40, -1367],  // 1367 BCE–1240 BCE
+    'alzi':                            [   40,   35,    45,   40, -931],  // 931 BCE–803 BCE
+    'amazonian peoples':               [  -80,  -15,   -40,   10, -2400],  // 2400 BCE–1 BCE
+    'ambashthas':                      [   70,   30,    75,   35, -610],  // 610 BCE–400 BCE
+    'ambracia':                        [   20,   35,    25,   40, -365],  // 365 BCE–294 BCE
+    'ammonites':                       [   35,   30,    40,   35, -1280],  // 1280 BCE–587 BCE
+    'amorite ebla':                    [   35,   30,    40,   40, -1900],  // 1900 BCE–1825 BCE
+    'amorite mari':                    [   35,   30,    45,   40, -2100],  // 2100 BCE–1760 BCE
+    'amorite tuttul':                  [   35,   35,    45,   40, -1900],  // 1900 BCE–1825 BCE
+    'amorites':                        [   35,   30,    50,   40, -2298],  // 2298 BCE–1081 BCE
+    'amurru':                          [   30,   30,    40,   40, -1728],  // 1728 BCE–968 BCE
+    'anarta':                          [   70,   20,    75,   25, -610],  // 610 BCE–317 BCE
+    'andean peoples':                  [  -85,  -40,   -65,    5, -2400],  // 2400 BCE–1 BCE
+    'andhra':                          [   80,   15,    85,   20, -610],  // 610 BCE–300 BCE
+    'andorra':                         [    0,   40,     6,   45, 1990],  // 1990 CE–present
+    'anga':                            [   80,   20,    90,   30, -775],  // 775 BCE–530 BCE
+    'anshan':                          [   45,   25,    55,   35, -2348],  // 2348 BCE–653 BCE
+    'antandros':                       [   25,   35,    30,   40, -478],  // 478 BCE–410 BCE
+    'anti macedon alliance':           [   20,   35,    25,   40, -338],  // 338 BCE–338 BCE
+    'anti roman alliance':             [   12,   40,    18,   45, -341],  // 341 BCE–338 BCE
+    'anti spartan alliance':           [   18,   30,    35,   45, -395],  // 395 BCE–386 BCE
+    'antigonid ally':                  [   20,   30,    36,   45, -315],  // 315 BCE–289 BCE
+    'antigonid kingdom':               [   15,   30,    50,   45, -306],  // 306 BCE–281 CE
+    'antigua and barbuda':             [  -65,   15,   -60,   20, 1990],  // 1990 CE–present
+    'antipatrid ally':                 [   18,   35,    36,   45, -310],  // 310 BCE–305 BCE
+    'anupa':                           [   75,   20,    80,   25, -610],  // 610 BCE–348 BCE
+    'anuradhapura':                    [   75,    5,    85,   10, -325],  // 325 BCE–1 BCE
+    'aparytae':                        [   70,   30,    75,   35, -610],  // 610 BCE–543 BCE
+    'apollonia':                       [   18,   40,    24,   45, -490],  // 490 BCE–283 BCE
+    'arabs':                           [   30,   15,    60,   35, -1000],  // 1000 BCE–1 BCE
+    'aram damascus':                   [   30,   25,    40,   40, -1145],  // 1145 BCE–605 BCE
+    'aram-naharim':                    [   35,   35,    40,   40, -1145],  // 1145 BCE–1105 BCE
+    'aram-zobah':                      [   35,   30,    40,   35, -1145],  // 1145 BCE–750 BCE
+    'aramaeans':                       [   35,   30,    50,   40, -1280],  // 1280 BCE–1 BCE
+    'arcadia':                         [   20,   35,    25,   40, -742],  // 742 BCE–445 BCE
+    'arcadian league':                 [   20,   35,    25,   40, -370],  // 370 BCE–1 BCE
+    'arctic marine mammal hunters':    [  100,   60,   192,   80, -2400],  // 2400 BCE–1 BCE
+    'arctic peoples':                  [ -170,   55,   -40,   75, -2400],  // 2400 BCE–1 BCE
+    'ardiaei':                         [   18,   40,    24,   45, -346],  // 346 BCE–1 BCE
+    'argaric culture':                 [   -5,   35,     0,   40, -2200],  // 2200 BCE–1500 BCE
+    'argos':                           [   20,   35,    25,   40, -494],  // 494 BCE–1 BCE
+    'aryan people':                    [   60,   25,    80,   40, -2050],  // 2050 BCE–531 BCE
+    'arzawa':                          [   24,   30,    40,   45, -1775],  // 1775 BCE–1201 BCE
+    'asinia':                          [   20,   35,    25,   40, -780],  // 780 BCE–758 BCE
+    'assaka':                          [   75,   15,    85,   20, -725],  // 725 BCE–300 BCE
+    'assakenoi':                       [   70,   30,    75,   40, -610],  // 610 BCE–516 BCE
+    'assyrian kingdoms':               [   40,   30,    50,   40, -2303],  // 2303 BCE–1920 BCE
+    'assyrian revolt':                 [   40,   30,    45,   40, -1195],  // 1195 BCE–1055 BCE
+    'asvaka':                          [   70,   30,    75,   40, -610],  // 610 BCE–516 BCE
+    'athamania':                       [   20,   35,    25,   40, -430],  // 430 BCE–1 BCE
+    'athenian ally':                   [   25,   35,    30,   40, -384],  // 384 BCE–378 BCE
+    'atropatene':                      [   40,   35,    54,   45, -319],  // 319 BCE–1 BCE
+    'atuna':                           [   30,   35,    40,   40, -826],  // 826 BCE–680 BCE
+    'audumbaras':                      [   70,   30,    80,   35, -600],  // 600 BCE–323 BCE
+    'aurunci':                         [   12,   40,    18,   45, -800],  // 800 BCE–334 BCE
+    'austro-asiatic peoples':          [   90,    5,   115,   25, -2400],  // 2400 BCE–1 BCE
+    'austronesians':                   [   95,  -20,   180,   30, -2400],  // 2400 BCE–1 BCE
+    'avanti':                          [   70,   20,    85,   30, -850],  // 850 BCE–400 BCE
+    'azzi-hayasa':                     [   35,   35,    45,   45, -1505],  // 1505 BCE–1200 BCE
+    'ba':                              [  105,   25,   115,   35, -1075],  // 1075 BCE–316 BCE
+    'babylonia (chaldaeans)':          [   35,   25,    50,   40, -780],  // 780 BCE–616 BCE
+    'babylonia (isin dynasty)':        [   40,   25,    55,   40, -1157],  // 1157 BCE–977 BCE
+    'babylonian revolt':               [   40,   25,    50,   35, -852],  // 852 BCE–549 BCE
+    'babylonian tributary':            [   35,   30,    55,   40, -1763],  // 1763 BCE–1701 BCE
+    'bactrians':                       [   60,   30,    75,   40, -1700],  // 1700 BCE–545 BCE
+    'bahamas':                         [  -85,   20,   -70,   30, 1990],  // 1990 CE–present
+    'baipu':                           [  105,   25,   115,   35, -770],  // 770 BCE–523 BCE
+    'balts':                           [    8,   50,    40,   60, -2050],  // 2050 BCE–1 BCE
+    'bantu peoples':                   [    5,  -10,    30,   10, -2000],  // 2000 BCE–1 BCE
+    'bao':                             [  105,   30,   110,   35, -771],  // 771 BCE–500 BCE
+    'bao clan':                        [  115,   35,   120,   40, -500],  // 500 BCE–481 BCE
+    'barbados':                        [  -60,   10,   -55,   15, 1990],  // 1990 CE–present
+    'bedouins':                        [   30,   25,    40,   35, -2048],  // 2048 BCE–843 BCE
+    'belize':                          [  -90,   15,   -85,   20, 1990],  // 1990 CE–present
+    'bell beaker peoples':             [   -8,   45,    32,   65, -2400],  // 2400 BCE–2050 BCE
+    'benin':                           [    0,    5,     5,   15, 1990],  // 1990 CE–present
+    'berbers':                         [  -15,   25,    15,   40, -2400],  // 2400 BCE–1 BCE
+    'bessaei':                         [   18,   40,    30,   45, -469],  // 469 BCE–341 BCE
+    'bhagga':                          [   80,   25,    85,   30, -610],  // 610 BCE–560 BCE
+    'bhojas':                          [   75,   20,    80,   25, -321],  // 321 BCE–301 BCE
+    'bhutan':                          [   85,   25,    95,   30, 1990],  // 1990 CE–present
+    'bit agusi':                       [   35,   35,    40,   40, -900],  // 900 BCE–605 BCE
+    'bit-adini':                       [   35,   35,    40,   40, -1076],  // 1076 BCE–857 BCE
+    'bit-bahiani':                     [   35,   35,    45,   40, -1076],  // 1076 BCE–896 BCE
+    'bit-halupe':                      [   35,   35,    45,   40, -1076],  // 1076 BCE–894 BCE
+    'bit-zamani':                      [   35,   35,    45,   40, -1025],  // 1025 BCE–882 BCE
+    'bithynia':                        [   24,   40,    36,   45, -323],  // 323 BCE–1 BCE
+    'bithynians':                      [   24,   40,    36,   45, -696],  // 696 BCE–552 BCE
+    'biyang':                          [  115,   30,   120,   35, -770],  // 770 BCE–563 BCE
+    'bo':                              [  110,   30,   115,   35, -770],  // 770 BCE–640 BCE
+    'boeotia':                         [   20,   35,    25,   40, -730],  // 730 BCE–287 BCE
+    'bolivia':                         [  -70,  -25,   -55,   -5, 1990],  // 1990 CE–present
+    'bosnia and herzegovina':          [   12,   40,    24,   50, 1990],  // 1990 CE–present
+    'bosporan kingdom':                [   30,   40,    42,   50, -480],  // 480 BCE–1 BCE
+    'botswana':                        [   15,  -30,    30,  -15, 1990],  // 1990 CE–present
+    'bottiaeans':                      [   18,   40,    24,   45, -650],  // 650 BCE–492 BCE
+    'brahmana':                        [   80,   25,    85,   30, -610],  // 610 BCE–467 BCE
+    'brunei':                          [  110,    0,   120,   10, 1990],  // 1990 CE–present
+    'bruttian league':                 [   12,   35,    20,   45, -356],  // 356 BCE–1 BCE
+    'bruttians':                       [   15,   35,    20,   40, -450],  // 450 BCE–400 BCE
+    'bruttii':                         [   15,   35,    20,   40, -500],  // 500 BCE–436 BCE
+    'bu geng':                         [  110,   30,   115,   35, -770],  // 770 BCE–533 BCE
+    'burkina faso':                    [  -10,    5,     5,   20, 1990],  // 1990 CE–present
+    'burundi':                         [   25,   -5,    35,    0, 1990],  // 1990 CE–present
+    'cai':                             [  110,   30,   120,   35, -770],  // 770 BCE–447 BCE
+    'california peoples':              [ -126,   30,  -115,   45, -2400],  // 2400 BCE–1 BCE
+    'callatis':                        [   24,   40,    30,   45, -359],  // 359 BCE–1 BCE
+    'cameroon':                        [    5,    0,    20,   15, 1990],  // 1990 CE–present
+    'campania':                        [   12,   40,    18,   45, -438],  // 438 BCE–343 BCE
+    'campanians':                      [   10,   35,    15,   40, -370],  // 370 BCE–344 BCE
+    'canaanites':                      [   30,   30,    40,   35, -1850],  // 1850 BCE–1115 BCE
+    'cao':                             [  110,   30,   120,   40, -770],  // 770 BCE–487 BCE
+    'cape verde':                      [  -30,   10,   -20,   20, 1990],  // 1990 CE–present
+    'carduchii':                       [   40,   35,    45,   40, -385],  // 385 BCE–384 BCE
+    'carians':                         [   25,   35,    30,   40, -1201],  // 1201 BCE–543 BCE
+    'caribbean peoples':               [  -85,    5,   -60,   30, -2400],  // 2400 BCE–1 BCE
+    'carthaginian ally':               [   -5,   30,    20,   40, -500],  // 500 BCE–277 BCE
+    'carthaginian tributary':          [   10,   35,    15,   40, -405],  // 405 BCE–375 BCE
+    'carystus':                        [   20,   35,    25,   40, -386],  // 386 BCE–294 BCE
+    'catane':                          [   10,   35,    20,   40, -461],  // 461 BCE–1 BCE
+    'caucasians':                      [   30,   35,    50,   45, -2400],  // 2400 BCE–690 BCE
+    'cedi':                            [   75,   20,    85,   30, -825],  // 825 BCE–319 BCE
+    'celtic mercenaries':              [   18,   35,    35,   45, -276],  // 276 BCE–274 BCE
+    'celto-ligurians':                 [  -16,   35,    24,   60, -2050],  // 2050 BCE–1 BCE
+    'celts':                           [    0,   35,    36,   55, -1250],  // 1250 BCE–1 BCE
+    'central african peoples':         [    5,  -10,    40,   15, -2400],  // 2400 BCE–1 BCE
+    'central african republic':        [   10,    0,    30,   15, 1990],  // 1990 CE–present
+    'chad':                            [   10,    5,    25,   25, 1990],  // 1990 CE–present
+    'chadian people':                  [    5,   10,    20,   20, -2250],  // 2250 BCE–1 BCE
+    'chalcidian league':               [   18,   35,    30,   45, -421],  // 421 BCE–353 BCE
+    'chalcis':                         [   20,   35,    25,   40, -710],  // 710 BCE–294 BCE
+    'chaldaea':                        [   40,   25,    50,   35, -800],  // 800 BCE–790 BCE
+    'changdi':                         [  115,   35,   120,   40, -770],  // 770 BCE–607 BCE
+    'chao':                            [  115,   30,   120,   35, -991],  // 991 BCE–601 BCE
+    'chaonia':                         [   15,   35,    25,   45, -430],  // 430 BCE–350 BCE
+    'chaonians':                       [   18,   40,    24,   45, -500],  // 500 BCE–430 BCE
+    'chavin culture':                  [  -80,  -15,   -70,   -5, -900],  // 900 BCE–1 BCE
+    'chen':                            [  110,   30,   120,   35, -770],  // 770 BCE–479 BCE
+    'cheng':                           [  110,   35,   120,   40, -770],  // 770 BCE–408 BCE
+    'chera':                           [   75,    5,    80,   15, -325],  // 325 BCE–1 BCE
+    'chinchorro culture':              [  -75,  -25,   -65,  -15, -2400],  // 2400 BCE–1 BCE
+    'chios':                           [   25,   35,    30,   40, -386],  // 386 BCE–1 BCE
+    'chola':                           [   75,   10,    85,   15, -325],  // 325 BCE–1 BCE
+    'chorrera culture':                [  -85,   -5,   -75,    0, -1300],  // 1300 BCE–1 BCE
+    'chu':                             [  105,   20,   125,   40, -1075],  // 1075 BCE–1 BCE
+    'cilicia':                         [   30,   35,    40,   40, -588],  // 588 BCE–539 BCE
+    'cimmerian kingdom':               [   25,   35,    42,   45, -654],  // 654 BCE–637 BCE
+    'cimmerians':                      [   18,   35,    54,   50, -1450],  // 1450 BCE–1 BCE
+    'civil war':                       [   15,   35,   120,   40, -547],  // 547 BCE–314 BCE
+    'clan warfare':                    [  115,   35,   120,   40, -546],  // 546 BCE–532 BCE
+    'colchis':                         [   36,   40,    48,   45, -1250],  // 1250 BCE–1 BCE
+    'comoros':                         [   40,  -15,    50,  -10, 1990],  // 1990 CE–present
+    'cong':                            [  105,   30,   110,   35, -770],  // 770 BCE–600 BCE
+    'corcyra':                         [   12,   35,    25,   45, -665],  // 665 BCE–300 BCE
+    'corinthia':                       [   10,   35,    25,   45, -747],  // 747 BCE–338 BCE
+    'coronea':                         [   20,   35,    25,   40, -386],  // 386 BCE–378 BCE
+    'cossaeans':                       [   45,   30,    50,   35, -330],  // 330 BCE–324 BCE
+    'costa rica':                      [  -90,    5,   -80,   15, 1990],  // 1990 CE–present
+    'cretan city states':              [   20,   30,    30,   40, -500],  // 500 BCE–1 BCE
+    'croton':                          [   15,   35,    20,   40, -550],  // 550 BCE–430 BCE
+    'cushitic people':                 [   35,    0,    55,   15, -1000],  // 1000 BCE–1 BCE
+    'cypriot kingdoms':                [   30,   30,    35,   40, -1180],  // 1180 BCE–344 BCE
+    'cyprus':                          [   30,   30,    35,   40, 1990],  // 1990 CE–present
+    'cyzicus':                         [   24,   40,    30,   45, -323],  // 323 BCE–279 BCE
+    'côte d\'ivoire':                  [  -10,    0,     0,   15, 1990],  // 1990 CE–present
+    'd\'mt':                           [   35,   10,    45,   20, -980],  // 980 BCE–1 BCE
+    'dai':                             [  108,   35,   120,   45, -770],  // 770 BCE–457 BCE
+    'dai(2)':                          [  110,   30,   120,   35, -770],  // 770 BCE–713 BCE
+    'dali':                            [  105,   35,   110,   40, -550],  // 550 BCE–1 BCE
+    'dan':                             [  105,   25,   110,   35, -770],  // 770 BCE–670 BCE
+    'dao':                             [  110,   30,   115,   35, -770],  // 770 BCE–637 BCE
+    'daoi':                            [   48,   35,    60,   50, -329],  // 329 BCE–1 BCE
+    'dapeng':                          [  115,   30,   120,   35, -1350],  // 1350 BCE–1208 BCE
+    'daradas':                         [   70,   35,    75,   40, -610],  // 610 BCE–1 BCE
+    'dardani':                         [   18,   40,    24,   45, -800],  // 800 BCE–1 BCE
+    'dasarnas':                        [   75,   20,    80,   25, -610],  // 610 BCE–349 BCE
+    'dassaretis':                      [   18,   40,    24,   45, -500],  // 500 BCE–399 BCE
+    'daunians':                        [   12,   40,    18,   45, -800],  // 800 BCE–323 BCE
+    'dayenu':                          [   40,   35,    45,   40, -735],  // 735 BCE–734 BCE
+    'delian league':                   [   10,   25,    42,   45, -479],  // 479 BCE–404 BCE
+    'delphi':                          [   20,   35,    25,   40, -448],  // 448 BCE–448 BCE
+    'deng':                            [  110,   30,   115,   35, -771],  // 771 BCE–678 BCE
+    'desert cultures':                 [ -120,   20,   -95,   45, -2400],  // 2400 BCE–1 BCE
+    'di':                              [  105,   30,   120,   40, -770],  // 770 BCE–407 BCE
+    'di(2)':                           [  100,   30,   110,   35, -771],  // 771 BCE–361 BCE
+    'diauekhi':                        [   36,   35,    48,   45, -931],  // 931 BCE–591 BCE
+    'dilmun':                          [   45,   20,    55,   30, -2400],  // 2400 BCE–1550 BCE
+    'djibouti':                        [   40,   10,    45,   15, 1990],  // 1990 CE–present
+    'dolopia':                         [   20,   35,    25,   40, -695],  // 695 BCE–1 BCE
+    'domain of amphimakhos':           [   35,   30,    50,   40, -319],  // 319 BCE–316 BCE
+    'domain of antigenes':             [   45,   25,    55,   35, -319],  // 319 BCE–316 BCE
+    'domain of antigonus':             [   20,   25,    75,   45, -319],  // 319 BCE–306 BCE
+    'domain of asandros':              [   25,   35,    35,   40, -319],  // 319 BCE–314 BCE
+    'domain of cassander':             [   15,   35,    35,   45, -319],  // 319 BCE–304 BCE
+    'domain of eudemus':               [   70,   25,    80,   35, -319],  // 319 BCE–316 BCE
+    'domain of eumenes':               [   40,   25,    65,   40, -317],  // 317 BCE–315 BCE
+    'domain of lysimakhos':            [   18,   40,    30,   50, -319],  // 319 BCE–305 BCE
+    'domain of mithridates':           [   30,   35,    40,   45, -301],  // 301 BCE–281 BCE
+    'domain of oxyartes':              [   65,   30,    75,   40, -319],  // 319 BCE–307 BCE
+    'domain of peithon':               [   40,   30,    65,   40, -319],  // 319 BCE–316 BCE
+    'domain of peithon (son of agenor)': [   65,   20,    75,   35, -319],  // 319 BCE–316 BCE
+    'domain of peukestas':             [   45,   25,    60,   35, -319],  // 319 BCE–315 BCE
+    'domain of philip':                [   50,   30,    65,   40, -319],  // 319 BCE–318 BCE
+    'domain of philoxenos':            [   30,   35,    40,   40, -319],  // 319 BCE–318 BCE
+    'domain of polyperchon':           [   20,   35,    30,   40, -316],  // 316 BCE–309 BCE
+    'domain of ptolemy':               [   20,   20,    45,   40, -319],  // 319 BCE–305 BCE
+    'domain of seleucus':              [   40,   25,    75,   40, -319],  // 319 BCE–1 BCE
+    'domain of sibyrtios':             [   55,   25,    75,   35, -319],  // 319 BCE–306 BCE
+    'domain of stasandros':            [   55,   25,    70,   40, -319],  // 319 BCE–315 BCE
+    'domain of stasanor':              [   55,   30,    75,   45, -319],  // 319 BCE–305 BCE
+    'domain of tlepolemos':            [   50,   25,    65,   35, -319],  // 319 BCE–315 BCE
+    'dominica':                        [  -65,   15,   -60,   20, 1990],  // 1990 CE–present
+    'dominican republic':              [  -75,   15,   -65,   20, 1990],  // 1990 CE–present
+    'donghu':                          [  114,   40,   126,   50, -770],  // 770 BCE–1 BCE
+    'dongyi peoples':                  [  115,   35,   125,   40, -1500],  // 1500 BCE–770 BCE
+    'dorians':                         [   10,   30,    35,   45, -1223],  // 1223 BCE–1 BCE
+    'doris':                           [   20,   35,    25,   40, -695],  // 695 BCE–339 BCE
+    'dravidians':                      [   70,    5,    95,   30, -2400],  // 2400 BCE–1 BCE
+    'du':                              [  105,   30,   110,   35, -771],  // 771 BCE–687 BCE
+    'duan':                            [  110,   30,   115,   40, -743],  // 743 BCE–722 BCE
+    'duchy of jin':                    [  105,   30,   120,   45, -678],  // 678 BCE–349 BCE
+    'dun':                             [  110,   30,   120,   35, -770],  // 770 BCE–496 BCE
+    'dvaraka':                         [   65,   20,    75,   25, -610],  // 610 BCE–317 BCE
+    'e':                               [  110,   25,   120,   35, -862],  // 862 BCE–700 BCE
+    'east african peoples':            [   35,    0,    55,   15, -2400],  // 2400 BCE–1 BCE
+    'eastern guo':                     [  110,   30,   115,   35, -771],  // 771 BCE–767 BCE
+    'eastern woodland peoples':        [  -96,   25,   -48,   55, -2400],  // 2400 BCE–1 BCE
+    'ecuador':                         [  -95,   -5,   -75,    5, 1990],  // 1990 CE–present
+    'edomites':                        [   30,   25,    40,   35, -1280],  // 1280 BCE–526 BCE
+    'egypt: (herakleopolis)':          [   30,   25,    35,   30, -755],  // 755 BCE–726 BCE
+    'egypt: (hermopolis)':             [   30,   25,    35,   30, -755],  // 755 BCE–726 BCE
+    'egypt: areas of unrest':          [   25,   20,    35,   35, -1991],  // 1991 BCE–410 BCE
+    'egypt: heracleopolitans':         [   25,   20,    35,   35, -2400],  // 2400 BCE–2040 BCE
+    'egypt: hyksos':                   [   25,   20,    40,   35, -1720],  // 1720 BCE–1565 BCE
+    'egypt: middle kingdom':           [   25,   20,    40,   35, -2040],  // 2040 BCE–1661 BCE
+    'egypt: new kingdom':              [   25,   15,    45,   40, -1567],  // 1567 BCE–1085 BCE
+    'egypt: old kdm':                  [   25,   20,    40,   35, -2400],  // 2400 BCE–2159 BCE
+    'egypt: rebellion of pedubast':    [   30,   20,    35,   30, -829],  // 829 BCE–798 BCE
+    'egypt: revolt of amasis':         [   25,   30,    30,   35, -571],  // 571 BCE–571 BCE
+    'egypt: tanites':                  [   30,   25,    35,   35, -1085],  // 1085 BCE–945 BCE
+    'egypt: thebans':                  [   25,   20,    35,   35, -2152],  // 2152 BCE–754 BCE
+    'egypt: thirtieth dynasty':        [   25,   20,    40,   35, -380],  // 380 BCE–342 BCE
+    'egypt: twenty eighth dynasty':    [   25,   20,    35,   35, -404],  // 404 BCE–399 BCE
+    'egypt: twenty fourth dynasty':    [   25,   25,    35,   35, -745],  // 745 BCE–714 BCE
+    'egypt: twenty ninth dynasty':     [   25,   20,    35,   35, -399],  // 399 BCE–380 BCE
+    'egypt: twenty second dynasty':    [   25,   20,    40,   35, -945],  // 945 BCE–720 BCE
+    'egypt: twenty sixth dynasty':     [   20,   15,    40,   40, -672],  // 672 BCE–525 BCE
+    'egypt: twenty sixth dynasty tributary': [   30,   30,    40,   35, -609],  // 609 BCE–605 BCE
+    'egypt: twenty third dynasty':     [   30,   20,    35,   30, -880],  // 880 BCE–755 BCE
+    'el paraiso culture':              [  -80,  -15,   -70,   -5, -2000],  // 2000 BCE–900 BCE
+    'el salvador':                     [  -95,   10,   -85,   15, 1990],  // 1990 CE–present
+    'elam':                            [   40,   25,    60,   40, -2355],  // 2355 BCE–520 BCE
+    'elamite tributary':               [   40,   30,    50,   40, -1769],  // 1769 BCE–693 BCE
+    'elimiotis':                       [   18,   40,    24,   45, -540],  // 540 BCE–358 BCE
+    'elis':                            [   20,   35,    25,   40, -725],  // 725 BCE–1 BCE
+    'ellipi':                          [   45,   30,    50,   35, -970],  // 970 BCE–702 BCE
+    'elymians':                        [   10,   35,    15,   40, -1150],  // 1150 BCE–500 BCE
+    'enchele':                         [   18,   40,    24,   45, -650],  // 650 BCE–500 BCE
+    'enzite':                          [   35,   35,    45,   40, -931],  // 931 BCE–802 BCE
+    'eordaia':                         [   18,   40,    24,   45, -540],  // 540 BCE–475 BCE
+    'epicnemidian locris':             [   18,   35,    25,   45, -695],  // 695 BCE–1 BCE
+    'epidauria':                       [   20,   35,    25,   40, -780],  // 780 BCE–670 BCE
+    'epirote ally':                    [   10,   35,    24,   45, -292],  // 292 BCE–275 CE
+    'equatorial guinea':               [    5,   -5,    15,    5, 1990],  // 1990 CE–present
+    'er':                              [  110,   30,   115,   35, -770],  // 770 BCE–700 BCE
+    'eretria':                         [   20,   35,    30,   40, -710],  // 710 BCE–294 BCE
+    'eriakhi':                         [   42,   40,    48,   45, -880],  // 880 BCE–703 BCE
+    'erikuakhi':                       [   40,   35,    48,   45, -880],  // 880 BCE–706 BCE
+    'eritrea':                         [   35,   10,    45,   20, 1990],  // 1990 CE–present
+    'erligang culture':                [  105,   30,   120,   40, -1600],  // 1600 BCE–1400 BCE
+    'erlitou culture':                 [  105,   30,   120,   40, -1900],  // 1900 BCE–1600 BCE
+    'etiukhi':                         [   40,   35,    48,   45, -931],  // 931 BCE–709 BCE
+    'etiuni':                          [   42,   40,    48,   45, -880],  // 880 BCE–703 BCE
+    'etruria':                         [    6,   35,    20,   50, -760],  // 760 BCE–1 BCE
+    'etruscans':                       [    6,   40,    18,   50, -1725],  // 1725 BCE–515 BCE
+    'euboea':                          [   20,   35,    25,   40, -446],  // 446 BCE–309 BCE
+    'fan':                             [  115,   30,   120,   35, -770],  // 770 BCE–504 BCE
+    'fan clan':                        [  110,   35,   115,   40, -500],  // 500 BCE–491 BCE
+    'fan(2)':                          [  110,   35,   115,   40, -770],  // 770 BCE–660 BCE
+    'fang':                            [  110,   30,   115,   35, -770],  // 770 BCE–637 BCE
+    'fei':                             [  110,   35,   120,   40, -770],  // 770 BCE–530 BCE
+    'feng':                            [  105,   30,   110,   35, -771],  // 771 BCE–550 BCE
+    'fiji':                            [  175,  -25,   185,  -10, 1990],  // 1990 CE–present
+    'finns':                           [   10,   50,    72,   70, -2400],  // 2400 BCE–1 BCE
+    'gabon':                           [    5,   -5,    15,    5, 1990],  // 1990 CE–present
+    'gambia':                          [  -20,   10,   -10,   15, 1990],  // 1990 CE–present
+    'gandhara':                        [   70,   30,    80,   40, -975],  // 975 BCE–517 BCE
+    'gao':                             [  115,   30,   120,   35, -770],  // 770 BCE–721 BCE
+    'gao clan':                        [  115,   35,   120,   40, -500],  // 500 BCE–489 BCE
+    'gaoluo':                          [  110,   35,   115,   40, -770],  // 770 BCE–660 BCE
+    'garamantes':                      [   10,   25,    30,   30, -500],  // 500 BCE–1 BCE
+    'ge':                              [  115,   30,   120,   35, -1750],  // 1750 BCE–593 BCE
+    'gedrosia':                        [   55,   25,    70,   35, -329],  // 329 BCE–325 BCE
+    'gela':                            [   10,   35,    20,   40, -505],  // 505 BCE–311 BCE
+    'geng':                            [  110,   35,   115,   40, -770],  // 770 BCE–661 BCE
+    'genmou':                          [  115,   35,   120,   40, -770],  // 770 BCE–600 BCE
+    'geshur':                          [   35,   30,    40,   35, -1151],  // 1151 BCE–988 BCE
+    'getae':                           [   24,   40,    30,   50, -469],  // 469 BCE–1 BCE
+    'gilead':                          [   35,   30,    40,   35, -1151],  // 1151 BCE–740 BCE
+    'gilzanu':                         [   40,   35,    45,   40, -863],  // 863 BCE–714 BCE
+    'gojoseon':                        [  120,   35,   126,   45, -770],  // 770 BCE–280 BCE
+    'gong':                            [  105,   25,   115,   40, -770],  // 770 BCE–280 BCE
+    'gong(2)':                         [  105,   25,   110,   30, -770],  // 770 BCE–670 BCE
+    'great chiefs of the meshwesh':    [   30,   30,    35,   35, -745],  // 745 BCE–726 BCE
+    'greek alliance':                  [   18,   30,    35,   45, -480],  // 480 BCE–477 BCE
+    'greek mercenaries':               [   25,   30,    40,   40, -332],  // 332 BCE–332 BCE
+    'greeks':                          [   24,   30,    48,   45, -630],  // 630 BCE–400 BCE
+    'grenada':                         [  -65,   10,   -60,   15, 1990],  // 1990 CE–present
+    'gu':                              [  110,   30,   120,   40, -1750],  // 1750 BCE–700 BCE
+    'gu(2)':                           [  115,   35,   120,   40, -770],  // 770 BCE–520 BCE
+    'guang':                           [  110,   30,   120,   35, -770],  // 770 BCE–650 BCE
+    'guatemala':                       [  -95,   10,   -85,   20, 1990],  // 1990 CE–present
+    'gui':                             [  105,   30,   110,   35, -771],  // 771 BCE–688 BCE
+    'guifang':                         [   95,   30,   115,   45, -1400],  // 1400 BCE–1 BCE
+    'guinea':                          [  -20,    5,    -5,   15, 1990],  // 1990 CE–present
+    'guinea bissau':                   [  -20,   10,   -10,   15, 1990],  // 1990 CE–present
+    'guo':                             [  115,   35,   120,   40, -770],  // 770 BCE–670 BCE
+    'guo clan':                        [  115,   35,   120,   40, -500],  // 500 BCE–489 BCE
+    'gurgum':                          [   35,   35,    40,   40, -1190],  // 1190 BCE–604 BCE
+    'guti':                            [   40,   30,    55,   40, -2348],  // 2348 BCE–1131 BCE
+    'guti tributary':                  [   40,   30,    50,   35, -2193],  // 2193 BCE–2119 BCE
+    'guyana':                          [  -65,    0,   -55,   10, 1990],  // 1990 CE–present
+    'guzanu':                          [   35,   35,    45,   40, -809],  // 809 BCE–758 BCE
+    'guzhu':                           [  114,   35,   120,   45, -770],  // 770 BCE–662 BCE
+    'haihayas':                        [   70,   20,    80,   25, -610],  // 610 BCE–549 BCE
+    'haiti':                           [  -75,   15,   -70,   25, 1990],  // 1990 CE–present
+    'haliartos':                       [   20,   35,    25,   40, -386],  // 386 BCE–378 BCE
+    'hamaranu':                        [   40,   30,    50,   35, -811],  // 811 BCE–745 BCE
+    'han':                             [  115,   30,   120,   35, -770],  // 770 BCE–615 BCE
+    'han(2)':                          [  110,   35,   115,   40, -770],  // 770 BCE–757 BCE
+    'hann':                            [  110,   30,   120,   40, -453],  // 453 BCE–1 BCE
+    'hann clan':                       [  110,   30,   115,   40, -500],  // 500 BCE–453 BCE
+    'hapalla':                         [   30,   35,    35,   40, -1395],  // 1395 BCE–1385 BCE
+    'harhar':                          [   40,   30,    50,   35, -970],  // 970 BCE–737 BCE
+    'harshi':                          [   40,   30,    50,   40, -1985],  // 1985 BCE–1600 BCE
+    'hattians':                        [   30,   35,    40,   45, -2199],  // 2199 BCE–1861 BCE
+    'hellenic league':                 [   20,   35,    30,   45, -323],  // 323 BCE–322 BCE
+    'helmand and jiroft cultures':     [   55,   25,    70,   35, -2400],  // 2400 BCE–1750 BCE
+    'helot revolt':                    [   20,   35,    25,   40, -465],  // 465 BCE–456 BCE
+    'heraklea pontica':                [   30,   40,    36,   45, -274],  // 274 BCE–1 BCE
+    'hermionis':                       [   20,   35,    25,   40, -780],  // 780 BCE–670 BCE
+    'hernici':                         [   12,   40,    18,   45, -600],  // 600 BCE–358 BCE
+    'hilakku':                         [   30,   35,    35,   40, -836],  // 836 BCE–635 BCE
+    'himera':                          [   10,   35,    20,   40, -472],  // 472 BCE–409 BCE
+    'hindanu':                         [   35,   30,    45,   40, -1120],  // 1120 BCE–612 BCE
+    'hittites':                        [   24,   35,    42,   45, -2050],  // 2050 BCE–1180 BCE
+    'honduras':                        [  -90,   10,   -80,   20, 1990],  // 1990 CE–present
+    'hu':                              [  115,   30,   120,   35, -770],  // 770 BCE–495 BCE
+    'hu(2)':                           [  110,   30,   115,   35, -770],  // 770 BCE–763 BCE
+    'hu(3)':                           [  110,   30,   115,   35, -770],  // 770 BCE–763 BCE
+    'hua':                             [  110,   30,   115,   35, -770],  // 770 BCE–627 BCE
+    'huaiyi':                          [  115,   30,   125,   40, -770],  // 770 BCE–512 BCE
+    'huaiyi peoples':                  [  110,   30,   125,   35, -1500],  // 1500 BCE–584 BCE
+    'huang':                           [  110,   30,   120,   35, -770],  // 770 BCE–648 BCE
+    'hubushkia':                       [   40,   35,    45,   40, -863],  // 863 BCE–698 BCE
+    'huo':                             [  110,   35,   115,   40, -770],  // 770 BCE–661 BCE
+    'hupis(h)na':                      [   30,   35,    35,   40, -826],  // 826 BCE–738 BCE
+    'hurrian kingdom':                 [   35,   35,    45,   40, -1615],  // 1615 BCE–1346 BCE
+    'hurrian kingdoms':                [   35,   35,    50,   40, -2217],  // 2217 BCE–1790 BCE
+    'hurrians':                        [   35,   30,    50,   40, -2400],  // 2400 BCE–863 BCE
+    'iapygii':                         [   12,   40,    18,   45, -500],  // 500 BCE–318 BCE
+    'iberians':                        [  -12,   35,    48,   50, -1725],  // 1725 BCE–1 BCE
+    'idamaraz':                        [   40,   30,    45,   40, -1741],  // 1741 BCE–1615 BCE
+    'ikshvakus':                       [   80,   25,    85,   30, -364],  // 364 BCE–361 BCE
+    'illyrian kingdom':                [   18,   40,    24,   45, -279],  // 279 BCE–1 BCE
+    'illyrian tributary':              [   18,   40,    24,   45, -372],  // 372 BCE–370 BCE
+    'illyrians':                       [   12,   40,    24,   50, -1725],  // 1725 BCE–1 BCE
+    'illyrioi':                        [   12,   40,    24,   45, -500],  // 500 BCE–1 BCE
+    'imbros':                          [   24,   40,    30,   45, -281],  // 281 BCE–1 BCE
+    'indo-aryans':                     [   65,   15,    90,   35, -1500],  // 1500 BCE–300 BCE
+    'indus valley civilization':       [   60,   20,    80,   35, -2400],  // 2400 BCE–1750 BCE
+    'indus valley peoples':            [   60,   20,    75,   30, -1750],  // 1750 BCE–775 BCE
+    'ionian league':                   [   20,   30,    36,   45, -690],  // 690 BCE–478 BCE
+    'ionians':                         [    0,   35,    42,   50, -1202],  // 1202 BCE–1 BCE
+    'iranians':                        [   40,   25,    96,   55, -2400],  // 2400 BCE–531 BCE
+    'ishtu(a)nda':                     [   35,   35,    40,   40, -826],  // 826 BCE–677 BCE
+    'israel/samaria':                  [   30,   30,    40,   35, -931],  // 931 BCE–720 BCE
+    'israelites':                      [   30,   25,    40,   35, -1230],  // 1230 BCE–1035 BCE
+    'istros':                          [   24,   40,    30,   50, -359],  // 359 BCE–313 BCE
+    'isuwa':                           [   35,   35,    45,   40, -1505],  // 1505 BCE–1434 BCE
+    'itabalhum':                       [   40,   35,    50,   40, -1850],  // 1850 BCE–1600 BCE
+    'italics':                         [    6,   35,    24,   50, -2050],  // 2050 BCE–450 BCE
+    'italiote league':                 [   10,   35,    25,   45, -430],  // 430 BCE–1 BCE
+    'jamaica':                         [  -80,   15,   -75,   20, 1990],  // 1990 CE–present
+    'ji':                              [  110,   35,   115,   40, -770],  // 770 BCE–658 BCE
+    'ji(2)':                           [  115,   35,   120,   40, -770],  // 770 BCE–690 BCE
+    'ji(3)':                           [  115,   30,   120,   40, -770],  // 770 BCE–721 BCE
+    'ji(4)':                           [  110,   30,   115,   35, -770],  // 770 BCE–750 BCE
+    'ji(5)':                           [  114,   35,   120,   45, -770],  // 770 BCE–769 BCE
+    'ji(6)':                           [  105,   30,   110,   35, -771],  // 771 BCE–688 BCE
+    'jia':                             [  110,   35,   115,   40, -770],  // 770 BCE–678 BCE
+    'jiang':                           [  110,   30,   115,   35, -770],  // 770 BCE–623 BCE
+    'jiang qi':                        [  115,   35,   120,   40, -481],  // 481 BCE–386 BCE
+    'jiang(2)':                        [  115,   30,   120,   35, -770],  // 770 BCE–617 BCE
+    'jiao':                            [  110,   30,   115,   35, -770],  // 770 BCE–700 BCE
+    'jie':                             [  115,   35,   120,   40, -770],  // 770 BCE–599 BCE
+    'jin':                             [  105,   30,   120,   45, -770],  // 770 BCE–456 BCE
+    'jomon culture':                   [  130,   30,   145,   40, -2400],  // 2400 BCE–1 BCE
+    'ju':                              [  115,   30,   125,   40, -770],  // 770 BCE–431 BCE
+    'ju(2)':                           [  105,   30,   110,   35, -771],  // 771 BCE–550 BCE
+    'judah':                           [   30,   25,    40,   35, -931],  // 931 BCE–582 BCE
+    'judah tributary':                 [   30,   25,    40,   35, -794],  // 794 BCE–736 BCE
+    'jun':                             [  105,   30,   115,   35, -770],  // 770 BCE–611 BCE
+    'kaccha':                          [   65,   20,    75,   25, -610],  // 610 BCE–317 BCE
+    'kadmuhu':                         [   35,   35,    45,   40, -1135],  // 1135 BCE–1111 BCE
+    'kalama':                          [   80,   25,    85,   30, -610],  // 610 BCE–518 BCE
+    'kalasma':                         [   35,   35,    40,   40, -1324],  // 1324 BCE–1321 BCE
+    'kalaurian amphictiony':           [   20,   35,    25,   40, -670],  // 670 BCE–494 BCE
+    'kalinga':                         [   80,   15,    90,   25, -700],  // 700 BCE–1 BCE
+    'kamarina':                        [   10,   35,    15,   40, -466],  // 466 BCE–405 BCE
+    'kamboja':                         [   65,   30,    75,   40, -700],  // 700 BCE–535 BCE
+    'kappadokia':                      [   30,   35,    42,   45, -330],  // 330 BCE–1 BCE
+    'karakhar':                        [   45,   30,    50,   35, -2072],  // 2072 BCE–1168 BCE
+    'karalla':                         [   45,   35,    50,   40, -717],  // 717 BCE–706 BCE
+    'karmania':                        [   50,   25,    65,   35, -329],  // 329 BCE–325 BCE
+    'karusha':                         [   80,   20,    85,   25, -610],  // 610 BCE–301 BCE
+    'kasheyas':                        [   80,   20,    85,   30, -364],  // 364 BCE–363 BCE
+    'kasi':                            [   80,   20,    85,   30, -850],  // 850 BCE–565 BCE
+    'kaskas':                          [   30,   35,    42,   45, -1600],  // 1600 BCE–711 BCE
+    'kasmira':                         [   70,   30,    80,   40, -500],  // 500 BCE–1 BCE
+    'kassites':                        [   35,   25,    55,   40, -2100],  // 2100 BCE–1157 BCE
+    'kekaya':                          [   70,   30,    75,   35, -950],  // 950 BCE–516 BCE
+    'khoisan peoples':                 [   10,  -35,    45,    5, -2400],  // 2400 BCE–1 BCE
+    'khorasmia':                       [   54,   35,    66,   45, -329],  // 329 BCE–1 BCE
+    'kimash':                          [   45,   30,    50,   35, -1752],  // 1752 BCE–1600 BCE
+    'kingdom of adab':                 [   35,   25,    55,   40, -2353],  // 2353 BCE–2253 BCE
+    'kingdom of adanaya':              [   30,   35,    40,   40, -1850],  // 1850 BCE–1518 BCE
+    'kingdom of akshak':               [   35,   30,    50,   40, -2371],  // 2371 BCE–2283 BCE
+    'kingdom of alakhtum':             [   35,   35,    40,   40, -2217],  // 2217 BCE–2199 BCE
+    'kingdom of andarig':              [   40,   35,    45,   40, -1825],  // 1825 BCE–1726 BCE
+    'kingdom of argos':                [   20,   35,    25,   40, -780],  // 780 BCE–494 BCE
+    'kingdom of armenia':              [   35,   35,    50,   45, -323],  // 323 BCE–1 BCE
+    'kingdom of arrapha':              [   40,   35,    50,   40, -1726],  // 1726 BCE–760 BCE
+    'kingdom of assyria':              [   30,   30,    50,   45, -1920],  // 1920 BCE–894 BCE
+    'kingdom of awan':                 [   45,   25,    55,   35, -2286],  // 2286 BCE–1169 BCE
+    'kingdom of babylon':              [   35,   25,    50,   40, -1897],  // 1897 BCE–482 BCE
+    'kingdom of carchemish':           [   35,   35,    40,   40, -1190],  // 1190 BCE–605 BCE
+    'kingdom of cyrene':               [    5,   30,    30,   40, -632],  // 632 BCE–1 BCE
+    'kingdom of der':                  [   40,   30,    50,   35, -2075],  // 2075 BCE–1227 BCE
+    'kingdom of ebla':                 [   35,   30,    45,   40, -2380],  // 2380 BCE–2000 BCE
+    'kingdom of epirus':               [   10,   35,    30,   45, -330],  // 330 BCE–1 BCE
+    'kingdom of eshnunna':             [   40,   30,    50,   40, -2026],  // 2026 BCE–1730 BCE
+    'kingdom of hamath':               [   35,   30,    40,   40, -1180],  // 1180 BCE–605 BCE
+    'kingdom of illyria':              [   15,   35,    25,   45, -399],  // 399 BCE–1 BCE
+    'kingdom of irqata':               [   35,   30,    40,   40, -2279],  // 2279 BCE–2198 BCE
+    'kingdom of isin':                 [   40,   25,    55,   40, -2017],  // 2017 BCE–1794 BCE
+    'kingdom of israel':               [   30,   25,    40,   35, -1035],  // 1035 BCE–880 BCE
+    'kingdom of judah':                [   30,   30,    40,   35, -1004],  // 1004 BCE–964 BCE
+    'kingdom of kanesh':               [   30,   35,    40,   45, -1850],  // 1850 BCE–1617 BCE
+    'kingdom of kazallu':              [   40,   30,    50,   35, -2019],  // 2019 BCE–1789 BCE
+    'kingdom of kish':                 [   35,   30,    50,   40, -2380],  // 2380 BCE–1838 BCE
+    'kingdom of kisurra':              [   45,   30,    50,   35, -2138],  // 2138 BCE–2112 BCE
+    'kingdom of kummuh':               [   35,   35,    40,   40, -1190],  // 1190 BCE–607 BCE
+    'kingdom of kush':                 [   25,   15,    40,   35, -1775],  // 1775 BCE–1 BCE
+    'kingdom of kussara':              [   30,   35,    40,   45, -1800],  // 1800 BCE–1675 BCE
+    'kingdom of lagash':               [   45,   30,    55,   35, -2339],  // 2339 BCE–1920 BCE
+    'kingdom of larsa':                [   40,   30,    50,   35, -2270],  // 2270 BCE–1736 BCE
+    'kingdom of lysimakhos':           [   18,   35,    36,   50, -305],  // 305 BCE–278 BCE
+    'kingdom of macedon':              [   15,   20,    80,   50, -650],  // 650 BCE–294 BCE
+    'kingdom of macedonia':            [   18,   35,    30,   45, -277],  // 277 BCE–1 BCE
+    'kingdom of malgium':              [   40,   30,    50,   35, -1935],  // 1935 BCE–1845 BCE
+    'kingdom of mari':                 [   35,   30,    50,   40, -2397],  // 2397 BCE–2190 BCE
+    'kingdom of melid':                [   35,   35,    40,   40, -1190],  // 1190 BCE–625 BCE
+    'kingdom of mitanni':              [   30,   30,    50,   40, -1585],  // 1585 BCE–1289 BCE
+    'kingdom of purushanda':           [   30,   35,    40,   40, -1775],  // 1775 BCE–1626 BCE
+    'kingdom of qadesh':               [   35,   30,    40,   40, -1362],  // 1362 BCE–1336 BCE
+    'kingdom of qatna':                [   35,   30,    40,   40, -1930],  // 1930 BCE–1444 BCE
+    'kingdom of rome':                 [   12,   40,    18,   45, -725],  // 725 BCE–509 BCE
+    'kingdom of sam\'al':              [   35,   35,    40,   40, -920],  // 920 BCE–604 BCE
+    'kingdom of sindica':              [   36,   40,    42,   50, -480],  // 480 BCE–380 BCE
+    'kingdom of sparta':               [   10,   30,    30,   45, -777],  // 777 BCE–1 BCE
+    'kingdom of syracuse':             [   10,   35,    25,   45, -304],  // 304 BCE–289 BCE
+    'kingdom of terqa':                [   35,   30,    45,   40, -1741],  // 1741 BCE–1512 BCE
+    'kingdom of the grabaei':          [   18,   40,    24,   45, -429],  // 429 BCE–295 BCE
+    'kingdom of tuttul':               [   35,   35,    45,   40, -2380],  // 2380 BCE–2196 BCE
+    'kingdom of tylis':                [   24,   40,    30,   45, -277],  // 277 BCE–1 BCE
+    'kingdom of ugarit':               [   35,   35,    40,   40, -2348],  // 2348 BCE–1336 BCE
+    'kingdom of ur':                   [   40,   25,    55,   40, -2279],  // 2279 BCE–2005 BCE
+    'kingdom of uruk':                 [   35,   30,    50,   40, -2394],  // 2394 BCE–1809 BCE
+    'kingdom of zalpa':                [   30,   35,    42,   45, -1950],  // 1950 BCE–1632 BCE
+    'kios':                            [   24,   40,    30,   45, -274],  // 274 BCE–1 BCE
+    'kirati':                          [   80,   25,    90,   30, -610],  // 610 BCE–1 BCE
+    'kiribati':                        [ -175,  -15,   180,    5, 1990],  // 1990 CE–present
+    'kirruru':                         [   40,   35,    50,   40, -735],  // 735 BCE–707 BCE
+    'kizzuwatna':                      [   30,   35,    40,   40, -1514],  // 1514 BCE–1419 BCE
+    'koliya':                          [   80,   25,    85,   30, -610],  // 610 BCE–480 BCE
+    'konkana':                         [   70,   15,    75,   20, -610],  // 610 BCE–1 BCE
+    'kopai':                           [   20,   35,    25,   40, -386],  // 386 BCE–378 BCE
+    'koreans':                         [  125,   30,   130,   40, -2400],  // 2400 BCE–1 BCE
+    'kosala':                          [   80,   20,    85,   30, -950],  // 950 BCE–465 BCE
+    'kotosh culture':                  [  -80,  -15,   -75,   -5, -2300],  // 2300 BCE–1199 BCE
+    'ksudrakas':                       [   70,   30,    75,   35, -610],  // 610 BCE–325 BCE
+    'kuai':                            [  110,   30,   115,   35, -770],  // 770 BCE–769 BCE
+    'kui':                             [  110,   30,   115,   35, -770],  // 770 BCE–634 BCE
+    'kuninda':                         [   75,   30,    80,   35, -450],  // 450 BCE–322 BCE
+    'kuntala':                         [   75,   15,    80,   20, -600],  // 600 BCE–300 BCE
+    'kunti':                           [   75,   25,    80,   30, -610],  // 610 BCE–535 BCE
+    'kunwu':                           [  110,   35,   115,   40, -1750],  // 1750 BCE–1603 BCE
+    'kuru':                            [   70,   25,    85,   35, -1150],  // 1150 BCE–500 BCE
+    'kush tributary':                  [   25,   25,    35,   35, -726],  // 726 BCE–667 BCE
+    'kyme':                            [   12,   40,    18,   45, -500],  // 500 BCE–1 BCE
+    'kyrgyzstan':                      [   65,   35,    84,   45, 1990],  // 1990 CE–present
+    'lagash':                          [   40,   30,    50,   35, -2397],  // 2397 BCE–2352 BCE
+    'lai':                             [  115,   35,   125,   40, -1039],  // 1039 BCE–567 BCE
+    'lai(2)':                          [  110,   30,   115,   35, -770],  // 770 BCE–640 BCE
+    'laiyi':                           [  115,   35,   125,   40, -770],  // 770 BCE–500 BCE
+    'land of bel-harran-beli-user':    [   35,   35,    45,   40, -753],  // 753 BCE–744 BCE
+    'land of shamash-resha-user':      [   35,   30,    45,   40, -753],  // 753 BCE–744 BCE
+    'land of tartanu shamshi-ilu':     [   35,   35,    40,   40, -753],  // 753 BCE–744 BCE
+    'laqe':                            [   35,   30,    45,   40, -1080],  // 1080 BCE–608 BCE
+    'larak':                           [   40,   30,    50,   35, -2394],  // 2394 BCE–2283 BCE
+    'larissa':                         [   20,   35,    25,   40, -405],  // 405 BCE–344 BCE
+    'latin league':                    [   12,   40,    18,   45, -730],  // 730 BCE–341 BCE
+    'latins':                          [   12,   40,    18,   45, -800],  // 800 BCE–377 BCE
+    'lauhitya':                        [   90,   25,    95,   30, -610],  // 610 BCE–1 BCE
+    'league of argos':                 [   18,   35,    30,   45, -421],  // 421 BCE–417 BCE
+    'lebadeia':                        [   20,   35,    25,   40, -386],  // 386 BCE–378 BCE
+    'leichtenstein':                   [    6,   45,    12,   50, 1990],  // 1990 CE–present
+    'leontini':                        [   10,   35,    20,   40, -466],  // 466 BCE–1 BCE
+    'lesbos':                          [   25,   35,    30,   40, -386],  // 386 BCE–1 BCE
+    'lesotho':                         [   25,  -35,    30,  -25, 1990],  // 1990 CE–present
+    'li':                              [  115,   30,   120,   35, -770],  // 770 BCE–538 BCE
+    'li rong':                         [  110,   35,   115,   40, -770],  // 770 BCE–672 BCE
+    'li(2)':                           [  110,   35,   115,   40, -770],  // 770 BCE–663 BCE
+    'li(3)':                           [  110,   30,   115,   35, -697],  // 697 BCE–680 BCE
+    'liang':                           [  105,   30,   115,   40, -771],  // 771 BCE–641 BCE
+    'liao':                            [  115,   30,   120,   35, -770],  // 770 BCE–622 BCE
+    'liao(2)':                         [  110,   30,   115,   35, -770],  // 770 BCE–700 BCE
+    'liberia':                         [  -15,    0,    -5,   10, 1990],  // 1990 CE–present
+    'liburnians':                      [   12,   40,    24,   45, -1000],  // 1000 BCE–1 BCE
+    'libyans':                         [   10,   25,    35,   35, -2400],  // 2400 BCE–1 BCE
+    'libyphoenices':                   [   10,   30,    25,   35, -500],  // 500 BCE–1 BCE
+    'ligurians':                       [    0,   40,    12,   50, -800],  // 800 BCE–1 BCE
+    'lingzhi':                         [  114,   35,   120,   45, -770],  // 770 BCE–662 BCE
+    'linhu':                           [  102,   35,   115,   45, -770],  // 770 BCE–1 BCE
+    'little guo':                      [  105,   30,   110,   35, -771],  // 771 BCE–687 BCE
+    'liu':                             [  115,   30,   120,   35, -770],  // 770 BCE–622 BCE
+    'locri':                           [   15,   35,    20,   40, -345],  // 345 BCE–1 BCE
+    'longshan culture':                [  105,   30,   125,   40, -2400],  // 2400 BCE–1900 BCE
+    'loufan':                          [  108,   35,   115,   45, -770],  // 770 BCE–307 BCE
+    'lower macedon':                   [   18,   40,    24,   45, -454],  // 454 BCE–431 BCE
+    'lu':                              [  115,   30,   120,   40, -807],  // 807 BCE–1 BCE
+    'lu(2)':                           [  110,   30,   115,   35, -770],  // 770 BCE–688 BCE
+    'lu(3)':                           [  110,   30,   115,   35, -770],  // 770 BCE–690 BCE
+    'lucani':                          [   12,   40,    18,   45, -500],  // 500 BCE–436 BCE
+    'lucanians':                       [   12,   35,    20,   45, -450],  // 450 BCE–1 BCE
+    'luhun rong':                      [  105,   30,   115,   35, -771],  // 771 BCE–525 BCE
+    'lukka':                           [   25,   35,    35,   40, -1535],  // 1535 BCE–1235 BCE
     'lullubi':                         [   40,   35,    50,   40],  // 2050 BCE
-    'lullubum':                        [   40,   35,    50,   40],  // 2054 BCE–2051 BCE
-    'luo':                             [  110,   25,   115,   35],  // 770 BCE–690 BCE
-    'luwians':                         [   24,   35,    40,   45],  // 2022 BCE–1000 BCE
-    'lycians':                         [   25,   35,    35,   40],  // 1000 BCE–362 BCE
-    'lydia':                           [   24,   35,    36,   45],  // 850 BCE–547 BCE
-    'lydians':                         [   25,   35,    30,   40],  // 1000 BCE–850 BCE
-    'lynkestis':                       [   18,   40,    24,   45],  // 540 BCE–392 BCE
-    'macedon':                         [   18,   35,    30,   45],  // 281 BCE–277 BCE
-    'macedonia':                       [   18,   40,    24,   45],  // 1990 CE–present
-    'macedonian ally':                 [   12,   25,    80,   50],  // 356 BCE–294 BCE
-    'madra':                           [   70,   30,    80,   35],  // 950 BCE–326 BCE
-    'maeotians':                       [   36,   40,    42,   50],  // 380 BCE–325 BCE
-    'magadha':                         [   70,   20,    90,   30],  // 775 BCE–355 BCE
-    'magan':                           [   50,   20,    60,   30],  // 2400 BCE–1550 BCE
-    'magnesia':                        [   20,   35,    25,   40],  // 650 BCE–580 BCE
-    'malavas':                         [   70,   30,    75,   35],  // 610 BCE–325 BCE
-    'malawi':                          [   30,  -20,    40,   -5],  // 1990 CE–present
-    'maldives':                        [   70,   -5,    75,   10],  // 1990 CE–present
-    'malis':                           [   20,   35,    25,   40],  // 695 BCE–1 BCE
-    'malla':                           [   80,   25,    90,   30],  // 750 BCE–363 BCE
-    'malta':                           [   10,   35,    15,   40],  // 1990 CE–present
-    'mama':                            [   35,   35,    40,   40],  // 1850 BCE–1644 BCE
-    'mamertine mercenaries':           [   15,   35,    20,   40],  // 289 BCE–287 BCE
-    'mamertines':                      [   10,   35,    20,   40],  // 287 BCE–1 BCE
-    'manchurian peoples':              [  114,   35,   144,   55],  // 2400 BCE–1 BCE
-    'mannaea':                         [   40,   35,    50,   40],  // 843 BCE–608 BCE
-    'manshi':                          [  110,   30,   115,   35],  // 770 BCE–491 BCE
-    'mantineia':                       [   20,   35,    25,   40],  // 423 BCE–1 BCE
-    'mao':                             [  105,   30,   110,   35],  // 771 BCE–687 BCE
-    'mao(2)':                          [  115,   30,   120,   40],  // 770 BCE–560 BCE
-    'margiana':                        [   60,   30,    70,   40],  // 522 BCE–328 BCE
-    'marrucini':                       [   12,   40,    18,   45],  // 438 BCE–304 BCE
-    'marshall islands':                [  160,    0,   175,   15],  // 1990 CE–present
-    'marsi':                           [   12,   40,    18,   45],  // 492 BCE–304 BCE
-    'masa':                            [   24,   35,    36,   45],  // 1535 BCE–1228 BCE
-    'massagetai':                      [   54,   35,    72,   50],  // 329 BCE–1 BCE
-    'matsya':                          [   70,   25,    80,   30],  // 925 BCE–318 BCE
-    'mauritania':                      [  -20,   10,     0,   30],  // 1990 CE–present
-    'mauritius':                       [   55,  -25,    65,  -10],  // 1990 CE–present
-    'maurya':                          [   70,   25,    80,   35],  // 324 BCE–321 BCE
-    'maya':                            [  -95,   10,   -85,   25],  // 1000 BCE–1 BCE
-    'medes':                           [   45,   30,    55,   40],  // 800 BCE–674 BCE
-    'media':                           [   30,   30,    65,   45],  // 713 BCE–521 BCE
-    'median vassal':                   [   45,   25,    65,   35],  // 586 BCE–550 BCE
-    'megalopolis':                     [   20,   35,    25,   40],  // 300 BCE–1 BCE
-    'megaris':                         [   10,   35,    36,   45],  // 743 BCE–1 BCE
-    'mercenaries of bithynia':         [   24,   40,    36,   45],  // 278 BCE–278 BCE
-    'mercenaries under agathocles':    [   10,   35,    20,   40],  // 325 BCE–316 BCE
-    'mercenaries under amyntas':       [   30,   25,    40,   35],  // 332 BCE–332 BCE
-    'mercenaries under cleonymus':     [    6,   35,    25,   50],  // 303 BCE–301 BCE
-    'mercenaries under harpalus':      [   20,   35,    35,   40],  // 323 BCE–323 BCE
-    'mercenaries under leosthenes':    [   20,   35,    25,   40],  // 323 BCE–323 BCE
-    'mercenaries under phalaecus':     [   20,   35,    30,   40],  // 344 BCE–343 BCE
-    'mercenaries under thibron':       [   20,   30,    25,   40],  // 323 BCE–323 BCE
-    'mesoamerican peoples':            [ -105,    5,   -70,   25],  // 2400 BCE–1 BCE
-    'messapians':                      [   12,   35,    24,   45],  // 800 BCE–1 CE
-    'messapii':                        [   12,   35,    24,   45],  // 500 BCE–280 CE
-    'messenia':                        [   15,   35,    25,   40],  // 770 BCE–1 BCE
-    'mianzhu':                         [  105,   30,   110,   35],  // 771 BCE–361 BCE
-    'micronesia':                      [  135,    5,   165,   15],  // 1990 CE–present
-    'middle assyrian empire':          [   30,   30,    50,   40],  // 1346 BCE–1076 BCE
-    'minoans':                         [   20,   30,    30,   40],  // 2000 BCE–1479 BCE
-    'mithila':                         [   80,   25,    90,   30],  // 364 BCE–363 BCE
-    'mixtecs':                         [ -100,   15,   -95,   20],  // 1500 BCE–1 BCE
-    'moabites':                        [   35,   30,    40,   35],  // 1280 BCE–587 BCE
-    'molossians':                      [   18,   40,    24,   45],  // 500 BCE–500 BCE
-    'molossis':                        [   18,   35,    25,   45],  // 430 BCE–350 BCE
-    'moriya':                          [   80,   25,    85,   30],  // 610 BCE–467 BCE
-    'mou':                             [  115,   35,   120,   40],  // 770 BCE–650 BCE
-    'mulaka':                          [   70,   15,    80,   20],  // 610 BCE–301 BCE
-    'musasir':                         [   40,   35,    50,   40],  // 735 BCE–723 BCE
-    'musicanus':                       [   65,   25,    70,   30],  // 338 BCE–325 BCE
-    'musri':                           [   35,   35,    40,   40],  // 900 BCE–826 BCE
-    'mutibas':                         [   75,   15,    85,   20],  // 610 BCE–600 BCE
-    'mutinous troops':                 [   12,   40,    18,   45],  // 342 BCE–342 BCE
-    'mycenaean kingdoms':              [   20,   35,    30,   40],  // 1505 BCE–1202 BCE
-    'mycenaeans':                      [   18,   30,    30,   45],  // 1505 BCE–1100 BCE
-    'mysians':                         [   24,   35,    30,   45],  // 1000 BCE–542 BCE
-    'nabataean kingdom':               [   30,   25,    45,   35],  // 331 BCE–1 BCE
-    'nabataeans':                      [   35,   25,    40,   35],  // 843 BCE–526 BCE
-    'nairi':                           [   40,   35,    45,   40],  // 859 BCE–859 BCE
-    'namibia':                         [   10,  -30,    30,  -15],  // 1990 CE–present
-    'namri':                           [   40,   30,    50,   40],  // 851 BCE–737 BCE
-    'nanda empire':                    [   70,   15,    90,   35],  // 355 BCE–321 BCE
-    'nanyan':                          [  110,   35,   115,   40],  // 770 BCE–640 BCE
-    'nauru':                           [  165,   -5,   170,    0],  // 1990 CE–present
-    'naxos':                           [   15,   35,    20,   40],  // 466 BCE–403 BCE
-    'neo assyrian empire':             [   25,   20,    55,   40],  // 910 BCE–608 BCE
-    'neo assyrian revolt':             [   35,   30,    50,   40],  // 827 BCE–520 BCE
-    'neo assyrian tributary':          [   25,   20,    55,   45],  // 896 BCE–612 BCE
-    'neo babylonian empire':           [   30,   20,    50,   40],  // 616 BCE–549 BCE
-    'neo babylonian empire tributary': [   30,   25,    40,   35],  // 605 BCE–554 BCE
-    'neo-assyrian empire':             [   35,   30,    50,   40],  // 906 BCE–608 BCE
-    'neo-babylonian empire':           [   30,   20,    50,   40],  // 616 BCE–539 BCE
-    'new hittite kingdom':             [   24,   30,    45,   45],  // 1438 BCE–1190 BCE
-    'new zealand':                     [ -170,  -55,   186,   -5],  // 1990 CE–present
-    'ni':                              [  115,   30,   120,   40],  // 770 BCE–335 BCE
-    'nicaragua':                       [  -90,   10,   -80,   20],  // 1990 CE–present
-    'niger':                           [    0,   10,    20,   25],  // 1990 CE–present
-    'nilotic peoples':                 [   25,    0,    40,   15],  // 1000 BCE–1 BCE
-    'nok people':                      [    0,    5,    15,   15],  // 1500 BCE–1 BCE
-    'norte chico civilization':        [  -80,  -15,   -75,   -5],  // 2400 BCE–1800 BCE
-    'north arabian semites':           [   35,   25,    50,   35],  // 500 BCE–1 BCE
-    'northern league':                 [   24,   40,    36,   45],  // 281 BCE–274 BCE
-    'northern zone peoples':           [  105,   30,   120,   40],  // 1400 BCE–1000 BCE
-    'northwest coast peoples':         [ -150,   40,  -120,   65],  // 2400 BCE–1 BCE
-    'nu':                              [  105,   25,   110,   35],  // 770 BCE–600 BCE
-    'nubians':                         [   30,   10,    40,   25],  // 2400 BCE–1 BCE
-    'nuhashshi':                       [   35,   35,    40,   40],  // 1351 BCE–1336 BCE
-    'numidians':                       [   -5,   30,    10,   40],  // 1000 BCE–1 BCE
-    'odra':                            [   80,   20,    90,   25],  // 610 BCE–344 BCE
-    'odrysia':                         [   18,   40,    30,   45],  // 359 BCE–1 BCE
-    'odrysian kingdom':                [   18,   35,    30,   50],  // 475 BCE–341 BCE
-    'oetaea':                          [   20,   35,    25,   40],  // 695 BCE–1 BCE
-    'old hittite kingdom':             [   25,   30,    45,   45],  // 1759 BCE–1438 BCE
-    'olmecs':                          [ -100,   15,   -90,   20],  // 1250 BCE–1 BCE
-    'opuntian locris':                 [   20,   35,    25,   40],  // 695 BCE–1 BCE
-    'oreitai':                         [   65,   20,    70,   30],  // 329 BCE–325 BCE
-    'orestis':                         [   18,   40,    24,   45],  // 540 BCE–475 BCE
-    'oxycanus':                        [   65,   25,    75,   30],  // 337 BCE–325 BCE
-    'ozolian locris':                  [   15,   35,    25,   40],  // 695 BCE–356 BCE
-    'paeligni':                        [   12,   40,    18,   45],  // 438 BCE–304 BCE
-    'paeonia':                         [   18,   40,    24,   45],  // 352 BCE–1 BCE
-    'paeonians':                       [   18,   40,    24,   45],  // 850 BCE–340 BCE
-    'paiones':                         [   18,   40,    24,   45],  // 500 BCE–356 BCE
-    'pala':                            [   30,   40,    36,   45],  // 1535 BCE–1381 BCE
-    'palau':                           [  130,    0,   135,   10],  // 1990 CE–present
-    'paleosiberians':                  [   64,   55,   170,   75],  // 2400 BCE–1 BCE
-    'pampas cultures':                 [  -75,  -50,   -50,  -30],  // 2400 BCE–1 BCE
-    'pamphylians':                     [   30,   35,    35,   40],  // 1000 BCE–558 BCE
-    'panama':                          [  -85,    5,   -75,   10],  // 1990 CE–present
-    'panchala':                        [   75,   25,    85,   35],  // 825 BCE–355 BCE
-    'pandya':                          [   75,    5,    80,   15],  // 325 BCE–1 BCE
-    'paphlagonia':                     [   30,   35,    36,   45],  // 323 BCE–1 BCE
-    'papua new guinea':                [  140,  -15,   160,    0],  // 1990 CE–present
-    'papuans':                         [  130,  -10,   150,    0],  // 1600 BCE–1 BCE
-    'paraguay':                        [  -65,  -30,   -50,  -15],  // 1990 CE–present
-    'parauaea':                        [   18,   40,    24,   45],  // 430 BCE–350 BCE
-    'pardabathra':                     [   65,   20,    70,   30],  // 338 BCE–325 BCE
-    'parsua':                          [   40,   30,    50,   40],  // 860 BCE–744 BCE
-    'parthia':                         [   50,   30,    65,   40],  // 522 BCE–521 BCE
-    'pashime':                         [   45,   25,    55,   35],  // 2348 BCE–1345 BCE
-    'patagonian peoples':              [  -80,  -55,   -64,  -40],  // 2400 BCE–1 BCE
-    'patin (unqi)':                    [   35,   35,    40,   40],  // 1190 BCE–604 BCE
-    'paurava':                         [   70,   30,    75,   35],  // 337 BCE–326 BCE
-    'pelagonia':                       [   18,   40,    24,   45],  // 540 BCE–475 BCE
-    'pelasgians':                      [   20,   35,    30,   40],  // 2400 BCE–1505 BCE
-    'peloponnesian league':            [   10,   30,    40,   45],  // 445 BCE–394 CE
-    'peng':                            [  110,   30,   120,   35],  // 770 BCE–650 BCE
-    'pengzhi':                         [  105,   30,   115,   35],  // 771 BCE–697 BCE
-    'pergamon':                        [   25,   35,    30,   40],  // 274 BCE–1 BCE
-    'persia':                          [   45,   25,    65,   35],  // 653 BCE–550 BCE
-    'persian empire':                  [   15,   20,    80,   50],  // 550 BCE–1 BCE
-    'persian revolt':                  [   45,   25,    70,   35],  // 522 BCE–521 BCE
-    'persian vassal':                  [   18,   35,    30,   45],  // 491 BCE–409 BCE
-    'peucetians':                      [   12,   40,    18,   45],  // 800 BCE–1 BCE
-    'pharsalos':                       [   20,   35,    25,   40],  // 405 BCE–375 BCE
-    'pherae':                          [   18,   35,    25,   45],  // 405 BCE–344 BCE
-    'philistia':                       [   30,   30,    40,   35],  // 1020 BCE–604 BCE
-    'philistines':                     [   30,   30,    40,   35],  // 1180 BCE–1020 BCE
-    'phlius':                          [   20,   35,    25,   40],  // 655 BCE–338 BCE
-    'phocis':                          [   20,   35,    25,   40],  // 695 BCE–1 BCE
-    'phoenicians':                     [  -10,   30,    40,   40],  // 1180 BCE–344 BCE
-    'phrygian kingdom':                [   24,   35,    36,   45],  // 1120 BCE–654 BCE
-    'phrygians':                       [   18,   35,    45,   45],  // 1223 BCE–585 BCE
-    'pi':                              [  115,   30,   120,   35],  // 770 BCE–415 BCE
-    'piceni':                          [   12,   40,    18,   45],  // 500 BCE–438 BCE
-    'picentes':                        [   12,   40,    18,   45],  // 800 BCE–438 BCE
-    'picenum':                         [   12,   40,    18,   45],  // 438 BCE–299 BCE
-    'ping zhou':                       [  105,   30,   110,   35],  // 771 BCE–550 BCE
-    'pirate mercenaries':              [   18,   35,    40,   45],  // 276 BCE–274 BCE
-    'pirates':                         [   20,   35,    30,   40],  // 344 BCE–344 BCE
-    'pisatis':                         [   20,   35,    25,   40],  // 684 BCE–572 BCE
-    'pisidians':                       [   30,   35,    35,   40],  // 558 BCE–1 BCE
-    'pitassa':                         [   30,   35,    35,   40],  // 1545 BCE–1432 BCE
-    'plains peoples':                  [ -120,   25,   -90,   55],  // 2400 BCE–1 BCE
-    'plateau peoples':                 [ -128,   40,  -108,   55],  // 2400 BCE–1 BCE
-    'plebian secession':               [   12,   40,    18,   45],  // 494 BCE–287 BCE
-    'pontians':                        [   36,   40,    42,   45],  // 612 BCE–514 BCE
-    'pontus':                          [   30,   35,    42,   45],  // 281 BCE–1 BCE
-    'poverty point culture':           [  -95,   30,   -85,   35],  // 2200 BCE–1 BCE
-    'praeneste':                       [   12,   40,    18,   45],  // 359 BCE–341 BCE
-    'proto-burmese':                   [   90,   25,   100,   35],  // 2400 BCE–1 BCE
-    'proto-canaanites':                [   30,   30,    40,   35],  // 2300 BCE–1850 BCE
-    'proto-ethiopians':                [   30,    5,    45,   15],  // 2400 BCE–1 BCE
-    'proto-greeks':                    [   18,   35,    25,   45],  // 1950 BCE–1223 BCE
-    'proto-mongol peoples':            [   96,   45,   120,   55],  // 2400 BCE–1 BCE
-    'proto-tibetans':                  [   70,   25,   100,   40],  // 2400 BCE–1 BCE
-    'proto-turkic peoples':            [   75,   30,   114,   50],  // 2400 BCE–1 BCE
-    'ptolemaic ally':                  [   20,   35,    35,   40],  // 314 BCE–282 BCE
-    'ptolemaic kingdom':               [   20,   20,    40,   40],  // 305 BCE–1 BCE
-    'pu':                              [  110,   35,   115,   40],  // 770 BCE–677 BCE
-    'pugu':                            [  115,   35,   120,   40],  // 1036 BCE–1026 BCE
-    'pulinda':                         [   75,   20,    85,   25],  // 610 BCE–319 BCE
-    'pundra':                          [   85,   20,    90,   30],  // 610 BCE–311 BCE
-    'punt':                            [   35,    5,    50,   20],  // 2400 BCE–1100 BCE
-    'qedarite confederation':          [   35,   25,    50,   40],  // 870 BCE–550 BCE
-    'qedarites':                       [   35,   25,    45,   35],  // 925 BCE–1 BCE
-    'qi':                              [  110,   30,   126,   45],  // 770 BCE–1 BCE
-    'qi(2)':                           [  115,   35,   120,   40],  // 770 BCE–445 BCE
-    'qi(3)':                           [  115,   35,   120,   40],  // 770 BCE–706 BCE
-    'qiang':                           [   95,   35,   105,   40],  // 771 BCE–1 BCE
-    'qin':                             [  100,   25,   120,   40],  // 771 BCE–1 BCE
-    'qiuyou':                          [  110,   35,   115,   40],  // 770 BCE–458 BCE
-    'qu':                              [  110,   35,   115,   40],  // 770 BCE–677 BCE
-    'quaman':                          [  105,   30,   115,   35],  // 770 BCE–611 BCE
-    'quan':                            [  110,   30,   115,   35],  // 770 BCE–704 BCE
-    'quanrong':                        [   95,   30,   115,   40],  // 1000 BCE–1 BCE
-    'que':                             [   30,   35,    40,   40],  // 1180 BCE–588 BCE
-    'quwo':                            [  110,   30,   115,   40],  // 745 BCE–678 BCE
-    'rang':                            [  105,   25,   110,   35],  // 770 BCE–670 BCE
-    'rathikas':                        [   70,   15,    75,   25],  // 321 BCE–300 BCE
-    'rebel aranzik':                   [   35,   35,    40,   40],  // 1695 BCE–1690 BCE
-    'rebel irridu':                    [   35,   35,    45,   40],  // 1717 BCE–1710 BCE
-    'rebel israelites':                [   35,   30,    40,   35],  // 1097 BCE–1095 BCE
-    'red di':                          [  110,   35,   115,   40],  // 770 BCE–588 BCE
-    'ren':                             [  115,   35,   120,   40],  // 770 BCE–335 BCE
-    'revolt':                          [    6,   25,   125,   50],  // 552 BCE–1 BCE
-    'revolt of antigonus':             [   25,   35,    35,   40],  // 321 BCE–321 BCE
-    'revolt of antipater':             [   18,   35,    30,   45],  // 321 BCE–321 BCE
-    'revolt of ariobarzanes':          [   24,   35,    36,   45],  // 366 BCE–362 BCE
-    'revolt of artabazus':             [   24,   35,    36,   45],  // 356 BCE–353 BCE
-    'revolt of autophradates':         [   25,   35,    35,   40],  // 363 BCE–360 BCE
-    'revolt of cyrus the younger':     [   25,   30,    45,   40],  // 401 BCE–401 BCE
-    'revolt of datames':               [   30,   35,    42,   45],  // 371 BCE–360 BCE
-    'revolt of eumenes':               [   24,   30,    45,   45],  // 321 BCE–317 BCE
-    'revolt of hermias':               [   25,   35,    30,   40],  // 345 BCE–342 BCE
-    'revolt of hua clan':              [  115,   30,   120,   35],  // 521 BCE–520 BCE
-    'revolt of inaros':                [   25,   25,    35,   35],  // 462 BCE–449 BCE
-    'revolt of khababash':             [   30,   30,    35,   35],  // 336 BCE–335 BCE
-    'revolt of luan':                  [  110,   35,   115,   40],  // 551 BCE–550 BCE
-    'revolt of lysimachus':            [   18,   40,    30,   45],  // 321 BCE–321 BCE
-    'revolt of mausolus':              [   25,   35,    30,   40],  // 363 BCE–360 BCE
-    'revolt of orontes':               [   35,   35,    50,   45],  // 363 BCE–360 BCE
-    'revolt of pissuthnes':            [   25,   35,    35,   40],  // 420 BCE–415 BCE
-    'revolt of ptolemy':               [   20,   20,    35,   40],  // 321 BCE–321 BCE
-    'revolt of wangzi tui':            [  110,   30,   115,   40],  // 675 BCE–673 BCE
-    'revolt of wangzi zhao':           [  110,   30,   115,   40],  // 520 BCE–516 BCE
-    'rhegion':                         [   12,   35,    20,   45],  // 621 BCE–388 BCE
-    'rhodos':                          [   25,   35,    30,   40],  // 319 BCE–1 BCE
-    'roman ally':                      [    0,   35,    20,   45],  // 486 BCE–1 BCE
-    'roman latin colony':              [   12,   40,    18,   45],  // 495 BCE–1 BCE
-    'roman republic':                  [    6,   35,    24,   45],  // 509 BCE–280 CE
-    'rong':                            [  110,   30,   120,   40],  // 770 BCE–593 BCE
-    'rui':                             [  105,   30,   115,   40],  // 771 BCE–641 BCE
-    'ruo':                             [  110,   30,   115,   35],  // 770 BCE–622 BCE
-    'ruo\'ao revolt':                  [  110,   30,   115,   35],  // 605 BCE–604 BCE
-    'rwanda':                          [   25,   -5,    35,    0],  // 1990 CE–present
-    'saba':                            [   40,   10,    50,   20],  // 1100 BCE–1 BCE
-    'sabines':                         [   12,   40,    18,   45],  // 800 BCE–438 BCE
-    'sabini':                          [   12,   40,    18,   45],  // 438 BCE–290 BCE
-    'saharan peoples':                 [  -20,   15,    30,   35],  // 2400 BCE–1 BCE
-    'sakas':                           [   48,   35,    96,   55],  // 750 BCE–1 BCE
-    'sakya':                           [   80,   25,    85,   30],  // 750 BCE–480 BCE
-    'salamis':                         [   30,   30,    40,   40],  // 411 BCE–380 BCE
-    'salva':                           [   75,   25,    80,   30],  // 610 BCE–600 BCE
-    'salwa':                           [   70,   25,    75,   30],  // 610 BCE–322 BCE
-    'sambus':                          [   65,   20,    75,   35],  // 329 BCE–325 BCE
-    'samian thalassocracy':            [   20,   35,    30,   40],  // 542 BCE–522 BCE
-    'samnite ally':                    [   12,   40,    24,   45],  // 326 BCE–304 BCE
-    'samnite confederation':           [   12,   40,    18,   45],  // 438 BCE–1 BCE
-    'samnites':                        [   12,   40,    18,   45],  // 800 BCE–438 BCE
-    'samnium':                         [   12,   40,    18,   45],  // 500 BCE–438 BCE
-    'samoa':                           [ -175,  -15,  -170,  -10],  // 1990 CE–present
-    'samos':                           [   25,   35,    30,   40],  // 386 BCE–323 BCE
-    'san marino':                      [   12,   40,    18,   45],  // 1990 CE–present
-    'sanxingdui culture':              [  100,   25,   110,   35],  // 1700 BCE–1000 BCE
-    'sardinians':                      [    5,   35,    12,   45],  // 1250 BCE–510 BCE
-    'sattagydia':                      [   65,   30,    75,   35],  // 610 BCE–516 BCE
-    'sattyaputas':                     [   70,   10,    80,   15],  // 325 BCE–1 BCE
-    'saurashtra':                      [   65,   20,    75,   25],  // 610 BCE–317 BCE
-    'sauromatians':                    [   36,   40,    64,   55],  // 550 BCE–1 BCE
-    'sauvira':                         [   65,   25,    70,   30],  // 610 BCE–515 BCE
-    'savanna peoples':                 [  -70,  -35,   -35,    0],  // 2400 BCE–1 BCE
-    'savaras':                         [   80,   15,    85,   20],  // 610 BCE–430 BCE
-    'scythians':                       [   24,   35,    96,   55],  // 1201 BCE–1 BCE
-    'sea peoples':                     [   20,   30,    40,   45],  // 1303 BCE–1180 BCE
-    'sealand':                         [   40,   30,    50,   35],  // 1734 BCE–1438 BCE
-    'second athenian league':          [   15,   35,    36,   45],  // 386 BCE–338 BCE
-    'seleucid ally':                   [   24,   35,    36,   45],  // 282 BCE–1 BCE
-    'seleucid kingdom':                [   24,   25,    75,   45],  // 305 BCE–1 BCE
-    'semitic nomads':                  [   35,   15,    60,   35],  // 2400 BCE–1000 BCE
-    'senegal':                         [  -20,   10,   -10,   20],  // 1990 CE–present
-    'seychelles':                      [   45,  -15,    60,    0],  // 1990 CE–present
-    'shang':                           [  105,   30,   125,   40],  // 1750 BCE–1103 BCE
-    'shang dynasty':                   [  100,   25,   125,   45],  // 1600 BCE–1043 BCE
-    'shanrong':                        [  114,   35,   120,   45],  // 770 BCE–282 BCE
-    'shao':                            [  105,   30,   110,   35],  // 771 BCE–687 BCE
-    'shen':                            [  105,   30,   115,   40],  // 771 BCE–507 BCE
-    'shen(2)':                         [  110,   30,   120,   35],  // 770 BCE–506 BCE
-    'shi':                             [  115,   30,   120,   40],  // 770 BCE–560 BCE
-    'shimashki':                       [   40,   25,    60,   35],  // 2213 BCE–1752 BCE
-    'shinuhtu':                        [   30,   35,    40,   40],  // 826 BCE–718 BCE
-    'shu':                             [  100,   25,   115,   35],  // 1075 BCE–316 BCE
-    'shu bao':                         [  115,   30,   120,   35],  // 770 BCE–601 BCE
-    'shu jiu':                         [  115,   30,   120,   35],  // 770 BCE–601 BCE
-    'shu long':                        [  115,   30,   120,   35],  // 770 BCE–601 BCE
-    'shu yong':                        [  115,   30,   120,   35],  // 770 BCE–601 BCE
-    'shu(2)':                          [  115,   30,   120,   35],  // 770 BCE–615 BCE
-    'shubria':                         [   40,   35,    45,   40],  // 735 BCE–673 BCE
-    'shurparaka':                      [   70,   15,    75,   25],  // 610 BCE–301 BCE
-    'sicans':                          [   10,   35,    20,   40],  // 1450 BCE–409 BCE
-    'sicelia':                         [   10,   35,    20,   40],  // 461 BCE–392 BCE
-    'sicels':                          [   10,   35,    20,   40],  // 1000 BCE–409 BCE
-    'sicyon':                          [   20,   35,    25,   40],  // 655 BCE–445 BCE
-    'sidicini':                        [   12,   40,    18,   45],  // 438 BCE–334 BCE
-    'sierra leone':                    [  -15,    5,   -10,   15],  // 1990 CE–present
-    'sikanoi':                         [   10,   35,    15,   40],  // 500 BCE–405 BCE
-    'sikeloi':                         [   10,   35,    20,   40],  // 500 BCE–440 BCE
-    'simurrum':                        [   45,   30,    50,   40],  // 2064 BCE–1600 BCE
-    'sindhu':                          [   65,   25,    75,   30],  // 610 BCE–515 BCE
-    'singapore':                       [  100,    0,   105,    5],  // 1990 CE–present
-    'sinope':                          [   30,   40,    36,   45],  // 323 BCE–1 BCE
-    'sivi':                            [   65,   25,    70,   30],  // 610 BCE–543 BCE
-    'slavs':                           [   16,   45,    40,   55],  // 2050 BCE–1 BCE
-    'sogdians':                        [   65,   35,    75,   45],  // 1700 BCE–532 BCE
-    'solomon islands':                 [  155,  -15,   170,   -5],  // 1990 CE–present
-    'song':                            [  110,   30,   120,   40],  // 770 BCE–286 BCE
-    'south china peoples':             [  105,   25,   125,   35],  // 2400 BCE–1 BCE
-    'spratly islands':                 [  110,    5,   120,   15],  // 1990 CE–present
-    'st. kitts and nevis':             [  -65,   15,   -60,   20],  // 1990 CE–present
-    'st. lucia':                       [  -65,   10,   -60,   15],  // 1990 CE–present
-    'st. vincent and the grenadines':  [  -65,   10,   -60,   15],  // 1990 CE–present
-    'stasis':                          [   10,   30,    45,   45],  // 636 BCE–278 BCE
-    'su':                              [  115,   35,   120,   40],  // 770 BCE–684 BCE
-    'subarctic peoples':               [ -168,   45,   -56,   70],  // 2400 BCE–1 BCE
-    'subartum':                        [   40,   35,    45,   40],  // 1741 BCE–1615 BCE
-    'succession struggle':             [   12,   25,   120,   45],  // 816 BCE–289 BCE
-    'suhma':                           [   85,   20,    90,   25],  // 610 BCE–345 BCE
-    'suhne':                           [   40,   35,    45,   40],  // 931 BCE–863 BCE
-    'suhu':                            [   40,   30,    45,   35],  // 1120 BCE–612 BCE
-    'sui':                             [  110,   30,   115,   35],  // 770 BCE–640 BCE
-    'sui(2)':                          [  115,   35,   120,   40],  // 770 BCE–681 BCE
-    'surasena':                        [   75,   25,    80,   30],  // 900 BCE–360 BCE
-    'suriname':                        [  -60,    0,   -50,   10],  // 1990 CE–present
-    'swaziland':                       [   30,  -30,    35,  -25],  // 1990 CE–present
-    'syracuse':                        [    6,   35,    30,   45],  // 715 BCE–1 BCE
-    'syracuse exiles':                 [   10,   35,    20,   40],  // 316 BCE–305 BCE
-    'são tomé and príncipe':           [    5,   -5,    10,    5],  // 1990 CE–present
-    'tabal':                           [   30,   35,    40,   40],  // 1190 BCE–678 BCE
-    'taiwan':                          [  115,   20,   125,   30],  // 1990 CE–present
-    'tajikistan':                      [   65,   35,    80,   45],  // 1990 CE–present
-    'tan':                             [  115,   30,   120,   40],  // 770 BCE–473 BCE
-    'tan(2)':                          [  115,   35,   120,   40],  // 770 BCE–684 BCE
-    'tanagra':                         [   20,   35,    25,   40],  // 386 BCE–382 BCE
-    'tang':                            [  110,   30,   115,   35],  // 770 BCE–505 BCE
-    'taras':                           [   12,   40,    24,   45],  // 500 BCE–380 BCE
-    'tarhuntassa':                     [   30,   35,    35,   40],  // 1535 BCE–1200 BCE
-    'tartessos':                       [  -10,   35,    -5,   40],  // 1000 BCE–1 BCE
-    'taulanti':                        [   15,   35,    25,   45],  // 800 BCE–279 BCE
-    'tauromenion':                     [   15,   35,    20,   40],  // 288 BCE–1 BCE
-    'taxila':                          [   70,   30,    75,   40],  // 338 BCE–326 BCE
-    'tegea':                           [   20,   35,    25,   40],  // 423 BCE–1 BCE
-    'teng':                            [  115,   30,   120,   40],  // 770 BCE–297 BCE
-    'terramare culture':               [    6,   40,    12,   50],  // 1550 BCE–1250 BCE
-    'teutons':                         [    0,   50,    24,   65],  // 2050 BCE–1 BCE
-    'thai peoples':                    [   95,   20,   105,   35],  // 2400 BCE–1 BCE
-    'the netherlands':                 [  -75,   10,     8,   55],  // 1990 CE–present
-    'theban ally':                     [   18,   35,    30,   45],  // 370 BCE–338 BCE
-    'thebes':                          [   18,   35,    36,   45],  // 386 BCE–1 BCE
-    'thespiae':                        [   20,   35,    25,   40],  // 386 BCE–378 BCE
-    'thesprotia':                      [   20,   35,    25,   40],  // 395 BCE–350 BCE
-    'thesprotians':                    [   20,   35,    25,   40],  // 500 BCE–430 BCE
-    'thessaly':                        [   18,   35,    25,   45],  // 650 BCE–276 BCE
-    'thracians':                       [   18,   40,    30,   50],  // 1450 BCE–1 BCE
-    'thraco cimmerians':               [   18,   40,    54,   50],  // 2400 BCE–1450 BCE
-    'thraikes':                        [   18,   40,    30,   45],  // 500 BCE–1 BCE
-    'three guards rebellion':          [  110,   30,   125,   40],  // 1042 BCE–1039 BCE
-    'three yi tribes':                 [  115,   25,   125,   30],  // 770 BCE–1 BCE
-    'thyni':                           [   24,   40,    30,   45],  // 469 BCE–400 BCE
-    'tian clan':                       [  115,   35,   120,   40],  // 500 BCE–481 BCE
-    'tian qi':                         [  110,   30,   125,   45],  // 481 BCE–1 BCE
-    'tibur':                           [   12,   40,    18,   45],  // 388 BCE–341 BCE
-    'togo':                            [   -5,    5,     5,   15],  // 1990 CE–present
-    'tong':                            [  115,   30,   120,   35],  // 770 BCE–615 BCE
-    'tonga':                           [ -175,  -25,   185,  -15],  // 1990 CE–present
-    'triballi':                        [   18,   40,    30,   45],  // 445 BCE–1 BCE
-    'trigarta':                        [   70,   30,    80,   35],  // 950 BCE–323 BCE
-    'trinidad and tobago':             [  -65,   10,   -60,   15],  // 1990 CE–present
-    'triphylia':                       [   20,   35,    25,   40],  // 725 BCE–1 BCE
-    'troezen':                         [   20,   35,    25,   40],  // 494 BCE–1 BCE
-    'tuhe':                            [  114,   40,   126,   45],  // 770 BCE–307 BCE
-    'tummanna':                        [   30,   35,    36,   45],  // 1535 BCE–1325 BCE
-    'turkmenistan':                    [   48,   35,    70,   45],  // 1990 CE–present
-    'turks and caicos islands':        [  -75,   20,   -70,   25],  // 1990 CE–present
-    'tuvalu':                          [  175,  -10,   180,   -5],  // 1990 CE–present
-    'tuwana':                          [   30,   35,    40,   40],  // 826 BCE–635 BCE
-    'tymphaea':                        [   18,   35,    25,   45],  // 430 BCE–368 BCE
-    'tyranny of syracuse':             [    5,   30,    25,   45],  // 478 BCE–278 BCE
-    'uelikukhi':                       [   40,   35,    50,   45],  // 880 BCE–706 BCE
-    'uganda':                          [   25,   -5,    40,    5],  // 1990 CE–present
-    'ugrians':                         [   36,   50,    72,   70],  // 750 BCE–1 BCE
-    'umbri':                           [   12,   40,    18,   45],  // 800 BCE–308 BCE
-    'umbria':                          [    6,   40,    18,   45],  // 438 BCE–290 BCE
-    'umbrii':                          [   12,   40,    18,   45],  // 500 BCE–438 BCE
-    'umma':                            [   45,   30,    50,   35],  // 2394 BCE–2309 BCE
-    'united arab emirates':            [   50,   20,    60,   30],  // 1990 CE–present
-    'ur iii tributary':                [   40,   25,    55,   40],  // 2108 BCE–2018 BCE
-    'urartu':                          [   35,   35,    50,   45],  // 935 BCE–591 BCE
-    'urartu tributary':                [   35,   35,    50,   45],  // 802 BCE–714 BCE
-    'uruguay':                         [  -60,  -40,   -50,  -30],  // 1990 CE–present
-    'usinara':                         [   75,   25,    80,   35],  // 610 BCE–354 BCE
-    'utica':                           [    5,   35,    15,   40],  // 950 BCE–948 BCE
-    'utkala':                          [   85,   15,    90,   25],  // 610 BCE–345 BCE
-    'vajjika league':                  [   80,   25,    90,   30],  // 610 BCE–468 BCE
-    'valdivia culture':                [  -85,   -5,   -80,    0],  // 2400 BCE–1700 BCE
-    'vanga':                           [   85,   20,    95,   25],  // 675 BCE–311 BCE
-    'vanuatu':                         [  165,  -25,   175,  -10],  // 1990 CE–present
-    'vatsa':                           [   75,   20,    85,   30],  // 875 BCE–492 BCE
-    'vemaka':                          [   75,   30,    80,   35],  // 450 BCE–1 BCE
-    'veneti':                          [    6,   45,    18,   50],  // 800 BCE–1 BCE
-    'vestini':                         [   12,   40,    18,   45],  // 438 BCE–302 BCE
-    'vidarbha':                        [   75,   15,    85,   25],  // 700 BCE–301 BCE
-    'videha':                          [   80,   25,    90,   30],  // 800 BCE–610 BCE
-    'vitihotras':                      [   70,   20,    80,   25],  // 400 BCE–350 BCE
-    'volga battle axe culture':        [   16,   50,    64,   65],  // 2050 BCE–1250 BCE
-    'volsci':                          [   12,   40,    18,   45],  // 800 BCE–341 BCE
-    'vriji':                           [   80,   25,    90,   30],  // 700 BCE–590 BCE
-    'wahsusana':                       [   30,   35,    35,   40],  // 1775 BCE–1626 BCE
-    'wei':                             [  105,   30,   120,   40],  // 1750 BCE–1 BCE
-    'wei clan':                        [  110,   35,   115,   40],  // 500 BCE–453 BCE
-    'wen':                             [  110,   30,   115,   35],  // 1750 BCE–1606 BCE
-    'west african peoples':            [  -20,    5,    15,   20],  // 2400 BCE–1 BCE
-    'western guo':                     [  110,   30,   115,   40],  // 771 BCE–655 BCE
-    'western mediterraneans':          [  -16,   35,    24,   60],  // 2400 BCE–1 BCE
-    'western odrysia':                 [   18,   40,    30,   45],  // 359 BCE–352 BCE
-    'western rong':                    [  100,   30,   110,   40],  // 771 BCE–361 BCE
-    'wey':                             [  110,   30,   120,   40],  // 770 BCE–1 BCE
-    'white di':                        [  105,   35,   115,   40],  // 770 BCE–407 BCE
-    'wilusa':                          [   24,   35,    30,   45],  // 1535 BCE–1205 BCE
-    'wu':                              [  110,   25,   125,   40],  // 1200 BCE–470 BCE
-    'wucheng culture':                 [  105,   25,   125,   35],  // 1450 BCE–958 BCE
-    'wushi rong':                      [  105,   35,   110,   40],  // 771 BCE–314 BCE
-    'wuzhong':                         [  110,   35,   120,   45],  // 770 BCE–456 BCE
-    'xi':                              [  110,   30,   120,   35],  // 770 BCE–680 BCE
-    'xia dynasty':                     [  105,   30,   120,   40],  // 2035 BCE–1600 BCE
-    'xian':                            [  110,   30,   115,   35],  // 770 BCE–655 BCE
-    'xian peoples':                    [  105,   30,   110,   35],  // 1423 BCE–1414 BCE
-    'xiang':                           [  115,   35,   120,   40],  // 770 BCE–721 BCE
-    'xiang(2)':                        [  115,   30,   120,   35],  // 770 BCE–643 BCE
-    'xianyu':                          [  110,   35,   120,   40],  // 770 BCE–506 BCE
-    'xiao':                            [  115,   30,   120,   35],  // 499 BCE–496 BCE
-    'xing':                            [  110,   35,   120,   40],  // 770 BCE–635 BCE
-    'xirong':                          [  110,   30,   115,   35],  // 770 BCE–690 BCE
-    'xu':                              [  105,   25,   125,   35],  // 945 BCE–512 BCE
-    'xu(2)':                           [  110,   30,   115,   35],  // 770 BCE–371 BCE
-    'xue':                             [  115,   30,   125,   40],  // 1750 BCE–335 BCE
-    'xun':                             [  110,   35,   115,   40],  // 770 BCE–684 BCE
-    'xuqu':                            [  115,   35,   120,   40],  // 770 BCE–620 BCE
-    'yaminites':                       [   40,   35,    45,   40],  // 1769 BCE–1768 BCE
-    'yamkhad':                         [   35,   30,    45,   40],  // 2004 BCE–1543 BCE
-    'yan':                             [  110,   30,   130,   45],  // 770 BCE–1 BCE
-    'yan(2)':                          [  110,   30,   115,   35],  // 770 BCE–764 BCE
-    'yan(3)':                          [  115,   30,   125,   35],  // 770 BCE–680 BCE
-    'yang':                            [  110,   35,   115,   40],  // 770 BCE–678 BCE
-    'yang(2)':                         [  115,   35,   120,   40],  // 770 BCE–660 BCE
-    'yangyue':                         [  110,   25,   120,   30],  // 770 BCE–500 BCE
-    'yaudheya':                        [   70,   25,    80,   35],  // 550 BCE–322 BCE
-    'yi':                              [  120,   35,   125,   40],  // 770 BCE–659 BCE
-    'yi-luo rong':                     [  110,   30,   115,   35],  // 770 BCE–588 BCE
-    'yihu':                            [  115,   30,   120,   35],  // 770 BCE–491 BCE
-    'ying':                            [  110,   30,   115,   35],  // 770 BCE–678 BCE
-    'yingshi':                         [  115,   30,   120,   35],  // 770 BCE–646 BCE
-    'yiqu':                            [  105,   30,   110,   40],  // 771 BCE–1 BCE
-    'yong':                            [  105,   30,   115,   35],  // 770 BCE–611 BCE
-    'yu':                              [  110,   30,   115,   40],  // 770 BCE–655 BCE
-    'yu(2)':                           [  105,   30,   115,   35],  // 770 BCE–611 BCE
-    'yu(3)':                           [  115,   35,   120,   40],  // 770 BCE–524 BCE
-    'yue':                             [  115,   25,   125,   40],  // 770 BCE–306 BCE
-    'yue peoples':                     [  115,   25,   125,   35],  // 1200 BCE–504 BCE
-    'yueshi culture':                  [  115,   30,   125,   40],  // 1900 BCE–1500 BCE
-    'yuezhi':                          [   72,   40,    90,   45],  // 1235 BCE–1 BCE
-    'yugoslavia':                      [   18,   40,    24,   50],  // 1990 CE–present
-    'yun':                             [  110,   30,   115,   35],  // 770 BCE–700 BCE
-    'yuqui':                           [  115,   30,   120,   35],  // 770 BCE–692 BCE
-    'zabakhi':                         [   42,   40,    48,   45],  // 880 BCE–591 BCE
-    'zahara':                          [   45,   25,    60,   35],  // 2277 BCE–2206 BCE
-    'zaire':                           [   10,  -15,    35,   10],  // 1990 CE–present
-    'zalmaqum':                        [   35,   35,    45,   40],  // 1778 BCE–1615 BCE
-    'zamua':                           [   40,   35,    50,   40],  // 882 BCE–880 BCE
-    'zapotecs':                        [ -100,   15,   -95,   20],  // 1400 BCE–1 BCE
-    'zeng':                            [  110,   30,   115,   35],  // 771 BCE–677 BCE
-    'zeng(2)':                         [  115,   30,   120,   40],  // 770 BCE–567 BCE
-    'zhang':                           [  115,   35,   120,   40],  // 770 BCE–664 BCE
-    'zhangzhung':                      [   75,   25,    90,   40],  // 500 BCE–1 BCE
-    'zhao':                            [  102,   30,   120,   45],  // 453 BCE–1 BCE
-    'zhao clan':                       [  110,   35,   115,   40],  // 500 BCE–453 BCE
-    'zhen':                            [  110,   30,   115,   35],  // 770 BCE–700 BCE
-    'zheng':                           [  110,   30,   120,   40],  // 770 BCE–375 BCE
-    'zhi clan':                        [  110,   35,   115,   40],  // 500 BCE–453 BCE
-    'zhonghang clan':                  [  110,   35,   120,   40],  // 500 BCE–490 BCE
-    'zhongli':                         [  115,   30,   120,   35],  // 770 BCE–560 BCE
-    'zhongshan':                       [  110,   35,   120,   40],  // 506 BCE–296 BCE
-    'zhongwu':                         [  115,   30,   120,   35],  // 770 BCE–512 BCE
-    'zhou':                            [  100,   30,   125,   40],  // 1125 BCE–1045 BCE
-    'zhou dynasty':                    [  100,   25,   125,   45],  // 1045 BCE–1 BCE
-    'zhou(2)':                         [  110,   25,   115,   35],  // 770 BCE–700 BCE
-    'zhou(3)':                         [  115,   35,   120,   40],  // 770 BCE–706 BCE
-    'zhoulai':                         [  115,   30,   120,   35],  // 770 BCE–600 BCE
-    'zhu':                             [  115,   30,   120,   40],  // 770 BCE–1 BCE
-    'zhu(2)':                          [  115,   35,   120,   40],  // 770 BCE–517 BCE
-    'zhu(3)':                          [  115,   35,   120,   40],  // 770 BCE–768 BCE
-    'zhuan':                           [  115,   30,   120,   35],  // 770 BCE–585 BCE
-    'zhuanyu':                         [  115,   35,   120,   40],  // 770 BCE–483 BCE
-    'zippasla':                        [   25,   30,    35,   40],  // 1421 BCE–1395 BCE
-    'zong':                            [  115,   30,   120,   35],  // 770 BCE–615 BCE
-    'zuo':                             [  110,   30,   115,   40],  // 770 BCE–750 BCE
+    'lullubum':                        [   40,   35,    50,   40, -2054],  // 2054 BCE–2051 BCE
+    'luo':                             [  110,   25,   115,   35, -770],  // 770 BCE–690 BCE
+    'luwians':                         [   24,   35,    40,   45, -2022],  // 2022 BCE–1000 BCE
+    'lycians':                         [   25,   35,    35,   40, -1000],  // 1000 BCE–362 BCE
+    'lydia':                           [   24,   35,    36,   45, -850],  // 850 BCE–547 BCE
+    'lydians':                         [   25,   35,    30,   40, -1000],  // 1000 BCE–850 BCE
+    'lynkestis':                       [   18,   40,    24,   45, -540],  // 540 BCE–392 BCE
+    'macedon':                         [   18,   35,    30,   45, -281],  // 281 BCE–277 BCE
+    'macedonia':                       [   18,   40,    24,   45, 1990],  // 1990 CE–present
+    'macedonian ally':                 [   12,   25,    80,   50, -356],  // 356 BCE–294 BCE
+    'madra':                           [   70,   30,    80,   35, -950],  // 950 BCE–326 BCE
+    'maeotians':                       [   36,   40,    42,   50, -380],  // 380 BCE–325 BCE
+    'magadha':                         [   70,   20,    90,   30, -775],  // 775 BCE–355 BCE
+    'magan':                           [   50,   20,    60,   30, -2400],  // 2400 BCE–1550 BCE
+    'magnesia':                        [   20,   35,    25,   40, -650],  // 650 BCE–580 BCE
+    'malavas':                         [   70,   30,    75,   35, -610],  // 610 BCE–325 BCE
+    'malawi':                          [   30,  -20,    40,   -5, 1990],  // 1990 CE–present
+    'maldives':                        [   70,   -5,    75,   10, 1990],  // 1990 CE–present
+    'malis':                           [   20,   35,    25,   40, -695],  // 695 BCE–1 BCE
+    'malla':                           [   80,   25,    90,   30, -750],  // 750 BCE–363 BCE
+    'malta':                           [   10,   35,    15,   40, 1990],  // 1990 CE–present
+    'mama':                            [   35,   35,    40,   40, -1850],  // 1850 BCE–1644 BCE
+    'mamertine mercenaries':           [   15,   35,    20,   40, -289],  // 289 BCE–287 BCE
+    'mamertines':                      [   10,   35,    20,   40, -287],  // 287 BCE–1 BCE
+    'manchurian peoples':              [  114,   35,   144,   55, -2400],  // 2400 BCE–1 BCE
+    'mannaea':                         [   40,   35,    50,   40, -843],  // 843 BCE–608 BCE
+    'manshi':                          [  110,   30,   115,   35, -770],  // 770 BCE–491 BCE
+    'mantineia':                       [   20,   35,    25,   40, -423],  // 423 BCE–1 BCE
+    'mao':                             [  105,   30,   110,   35, -771],  // 771 BCE–687 BCE
+    'mao(2)':                          [  115,   30,   120,   40, -770],  // 770 BCE–560 BCE
+    'margiana':                        [   60,   30,    70,   40, -522],  // 522 BCE–328 BCE
+    'marrucini':                       [   12,   40,    18,   45, -438],  // 438 BCE–304 BCE
+    'marshall islands':                [  160,    0,   175,   15, 1990],  // 1990 CE–present
+    'marsi':                           [   12,   40,    18,   45, -492],  // 492 BCE–304 BCE
+    'masa':                            [   24,   35,    36,   45, -1535],  // 1535 BCE–1228 BCE
+    'massagetai':                      [   54,   35,    72,   50, -329],  // 329 BCE–1 BCE
+    'matsya':                          [   70,   25,    80,   30, -925],  // 925 BCE–318 BCE
+    'mauritania':                      [  -20,   10,     0,   30, 1990],  // 1990 CE–present
+    'mauritius':                       [   55,  -25,    65,  -10, 1990],  // 1990 CE–present
+    'maurya':                          [   70,   25,    80,   35, -324],  // 324 BCE–321 BCE
+    'maya':                            [  -95,   10,   -85,   25, -1000],  // 1000 BCE–1 BCE
+    'medes':                           [   45,   30,    55,   40, -800],  // 800 BCE–674 BCE
+    'media':                           [   30,   30,    65,   45, -713],  // 713 BCE–521 BCE
+    'median vassal':                   [   45,   25,    65,   35, -586],  // 586 BCE–550 BCE
+    'megalopolis':                     [   20,   35,    25,   40, -300],  // 300 BCE–1 BCE
+    'megaris':                         [   10,   35,    36,   45, -743],  // 743 BCE–1 BCE
+    'mercenaries of bithynia':         [   24,   40,    36,   45, -278],  // 278 BCE–278 BCE
+    'mercenaries under agathocles':    [   10,   35,    20,   40, -325],  // 325 BCE–316 BCE
+    'mercenaries under amyntas':       [   30,   25,    40,   35, -332],  // 332 BCE–332 BCE
+    'mercenaries under cleonymus':     [    6,   35,    25,   50, -303],  // 303 BCE–301 BCE
+    'mercenaries under harpalus':      [   20,   35,    35,   40, -323],  // 323 BCE–323 BCE
+    'mercenaries under leosthenes':    [   20,   35,    25,   40, -323],  // 323 BCE–323 BCE
+    'mercenaries under phalaecus':     [   20,   35,    30,   40, -344],  // 344 BCE–343 BCE
+    'mercenaries under thibron':       [   20,   30,    25,   40, -323],  // 323 BCE–323 BCE
+    'mesoamerican peoples':            [ -105,    5,   -70,   25, -2400],  // 2400 BCE–1 BCE
+    'messapians':                      [   12,   35,    24,   45, -800],  // 800 BCE–1 CE
+    'messapii':                        [   12,   35,    24,   45, -500],  // 500 BCE–280 CE
+    'messenia':                        [   15,   35,    25,   40, -770],  // 770 BCE–1 BCE
+    'mianzhu':                         [  105,   30,   110,   35, -771],  // 771 BCE–361 BCE
+    'micronesia':                      [  135,    5,   165,   15, 1990],  // 1990 CE–present
+    'middle assyrian empire':          [   30,   30,    50,   40, -1346],  // 1346 BCE–1076 BCE
+    'minoans':                         [   20,   30,    30,   40, -2000],  // 2000 BCE–1479 BCE
+    'mithila':                         [   80,   25,    90,   30, -364],  // 364 BCE–363 BCE
+    'mixtecs':                         [ -100,   15,   -95,   20, -1500],  // 1500 BCE–1 BCE
+    'moabites':                        [   35,   30,    40,   35, -1280],  // 1280 BCE–587 BCE
+    'molossians':                      [   18,   40,    24,   45, -500],  // 500 BCE–500 BCE
+    'molossis':                        [   18,   35,    25,   45, -430],  // 430 BCE–350 BCE
+    'moriya':                          [   80,   25,    85,   30, -610],  // 610 BCE–467 BCE
+    'mou':                             [  115,   35,   120,   40, -770],  // 770 BCE–650 BCE
+    'mulaka':                          [   70,   15,    80,   20, -610],  // 610 BCE–301 BCE
+    'musasir':                         [   40,   35,    50,   40, -735],  // 735 BCE–723 BCE
+    'musicanus':                       [   65,   25,    70,   30, -338],  // 338 BCE–325 BCE
+    'musri':                           [   35,   35,    40,   40, -900],  // 900 BCE–826 BCE
+    'mutibas':                         [   75,   15,    85,   20, -610],  // 610 BCE–600 BCE
+    'mutinous troops':                 [   12,   40,    18,   45, -342],  // 342 BCE–342 BCE
+    'mycenaean kingdoms':              [   20,   35,    30,   40, -1505],  // 1505 BCE–1202 BCE
+    'mycenaeans':                      [   18,   30,    30,   45, -1505],  // 1505 BCE–1100 BCE
+    'mysians':                         [   24,   35,    30,   45, -1000],  // 1000 BCE–542 BCE
+    'nabataean kingdom':               [   30,   25,    45,   35, -331],  // 331 BCE–1 BCE
+    'nabataeans':                      [   35,   25,    40,   35, -843],  // 843 BCE–526 BCE
+    'nairi':                           [   40,   35,    45,   40, -859],  // 859 BCE–859 BCE
+    'namibia':                         [   10,  -30,    30,  -15, 1990],  // 1990 CE–present
+    'namri':                           [   40,   30,    50,   40, -851],  // 851 BCE–737 BCE
+    'nanda empire':                    [   70,   15,    90,   35, -355],  // 355 BCE–321 BCE
+    'nanyan':                          [  110,   35,   115,   40, -770],  // 770 BCE–640 BCE
+    'nauru':                           [  165,   -5,   170,    0, 1990],  // 1990 CE–present
+    'naxos':                           [   15,   35,    20,   40, -466],  // 466 BCE–403 BCE
+    'neo assyrian empire':             [   25,   20,    55,   40, -910],  // 910 BCE–608 BCE
+    'neo assyrian revolt':             [   35,   30,    50,   40, -827],  // 827 BCE–520 BCE
+    'neo assyrian tributary':          [   25,   20,    55,   45, -896],  // 896 BCE–612 BCE
+    'neo babylonian empire':           [   30,   20,    50,   40, -616],  // 616 BCE–549 BCE
+    'neo babylonian empire tributary': [   30,   25,    40,   35, -605],  // 605 BCE–554 BCE
+    'neo-assyrian empire':             [   35,   30,    50,   40, -906],  // 906 BCE–608 BCE
+    'neo-babylonian empire':           [   30,   20,    50,   40, -616],  // 616 BCE–539 BCE
+    'new hittite kingdom':             [   24,   30,    45,   45, -1438],  // 1438 BCE–1190 BCE
+    'new zealand':                     [ -170,  -55,   186,   -5, 1990],  // 1990 CE–present
+    'ni':                              [  115,   30,   120,   40, -770],  // 770 BCE–335 BCE
+    'nicaragua':                       [  -90,   10,   -80,   20, 1990],  // 1990 CE–present
+    'niger':                           [    0,   10,    20,   25, 1990],  // 1990 CE–present
+    'nilotic peoples':                 [   25,    0,    40,   15, -1000],  // 1000 BCE–1 BCE
+    'nok people':                      [    0,    5,    15,   15, -1500],  // 1500 BCE–1 BCE
+    'norte chico civilization':        [  -80,  -15,   -75,   -5, -2400],  // 2400 BCE–1800 BCE
+    'north arabian semites':           [   35,   25,    50,   35, -500],  // 500 BCE–1 BCE
+    'northern league':                 [   24,   40,    36,   45, -281],  // 281 BCE–274 BCE
+    'northern zone peoples':           [  105,   30,   120,   40, -1400],  // 1400 BCE–1000 BCE
+    'northwest coast peoples':         [ -150,   40,  -120,   65, -2400],  // 2400 BCE–1 BCE
+    'nu':                              [  105,   25,   110,   35, -770],  // 770 BCE–600 BCE
+    'nubians':                         [   30,   10,    40,   25, -2400],  // 2400 BCE–1 BCE
+    'nuhashshi':                       [   35,   35,    40,   40, -1351],  // 1351 BCE–1336 BCE
+    'numidians':                       [   -5,   30,    10,   40, -1000],  // 1000 BCE–1 BCE
+    'odra':                            [   80,   20,    90,   25, -610],  // 610 BCE–344 BCE
+    'odrysia':                         [   18,   40,    30,   45, -359],  // 359 BCE–1 BCE
+    'odrysian kingdom':                [   18,   35,    30,   50, -475],  // 475 BCE–341 BCE
+    'oetaea':                          [   20,   35,    25,   40, -695],  // 695 BCE–1 BCE
+    'old hittite kingdom':             [   25,   30,    45,   45, -1759],  // 1759 BCE–1438 BCE
+    'olmecs':                          [ -100,   15,   -90,   20, -1250],  // 1250 BCE–1 BCE
+    'opuntian locris':                 [   20,   35,    25,   40, -695],  // 695 BCE–1 BCE
+    'oreitai':                         [   65,   20,    70,   30, -329],  // 329 BCE–325 BCE
+    'orestis':                         [   18,   40,    24,   45, -540],  // 540 BCE–475 BCE
+    'oxycanus':                        [   65,   25,    75,   30, -337],  // 337 BCE–325 BCE
+    'ozolian locris':                  [   15,   35,    25,   40, -695],  // 695 BCE–356 BCE
+    'paeligni':                        [   12,   40,    18,   45, -438],  // 438 BCE–304 BCE
+    'paeonia':                         [   18,   40,    24,   45, -352],  // 352 BCE–1 BCE
+    'paeonians':                       [   18,   40,    24,   45, -850],  // 850 BCE–340 BCE
+    'paiones':                         [   18,   40,    24,   45, -500],  // 500 BCE–356 BCE
+    'pala':                            [   30,   40,    36,   45, -1535],  // 1535 BCE–1381 BCE
+    'palau':                           [  130,    0,   135,   10, 1990],  // 1990 CE–present
+    'paleosiberians':                  [   64,   55,   170,   75, -2400],  // 2400 BCE–1 BCE
+    'pampas cultures':                 [  -75,  -50,   -50,  -30, -2400],  // 2400 BCE–1 BCE
+    'pamphylians':                     [   30,   35,    35,   40, -1000],  // 1000 BCE–558 BCE
+    'panama':                          [  -85,    5,   -75,   10, 1990],  // 1990 CE–present
+    'panchala':                        [   75,   25,    85,   35, -825],  // 825 BCE–355 BCE
+    'pandya':                          [   75,    5,    80,   15, -325],  // 325 BCE–1 BCE
+    'paphlagonia':                     [   30,   35,    36,   45, -323],  // 323 BCE–1 BCE
+    'papua new guinea':                [  140,  -15,   160,    0, 1990],  // 1990 CE–present
+    'papuans':                         [  130,  -10,   150,    0, -1600],  // 1600 BCE–1 BCE
+    'paraguay':                        [  -65,  -30,   -50,  -15, 1990],  // 1990 CE–present
+    'parauaea':                        [   18,   40,    24,   45, -430],  // 430 BCE–350 BCE
+    'pardabathra':                     [   65,   20,    70,   30, -338],  // 338 BCE–325 BCE
+    'parsua':                          [   40,   30,    50,   40, -860],  // 860 BCE–744 BCE
+    'parthia':                         [   50,   30,    65,   40, -522],  // 522 BCE–521 BCE
+    'pashime':                         [   45,   25,    55,   35, -2348],  // 2348 BCE–1345 BCE
+    'patagonian peoples':              [  -80,  -55,   -64,  -40, -2400],  // 2400 BCE–1 BCE
+    'patin (unqi)':                    [   35,   35,    40,   40, -1190],  // 1190 BCE–604 BCE
+    'paurava':                         [   70,   30,    75,   35, -337],  // 337 BCE–326 BCE
+    'pelagonia':                       [   18,   40,    24,   45, -540],  // 540 BCE–475 BCE
+    'pelasgians':                      [   20,   35,    30,   40, -2400],  // 2400 BCE–1505 BCE
+    'peloponnesian league':            [   10,   30,    40,   45, -445],  // 445 BCE–394 CE
+    'peng':                            [  110,   30,   120,   35, -770],  // 770 BCE–650 BCE
+    'pengzhi':                         [  105,   30,   115,   35, -771],  // 771 BCE–697 BCE
+    'pergamon':                        [   25,   35,    30,   40, -274],  // 274 BCE–1 BCE
+    'persia':                          [   45,   25,    65,   35, -653],  // 653 BCE–550 BCE
+    'persian empire':                  [   15,   20,    80,   50, -550],  // 550 BCE–1 BCE
+    'persian revolt':                  [   45,   25,    70,   35, -522],  // 522 BCE–521 BCE
+    'persian vassal':                  [   18,   35,    30,   45, -491],  // 491 BCE–409 BCE
+    'peucetians':                      [   12,   40,    18,   45, -800],  // 800 BCE–1 BCE
+    'pharsalos':                       [   20,   35,    25,   40, -405],  // 405 BCE–375 BCE
+    'pherae':                          [   18,   35,    25,   45, -405],  // 405 BCE–344 BCE
+    'philistia':                       [   30,   30,    40,   35, -1020],  // 1020 BCE–604 BCE
+    'philistines':                     [   30,   30,    40,   35, -1180],  // 1180 BCE–1020 BCE
+    'phlius':                          [   20,   35,    25,   40, -655],  // 655 BCE–338 BCE
+    'phocis':                          [   20,   35,    25,   40, -695],  // 695 BCE–1 BCE
+    'phoenicians':                     [  -10,   30,    40,   40, -1180],  // 1180 BCE–344 BCE
+    'phrygian kingdom':                [   24,   35,    36,   45, -1120],  // 1120 BCE–654 BCE
+    'phrygians':                       [   18,   35,    45,   45, -1223],  // 1223 BCE–585 BCE
+    'pi':                              [  115,   30,   120,   35, -770],  // 770 BCE–415 BCE
+    'piceni':                          [   12,   40,    18,   45, -500],  // 500 BCE–438 BCE
+    'picentes':                        [   12,   40,    18,   45, -800],  // 800 BCE–438 BCE
+    'picenum':                         [   12,   40,    18,   45, -438],  // 438 BCE–299 BCE
+    'ping zhou':                       [  105,   30,   110,   35, -771],  // 771 BCE–550 BCE
+    'pirate mercenaries':              [   18,   35,    40,   45, -276],  // 276 BCE–274 BCE
+    'pirates':                         [   20,   35,    30,   40, -344],  // 344 BCE–344 BCE
+    'pisatis':                         [   20,   35,    25,   40, -684],  // 684 BCE–572 BCE
+    'pisidians':                       [   30,   35,    35,   40, -558],  // 558 BCE–1 BCE
+    'pitassa':                         [   30,   35,    35,   40, -1545],  // 1545 BCE–1432 BCE
+    'plains peoples':                  [ -120,   25,   -90,   55, -2400],  // 2400 BCE–1 BCE
+    'plateau peoples':                 [ -128,   40,  -108,   55, -2400],  // 2400 BCE–1 BCE
+    'plebian secession':               [   12,   40,    18,   45, -494],  // 494 BCE–287 BCE
+    'pontians':                        [   36,   40,    42,   45, -612],  // 612 BCE–514 BCE
+    'pontus':                          [   30,   35,    42,   45, -281],  // 281 BCE–1 BCE
+    'poverty point culture':           [  -95,   30,   -85,   35, -2200],  // 2200 BCE–1 BCE
+    'praeneste':                       [   12,   40,    18,   45, -359],  // 359 BCE–341 BCE
+    'proto-burmese':                   [   90,   25,   100,   35, -2400],  // 2400 BCE–1 BCE
+    'proto-canaanites':                [   30,   30,    40,   35, -2300],  // 2300 BCE–1850 BCE
+    'proto-ethiopians':                [   30,    5,    45,   15, -2400],  // 2400 BCE–1 BCE
+    'proto-greeks':                    [   18,   35,    25,   45, -1950],  // 1950 BCE–1223 BCE
+    'proto-mongol peoples':            [   96,   45,   120,   55, -2400],  // 2400 BCE–1 BCE
+    'proto-tibetans':                  [   70,   25,   100,   40, -2400],  // 2400 BCE–1 BCE
+    'proto-turkic peoples':            [   75,   30,   114,   50, -2400],  // 2400 BCE–1 BCE
+    'ptolemaic ally':                  [   20,   35,    35,   40, -314],  // 314 BCE–282 BCE
+    'ptolemaic kingdom':               [   20,   20,    40,   40, -305],  // 305 BCE–1 BCE
+    'pu':                              [  110,   35,   115,   40, -770],  // 770 BCE–677 BCE
+    'pugu':                            [  115,   35,   120,   40, -1036],  // 1036 BCE–1026 BCE
+    'pulinda':                         [   75,   20,    85,   25, -610],  // 610 BCE–319 BCE
+    'pundra':                          [   85,   20,    90,   30, -610],  // 610 BCE–311 BCE
+    'punt':                            [   35,    5,    50,   20, -2400],  // 2400 BCE–1100 BCE
+    'qedarite confederation':          [   35,   25,    50,   40, -870],  // 870 BCE–550 BCE
+    'qedarites':                       [   35,   25,    45,   35, -925],  // 925 BCE–1 BCE
+    'qi':                              [  110,   30,   126,   45, -770],  // 770 BCE–1 BCE
+    'qi(2)':                           [  115,   35,   120,   40, -770],  // 770 BCE–445 BCE
+    'qi(3)':                           [  115,   35,   120,   40, -770],  // 770 BCE–706 BCE
+    'qiang':                           [   95,   35,   105,   40, -771],  // 771 BCE–1 BCE
+    'qin':                             [  100,   25,   120,   40, -771],  // 771 BCE–1 BCE
+    'qiuyou':                          [  110,   35,   115,   40, -770],  // 770 BCE–458 BCE
+    'qu':                              [  110,   35,   115,   40, -770],  // 770 BCE–677 BCE
+    'quaman':                          [  105,   30,   115,   35, -770],  // 770 BCE–611 BCE
+    'quan':                            [  110,   30,   115,   35, -770],  // 770 BCE–704 BCE
+    'quanrong':                        [   95,   30,   115,   40, -1000],  // 1000 BCE–1 BCE
+    'que':                             [   30,   35,    40,   40, -1180],  // 1180 BCE–588 BCE
+    'quwo':                            [  110,   30,   115,   40, -745],  // 745 BCE–678 BCE
+    'rang':                            [  105,   25,   110,   35, -770],  // 770 BCE–670 BCE
+    'rathikas':                        [   70,   15,    75,   25, -321],  // 321 BCE–300 BCE
+    'rebel aranzik':                   [   35,   35,    40,   40, -1695],  // 1695 BCE–1690 BCE
+    'rebel irridu':                    [   35,   35,    45,   40, -1717],  // 1717 BCE–1710 BCE
+    'rebel israelites':                [   35,   30,    40,   35, -1097],  // 1097 BCE–1095 BCE
+    'red di':                          [  110,   35,   115,   40, -770],  // 770 BCE–588 BCE
+    'ren':                             [  115,   35,   120,   40, -770],  // 770 BCE–335 BCE
+    'revolt':                          [    6,   25,   125,   50, -552],  // 552 BCE–1 BCE
+    'revolt of antigonus':             [   25,   35,    35,   40, -321],  // 321 BCE–321 BCE
+    'revolt of antipater':             [   18,   35,    30,   45, -321],  // 321 BCE–321 BCE
+    'revolt of ariobarzanes':          [   24,   35,    36,   45, -366],  // 366 BCE–362 BCE
+    'revolt of artabazus':             [   24,   35,    36,   45, -356],  // 356 BCE–353 BCE
+    'revolt of autophradates':         [   25,   35,    35,   40, -363],  // 363 BCE–360 BCE
+    'revolt of cyrus the younger':     [   25,   30,    45,   40, -401],  // 401 BCE–401 BCE
+    'revolt of datames':               [   30,   35,    42,   45, -371],  // 371 BCE–360 BCE
+    'revolt of eumenes':               [   24,   30,    45,   45, -321],  // 321 BCE–317 BCE
+    'revolt of hermias':               [   25,   35,    30,   40, -345],  // 345 BCE–342 BCE
+    'revolt of hua clan':              [  115,   30,   120,   35, -521],  // 521 BCE–520 BCE
+    'revolt of inaros':                [   25,   25,    35,   35, -462],  // 462 BCE–449 BCE
+    'revolt of khababash':             [   30,   30,    35,   35, -336],  // 336 BCE–335 BCE
+    'revolt of luan':                  [  110,   35,   115,   40, -551],  // 551 BCE–550 BCE
+    'revolt of lysimachus':            [   18,   40,    30,   45, -321],  // 321 BCE–321 BCE
+    'revolt of mausolus':              [   25,   35,    30,   40, -363],  // 363 BCE–360 BCE
+    'revolt of orontes':               [   35,   35,    50,   45, -363],  // 363 BCE–360 BCE
+    'revolt of pissuthnes':            [   25,   35,    35,   40, -420],  // 420 BCE–415 BCE
+    'revolt of ptolemy':               [   20,   20,    35,   40, -321],  // 321 BCE–321 BCE
+    'revolt of wangzi tui':            [  110,   30,   115,   40, -675],  // 675 BCE–673 BCE
+    'revolt of wangzi zhao':           [  110,   30,   115,   40, -520],  // 520 BCE–516 BCE
+    'rhegion':                         [   12,   35,    20,   45, -621],  // 621 BCE–388 BCE
+    'rhodos':                          [   25,   35,    30,   40, -319],  // 319 BCE–1 BCE
+    'roman ally':                      [    0,   35,    20,   45, -486],  // 486 BCE–1 BCE
+    'roman latin colony':              [   12,   40,    18,   45, -495],  // 495 BCE–1 BCE
+    'roman republic':                  [    6,   35,    24,   45, -509],  // 509 BCE–280 CE
+    'rong':                            [  110,   30,   120,   40, -770],  // 770 BCE–593 BCE
+    'rui':                             [  105,   30,   115,   40, -771],  // 771 BCE–641 BCE
+    'ruo':                             [  110,   30,   115,   35, -770],  // 770 BCE–622 BCE
+    'ruo\'ao revolt':                  [  110,   30,   115,   35, -605],  // 605 BCE–604 BCE
+    'rwanda':                          [   25,   -5,    35,    0, 1990],  // 1990 CE–present
+    'saba':                            [   40,   10,    50,   20, -1100],  // 1100 BCE–1 BCE
+    'sabines':                         [   12,   40,    18,   45, -800],  // 800 BCE–438 BCE
+    'sabini':                          [   12,   40,    18,   45, -438],  // 438 BCE–290 BCE
+    'saharan peoples':                 [  -20,   15,    30,   35, -2400],  // 2400 BCE–1 BCE
+    'sakas':                           [   48,   35,    96,   55, -750],  // 750 BCE–1 BCE
+    'sakya':                           [   80,   25,    85,   30, -750],  // 750 BCE–480 BCE
+    'salamis':                         [   30,   30,    40,   40, -411],  // 411 BCE–380 BCE
+    'salva':                           [   75,   25,    80,   30, -610],  // 610 BCE–600 BCE
+    'salwa':                           [   70,   25,    75,   30, -610],  // 610 BCE–322 BCE
+    'sambus':                          [   65,   20,    75,   35, -329],  // 329 BCE–325 BCE
+    'samian thalassocracy':            [   20,   35,    30,   40, -542],  // 542 BCE–522 BCE
+    'samnite ally':                    [   12,   40,    24,   45, -326],  // 326 BCE–304 BCE
+    'samnite confederation':           [   12,   40,    18,   45, -438],  // 438 BCE–1 BCE
+    'samnites':                        [   12,   40,    18,   45, -800],  // 800 BCE–438 BCE
+    'samnium':                         [   12,   40,    18,   45, -500],  // 500 BCE–438 BCE
+    'samoa':                           [ -175,  -15,  -170,  -10, 1990],  // 1990 CE–present
+    'samos':                           [   25,   35,    30,   40, -386],  // 386 BCE–323 BCE
+    'san marino':                      [   12,   40,    18,   45, 1990],  // 1990 CE–present
+    'sanxingdui culture':              [  100,   25,   110,   35, -1700],  // 1700 BCE–1000 BCE
+    'sardinians':                      [    5,   35,    12,   45, -1250],  // 1250 BCE–510 BCE
+    'sattagydia':                      [   65,   30,    75,   35, -610],  // 610 BCE–516 BCE
+    'sattyaputas':                     [   70,   10,    80,   15, -325],  // 325 BCE–1 BCE
+    'saurashtra':                      [   65,   20,    75,   25, -610],  // 610 BCE–317 BCE
+    'sauromatians':                    [   36,   40,    64,   55, -550],  // 550 BCE–1 BCE
+    'sauvira':                         [   65,   25,    70,   30, -610],  // 610 BCE–515 BCE
+    'savanna peoples':                 [  -70,  -35,   -35,    0, -2400],  // 2400 BCE–1 BCE
+    'savaras':                         [   80,   15,    85,   20, -610],  // 610 BCE–430 BCE
+    'scythians':                       [   24,   35,    96,   55, -1201],  // 1201 BCE–1 BCE
+    'sea peoples':                     [   20,   30,    40,   45, -1303],  // 1303 BCE–1180 BCE
+    'sealand':                         [   40,   30,    50,   35, -1734],  // 1734 BCE–1438 BCE
+    'second athenian league':          [   15,   35,    36,   45, -386],  // 386 BCE–338 BCE
+    'seleucid ally':                   [   24,   35,    36,   45, -282],  // 282 BCE–1 BCE
+    'seleucid kingdom':                [   24,   25,    75,   45, -305],  // 305 BCE–1 BCE
+    'semitic nomads':                  [   35,   15,    60,   35, -2400],  // 2400 BCE–1000 BCE
+    'senegal':                         [  -20,   10,   -10,   20, 1990],  // 1990 CE–present
+    'seychelles':                      [   45,  -15,    60,    0, 1990],  // 1990 CE–present
+    'shang':                           [  105,   30,   125,   40, -1750],  // 1750 BCE–1103 BCE
+    'shang dynasty':                   [  100,   25,   125,   45, -1600],  // 1600 BCE–1043 BCE
+    'shanrong':                        [  114,   35,   120,   45, -770],  // 770 BCE–282 BCE
+    'shao':                            [  105,   30,   110,   35, -771],  // 771 BCE–687 BCE
+    'shen':                            [  105,   30,   115,   40, -771],  // 771 BCE–507 BCE
+    'shen(2)':                         [  110,   30,   120,   35, -770],  // 770 BCE–506 BCE
+    'shi':                             [  115,   30,   120,   40, -770],  // 770 BCE–560 BCE
+    'shimashki':                       [   40,   25,    60,   35, -2213],  // 2213 BCE–1752 BCE
+    'shinuhtu':                        [   30,   35,    40,   40, -826],  // 826 BCE–718 BCE
+    'shu':                             [  100,   25,   115,   35, -1075],  // 1075 BCE–316 BCE
+    'shu bao':                         [  115,   30,   120,   35, -770],  // 770 BCE–601 BCE
+    'shu jiu':                         [  115,   30,   120,   35, -770],  // 770 BCE–601 BCE
+    'shu long':                        [  115,   30,   120,   35, -770],  // 770 BCE–601 BCE
+    'shu yong':                        [  115,   30,   120,   35, -770],  // 770 BCE–601 BCE
+    'shu(2)':                          [  115,   30,   120,   35, -770],  // 770 BCE–615 BCE
+    'shubria':                         [   40,   35,    45,   40, -735],  // 735 BCE–673 BCE
+    'shurparaka':                      [   70,   15,    75,   25, -610],  // 610 BCE–301 BCE
+    'sicans':                          [   10,   35,    20,   40, -1450],  // 1450 BCE–409 BCE
+    'sicelia':                         [   10,   35,    20,   40, -461],  // 461 BCE–392 BCE
+    'sicels':                          [   10,   35,    20,   40, -1000],  // 1000 BCE–409 BCE
+    'sicyon':                          [   20,   35,    25,   40, -655],  // 655 BCE–445 BCE
+    'sidicini':                        [   12,   40,    18,   45, -438],  // 438 BCE–334 BCE
+    'sierra leone':                    [  -15,    5,   -10,   15, 1990],  // 1990 CE–present
+    'sikanoi':                         [   10,   35,    15,   40, -500],  // 500 BCE–405 BCE
+    'sikeloi':                         [   10,   35,    20,   40, -500],  // 500 BCE–440 BCE
+    'simurrum':                        [   45,   30,    50,   40, -2064],  // 2064 BCE–1600 BCE
+    'sindhu':                          [   65,   25,    75,   30, -610],  // 610 BCE–515 BCE
+    'singapore':                       [  100,    0,   105,    5, 1990],  // 1990 CE–present
+    'sinope':                          [   30,   40,    36,   45, -323],  // 323 BCE–1 BCE
+    'sivi':                            [   65,   25,    70,   30, -610],  // 610 BCE–543 BCE
+    'slavs':                           [   16,   45,    40,   55, -2050],  // 2050 BCE–1 BCE
+    'sogdians':                        [   65,   35,    75,   45, -1700],  // 1700 BCE–532 BCE
+    'solomon islands':                 [  155,  -15,   170,   -5, 1990],  // 1990 CE–present
+    'song':                            [  110,   30,   120,   40, -770],  // 770 BCE–286 BCE
+    'south china peoples':             [  105,   25,   125,   35, -2400],  // 2400 BCE–1 BCE
+    'spratly islands':                 [  110,    5,   120,   15, 1990],  // 1990 CE–present
+    'st. kitts and nevis':             [  -65,   15,   -60,   20, 1990],  // 1990 CE–present
+    'st. lucia':                       [  -65,   10,   -60,   15, 1990],  // 1990 CE–present
+    'st. vincent and the grenadines':  [  -65,   10,   -60,   15, 1990],  // 1990 CE–present
+    'stasis':                          [   10,   30,    45,   45, -636],  // 636 BCE–278 BCE
+    'su':                              [  115,   35,   120,   40, -770],  // 770 BCE–684 BCE
+    'subarctic peoples':               [ -168,   45,   -56,   70, -2400],  // 2400 BCE–1 BCE
+    'subartum':                        [   40,   35,    45,   40, -1741],  // 1741 BCE–1615 BCE
+    'succession struggle':             [   12,   25,   120,   45, -816],  // 816 BCE–289 BCE
+    'suhma':                           [   85,   20,    90,   25, -610],  // 610 BCE–345 BCE
+    'suhne':                           [   40,   35,    45,   40, -931],  // 931 BCE–863 BCE
+    'suhu':                            [   40,   30,    45,   35, -1120],  // 1120 BCE–612 BCE
+    'sui':                             [  110,   30,   115,   35, -770],  // 770 BCE–640 BCE
+    'sui(2)':                          [  115,   35,   120,   40, -770],  // 770 BCE–681 BCE
+    'surasena':                        [   75,   25,    80,   30, -900],  // 900 BCE–360 BCE
+    'suriname':                        [  -60,    0,   -50,   10, 1990],  // 1990 CE–present
+    'swaziland':                       [   30,  -30,    35,  -25, 1990],  // 1990 CE–present
+    'syracuse':                        [    6,   35,    30,   45, -715],  // 715 BCE–1 BCE
+    'syracuse exiles':                 [   10,   35,    20,   40, -316],  // 316 BCE–305 BCE
+    'são tomé and príncipe':           [    5,   -5,    10,    5, 1990],  // 1990 CE–present
+    'tabal':                           [   30,   35,    40,   40, -1190],  // 1190 BCE–678 BCE
+    'taiwan':                          [  115,   20,   125,   30, 1990],  // 1990 CE–present
+    'tajikistan':                      [   65,   35,    80,   45, 1990],  // 1990 CE–present
+    'tan':                             [  115,   30,   120,   40, -770],  // 770 BCE–473 BCE
+    'tan(2)':                          [  115,   35,   120,   40, -770],  // 770 BCE–684 BCE
+    'tanagra':                         [   20,   35,    25,   40, -386],  // 386 BCE–382 BCE
+    'tang':                            [  110,   30,   115,   35, -770],  // 770 BCE–505 BCE
+    'taras':                           [   12,   40,    24,   45, -500],  // 500 BCE–380 BCE
+    'tarhuntassa':                     [   30,   35,    35,   40, -1535],  // 1535 BCE–1200 BCE
+    'tartessos':                       [  -10,   35,    -5,   40, -1000],  // 1000 BCE–1 BCE
+    'taulanti':                        [   15,   35,    25,   45, -800],  // 800 BCE–279 BCE
+    'tauromenion':                     [   15,   35,    20,   40, -288],  // 288 BCE–1 BCE
+    'taxila':                          [   70,   30,    75,   40, -338],  // 338 BCE–326 BCE
+    'tegea':                           [   20,   35,    25,   40, -423],  // 423 BCE–1 BCE
+    'teng':                            [  115,   30,   120,   40, -770],  // 770 BCE–297 BCE
+    'terramare culture':               [    6,   40,    12,   50, -1550],  // 1550 BCE–1250 BCE
+    'teutons':                         [    0,   50,    24,   65, -2050],  // 2050 BCE–1 BCE
+    'thai peoples':                    [   95,   20,   105,   35, -2400],  // 2400 BCE–1 BCE
+    'the netherlands':                 [  -75,   10,     8,   55, 1990],  // 1990 CE–present
+    'theban ally':                     [   18,   35,    30,   45, -370],  // 370 BCE–338 BCE
+    'thebes':                          [   18,   35,    36,   45, -386],  // 386 BCE–1 BCE
+    'thespiae':                        [   20,   35,    25,   40, -386],  // 386 BCE–378 BCE
+    'thesprotia':                      [   20,   35,    25,   40, -395],  // 395 BCE–350 BCE
+    'thesprotians':                    [   20,   35,    25,   40, -500],  // 500 BCE–430 BCE
+    'thessaly':                        [   18,   35,    25,   45, -650],  // 650 BCE–276 BCE
+    'thracians':                       [   18,   40,    30,   50, -1450],  // 1450 BCE–1 BCE
+    'thraco cimmerians':               [   18,   40,    54,   50, -2400],  // 2400 BCE–1450 BCE
+    'thraikes':                        [   18,   40,    30,   45, -500],  // 500 BCE–1 BCE
+    'three guards rebellion':          [  110,   30,   125,   40, -1042],  // 1042 BCE–1039 BCE
+    'three yi tribes':                 [  115,   25,   125,   30, -770],  // 770 BCE–1 BCE
+    'thyni':                           [   24,   40,    30,   45, -469],  // 469 BCE–400 BCE
+    'tian clan':                       [  115,   35,   120,   40, -500],  // 500 BCE–481 BCE
+    'tian qi':                         [  110,   30,   125,   45, -481],  // 481 BCE–1 BCE
+    'tibur':                           [   12,   40,    18,   45, -388],  // 388 BCE–341 BCE
+    'togo':                            [   -5,    5,     5,   15, 1990],  // 1990 CE–present
+    'tong':                            [  115,   30,   120,   35, -770],  // 770 BCE–615 BCE
+    'tonga':                           [ -175,  -25,   185,  -15, 1990],  // 1990 CE–present
+    'triballi':                        [   18,   40,    30,   45, -445],  // 445 BCE–1 BCE
+    'trigarta':                        [   70,   30,    80,   35, -950],  // 950 BCE–323 BCE
+    'trinidad and tobago':             [  -65,   10,   -60,   15, 1990],  // 1990 CE–present
+    'triphylia':                       [   20,   35,    25,   40, -725],  // 725 BCE–1 BCE
+    'troezen':                         [   20,   35,    25,   40, -494],  // 494 BCE–1 BCE
+    'tuhe':                            [  114,   40,   126,   45, -770],  // 770 BCE–307 BCE
+    'tummanna':                        [   30,   35,    36,   45, -1535],  // 1535 BCE–1325 BCE
+    'turkmenistan':                    [   48,   35,    70,   45, 1990],  // 1990 CE–present
+    'turks and caicos islands':        [  -75,   20,   -70,   25, 1990],  // 1990 CE–present
+    'tuvalu':                          [  175,  -10,   180,   -5, 1990],  // 1990 CE–present
+    'tuwana':                          [   30,   35,    40,   40, -826],  // 826 BCE–635 BCE
+    'tymphaea':                        [   18,   35,    25,   45, -430],  // 430 BCE–368 BCE
+    'tyranny of syracuse':             [    5,   30,    25,   45, -478],  // 478 BCE–278 BCE
+    'uelikukhi':                       [   40,   35,    50,   45, -880],  // 880 BCE–706 BCE
+    'uganda':                          [   25,   -5,    40,    5, 1990],  // 1990 CE–present
+    'ugrians':                         [   36,   50,    72,   70, -750],  // 750 BCE–1 BCE
+    'umbri':                           [   12,   40,    18,   45, -800],  // 800 BCE–308 BCE
+    'umbria':                          [    6,   40,    18,   45, -438],  // 438 BCE–290 BCE
+    'umbrii':                          [   12,   40,    18,   45, -500],  // 500 BCE–438 BCE
+    'umma':                            [   45,   30,    50,   35, -2394],  // 2394 BCE–2309 BCE
+    'united arab emirates':            [   50,   20,    60,   30, 1990],  // 1990 CE–present
+    'ur iii tributary':                [   40,   25,    55,   40, -2108],  // 2108 BCE–2018 BCE
+    'urartu':                          [   35,   35,    50,   45, -935],  // 935 BCE–591 BCE
+    'urartu tributary':                [   35,   35,    50,   45, -802],  // 802 BCE–714 BCE
+    'uruguay':                         [  -60,  -40,   -50,  -30, 1990],  // 1990 CE–present
+    'usinara':                         [   75,   25,    80,   35, -610],  // 610 BCE–354 BCE
+    'utica':                           [    5,   35,    15,   40, -950],  // 950 BCE–948 BCE
+    'utkala':                          [   85,   15,    90,   25, -610],  // 610 BCE–345 BCE
+    'vajjika league':                  [   80,   25,    90,   30, -610],  // 610 BCE–468 BCE
+    'valdivia culture':                [  -85,   -5,   -80,    0, -2400],  // 2400 BCE–1700 BCE
+    'vanga':                           [   85,   20,    95,   25, -675],  // 675 BCE–311 BCE
+    'vanuatu':                         [  165,  -25,   175,  -10, 1990],  // 1990 CE–present
+    'vatsa':                           [   75,   20,    85,   30, -875],  // 875 BCE–492 BCE
+    'vemaka':                          [   75,   30,    80,   35, -450],  // 450 BCE–1 BCE
+    'veneti':                          [    6,   45,    18,   50, -800],  // 800 BCE–1 BCE
+    'vestini':                         [   12,   40,    18,   45, -438],  // 438 BCE–302 BCE
+    'vidarbha':                        [   75,   15,    85,   25, -700],  // 700 BCE–301 BCE
+    'videha':                          [   80,   25,    90,   30, -800],  // 800 BCE–610 BCE
+    'vitihotras':                      [   70,   20,    80,   25, -400],  // 400 BCE–350 BCE
+    'volga battle axe culture':        [   16,   50,    64,   65, -2050],  // 2050 BCE–1250 BCE
+    'volsci':                          [   12,   40,    18,   45, -800],  // 800 BCE–341 BCE
+    'vriji':                           [   80,   25,    90,   30, -700],  // 700 BCE–590 BCE
+    'wahsusana':                       [   30,   35,    35,   40, -1775],  // 1775 BCE–1626 BCE
+    'wei':                             [  105,   30,   120,   40, -1750],  // 1750 BCE–1 BCE
+    'wei clan':                        [  110,   35,   115,   40, -500],  // 500 BCE–453 BCE
+    'wen':                             [  110,   30,   115,   35, -1750],  // 1750 BCE–1606 BCE
+    'west african peoples':            [  -20,    5,    15,   20, -2400],  // 2400 BCE–1 BCE
+    'western guo':                     [  110,   30,   115,   40, -771],  // 771 BCE–655 BCE
+    'western mediterraneans':          [  -16,   35,    24,   60, -2400],  // 2400 BCE–1 BCE
+    'western odrysia':                 [   18,   40,    30,   45, -359],  // 359 BCE–352 BCE
+    'western rong':                    [  100,   30,   110,   40, -771],  // 771 BCE–361 BCE
+    'wey':                             [  110,   30,   120,   40, -770],  // 770 BCE–1 BCE
+    'white di':                        [  105,   35,   115,   40, -770],  // 770 BCE–407 BCE
+    'wilusa':                          [   24,   35,    30,   45, -1535],  // 1535 BCE–1205 BCE
+    'wu':                              [  110,   25,   125,   40, -1200],  // 1200 BCE–470 BCE
+    'wucheng culture':                 [  105,   25,   125,   35, -1450],  // 1450 BCE–958 BCE
+    'wushi rong':                      [  105,   35,   110,   40, -771],  // 771 BCE–314 BCE
+    'wuzhong':                         [  110,   35,   120,   45, -770],  // 770 BCE–456 BCE
+    'xi':                              [  110,   30,   120,   35, -770],  // 770 BCE–680 BCE
+    'xia dynasty':                     [  105,   30,   120,   40, -2035],  // 2035 BCE–1600 BCE
+    'xian':                            [  110,   30,   115,   35, -770],  // 770 BCE–655 BCE
+    'xian peoples':                    [  105,   30,   110,   35, -1423],  // 1423 BCE–1414 BCE
+    'xiang':                           [  115,   35,   120,   40, -770],  // 770 BCE–721 BCE
+    'xiang(2)':                        [  115,   30,   120,   35, -770],  // 770 BCE–643 BCE
+    'xianyu':                          [  110,   35,   120,   40, -770],  // 770 BCE–506 BCE
+    'xiao':                            [  115,   30,   120,   35, -499],  // 499 BCE–496 BCE
+    'xing':                            [  110,   35,   120,   40, -770],  // 770 BCE–635 BCE
+    'xirong':                          [  110,   30,   115,   35, -770],  // 770 BCE–690 BCE
+    'xu':                              [  105,   25,   125,   35, -945],  // 945 BCE–512 BCE
+    'xu(2)':                           [  110,   30,   115,   35, -770],  // 770 BCE–371 BCE
+    'xue':                             [  115,   30,   125,   40, -1750],  // 1750 BCE–335 BCE
+    'xun':                             [  110,   35,   115,   40, -770],  // 770 BCE–684 BCE
+    'xuqu':                            [  115,   35,   120,   40, -770],  // 770 BCE–620 BCE
+    'yaminites':                       [   40,   35,    45,   40, -1769],  // 1769 BCE–1768 BCE
+    'yamkhad':                         [   35,   30,    45,   40, -2004],  // 2004 BCE–1543 BCE
+    'yan':                             [  110,   30,   130,   45, -770],  // 770 BCE–1 BCE
+    'yan(2)':                          [  110,   30,   115,   35, -770],  // 770 BCE–764 BCE
+    'yan(3)':                          [  115,   30,   125,   35, -770],  // 770 BCE–680 BCE
+    'yang':                            [  110,   35,   115,   40, -770],  // 770 BCE–678 BCE
+    'yang(2)':                         [  115,   35,   120,   40, -770],  // 770 BCE–660 BCE
+    'yangyue':                         [  110,   25,   120,   30, -770],  // 770 BCE–500 BCE
+    'yaudheya':                        [   70,   25,    80,   35, -550],  // 550 BCE–322 BCE
+    'yi':                              [  120,   35,   125,   40, -770],  // 770 BCE–659 BCE
+    'yi-luo rong':                     [  110,   30,   115,   35, -770],  // 770 BCE–588 BCE
+    'yihu':                            [  115,   30,   120,   35, -770],  // 770 BCE–491 BCE
+    'ying':                            [  110,   30,   115,   35, -770],  // 770 BCE–678 BCE
+    'yingshi':                         [  115,   30,   120,   35, -770],  // 770 BCE–646 BCE
+    'yiqu':                            [  105,   30,   110,   40, -771],  // 771 BCE–1 BCE
+    'yong':                            [  105,   30,   115,   35, -770],  // 770 BCE–611 BCE
+    'yu':                              [  110,   30,   115,   40, -770],  // 770 BCE–655 BCE
+    'yu(2)':                           [  105,   30,   115,   35, -770],  // 770 BCE–611 BCE
+    'yu(3)':                           [  115,   35,   120,   40, -770],  // 770 BCE–524 BCE
+    'yue':                             [  115,   25,   125,   40, -770],  // 770 BCE–306 BCE
+    'yue peoples':                     [  115,   25,   125,   35, -1200],  // 1200 BCE–504 BCE
+    'yueshi culture':                  [  115,   30,   125,   40, -1900],  // 1900 BCE–1500 BCE
+    'yuezhi':                          [   72,   40,    90,   45, -1235],  // 1235 BCE–1 BCE
+    'yugoslavia':                      [   18,   40,    24,   50, 1990],  // 1990 CE–present
+    'yun':                             [  110,   30,   115,   35, -770],  // 770 BCE–700 BCE
+    'yuqui':                           [  115,   30,   120,   35, -770],  // 770 BCE–692 BCE
+    'zabakhi':                         [   42,   40,    48,   45, -880],  // 880 BCE–591 BCE
+    'zahara':                          [   45,   25,    60,   35, -2277],  // 2277 BCE–2206 BCE
+    'zaire':                           [   10,  -15,    35,   10, 1990],  // 1990 CE–present
+    'zalmaqum':                        [   35,   35,    45,   40, -1778],  // 1778 BCE–1615 BCE
+    'zamua':                           [   40,   35,    50,   40, -882],  // 882 BCE–880 BCE
+    'zapotecs':                        [ -100,   15,   -95,   20, -1400],  // 1400 BCE–1 BCE
+    'zeng':                            [  110,   30,   115,   35, -771],  // 771 BCE–677 BCE
+    'zeng(2)':                         [  115,   30,   120,   40, -770],  // 770 BCE–567 BCE
+    'zhang':                           [  115,   35,   120,   40, -770],  // 770 BCE–664 BCE
+    'zhangzhung':                      [   75,   25,    90,   40, -500],  // 500 BCE–1 BCE
+    'zhao':                            [  102,   30,   120,   45, -453],  // 453 BCE–1 BCE
+    'zhao clan':                       [  110,   35,   115,   40, -500],  // 500 BCE–453 BCE
+    'zhen':                            [  110,   30,   115,   35, -770],  // 770 BCE–700 BCE
+    'zheng':                           [  110,   30,   120,   40, -770],  // 770 BCE–375 BCE
+    'zhi clan':                        [  110,   35,   115,   40, -500],  // 500 BCE–453 BCE
+    'zhonghang clan':                  [  110,   35,   120,   40, -500],  // 500 BCE–490 BCE
+    'zhongli':                         [  115,   30,   120,   35, -770],  // 770 BCE–560 BCE
+    'zhongshan':                       [  110,   35,   120,   40, -506],  // 506 BCE–296 BCE
+    'zhongwu':                         [  115,   30,   120,   35, -770],  // 770 BCE–512 BCE
+    'zhou':                            [  100,   30,   125,   40, -1125],  // 1125 BCE–1045 BCE
+    'zhou dynasty':                    [  100,   25,   125,   45, -1045],  // 1045 BCE–1 BCE
+    'zhou(2)':                         [  110,   25,   115,   35, -770],  // 770 BCE–700 BCE
+    'zhou(3)':                         [  115,   35,   120,   40, -770],  // 770 BCE–706 BCE
+    'zhoulai':                         [  115,   30,   120,   35, -770],  // 770 BCE–600 BCE
+    'zhu':                             [  115,   30,   120,   40, -770],  // 770 BCE–1 BCE
+    'zhu(2)':                          [  115,   35,   120,   40, -770],  // 770 BCE–517 BCE
+    'zhu(3)':                          [  115,   35,   120,   40, -770],  // 770 BCE–768 BCE
+    'zhuan':                           [  115,   30,   120,   35, -770],  // 770 BCE–585 BCE
+    'zhuanyu':                         [  115,   35,   120,   40, -770],  // 770 BCE–483 BCE
+    'zippasla':                        [   25,   30,    35,   40, -1421],  // 1421 BCE–1395 BCE
+    'zong':                            [  115,   30,   120,   35, -770],  // 770 BCE–615 BCE
+    'zuo':                             [  110,   30,   115,   40, -770],  // 770 BCE–750 BCE
 
 };

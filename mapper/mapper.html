@@ -1010,12 +1010,14 @@ function executeVibeCommand(text) {
         document.getElementById('zoomCustom').value = zoom;
     }
 
-    if (year !== null) {
-        document.getElementById('mapDate').value = year;
+    // Use explicit year from command, else fall back to place's start date (bounds[4])
+    const placeYear = (year !== null) ? year : (bounds[4] !== undefined ? bounds[4] : null);
+    if (placeYear !== null) {
+        document.getElementById('mapDate').value = placeYear;
     }
 
-    const yearLabel = year !== null
-        ? ` · ${year < 0 ? Math.abs(year) + ' BCE' : year + ' CE'}`
+    const yearLabel = placeYear !== null
+        ? ` · ${placeYear < 0 ? Math.abs(placeYear) + ' BCE' : placeYear + ' CE'}`
         : '';
     vibeAddHistory(originalText, `→ ${foundName}${yearLabel}`, false);
 
