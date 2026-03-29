@@ -1010,8 +1010,16 @@ function executeVibeCommand(text) {
         document.getElementById('zoomCustom').value = zoom;
     }
 
-    // Use explicit year from command, else fall back to place's start date (bounds[4])
-    const placeYear = (year !== null) ? year : (bounds[4] !== undefined ? bounds[4] : null);
+    // Use explicit year from command, else fall back to place's start date (bounds[4]).
+    // CE start dates (positive) mean the data only shows the country from ~1990.1 onward.
+    let placeYear;
+    if (year !== null) {
+        placeYear = year;
+    } else if (bounds[4] !== undefined) {
+        placeYear = bounds[4] > 0 ? 1990.1 : bounds[4];
+    } else {
+        placeYear = null;
+    }
     if (placeYear !== null) {
         document.getElementById('mapDate').value = placeYear;
     }
