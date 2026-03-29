@@ -1431,6 +1431,11 @@ function fmtYear(y) {
     return y < 0 ? `${Math.abs(y)} BCE` : `${y} CE`;
 }
 
+function toTitleCase(s) {
+    // Capitalise first letter of each word; leaves already-uppercase letters alone
+    return s.replace(/\b([a-z])/g, c => c.toUpperCase());
+}
+
 function showInfoPopup(rawName, screenX, screenY) {
     // Try exact lowercase key, then strip region qualifiers ( " - ", " (", " – " )
     const norm1 = rawName.toLowerCase().trim();
@@ -1440,7 +1445,7 @@ function showInfoPopup(rawName, screenX, screenY) {
                    ? (GEODATA_REFS[norm1] || GEODATA_REFS[norm2] || [])
                    : [];
 
-    document.getElementById('infoPopupTitle').textContent = rawName;
+    document.getElementById('infoPopupTitle').textContent = toTitleCase(rawName);
 
     const datesEl    = document.getElementById('infoPopupDates');
     const datesValEl = document.getElementById('infoPopupDatesVal');
