@@ -123,19 +123,16 @@ def load_primaries(path):
 SENTINEL_FROM = -9990   # below this → content-creation sentinel, skip
 
 def fmt_date(val, is_to):
-    """Format a date float as readable string."""
+    """Format a date float as readable string, preserving fractional years."""
     if val is None:
         return ''
     if is_to and val >= 9990:
         return 'present'
-    y = int(val)
-    frac = val - int(val)
-    # Fractional years like -2400.1 round toward zero
     if val < 0:
-        y = int(val)           # e.g. -2400.1 → -2400 … display as 2400 BCE
-        return f'{abs(y)} BCE'
+        y = abs(val)
+        return f'{y:.1f} BCE' if y != int(y) else f'{int(y)} BCE'
     elif val > 0:
-        return f'{y} CE'
+        return f'{val:.1f} CE' if val != int(val) else f'{int(val)} CE'
     else:
         return '1 BCE'
 

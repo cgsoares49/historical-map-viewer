@@ -4,7 +4,8 @@ Merges geodata_from_par.csv into js/geodata.js.
 Hand-curated entries win; PAR entries are added only if the name
 (case-insensitive) is not already present.
 [minLon, minLat, maxLon, maxLat, earliestYear, latestYear] — years are
-integers (negative = BCE). Date range also kept as inline comment.
+floats (negative = BCE); fractional years (e.g. -725.5) are preserved.
+Date range also kept as inline comment.
 """
 
 import os, csv, re
@@ -14,13 +15,13 @@ GEODATA_JS  = os.path.join(MAPPER_DIR, 'js', 'geodata.js')
 PAR_CSV     = os.path.join(MAPPER_DIR, 'geodata_from_par.csv')
 
 def parse_year_str(s):
-    """Parse '2286 BCE' → -2286, '100 CE' → 100, '' → None."""
+    """Parse '2286 BCE' → -2286, '2286.5 BCE' → -2286.5, '100 CE' → 100, '' → None."""
     s = s.strip()
     if not s:
         return None
     parts = s.split()
     try:
-        y = int(parts[0])
+        y = float(parts[0])
     except ValueError:
         return None
     if len(parts) >= 2 and parts[1].upper() == 'BCE':
@@ -61,6 +62,12 @@ def fmt(v):
     """Format a coordinate: integer if whole, else 1 decimal."""
     return str(int(v)) if v == int(v) else f"{v:.1f}"
 
+def fmt_year(y):
+    """Format a year value: integer if whole, else preserve fraction."""
+    if y is None:
+        return 'null'
+    return str(int(y)) if y == int(y) else str(y)
+
 lines = []
 lines.append('')
 lines.append('    // ── From primaries / PAR tile data ─────────────────────────────────────────')
@@ -68,9 +75,9 @@ lines.append('    // ── From primaries / PAR tile data ───────
 for name, minLon, minLat, maxLon, maxLat, earliest, latest, earliest_yr, latest_yr in sorted(new_entries, key=lambda x: x[0].lower()):
     key    = name.lower().replace("'", "\\'")   # escape apostrophes in JS string
     if earliest_yr is not None and latest_yr is not None:
-        coords = f"[{fmt(minLon):>5},{fmt(minLat):>5},{fmt(maxLon):>6},{fmt(maxLat):>5}, {earliest_yr}, {latest_yr}]"
+        coords = f"[{fmt(minLon):>5},{fmt(minLat):>5},{fmt(maxLon):>6},{fmt(maxLat):>5}, {fmt_year(earliest_yr)}, {fmt_year(latest_yr)}]"
     elif earliest_yr is not None:
-        coords = f"[{fmt(minLon):>5},{fmt(minLat):>5},{fmt(maxLon):>6},{fmt(maxLat):>5}, {earliest_yr}]"
+        coords = f"[{fmt(minLon):>5},{fmt(minLat):>5},{fmt(maxLon):>6},{fmt(maxLat):>5}, {fmt_year(earliest_yr)}]"
     else:
         coords = f"[{fmt(minLon):>5},{fmt(minLat):>5},{fmt(maxLon):>6},{fmt(maxLat):>5}]"
     comment = ''

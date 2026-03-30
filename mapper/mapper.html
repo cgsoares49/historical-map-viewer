@@ -1208,14 +1208,14 @@ function vibeNavigateTo(foundName, bounds, year, label) {
         document.getElementById('zoomCustom').value = zoom;
     }
 
-    // Use explicit year, else place's start date + 0.1 to cross the exclusive lower bound
-    // (PAR date match is year > range.from, so stored integer from=-725 first shows at -724.9)
+    // Use explicit year, else place's start date + 0.01 to cross the exclusive lower bound
+    // (PAR date match is year > range.from, so from=-725.5 first shows at -725.49)
     // 1990.1 is the magic marker for modern countries — leave it as-is.
     let placeYear;
     if (year !== null && year !== undefined) {
         placeYear = year;
     } else if (bounds[4] !== undefined) {
-        placeYear = bounds[4] === 1990.1 ? 1990.1 : bounds[4] + 0.1;
+        placeYear = bounds[4] === 1990.1 ? 1990.1 : bounds[4] + 0.01;
     } else {
         placeYear = null;
     }
