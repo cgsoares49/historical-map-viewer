@@ -260,8 +260,41 @@
         }
 
         /* ── Map container ────────────────────────────────────────────────── */
-        #map-container { flex: 1; position: relative; overflow: hidden; }
+        #map-container { flex: 1; position: relative; overflow: hidden; min-height: 0; }
         canvas { display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        /* ── Timeline bar ─────────────────────────────────────────────────── */
+        #timeline-bar {
+            flex-shrink: 0;
+            background: #0d1520;
+            border-top: 1px solid #2a3a5e;
+            padding: 2px 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        #timeline-bar .tl-label { color: #506070; font-size: 10px; white-space: nowrap; }
+        #timelineSlider { flex: 1; accent-color: #4488cc; cursor: pointer; height: 14px; }
+        #timelineYear { color: #88aacc; font-size: 11px; min-width: 80px; text-align: right; white-space: nowrap; }
+
+        /* ── Zoom slider ──────────────────────────────────────────────────── */
+        #zoomSlider { width: 88px; accent-color: #4488cc; cursor: pointer; display: block; margin-top: 2px; }
+
+        /* ── Help & bookmark popups ───────────────────────────────────────── */
+        .vibe-popup {
+            display: none;
+            position: fixed;
+            background: #0d1a2e;
+            border: 1px solid #3a6090;
+            border-radius: 4px;
+            font-size: 11px;
+            color: #c0d8f0;
+            z-index: 2000;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.65);
+        }
+        #helpPopup { padding: 10px 14px; max-width: 300px; line-height: 1.75; }
+        #helpPopup .hc { color: #88ccff; font-weight: bold; }
+        #bookmarkList { min-width: 220px; max-height: 220px; overflow-y: auto; }
 
         /* ── Info Popup ──────────────────────────────────────────────────── */
         #infoPopup {
@@ -353,7 +386,10 @@
                    style="width:170px; font-size:11px; background:#1a1a2e; color:#eee; border:1px solid #555; padding:2px 4px;"
                    title="Natural language map command"
                    onkeydown="if(event.key==='Enter'){const v=this.value.trim();if(v)executeVibeCommand(v);}">
-            <button id="vibeMic" style="width:22px; height:22px; padding:0; font-size:13px; background:#222; border:1px solid #555; cursor:pointer; margin-left:2px;" title="Voice input (Chrome/Edge)">🎤</button>
+            <button id="vibeMic"          style="width:22px;height:22px;padding:0;font-size:13px;background:#222;border:1px solid #555;cursor:pointer;" title="Voice input (Chrome/Edge)">🎤</button>
+            <button id="vibeBookmarkSave" style="width:22px;height:22px;padding:0;font-size:13px;background:#222;border:1px solid #555;cursor:pointer;" title="Save bookmark">⭐</button>
+            <button id="vibeBookmarkShow" style="width:22px;height:22px;padding:0;font-size:11px;background:#222;border:1px solid #555;cursor:pointer;" title="Bookmarks">📋</button>
+            <button id="vibeHelp"         style="width:22px;height:22px;padding:0;font-size:13px;font-weight:bold;color:#88ccff;background:#222;border:1px solid #555;cursor:pointer;" title="Help / commands">?</button>
         </div>
         <div id="vibeHistory"
              style="width:194px; max-height:72px; overflow-y:auto; margin-top:2px;
@@ -451,6 +487,7 @@
                style="display:none; width:88px; margin-top:2px;"
                title="Enter custom zoom value">
         <button class="btn-home" id="btnHome" style="width:88px; margin-top:3px;">HOME</button>
+        <input type="range" id="zoomSlider" min="0" max="16" step="1" value="6" title="Zoom scrubber">
     </div>
 
     <!-- ── Projection ── -->
@@ -552,6 +589,30 @@
     <canvas id="mapCanvas"></canvas>
     <canvas id="overlay"></canvas>
 </div>
+
+<!-- ── Timeline bar ── -->
+<div id="timeline-bar">
+    <span class="tl-label">2400 BCE</span>
+    <input type="range" id="timelineSlider" min="-2400" max="2025" step="1" value="-2400">
+    <span class="tl-label">2025 CE</span>
+    <span id="timelineYear"></span>
+</div>
+
+<!-- ── Help popup ── -->
+<div id="helpPopup" class="vibe-popup">
+    <div style="color:#fff;font-weight:bold;margin-bottom:6px;border-bottom:1px solid #3a6090;padding-bottom:4px;">Vibe Map Commands</div>
+    <div><span class="hc">show/go [place]</span> — navigate to a place</div>
+    <div><span class="hc">show [place] at [year]</span> — navigate + set date</div>
+    <div><span class="hc">date [year]</span> — set the date (e.g. "date 100 BCE")</div>
+    <div><span class="hc">zoom in/out [N]</span> — zoom N steps (default 1)</div>
+    <div><span class="hc">pan [dir]</span> — pan N/S/E/W/NE/NW/SE/SW</div>
+    <div><span class="hc">info [place]</span> — show info popup for a place</div>
+    <div><span class="hc">dismiss</span> — close info popup</div>
+    <div style="margin-top:8px;color:#506070;font-size:10px;">Years: "100 BCE", "-100", "1648 CE", "1648"</div>
+</div>
+
+<!-- ── Bookmark list ── -->
+<div id="bookmarkList" class="vibe-popup"></div>
 
 <!-- ── Info Popup ── -->
 <div id="infoPopup">
@@ -935,6 +996,128 @@ function updateScaleDisplay() {
     document.getElementById('vertScale').value = degY.toFixed(2);
 }
 updateScaleDisplay();
+
+// ── Zoom scrubber ─────────────────────────────────────────────────────────────
+const zoomSlider = document.getElementById('zoomSlider');
+
+function zoomToSlider(z) {
+    let idx = ZOOM_PRESETS.findIndex(v => v >= z);
+    if (idx < 0) idx = ZOOM_PRESETS.length - 1;
+    zoomSlider.value = idx;
+}
+function sliderToZoom() { return ZOOM_PRESETS[parseInt(zoomSlider.value)]; }
+
+zoomToSlider(getInputs().zoom);
+
+zoomSlider.addEventListener('input', () => {
+    const z = sliderToZoom();
+    const sel = document.getElementById('zoom');
+    const opt = [...sel.options].find(o => parseInt(o.value) === z);
+    if (opt) { sel.value = z; document.getElementById('zoomCustom').style.display = 'none'; }
+    else { sel.value = 'custom'; document.getElementById('zoomCustom').style.display = ''; document.getElementById('zoomCustom').value = z; }
+    drawOverlay(); updateScaleDisplay(); scheduleRender();
+});
+// Keep slider in sync when select changes
+document.getElementById('zoom').addEventListener('change', () => zoomToSlider(getInputs().zoom));
+
+// ── Timeline slider ───────────────────────────────────────────────────────────
+const timelineSlider = document.getElementById('timelineSlider');
+const timelineYearEl = document.getElementById('timelineYear');
+
+function syncTimelineFromDate() {
+    const y = parseFloat(document.getElementById('mapDate').value) || -2400;
+    timelineSlider.value = Math.max(-2400, Math.min(2025, y));
+    timelineYearEl.textContent = fmtYearInt(y);
+}
+syncTimelineFromDate();
+
+document.getElementById('mapDate').addEventListener('change', syncTimelineFromDate);
+document.getElementById('mapDate').addEventListener('input',  syncTimelineFromDate);
+
+timelineSlider.addEventListener('input', () => {
+    const raw = parseInt(timelineSlider.value);
+    const prev = parseFloat(document.getElementById('mapDate').value) || 0;
+    const y = skipYear0(prev, raw);
+    document.getElementById('mapDate').value = y;
+    timelineYearEl.textContent = fmtYearInt(y);
+    scheduleRender();
+});
+
+// ── Bookmarks ─────────────────────────────────────────────────────────────────
+function loadBookmarks() {
+    try { return JSON.parse(localStorage.getItem('mapperBookmarks') || '[]'); } catch { return []; }
+}
+function saveBookmarks(list) { localStorage.setItem('mapperBookmarks', JSON.stringify(list)); }
+
+document.getElementById('vibeBookmarkSave').addEventListener('click', e => {
+    e.stopPropagation();
+    const { centerLon, centerLat, zoom } = getInputs();
+    const year  = parseFloat(document.getElementById('mapDate').value) || 0;
+    const lonStr = `${Math.abs(centerLon).toFixed(1)}°${centerLon >= 0 ? 'E' : 'W'}`;
+    const latStr = `${Math.abs(centerLat).toFixed(1)}°${centerLat >= 0 ? 'N' : 'S'}`;
+    const label = `${fmtYearInt(year)}  ${latStr} ${lonStr}`;
+    const list  = loadBookmarks();
+    list.unshift({ label, lon: centerLon, lat: centerLat, zoom, year });
+    if (list.length > 20) list.length = 20;
+    saveBookmarks(list);
+    vibeAddHistory('⭐ bookmark saved', label, false);
+});
+
+document.getElementById('vibeBookmarkShow').addEventListener('click', e => {
+    e.stopPropagation();
+    const panel = document.getElementById('bookmarkList');
+    if (panel.style.display !== 'none') { panel.style.display = 'none'; return; }
+    const list = loadBookmarks();
+    panel.innerHTML = '';
+    if (!list.length) {
+        panel.innerHTML = '<div style="padding:8px 12px;color:#506070;">No bookmarks yet — click ⭐ to save one</div>';
+    } else {
+        list.forEach((bm, i) => {
+            const row = document.createElement('div');
+            row.style.cssText = 'padding:5px 10px;cursor:pointer;border-bottom:1px solid #1a2a3a;display:flex;justify-content:space-between;align-items:center;';
+            const lbl = document.createElement('span');
+            lbl.textContent = bm.label; lbl.style.color = '#88ccff';
+            const del = document.createElement('span');
+            del.textContent = '×'; del.style.cssText = 'color:#555;margin-left:8px;font-size:14px;line-height:1;';
+            del.addEventListener('click', ev => { ev.stopPropagation(); const l=loadBookmarks(); l.splice(i,1); saveBookmarks(l); row.remove(); });
+            row.appendChild(lbl); row.appendChild(del);
+            row.addEventListener('mouseenter', () => row.style.background = '#1a2a4a');
+            row.addEventListener('mouseleave', () => row.style.background = '');
+            row.addEventListener('click', () => {
+                document.getElementById('centerLon').value = bm.lon;
+                document.getElementById('centerLat').value = bm.lat;
+                const sel = document.getElementById('zoom');
+                const opt = [...sel.options].find(o => parseInt(o.value) === bm.zoom);
+                if (opt) { sel.value = bm.zoom; document.getElementById('zoomCustom').style.display='none'; }
+                document.getElementById('mapDate').value = bm.year;
+                zoomToSlider(bm.zoom); syncTimelineFromDate();
+                scheduleRender(); panel.style.display = 'none';
+            });
+            panel.appendChild(row);
+        });
+    }
+    const r = e.currentTarget.getBoundingClientRect();
+    panel.style.left = r.left + 'px';
+    panel.style.top  = (r.bottom + 4) + 'px';
+    panel.style.display = 'block';
+});
+
+// ── Help popup ────────────────────────────────────────────────────────────────
+document.getElementById('vibeHelp').addEventListener('click', e => {
+    e.stopPropagation();
+    const popup = document.getElementById('helpPopup');
+    if (popup.style.display !== 'none') { popup.style.display = 'none'; return; }
+    const r = e.currentTarget.getBoundingClientRect();
+    popup.style.left = Math.min(r.left, window.innerWidth - 310) + 'px';
+    popup.style.top  = (r.bottom + 4) + 'px';
+    popup.style.display = 'block';
+});
+
+// Close floating popups on outside click
+document.addEventListener('click', () => {
+    document.getElementById('helpPopup').style.display = 'none';
+    document.getElementById('bookmarkList').style.display = 'none';
+});
 
 // ── Vibe Map command system ───────────────────────────────────────────────────
 
