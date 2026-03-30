@@ -1017,6 +1017,7 @@ function vibeAddDisambiguation(originalText, matches) {
 
     hist.insertBefore(block, hist.firstChild);
     while (hist.children.length > 20) hist.removeChild(hist.lastChild);
+    hist.scrollTop = 0;  // scroll to top so the new list is immediately visible
 }
 
 function vibeZoomForBounds(minLon, minLat, maxLon, maxLat) {
@@ -1225,6 +1226,7 @@ function vibeNavigateTo(foundName, bounds, year, label) {
     vibeAddHistory(label || foundName, `→ ${toTitleCase(foundName)}${yearLabel}`, false);
 
     updateScaleDisplay();
+    drawOverlay();
     scheduleRender();
 }
 
