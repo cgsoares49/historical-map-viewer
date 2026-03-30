@@ -26,14 +26,14 @@ const GEODATA = {
     'fertile crescent':   [  35,  29,   50,  38],
     'sumer':              [  43,  29,   48,  33],
     'akkad':              [  42,  32,   47,  36],
-    'babylonia':          [  42,  30,   48,  35],
+    'babylonia (region)': [  42,  30,   48,  35],
     'babylon':            [  44,  32,   45,  33],
     'assyria':            [  40,  34,   46,  38],
     'nineveh':            [  43,  36,   44,  37],
     'ancient egypt':      [  25,  22,   37,  32],
     'nile valley':        [  29,  12,   36,  32],
     'nubia':              [  25,  10,   40,  25],
-    'carthage':           [   9,  36,   11,  37],
+    'carthage (city)':    [   9,  36,   11,  37],
     'north africa':       [ -18,  15,   37,  38],
     'levant':             [  34,  29,   37,  36],
     'canaan':             [  34,  29,   36,  34],
@@ -202,7 +202,7 @@ const GEODATA = {
 
     // ── Cities & Landmarks (tight boxes → high zoom) ─────────────────────────
     'rome':               [  11,  41,   14,  43],
-    'athens':             [  23,  37,   24,  38],
+    'athens (city)':      [  23,  37,   24,  38],
     'jerusalem':          [  35,  31,   36,  32],
     'nineveh':            [  43,  36,   44,  37],
     'ur':                 [  45,  30,   47,  32],
@@ -309,6 +309,7 @@ const GEODATA = {
     'asvaka':                          [   70,   30,    75,   40, -610.1, -516.5],  // 610.1 BCE–516.5 BCE
     'athamania':                       [   20,   35,    25,   40, -430.8, -1],  // 430.8 BCE–1 BCE
     'athenian ally':                   [   25,   35,    30,   40, -384.5, -378.7],  // 384.5 BCE–378.7 BCE
+    'athens':                          [   20,   35,    30,   45, -900.1, -1],  // 900.1 BCE–1 BCE
     'atropatene':                      [   40,   35,    54,   45, -319.5, -1],  // 319.5 BCE–1 BCE
     'atuna':                           [   30,   35,    40,   40, -826.8, -680.5],  // 826.8 BCE–680.5 BCE
     'audumbaras':                      [   70,   30,    80,   35, -600.5, -323.3],  // 600.5 BCE–323.3 BCE
@@ -318,6 +319,7 @@ const GEODATA = {
     'avanti':                          [   70,   20,    85,   30, -850.1, -400.5],  // 850.1 BCE–400.5 BCE
     'azzi-hayasa':                     [   35,   35,    45,   45, -1505.5, -1200.4],  // 1505.5 BCE–1200.4 BCE
     'ba':                              [  105,   25,   115,   35, -1075.1, -316.5],  // 1075.1 BCE–316.5 BCE
+    'babylonia':                       [   40,   25,    55,   40, -977.5, -732.1],  // 977.5 BCE–732.1 BCE
     'babylonia (chaldaeans)':          [   35,   25,    50,   40, -780.5, -616.4],  // 780.5 BCE–616.4 BCE
     'babylonia (isin dynasty)':        [   40,   25,    55,   40, -1157.5, -977.5],  // 1157.5 BCE–977.5 BCE
     'babylonian revolt':               [   40,   25,    50,   35, -852.5, -648.3],  // 852.5 BCE–648.3 BCE
@@ -374,6 +376,7 @@ const GEODATA = {
     'carduchii':                       [   40,   35,    45,   40, -385.8, -384.5],  // 385.8 BCE–384.5 BCE
     'carians':                         [   25,   35,    30,   40, -1201.5, -543.5],  // 1201.5 BCE–543.5 BCE
     'caribbean peoples':               [  -85,    5,   -60,   30, -2400.1, -1],  // 2400.1 BCE–1 BCE
+    'carthage':                        [  -10,   30,    20,   45, -602.5, -1],  // 602.5 BCE–1 BCE
     'carthaginian ally':               [   -5,   30,    20,   40, -500.1, -277.3],  // 500.1 BCE–277.3 BCE
     'carthaginian tributary':          [   10,   35,    15,   40, -405.1, -375.5],  // 405.1 BCE–375.5 BCE
     'carystus':                        [   20,   35,    25,   40, -386.5, -294.2],  // 386.5 BCE–294.2 BCE
