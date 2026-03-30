@@ -1021,10 +1021,11 @@ function vibeAddDisambiguation(originalText, matches) {
 }
 
 function vibeZoomForBounds(minLon, minLat, maxLon, maxLat) {
-    const PADDING = 1.4;
+    const PADDING = 1.1;
     const spanLon = (maxLon - minLon) * PADDING;
     const spanLat = (maxLat - minLat) * PADDING;
-    const aspect = canvas.width / canvas.height;
+    // Cap aspect ratio at 1.8 so very wide canvases don't over-constrain the lat span
+    const aspect = Math.min(canvas.width / canvas.height, 1.8);
     const neededDegX = Math.max(spanLon, spanLat * aspect);
     const targetZoom = 360 / neededDegX - 1;
     let best = 0;
@@ -1223,7 +1224,10 @@ function vibeNavigateTo(foundName, bounds, year, label) {
     const yearLabel = placeYear !== null
         ? ` · ${placeYear < 0 ? Math.abs(placeYear) + ' BCE' : placeYear + ' CE'}`
         : '';
-    vibeAddHistory(label || foundName, `→ ${toTitleCase(foundName)}${yearLabel}`, false);
+    const cLon = parseFloat(document.getElementById('centerLon').value);
+    const cLat = parseFloat(document.getElementById('centerLat').value);
+    const centerLabel = ` · ${cLon >= 0 ? cLon.toFixed(1)+'°E' : Math.abs(cLon).toFixed(1)+'°W'}, ${cLat >= 0 ? cLat.toFixed(1)+'°N' : Math.abs(cLat).toFixed(1)+'°S'}`;
+    vibeAddHistory(label || foundName, `→ ${toTitleCase(foundName)}${yearLabel}${centerLabel}`, false);
 
     updateScaleDisplay();
     drawOverlay();
