@@ -32,10 +32,10 @@ const BORDER_COLOR = '#000000';
 // sentinel entries (e.g. -9997 "show all" mode) and are excluded from display.
 const SENTINEL_FROM = -2500;
 
-// Line widths scale with the projection so strokes remain visible at any zoom level.
-// At world zoom (degX≈360) lines are ~2px; at street zoom (degX≈1) they are ~0.5px.
+// Line widths scale inversely with degX: thinner when zoomed out, thicker when zoomed in.
+// Reference point: degX=45 → lineWidth=base. World zoom (degX≈360) → ~0.3px hairline.
 function _lineWidth(projection, base) {
-    return Math.max(0.5, Math.min(base * 3, base * projection.degX / 30));
+    return Math.max(0.3, Math.min(base * 2.5, base * Math.sqrt(45 / projection.degX)));
 }
 
 class MapRenderer {
@@ -292,7 +292,7 @@ class MapRenderer {
     // Polygons outside the current year are silently skipped.
     _drawCoastOutlines(ctx, projection, cst, year) {
         ctx.strokeStyle = COAST_COLOR;
-        ctx.lineWidth   = Math.max(1, _lineWidth(projection, 0.8));
+        ctx.lineWidth   = _lineWidth(projection, 0.8);
         for (const poly of cst) {
             if (!matchDate(poly.dateRanges, year)) continue;
             const path = this._buildPath(projection, poly.points, false);  // open path — don't close tile-edge gap
