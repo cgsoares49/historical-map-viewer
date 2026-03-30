@@ -487,7 +487,7 @@
                style="display:none; width:88px; margin-top:2px;"
                title="Enter custom zoom value">
         <button class="btn-home" id="btnHome" style="width:88px; margin-top:3px;">HOME</button>
-        <input type="range" id="zoomSlider" min="0" max="16" step="1" value="6" title="Zoom scrubber">
+        <input type="range" id="zoomSlider" min="1" max="16" step="1" value="6" title="Zoom scrubber (zoom 0 / world view: use WORLD VIEW button)">
     </div>
 
     <!-- ── Projection ── -->
@@ -1009,13 +1009,17 @@ function sliderToZoom() { return ZOOM_PRESETS[parseInt(zoomSlider.value)]; }
 
 zoomToSlider(getInputs().zoom);
 
+let _zoomSliderTimer = null;
 zoomSlider.addEventListener('input', () => {
     const z = sliderToZoom();
     const sel = document.getElementById('zoom');
     const opt = [...sel.options].find(o => parseInt(o.value) === z);
     if (opt) { sel.value = z; document.getElementById('zoomCustom').style.display = 'none'; }
     else { sel.value = 'custom'; document.getElementById('zoomCustom').style.display = ''; document.getElementById('zoomCustom').value = z; }
-    drawOverlay(); updateScaleDisplay(); scheduleRender();
+    drawOverlay(); updateScaleDisplay();
+    // Debounce: only fire a render 250ms after the user stops dragging
+    clearTimeout(_zoomSliderTimer);
+    _zoomSliderTimer = setTimeout(() => scheduleRender(), 250);
 });
 // Keep slider in sync when select changes
 document.getElementById('zoom').addEventListener('change', () => zoomToSlider(getInputs().zoom));
