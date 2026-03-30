@@ -792,19 +792,23 @@ class MapRenderer {
             return { x: bestX, y: bestY };
         };
 
+        // Which roots have at least one sub-unit entry?
+        const rootsWithSubs = new Set();
+        for (const fullName of subMap.keys()) rootsWithSubs.add(fullName.split(' - ')[0]);
+
         const labels = [];
         for (const [root, g] of rootMap) {
             if (g.totalArea < minPixels) continue;
             const cx0 = g.wcx / g.totalArea, cy0 = g.wcy / g.totalArea;
             const { x, y } = _snapToNearest(cx0, cy0, e => e.name.split(' - ')[0] === root);
-            labels.push({ text: root, x, y, area: g.totalArea });
+            labels.push({ text: root, x, y, area: g.totalArea, kind: rootsWithSubs.has(root) ? 'parent' : 'root' });
         }
         for (const [fullName, g] of subMap) {
             if (g.totalArea < minPixels) continue;
             const cx0 = g.wcx / g.totalArea, cy0 = g.wcy / g.totalArea;
             const { x, y } = _snapToNearest(cx0, cy0, e => e.name === fullName);
             const parts = fullName.split(' - ');
-            labels.push({ text: parts[parts.length - 1], x, y, area: g.totalArea });
+            labels.push({ text: parts[parts.length - 1], x, y, area: g.totalArea, kind: 'sub' });
         }
 
         // Largest territories claim space first
@@ -820,10 +824,13 @@ class MapRenderer {
             r.y < p.y + p.h && r.y + r.h > p.y
         );
 
-        for (const { text, x, y } of labels) {
+        for (const { text, x, y, kind } of labels) {
             if (x < 0 || x > W || y < 0 || y > H) continue;
 
-            const fontSize = Math.max(9, Math.min(13, Math.round(250 / projection.degX)));
+            const baseSize = Math.max(9, Math.min(13, Math.round(250 / projection.degX)));
+            const fontSize = kind === 'parent' ? Math.round(baseSize * 1.5)
+                           : kind === 'sub'    ? Math.max(8, baseSize - 1)
+                           : baseSize;
             ctx.font = `bold ${fontSize}px Arial, sans-serif`;
             const w = ctx.measureText(text).width;
             const h = fontSize + 4;
