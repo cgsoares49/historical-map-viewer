@@ -1430,17 +1430,24 @@ function drawOverlay() {
             const p2 = proj.geoToPixel(tile.geoLon + tile.tileWidth, tile.geoLat);
             const x = Math.floor(p1.x), y = Math.floor(p1.y);
             const w = Math.ceil(p2.x) - x, h = Math.ceil(p2.y) - y;
-            octx.strokeStyle = 'rgba(255,255,255,0.25)';
+            // Dark shadow rect then white rect for contrast against any background
+            octx.strokeStyle = 'rgba(0,0,0,0.5)';
+            octx.lineWidth = 3;
+            octx.strokeRect(x + 0.5, y + 0.5, w - 1, h - 1);
+            octx.strokeStyle = 'rgba(255,255,255,0.75)';
             octx.lineWidth = 1;
             octx.strokeRect(x + 0.5, y + 0.5, w - 1, h - 1);
             if (w > 60 && h > 20) {
-                octx.fillStyle = 'rgba(255,255,255,0.55)';
-                octx.font = '9px monospace';
+                octx.font = 'bold 9px monospace';
+                octx.lineWidth = 3;
+                octx.strokeStyle = 'rgba(0,0,0,0.8)';
+                octx.strokeText(`${tile.latStr}/${tile.lonStr}`, x + 4, y + 12);
+                octx.fillStyle = 'rgba(255,255,255,0.95)';
                 octx.fillText(`${tile.latStr}/${tile.lonStr}`, x + 4, y + 12);
             }
         });
-        _drawRefLine(proj, 0, true,  'rgba(255,255,0,0.4)');
-        _drawRefLine(proj, 0, false, 'rgba(255,120,0,0.4)');
+        _drawRefLine(proj, 0, true,  'rgba(255,220,0,0.85)');
+        _drawRefLine(proj, 0, false, 'rgba(255,140,0,0.85)');
     }
 
     // No selection rectangle in non-equirect modes
