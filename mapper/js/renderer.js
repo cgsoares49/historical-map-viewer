@@ -828,7 +828,7 @@ class MapRenderer {
             if (x < 0 || x > W || y < 0 || y > H) continue;
 
             const baseSize = Math.max(9, Math.min(13, Math.round(250 / projection.degX)));
-            const fontSize = kind === 'parent' ? Math.round(baseSize * 1.5)
+            const fontSize = kind === 'parent' ? Math.round(baseSize * 1.25)
                            : kind === 'sub'    ? Math.max(8, baseSize - 1)
                            : baseSize;
             ctx.font = `bold ${fontSize}px Arial, sans-serif`;
