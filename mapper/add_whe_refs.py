@@ -39,14 +39,24 @@ par_keys = re.findall(r"'((?:[^'\\]|\\.)*)'\s*:", par_section)
 with open(REFS_JSON, encoding='utf-8') as f:
     refs = json.load(f)
 
-# ── Add WHE URLs for PAR entries not already in refs ─────────────────────────
+# ── Add/prepend WHE URLs; ensure WHE always comes before Wiki ─────────────────
 added = 0
 for key in par_keys:
     real_key = key.replace("\\'", "'")
-    if real_key in refs:
-        continue   # already has refs (shouldn't happen for PAR entries, but be safe)
-    refs[real_key] = [to_whe_url(key)]
-    added += 1
+    whe_url  = to_whe_url(key)
+    if real_key not in refs:
+        refs[real_key] = [whe_url]
+        added += 1
+    else:
+        urls = refs[real_key]
+        if not any('worldhistory.org' in u for u in urls):
+            refs[real_key] = [whe_url] + urls   # prepend WHE before existing refs
+            added += 1
+        else:
+            # WHE already present — ensure it's first
+            whe  = [u for u in urls if 'worldhistory.org' in u]
+            rest = [u for u in urls if 'worldhistory.org' not in u]
+            refs[real_key] = whe + rest
 
 # ── Write back ────────────────────────────────────────────────────────────────
 with open(REFS_JSON, 'w', encoding='utf-8') as f:

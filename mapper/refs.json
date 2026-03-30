@@ -1,575 +1,766 @@
 {
   "africa": [
+    "https://www.worldhistory.org/Africa/",
     "https://en.wikipedia.org/wiki/Africa"
   ],
   "europe": [
+    "https://www.worldhistory.org/Europe/",
     "https://en.wikipedia.org/wiki/Europe"
   ],
   "asia": [
+    "https://www.worldhistory.org/Asia/",
     "https://en.wikipedia.org/wiki/Asia"
   ],
   "eurasia": [
+    "https://www.worldhistory.org/Eurasia/",
     "https://en.wikipedia.org/wiki/Eurasia"
   ],
   "north america": [
+    "https://www.worldhistory.org/North_America/",
     "https://en.wikipedia.org/wiki/North_America"
   ],
   "south america": [
+    "https://www.worldhistory.org/South_America/",
     "https://en.wikipedia.org/wiki/South_America"
   ],
   "americas": [
+    "https://www.worldhistory.org/Americas/",
     "https://en.wikipedia.org/wiki/Americas"
   ],
   "australia": [
+    "https://www.worldhistory.org/Australia/",
     "https://en.wikipedia.org/wiki/Australia_(continent)"
   ],
   "oceania": [
+    "https://www.worldhistory.org/Oceania/",
     "https://en.wikipedia.org/wiki/Oceania"
   ],
   "antarctica": [
+    "https://www.worldhistory.org/Antarctica/",
     "https://en.wikipedia.org/wiki/Antarctica"
   ],
   "mesopotamia": [
+    "https://www.worldhistory.org/Mesopotamia/",
     "https://en.wikipedia.org/wiki/Mesopotamia"
   ],
   "fertile crescent": [
+    "https://www.worldhistory.org/Fertile_Crescent/",
     "https://en.wikipedia.org/wiki/Fertile_Crescent"
   ],
   "sumer": [
+    "https://www.worldhistory.org/Sumer/",
     "https://en.wikipedia.org/wiki/Sumer"
   ],
   "akkad": [
+    "https://www.worldhistory.org/Akkad/",
     "https://en.wikipedia.org/wiki/Akkad_(region)"
   ],
   "babylonia": [
+    "https://www.worldhistory.org/Babylonia/",
     "https://en.wikipedia.org/wiki/Babylonia"
   ],
   "babylon": [
+    "https://www.worldhistory.org/Babylon/",
     "https://en.wikipedia.org/wiki/Babylon"
   ],
   "assyria": [
+    "https://www.worldhistory.org/Assyria/",
     "https://en.wikipedia.org/wiki/Assyria"
   ],
   "nineveh": [
+    "https://www.worldhistory.org/Nineveh/",
     "https://en.wikipedia.org/wiki/Nineveh"
   ],
   "ancient egypt": [
+    "https://www.worldhistory.org/Ancient_Egypt/",
     "https://en.wikipedia.org/wiki/Ancient_Egypt"
   ],
   "nile valley": [
+    "https://www.worldhistory.org/Nile_Valley/",
     "https://en.wikipedia.org/wiki/Nile"
   ],
   "nubia": [
+    "https://www.worldhistory.org/Nubia/",
     "https://en.wikipedia.org/wiki/Nubia"
   ],
   "carthage": [
+    "https://www.worldhistory.org/Carthage/",
     "https://en.wikipedia.org/wiki/Carthage"
   ],
   "north africa": [
+    "https://www.worldhistory.org/North_Africa/",
     "https://en.wikipedia.org/wiki/North_Africa"
   ],
   "levant": [
+    "https://www.worldhistory.org/Levant/",
     "https://en.wikipedia.org/wiki/Levant"
   ],
   "canaan": [
+    "https://www.worldhistory.org/Canaan/",
     "https://en.wikipedia.org/wiki/Canaan"
   ],
   "phoenicia": [
+    "https://www.worldhistory.org/Phoenicia/",
     "https://en.wikipedia.org/wiki/Phoenicia"
   ],
   "judea": [
+    "https://www.worldhistory.org/Judea/",
     "https://en.wikipedia.org/wiki/Judea"
   ],
   "israel (ancient)": [
+    "https://www.worldhistory.org/Israel_(ancient)/",
     "https://en.wikipedia.org/wiki/Kingdom_of_Israel_(united_monarchy)"
   ],
   "persia (ancient)": [
+    "https://www.worldhistory.org/Persia_(ancient)/",
     "https://en.wikipedia.org/wiki/Persia"
   ],
   "achaemenid empire": [
+    "https://www.worldhistory.org/Achaemenid_Empire/",
     "https://en.wikipedia.org/wiki/Achaemenid_Empire"
   ],
   "anatolia": [
+    "https://www.worldhistory.org/Anatolia/",
     "https://en.wikipedia.org/wiki/Anatolia"
   ],
   "asia minor": [
+    "https://www.worldhistory.org/Asia_Minor/",
     "https://en.wikipedia.org/wiki/Anatolia"
   ],
   "ancient greece": [
+    "https://www.worldhistory.org/Ancient_Greece/",
     "https://en.wikipedia.org/wiki/Ancient_Greece"
   ],
   "ancient rome": [
+    "https://www.worldhistory.org/Ancient_Rome/",
     "https://en.wikipedia.org/wiki/Ancient_Rome"
   ],
   "roman empire": [
+    "https://www.worldhistory.org/Roman_Empire/",
     "https://en.wikipedia.org/wiki/Roman_Empire"
   ],
   "gaul": [
+    "https://www.worldhistory.org/Gaul/",
     "https://en.wikipedia.org/wiki/Gaul"
   ],
   "britannia": [
+    "https://www.worldhistory.org/Britannia/",
     "https://en.wikipedia.org/wiki/Roman_Britain"
   ],
   "iberia (ancient)": [
+    "https://www.worldhistory.org/Iberia_(ancient)/",
     "https://en.wikipedia.org/wiki/Iberian_Peninsula"
   ],
   "germania": [
+    "https://www.worldhistory.org/Germania/",
     "https://en.wikipedia.org/wiki/Germania"
   ],
   "scythia": [
+    "https://www.worldhistory.org/Scythia/",
     "https://en.wikipedia.org/wiki/Scythia"
   ],
   "pontic steppe": [
+    "https://www.worldhistory.org/Pontic_Steppe/",
     "https://en.wikipedia.org/wiki/Pontic–Caspian_steppe"
   ],
   "steppe": [
+    "https://www.worldhistory.org/Steppe/",
     "https://en.wikipedia.org/wiki/Eurasian_Steppe"
   ],
   "indus valley": [
+    "https://www.worldhistory.org/Indus_Valley/",
     "https://en.wikipedia.org/wiki/Indus_Valley_Civilisation"
   ],
   "ancient india": [
+    "https://www.worldhistory.org/Ancient_India/",
     "https://en.wikipedia.org/wiki/History_of_India"
   ],
   "maurya empire": [
+    "https://www.worldhistory.org/Maurya_Empire/",
     "https://en.wikipedia.org/wiki/Maurya_Empire"
   ],
   "ancient china": [
+    "https://www.worldhistory.org/Ancient_China/",
     "https://en.wikipedia.org/wiki/History_of_China"
   ],
   "arabia (ancient)": [
+    "https://www.worldhistory.org/Arabia_(ancient)/",
     "https://en.wikipedia.org/wiki/Arabian_Peninsula"
   ],
   "arabian peninsula": [
+    "https://www.worldhistory.org/Arabian_Peninsula/",
     "https://en.wikipedia.org/wiki/Arabian_Peninsula"
   ],
   "near east": [
+    "https://www.worldhistory.org/Near_East/",
     "https://en.wikipedia.org/wiki/Near_East"
   ],
   "middle east": [
+    "https://www.worldhistory.org/Middle_East/",
     "https://en.wikipedia.org/wiki/Middle_East"
   ],
   "caucasus": [
+    "https://www.worldhistory.org/Caucasus/",
     "https://en.wikipedia.org/wiki/Caucasus"
   ],
   "central asia": [
+    "https://www.worldhistory.org/Central_Asia/",
     "https://en.wikipedia.org/wiki/Central_Asia"
   ],
   "horn of africa": [
+    "https://www.worldhistory.org/Horn_Of_Africa/",
     "https://en.wikipedia.org/wiki/Horn_of_Africa"
   ],
   "sub-saharan africa": [
+    "https://www.worldhistory.org/Sub-Saharan_Africa/",
     "https://en.wikipedia.org/wiki/Sub-Saharan_Africa"
   ],
   "mali empire": [
+    "https://www.worldhistory.org/Mali_Empire/",
     "https://en.wikipedia.org/wiki/Mali_Empire"
   ],
   "byzantine empire": [
+    "https://www.worldhistory.org/Byzantine_Empire/",
     "https://en.wikipedia.org/wiki/Byzantine_Empire"
   ],
   "ottoman empire": [
+    "https://www.worldhistory.org/Ottoman_Empire/",
     "https://en.wikipedia.org/wiki/Ottoman_Empire"
   ],
   "mongol empire": [
+    "https://www.worldhistory.org/Mongol_Empire/",
     "https://en.wikipedia.org/wiki/Mongol_Empire"
   ],
   "silk road": [
+    "https://www.worldhistory.org/Silk_Road/",
     "https://en.wikipedia.org/wiki/Silk_Road"
   ],
   "france": [
+    "https://www.worldhistory.org/France/",
     "https://en.wikipedia.org/wiki/France"
   ],
   "germany": [
+    "https://www.worldhistory.org/Germany/",
     "https://en.wikipedia.org/wiki/Germany"
   ],
   "united kingdom": [
+    "https://www.worldhistory.org/United_Kingdom/",
     "https://en.wikipedia.org/wiki/United_Kingdom"
   ],
   "great britain": [
+    "https://www.worldhistory.org/Great_Britain/",
     "https://en.wikipedia.org/wiki/Great_Britain"
   ],
   "england": [
+    "https://www.worldhistory.org/England/",
     "https://en.wikipedia.org/wiki/England"
   ],
   "scotland": [
+    "https://www.worldhistory.org/Scotland/",
     "https://en.wikipedia.org/wiki/Scotland"
   ],
   "wales": [
+    "https://www.worldhistory.org/Wales/",
     "https://en.wikipedia.org/wiki/Wales"
   ],
   "ireland": [
+    "https://www.worldhistory.org/Ireland/",
     "https://en.wikipedia.org/wiki/Ireland"
   ],
   "spain": [
+    "https://www.worldhistory.org/Spain/",
     "https://en.wikipedia.org/wiki/Spain"
   ],
   "portugal": [
+    "https://www.worldhistory.org/Portugal/",
     "https://en.wikipedia.org/wiki/Portugal"
   ],
   "italy": [
+    "https://www.worldhistory.org/Italy/",
     "https://en.wikipedia.org/wiki/Italy"
   ],
   "greece": [
+    "https://www.worldhistory.org/Greece/",
     "https://en.wikipedia.org/wiki/Greece"
   ],
   "turkey": [
+    "https://www.worldhistory.org/Turkey/",
     "https://en.wikipedia.org/wiki/Turkey"
   ],
   "ukraine": [
+    "https://www.worldhistory.org/Ukraine/",
     "https://en.wikipedia.org/wiki/Ukraine"
   ],
   "russia": [
+    "https://www.worldhistory.org/Russia/",
     "https://en.wikipedia.org/wiki/Russia"
   ],
   "poland": [
+    "https://www.worldhistory.org/Poland/",
     "https://en.wikipedia.org/wiki/Poland"
   ],
   "sweden": [
+    "https://www.worldhistory.org/Sweden/",
     "https://en.wikipedia.org/wiki/Sweden"
   ],
   "norway": [
+    "https://www.worldhistory.org/Norway/",
     "https://en.wikipedia.org/wiki/Norway"
   ],
   "finland": [
+    "https://www.worldhistory.org/Finland/",
     "https://en.wikipedia.org/wiki/Finland"
   ],
   "denmark": [
+    "https://www.worldhistory.org/Denmark/",
     "https://en.wikipedia.org/wiki/Denmark"
   ],
   "netherlands": [
+    "https://www.worldhistory.org/Netherlands/",
     "https://en.wikipedia.org/wiki/Netherlands"
   ],
   "belgium": [
+    "https://www.worldhistory.org/Belgium/",
     "https://en.wikipedia.org/wiki/Belgium"
   ],
   "switzerland": [
+    "https://www.worldhistory.org/Switzerland/",
     "https://en.wikipedia.org/wiki/Switzerland"
   ],
   "austria": [
+    "https://www.worldhistory.org/Austria/",
     "https://en.wikipedia.org/wiki/Austria"
   ],
   "hungary": [
+    "https://www.worldhistory.org/Hungary/",
     "https://en.wikipedia.org/wiki/Hungary"
   ],
   "romania": [
+    "https://www.worldhistory.org/Romania/",
     "https://en.wikipedia.org/wiki/Romania"
   ],
   "bulgaria": [
+    "https://www.worldhistory.org/Bulgaria/",
     "https://en.wikipedia.org/wiki/Bulgaria"
   ],
   "serbia": [
+    "https://www.worldhistory.org/Serbia/",
     "https://en.wikipedia.org/wiki/Serbia"
   ],
   "croatia": [
+    "https://www.worldhistory.org/Croatia/",
     "https://en.wikipedia.org/wiki/Croatia"
   ],
   "czech republic": [
+    "https://www.worldhistory.org/Czech_Republic/",
     "https://en.wikipedia.org/wiki/Czech_Republic"
   ],
   "slovakia": [
+    "https://www.worldhistory.org/Slovakia/",
     "https://en.wikipedia.org/wiki/Slovakia"
   ],
   "albania": [
+    "https://www.worldhistory.org/Albania/",
     "https://en.wikipedia.org/wiki/Albania"
   ],
   "north macedonia": [
+    "https://www.worldhistory.org/North_Macedonia/",
     "https://en.wikipedia.org/wiki/North_Macedonia"
   ],
   "bosnia": [
+    "https://www.worldhistory.org/Bosnia/",
     "https://en.wikipedia.org/wiki/Bosnia_and_Herzegovina"
   ],
   "slovenia": [
+    "https://www.worldhistory.org/Slovenia/",
     "https://en.wikipedia.org/wiki/Slovenia"
   ],
   "latvia": [
+    "https://www.worldhistory.org/Latvia/",
     "https://en.wikipedia.org/wiki/Latvia"
   ],
   "lithuania": [
+    "https://www.worldhistory.org/Lithuania/",
     "https://en.wikipedia.org/wiki/Lithuania"
   ],
   "estonia": [
+    "https://www.worldhistory.org/Estonia/",
     "https://en.wikipedia.org/wiki/Estonia"
   ],
   "belarus": [
+    "https://www.worldhistory.org/Belarus/",
     "https://en.wikipedia.org/wiki/Belarus"
   ],
   "moldova": [
+    "https://www.worldhistory.org/Moldova/",
     "https://en.wikipedia.org/wiki/Moldova"
   ],
   "iceland": [
+    "https://www.worldhistory.org/Iceland/",
     "https://en.wikipedia.org/wiki/Iceland"
   ],
   "luxembourg": [
+    "https://www.worldhistory.org/Luxembourg/",
     "https://en.wikipedia.org/wiki/Luxembourg"
   ],
   "egypt": [
+    "https://www.worldhistory.org/Egypt/",
     "https://en.wikipedia.org/wiki/Egypt"
   ],
   "israel": [
+    "https://www.worldhistory.org/Israel/",
     "https://en.wikipedia.org/wiki/Israel"
   ],
   "palestine": [
+    "https://www.worldhistory.org/Palestine/",
     "https://en.wikipedia.org/wiki/State_of_Palestine"
   ],
   "jordan": [
+    "https://www.worldhistory.org/Jordan/",
     "https://en.wikipedia.org/wiki/Jordan"
   ],
   "syria": [
+    "https://www.worldhistory.org/Syria/",
     "https://en.wikipedia.org/wiki/Syria"
   ],
   "lebanon": [
+    "https://www.worldhistory.org/Lebanon/",
     "https://en.wikipedia.org/wiki/Lebanon"
   ],
   "iraq": [
+    "https://www.worldhistory.org/Iraq/",
     "https://en.wikipedia.org/wiki/Iraq"
   ],
   "iran": [
+    "https://www.worldhistory.org/Iran/",
     "https://en.wikipedia.org/wiki/Iran"
   ],
   "saudi arabia": [
+    "https://www.worldhistory.org/Saudi_Arabia/",
     "https://en.wikipedia.org/wiki/Saudi_Arabia"
   ],
   "yemen": [
+    "https://www.worldhistory.org/Yemen/",
     "https://en.wikipedia.org/wiki/Yemen"
   ],
   "oman": [
+    "https://www.worldhistory.org/Oman/",
     "https://en.wikipedia.org/wiki/Oman"
   ],
   "uae": [
+    "https://www.worldhistory.org/Uae/",
     "https://en.wikipedia.org/wiki/United_Arab_Emirates"
   ],
   "kuwait": [
+    "https://www.worldhistory.org/Kuwait/",
     "https://en.wikipedia.org/wiki/Kuwait"
   ],
   "qatar": [
+    "https://www.worldhistory.org/Qatar/",
     "https://en.wikipedia.org/wiki/Qatar"
   ],
   "bahrain": [
+    "https://www.worldhistory.org/Bahrain/",
     "https://en.wikipedia.org/wiki/Bahrain"
   ],
   "afghanistan": [
+    "https://www.worldhistory.org/Afghanistan/",
     "https://en.wikipedia.org/wiki/Afghanistan"
   ],
   "pakistan": [
+    "https://www.worldhistory.org/Pakistan/",
     "https://en.wikipedia.org/wiki/Pakistan"
   ],
   "morocco": [
+    "https://www.worldhistory.org/Morocco/",
     "https://en.wikipedia.org/wiki/Morocco"
   ],
   "algeria": [
+    "https://www.worldhistory.org/Algeria/",
     "https://en.wikipedia.org/wiki/Algeria"
   ],
   "libya": [
+    "https://www.worldhistory.org/Libya/",
     "https://en.wikipedia.org/wiki/Libya"
   ],
   "tunisia": [
+    "https://www.worldhistory.org/Tunisia/",
     "https://en.wikipedia.org/wiki/Tunisia"
   ],
   "sudan": [
+    "https://www.worldhistory.org/Sudan/",
     "https://en.wikipedia.org/wiki/Sudan"
   ],
   "ethiopia": [
+    "https://www.worldhistory.org/Ethiopia/",
     "https://en.wikipedia.org/wiki/Ethiopia"
   ],
   "somalia": [
+    "https://www.worldhistory.org/Somalia/",
     "https://en.wikipedia.org/wiki/Somalia"
   ],
   "kenya": [
+    "https://www.worldhistory.org/Kenya/",
     "https://en.wikipedia.org/wiki/Kenya"
   ],
   "tanzania": [
+    "https://www.worldhistory.org/Tanzania/",
     "https://en.wikipedia.org/wiki/Tanzania"
   ],
   "nigeria": [
+    "https://www.worldhistory.org/Nigeria/",
     "https://en.wikipedia.org/wiki/Nigeria"
   ],
   "ghana": [
+    "https://www.worldhistory.org/Ghana/",
     "https://en.wikipedia.org/wiki/Ghana"
   ],
   "mali": [
+    "https://www.worldhistory.org/Mali/",
     "https://en.wikipedia.org/wiki/Mali"
   ],
   "south africa": [
+    "https://www.worldhistory.org/South_Africa/",
     "https://en.wikipedia.org/wiki/South_Africa"
   ],
   "madagascar": [
+    "https://www.worldhistory.org/Madagascar/",
     "https://en.wikipedia.org/wiki/Madagascar"
   ],
   "congo": [
+    "https://www.worldhistory.org/Congo/",
     "https://en.wikipedia.org/wiki/Democratic_Republic_of_the_Congo"
   ],
   "angola": [
+    "https://www.worldhistory.org/Angola/",
     "https://en.wikipedia.org/wiki/Angola"
   ],
   "mozambique": [
+    "https://www.worldhistory.org/Mozambique/",
     "https://en.wikipedia.org/wiki/Mozambique"
   ],
   "zambia": [
+    "https://www.worldhistory.org/Zambia/",
     "https://en.wikipedia.org/wiki/Zambia"
   ],
   "zimbabwe": [
+    "https://www.worldhistory.org/Zimbabwe/",
     "https://en.wikipedia.org/wiki/Zimbabwe"
   ],
   "india": [
+    "https://www.worldhistory.org/India/",
     "https://en.wikipedia.org/wiki/India"
   ],
   "china": [
+    "https://www.worldhistory.org/China/",
     "https://en.wikipedia.org/wiki/China"
   ],
   "japan": [
+    "https://www.worldhistory.org/Japan/",
     "https://en.wikipedia.org/wiki/Japan"
   ],
   "korea": [
+    "https://www.worldhistory.org/Korea/",
     "https://en.wikipedia.org/wiki/Korea"
   ],
   "north korea": [
+    "https://www.worldhistory.org/North_Korea/",
     "https://en.wikipedia.org/wiki/North_Korea"
   ],
   "south korea": [
+    "https://www.worldhistory.org/South_Korea/",
     "https://en.wikipedia.org/wiki/South_Korea"
   ],
   "mongolia": [
+    "https://www.worldhistory.org/Mongolia/",
     "https://en.wikipedia.org/wiki/Mongolia"
   ],
   "vietnam": [
+    "https://www.worldhistory.org/Vietnam/",
     "https://en.wikipedia.org/wiki/Vietnam"
   ],
   "thailand": [
+    "https://www.worldhistory.org/Thailand/",
     "https://en.wikipedia.org/wiki/Thailand"
   ],
   "myanmar": [
+    "https://www.worldhistory.org/Myanmar/",
     "https://en.wikipedia.org/wiki/Myanmar"
   ],
   "cambodia": [
+    "https://www.worldhistory.org/Cambodia/",
     "https://en.wikipedia.org/wiki/Cambodia"
   ],
   "laos": [
+    "https://www.worldhistory.org/Laos/",
     "https://en.wikipedia.org/wiki/Laos"
   ],
   "indonesia": [
+    "https://www.worldhistory.org/Indonesia/",
     "https://en.wikipedia.org/wiki/Indonesia"
   ],
   "malaysia": [
+    "https://www.worldhistory.org/Malaysia/",
     "https://en.wikipedia.org/wiki/Malaysia"
   ],
   "philippines": [
+    "https://www.worldhistory.org/Philippines/",
     "https://en.wikipedia.org/wiki/Philippines"
   ],
   "uzbekistan": [
+    "https://www.worldhistory.org/Uzbekistan/",
     "https://en.wikipedia.org/wiki/Uzbekistan"
   ],
   "kazakhstan": [
+    "https://www.worldhistory.org/Kazakhstan/",
     "https://en.wikipedia.org/wiki/Kazakhstan"
   ],
   "georgia": [
+    "https://www.worldhistory.org/Georgia/",
     "https://en.wikipedia.org/wiki/Georgia_(country)"
   ],
   "armenia": [
+    "https://www.worldhistory.org/Armenia/",
     "https://en.wikipedia.org/wiki/Armenia"
   ],
   "azerbaijan": [
+    "https://www.worldhistory.org/Azerbaijan/",
     "https://en.wikipedia.org/wiki/Azerbaijan"
   ],
   "nepal": [
+    "https://www.worldhistory.org/Nepal/",
     "https://en.wikipedia.org/wiki/Nepal"
   ],
   "bangladesh": [
+    "https://www.worldhistory.org/Bangladesh/",
     "https://en.wikipedia.org/wiki/Bangladesh"
   ],
   "sri lanka": [
+    "https://www.worldhistory.org/Sri_Lanka/",
     "https://en.wikipedia.org/wiki/Sri_Lanka"
   ],
   "united states": [
+    "https://www.worldhistory.org/United_States/",
     "https://en.wikipedia.org/wiki/United_States"
   ],
   "canada": [
+    "https://www.worldhistory.org/Canada/",
     "https://en.wikipedia.org/wiki/Canada"
   ],
   "mexico": [
+    "https://www.worldhistory.org/Mexico/",
     "https://en.wikipedia.org/wiki/Mexico"
   ],
   "brazil": [
+    "https://www.worldhistory.org/Brazil/",
     "https://en.wikipedia.org/wiki/Brazil"
   ],
   "argentina": [
+    "https://www.worldhistory.org/Argentina/",
     "https://en.wikipedia.org/wiki/Argentina"
   ],
   "chile": [
+    "https://www.worldhistory.org/Chile/",
     "https://en.wikipedia.org/wiki/Chile"
   ],
   "peru": [
+    "https://www.worldhistory.org/Peru/",
     "https://en.wikipedia.org/wiki/Peru"
   ],
   "colombia": [
+    "https://www.worldhistory.org/Colombia/",
     "https://en.wikipedia.org/wiki/Colombia"
   ],
   "venezuela": [
+    "https://www.worldhistory.org/Venezuela/",
     "https://en.wikipedia.org/wiki/Venezuela"
   ],
   "cuba": [
+    "https://www.worldhistory.org/Cuba/",
     "https://en.wikipedia.org/wiki/Cuba"
   ],
   "rome": [
+    "https://www.worldhistory.org/Rome/",
     "https://en.wikipedia.org/wiki/Rome"
   ],
   "athens": [
+    "https://www.worldhistory.org/Athens/",
     "https://en.wikipedia.org/wiki/Athens"
   ],
   "jerusalem": [
+    "https://www.worldhistory.org/Jerusalem/",
     "https://en.wikipedia.org/wiki/Jerusalem"
   ],
   "ur": [
+    "https://www.worldhistory.org/Ur/",
     "https://en.wikipedia.org/wiki/Ur"
   ],
   "babylon (city)": [
+    "https://www.worldhistory.org/Babylon_(city)/",
     "https://en.wikipedia.org/wiki/Babylon"
   ],
   "persepolis": [
+    "https://www.worldhistory.org/Persepolis/",
     "https://en.wikipedia.org/wiki/Persepolis"
   ],
   "carthage (city)": [
+    "https://www.worldhistory.org/Carthage_(city)/",
     "https://en.wikipedia.org/wiki/Carthage"
   ],
   "alexandria": [
+    "https://www.worldhistory.org/Alexandria/",
     "https://en.wikipedia.org/wiki/Alexandria"
   ],
   "istanbul": [
+    "https://www.worldhistory.org/Istanbul/",
     "https://en.wikipedia.org/wiki/Istanbul"
   ],
   "constantinople": [
+    "https://www.worldhistory.org/Constantinople/",
     "https://en.wikipedia.org/wiki/Constantinople"
   ],
   "byzantium": [
+    "https://www.worldhistory.org/Byzantium/",
     "https://en.wikipedia.org/wiki/Byzantium"
   ],
   "london": [
+    "https://www.worldhistory.org/London/",
     "https://en.wikipedia.org/wiki/London"
   ],
   "paris": [
+    "https://www.worldhistory.org/Paris/",
     "https://en.wikipedia.org/wiki/Paris"
   ],
   "berlin": [
+    "https://www.worldhistory.org/Berlin/",
     "https://en.wikipedia.org/wiki/Berlin"
   ],
   "moscow": [
+    "https://www.worldhistory.org/Moscow/",
     "https://en.wikipedia.org/wiki/Moscow"
   ],
   "cairo": [
+    "https://www.worldhistory.org/Cairo/",
     "https://en.wikipedia.org/wiki/Cairo"
   ],
   "baghdad": [
+    "https://www.worldhistory.org/Baghdad/",
     "https://en.wikipedia.org/wiki/Baghdad"
   ],
   "tehran": [
+    "https://www.worldhistory.org/Tehran/",
     "https://en.wikipedia.org/wiki/Tehran"
   ],
   "delhi": [
+    "https://www.worldhistory.org/Delhi/",
     "https://en.wikipedia.org/wiki/Delhi"
   ],
   "beijing": [
+    "https://www.worldhistory.org/Beijing/",
     "https://en.wikipedia.org/wiki/Beijing"
   ],
   "new york": [
+    "https://www.worldhistory.org/New_York/",
     "https://en.wikipedia.org/wiki/New_York_City"
   ],
   "(marhashi)": [
