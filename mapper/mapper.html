@@ -1162,7 +1162,7 @@ function executeVibeCommand(text) {
     s = s.replace(/\b(show\s+me|show|go\s+to|go|navigate\s+to|take\s+me\s+to|display|zoom\s+to)\b/gi, '');
 
     // Step 3: strip noise/connectors
-    s = s.replace(/\b(at|in|during|around|circa|by|the|a|an|of|what|was|is)\b/g, ' ');
+    s = s.replace(/\b(at|in|during|around|circa|by|the|a|an|what|was|is)\b/g, ' ');
 
     // Step 4: normalize
     const placeName = s.replace(/\s+/g, ' ').trim();
