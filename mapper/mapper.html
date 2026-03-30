@@ -1208,12 +1208,14 @@ function vibeNavigateTo(foundName, bounds, year, label) {
         document.getElementById('zoomCustom').value = zoom;
     }
 
-    // Use explicit year, else place's start date; CE dates → 1990.1
+    // Use explicit year, else place's start date + 0.1 to cross the exclusive lower bound
+    // (PAR date match is year > range.from, so stored integer from=-725 first shows at -724.9)
+    // 1990.1 is the magic marker for modern countries — leave it as-is.
     let placeYear;
     if (year !== null && year !== undefined) {
         placeYear = year;
     } else if (bounds[4] !== undefined) {
-        placeYear = bounds[4] > 0 ? 1990.1 : bounds[4];
+        placeYear = bounds[4] === 1990.1 ? 1990.1 : bounds[4] + 0.1;
     } else {
         placeYear = null;
     }
@@ -1221,9 +1223,13 @@ function vibeNavigateTo(foundName, bounds, year, label) {
         document.getElementById('mapDate').value = placeYear;
     }
 
-    const yearLabel = placeYear !== null
-        ? ` · ${placeYear < 0 ? Math.abs(placeYear) + ' BCE' : placeYear + ' CE'}`
-        : '';
+    // Label shows the clean integer start year, not the +0.1 adjusted value
+    const labelYear = placeYear === 1990.1 ? 'present'
+        : placeYear !== null ? (placeYear < 0
+            ? Math.ceil(Math.abs(placeYear)) + ' BCE'
+            : Math.floor(placeYear) + ' CE')
+        : null;
+    const yearLabel = labelYear ? ` · ${labelYear}` : '';
     const cLon = parseFloat(document.getElementById('centerLon').value);
     const cLat = parseFloat(document.getElementById('centerLat').value);
     const centerLabel = ` · ${cLon >= 0 ? cLon.toFixed(1)+'°E' : Math.abs(cLon).toFixed(1)+'°W'}, ${cLat >= 0 ? cLat.toFixed(1)+'°N' : Math.abs(cLat).toFixed(1)+'°S'}`;
