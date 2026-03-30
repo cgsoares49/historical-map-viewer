@@ -121,6 +121,8 @@ def load_primaries(path):
 # ── Aggregation ───────────────────────────────────────────────────────────────
 
 SENTINEL_FROM = -9990   # below this → content-creation sentinel, skip
+MIN_SPAN      = 1.0     # date ranges shorter than this (years) are transitions/revolts;
+                        # ignored for min/max date calculation (but not for bounding box)
 
 def fmt_date(val, is_to):
     """Format a date float as readable string, preserving fractional years."""
@@ -179,19 +181,28 @@ def main():
                     key = first_name.lower()
                     if key not in primaries:
                         continue
+
+                    span = to - frm
+                    # Skip dummy entries where start == end (zero span)
+                    if span == 0:
+                        continue
+
                     display = primaries[key]
                     r = results[display]
 
-                    # Bounding box
+                    # Bounding box — include all non-dummy ranges
                     r['min_lon'] = min(r['min_lon'], lon_left)
                     r['max_lon'] = max(r['max_lon'], lon_right)
                     r['min_lat'] = min(r['min_lat'], lat_bot)
                     r['max_lat'] = max(r['max_lat'], lat_top)
 
-                    # Date range — skip sentinel from values
-                    if frm > SENTINEL_FROM:
+                    # Date range — skip sentinel from values and short-span
+                    # transition/revolt entries (< MIN_SPAN years) so they
+                    # don't contaminate the earliest/latest dates
+                    if span >= MIN_SPAN and frm > SENTINEL_FROM:
                         r['min_date'] = min(r['min_date'], frm)
-                    r['max_date'] = max(r['max_date'], to)
+                    if span >= MIN_SPAN:
+                        r['max_date'] = max(r['max_date'], to)
 
                     entries_matched += 1
 
