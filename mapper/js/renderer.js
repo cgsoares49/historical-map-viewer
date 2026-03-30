@@ -32,10 +32,11 @@ const BORDER_COLOR = '#000000';
 // sentinel entries (e.g. -9997 "show all" mode) and are excluded from display.
 const SENTINEL_FROM = -2500;
 
-// Line widths scale inversely with degX: thinner when zoomed out, thicker when zoomed in.
-// Reference point: degX=45 → lineWidth=base. World zoom (degX≈360) → ~0.3px hairline.
+// Log scale: 0 at world zoom (degX=360), grows slowly, never heavy at close zoom.
+// t=0 at degX=360, t=1 at degX=1; lineWidth = base * t.
 function _lineWidth(projection, base) {
-    return Math.max(0.3, Math.min(base * 2.5, base * Math.sqrt(45 / projection.degX)));
+    const t = Math.log(360 / projection.degX) / Math.log(360);
+    return base * Math.max(0, t);
 }
 
 class MapRenderer {
