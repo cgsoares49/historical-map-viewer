@@ -1046,13 +1046,22 @@ function vibeAddDisambiguation(originalText, matches) {
     for (const [key, bounds] of matches) {
         const row = document.createElement('div');
         row.style.cssText = 'padding:2px 10px; cursor:pointer; color:#88ccff; font-size:11px; border-top:1px solid #1a2a3a;';
+
+        // Date range — integer years for readability
         let dateStr = '';
         if (bounds[4] !== undefined) {
-            const from = fmtYear(bounds[4]);
-            const to   = bounds[5] !== undefined ? fmtYear(bounds[5]) : null;
-            dateStr    = ' · ' + (to && to !== from ? `${from} – ${to}` : from);
+            const from = fmtYearInt(bounds[4]);
+            const to   = bounds[5] !== undefined ? fmtYearInt(bounds[5]) : null;
+            dateStr    = '  ·  ' + (to && to !== from ? `${from} – ${to}` : from);
         }
-        row.textContent = toTitleCase(key) + dateStr;
+
+        // Center coords
+        const cLon = ((bounds[0] + bounds[2]) / 2).toFixed(1);
+        const cLat = ((bounds[1] + bounds[3]) / 2).toFixed(1);
+        const ns = cLat >= 0 ? 'N' : 'S', ew = cLon >= 0 ? 'E' : 'W';
+        const coordStr = `  ·  ${Math.abs(cLat)}°${ns} ${Math.abs(cLon)}°${ew}`;
+
+        row.textContent = toTitleCase(key) + dateStr + coordStr;
         row.addEventListener('mouseenter', () => { row.style.background = '#1a2a4a'; });
         row.addEventListener('mouseleave', () => { row.style.background = ''; });
         row.addEventListener('click', () => { vibeNavigateTo(key, bounds, null, originalText); });
@@ -1576,6 +1585,12 @@ overlay.style.cursor = 'crosshair';
 function fmtYear(y) {
     if (y === 1990.1) return 'present (~1990)';
     return y < 0 ? `${Math.abs(y)} BCE` : `${y} CE`;
+}
+
+function fmtYearInt(y) {
+    if (y === 1990.1) return 'present';
+    const n = Math.round(Math.abs(y));
+    return y < 0 ? `${n} BCE` : `${n} CE`;
 }
 
 function toTitleCase(s) {
