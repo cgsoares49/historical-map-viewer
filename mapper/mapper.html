@@ -971,6 +971,54 @@ function vibeLookupPlace(name) {
     return null;
 }
 
+// Return ALL geodata entries whose key contains the search term (or vice versa),
+// sorted by earliestYear ascending so oldest entries appear first.
+function vibeFindAllMatches(name) {
+    const n = name.toLowerCase().trim();
+    const results = [];
+    for (const [k, v] of Object.entries(GEODATA)) {
+        const matches = k.includes(n) || (k.length >= 4 && n.includes(k));
+        if (matches) results.push([k, v]);
+    }
+    results.sort((a, b) => {
+        const ay = a[1][4] !== undefined ? a[1][4] : 9999;
+        const by = b[1][4] !== undefined ? b[1][4] : 9999;
+        return ay - by || a[0].localeCompare(b[0]);
+    });
+    return results;
+}
+
+// Show a clickable disambiguation list in the vibe history panel.
+function vibeAddDisambiguation(originalText, matches) {
+    const hist  = document.getElementById('vibeHistory');
+    const block = document.createElement('div');
+    block.style.cssText = 'border-bottom:1px solid #333;';
+
+    const header = document.createElement('div');
+    header.style.cssText = 'padding:2px 4px; color:#ffcc44; font-size:10px; font-weight:bold;';
+    header.textContent = `${matches.length} matches for "${originalText}" — click to navigate:`;
+    block.appendChild(header);
+
+    for (const [key, bounds] of matches) {
+        const row = document.createElement('div');
+        row.style.cssText = 'padding:2px 10px; cursor:pointer; color:#88ccff; font-size:11px; border-top:1px solid #1a2a3a;';
+        let dateStr = '';
+        if (bounds[4] !== undefined) {
+            const from = fmtYear(bounds[4]);
+            const to   = bounds[5] !== undefined ? fmtYear(bounds[5]) : null;
+            dateStr    = ' · ' + (to && to !== from ? `${from} – ${to}` : from);
+        }
+        row.textContent = toTitleCase(key) + dateStr;
+        row.addEventListener('mouseenter', () => { row.style.background = '#1a2a4a'; });
+        row.addEventListener('mouseleave', () => { row.style.background = ''; });
+        row.addEventListener('click', () => { vibeNavigateTo(key, bounds, null, originalText); });
+        block.appendChild(row);
+    }
+
+    hist.insertBefore(block, hist.firstChild);
+    while (hist.children.length > 20) hist.removeChild(hist.lastChild);
+}
+
 function vibeZoomForBounds(minLon, minLat, maxLon, maxLat) {
     const PADDING = 1.4;
     const spanLon = (maxLon - minLon) * PADDING;
@@ -1123,23 +1171,30 @@ function executeVibeCommand(text) {
         return;
     }
 
-    // Look up place
-    const match = vibeLookupPlace(placeName);
-    if (!match) {
+    // Look up all matches; disambiguate if more than one
+    const allMatches = vibeFindAllMatches(placeName);
+    if (allMatches.length === 0) {
         vibeAddHistory(originalText, `"${placeName}" not found`, true);
         return;
     }
-    const [foundName, bounds] = match;
-    const [minLon, minLat, maxLon, maxLat] = bounds;
+    if (allMatches.length > 1) {
+        vibeAddDisambiguation(placeName, allMatches);
+        return;
+    }
+    // Single match — navigate directly
+    const [foundName, bounds] = allMatches[0];
+    vibeNavigateTo(foundName, bounds, year, originalText);
+}
 
-    // Apply navigation
+// Navigate to a geodata entry — called both from command parser and disambiguation clicks.
+function vibeNavigateTo(foundName, bounds, year, label) {
+    const [minLon, minLat, maxLon, maxLat] = bounds;
     const centerLon = Math.round(((minLon + maxLon) / 2) * 10) / 10;
     const centerLat = Math.round(((minLat + maxLat) / 2) * 10) / 10;
     const zoom      = vibeZoomForBounds(minLon, minLat, maxLon, maxLat);
 
     document.getElementById('centerLon').value = centerLon;
     document.getElementById('centerLat').value = centerLat;
-    // Set zoom select; fall back to custom if not a preset value
     const zoomSel = document.getElementById('zoom');
     const zoomOpt = [...zoomSel.options].find(o => parseInt(o.value) === zoom);
     if (zoomOpt) {
@@ -1151,10 +1206,9 @@ function executeVibeCommand(text) {
         document.getElementById('zoomCustom').value = zoom;
     }
 
-    // Use explicit year from command, else fall back to place's start date (bounds[4]).
-    // CE start dates (positive) mean the data only shows the country from ~1990.1 onward.
+    // Use explicit year, else place's start date; CE dates → 1990.1
     let placeYear;
-    if (year !== null) {
+    if (year !== null && year !== undefined) {
         placeYear = year;
     } else if (bounds[4] !== undefined) {
         placeYear = bounds[4] > 0 ? 1990.1 : bounds[4];
@@ -1168,10 +1222,10 @@ function executeVibeCommand(text) {
     const yearLabel = placeYear !== null
         ? ` · ${placeYear < 0 ? Math.abs(placeYear) + ' BCE' : placeYear + ' CE'}`
         : '';
-    vibeAddHistory(originalText, `→ ${foundName}${yearLabel}`, false);
+    vibeAddHistory(label || foundName, `→ ${toTitleCase(foundName)}${yearLabel}`, false);
 
     updateScaleDisplay();
-    if (shouldRender) scheduleRender();
+    scheduleRender();
 }
 
 // Input box: Enter handled inline on the element (onkeydown attribute)
