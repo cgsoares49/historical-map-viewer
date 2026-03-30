@@ -143,10 +143,14 @@ def main():
     print(f"Loaded {len(primaries)} primaries")
 
     # results[display_name] = {min_lon, max_lon, min_lat, max_lat, min_date, max_date}
+    # min_date_exact / max_date_exact: same but only from entries whose full name
+    # equals the primary (no " - sub-region" suffix).  Preferred over min_date when
+    # available, so sub-region entries don't shift the canonical start/end date.
     INF = float('inf')
     results = {name: {'min_lon': INF, 'max_lon': -INF,
                       'min_lat': INF, 'max_lat': -INF,
-                      'min_date': INF, 'max_date': -INF}
+                      'min_date': INF, 'max_date': -INF,
+                      'min_date_exact': INF, 'max_date_exact': -INF}
                for name in primaries.values()}
 
     par_dir = os.path.join(MAPPER_DIR, 'polareas')
@@ -198,11 +202,19 @@ def main():
 
                     # Date range — skip sentinel from values and short-span
                     # transition/revolt entries (< MIN_SPAN years) so they
-                    # don't contaminate the earliest/latest dates
+                    # don't contaminate the earliest/latest dates.
+                    # Also track exact-name matches separately: sub-region entries
+                    # like "Roman Republic - Anxur" should not shift the canonical
+                    # start date of "Roman Republic".
+                    is_exact = (name.strip() == first_name)
                     if span >= MIN_SPAN and frm > SENTINEL_FROM:
                         r['min_date'] = min(r['min_date'], frm)
+                        if is_exact:
+                            r['min_date_exact'] = min(r['min_date_exact'], frm)
                     if span >= MIN_SPAN:
                         r['max_date'] = max(r['max_date'], to)
+                        if is_exact:
+                            r['max_date_exact'] = max(r['max_date_exact'], to)
 
                     entries_matched += 1
 
@@ -226,8 +238,11 @@ def main():
                 round(r['min_lat'], 1),
                 round(r['max_lon'], 1),
                 round(r['max_lat'], 1),
-                fmt_date(r['min_date'] if r['min_date'] != INF else None, False),
-                fmt_date(r['max_date'] if r['max_date'] != -INF else None, True),
+                # Prefer exact-name dates; fall back to any-suffix dates
+                fmt_date(r['min_date_exact'] if r['min_date_exact'] != INF
+                         else r['min_date'] if r['min_date'] != INF else None, False),
+                fmt_date(r['max_date_exact'] if r['max_date_exact'] != -INF
+                         else r['max_date'] if r['max_date'] != -INF else None, True),
             ])
             found += 1
 
