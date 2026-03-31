@@ -629,6 +629,7 @@
     <div><span class="hc">show [place] at [year]</span> — navigate + set date</div>
     <div><span class="hc">date [year]</span> — set the date (e.g. "date 100 BCE")</div>
     <div><span class="hc">zoom in/out [N]</span> — zoom N steps (default 1)</div>
+    <div><span class="hc">step [N]</span> — set years per step (e.g. "step 10")</div>
     <div><span class="hc">pan [dir]</span> — pan N/S/E/W/NE/NW/SE/SW</div>
     <div><span class="hc">info [place]</span> — show info popup for a place</div>
     <div><span class="hc">dismiss</span> — close info popup</div>
@@ -1618,6 +1619,19 @@ function executeVibeCommand(text) {
             vibeAddHistory(originalText, `→ date set to ${label}`, false);
         } else {
             vibeAddHistory(originalText, 'could not parse year', true);
+        }
+        return;
+    }
+
+    // Step — "step 10", "set step 5", "years per step 100", "step size 0.5"
+    const stepMatch = s.match(/\b(?:step|yr[s]?\s*(?:per\s*)?step|step\s*size)\s+(\d+(?:\.\d+)?)\b/i);
+    if (stepMatch) {
+        const val = parseFloat(stepMatch[1]);
+        if (val > 0) {
+            document.getElementById('yrPerStep').value = val;
+            vibeAddHistory(originalText, `→ step set to ${val} yr/step`, false);
+        } else {
+            vibeAddHistory(originalText, 'step must be > 0', true);
         }
         return;
     }
