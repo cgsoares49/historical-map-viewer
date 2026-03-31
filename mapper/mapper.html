@@ -900,13 +900,14 @@ async function _saveMovieBlob() {
     if (!movieBlob) return;
     const filename = _movieFilename();
     const ext      = filename.endsWith('.mp4') ? 'mp4' : 'webm';
-    const mime     = movieBlob.type;
+    // Use bare MIME type — codecs suffix (e.g. video/webm;codecs=vp9) is rejected by showSaveFilePicker
+    const pickMime = ext === 'mp4' ? 'video/mp4' : 'video/webm';
 
     if (window.showSaveFilePicker) {
         try {
             const handle = await window.showSaveFilePicker({
                 suggestedName: filename,
-                types: [{ description: 'Video file', accept: { [mime]: ['.' + ext] } }],
+                types: [{ description: 'Video file', accept: { [pickMime]: ['.' + ext] } }],
             });
             const writable = await handle.createWritable();
             await writable.write(movieBlob);
@@ -914,7 +915,7 @@ async function _saveMovieBlob() {
             document.getElementById('status').textContent = `Movie saved: ${filename}`;
             return;
         } catch (e) {
-            if (e.name === 'AbortError') return;  // user cancelled
+            if (e.name === 'AbortError') return;
             console.warn('showSaveFilePicker failed, falling back:', e);
         }
     }
