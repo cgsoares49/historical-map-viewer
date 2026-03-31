@@ -629,6 +629,8 @@
     <div><span class="hc">show [place] at [year]</span> — navigate + set date</div>
     <div><span class="hc">date [year]</span> — set the date (e.g. "date 100 BCE")</div>
     <div><span class="hc">zoom in/out [N]</span> — zoom N steps (default 1)</div>
+    <div><span class="hc">run forward / backward</span> — start animation</div>
+    <div><span class="hc">stop</span> — stop animation</div>
     <div><span class="hc">speed [N]</span> — set seconds per year (e.g. "speed 2")</div>
     <div><span class="hc">step [N]</span> — set years per step (e.g. "step 10")</div>
     <div><span class="hc">pan [dir]</span> — pan N/S/E/W/NE/NW/SE/SW</div>
@@ -1631,6 +1633,28 @@ function executeVibeCommand(text) {
         } else {
             vibeAddHistory(originalText, 'could not parse year', true);
         }
+        return;
+    }
+
+    // Run / stop animation — "run", "run forward", "run backward", "stop", "pause"
+    if (/\b(run\s+forward|play\s+forward|forward|run\s+ahead|start)\b/i.test(s)) {
+        startAnimation(1);
+        vibeAddHistory(originalText, '→ running forward', false);
+        return;
+    }
+    if (/\b(run\s+backward|run\s+back|reverse|rewind|play\s+backward)\b/i.test(s)) {
+        startAnimation(-1);
+        vibeAddHistory(originalText, '→ running backward', false);
+        return;
+    }
+    if (/\b(stop|halt|pause)\b/i.test(s) && !/\b(step|speed|seconds)\b/i.test(s)) {
+        animating = false;
+        vibeAddHistory(originalText, '→ stopped', false);
+        return;
+    }
+    if (/^\s*run\s*$/i.test(s)) {
+        startAnimation(animDir || 1);
+        vibeAddHistory(originalText, `→ running ${(animDir || 1) === 1 ? 'forward' : 'backward'}`, false);
         return;
     }
 
