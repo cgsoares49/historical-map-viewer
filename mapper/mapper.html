@@ -132,6 +132,9 @@
         }
         .btn-display:hover:not(:disabled) { background: #006600; border-color: #00cc00; }
 
+        @keyframes rec-pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+        .rec-active { background: #880000 !important; color: #ff6666 !important; animation: rec-pulse 1.2s infinite; }
+
         .btn-world {
             background: #2a2a3a;
             color: #d0d0f0;
@@ -423,6 +426,19 @@
         <div class="tb-row">
             <input type="number" id="secPerYr" value="2" min="0.1" step="0.1" title="Seconds per year" style="width:38px;">
             <span class="tb-lbl">sec/y</span>
+        </div>
+    </div>
+
+    <!-- ── Movie ── -->
+    <div class="tb-group">
+        <div class="tb-label">Movie</div>
+        <div class="tb-row">
+            <button class="btn-play" id="btnMovieRec"    title="Start recording (runs animation forward)">⏺ REC</button>
+            <button class="btn-play" id="btnMoviePause"  title="Pause / resume" disabled>⏸</button>
+            <button class="btn-play" id="btnMovieStop"   title="Stop and save" disabled>⏹ STOP</button>
+        </div>
+        <div class="tb-row">
+            <span id="movieStatus" style="font-size:10px; color:#888; white-space:nowrap;">ready</span>
         </div>
     </div>
 
@@ -839,6 +855,94 @@ function startAnimation(dir) {
 
 document.getElementById('btnPlay'   ).addEventListener('click', () => startAnimation( 1));
 document.getElementById('btnReverse').addEventListener('click', () => startAnimation(-1));
+
+// ── Movie recording ───────────────────────────────────────────────────────────
+let movieRecorder  = null;
+let movieChunks    = [];
+let movieBlob      = null;
+let movieMimeType  = 'video/webm';
+
+function _movieMime() {
+    const types = ['video/webm;codecs=vp9', 'video/webm;codecs=vp8', 'video/webm', 'video/mp4'];
+    return types.find(t => MediaRecorder.isTypeSupported(t)) || 'video/webm';
+}
+
+function _updateMovieUI() {
+    const state    = movieRecorder ? movieRecorder.state : 'inactive';
+    const recBtn   = document.getElementById('btnMovieRec');
+    const pauseBtn = document.getElementById('btnMoviePause');
+    const stopBtn  = document.getElementById('btnMovieStop');
+    const statusEl = document.getElementById('movieStatus');
+
+    recBtn.classList.toggle('rec-active', state === 'recording');
+    pauseBtn.disabled = (state === 'inactive');
+    stopBtn.disabled  = (state === 'inactive');
+    pauseBtn.textContent = (state === 'paused') ? '▶ RES' : '⏸';
+    pauseBtn.title       = (state === 'paused') ? 'Resume recording' : 'Pause recording';
+
+    if (state === 'recording') statusEl.textContent = '● recording…';
+    else if (state === 'paused') statusEl.textContent = '⏸ paused';
+    else if (movieBlob)  statusEl.textContent = `saved (${(movieBlob.size/1024/1024).toFixed(1)} MB)`;
+    else statusEl.textContent = 'ready';
+}
+
+function _movieFilename() {
+    const { year } = getInputs();
+    const ext = movieMimeType.includes('mp4') ? 'mp4' : 'webm';
+    const yl  = year < 0 ? `${Math.abs(Math.round(year))}BCE` : `${Math.round(year)}CE`;
+    return `map_movie_${yl}.${ext}`;
+}
+
+function _saveMovieBlob() {
+    if (!movieBlob) return;
+    const filename = _movieFilename();
+    const url = URL.createObjectURL(movieBlob);
+    const a   = document.createElement('a');
+    a.href = url; a.download = filename; a.click();
+    URL.revokeObjectURL(url);
+    document.getElementById('status').textContent = `Movie saved: ${filename}`;
+}
+
+document.getElementById('btnMovieRec').addEventListener('click', () => {
+    if (!window.MediaRecorder) { alert('MediaRecorder not supported in this browser.'); return; }
+    if (movieRecorder && movieRecorder.state !== 'inactive') return; // already recording
+
+    movieChunks   = [];
+    movieBlob     = null;
+    movieMimeType = _movieMime();
+
+    const stream = canvas.captureStream(25);
+    movieRecorder = new MediaRecorder(stream, { mimeType: movieMimeType });
+    movieRecorder.ondataavailable = e => { if (e.data.size > 0) movieChunks.push(e.data); };
+    movieRecorder.onstop = () => {
+        movieBlob = new Blob(movieChunks, { type: movieMimeType });
+        _updateMovieUI();
+        _saveMovieBlob();
+    };
+
+    movieRecorder.start(200);   // collect chunks every 200ms
+    startAnimation(1);          // start forward animation
+    _updateMovieUI();
+});
+
+document.getElementById('btnMoviePause').addEventListener('click', () => {
+    if (!movieRecorder || movieRecorder.state === 'inactive') return;
+    if (movieRecorder.state === 'recording') {
+        movieRecorder.pause();
+        animating = false;      // halt animation loop
+    } else {
+        movieRecorder.resume();
+        startAnimation(animDir || 1);   // restart animation in same direction
+    }
+    _updateMovieUI();
+});
+
+document.getElementById('btnMovieStop').addEventListener('click', () => {
+    if (!movieRecorder || movieRecorder.state === 'inactive') return;
+    animating = false;          // stop animation loop
+    movieRecorder.stop();       // triggers onstop → save
+    _updateMovieUI();
+});
 
 // Save Map
 document.getElementById('btnSave').addEventListener('click', async () => {
