@@ -439,6 +439,11 @@
             <button class="btn-save" id="btnMovieSave"   title="Save movie file" disabled style="width:42px;">💾 Save</button>
         </div>
         <div class="tb-row">
+            <label class="tb-check" title="Skip delay when map is unchanged — unchanged periods rush by in the video">
+                <input type="checkbox" id="movieSkipUnchanged" checked> Skip inaction
+            </label>
+        </div>
+        <div class="tb-row">
             <span id="movieStatus" style="font-size:10px; color:#888; white-space:nowrap;">ready</span>
         </div>
     </div>
@@ -831,6 +836,16 @@ async function runAnimation() {
         yearEl.value = skipYear0(cur, Math.round((cur + animDir * step) * 10) / 10);
         await doRender(true);
         if (!animating) break;
+
+        // Skip delay when recording + "skip inaction" is on + frame unchanged
+        const recording = movieRecorder && movieRecorder.state === 'recording';
+        const skipInaction = recording && document.getElementById('movieSkipUnchanged').checked;
+        if (skipInaction) {
+            const h = _frameHash();
+            if (h === _prevFrameHash) continue;   // unchanged — no delay, advance immediately
+            _prevFrameHash = h;
+        }
+
         const delay = (parseFloat(secEl.value) || 1) * 1000;
         await new Promise(r => setTimeout(r, delay));
     }
@@ -862,6 +877,22 @@ let movieRecorder  = null;
 let movieChunks    = [];
 let movieBlob      = null;
 let movieMimeType  = 'video/webm';
+
+// ── Frame change detection (64×64 downsample hash) ────────────────────────────
+const _fhCanvas = document.createElement('canvas');
+_fhCanvas.width = _fhCanvas.height = 64;
+const _fhCtx = _fhCanvas.getContext('2d', { willReadFrequently: true });
+let _prevFrameHash = null;
+
+function _frameHash() {
+    _fhCtx.drawImage(canvas, 0, 0, 64, 64);
+    const d = _fhCtx.getImageData(0, 0, 64, 64).data;
+    let h = 0;
+    for (let i = 0; i < d.length; i += 16) {
+        h = Math.imul(h, 31) + (d[i] | d[i+1] << 8 | d[i+2] << 16);
+    }
+    return h;
+}
 
 function _movieMime() {
     const types = ['video/webm;codecs=vp9', 'video/webm;codecs=vp8', 'video/webm', 'video/mp4'];
@@ -943,8 +974,9 @@ document.getElementById('btnMovieRec').addEventListener('click', () => {
         _updateMovieUI();
     };
 
-    movieRecorder.start(200);   // collect chunks every 200ms
-    startAnimation(1);          // start forward animation
+    _prevFrameHash = null;      // reset so first frame is always treated as changed
+    movieRecorder.start(200);
+    startAnimation(1);
     _updateMovieUI();
 });
 
