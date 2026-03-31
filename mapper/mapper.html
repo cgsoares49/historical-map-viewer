@@ -435,7 +435,8 @@
         <div class="tb-row">
             <button class="btn-play" id="btnMovieRec"    title="Start recording (runs animation forward)">⏺ REC</button>
             <button class="btn-play" id="btnMoviePause"  title="Pause / resume" disabled>⏸</button>
-            <button class="btn-play" id="btnMovieStop"   title="Stop and save" disabled>⏹ STOP</button>
+            <button class="btn-play" id="btnMovieStop"   title="Stop recording" disabled>⏹ STOP</button>
+            <button class="btn-save" id="btnMovieSave"   title="Save movie file" disabled style="width:42px;">💾 Save</button>
         </div>
         <div class="tb-row">
             <span id="movieStatus" style="font-size:10px; color:#888; white-space:nowrap;">ready</span>
@@ -872,17 +873,19 @@ function _updateMovieUI() {
     const recBtn   = document.getElementById('btnMovieRec');
     const pauseBtn = document.getElementById('btnMoviePause');
     const stopBtn  = document.getElementById('btnMovieStop');
+    const saveBtn  = document.getElementById('btnMovieSave');
     const statusEl = document.getElementById('movieStatus');
 
     recBtn.classList.toggle('rec-active', state === 'recording');
     pauseBtn.disabled = (state === 'inactive');
     stopBtn.disabled  = (state === 'inactive');
+    saveBtn.disabled  = !movieBlob;
     pauseBtn.textContent = (state === 'paused') ? '▶ RES' : '⏸';
     pauseBtn.title       = (state === 'paused') ? 'Resume recording' : 'Pause recording';
 
     if (state === 'recording') statusEl.textContent = '● recording…';
     else if (state === 'paused') statusEl.textContent = '⏸ paused';
-    else if (movieBlob)  statusEl.textContent = `saved (${(movieBlob.size/1024/1024).toFixed(1)} MB)`;
+    else if (movieBlob)  statusEl.textContent = `ready to save (${(movieBlob.size/1024/1024).toFixed(1)} MB)`;
     else statusEl.textContent = 'ready';
 }
 
@@ -937,7 +940,6 @@ document.getElementById('btnMovieRec').addEventListener('click', () => {
     movieRecorder.onstop = () => {
         movieBlob = new Blob(movieChunks, { type: movieMimeType });
         _updateMovieUI();
-        _saveMovieBlob();
     };
 
     movieRecorder.start(200);   // collect chunks every 200ms
@@ -959,10 +961,12 @@ document.getElementById('btnMoviePause').addEventListener('click', () => {
 
 document.getElementById('btnMovieStop').addEventListener('click', () => {
     if (!movieRecorder || movieRecorder.state === 'inactive') return;
-    animating = false;          // stop animation loop
-    movieRecorder.stop();       // triggers onstop → save
+    animating = false;
+    movieRecorder.stop();       // triggers onstop → enables Save button
     _updateMovieUI();
 });
+
+document.getElementById('btnMovieSave').addEventListener('click', _saveMovieBlob);
 
 // Save Map
 document.getElementById('btnSave').addEventListener('click', async () => {
