@@ -629,6 +629,7 @@
     <div><span class="hc">show [place] at [year]</span> — navigate + set date</div>
     <div><span class="hc">date [year]</span> — set the date (e.g. "date 100 BCE")</div>
     <div><span class="hc">zoom in/out [N]</span> — zoom N steps (default 1)</div>
+    <div><span class="hc">speed [N]</span> — set seconds per year (e.g. "speed 2")</div>
     <div><span class="hc">step [N]</span> — set years per step (e.g. "step 10")</div>
     <div><span class="hc">pan [dir]</span> — pan N/S/E/W/NE/NW/SE/SW</div>
     <div><span class="hc">info [place]</span> — show info popup for a place</div>
@@ -1629,6 +1630,19 @@ function executeVibeCommand(text) {
             vibeAddHistory(originalText, `→ date set to ${label}`, false);
         } else {
             vibeAddHistory(originalText, 'could not parse year', true);
+        }
+        return;
+    }
+
+    // Speed — "speed 2", "set speed 0.5", "seconds per year 3"
+    const speedMatch = s.match(/\b(?:speed|sec(?:onds?)?\s*(?:per\s*)?(?:yr|year)|set\s+speed)\s+(\d+(?:\.\d+)?)\b/i);
+    if (speedMatch) {
+        const val = parseFloat(speedMatch[1]);
+        if (val > 0) {
+            document.getElementById('secPerYr').value = val;
+            vibeAddHistory(originalText, `→ speed set to ${val} sec/yr`, false);
+        } else {
+            vibeAddHistory(originalText, 'speed must be > 0', true);
         }
         return;
     }
