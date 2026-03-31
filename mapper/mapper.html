@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>mapper.NET — Historical Map Viewer</title>
     <link rel="icon" type="image/png" href="sahm-logo.png">
+    <script src="https://unpkg.com/canvas2svg@1.0.16/canvas2svg.js"></script>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -559,7 +560,8 @@
         <input type="number" id="minPixels" value="500" min="100" style="width:72px;">
         <div class="tb-row" style="margin-top:3px;">
             <button class="btn-save" id="btnSave" style="width:54px;">Save Map</button>
-            <select id="saveRes" style="width:42px;height:22px;font-size:11px;" title="Save resolution multiplier">
+            <button class="btn-save" id="btnSaveSVG" style="width:54px;">Save SVG</button>
+            <select id="saveRes" style="width:42px;height:22px;font-size:11px;" title="Save resolution multiplier (PNG only)">
                 <option value="1">1×</option>
                 <option value="2" selected>2×</option>
                 <option value="3">3×</option>
@@ -900,6 +902,110 @@ document.getElementById('btnSave').addEventListener('click', async () => {
         }
         document.getElementById('status').textContent = `Saved: ${filename}`;
     }, 'image/png');
+});
+
+// Save SVG
+document.getElementById('btnSaveSVG').addEventListener('click', async () => {
+    if (!mapRenderer || typeof C2S === 'undefined') {
+        alert('SVG library not loaded. Check your internet connection.');
+        return;
+    }
+
+    const { year } = getInputs();
+    const yearLabel = year < 0 ? `${Math.abs(Math.round(year))}BCE` : `${Math.round(year)}CE`;
+    const filename  = `map_${yearLabel}.svg`;
+
+    const W = canvas.width;
+    const H = canvas.height;
+
+    // ── Path2D shim: records commands, replays into any 2D-like context ───────
+    const OrigPath2D = window.Path2D;
+    window.Path2D = class ShimPath2D {
+        constructor() { this._cmds = []; }
+        moveTo(x, y)               { this._cmds.push(['moveTo', x, y]); }
+        lineTo(x, y)               { this._cmds.push(['lineTo', x, y]); }
+        closePath()                { this._cmds.push(['closePath']); }
+        arc(x, y, r, s, e, ccw)   { this._cmds.push(['arc', x, y, r, s, e, !!ccw]); }
+        _replayInto(ctx) {
+            ctx.beginPath();
+            for (const [cmd, ...args] of this._cmds) ctx[cmd](...args);
+        }
+    };
+
+    const svgCtx = new C2S(W, H);
+
+    // Patch fill/stroke to handle Path2D shim objects
+    const _fill   = svgCtx.fill.bind(svgCtx);
+    const _stroke = svgCtx.stroke.bind(svgCtx);
+    svgCtx.fill = function(pathOrRule, rule) {
+        if (pathOrRule && typeof pathOrRule === 'object' && pathOrRule._cmds) {
+            pathOrRule._replayInto(this);
+            _fill(rule || 'nonzero');
+        } else {
+            _fill(pathOrRule);
+        }
+    };
+    svgCtx.stroke = function(path) {
+        if (path && typeof path === 'object' && path._cmds) {
+            path._replayInto(this);
+            _stroke();
+        } else {
+            _stroke();
+        }
+    };
+
+    const proj = getProjection();
+    const { year: yr, showBorders, showDots, showCoasts, showCities,
+            showCityNames, showInlandWaters, showRivers, showCountryLabels } = {
+        ...getInputs(),
+        showBorders:       document.getElementById('showBorders'      ).checked,
+        showDots:          document.getElementById('showDots'         ).checked,
+        showCoasts:        document.getElementById('showCoasts'       ).checked,
+        showCities:        document.getElementById('showCities'       ).checked,
+        showCityNames:     document.getElementById('showCityNames'    ).checked,
+        showInlandWaters:  document.getElementById('showInlandWaters'  ).checked,
+        showRivers:        document.getElementById('showRivers'        ).checked,
+        showCountryLabels: document.getElementById('showCountryLabels' ).checked,
+    };
+    const minPixels = parseInt(document.getElementById('minPixels').value) || 5000;
+
+    document.getElementById('status').textContent = 'Generating SVG…';
+    try {
+        await mapRenderer.render(svgCtx, proj, yr, showBorders, showDots, null,
+            showCoasts, showCities, showCityNames, 10, showInlandWaters,
+            showRivers, showCountryLabels, minPixels);
+    } catch (e) {
+        document.getElementById('status').textContent = `SVG error: ${e.message}`;
+        window.Path2D = OrigPath2D;
+        return;
+    }
+
+    window.Path2D = OrigPath2D;
+
+    const svgString = svgCtx.getSerializedSvg(true);
+    const blob = new Blob([svgString], { type: 'image/svg+xml' });
+
+    if (window.showSaveFilePicker) {
+        try {
+            const handle = await window.showSaveFilePicker({
+                suggestedName: filename,
+                types: [{ description: 'SVG Image', accept: { 'image/svg+xml': ['.svg'] } }],
+            });
+            const writable = await handle.createWritable();
+            await writable.write(blob);
+            await writable.close();
+        } catch (e) {
+            if (e.name !== 'AbortError') console.error(e);
+        }
+    } else {
+        const url = URL.createObjectURL(blob);
+        const a   = document.createElement('a');
+        a.href     = url;
+        a.download = filename;
+        a.click();
+        URL.revokeObjectURL(url);
+    }
+    document.getElementById('status').textContent = `Saved: ${filename}`;
 });
 
 // Home: reset to default view and show world context
