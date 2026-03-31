@@ -893,9 +893,29 @@ function _movieFilename() {
     return `map_movie_${yl}.${ext}`;
 }
 
-function _saveMovieBlob() {
+async function _saveMovieBlob() {
     if (!movieBlob) return;
     const filename = _movieFilename();
+    const ext      = filename.endsWith('.mp4') ? 'mp4' : 'webm';
+    const mime     = movieBlob.type;
+
+    if (window.showSaveFilePicker) {
+        try {
+            const handle = await window.showSaveFilePicker({
+                suggestedName: filename,
+                types: [{ description: 'Video file', accept: { [mime]: ['.' + ext] } }],
+            });
+            const writable = await handle.createWritable();
+            await writable.write(movieBlob);
+            await writable.close();
+            document.getElementById('status').textContent = `Movie saved: ${filename}`;
+            return;
+        } catch (e) {
+            if (e.name === 'AbortError') return;  // user cancelled
+            console.warn('showSaveFilePicker failed, falling back:', e);
+        }
+    }
+    // Fallback: auto-download
     const url = URL.createObjectURL(movieBlob);
     const a   = document.createElement('a');
     a.href = url; a.download = filename; a.click();
