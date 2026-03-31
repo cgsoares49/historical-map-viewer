@@ -1,23 +1,11 @@
 shooter/
 New Compressed (zipped) Folder.zip
 
-# ── Tile data directories (large, not tracked) ──────────────────────────────
-coasts/
-pols/
-polareas/
-inwaters/
-niw/
-cities/
-counties/
-rivers/
-mapper/coasts/
-mapper/pols/
-mapper/polareas/
-mapper/inwaters/
-mapper/niw/
-mapper/cities/
-mapper/counties/
+# ── Tile data directories excluded from this build ───────────────────────────
 mapper/rivers/
+mapper/counties/
+rivers/
+counties/
 
 # ── VB.NET build artifacts ───────────────────────────────────────────────────
 mapper.NET.dll

@@ -1,0 +1,2317 @@
+ 184
+ 1 
+   1
+ 2 
+-9999.0   ,   1990.0 
+UNKNOWN
+0
+1990.0   ,   9999.0
+Tunisia
+ 0 
+ 5 
+   1  ,  1 
+   28  ,  0 
+   23  ,  1 
+   2  ,  1 
+   10  ,  35 
+ 2 
+   1
+ 2 
+-9999.0   ,   1990.0 
+UNKNOWN
+0
+1990.0   ,   9999.0
+Italy - Sicily
+ 2 
+ 13 
+   27  ,  0
+   35  ,  0
+   36  ,  0
+   33  ,  0
+   39  ,  0
+   32  ,  0 
+   37  ,  0
+    9  ,  0
+   31  ,  0 
+   38  ,  0
+   29  ,  0 
+   30  ,  0 
+   34  ,  0
+ 34 
+   1
+ 4 
+-1000.1   ,   -950.5
+Phoenicians - Utica
+ 7 
+-950.5   ,   -948.5
+Utica
+ 0 
+-948.5   ,   -602.5
+Phoenicians - Utica
+ 7 
+-602.5   ,   -590.5
+Carthage - Utica
+ 5 
+ 1 
+   1001  ,  0  
+ 36 
+   1
+ 3 
+-814.4   ,   -602.5
+Phoenicians - Carthage
+ 9 
+-602.5   ,   -590.5
+Carthage
+ 0 
+-345.8   ,   -345.6
+Stasis
+ 0 
+ 1 
+   1003  ,  0  
+ 3 
+   1
+ 2 
+-9999.0   ,   1990.0 
+UNKNOWN
+0
+1990.0   ,   9999.0
+Italy - Isole Eolie - Isola Vulcano
+ 10 
+ 1 
+   8  ,  1 
+ 4 
+   1
+ 2 
+-9999.0   ,   1990.0 
+UNKNOWN
+0
+1990.0   ,   9999.0
+Italy - Isola di Ustica
+ 5 
+ 1 
+   3  ,  0 
+ 5 
+   1
+ 2 
+-9999.0   ,   1990.0 
+UNKNOWN
+0
+1990.0   ,   9999.0
+Italy - Isole Eolie - Isola Filicudi
+ 6 
+ 1 
+   4  ,  0 
+ 6 
+   1
+ 2 
+-9999.0   ,   1990.0 
+UNKNOWN
+0
+1990.0   ,   9999.0
+Italy - Isole Eolie - Isola Salina
+ 7 
+ 1 
+   5  ,  0 
+ 7 
+   1
+ 2 
+-9999.0   ,   1990.0 
+UNKNOWN
+0
+1990.0   ,   9999.0
+Italy - Isole Eolie - Isola Alicudi
+ 8 
+ 1 
+   6  ,  0 
+ 8 
+   1
+ 4 
+-9999.0   ,   -578.5 
+UNKNOWN
+0
+-578.5   ,    -1.0 
+Dorians - Lipara
+47
+-1.0   ,   1990.0 
+UNKNOWN
+0
+1990.0   ,   9999.0
+Italy - Isole Eolie - Isola Lipari
+ 9 
+ 1 
+   7  ,  0 
+ 9 
+   1
+ 2 
+-9999.0   ,   1990.0 
+UNKNOWN
+0
+1990.0   ,   9999.0
+Italy - Isole Egadi - Isola di Levanzo
+ 11 
+ 1 
+   10  ,  0 
+ 10 
+   1
+ 2 
+-9999.0   ,   1990.0 
+UNKNOWN
+0
+1990.0   ,   9999.0
+Italy - Isole Egadi - Isola Marettimo
+ 12 
+ 1 
+   11  ,  0 
+ 11 
+   1
+ 2 
+-9999.0   ,   1990.0 
+UNKNOWN
+0
+1990.0   ,   9999.0
+Italy - Isole Egadi - Isola Favignana
+ 13 
+ 1 
+   12  ,  0 
+ 12 
+   1
+ 10 
+-9999.0   ,   -715.5 
+UNKNOWN
+0
+-715.5   ,   -602.5 
+Phoenicians - Motya
+11
+-602.5   ,   -409.3 
+Carthage - Motya
+6
+-409.3   ,   -397.4 
+Carthage
+0
+-397.4   ,   -396.7
+Syracuse
+0
+-396.7   ,   -396.1
+Carthage
+0
+-396.1   ,   -392.5
+Syracuse
+0
+-392.5   ,   -1.0
+Carthage
+0
+-1.0   ,   1990.0 
+UNKNOWN
+0
+1990.0   ,   9999.0
+Italy - Isole dello Stagnone - Isola San Pantaleo
+ 51 
+ 1 
+   13  ,  0 
+ 13 
+   1
+ 10 
+-9999.0   ,   -715.5 
+UNKNOWN
+0
+-715.5   ,   -602.5 
+Phoenicians - Motya
+11
+-602.5   ,   -409.3 
+Carthage - Motya
+6
+-409.3   ,   -397.4 
+Carthage
+0
+-397.4   ,   -396.7
+Syracuse
+0
+-396.7   ,   -396.1
+Carthage
+0
+-396.1   ,   -392.5
+Syracuse
+0
+-392.5   ,   -1.0
+Carthage
+0
+-1.0   ,   1990.0 
+UNKNOWN
+0
+1990.0   ,   9999.0
+Italy - Isole dello Stagnone - Isola Grande
+ 14 
+ 1 
+   14  ,  0 
+ 14 
+   1
+ 2 
+-9999.0   ,   1990.0 
+UNKNOWN
+0
+1990.0   ,   9999.0
+Tunisia - Jazirat Zambrah
+ 6 
+ 1 
+   15  ,  0 
+ 15 
+   1
+ 2 
+-9999.0   ,   1990.0 
+UNKNOWN
+0
+1990.0   ,   9999.0
+Tunisia -  le Zembretta
+ 7 
+ 1 
+   16  ,  0 
+ 16 
+   1
+ 2 
+-9999.0   ,   1990.0 
+UNKNOWN
+0
+1990.0   ,   9999.0
+Italy - Isola di Pantelleria
+ 15 
+ 1 
+   17  ,  0 
+ 17 
+   1
+ 5 
+-9999.0   ,   -703.1 
+UNKNOWN
+0
+-703.1   ,   -602.5 
+Phoenicians - Gaulos
+18
+-602.5   ,   -1.0 
+Carthage - Gaulos
+2
+-1.0   ,   1990.0 
+UNKNOWN
+0
+1990.0   ,   9999.0
+Malta - Gozo
+ 1 
+ 1 
+   18  ,  0 
+ 18 
+   1
+ 5 
+-9999.0   ,   -703.1 
+UNKNOWN
+0
+-703.1   ,   -602.5 
+Phoenicians
+0
+-602.5   ,   -1.0 
+Carthage
+0
+-1.0   ,   1990.0 
+UNKNOWN
+0
+1990.0   ,   9999.0
+Malta - Kemmuna
+ 2 
+ 1 
+   19  ,  0 
+ 19 
+   1
+ 5 
+-9999.0   ,   -703.1 
+UNKNOWN
+0
+-703.1   ,   -602.5 
+Phoenicians - Maleth
+17
+-602.5   ,   -1.0 
+Carthage - Maleth
+1
+-1.0   ,   1990.0 
+UNKNOWN
+0
+1990.0   ,   9999.0
+Malta
+ 0 
+ 1 
+   20  ,  0 
+ 20 
+   1
+ 2 
+-9999.0   ,   1990.0 
+UNKNOWN
+0
+1990.0   ,   9999.0
+Italy - Isole Pelagie - Isola di Linosa
+ 16 
+ 1 
+   21  ,  0 
+ 21 
+   1
+ 2 
+-9999.0   ,   1990.0 
+UNKNOWN
+0
+1990.0   ,   9999.0
+Tunisia - Juzur Qurayyat - Jazirat Qurayyat
+ 8 
+ 1 
+   22  ,  0 
+ 22 
+   1
+ 2 
+-9999.0   ,   1990.0 
+UNKNOWN
+0
+1990.0   ,   9999.0
+Tunisia - Juzur Qurayyat -  le Conigliera
+ 15 
+ 1 
+   24  ,  0 
+ 23 
+   1
+ 2 
+-9999.0   ,   1990.0 
+UNKNOWN
+0
+1990.0   ,   9999.0
+Tunisia - El Jezira
+ 16 
+ 1 
+   25  ,  0 
+ 24 
+   1
+ 2 
+-9999.0   ,   1990.0 
+UNKNOWN
+0
+1990.0   ,   9999.0
+Italy - Isole Pelagie - Isola di Lampedusa
+ 17 
+ 1 
+   26  ,  0 
+ 106 
+   1
+ 7 
+-500.1   ,   -461.4
+Sikeloi
+0
+-405.1   ,   -396.5
+Sicelia
+0
+-396.5   ,   -396.1
+Carthage - Sicelia
+36
+-396.1   ,   -392.5
+Sicelia
+0
+-392.5   ,   -356.9
+Syracuse
+0
+-356.9   ,   -346.5
+Tyranny of Syracuse
+0
+-346.5   ,   -1.0
+Syracuse
+0
+ 10 
+   1063  ,  1
+   1059  ,  1
+   1048  ,  0
+   1061  ,  0
+   1044  ,  0
+   1074  ,  0
+   1076  ,  0
+     27  ,  0
+   35  ,  0
+   36  ,  0
+ 107 
+   1
+ 8 
+-500.1   ,   -480.3
+Sikanoi
+0
+-472.5   ,   -405.1
+Sikanoi
+0
+-405.1   ,   -397.6
+Carthage
+0
+-397.6   ,   -396.5
+Syracuse
+0
+-396.5   ,   -396.1
+Carthage
+0
+-396.1   ,   -392.5
+Syracuse
+0
+-392.5   ,   -383.5
+Carthage
+0
+-383.5   ,   -375.5
+Syracuse
+0
+ 4 
+   1065  ,  0
+   1059  ,  1
+   1057  ,  1
+   1058  ,  0
+ 66 
+   1
+ 1 
+-590.5   ,   -1.0 
+Carthage
+0
+ 6 
+     1  ,  1 
+    28  ,  0 
+    23  ,  1 
+     2  ,  1 
+  1040  ,  1
+  1033  ,  1
+ 73 
+   1
+ 3 
+-500.5   ,   -394.8
+Carthage
+ 0 
+-394.5   ,   -378.3
+Carthage
+ 0 
+-377.7   ,   -1.0
+Carthage
+ 0 
+ 2 
+   1040  ,  0  
+   1041  ,  1  
+ 75 
+   1
+ 1 
+-496.5   ,   -492.5
+Gela
+0
+ 7 
+   1060  ,  1
+   1048  ,  1
+   1043  ,  1
+     29  ,  0
+   1045  ,  0
+   1044  ,  0
+   1073  ,  0
+ 78 
+   1
+ 2 
+-492.5   ,   -478.5
+Gela
+0
+-478.5   ,   -466.5
+Tyranny of Syracuse
+0
+ 10 
+   1060  ,  1
+   1048  ,  1
+   1043  ,  1
+     29  ,  0
+     30  ,  0
+     34  ,  0
+   1013  ,  0
+   1017  ,  0
+   1044  ,  0
+   1073  ,  0
+ 79 
+   1
+ 9 
+-486.5   ,   -480.3
+Akragas
+0
+-472.5   ,   -406.0
+Akragas
+0
+-406.0   ,   -397.6
+Carthage
+0
+-397.6   ,   -396.5
+Syracuse
+0
+-396.5   ,   -396.1
+Carthage
+0
+-396.1   ,   -392.5
+Syracuse
+0
+-392.5   ,   -383.5
+Carthage
+0
+-383.5   ,   -376.5
+Syracuse
+0
+-376.5   ,   -375.5
+Carthage
+0
+ 5 
+     31  ,  0
+     38  ,  0
+   1043  ,  0
+   1057  ,  1
+   1049  ,  1
+ 87 
+   1
+ 1 
+-480.3   ,   -472.5
+Akragas
+0
+ 10 
+     31  ,  0
+     38  ,  0
+   1043  ,  0
+   1058  ,  0
+   1064  ,  0
+     39  ,  1
+     33  ,  1
+   1063  ,  1
+   1059  ,  1
+   1049  ,  1
+ 88 
+   1
+ 11 
+-478.5   ,   -477.5
+Tyranny of Syracuse - Gela
+1
+-478.5   ,   -472.5
+Akragas - Syracuse
+4
+-472.5   ,   -405.1
+Gela
+0
+-405.1   ,   -397.6
+Carthage
+0
+-397.6   ,   -396.5
+Syracuse
+0
+-396.5   ,   -396.1
+Carthage
+0
+-396.1   ,   -392.5
+Syracuse
+0
+-392.5   ,   -383.5
+Carthage
+0
+-383.5   ,   -356.9
+Syracuse
+0
+-356.9   ,   -346.5
+Tyranny of Syracuse
+0
+-346.5   ,   -1.0
+Syracuse
+0
+ 5 
+   1043  ,  0
+   1048  ,  0
+   1061  ,  0
+   1045  ,  1
+     29  ,  1
+ 90 
+   1
+ 5 
+-472.5   ,   -409.4
+Himera
+0
+-397.6   ,   -396.5
+Syracuse
+0
+-396.5   ,   -396.1
+Carthage
+0
+-396.1   ,   -392.5
+Syracuse
+0
+-392.5   ,   -375.5
+Carthage
+0
+ 5 
+   1064  ,  1
+   1065  ,  0
+   1063  ,  0
+     33  ,  0
+     39  ,  0
+ 99 
+   1
+ 9 
+-466.5   ,   -405.1
+Kamarina
+0
+-405.1   ,   -397.6
+Carthage
+0
+-397.6   ,   -396.5
+Syracuse
+0
+-396.5   ,   -396.1
+Carthage
+0
+-396.1   ,   -392.5
+Syracuse
+0
+-392.5   ,   -383.5
+Carthage
+0
+-383.5   ,   -356.9
+Syracuse
+0
+-356.9   ,   -346.5
+Tyranny of Syracuse
+0
+-346.5   ,   -1.0
+Syracuse
+0
+ 4 
+   1045  ,  1
+   1017  ,  1
+   1078  ,  0
+     30  ,  1
+ 100 
+   1
+ 8 
+-466.5   ,   -423.5
+Leontini
+0
+-423.5   ,   -405.1
+Syracuse - Leontini
+6
+-405.1   ,   -400.5
+Leontini
+0
+-400.5   ,   -397.6
+Syracuse - Leontini
+6
+-397.6   ,   -396.4
+Syracuse
+0
+-396.4   ,   -396.1
+Carthage
+0
+-396.1   ,   -356.9
+Syracuse
+0
+-356.9   ,   -1.0
+Tyranny of Syracuse
+0
+ 3 
+   1073  ,  1
+   1074  ,  0
+   1075  ,  0
+ 101 
+   1
+ 2 
+-466.5   ,   -461.5
+Aitna
+0
+-461.5   ,   -451.5
+Catane
+0
+ 2 
+   1076  ,  1
+   1075  ,  0
+ 103 
+   1
+ 8 
+-461.4   ,   -440.5
+Sicelia
+0
+-440.5   ,   -405.1
+Syracuse
+0
+-405.1   ,   -396.5
+Sicelia
+0
+-396.5   ,   -396.1
+Carthage - Sicelia
+36
+-396.1   ,   -392.5
+Sicelia
+0
+-392.5   ,   -356.9
+Syracuse
+0
+-356.9   ,   -346.5
+Tyranny of Syracuse
+0
+-346.5   ,   -1.0
+Syracuse
+0
+ 7 
+   1080  ,  0
+   1087  ,  0
+   1081  ,  0
+   1061  ,  0
+   1044  ,  0
+   1074  ,  0
+   1076  ,  0
+ 109 
+   1
+ 10 
+-451.5   ,   -415.4
+Catane
+0
+-415.4   ,   -409.3
+Delian League - Catane
+183
+-409.3   ,   -405.1
+Syracuse - Catane
+12
+-405.1   ,   -403.5
+Catane
+0
+-403.5   ,   -397.6
+Syracuse - Catane
+12
+-397.6   ,   -396.5
+Syracuse
+0
+-396.5   ,   -396.1
+Carthage
+0
+-396.1   ,   -356.9
+Syracuse
+0
+-356.9   ,   -346.5
+Tyranny of Syracuse
+0
+-346.5   ,   -1.0
+Syracuse
+0
+ 2 
+   1084  ,  1
+   1075  ,  0
+ 110 
+   1
+ 8 
+-451.5   ,   -440.5
+Sicelia
+0
+-440.5   ,   -405.1
+Syracuse
+0
+-405.1   ,   -396.5
+Sicelia
+0
+-396.5   ,   -396.1
+Carthage - Sicelia
+36
+-396.1   ,   -392.5
+Sicelia
+0
+-392.5   ,   -356.9
+Syracuse
+0
+-356.9   ,   -346.5
+Tyranny of Syracuse
+0
+-346.5   ,   -1.0
+Syracuse
+0
+ 2 
+   1076  ,  1
+   1084  ,  0
+ 113 
+   1
+ 8 
+-446.7   ,   -440.5
+Sicelia
+0
+-440.5   ,   -405.1
+Syracuse
+0
+-405.1   ,   -396.5
+Sicelia
+0
+-396.5   ,   -396.1
+Carthage - Sicelia
+36
+-396.1   ,   -392.5
+Sicelia
+0
+-392.5   ,   -356.9
+Syracuse
+0
+-356.9   ,   -346.5
+Tyranny of Syracuse
+0
+-346.5   ,   -1.0
+Syracuse
+0
+ 4
+   1089  ,  1
+   1087  ,  1
+   1088  ,  0
+     35  ,  0
+ 145 
+   1
+ 7 
+-440.5   ,   -405.1
+Syracuse
+0
+-405.1   ,   -396.5
+Sicelia
+0
+-396.5   ,   -396.1
+Carthage - Sicelia
+36
+-396.1   ,   -392.5
+Sicelia
+0
+-392.5   ,   -356.9
+Syracuse
+0
+-356.9   ,   -346.5
+Tyranny of Syracuse
+0
+-346.5   ,   -1.0
+Syracuse
+0
+ 3
+   1080  ,  0
+   1088  ,  0
+     27  ,  1
+ 140
+   1
+ 1 
+-409.3   ,   -397.6
+Carthage
+0
+ 9
+   1049  ,  0
+   1058  ,  0
+   1065  ,  0
+   1063  ,  0
+     33  ,  0
+     39  ,  0
+     32  ,  0
+     37  ,  0
+      9  ,  0
+ 152
+   1
+ 3 
+-466.5   ,   -356.9 
+Syracuse
+0
+-356.9   ,   -346.5
+Tyranny of Syracuse
+0
+-346.5   ,   -1.0
+Syracuse
+0
+  3
+   1013  ,  0
+   1078  ,  0
+     34  ,  0 
+ 155 
+   1
+ 4 
+-397.6   ,   -396.7
+Syracuse
+0
+-396.7   ,   -396.1
+Carthage
+0
+-396.1   ,   -392.5
+Syracuse
+0
+-392.5   ,   -1.0
+Carthage
+0
+ 7 
+     37  ,  0
+      9  ,  0
+   1049  ,  0
+   1058  ,  0
+   1125  ,  0
+   1126  ,  0
+   1130  ,  0
+ 156 
+   1
+ 5 
+-397.6   ,   -397.2
+Carthage
+0
+-397.2   ,   -396.7
+Syracuse
+0
+-396.7   ,   -396.1
+Carthage
+0
+-396.1   ,   -392.5
+Syracuse
+0
+-392.5   ,   -1.0
+Carthage
+0
+ 5 
+   1064  ,  1
+   1125  ,  0
+   1126  ,  0
+   1130  ,  0
+     32  ,  0
+ 157 
+   1
+ 1 
+-397.2   ,   -392.5
+Carthage
+0
+ 4 
+   1126  ,  0
+   1127  ,  0
+   1128  ,  0
+   1129  ,  0
+ 174
+   1
+ 1 
+-375.5   ,   -1.0
+Carthage
+0
+ 6 
+     31  ,  0
+   1147  ,  0
+     39 ,  0
+   1064  ,  1
+   1058  ,  1
+   1049  ,  1
+ 175
+   1
+ 3 
+-375.5   ,   -356.9
+Syracuse
+0
+-356.9   ,   -346.5
+Tyranny of Syracuse
+0
+-346.5   ,   -1.0
+Syracuse
+0
+ 6 
+     33  ,  0
+   1147  ,  1
+     38  ,  0
+   1043  ,  0
+   1059  ,  0
+   1063  ,  0
+ 25 
+   0
+ 2 
+-9999.0   ,   -9998.0 
+Berbers
+0
+-2400.1   ,   -590.5
+Berbers
+0
+-3 
+   10.6655  ,  36.6453
+ 26 
+   0
+ 2 
+-9999.0   ,   -9998.0 
+Berbers
+0
+-2400.1   ,   -590.5
+Berbers
+0
+-3 
+   10.4379  ,  35.7907
+ 27 
+   0
+ 5 
+-9999.0   ,   -9998.0 
+Western Mediterraneans
+0
+-2400.1   ,   -1600.1 
+Western Mediterraneans
+0
+-1600.1   ,   -1450.1 
+Celto-Ligurians
+0
+-1450.1   ,   -1150.1 
+Sicans
+0
+-1150.1   ,   -850.1 
+Elymians
+0
+-3 
+12.75	37.95
+ 69 
+   1
+ 2 
+-850.1   ,   -500.1 
+Elymians
+0
+-500.1   ,   -409.3
+Carthaginian Ally - Elymians
+2
+ 1 
+1036  ,  0
+ 28 
+   0
+ 3 
+-9999.0   ,   -9998.0 
+Western Mediterraneans
+0
+-2400.1   ,   -1450.1 
+Western Mediterraneans
+0
+-1450.1   ,   -409.3 
+Sicans
+0
+-3 
+13.3207	37.6802
+ 29 
+   0
+ 4 
+-9999.0   ,   -9998.0 
+Western Mediterraneans
+0
+-2400.1   ,   -1450.1 
+Western Mediterraneans
+0
+-1450.1   ,   -466.4 
+Sicans
+0
+-466.4   ,   -409.3 
+Sicels
+0
+-3 
+14.0345	37.8241
+ 30 
+   0
+ 5 
+-9999.0   ,   -9998.0 
+Western Mediterraneans
+0
+-2400.1   ,   -1450.1 
+Western Mediterraneans
+0
+-1450.1   ,   -460.5 
+Sicans
+0
+-460.5   ,   -450.5 
+Akragas
+0
+-449.6   ,   -406.0 
+Akragas
+0
+-3 
+13.8793	37.3794
+ 31 
+   0
+ 3 
+-9999.0   ,   -9998.0 
+Western Mediterraneans
+0
+-2400.1   ,   -1450.1 
+Western Mediterraneans
+0
+-1450.1   ,   -440.5 
+Sicans
+0
+-3 
+14.6552	37.9288
+ 32 
+   0
+ 3 
+-9999.0   ,   -9998.0 
+Western Mediterraneans
+0
+-2400.1   ,   -1450.1 
+Western Mediterraneans
+0
+-1450.1   ,   -496.5
+Sicans
+0
+-3 
+14.5000	37.4709
+ 108 
+   1
+ 1 
+-466.4   ,   -461.4
+Sicels
+0
+-3 
+14.5000	37.4709
+ 33 
+   0
+ 3 
+-9999.0   ,   -9998.0 
+Western Mediterraneans
+0
+-2400.1   ,   -1450.1 
+Western Mediterraneans
+0
+-1450.1   ,   -440.5 
+Sicans
+0
+-3 
+14.7017	37.0262
+ 91 
+   0
+ 1 
+-470.3  ,  -466.6
+Revolt
+0
+-2 
+ 14.08  ,  37.22
+ 38 
+   1
+ 1 
+-729.5   ,   -496.5
+Ionians - Leontini
+54
+ 1 
+   1005  ,  0
+ 39 
+   1
+ 2 
+-715.5   ,   -602.5 
+Phoenicians - Motya
+11
+-602.5   ,   -409.3 
+Carthage - Motya
+6
+ 1 
+   1006  ,  0
+ 41 
+   1
+ 2 
+-850.5   ,   -602.5
+Phoenicians - DRMT (Hadrumetum)
+12
+-602.5   ,   -590.5
+Carthage - DRMT (Hadrumetum)
+7
+ 1 
+   1008  ,  0
+ 42 
+   1
+ 2 
+-734.5   ,   -602.5
+Phoenicians - Ziz
+15
+-602.5   ,   -409.3
+Carthage - Ziz
+10
+ 1 
+   1009  ,  0
+ 44 
+   1
+ 7 
+-688.5   ,   -505.5
+Dorians - Gela
+38
+-505.5   ,   -496.5
+Gela
+0
+-491.5   ,   -491.4
+Revolt
+0
+-405.9   ,   -405.6
+Stasis
+0
+-405.1   ,   -397.6
+Carthaginian Tributary - Gela
+3
+-392.5   ,   -383.5
+Carthaginian Tributary - Gela
+3
+-383.5   ,   -375.5
+Syracuse - Gela
+24
+ 1 
+   1011  ,  0
+ 48 
+   1
+ 3 
+-648.5   ,   -488.5
+Ionians - Himera
+78
+-488.5   ,   -482.5
+Carthaginian Ally - Himera
+3
+-482.5   ,   -480.3
+Akragas - Himera
+3
+ 1 
+   1015  ,  0
+ 46 
+   1
+ 1 
+-663.5   ,   -643.5 
+Syracuse
+0
+ 2 
+   1013  ,  0
+   1077  ,  0 
+ 50 
+   1
+ 6 
+-643.5   ,   -485.5 
+Syracuse
+0
+-485.5   ,   -478.5 
+Gela
+0
+-478.5   ,   -466.5
+Tyranny of Syracuse
+0
+-466.5   ,   -356.9
+Syracuse
+0
+-356.9   ,   -346.5
+Tyranny of Syracuse
+0
+-346.5   ,   -1.0
+Syracuse
+0
+ 4 
+   1013  ,  0
+   1017  ,  0 
+   1044  ,  0 
+   1073  ,  0
+ 51 
+   1
+ 6 
+-628.5   ,   -509.5
+Megaris - Selinus
+7
+-509.5   ,   -500.1
+Kingdom of Sparta - Selinus
+14
+-500.1   ,   -416.8
+Carthaginian Ally - Selinus
+1
+-416.8   ,   -409.6
+Syracuse - Selinus
+7
+-405.1   ,   -397.6
+Carthaginian Tributary - Selinus
+1
+-392.5   ,   -375.5
+Carthaginian Tributary - Selinus
+1
+ 1 
+   1018  ,  0
+ 54 
+   1
+ 6 
+-598.5   ,   -552.8
+Syracuse - Kamarina
+2
+-552.8   ,   -552.5
+Dorians - Kamarina
+47
+-552.5   ,   -492.5
+Syracuse - Kamarina
+2
+-405.1   ,   -397.6
+Carthaginian Tributary - Kamarina
+4
+-392.5   ,   -383.5
+Carthaginian Tributary - Kamarina
+4
+-383.5   ,   -375.5
+Syracuse - Kamarina
+2
+ 1 
+   1021  ,  0
+ 56 
+   1
+ 6 
+-581.5   ,   -500.1
+Dorians - Akragas
+45
+-500.1   ,   -486.5
+Akragas
+0
+-405.1   ,   -397.6
+Carthaginian Tributary - Akragas
+2
+ -392.5   ,    -383.5
+Carthaginian Tributary - Akragas
+2
+ -383.5   ,    -376.5
+Syracuse - Akragas
+25
+ -376.5   ,    -375.5
+Carthaginian Tributary - Akragas
+2
+ 1 
+   1023  ,  0
+ 65 
+   1
+ 1 
+-650.1   ,   -590.5
+Carthage - (Kerkouane)
+15
+ 1 
+   1032  ,  0
+ 68 
+   1
+ 4 
+-550.5   ,   -510.3
+Megaris - Selinus - Minoa
+12
+-510.3   ,   -500.1
+Kingdom of Sparta - Heraclea Minoa
+12
+-500.1   ,   -486.5
+Akragas - Heraclea Minoa
+1
+-472.5   ,   -469.5
+Revolt
+0
+ 1 
+   1035  ,  0
+ 80 
+   1
+ 2 
+-725.1   ,   -602.5 
+Phoenicians - Kapara
+23
+-602.5   ,   -409.3 
+Carthage - Kapara
+18
+ 1 
+   1050  ,  0
+ 166 
+   1
+ 1 
+-395.5   ,   -392.5
+Syracuse - Tyndaris
+17
+ 1 
+   1139  ,  0
+ 36 
+   1
+ 3 
+-814.4   ,   -602.5
+Phoenicians - Carthage
+ 9 
+-602.5   ,   -590.5
+Carthage
+ 0 
+-345.8   ,   -345.6
+Stasis
+ 0 
+ 1 
+   1003  ,  0  
+ 182 
+   1
+ 1 
+-370.5   ,   -344.6
+Campanians
+ 0 
+ -2 
+13.1250	37.7740
+ 35 
+   1
+ 3 
+-948.6   ,   -948.4 
+Phoenicians - Naval expedition of Hiram of Tyre
+8
+-814.5   ,   -814.3 
+Phoenicians - Naval expedition of Tyre
+10
+-654.7   ,   -654.5 
+Phoenicians - Naval expedition of Tyre
+10
+ 1 
+   1002  ,  0
+ 37 
+   1
+ 1 
+-729.7   ,   -729.4
+Ionians - Expedition of Theocles
+53
+ 1 
+   1004  ,  0
+ 43 
+   1
+ 1 
+-734.6   ,   -734.4 
+Phoenicians - Naval expedition of Tyre
+10
+ 1 
+   1010  ,  0
+ 40 
+   1
+ 1 
+-715.6   ,   -715.4 
+Phoenicians - Naval expedition of Tyre
+10
+ 1 
+   1007  ,  0
+ 45 
+   1
+ 1 
+-688.6   ,   -688.4
+Dorians - Colonists
+37
+ 1 
+   1012  ,  0
+ 47 
+   1
+ 1 
+-654.6   ,   -654.4
+Phoenicians - Naval expedition of Tyre
+10
+ 1 
+   1014  ,  0
+ 49 
+   1
+ 3 
+-648.6   ,   -648.4
+Ionians - Colonists
+60
+-414.6   ,   -414.5
+Peloponnesian League - Naval expedition of Gylippus
+39
+-409.6   ,   -409.5
+Syracuse - Naval expedition
+4
+ 1 
+   1016  ,  0
+ 52 
+   1
+ 2 
+-628.6   ,   -628.4
+Megaris - Colonists
+1
+-407.7  ,  -407.4
+Syracuse - Army of Hermocrates
+10
+ 1 
+   1019  ,  0
+ 53 
+   1
+ 1 
+-610.6   ,   -610.4
+Phoenicians - Naval expedition of Carthage
+22
+ 1 
+   1020  ,  0
+ 55 
+   1
+ 2 
+-598.6   ,   -598.4
+Syracuse - Colonists
+1
+-552.6   ,   -552.4
+Syracuse - Army
+3
+ 1 
+   1022  ,  0
+ 57 
+   1
+ 1 
+-581.6   ,   -581.4
+Dorians - Colonists
+37
+ 1 
+   1024  ,  0
+ 58 
+   1
+ 2 
+-580.5   ,   -500.1
+Elymians
+0
+-500.1   ,   -409.3
+Carthaginian Ally - Elymians
+2
+ 1 
+   1025  ,  0
+ 59 
+   1
+ 2 
+-580.5   ,   -579.3
+Megaris - Selinus
+7
+-416.5   ,   -410.4
+Syracuse - Army of Selinus
+8
+ 1 
+   1026  ,  0
+ 60 
+   1
+ 1 
+-579.6   ,   -579.4
+Dorians - Colonists
+37
+ 1 
+   1027  ,  0
+ 61 
+   1
+ 1 
+-579.5   ,   -578.5
+Dorians - Colonists
+37
+ 1 
+   1028  ,  0
+ 62 
+   1
+ 1 
+-579.4   ,   -579.3
+Dorians - Army of Pentathlus
+47
+ 1 
+   1029  ,  0
+ 63 
+   1
+ 1 
+-578.7   ,   -578.5
+Carthage - Motya - Army
+14
+ 1 
+   1030  ,  0
+ 64 
+   1
+ 1 
+-578.6   ,   -578.5
+Dorians - Colonists
+37
+ 1 
+   1031  ,  0
+ 67 
+   1
+ 2 
+-550.6   ,   -550.4
+Megaris - Colonists
+1
+-509.6   ,   -509.4
+Kingdom of Sparta - Naval expedition
+11
+ 1 
+   1034  ,  0
+ 70 
+   1
+ 1 
+-511.3  ,  -511.2
+Kingdom of Sparta - Colonists
+ 4
+ 1 
+   1037  ,  0
+ 71 
+   1
+ 1 
+-511.2  ,  -510.4
+Kingdom of Sparta - Drepanon
+ 10
+ 1 
+   1038  ,  0
+ 72 
+   1
+ 1 
+-510.4  ,  -510.3
+Kingdom of Sparta - Colonists
+ 4
+ 1 
+   1039  ,  0
+ 74 
+   1
+ 1 
+-496.7  ,  -496.5
+Gela - Army of Hippocrates
+1
+ 1 
+   1042  ,  0
+ 76 
+   1
+ 1 
+-493.6  ,  -493.5
+Gela - Army of Hippocrates
+1
+ 1 
+   1046  ,  0
+ 77 
+   1
+ 1 
+-492.7  ,  -492.5
+Gela - Army of Hippocrates
+1
+ 1 
+   1047  ,  0
+ 81 
+   1
+ 1 
+-482.6  ,  -480.3
+Akragas - Army of Theron
+2
+ 1 
+   1051  ,  0
+ 82 
+   1
+ 2 
+-480.7  ,  -480.3
+Carthage - Naval expedition of Hamilcar
+19
+-396.9  ,  -396.7
+Carthage - Naval expedition of Himilco
+23
+ 1 
+   1052  ,  0
+ 83 
+   1
+ 1 
+-480.6  ,  -480.4
+Carthage - Naval expedition of Hamilcar
+19
+ 1 
+   1053  ,  0
+ 84 
+   1
+ 1 
+-480.6  ,  -480.4
+Carthage - Army
+20
+ 1 
+   1054  ,  0
+ 85 
+   1
+ 1 
+-480.5  ,  -480.3
+Gela - Army of Gelon
+2
+ 1 
+   1055  ,  0
+ 86 
+   1
+ 1 
+-480.5  ,  -480.3
+Akragas - Army of Theron
+2
+ 1 
+   1056  ,  0
+ 89 
+   1
+ 1 
+-472.6  ,  -472.4
+Tyranny of Syracuse - Naval expedition
+2
+ 1 
+   1062  ,  0
+ 92 
+   1
+ 1 
+-470.6  ,  -470.4
+Akragas - Army
+5
+ 1 
+   1066  ,  0
+ 93 
+   1
+ 1 
+-470.5  ,  -470.3
+Himera - Army
+1
+ 1 
+   1067  ,  0
+ 94 
+   1
+ 1 
+-470.5  ,  -470.3
+Gela - Army
+3
+ 1 
+   1068  ,  0
+ 95 
+   1
+ 1 
+-469.6  ,  -469.4
+Tyranny of Syracuse - Army
+3
+ 1 
+   1069  ,  0
+ 96 
+   1
+ 1 
+-469.6  ,  -469.4
+Akragas - Army
+5
+ 1 
+   1070  ,  0
+ 97 
+   1
+ 3 
+-466.6  ,  -466.4
+Gela - Army
+3
+-405.7  ,  -405.6
+Syracuse - Army of Dionysius
+11
+-405.5  ,  -405.3
+Syracuse - Army of Dionysius
+11
+ 1 
+   1071  ,  0
+ 98 
+   1
+ 1 
+-466.6  ,  -466.4
+Himera - Army
+1
+ 1 
+   1072  ,  0
+ 102 
+   1
+ 1 
+-461.6  ,  -461.4
+Sicels - Army of Ducetius
+1
+ 1 
+   1079  ,  0
+ 104 
+   1
+ 1 
+-454.6  ,  -453.3
+Carthaginian Ally - Segesta
+4
+ 1 
+   1082  ,  0
+ 105 
+   1
+ 1 
+-454.6  ,  -453.3
+Carthaginian Ally - Selinus
+1
+ 1 
+   1083  ,  0
+ 111 
+   1
+ 1 
+-450.7  ,  -449.5
+Sicels - Army of Ducetius
+1
+ 1 
+   1085  ,  0
+ 112 
+   1
+ 1 
+-449.6  ,  -449.3
+Syracuse - Army
+3
+ 1 
+   1086  ,  0
+ 114 
+   1
+ 1 
+-446.5  ,  -446.3
+Akragas - Army
+5
+ 1 
+   1090  ,  0
+ 115 
+   1
+ 1 
+-446.4  ,  -446.2
+Syracuse - Army
+3
+ 1 
+   1091  ,  0
+ 116 
+   1
+ 1 
+-440.7  ,  -440.3
+Syracuse - Army
+3
+ 1 
+   1092  ,  0
+ 117 
+   1
+ 1 
+-440.6  ,  -440.4
+Syracuse - Army
+3
+ 1 
+   1093  ,  0
+ 119 
+   1
+ 1 
+-427.7  ,  -427.3
+Syracuse - Army
+3
+ 1 
+   1094  ,  0
+ 120 
+   1
+ 3 
+-427.4  ,  -427.3
+Delian League - Naval expedition
+43
+-415.4   ,   -415.3
+Delian League - Naval expedition of Nicias and Alcibiades and Lamachus
+181
+-406.7   ,   -406.4
+Syracuse - Naval expedition
+4
+ 1 
+   1095  ,  0
+ 121 
+   1
+ 1 
+-427.3  ,  -427.2
+Delian League - Naval expedition
+43
+ 1 
+   1096  ,  0
+ 122 
+   1
+ 1 
+-426.3  ,  -426.2
+Delian League - Naval expedition
+43
+ 1 
+   1097  ,  0
+ 123 
+   1
+ 1 
+-426.2  ,  -426.1
+Delian League - Naval expedition
+43
+ 1 
+   1098  ,  0
+ 124 
+   1
+ 1 
+-415.3   ,   -415.2
+Delian League - Naval expedition of Nicias and Lamachus
+182
+ 1 
+   1099  ,  0
+ 125 
+   1
+ 1 
+-415.3   ,   -415.2
+Delian League - Naval expedition of Nicias and Lamachus
+182
+ 1 
+   1100  ,  0
+ 126 
+   1
+ 1 
+-415.2   ,   -415.1
+Delian League - Army
+134
+ 1 
+   1101  ,  0
+ 127 
+   1
+ 1 
+-414.6   ,   -414.5
+Peloponnesian League - Naval expedition of Gylippus
+39
+ 1 
+   1102  ,  0
+ 128 
+   1
+ 1 
+-414.6   ,   -414.5
+Peloponnesian League - Naval expedition of Gylippus
+39
+ 1 
+   1103  ,  0
+ 129 
+   1
+ 1 
+-414.5   ,   -414.4
+Peloponnesian League - Naval expedition of Gylippus
+39
+ 1 
+   1104  ,  0
+ 130 
+   1
+ 1 
+-413.6   ,   -413.4
+Syracuse - Army of Selinus
+8
+ 1 
+   1105  ,  0
+ 131 
+   1
+ 1 
+-413.6   ,   -413.4
+Himera - Army
+1
+ 1 
+   1106  ,  0
+ 132 
+   1
+ 1 
+-413.5   ,   -413.3
+Sicans
+0
+ 1 
+   1107  ,  0
+ 133 
+   1
+ 2 
+-411.5   ,   -410.4
+Syracuse - Army of Selinus
+8
+-396.9   ,   -396.8
+Syracuse - Army of Dionysius
+11
+ 1 
+   1108  ,  0
+ 134 
+   1
+ 6 
+-410.6   ,   -409.8
+Carthage - Naval expedition
+17
+-409.8   ,   -409.3
+Carthage - Naval expedition of Hannibal
+21
+-406.9   ,   -406.7
+Carthage - Naval expedition of Hannibal
+21
+-406.7   ,   -405.0
+Carthage - Naval expedition of Himilco
+23
+-382.8   ,   -375.5
+Carthage - Naval expedition
+17
+-344.8   ,   -1.0
+Carthage - Naval expedition
+17
+ 1 
+   1109  ,  0
+ 135 
+   1
+ 1 
+-410.5   ,   -410.3
+Carthage - Army
+20
+ 1 
+   1110  ,  0
+ 136 
+   1
+ 1 
+-409.7   ,   -409.3
+Carthage - Army of Hannibal
+22
+ 1 
+   1111  ,  0
+ 137 
+   1
+ 1 
+-409.6   ,   -409.3
+Carthage - Army of Hannibal
+22
+ 1 
+   1112  ,  0
+ 138 
+   1
+ 1 
+-409.6   ,   -409.4
+Syracuse - Army of Diocles
+9
+ 1 
+   1113  ,  0
+ 139 
+   1
+ 1 
+-409.5   ,   -409.3
+Carthage - Army of Hannibal
+22
+ 1 
+   1114  ,  0
+ 141 
+   1
+ 1 
+-407.6  ,  -407.5
+Syracuse - Army of Hermocrates
+10
+ 1 
+   1115  ,  0
+ 142 
+   1
+ 2 
+-406.8  ,  -406.6
+Carthage - Army of Hannibal
+22
+-382.6  ,  -378.5
+Carthage - Army
+20
+ 1 
+   1116  ,  0
+ 143 
+   1
+ 1 
+-406.7   ,   -406.4
+Syracuse - Naval expedition
+4
+ 1 
+   1024  ,  0
+ 144 
+   1
+ 1 
+-406.7   ,   -406.4
+Syracuse - Naval expedition
+4
+ 1 
+   1117  ,  0
+ 146 
+   1
+ 1 
+-406.6  ,  -405.9
+Carthage - Army of Himilco
+24
+ 1 
+   1118  ,  0
+ 147 
+   1
+ 1 
+-406.5  ,  -405.9
+Carthage - Naval expedition of Himilco
+23
+ 1 
+   1119  ,  0
+ 148 
+   1
+ 1 
+-406.4  ,  -405.9
+Carthage - Army of Himilco
+24
+ 1 
+   1120  ,  0
+ 149 
+   1
+ 1 
+-405.8  ,  -405.1
+Carthage - Army of Himilco
+24
+ 1 
+   1121  ,  0
+ 150 
+   1
+ 1 
+-405.4  ,  -405.1
+Carthage - Army of Himilco
+24
+ 1 
+   1122  ,  0
+ 151 
+   1
+ 1 
+-405.3  ,  -405.1
+Carthage - Army of Himilco
+24
+ 1 
+   1123  ,  0
+ 153 
+   1
+ 1 
+ -402.5  ,  -396.5
+Syracuse
+0
+ -2 
+   14.9000	37.6167
+ 154 
+   1
+ 1 
+ -399.5  ,  -396.5
+Syracuse
+0
+ -2 
+   14.83337	37.66197
+ 155 
+   1
+ 1 
+-397.7  ,  -397.3
+Syracuse - Army of Dionysius
+15
+ 1 
+   1124  ,  0
+ 158 
+   1
+ 1 
+-397.6  ,  -397.5
+Carthage - Naval expedition
+17
+ 1 
+   1131  ,  0
+ 159 
+   1
+ 1 
+-397.5  ,  -397.4
+Carthage - Naval expedition of Himilco
+23
+ 1 
+   1132  ,  0
+ 160 
+   1
+ 1 
+-397.3  ,  -397.2
+Syracuse - Army of Dionysius
+15
+ 1 
+   1133  ,  0
+ 161 
+   1
+ 1 
+-396.8  ,  -396.7
+Carthage - Army of Himilco
+24
+ 1 
+   1134  ,  0
+ 162 
+   1
+ 1 
+-396.7  ,  -396.5
+Carthage - Naval expedition of Mago
+35
+ 1 
+   1135  ,  0
+ 163 
+   1
+ 1 
+-396.7  ,  -396.5
+Carthage - Army of Himilco
+24
+ 1 
+   1136  ,  0
+ 164 
+   1
+ 1 
+-396.6  ,  -396.4
+Carthage - Army of Himilco
+24
+ 1 
+   1137  ,  0
+ 165 
+   1
+ 1 
+-395.7  ,  -392.5
+Syracuse - Army of Dionysius
+15
+ 1 
+   1138  ,  0
+ 167 
+   1
+ 1 
+-394.6  ,  -394.4
+Carthage - Army of Mago
+35
+ 1 
+   1140  ,  0
+ 168 
+   1
+ 1 
+-392.7  ,  -392.4
+Carthage - Naval expedition of Mago
+36
+ 1 
+   1141  ,  0
+ 169 
+   1
+ 1 
+-392.7  ,  -392.6
+Carthage - Naval expedition of Mago
+36
+ 1 
+   1142  ,  0
+ 170 
+   1
+ 1 
+-392.6  ,  -392.4
+Carthage - Naval expedition of Mago
+36
+ 1 
+   1143  ,  0
+ 171 
+   1
+ 1 
+-382.8   ,   -375.5
+Carthage - Naval expedition
+17
+ 1 
+   1144  ,  0
+ 172 
+   1
+ 1 
+-378.6   ,   -376.5
+Syracuse - Army of Dionysius
+15
+ 1 
+   1145  ,  0
+ 173 
+   1
+ 1 
+-376.6   ,   -376.5
+Syracuse - Army of Dionysius
+15
+ 1 
+   1146  ,  0
+ 176 
+   1
+ 1 
+-357.4   ,   -357.3
+Tyranny of Syracuse - Naval expedition of Dion
+4
+ 1 
+   1148  ,  0
+ 177 
+   1
+ 1 
+-357.4   ,   -357.3
+Tyranny of Syracuse - Naval expedition of Dion
+4
+ 1 
+   1149  ,  0
+ 178 
+   1
+ 1 
+-357.3   ,   -356.9
+Tyranny of Syracuse - Army of Dion
+5
+ 1 
+   1150  ,  0
+ 179 
+   1
+ 1 
+-355.7  ,  -355.2
+Syracuse - Army of Dionysius II
+29
+ 1 
+   1151  ,  0
+ 180 
+   1
+ 1 
+-355.6   ,   -355.3
+Tyranny of Syracuse - Naval expedition of Heraclides
+6
+ 1 
+   1152  ,  0
+ 181 
+   1
+ 1 
+-355.5   ,   -355.4
+Tyranny of Syracuse - Army of Dion
+5
+ 1 
+   1153  ,  0
+ 184 
+   1
+ 1 
+-344.7   ,   -344.5
+Carthage - Army
+20
+ 1 
+   1154  ,  0
+
+
+
+*********************************
+item #118 missing
+now have lost #183
+

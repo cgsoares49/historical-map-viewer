@@ -1,12 +1,6 @@
-# ── Tile data directories (large, not tracked) ──────────────────────────────
-coasts/
-pols/
-polareas/
-inwaters/
-niw/
-cities/
-counties/
+# ── Tile data excluded from this build ───────────────────────────────────────
 rivers/
+counties/
 
 # ── VB.NET build artifacts ───────────────────────────────────────────────────
 mapper.NET.dll
