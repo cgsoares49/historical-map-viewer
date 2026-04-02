@@ -265,21 +265,33 @@
 
         /* ── Map container ────────────────────────────────────────────────── */
         #map-container { flex: 1; position: relative; overflow: hidden; min-height: 0; }
-        canvas { display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        #map-container canvas { display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
         /* ── Timeline bar ─────────────────────────────────────────────────── */
         #timeline-bar {
             flex-shrink: 0;
             background: #0d1520;
             border-top: 1px solid #2a3a5e;
-            padding: 2px 8px;
+            padding: 4px 10px 3px 10px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
         }
-        #timeline-bar .tl-label { color: #506070; font-size: 10px; white-space: nowrap; }
-        #timelineSlider { flex: 1; accent-color: #4488cc; cursor: pointer; height: 14px; }
+        #timelineCanvas { flex: 1; display: block; cursor: pointer; min-width: 0; height: 34px; }
         #timelineYear { color: #88aacc; font-size: 11px; min-width: 80px; text-align: right; white-space: nowrap; }
+        #timelineTooltip {
+            position: fixed;
+            background: rgba(8,18,32,0.95);
+            border: 1px solid #2a5080;
+            color: #88ccff;
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 3px;
+            pointer-events: none;
+            display: none;
+            white-space: nowrap;
+            z-index: 1000;
+        }
 
         /* ── Zoom slider ──────────────────────────────────────────────────── */
         #zoomSlider { width: 88px; accent-color: #4488cc; cursor: pointer; display: block; margin-top: 2px; }
@@ -607,11 +619,10 @@
 
 <!-- ── Timeline bar ── -->
 <div id="timeline-bar">
-    <span class="tl-label">2400 BCE</span>
-    <input type="range" id="timelineSlider" min="-2400" max="2025" step="1" value="-2400">
-    <span class="tl-label">2025 CE</span>
+    <canvas id="timelineCanvas" height="34"></canvas>
     <span id="timelineYear"></span>
 </div>
+<div id="timelineTooltip"></div>
 
 <!-- ── Help popup ── -->
 <div id="helpPopup" class="vibe-popup">
@@ -708,6 +719,9 @@ fetch('refs.json').then(r => r.json()).then(d => { geodataRefs = d; }).catch(() 
 fetch('version.json').then(r => r.json()).then(v => {
     const el = document.getElementById('versionInfo');
     if (el) el.textContent = `app ${v.app || '?'} · data ${v.data || '?'}`;
+    if (v.contentEnd  != null) TL.ANCT_MAX = v.contentEnd;
+    if (v.latestYear  != null) { TL.MOD_MIN = v.latestYear; TL.MOD_MAX = v.latestYear; }
+    resizeTimeline();
 }).catch(() => {});
 
 async function saveRefs() {
@@ -1292,28 +1306,199 @@ zoomSlider.addEventListener('input', () => {
 // Keep slider in sync when select changes
 document.getElementById('zoom').addEventListener('change', () => zoomToSlider(getInputs().zoom));
 
-// ── Timeline slider ───────────────────────────────────────────────────────────
-const timelineSlider = document.getElementById('timelineSlider');
-const timelineYearEl = document.getElementById('timelineYear');
+// ── Timeline canvas ────────────────────────────────────────────────────────────
+let TL = {
+    ANCT_MIN: -2400, ANCT_MAX: -274,
+    MOD_MIN:  2000,  MOD_MAX:  2000,
+    GAP_PX:   52,    MOD_PX:   40,
+};
+const timelineCanvas  = document.getElementById('timelineCanvas');
+const tlCtx           = timelineCanvas.getContext('2d');
+const timelineYearEl  = document.getElementById('timelineYear');
+const timelineTooltip = document.getElementById('timelineTooltip');
+let tlHoverX  = -1;
+let tlDragging = false;
+
+function tlAnctPx() { return timelineCanvas.width - TL.GAP_PX - TL.MOD_PX; }
+function tlModX()   { return tlAnctPx() + TL.GAP_PX; }
+
+function tlYearToX(y) {
+    if (y <= TL.ANCT_MAX) {
+        return tlAnctPx() * (y - TL.ANCT_MIN) / (TL.ANCT_MAX - TL.ANCT_MIN);
+    }
+    if (TL.MOD_MAX === TL.MOD_MIN) return tlModX(); // single modern year — always left edge
+    const t = Math.max(0, Math.min(1, (y - TL.MOD_MIN) / (TL.MOD_MAX - TL.MOD_MIN)));
+    return tlModX() + TL.MOD_PX * t;
+}
+
+function tlXToYear(x) {
+    const ancPx = tlAnctPx();
+    if (x < 0) return TL.ANCT_MIN;
+    if (x <= ancPx) return TL.ANCT_MIN + (x / ancPx) * (TL.ANCT_MAX - TL.ANCT_MIN);
+    if (x < ancPx + TL.GAP_PX) return null; // under construction gap
+    if (TL.MOD_MAX === TL.MOD_MIN) return TL.MOD_MIN; // single modern year
+    const t = Math.min(1, (x - tlModX()) / TL.MOD_PX);
+    return TL.MOD_MIN + t * (TL.MOD_MAX - TL.MOD_MIN);
+}
+
+function drawTimeline() {
+    const W = timelineCanvas.width, H = timelineCanvas.height;
+    const ancPx = tlAnctPx(), modX = tlModX();
+    const curY  = parseFloat(document.getElementById('mapDate').value) || TL.ANCT_MIN;
+    const curX  = tlYearToX(curY);
+    const TY = 6, TH = 10;
+
+    // ── Canvas background ───────────────────────────────────────────────────
+    tlCtx.fillStyle = '#0d1520';
+    tlCtx.fillRect(0, 0, W, H);
+
+    // ── Ancient track ───────────────────────────────────────────────────────
+    tlCtx.fillStyle = '#1e3a5c';          // dark blue groove
+    tlCtx.fillRect(0, TY, ancPx, TH);
+    if (curX > 0) {
+        tlCtx.fillStyle = '#4488dd';      // bright blue fill
+        tlCtx.fillRect(0, TY, Math.min(ancPx, curX), TH);
+    }
+    tlCtx.strokeStyle = '#5599ee'; tlCtx.lineWidth = 1;
+    tlCtx.strokeRect(0.5, TY + 0.5, ancPx - 1, TH - 1);
+
+    // ── Gap — under construction ────────────────────────────────────────────
+    tlCtx.fillStyle = '#222';
+    tlCtx.fillRect(ancPx, TY, TL.GAP_PX, TH);
+    tlCtx.save();
+    tlCtx.beginPath(); tlCtx.rect(ancPx, TY, TL.GAP_PX, TH); tlCtx.clip();
+    tlCtx.strokeStyle = '#666'; tlCtx.lineWidth = 1.5;
+    for (let gx = ancPx - TH; gx < ancPx + TL.GAP_PX + TH; gx += 6) {
+        tlCtx.beginPath(); tlCtx.moveTo(gx, TY); tlCtx.lineTo(gx + TH, TY + TH); tlCtx.stroke();
+    }
+    tlCtx.restore();
+    tlCtx.font = '10px sans-serif'; tlCtx.textAlign = 'center'; tlCtx.fillStyle = '#aaa';
+    tlCtx.fillText('🚧', ancPx + TL.GAP_PX / 2, TY + TH - 1);
+
+    // ── Modern track ────────────────────────────────────────────────────────
+    tlCtx.fillStyle = '#1a3a1a';          // dark green groove
+    tlCtx.fillRect(modX, TY, TL.MOD_PX, TH);
+    if (curY >= TL.MOD_MIN) {
+        tlCtx.fillStyle = '#44aa55';      // bright green fill
+        const mf = TL.MOD_PX * (curY - TL.MOD_MIN) / (TL.MOD_MAX - TL.MOD_MIN);
+        tlCtx.fillRect(modX, TY, Math.min(TL.MOD_PX, mf), TH);
+    }
+    tlCtx.strokeStyle = '#55bb66'; tlCtx.lineWidth = 1;
+    tlCtx.strokeRect(modX + 0.5, TY + 0.5, TL.MOD_PX - 1, TH - 1);
+
+    // ── Hover highlight ─────────────────────────────────────────────────────
+    if (tlHoverX >= 0 && tlXToYear(tlHoverX) !== null) {
+        tlCtx.fillStyle = 'rgba(255,255,180,0.3)';
+        tlCtx.fillRect(Math.round(tlHoverX) - 0.5, TY, 2, TH);
+    }
+
+    // ── Century ticks ───────────────────────────────────────────────────────
+    for (let y = Math.ceil(TL.ANCT_MIN / 100) * 100; y <= TL.ANCT_MAX; y += 100) {
+        const tx = Math.round(tlYearToX(y));
+        const isMil = (y % 1000 === 0);
+        tlCtx.fillStyle = isMil ? '#88bbee' : '#4477aa';
+        tlCtx.fillRect(tx, TY + TH, 1, isMil ? 6 : 3);
+        if (isMil && y !== 0 && y !== TL.ANCT_MIN) {
+            tlCtx.font = '8px sans-serif'; tlCtx.textAlign = 'center'; tlCtx.fillStyle = '#88aacc';
+            tlCtx.fillText(y < 0 ? `${Math.abs(y)} BCE` : `${y} CE`, tx, TY + TH + 15);
+        }
+    }
+    // Modern decade ticks
+    for (let y = 2010; y < TL.MOD_MAX; y += 5) {
+        tlCtx.fillStyle = '#448855';
+        tlCtx.fillRect(Math.round(tlYearToX(y)), TY + TH, 1, 3);
+    }
+
+    // ── Edge labels ─────────────────────────────────────────────────────────
+    tlCtx.font = '8px sans-serif'; tlCtx.fillStyle = '#88aacc';
+    tlCtx.textAlign = 'left';  tlCtx.fillText('2400 BCE', 1, TY + TH + 14);
+    const ancEdgeLbl = TL.ANCT_MAX < 0 ? `${Math.abs(TL.ANCT_MAX)} BCE` : `${TL.ANCT_MAX} CE`;
+    tlCtx.textAlign = 'right'; tlCtx.fillText(ancEdgeLbl, ancPx - 1, TY + TH + 14);
+    tlCtx.fillStyle = '#88cc88';
+    const modLbl = TL.MOD_MAX === TL.MOD_MIN ? `${TL.MOD_MIN} CE` : `${TL.MOD_MIN}`;
+    tlCtx.textAlign = 'left';  tlCtx.fillText(modLbl, modX + 1, TY + TH + 14);
+    if (TL.MOD_MAX !== TL.MOD_MIN)
+        { tlCtx.textAlign = 'right'; tlCtx.fillText(`${TL.MOD_MAX}`, modX + TL.MOD_PX - 1, TY + TH + 14); }
+
+    // ── Current year indicator ──────────────────────────────────────────────
+    const cx = Math.round(curX);
+    tlCtx.fillStyle = '#ffffff';
+    tlCtx.fillRect(cx - 1, TY - 2, 2, TH + 4);
+    tlCtx.beginPath();
+    tlCtx.moveTo(cx,     TY - 5);
+    tlCtx.lineTo(cx + 4, TY - 1);
+    tlCtx.lineTo(cx,     TY + 3);
+    tlCtx.lineTo(cx - 4, TY - 1);
+    tlCtx.closePath();
+    tlCtx.fillStyle = '#ffffff'; tlCtx.fill();
+    tlCtx.strokeStyle = '#003366'; tlCtx.lineWidth = 1; tlCtx.stroke();
+}
 
 function syncTimelineFromDate() {
-    const y = parseFloat(document.getElementById('mapDate').value) || -2400;
-    timelineSlider.value = Math.max(-2400, Math.min(2025, y));
+    const y = parseFloat(document.getElementById('mapDate').value) || TL.ANCT_MIN;
     timelineYearEl.textContent = fmtYearInt(y);
+    drawTimeline();
 }
 syncTimelineFromDate();
 
 document.getElementById('mapDate').addEventListener('change', syncTimelineFromDate);
 document.getElementById('mapDate').addEventListener('input',  syncTimelineFromDate);
 
-timelineSlider.addEventListener('input', () => {
-    const raw = parseInt(timelineSlider.value);
+function resizeTimeline() {
+    timelineCanvas.height = 34;
+    timelineCanvas.width  = Math.max(300, timelineCanvas.offsetWidth || 300);
+    drawTimeline();
+}
+window.addEventListener('resize', resizeTimeline);
+if (window.ResizeObserver) {
+    new ResizeObserver(resizeTimeline).observe(timelineCanvas);
+} else {
+    setTimeout(resizeTimeline, 0);
+}
+
+function tlSetYear(px) {
+    const raw = tlXToYear(px);
+    if (raw === null) return;
     const prev = parseFloat(document.getElementById('mapDate').value) || 0;
-    const y = skipYear0(prev, raw);
+    const y = skipYear0(prev, Math.round(raw));
     document.getElementById('mapDate').value = y;
     timelineYearEl.textContent = fmtYearInt(y);
     scheduleRender();
+    drawTimeline();
+}
+
+timelineCanvas.addEventListener('mousedown', e => {
+    e.preventDefault();
+    tlDragging = true;
+    tlSetYear(e.offsetX);
 });
+
+timelineCanvas.addEventListener('mousemove', e => {
+    tlHoverX = e.offsetX;
+    const year = tlXToYear(e.offsetX);
+    if (year !== null) {
+        timelineTooltip.textContent = fmtYearInt(Math.round(year) || -1);
+        timelineTooltip.style.display = 'block';
+        const rect = timelineCanvas.getBoundingClientRect();
+        timelineTooltip.style.left = (e.clientX - timelineTooltip.offsetWidth / 2) + 'px';
+        timelineTooltip.style.top  = (rect.top - timelineTooltip.offsetHeight - 6) + 'px';
+        timelineCanvas.style.cursor = 'pointer';
+    } else {
+        timelineTooltip.style.display = 'none';
+        timelineCanvas.style.cursor = 'not-allowed';
+    }
+    if (tlDragging && year !== null) tlSetYear(e.offsetX);
+    else drawTimeline();
+});
+
+timelineCanvas.addEventListener('mouseleave', () => {
+    tlHoverX = -1; tlDragging = false;
+    timelineTooltip.style.display = 'none';
+    timelineCanvas.style.cursor = 'default';
+    drawTimeline();
+});
+
+document.addEventListener('mouseup', () => { tlDragging = false; });
 
 // ── Bookmarks ─────────────────────────────────────────────────────────────────
 function loadBookmarks() {

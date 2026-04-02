@@ -389,6 +389,7 @@ class MapRenderer {
         ctx.font         = 'bold 10px Arial';
         ctx.textBaseline = 'middle';
         ctx.textAlign    = 'left';
+        ctx.lineJoin     = 'round';
         for (const [name, { x, y, r }] of seen) {
             const tx = x + r + 3;
             const ty = y;
@@ -647,6 +648,7 @@ class MapRenderer {
 
         ctx.font         = '10px Arial, sans-serif';
         ctx.textBaseline = 'alphabetic';
+        ctx.lineJoin     = 'round';
 
         const placed = [];  // bounding boxes of successfully placed labels
 
@@ -817,6 +819,7 @@ class MapRenderer {
         // ── Greedy placement ──────────────────────────────────────────────
         const W = ctx.canvas.width, H = ctx.canvas.height;
         ctx.textBaseline = 'middle';
+        ctx.lineJoin     = 'round';
 
         const placed = [];
         const overlaps = r => placed.some(p =>
