@@ -47,7 +47,14 @@ if ([string]::IsNullOrWhiteSpace($msg)) {
     $msg = "Update mapper data and code — $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
 }
 
-# ── Step 4: Stage, commit, push ───────────────────────────────────────────────
+# ── Step 4: Write app version into version.json ───────────────────────────────
+$versionFile = "$MapperDir\version.json"
+$versionObj  = Get-Content $versionFile -Raw | ConvertFrom-Json
+$versionObj.app = Get-Date -Format 'yyyy-MM-dd'
+$versionObj | ConvertTo-Json | Set-Content $versionFile
+Write-Host "App version stamped: $($versionObj.app)" -ForegroundColor Cyan
+
+# ── Step 5: Stage, commit, push ───────────────────────────────────────────────
 Write-Host ""
 Write-Host "Staging files..." -ForegroundColor Yellow
 git add mapper/

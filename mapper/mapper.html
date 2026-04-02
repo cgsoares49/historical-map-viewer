@@ -380,9 +380,10 @@
             <div>
                 <div style="line-height:1.3;">
                     <span style="color:#ffffff; font-size:13px; font-weight:bold; letter-spacing:0.5px;">MAPPER</span>
-                    <span style="color:#90d4a0; font-size:9px; font-style:italic; margin-left:5px;">using Vibe Mapping</span>
+                    <span style="color:#90d4a0; font-size:11px; font-style:italic; margin-left:5px;">using Vibe Mapping</span>
                 </div>
-                <div style="color:#6dbf8a; font-size:9px; font-style:italic; line-height:1.2;">the atlas for time travelers</div>
+                <div style="color:#6dbf8a; font-size:11px; font-style:italic; line-height:1.2;">the atlas for time travelers</div>
+                <div id="versionInfo" style="color:#4a9e6a; font-size:9px; line-height:1.4; margin-top:1px;">…</div>
             </div>
         </div>
         <div class="tb-row">
@@ -414,58 +415,14 @@
             <input type="number" id="yrPerStep" value="0.1" min="0.1" step="0.1" title="Years per step" style="width:52px;">
             <span class="tb-lbl">yr/step</span>
         </div>
-    </div>
-
-    <!-- ── Run ── -->
-    <div class="tb-group">
-        <div class="tb-label">Run</div>
-        <div class="tb-row">
-            <button class="btn-play" id="btnReverse" title="Run backward">&lt;=</button>
-            <button class="btn-play" id="btnPlay"    title="Run forward">=&gt;</button>
-        </div>
-        <div class="tb-row">
-            <input type="number" id="secPerYr" value="2" min="0.1" step="0.1" title="Seconds per year" style="width:52px;">
-            <span class="tb-lbl">sec/y</span>
-        </div>
-    </div>
-
-    <!-- ── Movie ── -->
-    <div class="tb-group">
-        <div class="tb-label">Movie</div>
-        <div class="tb-row">
-            <button class="btn-play" id="btnMovieRec"    title="Start recording (runs animation forward)">⏺ REC</button>
-            <button class="btn-play" id="btnMoviePause"  title="Pause / resume" disabled>⏸</button>
-            <button class="btn-play" id="btnMovieStop"   title="Stop recording" disabled>⏹ STOP</button>
-            <button class="btn-save" id="btnMovieSave"   title="Save movie file" disabled style="width:42px;">💾 Save</button>
-        </div>
-        <div class="tb-row">
-            <label class="tb-check" title="Skip delay when map is unchanged — unchanged periods rush by in the video">
-                <input type="checkbox" id="movieSkipUnchanged" checked> Skip inaction
-            </label>
-        </div>
-        <div class="tb-row">
-            <span id="movieStatus" style="font-size:10px; color:#888; white-space:nowrap;">ready</span>
-        </div>
-    </div>
-
-    <!-- ── Center + Display ── -->
-    <div class="tb-group">
-        <div class="tb-label">Center Coordinates</div>
-        <div class="tb-row">
-            <span class="tb-lbl" style="width:22px;">Lon</span>
-            <input type="number" id="centerLon" value="0" min="-180" max="180" step="1" style="width:72px;" title="Center longitude">
-            <span class="tb-lbl" style="width:22px;">Lat</span>
-            <input type="number" id="centerLat" value="0" min="-90" max="90" step="1"   style="width:72px;" title="Center latitude">
-        </div>
-        <div class="tb-row" style="margin-top:2px; gap:5px;">
+        <div class="tb-row" style="margin-top:3px;">
             <button class="btn-display" id="btnDisplay">Display</button>
-            <button class="btn-world"   id="btnWorld" style="height:42px;">WORLD<br>VIEW</button>
         </div>
     </div>
 
     <!-- ── Pan ── -->
     <div class="tb-group">
-        <div class="tb-label">Pan</div>
+        <div class="tb-label">Move</div>
         <div class="pan-grid">
             <button class="pan-btn" id="pan-nw" title="Pan Northwest">↖</button>
             <button class="pan-btn" id="pan-n"  title="Pan North">↑</button>
@@ -509,46 +466,40 @@
         <input type="number" id="zoomCustom" value="" min="0" step="1"
                style="display:none; width:88px; margin-top:2px;"
                title="Enter custom zoom value">
-        <button class="btn-home" id="btnHome" style="width:88px; margin-top:3px;">HOME</button>
         <input type="range" id="zoomSlider" min="1" max="16" step="1" value="6" title="Zoom scrubber (zoom 0 / world view: use WORLD VIEW button)">
+        <div style="margin-top:3px; border-top:1px solid #1a3050; padding-top:3px;">
+            <div class="tb-label" style="margin-bottom:2px;">Map Center</div>
+            <div class="tb-row" style="gap:3px;">
+                <span class="tb-lbl" style="width:52px; font-size:9px;">Longitude</span>
+                <input type="number" id="centerLon" value="0" min="-180" max="180" step="1" style="width:60px;" title="Center longitude">
+            </div>
+            <div class="tb-row" style="gap:3px; margin-top:1px;">
+                <span class="tb-lbl" style="width:52px; font-size:9px;">Latitude</span>
+                <input type="number" id="centerLat" value="0" min="-90" max="90" step="1" style="width:60px;" title="Center latitude">
+            </div>
+        </div>
     </div>
 
-    <!-- ── Projection ── -->
+    <!-- ── Run / Movie ── -->
     <div class="tb-group">
-        <div class="tb-label">Projection</div>
-        <select id="projType" style="width:116px;" title="Map projection">
-            <option value="equirect" selected>Equirectangular</option>
-            <option value="robinson" disabled style="color:#aaa;">Robinson</option>
-            <option value="lcc">Lambert Conic</option>
-        </select>
-    </div>
-
-    <!-- ── Pointer Coords ── -->
-    <div class="tb-group">
-        <div class="tb-label">Pointer</div>
-        <div class="tb-row">
-            <span class="tb-lbl" style="width:10px;">X</span>
-            <input type="text" id="ptrX" class="ptr-ro" readonly value="" title="Pointer longitude">
+        <div class="tb-label">Run</div>
+        <div class="tb-row" style="gap:3px;">
+            <button class="btn-play" id="btnReverse" title="Run backward">&lt;=</button>
+            <button class="btn-play" id="btnPlay"    title="Run forward">=&gt;</button>
+            <input type="number" id="secPerYr" value="2" min="0.1" step="0.1" title="Seconds per year" style="width:40px;">
+            <span class="tb-lbl">s/y</span>
         </div>
-        <div class="tb-row">
-            <span class="tb-lbl" style="width:10px;">Y</span>
-            <input type="text" id="ptrY" class="ptr-ro" readonly value="" title="Pointer latitude">
+        <div class="tb-row" style="margin-top:3px; border-top:1px solid #1a3050; padding-top:3px; gap:3px;">
+            <button class="btn-play" id="btnMovieRec"   title="Record — runs animation forward">⏺</button>
+            <button class="btn-play" id="btnMoviePause" title="Pause / resume" disabled>⏸</button>
+            <button class="btn-play" id="btnMovieStop"  title="Stop recording" disabled>⏹</button>
+            <button class="btn-save" id="btnMovieSave"  title="Save movie file" disabled>💾</button>
         </div>
-        <div class="tb-row" style="margin-top:1px;">
-            <input type="text" id="horScale"  class="ptr-ro" readonly value="" title="Horizontal span (degrees)">
-            <input type="text" id="vertScale" class="ptr-ro" readonly value="" title="Vertical span (degrees)">
-        </div>
-        <div class="tb-lbl" style="font-size:10px;">horiz° / vert°</div>
-    </div>
-
-    <!-- ── Status ── -->
-    <div class="tb-group" style="flex:1; min-width:200px; max-width:320px;">
-        <div class="tb-label">Status</div>
-        <div id="status">Press Display to render map.</div>
-        <div id="progress-bar" style="margin-top:1px;"><div id="progress-fill"></div></div>
-        <div class="tb-row" style="margin-top:2px;">
-            <div id="tile-count" style="color:#00c8f0;font-size:10px;flex:1;"></div>
-            <button class="btn-abort" id="btnAbort" disabled>ABORT</button>
+        <div class="tb-row" style="gap:4px;">
+            <label class="tb-check" title="Skip delay when map is unchanged — unchanged periods rush by in the video">
+                <input type="checkbox" id="movieSkipUnchanged" checked> Skip
+            </label>
+            <span id="movieStatus" style="font-size:10px; color:#888; white-space:nowrap; flex:1;">ready</span>
         </div>
     </div>
 
@@ -559,8 +510,7 @@
         <label class="tb-check"><input type="checkbox" id="showInlandWaters" checked> Inland waters</label>
         <label class="tb-check disabled" title="Rivers data not included in this build"><input type="checkbox" id="showRivers" disabled> Rivers</label>
         <label class="tb-check"><input type="checkbox" id="showBorders" checked> Boundaries</label>
-        <label class="tb-check"><input type="checkbox" id="showGrid"> Tile grid</label>
-        <label class="tb-check disabled"><input type="checkbox" disabled> Grid labels</label>
+        <label class="tb-check"><input type="checkbox" id="showCoordGrid"> Coord grid</label>
     </div>
 
     <!-- ── Show options ── -->
@@ -570,17 +520,29 @@
         <label class="tb-check"><input type="checkbox" id="showCityNames"> City names</label>
         <label class="tb-check"><input type="checkbox" id="showCountryLabels" checked> Country labels</label>
         <label class="tb-check"><input type="checkbox" id="showDots" checked> Tribal dots</label>
-        <div class="tb-row" style="margin-top:2px;">
-            <span class="tb-lbl">Detail</span>
-            <input type="number" id="cityDetail" value="10" min="0" max="99" style="width:42px;">
+    </div>
+
+    <!-- ── Detail Control ── -->
+    <div class="tb-group" style="min-width:0;">
+        <div class="tb-label">Detail Control</div>
+        <div class="tb-row" style="gap:3px;">
+            <span class="tb-lbl" style="width:36px; font-size:9px;">Min px</span>
+            <input type="number" id="minPixels" value="500" min="100" style="width:50px;" title="Minimum polygon pixels — smaller polygons are skipped">
+        </div>
+        <div class="tb-row" style="gap:3px; margin-top:2px;">
+            <span class="tb-lbl" style="width:36px; font-size:9px;">Detail</span>
+            <input type="number" id="cityDetail" value="10" min="0" max="99" style="width:50px;" title="City detail level">
+        </div>
+        <div class="tb-row" style="margin-top:3px; border-top:1px solid #1a3050; padding-top:3px; gap:3px;">
+            <button class="btn-home"  id="btnHome"  style="flex:1;">HOME</button>
+            <button class="btn-world" id="btnWorld" style="flex:1;">WORLD<br>VIEW</button>
         </div>
     </div>
 
-    <!-- ── Min pixels / Save ── -->
+    <!-- ── Save / Projection ── -->
     <div class="tb-group">
-        <div class="tb-label">Min Pixels</div>
-        <input type="number" id="minPixels" value="500" min="100" style="width:72px;">
-        <div class="tb-row" style="margin-top:3px;">
+        <div class="tb-label">Save</div>
+        <div class="tb-row">
             <button class="btn-save" id="btnSave" style="width:54px;">Save Map</button>
             <button class="btn-save" id="btnSaveSVG" style="width:54px;">Save SVG</button>
             <select id="saveRes" style="width:42px;height:22px;font-size:11px;" title="Save resolution multiplier (PNG only)">
@@ -588,6 +550,14 @@
                 <option value="2" selected>2×</option>
                 <option value="3">3×</option>
                 <option value="4">4×</option>
+            </select>
+        </div>
+        <div style="margin-top:3px; border-top:1px solid #1a3050; padding-top:3px;">
+            <div class="tb-label" style="margin-bottom:2px;">Projection</div>
+            <select id="projType" style="width:116px;" title="Map projection">
+                <option value="equirect" selected>Equirectangular</option>
+                <option value="robinson" disabled style="color:#aaa;">Robinson</option>
+                <option value="lcc">Lambert Conic</option>
             </select>
         </div>
     </div>
@@ -601,8 +571,29 @@
             <input type="text" id="txtGreen" readonly value="" style="width:35px;color:#66ff66;" title="Green">
             <input type="text" id="txtBlue"  readonly value="" style="width:35px;color:#6699ff;" title="Blue">
         </div>
+        <div class="tb-row" style="margin-top:3px; border-top:1px solid #1a3050; padding-top:3px; gap:3px;">
+            <span class="tb-lbl" style="width:52px; font-size:9px;">Longitude</span>
+            <input type="text" id="ptrX" class="ptr-ro" readonly value="" title="Pointer longitude" style="width:90px;">
+        </div>
+        <div class="tb-row" style="gap:3px; margin-top:1px;">
+            <span class="tb-lbl" style="width:52px; font-size:9px;">Latitude</span>
+            <input type="text" id="ptrY" class="ptr-ro" readonly value="" title="Pointer latitude" style="width:90px;">
+        </div>
     </div>
 
+    <!-- ── Status ── -->
+    <div class="tb-group" style="flex:1; min-width:200px; max-width:320px;">
+        <div class="tb-label">Status</div>
+        <div id="status">Press Display to render map.</div>
+        <div id="progress-bar" style="margin-top:1px;"><div id="progress-fill"></div></div>
+        <div class="tb-row" style="margin-top:2px;">
+            <div id="tile-count" style="color:#00c8f0;font-size:10px;flex:1;"></div>
+            <button class="btn-abort" id="btnAbort" disabled>ABORT</button>
+        </div>
+        <div style="margin-top:3px; border-top:1px solid #1a3050; padding-top:3px;">
+            <label class="tb-check disabled" title="Developer tool: shows tile file boundaries"><input type="checkbox" id="showGrid"> Tile grid</label>
+        </div>
+    </div>
 
 </div><!-- #toolbar -->
 
@@ -628,7 +619,12 @@
     <div><span class="hc">show/go [place]</span> — navigate to a place</div>
     <div><span class="hc">show [place] at [year]</span> — navigate + set date</div>
     <div><span class="hc">date [year]</span> — set the date (e.g. "date 100 BCE")</div>
+    <div><span class="hc">zoom [N]</span> — set zoom to specific value (e.g. "zoom 7")</div>
     <div><span class="hc">zoom in/out [N]</span> — zoom N steps (default 1)</div>
+    <div><span class="hc">center [lon] [lat]</span> — set center (e.g. "center 13 42")</div>
+    <div><span class="hc">home</span> — reset to default view</div>
+    <div><span class="hc">world</span> — show world context view</div>
+    <div><span class="hc">toggle/show/hide [layer]</span> — coasts, borders, dots, grid, labels, water</div>
     <div><span class="hc">run forward / backward</span> — start animation</div>
     <div><span class="hc">stop</span> — stop animation</div>
     <div><span class="hc">speed [N]</span> — set seconds per year (e.g. "speed 2")</div>
@@ -637,6 +633,9 @@
     <div><span class="hc">info [place]</span> — show info popup for a place</div>
     <div><span class="hc">dismiss</span> — close info popup</div>
     <div style="margin-top:8px;color:#506070;font-size:10px;">Years: "100 BCE", "-100", "1648 CE", "1648"</div>
+    <div style="margin-top:8px;border-top:1px solid #1a3050;padding-top:6px;color:#506070;font-size:10px;font-style:italic;">Map interactions</div>
+    <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Alt+click</span> — drop distance point 1; Alt+click again for point 2 and distance</div>
+    <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Escape</span> — clear distance measurement</div>
 </div>
 
 <!-- ── Bookmark list ── -->
@@ -706,6 +705,11 @@ let selDragStartLon = 0, selDragStartLat = 0;
 let geodataRefs = {};
 fetch('refs.json').then(r => r.json()).then(d => { geodataRefs = d; }).catch(() => {});
 
+fetch('version.json').then(r => r.json()).then(v => {
+    const el = document.getElementById('versionInfo');
+    if (el) el.textContent = `app ${v.app || '?'} · data ${v.data || '?'}`;
+}).catch(() => {});
+
 async function saveRefs() {
     const statusEl = document.getElementById('infoPopupSaveStatus');
     try {
@@ -728,6 +732,7 @@ let   colorLookup  = null;
 let   mapRenderer  = null;
 let   colorNameMap = new Map();  // packed RGB integer → full area name
 let   lastHoveredCountry = null; // { name, x, y } — updated on mousemove
+let   distPt1 = null, distPt2 = null, distPreviewGeo = null; // distance measurer
 
 // Build reverse lookup from rendered tile PAR data for a given projection + year.
 // Tiles are already cached after render so this is fast.
@@ -1210,7 +1215,7 @@ document.getElementById('pan-center').addEventListener('click', e => {
         const opt = [...sel.options].find(o => parseInt(o.value) === next);
         if (opt) sel.value = next; else { sel.value = 'custom'; document.getElementById('zoomCustom').style.display=''; document.getElementById('zoomCustom').value = next; }
     }
-    drawOverlay(); updateScaleDisplay(); scheduleRender();
+    drawOverlay(); scheduleRender();
 });
 
 document.getElementById('pan-n' ).addEventListener('click', e => { e.stopPropagation(); pan( 0,  1); });
@@ -1241,7 +1246,8 @@ document.getElementById('minPixels'       ).addEventListener('change', scheduleR
 document.getElementById('showCities'    ).addEventListener('change', scheduleRender);
 document.getElementById('showCityNames' ).addEventListener('change', scheduleRender);
 document.getElementById('cityDetail'    ).addEventListener('change', scheduleRender);
-document.getElementById('showGrid'   ).addEventListener('change', drawOverlay);
+document.getElementById('showGrid'      ).addEventListener('change', drawOverlay);
+document.getElementById('showCoordGrid').addEventListener('change', drawOverlay);
 document.getElementById('mapDate'    ).addEventListener('change', scheduleRender);
 
 // Redraw overlay when zoom or center changes
@@ -1251,22 +1257,13 @@ document.getElementById('zoom').addEventListener('change', () => {
     customEl.style.display = isCustom ? '' : 'none';
     if (isCustom) { customEl.focus(); return; }
     drawOverlay();
-    updateScaleDisplay();
+    
 });
-document.getElementById('zoomCustom').addEventListener('input', () => { drawOverlay(); updateScaleDisplay(); });
+document.getElementById('zoomCustom').addEventListener('input', () => { drawOverlay(); });
 ['centerLon', 'centerLat'].forEach(id => {
     document.getElementById(id).addEventListener('input', drawOverlay);
 });
 
-// Scale readout: update whenever zoom changes
-function updateScaleDisplay() {
-    const { zoom } = getInputs();
-    const degX = 360 / (zoom + 1);
-    const degY = degX * canvas.height / canvas.width;
-    document.getElementById('horScale' ).value = degX.toFixed(2);
-    document.getElementById('vertScale').value = degY.toFixed(2);
-}
-updateScaleDisplay();
 
 // ── Zoom scrubber ─────────────────────────────────────────────────────────────
 const zoomSlider = document.getElementById('zoomSlider');
@@ -1287,7 +1284,7 @@ zoomSlider.addEventListener('input', () => {
     const opt = [...sel.options].find(o => parseInt(o.value) === z);
     if (opt) { sel.value = z; document.getElementById('zoomCustom').style.display = 'none'; }
     else { sel.value = 'custom'; document.getElementById('zoomCustom').style.display = ''; document.getElementById('zoomCustom').value = z; }
-    drawOverlay(); updateScaleDisplay();
+    drawOverlay();
     // Debounce: only fire a render 250ms after the user stops dragging
     clearTimeout(_zoomSliderTimer);
     _zoomSliderTimer = setTimeout(() => scheduleRender(), 250);
@@ -1574,8 +1571,45 @@ function executeVibeCommand(text) {
         const sel = document.getElementById('zoom');
         sel.value = newZoom;
         document.getElementById('zoomCustom').style.display = 'none';
-        drawOverlay(); updateScaleDisplay(); scheduleRender();
+        drawOverlay(); scheduleRender();
         vibeAddHistory(originalText, `→ zoom ${newZoom} (${(360/(newZoom+1)).toFixed(1)}°)`, false);
+        return;
+    }
+
+    // Set zoom to specific value — "zoom 7", "set zoom 35", "zoom to 119"
+    const zoomSetMatch = s.match(/\b(?:set\s+)?zoom\s+(?:to\s+)?(\d+)\b/i);
+    if (zoomSetMatch) {
+        const val     = parseInt(zoomSetMatch[1]);
+        const zoomSel = document.getElementById('zoom');
+        const zoomOpt = [...zoomSel.options].find(o => parseInt(o.value) === val);
+        if (zoomOpt) {
+            zoomSel.value = val;
+            document.getElementById('zoomCustom').style.display = 'none';
+        } else {
+            zoomSel.value = 'custom';
+            document.getElementById('zoomCustom').style.display = '';
+            document.getElementById('zoomCustom').value = val;
+        }
+        drawOverlay(); scheduleRender();
+        vibeAddHistory(originalText, `→ zoom ${val} (${(360/(val+1)).toFixed(1)}°)`, false);
+        return;
+    }
+
+    // Home — reset to lon=0 lat=0 zoom=7 + world context
+    if (/^\s*home\s*$/i.test(s)) {
+        document.getElementById('centerLon').value = 0;
+        document.getElementById('centerLat').value = 0;
+        document.getElementById('zoom').value = 7;
+        document.getElementById('zoomCustom').style.display = 'none';
+        renderWorldContext();
+        vibeAddHistory(originalText, '→ home view', false);
+        return;
+    }
+
+    // World view
+    if (/^\s*world(?:\s+view)?\s*$/i.test(s)) {
+        renderWorldContext();
+        vibeAddHistory(originalText, '→ world view', false);
         return;
     }
 
@@ -1700,6 +1734,45 @@ function executeVibeCommand(text) {
         return;
     }
 
+    // Toggle/show/hide layers — "toggle borders", "show coasts", "hide dots"
+    const LAYER_IDS = {
+        coast: 'showCoasts', coasts: 'showCoasts',
+        border: 'showBorders', borders: 'showBorders', boundary: 'showBorders', boundaries: 'showBorders',
+        dot: 'showDots', dots: 'showDots', tribal: 'showDots',
+        grid: 'showCoordGrid',
+        label: 'showCountryLabels', labels: 'showCountryLabels',
+        water: 'showInlandWaters', inland: 'showInlandWaters', lakes: 'showInlandWaters',
+    };
+    const layerToggleMatch = s.match(/\b(toggle|show|hide)\s+(coasts?|borders?|boundar(?:y|ies)|dots?|tribal|grid|labels?|water|inland|lakes?)\b/i);
+    if (layerToggleMatch) {
+        const verb     = layerToggleMatch[1].toLowerCase();
+        const layerKey = layerToggleMatch[2].toLowerCase();
+        const chk      = document.getElementById(LAYER_IDS[layerKey]);
+        if (verb === 'toggle') chk.checked = !chk.checked;
+        else chk.checked = (verb === 'show');
+        scheduleRender();
+        vibeAddHistory(originalText, `→ ${layerKey} ${chk.checked ? 'on' : 'off'}`, false);
+        return;
+    }
+
+    // Set center coordinates — "center 13 42", "center on 30 -10"
+    const centerMatch = s.match(/\bcenter(?:\s+on)?\s+(-?\d+(?:\.\d+)?)\s+(-?\d+(?:\.\d+)?)\b/i);
+    if (centerMatch) {
+        const lon = parseFloat(centerMatch[1]);
+        const lat = parseFloat(centerMatch[2]);
+        if (lat >= -90 && lat <= 90 && lon >= -180 && lon <= 180) {
+            document.getElementById('centerLon').value = lon;
+            document.getElementById('centerLat').value = lat;
+            scheduleRender();
+            const lonStr = `${Math.abs(lon)}°${lon >= 0 ? 'E' : 'W'}`;
+            const latStr = `${Math.abs(lat)}°${lat >= 0 ? 'N' : 'S'}`;
+            vibeAddHistory(originalText, `→ center ${lonStr} ${latStr}`, false);
+        } else {
+            vibeAddHistory(originalText, 'coordinates out of range', true);
+        }
+        return;
+    }
+
     // Step 1: extract date — several accepted forms:
     //   leading minus:  -100, -100bce, - 100  → BCE (minus always wins)
     //   suffix only:    100BCE, 100 bce, 100ce, 2400 BC
@@ -1804,7 +1877,7 @@ function vibeNavigateTo(foundName, bounds, year, label) {
     const centerLabel = ` · ${cLon >= 0 ? cLon.toFixed(1)+'°E' : Math.abs(cLon).toFixed(1)+'°W'}, ${cLat >= 0 ? cLat.toFixed(1)+'°N' : Math.abs(cLat).toFixed(1)+'°S'}`;
     vibeAddHistory(label || foundName, `→ ${toTitleCase(foundName)}${yearLabel}${centerLabel}`, false);
 
-    updateScaleDisplay();
+    
     drawOverlay();
     scheduleRender();
 }
@@ -1940,13 +2013,131 @@ async function doRender(skipColorMap = false) {
     }
 
     btn.disabled = false;
-    updateScaleDisplay();
+    
+}
+
+// ── Distance measurer ─────────────────────────────────────────────────────────
+function haversineKm(lat1, lon1, lat2, lon2) {
+    const R  = 6371;
+    const φ1 = lat1 * Math.PI / 180, φ2 = lat2 * Math.PI / 180;
+    const dφ = (lat2 - lat1) * Math.PI / 180;
+    const dλ = (lon2 - lon1) * Math.PI / 180;
+    const a  = Math.sin(dφ/2)**2 + Math.cos(φ1) * Math.cos(φ2) * Math.sin(dλ/2)**2;
+    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+function _drawDistanceMeasure(proj) {
+    if (!proj || !distPt1) return;
+    const p1  = proj.geoToPixel(distPt1.lon, distPt1.lat);
+    const end = distPt2 || distPreviewGeo;
+
+    octx.save();
+    // Point 1
+    octx.fillStyle = '#ffff00'; octx.strokeStyle = '#000'; octx.lineWidth = 1.5;
+    octx.beginPath(); octx.arc(p1.x, p1.y, 5, 0, Math.PI * 2);
+    octx.fill(); octx.stroke();
+
+    if (end) {
+        const p2 = proj.geoToPixel(end.lon, end.lat);
+        // Line
+        octx.strokeStyle = '#ffff00'; octx.lineWidth = 1.5;
+        octx.setLineDash([6, 3]);
+        octx.beginPath(); octx.moveTo(p1.x, p1.y); octx.lineTo(p2.x, p2.y); octx.stroke();
+        octx.setLineDash([]);
+        // Point 2
+        octx.fillStyle = '#ffff00'; octx.strokeStyle = '#000'; octx.lineWidth = 1.5;
+        octx.beginPath(); octx.arc(p2.x, p2.y, 5, 0, Math.PI * 2);
+        octx.fill(); octx.stroke();
+        // Distance label
+        const km    = haversineKm(distPt1.lat, distPt1.lon, end.lat, end.lon);
+        const mi    = km * 0.621371;
+        const label = `${Math.round(km).toLocaleString()} km / ${Math.round(mi).toLocaleString()} mi`;
+        octx.font   = 'bold 11px sans-serif';
+        const tw    = octx.measureText(label).width;
+        const lx    = Math.max(2, Math.min((p1.x + p2.x) / 2 - tw / 2, overlay.width  - tw - 4));
+        const ly    = Math.max(14, Math.min((p1.y + p2.y) / 2 - 6,      overlay.height - 4));
+        octx.fillStyle = 'rgba(0,0,0,0.7)';
+        octx.fillRect(lx - 3, ly - 13, tw + 6, 17);
+        octx.fillStyle = '#ffff00';
+        octx.fillText(label, lx, ly);
+    }
+    octx.restore();
+}
+
+// ── Coordinate grid (graticule) ───────────────────────────────────────────────
+function _drawCoordGrid(proj) {
+    const W = overlay.width, H = overlay.height;
+    const SPACINGS = [0.25, 0.5, 1, 2, 5, 10, 15, 20, 30, 45, 90];
+    const spacing  = SPACINGS.find(s => proj.degX / s <= 6) || 90;
+
+    octx.save();
+    octx.font = '10px sans-serif';
+    const GRID_LINE    = 'rgba(255,255,255,0.22)';
+    const GRID_PRIME   = 'rgba(255,255,180,0.45)';  // equator / prime meridian
+    const LABEL_FILL   = 'rgba(255,255,255,0.92)';
+    const LABEL_STROKE = 'rgba(0,0,0,0.75)';
+
+    // ── longitude lines (vertical) ────────────────────────────────────────────
+    const lonStart = Math.ceil(proj.lon1 / spacing) * spacing;
+    for (let i = 0; ; i++) {
+        const lon = Math.round((lonStart + i * spacing) * 1e6) / 1e6;
+        if (lon > proj.lon2 + 0.001) break;
+        const px = proj.geoToPixel(lon, 0).x;
+
+        octx.strokeStyle = (lon === 0) ? GRID_PRIME : GRID_LINE;
+        octx.lineWidth   = (lon === 0) ? 1.2 : 0.8;
+        octx.setLineDash([5, 5]);
+        octx.beginPath(); octx.moveTo(px, 0); octx.lineTo(px, H); octx.stroke();
+        octx.setLineDash([]);
+
+        const label = lon === 0 ? '0°' : lon > 0 ? `${lon}°E` : `${-lon}°W`;
+        const lx = px + 2;
+        if (lx > 2 && lx < W - 25) {
+            octx.lineWidth = 2.5; octx.strokeStyle = LABEL_STROKE;
+            octx.strokeText(label, lx, 11);
+            octx.fillStyle = LABEL_FILL; octx.fillText(label, lx, 11);
+            octx.strokeStyle = LABEL_STROKE; octx.strokeText(label, lx, H - 3);
+            octx.fillStyle = LABEL_FILL;   octx.fillText(label, lx, H - 3);
+        }
+    }
+
+    // ── latitude lines (horizontal) ───────────────────────────────────────────
+    const latStart = Math.ceil(proj.lat1 / spacing) * spacing;
+    for (let i = 0; ; i++) {
+        const lat = Math.round((latStart + i * spacing) * 1e6) / 1e6;
+        if (lat > proj.lat2 + 0.001) break;
+        const py = proj.geoToPixel(0, lat).y;
+
+        octx.strokeStyle = (lat === 0) ? GRID_PRIME : GRID_LINE;
+        octx.lineWidth   = (lat === 0) ? 1.2 : 0.8;
+        octx.setLineDash([5, 5]);
+        octx.beginPath(); octx.moveTo(0, py); octx.lineTo(W, py); octx.stroke();
+        octx.setLineDash([]);
+
+        const label = lat === 0 ? '0°' : lat > 0 ? `${lat}°N` : `${-lat}°S`;
+        const ly = py - 2;
+        if (ly > 10 && ly < H - 4) {
+            const tw = octx.measureText(label).width;
+            octx.lineWidth = 2.5;
+            octx.strokeStyle = LABEL_STROKE; octx.strokeText(label, 3, ly);
+            octx.fillStyle = LABEL_FILL;     octx.fillText(label, 3, ly);
+            octx.strokeStyle = LABEL_STROKE; octx.strokeText(label, W - tw - 3, ly);
+            octx.fillStyle = LABEL_FILL;     octx.fillText(label, W - tw - 3, ly);
+        }
+    }
+
+    octx.restore();
 }
 
 // ── Overlay: tile grid + selection rect ─────────────────────────────────────
 function drawOverlay() {
     const proj = getProjection();
     octx.clearRect(0, 0, overlay.width, overlay.height);
+
+    if (document.getElementById('showCoordGrid').checked &&
+        document.getElementById('projType').value === 'equirect') {
+        _drawCoordGrid(proj);
+    }
 
     if (document.getElementById('showGrid').checked) {
         const tiles = tileManager.getTiles(proj);
@@ -1979,6 +2170,8 @@ function drawOverlay() {
     if (document.getElementById('projType').value === 'equirect') {
         _drawSelectionRect();
     }
+
+    _drawDistanceMeasure(contextProjection || proj);
 }
 
 function _isRobinson() {
@@ -2022,6 +2215,19 @@ function _inSelectionRect(mx, my) {
 }
 
 overlay.addEventListener('mousedown', e => {
+    // Alt+click: distance measurer
+    if (e.altKey && contextProjection) {
+        e.preventDefault();
+        const geo = contextProjection.pixelToGeo(e.offsetX, e.offsetY);
+        const pt  = { lon: geo.lon, lat: Math.max(-90, Math.min(90, geo.lat)) };
+        if (!distPt1 || distPt2) {
+            distPt1 = pt; distPt2 = null; distPreviewGeo = null;
+        } else {
+            distPt2 = pt; distPreviewGeo = null;
+        }
+        drawOverlay();
+        return;
+    }
     if (!contextProjection || _isRobinson()) return;
     const mx = e.offsetX, my = e.offsetY;
     if (_inSelectionRect(mx, my)) {
@@ -2065,8 +2271,16 @@ overlay.addEventListener('mousemove', e => {
         // Pointer coordinate readout
         if (contextProjection) {
             const geo = contextProjection.pixelToGeo(mx, my);
-            document.getElementById('ptrX').value = geo.lon.toFixed(2) + '°';
-            document.getElementById('ptrY').value = geo.lat.toFixed(2) + '°';
+            document.getElementById('ptrX').value = geo.lon.toFixed(4) + '°';
+            document.getElementById('ptrY').value = geo.lat.toFixed(4) + '°';
+            // Live preview for distance measurer
+            if (e.altKey && distPt1 && !distPt2) {
+                distPreviewGeo = { lon: geo.lon, lat: geo.lat };
+                drawOverlay();
+            } else if (distPreviewGeo) {
+                distPreviewGeo = null;
+                drawOverlay();
+            }
         }
         // Pixel color readout — sample map canvas directly
         const px = ctx.getImageData(mx, my, 1, 1).data;
@@ -2096,6 +2310,13 @@ overlay.addEventListener('mouseleave', () => {
 });
 
 overlay.style.cursor = 'crosshair';
+
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && (distPt1 || distPt2)) {
+        distPt1 = distPt2 = distPreviewGeo = null;
+        drawOverlay();
+    }
+});
 
 // ── Info Popup ───────────────────────────────────────────────────────────────
 function fmtYear(y) {
