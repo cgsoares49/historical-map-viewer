@@ -2536,6 +2536,11 @@ overlay.addEventListener('mouseleave', () => {
 
 overlay.style.cursor = 'crosshair';
 
+// Double-click on rendered map → return to world view / selection rectangle
+overlay.addEventListener('dblclick', () => {
+    if (_mapFullyRendered) renderWorldContext();
+});
+
 document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && (distPt1 || distPt2)) {
         distPt1 = distPt2 = distPreviewGeo = null;
