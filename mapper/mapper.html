@@ -417,7 +417,7 @@
     <div class="tb-group">
         <div class="tb-label">Date</div>
         <div class="tb-row">
-            <input type="text" id="mapDate" value="-2400" title="Map year (negative = BCE)">
+            <input type="text" id="mapDate" value="2000" title="Map year (negative = BCE)">
         </div>
         <div class="tb-row">
             <button class="btn-step" id="btnStepBack" title="Step back one interval">-1</button>
@@ -711,6 +711,9 @@ let contextProjection = new MapProjection(0, 0, 0, canvas.width, canvas.height);
 let selDragging     = false;
 let selDragStartX   = 0, selDragStartY   = 0;
 let selDragStartLon = 0, selDragStartLat = 0;
+
+let mapDragStart = null;   // { x, y, lon, lat } | null — drag-to-pan in rendered-map mode
+let mapDragging  = false;  // true once movement exceeds 5px threshold
 
 // ── References (loaded from refs.json) ───────────────────────────────────────
 let geodataRefs = {};
@@ -2415,7 +2418,7 @@ overlay.addEventListener('mousedown', e => {
     }
     if (!contextProjection || _isRobinson()) return;
     const mx = e.offsetX, my = e.offsetY;
-    if (_inSelectionRect(mx, my)) {
+    if (e.button === 0 && _inSelectionRect(mx, my)) {
         selDragging     = true;
         selDragStartX   = mx;
         selDragStartY   = my;
@@ -2424,23 +2427,35 @@ overlay.addEventListener('mousedown', e => {
         selDragStartLat = inp.centerLat;
         overlay.style.cursor = 'grabbing';
     } else {
-        const geo = contextProjection.pixelToGeo(mx, my);
-        const lon = Math.max(-180, Math.min(180, Math.round(geo.lon * 10) / 10));
-        const lat = Math.max(-90,  Math.min(90,  Math.round(geo.lat * 10) / 10));
-        document.getElementById('centerLon').value = lon;
-        document.getElementById('centerLat').value = lat;
         const r = _getSelectionPixelRect();
-        const fillsCanvas = r && r.w >= overlay.width - 2 && r.h >= overlay.height - 2;
-        if (fillsCanvas && mapRenderer) {
-            renderWorldContext();
+        const fills = r && r.w >= overlay.width - 2 && r.h >= overlay.height - 2;
+        if (fills && e.button === 0) {
+            // Start map drag
+            const inp = getInputs();
+            mapDragStart = { x: mx, y: my, lon: inp.centerLon, lat: inp.centerLat };
+            overlay.style.cursor = 'grabbing';
+            e.preventDefault();
         } else {
-            drawOverlay();
+            // Snap selection center (world-context click)
+            const geo = contextProjection.pixelToGeo(mx, my);
+            const lon = Math.max(-180, Math.min(180, Math.round(geo.lon * 10) / 10));
+            const lat = Math.max(-90,  Math.min(90,  Math.round(geo.lat * 10) / 10));
+            document.getElementById('centerLon').value = lon;
+            document.getElementById('centerLat').value = lat;
+            if (fills && mapRenderer) { renderWorldContext(); } else { drawOverlay(); }
         }
     }
 });
 
 overlay.addEventListener('mousemove', e => {
     const mx = e.offsetX, my = e.offsetY;
+    if (mapDragStart) {
+        const dx = mx - mapDragStart.x;
+        const dy = my - mapDragStart.y;
+        if (Math.hypot(dx, dy) > 5) mapDragging = true;
+        if (mapDragging) canvas.style.transform = `translate(${dx}px,${dy}px)`;
+        return;  // suppress pixel readout / cursor logic while dragging
+    }
     if (selDragging && contextProjection) {
         const dLon =  (mx - selDragStartX) / contextProjection.xScale;
         const dLat = -(my - selDragStartY) / contextProjection.yScale;
@@ -2452,7 +2467,9 @@ overlay.addEventListener('mousemove', e => {
     } else {
         const r2 = _getSelectionPixelRect();
         const rectFills = r2 && r2.w >= overlay.width - 2 && r2.h >= overlay.height - 2;
-        overlay.style.cursor = (!rectFills && _inSelectionRect(mx, my)) ? 'grab' : 'crosshair';
+        overlay.style.cursor = rectFills ? 'grab'
+            : _inSelectionRect(mx, my) ? 'grab'
+            : 'crosshair';
         // Pointer coordinate readout
         if (contextProjection) {
             const geo = contextProjection.pixelToGeo(mx, my);
@@ -2482,8 +2499,36 @@ overlay.addEventListener('mousemove', e => {
     }
 });
 
-overlay.addEventListener('mouseup',    () => { selDragging = false; overlay.style.cursor = 'crosshair'; });
+overlay.addEventListener('mouseup', e => {
+    if (mapDragStart) {
+        const dx = e.offsetX - mapDragStart.x;
+        const dy = e.offsetY - mapDragStart.y;
+        canvas.style.transform = '';
+        if (mapDragging) {
+            const newLon = Math.max(-180, Math.min(180,
+                Math.round((mapDragStart.lon - dx / contextProjection.xScale) * 10) / 10));
+            const newLat = Math.max(-90,  Math.min(90,
+                Math.round((mapDragStart.lat + dy / contextProjection.yScale) * 10) / 10));
+            document.getElementById('centerLon').value = newLon;
+            document.getElementById('centerLat').value = newLat;
+            scheduleRender();
+        } else {
+            renderWorldContext();   // short click → return to world view
+        }
+        mapDragStart = null;
+        mapDragging  = false;
+        overlay.style.cursor = 'crosshair';
+        return;
+    }
+    selDragging = false;
+    overlay.style.cursor = 'crosshair';
+});
 overlay.addEventListener('mouseleave', () => {
+    if (mapDragStart) {
+        canvas.style.transform = '';
+        mapDragStart = null;
+        mapDragging  = false;
+    }
     selDragging = false;
     overlay.style.cursor = '';
     document.getElementById('ptrX').value = '';
