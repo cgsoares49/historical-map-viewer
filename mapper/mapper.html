@@ -1315,6 +1315,45 @@ zoomSlider.addEventListener('input', () => {
 // Keep slider in sync when select changes
 document.getElementById('zoom').addEventListener('change', () => zoomToSlider(getInputs().zoom));
 
+// ── Zoom step helper (scroll wheel + double-click) ────────────────────────────
+// direction: +1 = zoom in, -1 = zoom out
+// px, py: canvas pixel whose geographic position should stay fixed after zoom
+function _stepZoom(direction, px, py) {
+    if (!_mapFullyRendered) return;
+    const inp = getInputs();
+    // Find current preset index (snap to nearest when custom zoom is active)
+    let idx = ZOOM_PRESETS.indexOf(inp.zoom);
+    if (idx === -1) {
+        idx = ZOOM_PRESETS.findIndex(z => z >= inp.zoom);
+        if (idx < 0) idx = ZOOM_PRESETS.length - 1;
+        if (direction < 0) idx = Math.max(0, idx - 1);
+    }
+    const newIdx = Math.max(0, Math.min(ZOOM_PRESETS.length - 1, idx + direction));
+    if (ZOOM_PRESETS[newIdx] === inp.zoom) return; // already at limit
+    const newZoom = ZOOM_PRESETS[newIdx];
+
+    // Adjust center so the geo point at (px, py) stays fixed after zoom
+    // Formula: newCenter = oldCenter + (px - canvasCX) * (oldDegX - newDegX) / canvasW
+    const oldDegX = 360 / (inp.zoom + 1);
+    const newDegX = 360 / (newZoom + 1);
+    const dx = px - canvas.width  / 2;
+    const dy = py - canvas.height / 2;
+    const newLon = Math.max(-180, Math.min(180,
+        Math.round((inp.centerLon + dx * (oldDegX - newDegX) / canvas.width) * 10) / 10));
+    const newLat = Math.max(-90,  Math.min(90,
+        Math.round((inp.centerLat - dy * (oldDegX - newDegX) / canvas.width) * 10) / 10));
+
+    // Update zoom dropdown + slider
+    const zoomSel = document.getElementById('zoom');
+    const zoomOpt = [...zoomSel.options].find(o => parseInt(o.value) === newZoom);
+    if (zoomOpt) { zoomSel.value = newZoom; document.getElementById('zoomCustom').style.display = 'none'; }
+    else { zoomSel.value = 'custom'; document.getElementById('zoomCustom').style.display = ''; document.getElementById('zoomCustom').value = newZoom; }
+    zoomToSlider(newZoom);
+    document.getElementById('centerLon').value = newLon;
+    document.getElementById('centerLat').value = newLat;
+    scheduleRender();
+}
+
 // ── Timeline canvas ────────────────────────────────────────────────────────────
 let TL = {
     ANCT_MIN: -2400, ANCT_MAX: -274,
@@ -2556,6 +2595,17 @@ overlay.style.cursor = 'crosshair';
 overlay.addEventListener('click', e => {
     if (_mapFullyRendered && e.shiftKey) { _selectionMode = true; drawOverlay(); }
 });
+
+// Double-click → zoom in one step, centered on click point
+overlay.addEventListener('dblclick', e => {
+    _stepZoom(1, e.offsetX, e.offsetY);
+});
+
+// Scroll wheel → zoom in/out, centered on cursor position
+overlay.addEventListener('wheel', e => {
+    e.preventDefault();
+    _stepZoom(e.deltaY < 0 ? 1 : -1, e.offsetX, e.offsetY);
+}, { passive: false });
 
 document.addEventListener('keydown', e => {
     if (e.key === 'Enter' && _selectionMode && _mapFullyRendered) {
