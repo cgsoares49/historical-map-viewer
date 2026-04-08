@@ -2508,9 +2508,8 @@ overlay.addEventListener('mouseup', e => {
             document.getElementById('centerLon').value = newLon;
             document.getElementById('centerLat').value = newLat;
             scheduleRender();
-        } else {
-            renderWorldContext();   // short click → return to world view
         }
+        // short click with no drag: do nothing — use WORLD VIEW button to return to world view
         mapDragStart = null;
         mapDragging  = false;
         overlay.style.cursor = 'crosshair';
