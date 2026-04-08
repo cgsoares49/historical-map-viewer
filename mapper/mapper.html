@@ -2418,7 +2418,17 @@ overlay.addEventListener('mousedown', e => {
     }
     if (!contextProjection || _isRobinson()) return;
     const mx = e.offsetX, my = e.offsetY;
-    if (e.button === 0 && _inSelectionRect(mx, my)) {
+    const r = _getSelectionPixelRect();
+    const fills = r && r.w >= overlay.width - 2 && r.h >= overlay.height - 2;
+    if (fills && e.button === 0) {
+        // Rendered map: start drag-to-pan (check fills BEFORE _inSelectionRect,
+        // since _inSelectionRect returns true for any point when map fills canvas)
+        const inp = getInputs();
+        mapDragStart = { x: mx, y: my, lon: inp.centerLon, lat: inp.centerLat };
+        overlay.style.cursor = 'grabbing';
+        e.preventDefault();
+    } else if (e.button === 0 && _inSelectionRect(mx, my)) {
+        // World-context: drag the selection rectangle
         selDragging     = true;
         selDragStartX   = mx;
         selDragStartY   = my;
@@ -2427,23 +2437,13 @@ overlay.addEventListener('mousedown', e => {
         selDragStartLat = inp.centerLat;
         overlay.style.cursor = 'grabbing';
     } else {
-        const r = _getSelectionPixelRect();
-        const fills = r && r.w >= overlay.width - 2 && r.h >= overlay.height - 2;
-        if (fills && e.button === 0) {
-            // Start map drag
-            const inp = getInputs();
-            mapDragStart = { x: mx, y: my, lon: inp.centerLon, lat: inp.centerLat };
-            overlay.style.cursor = 'grabbing';
-            e.preventDefault();
-        } else {
-            // Snap selection center (world-context click)
-            const geo = contextProjection.pixelToGeo(mx, my);
-            const lon = Math.max(-180, Math.min(180, Math.round(geo.lon * 10) / 10));
-            const lat = Math.max(-90,  Math.min(90,  Math.round(geo.lat * 10) / 10));
-            document.getElementById('centerLon').value = lon;
-            document.getElementById('centerLat').value = lat;
-            if (fills && mapRenderer) { renderWorldContext(); } else { drawOverlay(); }
-        }
+        // Snap selection center (world-context click outside rect)
+        const geo = contextProjection.pixelToGeo(mx, my);
+        const lon = Math.max(-180, Math.min(180, Math.round(geo.lon * 10) / 10));
+        const lat = Math.max(-90,  Math.min(90,  Math.round(geo.lat * 10) / 10));
+        document.getElementById('centerLon').value = lon;
+        document.getElementById('centerLat').value = lat;
+        if (fills && mapRenderer) { renderWorldContext(); } else { drawOverlay(); }
     }
 });
 
