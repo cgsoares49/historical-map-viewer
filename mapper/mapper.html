@@ -646,7 +646,8 @@
     <div style="margin-top:8px;color:#506070;font-size:10px;">Years: "100 BCE", "-100", "1648 CE", "1648"</div>
     <div style="margin-top:8px;border-top:1px solid #1a3050;padding-top:6px;color:#506070;font-size:10px;font-style:italic;">Map interactions</div>
     <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Drag</span> — pan the map; re-renders on release</div>
-    <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Double-click</span> — show selection rectangle; drag to reposition; Display or Enter to render</div>
+    <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Double-click</span> — zoom in centered on click point</div>
+    <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Shift+click</span> — show selection rectangle; drag to reposition; Display or Enter to render</div>
     <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Right-click</span> — country info popup</div>
     <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Alt+click</span> — drop distance point 1; Alt+click again for point 2 and distance</div>
     <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Escape</span> — clear distance measurement or cancel selection mode</div>
@@ -2551,9 +2552,9 @@ overlay.addEventListener('mouseleave', () => {
 
 overlay.style.cursor = 'crosshair';
 
-// Double-click on rendered map → enter selection mode (rectangle overlaid on map)
-overlay.addEventListener('dblclick', () => {
-    if (_mapFullyRendered) { _selectionMode = true; drawOverlay(); }
+// Shift+click on rendered map → enter selection mode (rectangle overlaid on map)
+overlay.addEventListener('click', e => {
+    if (_mapFullyRendered && e.shiftKey) { _selectionMode = true; drawOverlay(); }
 });
 
 document.addEventListener('keydown', e => {
