@@ -308,8 +308,11 @@
             z-index: 2000;
             box-shadow: 0 4px 16px rgba(0,0,0,0.65);
         }
-        #helpPopup { padding: 10px 14px; max-width: 300px; line-height: 1.75; }
+        #helpPopup { width: 300px; height: 280px; min-width: 200px; min-height: 140px; resize: both; overflow: hidden; padding: 0; display: flex; flex-direction: column; }
         #helpPopup .hc { color: #88ccff; font-weight: bold; }
+        #helpPopupHeader { background: #1a3050; padding: 4px 8px; cursor: move; display: flex; justify-content: space-between; align-items: center; font-weight: bold; flex-shrink: 0; border-bottom: 1px solid #3a6090; user-select: none; }
+        #helpPopupHeader button { background: none; border: none; color: #c0d8f0; font-size: 14px; cursor: pointer; padding: 0 2px; line-height: 1; }
+        #helpPopupBody { overflow-y: auto; flex: 1; padding: 8px 12px; line-height: 1.75; }
         #bookmarkList { min-width: 220px; max-height: 220px; overflow-y: auto; }
 
         /* ── Info Popup ──────────────────────────────────────────────────── */
@@ -626,31 +629,38 @@
 
 <!-- ── Help popup ── -->
 <div id="helpPopup" class="vibe-popup">
-    <div style="color:#fff;font-weight:bold;margin-bottom:6px;border-bottom:1px solid #3a6090;padding-bottom:4px;">Vibe Map Commands</div>
-    <div><span class="hc">show/go [place]</span> — navigate to a place</div>
-    <div><span class="hc">show [place] at [year]</span> — navigate + set date</div>
-    <div><span class="hc">date [year]</span> — set the date (e.g. "date 100 BCE")</div>
-    <div><span class="hc">zoom [N]</span> — set zoom to specific value (e.g. "zoom 7")</div>
-    <div><span class="hc">zoom in/out [N]</span> — zoom N steps (default 1)</div>
-    <div><span class="hc">center [lon] [lat]</span> — set center (e.g. "center 13 42")</div>
-    <div><span class="hc">home</span> — reset to default view</div>
-    <div><span class="hc">world</span> — show world context view</div>
-    <div><span class="hc">toggle/show/hide [layer]</span> — coasts, borders, dots, grid, labels, water</div>
-    <div><span class="hc">run forward / backward</span> — start animation</div>
-    <div><span class="hc">stop</span> — stop animation</div>
-    <div><span class="hc">speed [N]</span> — set seconds per year (e.g. "speed 2")</div>
-    <div><span class="hc">step [N]</span> — set years per step (e.g. "step 10")</div>
-    <div><span class="hc">pan [dir]</span> — pan N/S/E/W/NE/NW/SE/SW</div>
-    <div><span class="hc">info [place]</span> — show info popup for a place</div>
-    <div><span class="hc">dismiss</span> — close info popup</div>
-    <div style="margin-top:8px;color:#506070;font-size:10px;">Years: "100 BCE", "-100", "1648 CE", "1648"</div>
-    <div style="margin-top:8px;border-top:1px solid #1a3050;padding-top:6px;color:#506070;font-size:10px;font-style:italic;">Map interactions</div>
-    <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Drag</span> — pan the map; re-renders on release</div>
-    <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Double-click</span> — zoom in centered on click point</div>
-    <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Shift+click</span> — show selection rectangle; drag to reposition; Display or Enter to render</div>
-    <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Right-click</span> — country info popup</div>
-    <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Alt+click</span> — drop distance point 1; Alt+click again for point 2 and distance</div>
-    <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Escape</span> — clear distance measurement or cancel selection mode</div>
+    <div id="helpPopupHeader">
+        <span>Commands &amp; Help</span>
+        <button id="helpPopupClose" title="Close">×</button>
+    </div>
+    <div id="helpPopupBody">
+        <div style="color:#506070;font-size:10px;font-style:italic;margin-bottom:4px;">Vibe Map voice/text commands</div>
+        <div><span class="hc">show/go [place]</span> — navigate to a place</div>
+        <div><span class="hc">show [place] at [year]</span> — navigate + set date</div>
+        <div><span class="hc">date [year]</span> — set the date (e.g. "date 100 BCE")</div>
+        <div><span class="hc">zoom [N]</span> — set zoom to specific value (e.g. "zoom 7")</div>
+        <div><span class="hc">zoom in/out [N]</span> — zoom N steps (default 1)</div>
+        <div><span class="hc">center [lon] [lat]</span> — set center (e.g. "center 13 42")</div>
+        <div><span class="hc">home</span> — reset to default view</div>
+        <div><span class="hc">world</span> — show world context view</div>
+        <div><span class="hc">toggle/show/hide [layer]</span> — coasts, borders, dots, grid, labels, water</div>
+        <div><span class="hc">run forward / backward</span> — start animation</div>
+        <div><span class="hc">stop</span> — stop animation</div>
+        <div><span class="hc">speed [N]</span> — set seconds per year (e.g. "speed 2")</div>
+        <div><span class="hc">step [N]</span> — set years per step (e.g. "step 10")</div>
+        <div><span class="hc">pan [dir]</span> — pan N/S/E/W/NE/NW/SE/SW</div>
+        <div><span class="hc">info [place]</span> — show info popup for a place</div>
+        <div><span class="hc">dismiss</span> — close info popup</div>
+        <div style="margin-top:4px;color:#506070;font-size:10px;">Years: "100 BCE", "-100", "1648 CE", "1648"</div>
+        <div style="margin-top:8px;border-top:1px solid #1a3050;padding-top:6px;color:#506070;font-size:10px;font-style:italic;">Map interactions</div>
+        <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Drag</span> — pan the map; re-renders on release</div>
+        <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Scroll wheel</span> — zoom in/out centered on cursor</div>
+        <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Double-click</span> — zoom in centered on click point</div>
+        <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Shift+click</span> — selection rectangle; drag to reposition; Display or Enter to render</div>
+        <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Right-click</span> — country info popup</div>
+        <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Alt+click</span> — distance measurer (click twice for measurement)</div>
+        <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Escape</span> — cancel distance or selection mode</div>
+    </div>
 </div>
 
 <!-- ── Bookmark list ── -->
@@ -1615,12 +1625,34 @@ document.getElementById('vibeHelp').addEventListener('click', e => {
     const r = e.currentTarget.getBoundingClientRect();
     popup.style.left = Math.min(r.left, window.innerWidth - 310) + 'px';
     popup.style.top  = (r.bottom + 4) + 'px';
-    popup.style.display = 'block';
+    popup.style.display = 'flex';
+});
+document.getElementById('helpPopupClose').addEventListener('click', () => {
+    document.getElementById('helpPopup').style.display = 'none';
 });
 
-// Close floating popups on outside click
+// Make help popup draggable by its header
+(() => {
+    const popup  = document.getElementById('helpPopup');
+    const header = document.getElementById('helpPopupHeader');
+    let dragging = false, ox = 0, oy = 0;
+    header.addEventListener('mousedown', e => {
+        if (e.target === document.getElementById('helpPopupClose')) return;
+        dragging = true;
+        ox = e.clientX - popup.offsetLeft;
+        oy = e.clientY - popup.offsetTop;
+        e.preventDefault();
+    });
+    document.addEventListener('mousemove', e => {
+        if (!dragging) return;
+        popup.style.left = (e.clientX - ox) + 'px';
+        popup.style.top  = (e.clientY - oy) + 'px';
+    });
+    document.addEventListener('mouseup', () => { dragging = false; });
+})();
+
+// Close floating popups on outside click (bookmark list only — help popup has its own close button)
 document.addEventListener('click', () => {
-    document.getElementById('helpPopup').style.display = 'none';
     document.getElementById('bookmarkList').style.display = 'none';
 });
 
