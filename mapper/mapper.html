@@ -715,6 +715,7 @@ let selDragStartLon = 0, selDragStartLat = 0;
 let mapDragStart      = null;   // { x, y, lon, lat } | null — drag-to-pan in rendered-map mode
 let mapDragging       = false;  // true once movement exceeds 5px threshold
 let _mapFullyRendered = false;  // true after doRender completes; false in world-context mode
+let _selectionMode   = false;  // true after double-click: selection rect overlaid on rendered map
 
 // ── References (loaded from refs.json) ───────────────────────────────────────
 let geodataRefs = {};
@@ -2118,6 +2119,7 @@ document.getElementById('vibeMic').addEventListener('click', () => {
 // ── World context render ─────────────────────────────────────────────────────
 async function renderWorldContext() {
     _mapFullyRendered = false;
+    _selectionMode    = false;
     contextProjection = new MapProjection(0, 0, 0, canvas.width, canvas.height);
     colorNameMap = new Map();  // BMP pixel colors don't match computed colors
     const statusEl = document.getElementById('status');
@@ -2193,6 +2195,7 @@ async function doRender(skipColorMap = false) {
         }, showCoasts, showCities, showCityNames, cityDetail, showInlandWaters, showRivers, showCountryLabels, minPixels);
         ctx.drawImage(backCanvas, 0, 0);  // final flip: ensure complete frame is visible
         _mapFullyRendered = true;
+        _selectionMode    = false;
         drawOverlay();
         fillEl.style.width = '100%';
         const yearLabel = year < 0 ? `${Math.abs(year)} BCE` : `${year} CE`;
@@ -2357,8 +2360,8 @@ function drawOverlay() {
         _drawRefLine(proj, 0, false, 'rgba(255,140,0,0.85)');
     }
 
-    // No selection rectangle in non-equirect modes
-    if (document.getElementById('projType').value === 'equirect') {
+    // Selection rectangle: always in equirect world-context mode; also in rendered mode when _selectionMode active
+    if (document.getElementById('projType').value === 'equirect' || (_mapFullyRendered && _selectionMode)) {
         _drawSelectionRect();
     }
 
@@ -2421,8 +2424,17 @@ overlay.addEventListener('mousedown', e => {
     }
     if (!contextProjection || _isRobinson()) return;
     const mx = e.offsetX, my = e.offsetY;
-    if (_mapFullyRendered && e.button === 0) {
-        // Rendered map: start drag-to-pan
+    if (_mapFullyRendered && _selectionMode && e.button === 0) {
+        // Selection mode on rendered map: drag the selection rectangle
+        selDragging     = true;
+        selDragStartX   = mx;
+        selDragStartY   = my;
+        const inp = getInputs();
+        selDragStartLon = inp.centerLon;
+        selDragStartLat = inp.centerLat;
+        overlay.style.cursor = 'grabbing';
+    } else if (_mapFullyRendered && e.button === 0) {
+        // Rendered map (normal): drag to pan
         const inp = getInputs();
         mapDragStart = { x: mx, y: my, lon: inp.centerLon, lat: inp.centerLat };
         overlay.style.cursor = 'grabbing';
@@ -2536,12 +2548,18 @@ overlay.addEventListener('mouseleave', () => {
 
 overlay.style.cursor = 'crosshair';
 
-// Double-click on rendered map → return to world view / selection rectangle
+// Double-click on rendered map → enter selection mode (rectangle overlaid on map)
 overlay.addEventListener('dblclick', () => {
-    if (_mapFullyRendered) renderWorldContext();
+    if (_mapFullyRendered) { _selectionMode = true; drawOverlay(); }
 });
 
 document.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && _selectionMode && _mapFullyRendered) {
+        scheduleRender();
+    }
+    if (e.key === 'Escape' && _selectionMode && _mapFullyRendered) {
+        _selectionMode = false; drawOverlay();
+    }
     if (e.key === 'Escape' && (distPt1 || distPt2)) {
         distPt1 = distPt2 = distPreviewGeo = null;
         drawOverlay();
