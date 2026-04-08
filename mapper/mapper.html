@@ -712,8 +712,9 @@ let selDragging     = false;
 let selDragStartX   = 0, selDragStartY   = 0;
 let selDragStartLon = 0, selDragStartLat = 0;
 
-let mapDragStart = null;   // { x, y, lon, lat } | null — drag-to-pan in rendered-map mode
-let mapDragging  = false;  // true once movement exceeds 5px threshold
+let mapDragStart      = null;   // { x, y, lon, lat } | null — drag-to-pan in rendered-map mode
+let mapDragging       = false;  // true once movement exceeds 5px threshold
+let _mapFullyRendered = false;  // true after doRender completes; false in world-context mode
 
 // ── References (loaded from refs.json) ───────────────────────────────────────
 let geodataRefs = {};
@@ -2116,6 +2117,7 @@ document.getElementById('vibeMic').addEventListener('click', () => {
 
 // ── World context render ─────────────────────────────────────────────────────
 async function renderWorldContext() {
+    _mapFullyRendered = false;
     contextProjection = new MapProjection(0, 0, 0, canvas.width, canvas.height);
     colorNameMap = new Map();  // BMP pixel colors don't match computed colors
     const statusEl = document.getElementById('status');
@@ -2190,6 +2192,7 @@ async function doRender(skipColorMap = false) {
             ctx.drawImage(backCanvas, 0, 0);  // progressive flip: show each batch as it arrives
         }, showCoasts, showCities, showCityNames, cityDetail, showInlandWaters, showRivers, showCountryLabels, minPixels);
         ctx.drawImage(backCanvas, 0, 0);  // final flip: ensure complete frame is visible
+        _mapFullyRendered = true;
         drawOverlay();
         fillEl.style.width = '100%';
         const yearLabel = year < 0 ? `${Math.abs(year)} BCE` : `${year} CE`;
@@ -2418,11 +2421,8 @@ overlay.addEventListener('mousedown', e => {
     }
     if (!contextProjection || _isRobinson()) return;
     const mx = e.offsetX, my = e.offsetY;
-    const r = _getSelectionPixelRect();
-    const fills = r && r.w >= overlay.width - 2 && r.h >= overlay.height - 2;
-    if (fills && e.button === 0) {
-        // Rendered map: start drag-to-pan (check fills BEFORE _inSelectionRect,
-        // since _inSelectionRect returns true for any point when map fills canvas)
+    if (_mapFullyRendered && e.button === 0) {
+        // Rendered map: start drag-to-pan
         const inp = getInputs();
         mapDragStart = { x: mx, y: my, lon: inp.centerLon, lat: inp.centerLat };
         overlay.style.cursor = 'grabbing';
@@ -2443,7 +2443,7 @@ overlay.addEventListener('mousedown', e => {
         const lat = Math.max(-90,  Math.min(90,  Math.round(geo.lat * 10) / 10));
         document.getElementById('centerLon').value = lon;
         document.getElementById('centerLat').value = lat;
-        if (fills && mapRenderer) { renderWorldContext(); } else { drawOverlay(); }
+        drawOverlay();
     }
 });
 
@@ -2465,11 +2465,7 @@ overlay.addEventListener('mousemove', e => {
         document.getElementById('centerLat').value = lat;
         drawOverlay();
     } else {
-        const r2 = _getSelectionPixelRect();
-        const rectFills = r2 && r2.w >= overlay.width - 2 && r2.h >= overlay.height - 2;
-        overlay.style.cursor = rectFills ? 'grab'
-            : _inSelectionRect(mx, my) ? 'grab'
-            : 'crosshair';
+        overlay.style.cursor = (_mapFullyRendered || _inSelectionRect(mx, my)) ? 'grab' : 'crosshair';
         // Pointer coordinate readout
         if (contextProjection) {
             const geo = contextProjection.pixelToGeo(mx, my);
