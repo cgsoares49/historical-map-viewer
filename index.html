@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAPPER — The Atlas for Time Travelers</title>
+    <link rel="icon" type="image/png" href="mapper/sahm-logo.png">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg:        #0a1628;
+            --panel:     #0d1a2e;
+            --green-dk:  #1b4332;
+            --green-md:  #2d6a4f;
+            --green-lt:  #4a9e6a;
+            --blue:      #88ccff;
+            --border:    #1a3050;
+            --text:      #e0eaf4;
+            --muted:     #7090a8;
+        }
+
+        html, body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(10,22,40,0.92);
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 10px 32px;
+        }
+        .nav-brand {
+            display: flex; align-items: center; gap: 10px;
+        }
+        .nav-brand img { height: 28px; width: 28px; }
+        .nav-brand span {
+            font-size: 18px; font-weight: bold; color: #fff; letter-spacing: 2px;
+        }
+        .nav-launch {
+            background: var(--green-md);
+            color: #fff;
+            border: none; border-radius: 4px;
+            padding: 7px 20px; font-size: 14px; font-weight: bold;
+            cursor: pointer; text-decoration: none;
+            transition: background 0.2s;
+        }
+        .nav-launch:hover { background: var(--green-lt); }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            padding: 80px 24px 60px;
+        }
+        .hero-bg {
+            position: absolute; inset: 0;
+            background: url('mapper/map_2000CE.png') center center / cover no-repeat;
+            opacity: 0.22;
+        }
+        .hero-fade {
+            position: absolute; bottom: 0; left: 0; right: 0; height: 180px;
+            background: linear-gradient(to bottom, transparent, var(--bg));
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 720px; }
+        .hero-logo {
+            width: 72px; height: 72px; margin-bottom: 20px;
+            filter: drop-shadow(0 0 18px rgba(74,158,106,0.6));
+        }
+        .hero h1 {
+            font-size: clamp(2.4rem, 6vw, 4rem);
+            font-weight: bold; letter-spacing: 6px;
+            color: #fff;
+            text-shadow: 0 0 40px rgba(74,158,106,0.5);
+            margin-bottom: 10px;
+        }
+        .hero-coverage {
+            font-size: 0.85rem;
+            color: var(--muted);
+            font-style: italic;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+        .hero-tagline {
+            font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+            color: var(--green-lt);
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+        .hero-sub {
+            font-size: clamp(0.85rem, 2vw, 1rem);
+            color: var(--muted);
+            max-width: 560px; margin: 0 auto 36px;
+            line-height: 1.7;
+        }
+        .hero-cta {
+            display: inline-block;
+            background: var(--green-md);
+            color: #fff; text-decoration: none;
+            font-size: 1.1rem; font-weight: bold;
+            padding: 14px 40px; border-radius: 5px;
+            letter-spacing: 1px;
+            transition: background 0.2s, transform 0.15s;
+            box-shadow: 0 4px 24px rgba(45,106,79,0.5);
+        }
+        .hero-cta:hover { background: var(--green-lt); transform: translateY(-2px); }
+
+        /* ── FEATURES ── */
+        .section { padding: 72px 24px; }
+        .section-inner { max-width: 1000px; margin: 0 auto; }
+        .section-title {
+            text-align: center;
+            font-size: 1.5rem; font-weight: bold; color: var(--blue);
+            letter-spacing: 2px; margin-bottom: 48px;
+            text-transform: uppercase;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+        .feature-card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 28px 24px;
+        }
+        .feature-icon {
+            font-size: 2rem; margin-bottom: 14px;
+        }
+        .feature-card h3 {
+            font-size: 1.05rem; color: #fff; margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+        .feature-card p {
+            font-size: 0.9rem; color: var(--muted); line-height: 1.7;
+        }
+
+        /* ── HOW TO USE ── */
+        .howto { background: var(--panel); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+        }
+        .step { text-align: center; }
+        .step-num {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 40px; height: 40px; border-radius: 50%;
+            background: var(--green-dk); border: 1px solid var(--green-md);
+            font-size: 1.1rem; font-weight: bold; color: var(--green-lt);
+            margin-bottom: 14px;
+        }
+        .step h4 { font-size: 0.95rem; color: #fff; margin-bottom: 8px; }
+        .step p  { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+        /* ── INTERACTIONS ── */
+        .interactions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+        .interaction {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 16px 18px;
+            display: flex; gap: 14px; align-items: flex-start;
+        }
+        .interaction-key {
+            background: var(--green-dk);
+            border: 1px solid var(--green-md);
+            border-radius: 4px;
+            padding: 3px 8px;
+            font-size: 0.8rem; font-weight: bold; color: var(--blue);
+            white-space: nowrap; flex-shrink: 0;
+        }
+        .interaction p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+
+        /* ── FOOTER CTA ── */
+        .footer-cta {
+            text-align: center;
+            padding: 72px 24px 48px;
+        }
+        .footer-cta h2 {
+            font-size: clamp(1.4rem, 4vw, 2rem);
+            color: #fff; margin-bottom: 12px;
+        }
+        .footer-cta p {
+            color: var(--muted); margin-bottom: 32px; font-size: 0.95rem;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 20px 32px;
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 8px;
+            font-size: 0.8rem; color: var(--muted);
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+    <div class="nav-brand">
+        <img src="mapper/sahm-logo.png" alt="MAPPER logo">
+        <span>MAPPER</span>
+    </div>
+    <a class="nav-launch" href="mapper/mapper.html">Launch App</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-fade"></div>
+    <div class="hero-content">
+        <img class="hero-logo" src="mapper/sahm-logo.png" alt="MAPPER">
+        <h1>MAPPER</h1>
+        <div class="hero-tagline">the atlas for time travelers</div>
+        <div class="hero-coverage" id="heroCoverage"></div>
+        <p class="hero-sub">
+            Explore the political world from 2400 BCE to the present.
+            Watch empires rise and fall, follow migrations, and navigate
+            history one year at a time.
+        </p>
+        <a class="hero-cta" href="mapper/mapper.html">Open the Atlas &rarr;</a>
+    </div>
+</section>
+
+<!-- ── FEATURES ── -->
+<section class="section">
+    <div class="section-inner">
+        <div class="section-title">What You Can Do</div>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🗺️</div>
+                <h3>4,400 Years of History</h3>
+                <p>Browse political boundaries from 2400 BCE through the modern era. Every border, every empire, rendered from primary historical data.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎙️</div>
+                <h3>Navigate by Voice or Text</h3>
+                <p>Type or say "show Rome at 44 BCE" and the map flies there instantly. Vibe Map understands natural language commands for dates, places, and zoom.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⏱️</div>
+                <h3>Animate Through Time</h3>
+                <p>Run forward or backward through history at any speed. Watch the ancient world transform — year by year, decade by decade.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>Click Any Country</h3>
+                <p>Right-click any region to see its name, historical date range, and reference links. Every coloured area is identified.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📐</div>
+                <h3>Measure Distances</h3>
+                <p>Alt-click two points to measure great-circle distance in kilometres and miles — useful for understanding the scale of ancient campaigns.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💾</div>
+                <h3>Save Maps & Movies</h3>
+                <p>Export any view as a high-resolution PNG or SVG. Record animated sequences as video to share or embed.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── HOW TO USE ── -->
+<section class="section howto">
+    <div class="section-inner">
+        <div class="section-title">Getting Started</div>
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <h4>Set a Date</h4>
+                <p>Type a year in the Date box, or drag the timeline slider at the bottom of the screen.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <h4>Find a Place</h4>
+                <p>Type a place name in the Vibe Map box and press Enter, or use the Lon/Lat inputs and click Display.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <h4>Explore</h4>
+                <p>Drag to pan, scroll to zoom. Right-click any region to identify it. Double-click to zoom in.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">4</div>
+                <h4>Travel Through Time</h4>
+                <p>Press &rArr; to animate forward, or type "run forward" in the Vibe Map box.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── INTERACTIONS ── -->
+<section class="section">
+    <div class="section-inner">
+        <div class="section-title">Map Controls</div>
+        <div class="interactions">
+            <div class="interaction">
+                <span class="interaction-key">Drag</span>
+                <p>Pan the map; re-renders at new centre on release</p>
+            </div>
+            <div class="interaction">
+                <span class="interaction-key">Scroll</span>
+                <p>Zoom in or out, centred on the cursor</p>
+            </div>
+            <div class="interaction">
+                <span class="interaction-key">Double-click</span>
+                <p>Zoom in centred on the click point</p>
+            </div>
+            <div class="interaction">
+                <span class="interaction-key">Right-click</span>
+                <p>Show country name, date range, and references</p>
+            </div>
+            <div class="interaction">
+                <span class="interaction-key">Shift+click</span>
+                <p>Enter selection mode — drag the rectangle, then press Display to render</p>
+            </div>
+            <div class="interaction">
+                <span class="interaction-key">Alt+click</span>
+                <p>Drop a distance point; Alt+click again to measure</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── FOOTER CTA ── -->
+<div class="footer-cta">
+    <h2>Ready to explore?</h2>
+    <p>No login required. Works in any modern browser.</p>
+    <a class="hero-cta" href="mapper/mapper.html">Open the Atlas &rarr;</a>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <span>MAPPER &mdash; Soares Ancient History Mapping</span>
+    <span>Built with historical PAR tile data &bull; &copy; 2026</span>
+</footer>
+
+<script>
+fetch('mapper/version.json')
+    .then(r => r.json())
+    .then(v => {
+        const el = document.getElementById('heroCoverage');
+        if (!el) return;
+        const end = v.contentEnd != null ? `${Math.abs(Math.round(v.contentEnd))} BCE` : '?';
+        el.textContent = `Currently covering 2400 BCE – ${end} · content in progress`;
+    })
+    .catch(() => {});
+</script>
+</body>
+</html>
