@@ -115,6 +115,56 @@
         }
         .hero-cta:hover { background: var(--green-lt); transform: translateY(-2px); }
 
+        /* ── NEW TO THE ATLAS ── */
+        .new-to-atlas {
+            margin-top: 32px;
+            max-width: 560px;
+            text-align: left;
+        }
+        .new-to-atlas summary {
+            cursor: pointer;
+            list-style: none;
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 0.9rem; color: var(--blue);
+            letter-spacing: 0.5px;
+            user-select: none;
+            padding: 8px 18px;
+            background: rgba(30,60,100,0.6);
+            border: 1px solid #4a7aaa;
+            border-radius: 20px;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .new-to-atlas summary:hover {
+            border-color: var(--blue);
+            background: rgba(30,60,100,0.9);
+        }
+        .new-to-atlas summary::-webkit-details-marker { display: none; }
+        .new-to-atlas summary .nta-arrow {
+            font-size: 0.75rem;
+            transition: transform 0.2s;
+            color: var(--muted);
+        }
+        .new-to-atlas[open] summary .nta-arrow { transform: rotate(90deg); }
+        .nta-body {
+            background: rgba(13,26,46,0.85);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin-top: 8px;
+        }
+        .nta-item { margin-bottom: 18px; }
+        .nta-item:last-child { margin-bottom: 0; }
+        .nta-q {
+            font-size: 0.88rem; font-weight: bold;
+            color: #fff; margin-bottom: 5px;
+        }
+        .nta-a {
+            font-size: 0.84rem; color: var(--muted);
+            line-height: 1.65;
+        }
+        .nta-a a { color: var(--blue); text-decoration: none; }
+        .nta-a a:hover { text-decoration: underline; }
+
         /* ── FEATURES ── */
         .section { padding: 72px 24px; }
         .section-inner { max-width: 1000px; margin: 0 auto; }
@@ -237,6 +287,35 @@
             history one year at a time.
         </p>
         <a class="hero-cta" href="mapper/mapper.html">Open the Atlas &rarr;</a>
+
+        <details class="new-to-atlas">
+            <summary>
+                <span class="nta-arrow">&#9658;</span>
+                New to the Atlas?
+            </summary>
+            <div class="nta-body">
+                <div class="nta-item">
+                    <div class="nta-q">What is Mapper?</div>
+                    <div class="nta-a">Mapper is an interactive historical atlas covering 4,400 years of political geography — from the earliest Bronze Age kingdoms through the present day. Every coloured region represents a real polity at a specific point in history.</div>
+                </div>
+                <div class="nta-item">
+                    <div class="nta-q">Where do I start?</div>
+                    <div class="nta-a">Click <strong style="color:#fff">Open the Atlas</strong>, then type a year into the <em>Date</em> box (e.g. <code style="color:var(--blue)">44</code> for 44 CE, or <code style="color:var(--blue)">-500</code> for 500 BCE) and press <strong style="color:#fff">Display</strong>. The map will render the political world for that year.</div>
+                </div>
+                <div class="nta-item">
+                    <div class="nta-q">How do I navigate the map?</div>
+                    <div class="nta-a"><strong style="color:#fff">Drag</strong> to pan &bull; <strong style="color:#fff">Scroll</strong> to zoom &bull; <strong style="color:#fff">Double-click</strong> to zoom in &bull; <strong style="color:#fff">Right-click</strong> any region to identify it.</div>
+                </div>
+                <div class="nta-item">
+                    <div class="nta-q">How do I travel through time?</div>
+                    <div class="nta-a">Use the timeline slider at the bottom of the screen, type a new year in the Date box, or press the <strong style="color:#fff">&rArr;</strong> button to animate forward automatically.</div>
+                </div>
+                <div class="nta-item">
+                    <div class="nta-q">What dates are covered?</div>
+                    <div class="nta-a">The atlas currently covers <strong style="color:#fff">2400 BCE to the present</strong>. Historical content is being added continuously — earlier periods have broader brushstrokes, while the classical and medieval eras are the most detailed.</div>
+                </div>
+            </div>
+        </details>
     </div>
 </section>
 
