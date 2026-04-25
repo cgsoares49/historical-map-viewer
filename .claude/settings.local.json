@@ -1,0 +1,74 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh repo:*)",
+      "Bash(powershell.exe -Command \"Get-Content 'C:\\\\Users\\\\csoar\\\\OneDrive\\\\Desktop\\\\ClaudeTest\\\\mapper\\\\polareas\\\\090\\\\PAR180.ASC' -TotalCount 80\")",
+      "Bash(xxd C:/Users/csoar/OneDrive/Desktop/ClaudeTest/mapper/coasts/090/CST180.PRN)",
+      "Bash(cmd.exe /c \"powershell -ExecutionPolicy Bypass -Command \\\\\"& { \\\\$l = New-Object Net.HttpListener; \\\\$l.Prefixes.Add\\('http://localhost:8080/'\\); try { \\\\$l.Start\\(\\); Write-Output 'STARTED' } catch { Write-Output \\('ERROR: ' + \\\\$_.Exception.Message\\) } }\\\\\" > C:\\\\\\\\Users\\\\\\\\csoar\\\\\\\\Desktop\\\\\\\\server_test.txt 2>&1\")",
+      "Bash(cmd.exe /c \"powershell -Command \"\"\\(New-Object Net.Sockets.TcpClient\\).Connect\\(''localhost'', 8080\\); Write-Host ''PORT OPEN''\"\" 2>&1\")",
+      "Bash(cmd.exe /c \"powershell -Command \\\\\"Test-Path '$env:USERPROFILE\\\\\\\\Desktop\\\\\\\\Mapper Server.lnk'\\\\\"\")",
+      "Bash(cmd.exe /c \"wscript \\\\\"C:\\\\\\\\Users\\\\\\\\csoar\\\\\\\\OneDrive\\\\\\\\Desktop\\\\\\\\ClaudeTest\\\\\\\\mapper\\\\\\\\make_shortcut.vbs\\\\\"\")",
+      "Bash(cmd.exe /c \"cscript //nologo \\\\\"C:\\\\\\\\Users\\\\\\\\csoar\\\\\\\\OneDrive\\\\\\\\Desktop\\\\\\\\ClaudeTest\\\\\\\\mapper\\\\\\\\make_shortcut.vbs\\\\\" && echo SUCCESS\")",
+      "Bash(grep -n \"^Roman Republic$\\\\|^Roman Republic \" \"C:/Users/csoar/OneDrive/Desktop/ClaudeTest/mapper/polareas/130/PAR012.ASC\")",
+      "Bash(sed -n '2562,2590p' \"C:\\\\Users\\\\csoar\\\\OneDrive\\\\Desktop\\\\ClaudeTest\\\\mapper\\\\polareas\\\\130\\\\PAR012.ASC\")",
+      "Bash(sed -n '4506,4530p' \"C:\\\\Users\\\\csoar\\\\OneDrive\\\\Desktop\\\\ClaudeTest\\\\mapper\\\\polareas\\\\130\\\\PAR012.ASC\")",
+      "Bash(grep -l Volsci C:UserscsoarOneDriveDesktopClaudeTestmapperpolareas130 *.ASC)",
+      "Bash(grep:*)",
+      "Read(//c/Users/csoar/OneDrive/DesktopClaudeTest/mapper/polareas/130/**)",
+      "Bash(sed -n '4178,4206p' C:/Users/csoar/OneDrive/Desktop/ClaudeTest/mapper/polareas/130/PAR012.ASC)",
+      "Bash(where python:*)",
+      "Bash(where node:*)",
+      "Bash(where npm:*)",
+      "Bash(npm --version)",
+      "Bash(taskkill:*)",
+      "Bash(awk 'NR>=283 && NR<=654' \"C:/Users/csoar/OneDrive/Desktop/ClaudeTest/mapper/newoffsets.txt\")",
+      "Bash(awk 'NR==927' \"C:/Users/csoar/OneDrive/Desktop/ClaudeTest/mapper/newoffsets.txt\")",
+      "Bash(awk:*)",
+      "Bash(python3:*)",
+      "Bash(head -5 \"C:/Users/csoar/OneDrive/Desktop/ClaudeTest/mapper/primaries.txt\" grep -i \"unknown\\\\|water\\\\|ocean\\\\|lake\\\\|sea\" \"C:/Users/csoar/OneDrive/Desktop/ClaudeTest/mapper/primaries.txt\")",
+      "Bash(gh auth:*)",
+      "Bash(/tmp/analysis.txt:*)",
+      "Read(//tmp/**)",
+      "Bash(sed -n '1,15p' \"C:/Users/csoar/OneDrive/Desktop/ClaudeTest/mapper/inwaters/135/IWA294.PRN\")",
+      "Bash(sed -n '1,15p' \"C:/Users/csoar/OneDrive/Desktop/ClaudeTest/mapper/inwaters/140/IWA288.PRN\")",
+      "Bash(python build_geodata.py)",
+      "Bash(python merge_geodata.py)",
+      "Bash(git config:*)",
+      "Skill(update-config)",
+      "Bash(powershell -Command \"$input_json = $input | Out-String; $data = $input_json | ConvertFrom-Json; $f = $data.tool_input.file_path; if \\(-not $f -or -not $f.EndsWith\\(''''.js''''\\)\\) { exit 0 }; $result = node --check $f 2>&1; if \\($LASTEXITCODE -ne 0\\) { Write-Host \"\"JS SYNTAX ERROR: $f\"\"; Write-Host $result; exit 1 } else { Write-Host \"\"JS OK: $f\"\" }\")",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"C:\\\\Users\\\\csoar\\\\OneDrive\\\\Desktop\\\\ClaudeTest\\\\.claude\\\\hooks\\\\check-js.ps1\")",
+      "Bash(node -e \"JSON.parse\\(require\\(''fs''\\).readFileSync\\(''.claude/settings.local.json'',''utf8''\\)\\); console.log\\(''JSON valid''\\)\")",
+      "Bash(python extract_refs.py)",
+      "Bash(python add_whe_refs.py)",
+      "Bash(python mapper/build_geodata.py)",
+      "Bash(python -c \":*)",
+      "Bash(python mapper/merge_geodata.py)",
+      "Bash(node -e \"try { require\\(''./mapper/js/geodata.js''\\); console.log\\(''OK''\\); } catch\\(e\\) { console.log\\(''ERROR:'', e.message\\); }\")",
+      "Bash(grep -n \"''roma''\\\\|''roman empire''\\\\|''rome''\\\\b\\\\|''roman republic''\" mapper/js/geodata.js)",
+      "Bash(grep -n \"''roma''\" mapper/js/geodata.js)",
+      "Bash(grep -in \"''roma''\" mapper/js/geodata.js)",
+      "Bash(curl -s \"https://historymaps.org\")",
+      "WebFetch(domain:historymaps.org)",
+      "Bash(curl -s -o favicon.ico \"https://historymaps.org/favicon.ico\")",
+      "Bash(curl -s -o sahm-logo.png \"https://www.historymaps.org/wp-content/uploads/2024/03/SAHM-logo-1.png\")",
+      "Bash(python -c \"import os; print\\(''favicon:'', os.path.getsize\\(''favicon.ico''\\), ''bytes''\\); print\\(''logo:'', os.path.getsize\\(''sahm-logo.png''\\), ''bytes''\\)\")",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -ExecutionPolicy Bypass -File \"C:\\Users\\csoar\\OneDrive\\Desktop\\ClaudeTest\\.claude\\hooks\\check-js.ps1\"",
+            "statusMessage": "Checking JS syntax..."
+          }
+        ]
+      }
+    ]
+  }
+}
