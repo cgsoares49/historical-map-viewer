@@ -1,3 +1,18 @@
+ 1. Copy updated tile/data files into the ClaudeTest folder as usual                                                             2. Double-click Deploy Mapper.bat in the mapper folder                                                                        
+  3. It asks: Rebuild geodata? (y/n) — say y if you changed primaries.txt or PAR files, n if it's just code or other data         4. It shows what changed, asks for a commit message (or press Enter for a timestamp)                                            5. Commits, pushes — beta site updates in ~1 minute   
+  Usually takes under 2 minutes for a static site, though with 10,000+ files the first build might take a bit longer.  1. Go to github.com/cgsoares49/historical-map-viewer                                                                                                         2. Settings → Pages → Source: Deploy from branch → Branch: master / root                                                                                   
+  3. Save — Pages will build in ~1 minute                                                                                                                      4. Your URL will be: https://cgsoares49.github.io/historical-map-viewer/mapper/mapper.html       
+Potential new features:
+  - Bookmark/favorites — save named locations (view + date) to quickly return to
+  - Timeline slider — a visual scrubber for the year range instead of just step buttons
+  - Country tooltip on hover — show political name in a popup near the cursor (rather than just the status bar)
+  - Search by name — type a country/region name and jump to it (extends Vibe Map)
+  - Coordinate input — click on map to center + display the lon/lat of that point
+  - Export to SVG — vector export alongside the existing PNG save
+  - River/inland water toggle improvements — the rivers are described as "mostly working" but tabled
+
+I still see thin white tile lines which intersect at 45, 35 and also 40, 35 at zoom level 11. After zooming in and out white line at latitude 35 is persistant but the vertical lines are gone & don't cpme back apparentlt at any zoom level. All this was done with no draw or show boxes checked at -2400 so I'm looking at a dark color backhround (Guti).
+
 When I took a closer look at the map i find that in fact there are blue lines surrounding all tiles. However some of the blue lines ate fainter than others. For instance, the vertical line separating tiles 115/90 and 115/95 is very faint. Does this help?
 
 You must be careful to render the polygons or single element items in the exact order in which they appear in the PAR in order to not hace then overwritten.
