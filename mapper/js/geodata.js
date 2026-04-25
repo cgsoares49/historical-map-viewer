@@ -865,7 +865,7 @@ const GEODATA = {
     'mercenaries under phalaecus':     [   20,   35,    30,   40],
     'mercenaries under thibron':       [   20,   30,    25,   40],
     'mesoamerican peoples':            [ -105,    5,   -70,   25, -2400.1, -1],  // 2400.1 BCE–1 BCE
-    'messapians':                      [   12,   35,    24,   45, -800.1, 1],  // 800.1 BCE–1 CE
+    'messapians':                      [   12,   35,    24,   45, -800.1, -1],  // 800.1 BCE–1 BCE
     'messapii':                        [   12,   35,    24,   45, -500.1, 280.4],  // 500.1 BCE–280.4 CE
     'messenia':                        [   15,   35,    25,   40, -770.5, -1],  // 770.5 BCE–1 BCE
     'mianzhu':                         [  105,   30,   110,   35, -771.1, -361.5],  // 771.1 BCE–361.5 BCE

@@ -266,6 +266,7 @@
         /* ── Map container ────────────────────────────────────────────────── */
         #map-container { flex: 1; position: relative; overflow: hidden; min-height: 0; }
         #map-container canvas { display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        #overlay { cursor: crosshair; }
 
         /* ── Timeline bar ─────────────────────────────────────────────────── */
         #timeline-bar {
@@ -308,11 +309,11 @@
             z-index: 2000;
             box-shadow: 0 4px 16px rgba(0,0,0,0.65);
         }
-        #helpPopup { width: 300px; height: 280px; min-width: 200px; min-height: 140px; resize: both; overflow: hidden; padding: 0; display: flex; flex-direction: column; }
+        #helpPopup { width: 300px; height: 280px; min-width: 200px; min-height: 140px; resize: both; overflow: hidden; padding: 0; flex-direction: column; }
         #helpPopup .hc { color: #88ccff; font-weight: bold; }
         #helpPopupHeader { background: #1a3050; padding: 4px 8px; cursor: move; display: flex; justify-content: space-between; align-items: center; font-weight: bold; flex-shrink: 0; border-bottom: 1px solid #3a6090; user-select: none; }
         #helpPopupHeader button { background: none; border: none; color: #c0d8f0; font-size: 14px; cursor: pointer; padding: 0 2px; line-height: 1; }
-        #helpPopupBody { overflow-y: auto; flex: 1; padding: 8px 12px; line-height: 1.75; }
+        #helpPopupBody { overflow-y: auto; flex: 1; padding: 8px 12px; line-height: 1.75; color: #fff; }
         #bookmarkList { min-width: 220px; max-height: 220px; overflow-y: auto; }
 
         /* ── Info Popup ──────────────────────────────────────────────────── */
@@ -634,7 +635,7 @@
         <button id="helpPopupClose" title="Close">×</button>
     </div>
     <div id="helpPopupBody">
-        <div style="color:#506070;font-size:10px;font-style:italic;margin-bottom:4px;">Vibe Map voice/text commands</div>
+        <div style="margin-bottom:4px;">Vibe Map voice/text commands</div>
         <div><span class="hc">show/go [place]</span> — navigate to a place</div>
         <div><span class="hc">show [place] at [year]</span> — navigate + set date</div>
         <div><span class="hc">date [year]</span> — set the date (e.g. "date 100 BCE")</div>
@@ -651,15 +652,15 @@
         <div><span class="hc">pan [dir]</span> — pan N/S/E/W/NE/NW/SE/SW</div>
         <div><span class="hc">info [place]</span> — show info popup for a place</div>
         <div><span class="hc">dismiss</span> — close info popup</div>
-        <div style="margin-top:4px;color:#506070;font-size:10px;">Years: "100 BCE", "-100", "1648 CE", "1648"</div>
-        <div style="margin-top:8px;border-top:1px solid #1a3050;padding-top:6px;color:#506070;font-size:10px;font-style:italic;">Map interactions</div>
-        <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Drag</span> — pan the map; re-renders on release</div>
-        <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Scroll wheel</span> — zoom in/out centered on cursor</div>
-        <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Double-click</span> — zoom in centered on click point</div>
-        <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Shift+click</span> — selection rectangle; drag to reposition; Display or Enter to render</div>
-        <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Right-click</span> — country info popup</div>
-        <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Alt+click</span> — distance measurer (click twice for measurement)</div>
-        <div style="color:#506070;font-size:10px;"><span class="hc" style="color:#5588aa;">Escape</span> — cancel distance or selection mode</div>
+        <div style="margin-top:4px;">Years: "100 BCE", "-100", "1648 CE", "1648"</div>
+        <div style="margin-top:8px;border-top:1px solid #1a3050;padding-top:6px;font-style:italic;margin-bottom:4px;">Map interactions</div>
+        <div><span class="hc">Drag</span> — pan the map; re-renders on release</div>
+        <div><span class="hc">Scroll wheel</span> — zoom in/out centered on cursor</div>
+        <div><span class="hc">Double-click</span> — zoom in centered on click point</div>
+        <div><span class="hc">Shift+click</span> — selection rectangle; drag to reposition; Display or Enter to render</div>
+        <div><span class="hc">Right-click</span> — country info popup</div>
+        <div><span class="hc">Alt+click</span> — distance measurer (click twice for measurement)</div>
+        <div><span class="hc">Escape</span> — cancel distance or selection mode</div>
     </div>
 </div>
 
@@ -737,7 +738,8 @@ fetch('refs.json').then(r => r.json()).then(d => { geodataRefs = d; }).catch(() 
 
 fetch('version.json').then(r => r.json()).then(v => {
     const el = document.getElementById('versionInfo');
-    if (el) el.textContent = `app ${v.app || '?'} · data ${v.data || '?'}`;
+    const contentLimitStr = v.contentEnd != null ? `${Math.abs(Math.round(v.contentEnd))} BCE` : '?';
+    if (el) el.innerHTML = `app ${v.app || '?'} · <span style="color:#fff">content limit</span> <span style="color:#fff; font-size:12px; font-weight:bold">${contentLimitStr}</span>`;
     if (v.contentEnd  != null) TL.ANCT_MAX = v.contentEnd;
     if (v.latestYear  != null) { TL.MOD_MIN = v.latestYear; TL.MOD_MAX = v.latestYear; }
     resizeTimeline();
@@ -2484,8 +2486,8 @@ function _inSelectionRect(mx, my) {
 }
 
 overlay.addEventListener('mousedown', e => {
-    // Alt+click: distance measurer
-    if (e.altKey && contextProjection) {
+    // Alt+click: distance measurer (any button blocked; use left-click only)
+    if (e.altKey && e.button === 0 && contextProjection) {
         e.preventDefault();
         const geo = contextProjection.pixelToGeo(e.offsetX, e.offsetY);
         const pt  = { lon: geo.lon, lat: Math.max(-90, Math.min(90, geo.lat)) };
@@ -2497,9 +2499,17 @@ overlay.addEventListener('mousedown', e => {
         drawOverlay();
         return;
     }
+    // Only handle left-click beyond this point; right-click is handled by contextmenu
+    if (e.button !== 0) return;
     if (!contextProjection || _isRobinson()) return;
     const mx = e.offsetX, my = e.offsetY;
-    if (_mapFullyRendered && _selectionMode && e.button === 0) {
+    // Shift+click on rendered map → enter selection mode (only if not already in it)
+    if (_mapFullyRendered && e.shiftKey && !_selectionMode) {
+        _selectionMode = true;
+        drawOverlay();
+        return;
+    }
+    if (_mapFullyRendered && _selectionMode) {
         // Selection mode on rendered map: drag the selection rectangle
         selDragging     = true;
         selDragStartX   = mx;
@@ -2507,14 +2517,12 @@ overlay.addEventListener('mousedown', e => {
         const inp = getInputs();
         selDragStartLon = inp.centerLon;
         selDragStartLat = inp.centerLat;
-        overlay.style.cursor = 'grabbing';
-    } else if (_mapFullyRendered && e.button === 0) {
+    } else if (_mapFullyRendered) {
         // Rendered map (normal): drag to pan
         const inp = getInputs();
         mapDragStart = { x: mx, y: my, lon: inp.centerLon, lat: inp.centerLat };
-        overlay.style.cursor = 'grabbing';
         e.preventDefault();
-    } else if (e.button === 0 && _inSelectionRect(mx, my)) {
+    } else if (_inSelectionRect(mx, my)) {
         // World-context: drag the selection rectangle
         selDragging     = true;
         selDragStartX   = mx;
@@ -2522,7 +2530,6 @@ overlay.addEventListener('mousedown', e => {
         const inp = getInputs();
         selDragStartLon = inp.centerLon;
         selDragStartLat = inp.centerLat;
-        overlay.style.cursor = 'grabbing';
     } else {
         // Snap selection center (world-context click outside rect)
         const geo = contextProjection.pixelToGeo(mx, my);
@@ -2552,7 +2559,6 @@ overlay.addEventListener('mousemove', e => {
         document.getElementById('centerLat').value = lat;
         drawOverlay();
     } else {
-        overlay.style.cursor = (_mapFullyRendered || _inSelectionRect(mx, my)) ? 'grab' : 'crosshair';
         // Pointer coordinate readout
         if (contextProjection) {
             const geo = contextProjection.pixelToGeo(mx, my);
@@ -2599,11 +2605,9 @@ overlay.addEventListener('mouseup', e => {
         // short click with no drag: do nothing — use WORLD VIEW button to return to world view
         mapDragStart = null;
         mapDragging  = false;
-        overlay.style.cursor = 'crosshair';
         return;
     }
     selDragging = false;
-    overlay.style.cursor = 'crosshair';
 });
 overlay.addEventListener('mouseleave', () => {
     if (mapDragStart) {
@@ -2612,7 +2616,6 @@ overlay.addEventListener('mouseleave', () => {
         mapDragging  = false;
     }
     selDragging = false;
-    overlay.style.cursor = '';
     document.getElementById('ptrX').value = '';
     document.getElementById('ptrY').value = '';
     document.getElementById('txtPixelColor').textContent = '';
@@ -2621,12 +2624,6 @@ overlay.addEventListener('mouseleave', () => {
     document.getElementById('txtBlue'      ).value = '';
 });
 
-overlay.style.cursor = 'crosshair';
-
-// Shift+click on rendered map → enter selection mode (rectangle overlaid on map)
-overlay.addEventListener('click', e => {
-    if (_mapFullyRendered && e.shiftKey) { _selectionMode = true; drawOverlay(); }
-});
 
 // Double-click → zoom in one step, centered on click point
 overlay.addEventListener('dblclick', e => {
@@ -2655,11 +2652,13 @@ document.addEventListener('keydown', e => {
 // ── Info Popup ───────────────────────────────────────────────────────────────
 function fmtYear(y) {
     if (y === 1990.1) return 'present (~1990)';
+    if (y === -1) return 'ongoing (content limit)';
     return y < 0 ? `${Math.abs(y)} BCE` : `${y} CE`;
 }
 
 function fmtYearInt(y) {
     if (y === 1990.1) return 'present';
+    if (y === -1) return 'ongoing (content limit)';
     const n = Math.round(Math.abs(y));
     return y < 0 ? `${n} BCE` : `${n} CE`;
 }
