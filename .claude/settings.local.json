@@ -54,7 +54,8 @@
       "Bash(python -c \"import os; print\\(''favicon:'', os.path.getsize\\(''favicon.ico''\\), ''bytes''\\); print\\(''logo:'', os.path.getsize\\(''sahm-logo.png''\\), ''bytes''\\)\")",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(gh api *)"
     ]
   },
   "hooks": {
