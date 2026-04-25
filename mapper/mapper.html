@@ -760,6 +760,11 @@ async function saveRefs() {
     setTimeout(() => { statusEl.textContent = ''; }, 2500);
 }
 
+// ── Data coverage limit ──────────────────────────────────────────────────────
+// Update this when new tiles extend coverage. Dates past this year render blank
+// (2000 CE is always allowed as the modern reference year).
+const MAX_DATA_YEAR = -274;
+
 // ── Shared objects ───────────────────────────────────────────────────────────
 const tileManager = new TileManager();
 const loader      = new DataLoader();
@@ -2249,6 +2254,29 @@ async function doRender(skipColorMap = false) {
     fillEl.style.width = '0%';
 
     const { year } = getInputs();
+
+    if (year > MAX_DATA_YEAR && year !== 2000) {
+        const W = ctx.canvas.width, H = ctx.canvas.height;
+        const limitLabel = MAX_DATA_YEAR < 0
+            ? `${Math.abs(MAX_DATA_YEAR)} BCE`
+            : `${MAX_DATA_YEAR} CE`;
+        ctx.fillStyle = '#050f20';
+        ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = '#8090a8';
+        ctx.font = 'bold 18px monospace';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(`No map data past ${limitLabel}`, W / 2, H / 2);
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'alphabetic';
+        statusEl.textContent = `No map data past ${limitLabel}`;
+        fillEl.style.width = '0%';
+        countEl.textContent = '';
+        btn.disabled = false;
+        updateScaleDisplay();
+        return;
+    }
+
     const proj = getProjection();
     contextProjection = proj;
     const tileList = tileManager.getTiles(proj);
