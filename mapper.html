@@ -515,7 +515,10 @@ let selDragStartLon = 0, selDragStartLat = 0;
 // ── Data coverage limit ──────────────────────────────────────────────────────
 // Update this when new tiles extend coverage. Dates past this year render blank
 // (2000 CE is always allowed as the modern reference year).
-const MAX_DATA_YEAR = -272;
+let MAX_DATA_YEAR = -272;
+fetch('mapper/version.json').then(r => r.json()).then(v => {
+    if (v.contentEnd != null) MAX_DATA_YEAR = v.contentEnd;
+}).catch(() => {});
 
 // ── Shared objects ───────────────────────────────────────────────────────────
 const tileManager = new TileManager();

@@ -740,7 +740,7 @@ fetch('version.json').then(r => r.json()).then(v => {
     const el = document.getElementById('versionInfo');
     const contentLimitStr = v.contentEnd != null ? `${Math.abs(Math.round(v.contentEnd))} BCE` : '?';
     if (el) el.innerHTML = `app ${v.app || '?'} · <span style="color:#fff">content limit</span> <span style="color:#fff; font-size:12px; font-weight:bold">${contentLimitStr}</span>`;
-    if (v.contentEnd  != null) TL.ANCT_MAX = v.contentEnd;
+    if (v.contentEnd  != null) { MAX_DATA_YEAR = v.contentEnd; TL.ANCT_MAX = v.contentEnd; }
     if (v.latestYear  != null) { TL.MOD_MIN = v.latestYear; TL.MOD_MAX = v.latestYear; }
     resizeTimeline();
 }).catch(() => {});
@@ -763,7 +763,7 @@ async function saveRefs() {
 // ── Data coverage limit ──────────────────────────────────────────────────────
 // Update this when new tiles extend coverage. Dates past this year render blank
 // (2000 CE is always allowed as the modern reference year).
-const MAX_DATA_YEAR = -272;
+let MAX_DATA_YEAR = -272;
 
 // ── Shared objects ───────────────────────────────────────────────────────────
 const tileManager = new TileManager();
