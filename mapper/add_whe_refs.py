@@ -13,14 +13,19 @@ REFS_JSON  = os.path.join(MAPPER_DIR, 'refs.json')
 
 def to_whe_url(key):
     """Convert a geodata key to a World History Encyclopedia URL."""
-    # Unescape apostrophes, strip leading/trailing parens
     name = key.replace("\\'", "'")
     name = re.sub(r'^\((.+)\)$', r'\1', name).strip()
-    # Title-case: capitalise after start, spaces, and hyphens
     name = re.sub(r'(^|(?<=[ \-]))([a-z])', lambda m: m.group(1) + m.group(2).upper(), name)
-    # Replace spaces with underscores for the URL path
     name = name.replace(' ', '_')
     return f'https://www.worldhistory.org/{name}/'
+
+def to_wiki_url(key):
+    """Convert a geodata key to a Wikipedia URL."""
+    name = key.replace("\\'", "'")
+    name = re.sub(r'^\((.+)\)$', r'\1', name).strip()
+    name = re.sub(r'(^|(?<=[ \-]))([a-z])', lambda m: m.group(1) + m.group(2).upper(), name)
+    name = name.replace(' ', '_')
+    return f'https://en.wikipedia.org/wiki/{name}'
 
 # ── Read PAR-derived keys from geodata.js ─────────────────────────────────────
 with open(GEODATA_JS, encoding='utf-8') as f:
@@ -44,19 +49,21 @@ added = 0
 for key in par_keys:
     real_key = key.replace("\\'", "'")
     whe_url  = to_whe_url(key)
+    wiki_url = to_wiki_url(key)
     if real_key not in refs:
-        refs[real_key] = [whe_url]
+        refs[real_key] = [whe_url, wiki_url]
         added += 1
     else:
         urls = refs[real_key]
-        if not any('worldhistory.org' in u for u in urls):
-            refs[real_key] = [whe_url] + urls   # prepend WHE before existing refs
+        whe_urls  = [u for u in urls if 'worldhistory.org' in u]
+        wiki_urls = [u for u in urls if 'wikipedia.org' in u]
+        other     = [u for u in urls if 'worldhistory.org' not in u and 'wikipedia.org' not in u]
+        if not whe_urls:
+            whe_urls = [whe_url]
             added += 1
-        else:
-            # WHE already present — ensure it's first
-            whe  = [u for u in urls if 'worldhistory.org' in u]
-            rest = [u for u in urls if 'worldhistory.org' not in u]
-            refs[real_key] = whe + rest
+        if not wiki_urls:
+            wiki_urls = [wiki_url]
+        refs[real_key] = whe_urls + wiki_urls + other
 
 # ── Write back ────────────────────────────────────────────────────────────────
 with open(REFS_JSON, 'w', encoding='utf-8') as f:
