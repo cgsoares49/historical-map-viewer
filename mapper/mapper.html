@@ -2882,7 +2882,7 @@ function _drawRefLine(proj, value, isLon, color) {
 function exitMapper() {
     window.close();
     setTimeout(() => {
-        window.location.href = document.referrer || 'https://historymaps.org';
+        if (document.referrer) window.location.href = document.referrer;
     }, 300);
 }
 </script>
