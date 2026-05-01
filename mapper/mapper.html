@@ -2880,12 +2880,10 @@ function _drawRefLine(proj, value, isLon, color) {
 }
 
 function exitMapper() {
-    if (document.referrer) {
-        window.location.href = document.referrer;
-    } else {
-        window.close();
-        setTimeout(() => { window.location.href = 'https://historymaps.org'; }, 300);
-    }
+    window.close();
+    setTimeout(() => {
+        window.location.href = document.referrer || 'https://historymaps.org';
+    }, 300);
 }
 </script>
 </body>
