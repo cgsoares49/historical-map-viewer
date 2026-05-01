@@ -553,6 +553,9 @@
             <button class="btn-home"  id="btnHome"  style="flex:1;">HOME</button>
             <button class="btn-world" id="btnWorld" style="flex:1;">WORLD<br>VIEW</button>
         </div>
+        <div class="tb-row" style="margin-top:3px; gap:3px;">
+            <button class="btn-abort" id="btnExit" style="flex:1;" onclick="exitMapper()">EXIT</button>
+        </div>
     </div>
 
     <!-- ── Save / Projection ── -->
@@ -2874,6 +2877,15 @@ function _drawRefLine(proj, value, isLon, color) {
     }
     octx.stroke();
     octx.setLineDash([]);
+}
+
+function exitMapper() {
+    if (document.referrer) {
+        window.location.href = document.referrer;
+    } else {
+        window.close();
+        setTimeout(() => { window.location.href = 'https://historymaps.org'; }, 300);
+    }
 }
 </script>
 </body>
