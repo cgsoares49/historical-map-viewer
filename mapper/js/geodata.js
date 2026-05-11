@@ -232,7 +232,7 @@ const GEODATA = {
     'aboriginal peoples':              [   95,  -45,   165,   20, -2400.1, -1],  // 2400.1 BCE–1 BCE
     'acarnania':                       [   20,   35,    25,   40, -695.5, -1],  // 695.5 BCE–1 BCE
     'achaea':                          [   12,   35,    25,   45, -720.5, -280.4],  // 720.5 BCE–280.4 BCE
-    'achaean league':                  [   20,   35,    25,   40, -280.4, -1],  // 280.4 BCE–1 BCE
+    'achaean league':                  [   20,   35,    25,   40, -280.4, -268.2],  // 280.4 BCE–268.2 BCE
     'achaeans':                        [   18,   35,    25,   45, -1100.5, -720.5],  // 1100.5 BCE–720.5 BCE
     'adena culture':                   [  -90,   35,   -75,   45, -800.1, -1],  // 800.1 BCE–1 BCE
     'aegina':                          [   20,   35,    25,   40, -520.5, -338.2],  // 520.5 BCE–338.2 BCE
@@ -276,7 +276,7 @@ const GEODATA = {
     'anga':                            [   85,   20,    90,   30, -775.1, -530.5],  // 775.1 BCE–530.5 BCE
     'anshan':                          [   45,   25,    55,   35, -2348.5, -653.4],  // 2348.5 BCE–653.4 BCE
     'antandros':                       [   25,   35,    30,   40, -478.3, -427.5],  // 478.3 BCE–427.5 BCE
-    'anti macedon alliance':           [   20,   35,    25,   40],
+    'anti macedon alliance':           [   20,   30,    30,   45, -268.2, -1],  // 268.2 BCE–1 BCE
     'anti roman alliance':             [   12,   40,    18,   45, -341.2, -338.5],  // 341.2 BCE–338.5 BCE
     'anti spartan alliance':           [   18,   30,    35,   45, -395.3, -386.5],  // 395.3 BCE–386.5 BCE
     'antigonid ally':                  [   20,   30,    36,   45, -313.2, -289.5],  // 313.2 BCE–289.5 BCE
@@ -293,7 +293,7 @@ const GEODATA = {
     'aram-zobah':                      [   35,   30,    40,   35, -1145.5, -750.5],  // 1145.5 BCE–750.5 BCE
     'aramaeans':                       [   35,   30,    50,   40, -1280, -1],  // 1280 BCE–1 BCE
     'arcadia':                         [   20,   35,    25,   40, -742.5, -445.5],  // 742.5 BCE–445.5 BCE
-    'arcadian league':                 [   20,   35,    25,   40, -363.3, -1],  // 363.3 BCE–1 BCE
+    'arcadian league':                 [   20,   35,    25,   40, -363.3, -268.2],  // 363.3 BCE–268.2 BCE
     'arctic marine mammal hunters':    [  100,   60,   192,   80, -2400.1, -1],  // 2400.1 BCE–1 BCE
     'arctic peoples':                  [ -170,   55,   -40,   75, -2400.1, -1],  // 2400.1 BCE–1 BCE
     'ardiaei':                         [   18,   40,    24,   45, -346.5, -1],  // 346.5 BCE–1 BCE
@@ -309,7 +309,7 @@ const GEODATA = {
     'asvaka':                          [   70,   30,    75,   40, -610.1, -516.5],  // 610.1 BCE–516.5 BCE
     'athamania':                       [   20,   35,    25,   40, -430.8, -1],  // 430.8 BCE–1 BCE
     'athenian ally':                   [   25,   35,    30,   40, -384.5, -378.7],  // 384.5 BCE–378.7 BCE
-    'athens':                          [   20,   35,    30,   45, -900.1, -1],  // 900.1 BCE–1 BCE
+    'athens':                          [   20,   35,    30,   45, -900.1, 268.2],  // 900.1 BCE–268.2 CE
     'atropatene':                      [   40,   35,    54,   45, -319.5, -1],  // 319.5 BCE–1 BCE
     'atuna':                           [   30,   35,    40,   40, -826.8, -680.5],  // 826.8 BCE–680.5 BCE
     'audumbaras':                      [   70,   30,    80,   35, -600.5, -323.3],  // 600.5 BCE–323.3 BCE
@@ -477,7 +477,7 @@ const GEODATA = {
     'donghu':                          [  114,   40,   126,   50, -770.1, -1],  // 770.1 BCE–1 BCE
     'dongyi peoples':                  [  115,   35,   125,   40, -1500.1, -1079.5],  // 1500.1 BCE–1079.5 BCE
     'dorians':                         [   10,   30,    35,   45, -1223.5, -1],  // 1223.5 BCE–1 BCE
-    'doris':                           [   20,   35,    25,   40, -695.5, -1],  // 695.5 BCE–1 BCE
+    'doris':                           [   20,   35,    25,   40, -695.5, -268.2],  // 695.5 BCE–268.2 BCE
     'dravidians':                      [   70,    5,    95,   30, -2400.1, -1],  // 2400.1 BCE–1 BCE
     'du':                              [  105,   30,   110,   35, -771.1, -687.5],  // 771.1 BCE–687.5 BCE
     'duan':                            [  110,   30,   115,   40, -743.5, -722.5],  // 743.5 BCE–722.5 BCE
@@ -731,7 +731,7 @@ const GEODATA = {
     'kingdom of rome':                 [   12,   40,    18,   45, -725, -509.6],  // 725 BCE–509.6 BCE
     'kingdom of sam\'al':              [   35,   35,    40,   40, -920.5, -604.7],  // 920.5 BCE–604.7 BCE
     'kingdom of sindica':              [   36,   40,    42,   50, -480.1, -380.5],  // 480.1 BCE–380.5 BCE
-    'kingdom of sparta':               [   10,   30,    30,   45, -777.5, -1],  // 777.5 BCE–1 BCE
+    'kingdom of sparta':               [   10,   30,    30,   45, -777.5, -268.2],  // 777.5 BCE–268.2 BCE
     'kingdom of syracuse':             [   10,   35,    25,   45, -304.5, -289.5],  // 304.5 BCE–289.5 BCE
     'kingdom of terqa':                [   35,   30,    45,   40, -1741.5, -1512.5],  // 1741.5 BCE–1512.5 BCE
     'kingdom of the grabaei':          [   18,   40,    24,   45, -429.1, -295.5],  // 429.1 BCE–295.5 BCE
@@ -837,7 +837,7 @@ const GEODATA = {
     'manchurian peoples':              [  114,   35,   144,   55, -2400.1, -1],  // 2400.1 BCE–1 BCE
     'mannaea':                         [   40,   35,    50,   40, -843.1, -608.5],  // 843.1 BCE–608.5 BCE
     'manshi':                          [  110,   30,   115,   35, -770.1, -491.5],  // 770.1 BCE–491.5 BCE
-    'mantineia':                       [   20,   35,    25,   40, -417.5, -1],  // 417.5 BCE–1 BCE
+    'mantineia':                       [   20,   35,    25,   40, -417.5, -268.2],  // 417.5 BCE–268.2 BCE
     'mao':                             [  105,   30,   110,   35, -771.1, -687.5],  // 771.1 BCE–687.5 BCE
     'mao(2)':                          [  115,   30,   120,   40, -770.1, -560.5],  // 770.1 BCE–560.5 BCE
     'margiana':                        [   60,   30,    70,   40, -329.5, -328.5],  // 329.5 BCE–328.5 BCE
@@ -855,7 +855,7 @@ const GEODATA = {
     'media':                           [   30,   30,    65,   45, -713.3, -550.5],  // 713.3 BCE–550.5 BCE
     'median vassal':                   [   45,   25,    65,   35, -586.5, -550.5],  // 586.5 BCE–550.5 BCE
     'megalopolis':                     [   20,   35,    25,   40, -300.5, -272.1],  // 300.5 BCE–272.1 BCE
-    'megaris':                         [   10,   35,    36,   45, -743.5, -1],  // 743.5 BCE–1 BCE
+    'megaris':                         [   10,   35,    36,   45, -743.5, -268.2],  // 743.5 BCE–268.2 BCE
     'mercenaries of bithynia':         [   24,   40,    36,   45],
     'mercenaries under agathocles':    [   10,   35,    20,   40, -319.5, -316.5],  // 319.5 BCE–316.5 BCE
     'mercenaries under amyntas':       [   30,   25,    40,   35],
@@ -977,7 +977,7 @@ const GEODATA = {
     'pi':                              [  115,   30,   120,   35, -770.1, -415.5],  // 770.1 BCE–415.5 BCE
     'piceni':                          [   12,   40,    18,   45, -500.1, -438.5],  // 500.1 BCE–438.5 BCE
     'picentes':                        [   12,   40,    18,   45, -800.1, -438.5],  // 800.1 BCE–438.5 BCE
-    'picenum':                         [   12,   40,    18,   45, -438.5, -1],  // 438.5 BCE–1 BCE
+    'picenum':                         [   12,   40,    18,   45, -438.5, -268.6],  // 438.5 BCE–268.6 BCE
     'ping zhou':                       [  105,   30,   110,   35, -771.1, -550.5],  // 771.1 BCE–550.5 BCE
     'pirate mercenaries':              [   18,   35,    40,   45],
     'pirates':                         [   20,   35,    30,   40],
@@ -1161,7 +1161,7 @@ const GEODATA = {
     'taulanti':                        [   15,   35,    25,   45, -800.1, -279.1],  // 800.1 BCE–279.1 BCE
     'tauromenion':                     [   15,   35,    20,   40, -288.5, -1],  // 288.5 BCE–1 BCE
     'taxila':                          [   70,   30,    75,   40, -338.5, -326.4],  // 338.5 BCE–326.4 BCE
-    'tegea':                           [   20,   35,    25,   40, -300.5, -1],  // 300.5 BCE–1 BCE
+    'tegea':                           [   20,   35,    25,   40, -300.5, -268.2],  // 300.5 BCE–268.2 BCE
     'teng':                            [  115,   30,   120,   40, -770.1, -297.5],  // 770.1 BCE–297.5 BCE
     'terramare culture':               [    6,   40,    12,   50, -1550.1, -1250.1],  // 1550.1 BCE–1250.1 BCE
     'teutons':                         [    0,   50,    24,   65, -2050.1, -1],  // 2050.1 BCE–1 BCE
@@ -1318,201 +1318,4 @@ const GEODATA = {
     'zong':                            [  115,   30,   120,   35, -770.1, -615.5],  // 770.1 BCE–615.5 BCE
     'zuo':                             [  110,   30,   115,   40, -770.1, -750.5],  // 770.1 BCE–750.5 BCE
 
-};
-
-// ── References database ────────────────────────────────────────────────────
-// Add URLs or citations for any GEODATA key (lowercase, apostrophes escaped).
-// Values are arrays of strings; URLs become clickable links in the info popup.
-const GEODATA_REFS = {
-    'africa': ['https://en.wikipedia.org/wiki/Africa'],
-    'europe': ['https://en.wikipedia.org/wiki/Europe'],
-    'asia': ['https://en.wikipedia.org/wiki/Asia'],
-    'eurasia': ['https://en.wikipedia.org/wiki/Eurasia'],
-    'north america': ['https://en.wikipedia.org/wiki/North_America'],
-    'south america': ['https://en.wikipedia.org/wiki/South_America'],
-    'americas': ['https://en.wikipedia.org/wiki/Americas'],
-    'australia': ['https://en.wikipedia.org/wiki/Australia_(continent)'],
-    'oceania': ['https://en.wikipedia.org/wiki/Oceania'],
-    'antarctica': ['https://en.wikipedia.org/wiki/Antarctica'],
-    'mesopotamia': ['https://en.wikipedia.org/wiki/Mesopotamia'],
-    'fertile crescent': ['https://en.wikipedia.org/wiki/Fertile_Crescent'],
-    'sumer': ['https://en.wikipedia.org/wiki/Sumer'],
-    'akkad': ['https://en.wikipedia.org/wiki/Akkad_(region)'],
-    'babylonia': ['https://en.wikipedia.org/wiki/Babylonia'],
-    'babylon': ['https://en.wikipedia.org/wiki/Babylon'],
-    'assyria': ['https://en.wikipedia.org/wiki/Assyria'],
-    'nineveh': ['https://en.wikipedia.org/wiki/Nineveh'],
-    'ancient egypt': ['https://en.wikipedia.org/wiki/Ancient_Egypt'],
-    'nile valley': ['https://en.wikipedia.org/wiki/Nile'],
-    'nubia': ['https://en.wikipedia.org/wiki/Nubia'],
-    'carthage': ['https://en.wikipedia.org/wiki/Carthage'],
-    'north africa': ['https://en.wikipedia.org/wiki/North_Africa'],
-    'levant': ['https://en.wikipedia.org/wiki/Levant'],
-    'canaan': ['https://en.wikipedia.org/wiki/Canaan'],
-    'phoenicia': ['https://en.wikipedia.org/wiki/Phoenicia'],
-    'judea': ['https://en.wikipedia.org/wiki/Judea'],
-    'israel (ancient)': ['https://en.wikipedia.org/wiki/Kingdom_of_Israel_(united_monarchy)'],
-    'persia (ancient)': ['https://en.wikipedia.org/wiki/Persia'],
-    'achaemenid empire': ['https://en.wikipedia.org/wiki/Achaemenid_Empire'],
-    'anatolia': ['https://en.wikipedia.org/wiki/Anatolia'],
-    'asia minor': ['https://en.wikipedia.org/wiki/Anatolia'],
-    'ancient greece': ['https://en.wikipedia.org/wiki/Ancient_Greece'],
-    'ancient rome': ['https://en.wikipedia.org/wiki/Ancient_Rome'],
-    'roman empire': ['https://en.wikipedia.org/wiki/Roman_Empire'],
-    'gaul': ['https://en.wikipedia.org/wiki/Gaul'],
-    'britannia': ['https://en.wikipedia.org/wiki/Roman_Britain'],
-    'iberia (ancient)': ['https://en.wikipedia.org/wiki/Iberian_Peninsula'],
-    'germania': ['https://en.wikipedia.org/wiki/Germania'],
-    'scythia': ['https://en.wikipedia.org/wiki/Scythia'],
-    'pontic steppe': ['https://en.wikipedia.org/wiki/Pontic–Caspian_steppe'],
-    'steppe': ['https://en.wikipedia.org/wiki/Eurasian_Steppe'],
-    'indus valley': ['https://en.wikipedia.org/wiki/Indus_Valley_Civilisation'],
-    'ancient india': ['https://en.wikipedia.org/wiki/History_of_India'],
-    'maurya empire': ['https://en.wikipedia.org/wiki/Maurya_Empire'],
-    'ancient china': ['https://en.wikipedia.org/wiki/History_of_China'],
-    'arabia (ancient)': ['https://en.wikipedia.org/wiki/Arabian_Peninsula'],
-    'arabian peninsula': ['https://en.wikipedia.org/wiki/Arabian_Peninsula'],
-    'near east': ['https://en.wikipedia.org/wiki/Near_East'],
-    'middle east': ['https://en.wikipedia.org/wiki/Middle_East'],
-    'caucasus': ['https://en.wikipedia.org/wiki/Caucasus'],
-    'central asia': ['https://en.wikipedia.org/wiki/Central_Asia'],
-    'horn of africa': ['https://en.wikipedia.org/wiki/Horn_of_Africa'],
-    'sub-saharan africa': ['https://en.wikipedia.org/wiki/Sub-Saharan_Africa'],
-    'mali empire': ['https://en.wikipedia.org/wiki/Mali_Empire'],
-    'byzantine empire': ['https://en.wikipedia.org/wiki/Byzantine_Empire'],
-    'ottoman empire': ['https://en.wikipedia.org/wiki/Ottoman_Empire'],
-    'mongol empire': ['https://en.wikipedia.org/wiki/Mongol_Empire'],
-    'silk road': ['https://en.wikipedia.org/wiki/Silk_Road'],
-    'france': ['https://en.wikipedia.org/wiki/France'],
-    'germany': ['https://en.wikipedia.org/wiki/Germany'],
-    'united kingdom': ['https://en.wikipedia.org/wiki/United_Kingdom'],
-    'great britain': ['https://en.wikipedia.org/wiki/Great_Britain'],
-    'england': ['https://en.wikipedia.org/wiki/England'],
-    'scotland': ['https://en.wikipedia.org/wiki/Scotland'],
-    'wales': ['https://en.wikipedia.org/wiki/Wales'],
-    'ireland': ['https://en.wikipedia.org/wiki/Ireland'],
-    'spain': ['https://en.wikipedia.org/wiki/Spain'],
-    'portugal': ['https://en.wikipedia.org/wiki/Portugal'],
-    'italy': ['https://en.wikipedia.org/wiki/Italy'],
-    'greece': ['https://en.wikipedia.org/wiki/Greece'],
-    'turkey': ['https://en.wikipedia.org/wiki/Turkey'],
-    'ukraine': ['https://en.wikipedia.org/wiki/Ukraine'],
-    'russia': ['https://en.wikipedia.org/wiki/Russia'],
-    'poland': ['https://en.wikipedia.org/wiki/Poland'],
-    'sweden': ['https://en.wikipedia.org/wiki/Sweden'],
-    'norway': ['https://en.wikipedia.org/wiki/Norway'],
-    'finland': ['https://en.wikipedia.org/wiki/Finland'],
-    'denmark': ['https://en.wikipedia.org/wiki/Denmark'],
-    'netherlands': ['https://en.wikipedia.org/wiki/Netherlands'],
-    'belgium': ['https://en.wikipedia.org/wiki/Belgium'],
-    'switzerland': ['https://en.wikipedia.org/wiki/Switzerland'],
-    'austria': ['https://en.wikipedia.org/wiki/Austria'],
-    'hungary': ['https://en.wikipedia.org/wiki/Hungary'],
-    'romania': ['https://en.wikipedia.org/wiki/Romania'],
-    'bulgaria': ['https://en.wikipedia.org/wiki/Bulgaria'],
-    'serbia': ['https://en.wikipedia.org/wiki/Serbia'],
-    'croatia': ['https://en.wikipedia.org/wiki/Croatia'],
-    'czech republic': ['https://en.wikipedia.org/wiki/Czech_Republic'],
-    'slovakia': ['https://en.wikipedia.org/wiki/Slovakia'],
-    'albania': ['https://en.wikipedia.org/wiki/Albania'],
-    'north macedonia': ['https://en.wikipedia.org/wiki/North_Macedonia'],
-    'bosnia': ['https://en.wikipedia.org/wiki/Bosnia_and_Herzegovina'],
-    'slovenia': ['https://en.wikipedia.org/wiki/Slovenia'],
-    'latvia': ['https://en.wikipedia.org/wiki/Latvia'],
-    'lithuania': ['https://en.wikipedia.org/wiki/Lithuania'],
-    'estonia': ['https://en.wikipedia.org/wiki/Estonia'],
-    'belarus': ['https://en.wikipedia.org/wiki/Belarus'],
-    'moldova': ['https://en.wikipedia.org/wiki/Moldova'],
-    'iceland': ['https://en.wikipedia.org/wiki/Iceland'],
-    'luxembourg': ['https://en.wikipedia.org/wiki/Luxembourg'],
-    'egypt': ['https://en.wikipedia.org/wiki/Egypt'],
-    'israel': ['https://en.wikipedia.org/wiki/Israel'],
-    'palestine': ['https://en.wikipedia.org/wiki/State_of_Palestine'],
-    'jordan': ['https://en.wikipedia.org/wiki/Jordan'],
-    'syria': ['https://en.wikipedia.org/wiki/Syria'],
-    'lebanon': ['https://en.wikipedia.org/wiki/Lebanon'],
-    'iraq': ['https://en.wikipedia.org/wiki/Iraq'],
-    'iran': ['https://en.wikipedia.org/wiki/Iran'],
-    'saudi arabia': ['https://en.wikipedia.org/wiki/Saudi_Arabia'],
-    'yemen': ['https://en.wikipedia.org/wiki/Yemen'],
-    'oman': ['https://en.wikipedia.org/wiki/Oman'],
-    'uae': ['https://en.wikipedia.org/wiki/United_Arab_Emirates'],
-    'kuwait': ['https://en.wikipedia.org/wiki/Kuwait'],
-    'qatar': ['https://en.wikipedia.org/wiki/Qatar'],
-    'bahrain': ['https://en.wikipedia.org/wiki/Bahrain'],
-    'afghanistan': ['https://en.wikipedia.org/wiki/Afghanistan'],
-    'pakistan': ['https://en.wikipedia.org/wiki/Pakistan'],
-    'morocco': ['https://en.wikipedia.org/wiki/Morocco'],
-    'algeria': ['https://en.wikipedia.org/wiki/Algeria'],
-    'libya': ['https://en.wikipedia.org/wiki/Libya'],
-    'tunisia': ['https://en.wikipedia.org/wiki/Tunisia'],
-    'sudan': ['https://en.wikipedia.org/wiki/Sudan'],
-    'ethiopia': ['https://en.wikipedia.org/wiki/Ethiopia'],
-    'somalia': ['https://en.wikipedia.org/wiki/Somalia'],
-    'kenya': ['https://en.wikipedia.org/wiki/Kenya'],
-    'tanzania': ['https://en.wikipedia.org/wiki/Tanzania'],
-    'nigeria': ['https://en.wikipedia.org/wiki/Nigeria'],
-    'ghana': ['https://en.wikipedia.org/wiki/Ghana'],
-    'mali': ['https://en.wikipedia.org/wiki/Mali'],
-    'south africa': ['https://en.wikipedia.org/wiki/South_Africa'],
-    'madagascar': ['https://en.wikipedia.org/wiki/Madagascar'],
-    'congo': ['https://en.wikipedia.org/wiki/Democratic_Republic_of_the_Congo'],
-    'angola': ['https://en.wikipedia.org/wiki/Angola'],
-    'mozambique': ['https://en.wikipedia.org/wiki/Mozambique'],
-    'zambia': ['https://en.wikipedia.org/wiki/Zambia'],
-    'zimbabwe': ['https://en.wikipedia.org/wiki/Zimbabwe'],
-    'india': ['https://en.wikipedia.org/wiki/India'],
-    'china': ['https://en.wikipedia.org/wiki/China'],
-    'japan': ['https://en.wikipedia.org/wiki/Japan'],
-    'korea': ['https://en.wikipedia.org/wiki/Korea'],
-    'north korea': ['https://en.wikipedia.org/wiki/North_Korea'],
-    'south korea': ['https://en.wikipedia.org/wiki/South_Korea'],
-    'mongolia': ['https://en.wikipedia.org/wiki/Mongolia'],
-    'vietnam': ['https://en.wikipedia.org/wiki/Vietnam'],
-    'thailand': ['https://en.wikipedia.org/wiki/Thailand'],
-    'myanmar': ['https://en.wikipedia.org/wiki/Myanmar'],
-    'cambodia': ['https://en.wikipedia.org/wiki/Cambodia'],
-    'laos': ['https://en.wikipedia.org/wiki/Laos'],
-    'indonesia': ['https://en.wikipedia.org/wiki/Indonesia'],
-    'malaysia': ['https://en.wikipedia.org/wiki/Malaysia'],
-    'philippines': ['https://en.wikipedia.org/wiki/Philippines'],
-    'uzbekistan': ['https://en.wikipedia.org/wiki/Uzbekistan'],
-    'kazakhstan': ['https://en.wikipedia.org/wiki/Kazakhstan'],
-    'georgia': ['https://en.wikipedia.org/wiki/Georgia_(country)'],
-    'armenia': ['https://en.wikipedia.org/wiki/Armenia'],
-    'azerbaijan': ['https://en.wikipedia.org/wiki/Azerbaijan'],
-    'nepal': ['https://en.wikipedia.org/wiki/Nepal'],
-    'bangladesh': ['https://en.wikipedia.org/wiki/Bangladesh'],
-    'sri lanka': ['https://en.wikipedia.org/wiki/Sri_Lanka'],
-    'united states': ['https://en.wikipedia.org/wiki/United_States'],
-    'canada': ['https://en.wikipedia.org/wiki/Canada'],
-    'mexico': ['https://en.wikipedia.org/wiki/Mexico'],
-    'brazil': ['https://en.wikipedia.org/wiki/Brazil'],
-    'argentina': ['https://en.wikipedia.org/wiki/Argentina'],
-    'chile': ['https://en.wikipedia.org/wiki/Chile'],
-    'peru': ['https://en.wikipedia.org/wiki/Peru'],
-    'colombia': ['https://en.wikipedia.org/wiki/Colombia'],
-    'venezuela': ['https://en.wikipedia.org/wiki/Venezuela'],
-    'cuba': ['https://en.wikipedia.org/wiki/Cuba'],
-    'rome': ['https://en.wikipedia.org/wiki/Rome'],
-    'athens': ['https://en.wikipedia.org/wiki/Athens'],
-    'jerusalem': ['https://en.wikipedia.org/wiki/Jerusalem'],
-    'ur': ['https://en.wikipedia.org/wiki/Ur'],
-    'babylon (city)': ['https://en.wikipedia.org/wiki/Babylon'],
-    'persepolis': ['https://en.wikipedia.org/wiki/Persepolis'],
-    'carthage (city)': ['https://en.wikipedia.org/wiki/Carthage'],
-    'alexandria': ['https://en.wikipedia.org/wiki/Alexandria'],
-    'istanbul': ['https://en.wikipedia.org/wiki/Istanbul'],
-    'constantinople': ['https://en.wikipedia.org/wiki/Constantinople'],
-    'byzantium': ['https://en.wikipedia.org/wiki/Byzantium'],
-    'london': ['https://en.wikipedia.org/wiki/London'],
-    'paris': ['https://en.wikipedia.org/wiki/Paris'],
-    'berlin': ['https://en.wikipedia.org/wiki/Berlin'],
-    'moscow': ['https://en.wikipedia.org/wiki/Moscow'],
-    'cairo': ['https://en.wikipedia.org/wiki/Cairo'],
-    'baghdad': ['https://en.wikipedia.org/wiki/Baghdad'],
-    'tehran': ['https://en.wikipedia.org/wiki/Tehran'],
-    'delhi': ['https://en.wikipedia.org/wiki/Delhi'],
-    'beijing': ['https://en.wikipedia.org/wiki/Beijing'],
-    'new york': ['https://en.wikipedia.org/wiki/New_York_City'],
 };
