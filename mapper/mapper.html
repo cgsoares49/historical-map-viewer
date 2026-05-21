@@ -294,8 +294,50 @@
             z-index: 1000;
         }
 
-        /* ── Zoom slider ──────────────────────────────────────────────────── */
-        #zoomSlider { width: 88px; accent-color: #4488cc; cursor: pointer; display: block; margin-top: 2px; }
+        /* ── Options / Diagnostics popup panels ─────────────────────────── */
+        .tool-popup {
+            display: none;
+            position: fixed;
+            z-index: 200;
+            background: #0d1b2a;
+            border: 1px solid #2a3f5a;
+            border-radius: 4px;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.7);
+            min-width: 190px;
+        }
+        .tool-popup-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 4px 8px;
+            background: #152236;
+            border-bottom: 1px solid #2a3f5a;
+            border-radius: 4px 4px 0 0;
+            font-size: 11px;
+            color: #88b8e8;
+            font-weight: bold;
+            cursor: move;
+            user-select: none;
+        }
+        .tool-popup-close {
+            background: none; border: none;
+            color: #88b8e8; font-size: 15px; cursor: pointer; padding: 0; line-height: 1;
+        }
+        .tool-popup-close:hover { color: #fff; }
+        .tool-popup-body { padding: 7px 8px; }
+        .tool-popup-section {
+            font-size: 10px; color: #507090;
+            text-transform: uppercase; letter-spacing: 0.8px;
+            margin: 7px 0 3px; border-top: 1px solid #1a3050; padding-top: 4px;
+        }
+        .tool-popup-section:first-child { margin-top: 0; border-top: none; padding-top: 0; }
+        .btn-popup-toggle {
+            background: #1a2a4a; color: #88b8e8;
+            border: 1px solid #2a4a7a; border-radius: 2px;
+            font-size: 10px; padding: 2px 6px; cursor: pointer; white-space: nowrap;
+        }
+        .btn-popup-toggle:hover { background: #2a3a6a; border-color: #4488cc; }
+        .btn-popup-toggle.active { background: #1a3a6a; border-color: #4488cc; color: #aaccff; }
 
         /* ── Help & bookmark popups ───────────────────────────────────────── */
         .vibe-popup {
@@ -421,7 +463,7 @@
     <div class="tb-group">
         <div class="tb-label">Date</div>
         <div class="tb-row">
-            <input type="text" id="mapDate" value="2000" title="Map year (negative = BCE)">
+            <input type="text" id="mapDate" value="2000" title="Map year — e.g. 400 BCE, 400 BC, 400 AD, 400 CE, or plain number (negative = BCE)">
         </div>
         <div class="tb-row">
             <button class="btn-step" id="btnStepBack" title="Step back one interval">-1</button>
@@ -482,7 +524,10 @@
         <input type="number" id="zoomCustom" value="" min="0" step="1"
                style="display:none; width:88px; margin-top:2px;"
                title="Enter custom zoom value">
-        <input type="range" id="zoomSlider" min="1" max="16" step="1" value="6" title="Zoom scrubber (zoom 0 / world view: use WORLD VIEW button)">
+        <div class="tb-row" style="gap:4px; margin-top:2px;">
+            <button class="pan-btn" id="btnZoomOut" title="Zoom out (wider view)" style="font-size:16px; line-height:1;">−</button>
+            <button class="pan-btn" id="btnZoomIn"  title="Zoom in (narrower view)" style="font-size:16px; line-height:1;">+</button>
+        </div>
         <div style="margin-top:3px; border-top:1px solid #1a3050; padding-top:3px;">
             <div class="tb-label" style="margin-bottom:2px;">Map Center</div>
             <div class="tb-row" style="gap:3px;">
@@ -519,42 +564,6 @@
         </div>
     </div>
 
-    <!-- ── Draw options ── -->
-    <div class="tb-group">
-        <div class="tb-label">Draw</div>
-        <label class="tb-check"><input type="checkbox" id="showCoasts" checked> Coasts</label>
-        <label class="tb-check"><input type="checkbox" id="showInlandWaters" checked> Inland waters</label>
-        <label class="tb-check disabled" title="Rivers data not included in this build"><input type="checkbox" id="showRivers" disabled> Rivers</label>
-        <label class="tb-check"><input type="checkbox" id="showBorders" checked> Boundaries</label>
-        <label class="tb-check"><input type="checkbox" id="showCoordGrid"> Coord grid</label>
-    </div>
-
-    <!-- ── Show options ── -->
-    <div class="tb-group">
-        <div class="tb-label">Show</div>
-        <label class="tb-check"><input type="checkbox" id="showCities" checked> Cities</label>
-        <label class="tb-check"><input type="checkbox" id="showCityNames"> City names</label>
-        <label class="tb-check"><input type="checkbox" id="showCountryLabels" checked> Country labels</label>
-        <label class="tb-check"><input type="checkbox" id="showDots" checked> Tribal dots</label>
-    </div>
-
-    <!-- ── Detail Control ── -->
-    <div class="tb-group" style="min-width:0;">
-        <div class="tb-label">Detail Control</div>
-        <div class="tb-row" style="gap:3px;">
-            <span class="tb-lbl" style="width:36px; font-size:9px;">Min px</span>
-            <input type="number" id="minPixels" value="500" min="100" style="width:50px;" title="Minimum polygon pixels — smaller polygons are skipped">
-        </div>
-        <div class="tb-row" style="gap:3px; margin-top:2px;">
-            <span class="tb-lbl" style="width:36px; font-size:9px;">Detail</span>
-            <input type="number" id="cityDetail" value="10" min="0" max="99" style="width:50px;" title="City detail level">
-        </div>
-        <div class="tb-row" style="margin-top:3px; border-top:1px solid #1a3050; padding-top:3px; gap:3px;">
-            <button class="btn-home"  id="btnHome"  style="flex:1;">HOME</button>
-            <button class="btn-world" id="btnWorld" style="flex:1;">WORLD<br>VIEW</button>
-        </div>
-    </div>
-
     <!-- ── Save / Projection ── -->
     <div class="tb-group">
         <div class="tb-label">Save</div>
@@ -578,16 +587,73 @@
         </div>
     </div>
 
-    <!-- ── Pixel color (debug readout) ── -->
-    <div class="tb-group">
-        <div class="tb-label">Pixel Color</div>
-        <div id="txtPixelColor" style="width:220px;min-height:20px;background:#081828;border:1px solid #2a3a5e;color:#88bb88;padding:2px 4px;font-family:monospace;font-size:12px;white-space:nowrap;overflow:hidden;"></div>
+    <!-- ── Nav / Controls ── -->
+    <div class="tb-group" style="min-width:0;">
+        <div class="tb-label">Nav</div>
+        <div class="tb-row" style="gap:3px;">
+            <button class="btn-home"  id="btnHome"  title="Reset to 0°N 0°E zoom 45°" style="flex:1; font-size:10px; padding:0 4px; height:22px;">HOME</button>
+            <button class="btn-world" id="btnWorld" title="World context view" style="flex:1; font-size:10px; padding:0 4px; height:22px; white-space:nowrap;">WORLD VIEW</button>
+        </div>
+        <div class="tb-row" style="gap:3px; margin-top:2px;">
+            <button class="btn-abort" id="btnAbort" disabled style="width:100%;">ABORT</button>
+        </div>
+        <div class="tb-row" style="gap:4px; margin-top:3px; border-top:1px solid #1a3050; padding-top:3px;">
+            <button id="btnOptions" class="btn-popup-toggle" title="Map display options">⚙ Options</button>
+            <button id="btnDiag"    class="btn-popup-toggle" title="Status and diagnostics">📊 Status</button>
+        </div>
+    </div>
+
+</div><!-- #toolbar -->
+
+<!-- ── Options popup ── -->
+<div id="optionsPopup" class="tool-popup">
+    <div class="tool-popup-header" id="optionsPopupHeader">
+        <span>Options</span>
+        <button class="tool-popup-close" id="optionsPopupClose" title="Close">×</button>
+    </div>
+    <div class="tool-popup-body">
+        <div class="tool-popup-section">Draw</div>
+        <label class="tb-check"><input type="checkbox" id="showCoasts" checked> Coasts</label>
+        <label class="tb-check"><input type="checkbox" id="showInlandWaters" checked> Inland waters</label>
+        <label class="tb-check disabled" title="Rivers data not included in this build"><input type="checkbox" id="showRivers" disabled> Rivers</label>
+        <label class="tb-check"><input type="checkbox" id="showBorders" checked> Boundaries</label>
+        <label class="tb-check"><input type="checkbox" id="showCoordGrid"> Coord grid</label>
+        <div class="tool-popup-section">Show</div>
+        <label class="tb-check"><input type="checkbox" id="showCities" checked> Cities</label>
+        <label class="tb-check"><input type="checkbox" id="showCityNames"> City names</label>
+        <label class="tb-check"><input type="checkbox" id="showCountryLabels" checked> Country labels</label>
+        <label class="tb-check"><input type="checkbox" id="showDots" checked> Tribal dots</label>
+        <div class="tool-popup-section">Detail</div>
+        <div class="tb-row" style="gap:3px;">
+            <span class="tb-lbl" style="width:36px; font-size:9px;">Min px</span>
+            <input type="number" id="minPixels" value="500" min="100" style="width:50px;" title="Minimum polygon pixels — smaller polygons are skipped">
+        </div>
+        <div class="tb-row" style="gap:3px; margin-top:2px;">
+            <span class="tb-lbl" style="width:36px; font-size:9px;">Detail</span>
+            <input type="number" id="cityDetail" value="10" min="0" max="99" style="width:50px;" title="City detail level">
+        </div>
+    </div>
+</div>
+
+<!-- ── Diagnostics popup ── -->
+<div id="diagPopup" class="tool-popup">
+    <div class="tool-popup-header" id="diagPopupHeader">
+        <span>Diagnostics</span>
+        <button class="tool-popup-close" id="diagPopupClose" title="Close">×</button>
+    </div>
+    <div class="tool-popup-body">
+        <div class="tool-popup-section">Status</div>
+        <div id="status" style="font-size:11px; color:#88b8e8; min-height:14px;">Press Display to render map.</div>
+        <div id="progress-bar" style="margin-top:4px;"><div id="progress-fill"></div></div>
+        <div id="tile-count" style="color:#00c8f0; font-size:10px; margin-top:3px;"></div>
+        <div class="tool-popup-section">Pixel Color</div>
+        <div id="txtPixelColor" style="width:200px;min-height:20px;background:#081828;border:1px solid #2a3a5e;color:#88bb88;padding:2px 4px;font-family:monospace;font-size:12px;white-space:nowrap;overflow:hidden;"></div>
         <div class="tb-row" style="margin-top:2px;">
             <input type="text" id="txtRed"   readonly value="" style="width:35px;color:#ff6666;" title="Red">
             <input type="text" id="txtGreen" readonly value="" style="width:35px;color:#66ff66;" title="Green">
             <input type="text" id="txtBlue"  readonly value="" style="width:35px;color:#6699ff;" title="Blue">
         </div>
-        <div class="tb-row" style="margin-top:3px; border-top:1px solid #1a3050; padding-top:3px; gap:3px;">
+        <div class="tb-row" style="margin-top:4px; border-top:1px solid #1a3050; padding-top:4px; gap:3px;">
             <span class="tb-lbl" style="width:52px; font-size:9px;">Longitude</span>
             <input type="text" id="ptrX" class="ptr-ro" readonly value="" title="Pointer longitude" style="width:90px;">
         </div>
@@ -595,23 +661,10 @@
             <span class="tb-lbl" style="width:52px; font-size:9px;">Latitude</span>
             <input type="text" id="ptrY" class="ptr-ro" readonly value="" title="Pointer latitude" style="width:90px;">
         </div>
+        <div class="tool-popup-section">Dev</div>
+        <label class="tb-check" title="Developer tool: shows tile file boundaries"><input type="checkbox" id="showGrid"> Tile grid</label>
     </div>
-
-    <!-- ── Status ── -->
-    <div class="tb-group" style="flex:1; min-width:200px; max-width:320px;">
-        <div class="tb-label">Status</div>
-        <div id="status">Press Display to render map.</div>
-        <div id="progress-bar" style="margin-top:1px;"><div id="progress-fill"></div></div>
-        <div class="tb-row" style="margin-top:2px;">
-            <div id="tile-count" style="color:#00c8f0;font-size:10px;flex:1;"></div>
-            <button class="btn-abort" id="btnAbort" disabled>ABORT</button>
-        </div>
-        <div style="margin-top:3px; border-top:1px solid #1a3050; padding-top:3px;">
-            <label class="tb-check disabled" title="Developer tool: shows tile file boundaries"><input type="checkbox" id="showGrid"> Tile grid</label>
-        </div>
-    </div>
-
-</div><!-- #toolbar -->
+</div>
 
 <!-- ══════════════════════════════════════════════════════════════════════ -->
 <!--  MAP                                                                   -->
@@ -822,7 +875,7 @@ function getInputs() {
         zoom:      (document.getElementById('zoom').value === 'custom'
                        ? parseFloat(document.getElementById('zoomCustom').value) || 0
                        : parseFloat(document.getElementById('zoom').value))      || 0,
-        year:      parseFloat(document.getElementById('mapDate').value)   || 2000,
+        year:      parseYear(document.getElementById('mapDate').value)   || 2000,
     };
 }
 
@@ -849,6 +902,16 @@ document.getElementById('btnWorld').addEventListener('click', async () => {
 });
 
 // There is no year 0 in the historical calendar.
+// Parse year strings like "400 BCE", "400 BC", "400 AD", "400 CE", or plain numbers.
+function parseYear(str) {
+    str = String(str).trim();
+    const bc = str.match(/^([\d.]+)\s*(?:bc|bce|b\.c\.?(?:e\.?)?)\s*$/i);
+    if (bc) return -parseFloat(bc[1]);
+    const ad = str.match(/^([\d.]+)\s*(?:ad|ce|a\.d\.?|c\.e\.?)\s*$/i);
+    if (ad) return parseFloat(ad[1]);
+    return parseFloat(str);
+}
+
 // If the new value lands in (-1, 1), jump to 1 (CE) or -1 (BCE) based on direction of travel.
 function skipYear0(prev, next) {
     if (next > -1 && next < 1) return next > prev ? 1 : -1;
@@ -858,13 +921,13 @@ function skipYear0(prev, next) {
 // Step back / forward: subtract or add yr/step to the date
 document.getElementById('btnStepBack').addEventListener('click', () => {
     const step = parseFloat(document.getElementById('yrPerStep').value) || 0.1;
-    const cur  = parseFloat(document.getElementById('mapDate').value)   || 0;
+    const cur  = parseYear(document.getElementById('mapDate').value)   || 0;
     document.getElementById('mapDate').value = skipYear0(cur, Math.round((cur - step) * 10) / 10);
     scheduleRender();
 });
 document.getElementById('btnStepFwd').addEventListener('click', () => {
     const step = parseFloat(document.getElementById('yrPerStep').value) || 0.1;
-    const cur  = parseFloat(document.getElementById('mapDate').value)   || 0;
+    const cur  = parseYear(document.getElementById('mapDate').value)   || 0;
     document.getElementById('mapDate').value = skipYear0(cur, Math.round((cur + step) * 10) / 10);
     scheduleRender();
 });
@@ -881,7 +944,7 @@ async function runAnimation() {
     const revBtn  = document.getElementById('btnReverse');
     while (animating) {
         const step = parseFloat(stepEl.value) || 1;
-        const cur  = parseFloat(yearEl.value) || 0;
+        const cur  = parseYear(yearEl.value) || 0;
         yearEl.value = skipYear0(cur, Math.round((cur + animDir * step) * 10) / 10);
         await doRender(true);
         if (!animating) break;
@@ -1305,32 +1368,9 @@ document.getElementById('zoomCustom').addEventListener('input', () => { drawOver
 });
 
 
-// ── Zoom scrubber ─────────────────────────────────────────────────────────────
-const zoomSlider = document.getElementById('zoomSlider');
-
-function zoomToSlider(z) {
-    let idx = ZOOM_PRESETS.findIndex(v => v >= z);
-    if (idx < 0) idx = ZOOM_PRESETS.length - 1;
-    zoomSlider.value = idx;
-}
-function sliderToZoom() { return ZOOM_PRESETS[parseInt(zoomSlider.value)]; }
-
-zoomToSlider(getInputs().zoom);
-
-let _zoomSliderTimer = null;
-zoomSlider.addEventListener('input', () => {
-    const z = sliderToZoom();
-    const sel = document.getElementById('zoom');
-    const opt = [...sel.options].find(o => parseInt(o.value) === z);
-    if (opt) { sel.value = z; document.getElementById('zoomCustom').style.display = 'none'; }
-    else { sel.value = 'custom'; document.getElementById('zoomCustom').style.display = ''; document.getElementById('zoomCustom').value = z; }
-    drawOverlay();
-    // Debounce: only fire a render 250ms after the user stops dragging
-    clearTimeout(_zoomSliderTimer);
-    _zoomSliderTimer = setTimeout(() => scheduleRender(), 250);
-});
-// Keep slider in sync when select changes
-document.getElementById('zoom').addEventListener('change', () => zoomToSlider(getInputs().zoom));
+// ── Zoom +/- buttons ──────────────────────────────────────────────────────────
+document.getElementById('btnZoomOut').addEventListener('click', () => _stepZoom(-1, canvas.width / 2, canvas.height / 2));
+document.getElementById('btnZoomIn' ).addEventListener('click', () => _stepZoom( 1, canvas.width / 2, canvas.height / 2));
 
 // ── Zoom step helper (scroll wheel + double-click) ────────────────────────────
 // direction: +1 = zoom in, -1 = zoom out
@@ -1365,7 +1405,6 @@ function _stepZoom(direction, px, py) {
     const zoomOpt = [...zoomSel.options].find(o => parseInt(o.value) === newZoom);
     if (zoomOpt) { zoomSel.value = newZoom; document.getElementById('zoomCustom').style.display = 'none'; }
     else { zoomSel.value = 'custom'; document.getElementById('zoomCustom').style.display = ''; document.getElementById('zoomCustom').value = newZoom; }
-    zoomToSlider(newZoom);
     document.getElementById('centerLon').value = newLon;
     document.getElementById('centerLat').value = newLat;
     scheduleRender();
@@ -1409,7 +1448,7 @@ function tlXToYear(x) {
 function drawTimeline() {
     const W = timelineCanvas.width, H = timelineCanvas.height;
     const ancPx = tlAnctPx(), modX = tlModX();
-    const curY  = parseFloat(document.getElementById('mapDate').value) || TL.ANCT_MIN;
+    const curY  = parseYear(document.getElementById('mapDate').value) || TL.ANCT_MIN;
     const curX  = tlYearToX(curY);
     const TY = 6, TH = 10;
 
@@ -1500,7 +1539,7 @@ function drawTimeline() {
 }
 
 function syncTimelineFromDate() {
-    const y = parseFloat(document.getElementById('mapDate').value) || TL.ANCT_MIN;
+    const y = parseYear(document.getElementById('mapDate').value) || TL.ANCT_MIN;
     timelineYearEl.textContent = fmtYearInt(y);
     drawTimeline();
 }
@@ -1521,14 +1560,16 @@ if (window.ResizeObserver) {
     setTimeout(resizeTimeline, 0);
 }
 
+let _tlTimer = null;
 function tlSetYear(px) {
     const raw = tlXToYear(px);
     if (raw === null) return;
-    const prev = parseFloat(document.getElementById('mapDate').value) || 0;
+    const prev = parseYear(document.getElementById('mapDate').value) || 0;
     const y = skipYear0(prev, Math.round(raw));
     document.getElementById('mapDate').value = y;
     timelineYearEl.textContent = fmtYearInt(y);
-    scheduleRender();
+    clearTimeout(_tlTimer);
+    _tlTimer = setTimeout(() => scheduleRender(), 150);
     drawTimeline();
 }
 
@@ -1574,7 +1615,7 @@ function saveBookmarks(list) { localStorage.setItem('mapperBookmarks', JSON.stri
 document.getElementById('vibeBookmarkSave').addEventListener('click', e => {
     e.stopPropagation();
     const { centerLon, centerLat, zoom } = getInputs();
-    const year  = parseFloat(document.getElementById('mapDate').value) || 0;
+    const year  = parseYear(document.getElementById('mapDate').value) || 0;
     const lonStr = `${Math.abs(centerLon).toFixed(1)}°${centerLon >= 0 ? 'E' : 'W'}`;
     const latStr = `${Math.abs(centerLat).toFixed(1)}°${centerLat >= 0 ? 'N' : 'S'}`;
     const label = `${fmtYearInt(year)}  ${latStr} ${lonStr}`;
@@ -1612,7 +1653,7 @@ document.getElementById('vibeBookmarkShow').addEventListener('click', e => {
                 const opt = [...sel.options].find(o => parseInt(o.value) === bm.zoom);
                 if (opt) { sel.value = bm.zoom; document.getElementById('zoomCustom').style.display='none'; }
                 document.getElementById('mapDate').value = bm.year;
-                zoomToSlider(bm.zoom); syncTimelineFromDate();
+                syncTimelineFromDate();
                 scheduleRender(); panel.style.display = 'none';
             });
             panel.appendChild(row);
@@ -2230,20 +2271,36 @@ async function renderWorldContext() {
 }
 
 // ── Render pipeline ──────────────────────────────────────────────────────────
-let renderPending = false;
+let _renderInProgress = false;
+let _renderQueued     = false;
+let _cancelToken      = null;
 
 function scheduleRender() {
     if (!mapRenderer) {
         document.getElementById('status').textContent = 'Still loading color data…';
         return;
     }
-    if (renderPending) return;
-    renderPending = true;
-    requestAnimationFrame(() => doRender());
+    if (_renderInProgress) { _renderQueued = true; return; }
+    _startRender();
 }
 
-async function doRender(skipColorMap = false) {
-    renderPending = false;
+function _startRender() {
+    _renderQueued = false;
+    _cancelToken  = { cancelled: false };
+    requestAnimationFrame(() => {
+        if (_renderInProgress) { _renderQueued = true; return; }
+        _renderInProgress = true;
+        document.getElementById('btnAbort').disabled = false;
+        doRender(false, _cancelToken);
+    });
+}
+
+document.getElementById('btnAbort').addEventListener('click', () => {
+    if (_cancelToken) _cancelToken.cancelled = true;
+});
+
+async function doRender(skipColorMap = false, cancelToken = null) {
+    _renderInProgress = true;
     const btn       = document.getElementById('btnDisplay');
     const statusEl  = document.getElementById('status');
     const countEl   = document.getElementById('tile-count');
@@ -2273,6 +2330,9 @@ async function doRender(skipColorMap = false) {
         fillEl.style.width = '0%';
         countEl.textContent = '';
         btn.disabled = false;
+        _renderInProgress = false;
+        document.getElementById('btnAbort').disabled = true;
+        if (_renderQueued) _startRender();
         updateScaleDisplay();
         return;
     }
@@ -2297,7 +2357,7 @@ async function doRender(skipColorMap = false) {
             statusEl.textContent = `Rendering… ${done}/${total}`;
             fillEl.style.width = `${Math.round(100 * done / total)}%`;
             ctx.drawImage(backCanvas, 0, 0);  // progressive flip: show each batch as it arrives
-        }, showCoasts, showCities, showCityNames, cityDetail, showInlandWaters, showRivers, showCountryLabels, minPixels);
+        }, showCoasts, showCities, showCityNames, cityDetail, showInlandWaters, showRivers, showCountryLabels, minPixels, cancelToken);
         ctx.drawImage(backCanvas, 0, 0);  // final flip: ensure complete frame is visible
         _mapFullyRendered = true;
         _selectionMode    = false;
@@ -2307,13 +2367,84 @@ async function doRender(skipColorMap = false) {
         statusEl.textContent = `${yearLabel} — ${tileList.length} tiles`;
         if (!skipColorMap) await rebuildColorNameMap(proj, year);
     } catch (err) {
-        statusEl.textContent = `Error: ${err.message}`;
-        console.error(err);
+        if (err.name === 'AbortError') {
+            statusEl.textContent = 'Render aborted.';
+            fillEl.style.width = '0%';
+            _renderQueued = false;
+        } else {
+            statusEl.textContent = `Error: ${err.message}`;
+            console.error(err);
+        }
+    } finally {
+        _renderInProgress = false;
+        btn.disabled = false;
+        document.getElementById('btnAbort').disabled = true;
+        if (_renderQueued) _startRender();
+    }
+}
+
+// ── Options / Diagnostics popup panels ───────────────────────────────────────
+(function() {
+    function positionPopup(popup, btn) {
+        popup.style.left = '0px'; popup.style.top = '0px';   // measure at origin first
+        popup.style.display = 'block';
+        const pw = popup.offsetWidth, ph = popup.offsetHeight;
+        const r  = btn.getBoundingClientRect();
+        let left = r.left;
+        if (left + pw > window.innerWidth - 8) left = window.innerWidth - pw - 8;
+        popup.style.left = Math.max(0, left) + 'px';
+        popup.style.top  = (r.bottom + 4) + 'px';
     }
 
-    btn.disabled = false;
-    
-}
+    function togglePopup(popupId, btnId) {
+        const popup = document.getElementById(popupId);
+        const btn   = document.getElementById(btnId);
+        if (popup.style.display === 'block') {
+            popup.style.display = 'none';
+            btn.classList.remove('active');
+        } else {
+            btn.classList.add('active');
+            positionPopup(popup, btn);
+        }
+    }
+
+    function makeDraggable(header, popup) {
+        let ox = 0, oy = 0, dragging = false;
+        header.addEventListener('mousedown', e => {
+            if (e.target.classList.contains('tool-popup-close')) return;
+            dragging = true;
+            const r = popup.getBoundingClientRect();
+            ox = e.clientX - r.left;  oy = e.clientY - r.top;
+            e.preventDefault();
+        });
+        document.addEventListener('mousemove', e => {
+            if (!dragging) return;
+            popup.style.left = (e.clientX - ox) + 'px';
+            popup.style.top  = (e.clientY - oy) + 'px';
+        });
+        document.addEventListener('mouseup', () => { dragging = false; });
+    }
+
+    document.getElementById('btnOptions').addEventListener('click', e => {
+        e.stopPropagation();
+        togglePopup('optionsPopup', 'btnOptions');
+    });
+    document.getElementById('btnDiag').addEventListener('click', e => {
+        e.stopPropagation();
+        togglePopup('diagPopup', 'btnDiag');
+    });
+    document.getElementById('optionsPopupClose').addEventListener('click', () => {
+        document.getElementById('optionsPopup').style.display = 'none';
+        document.getElementById('btnOptions').classList.remove('active');
+    });
+    document.getElementById('diagPopupClose').addEventListener('click', () => {
+        document.getElementById('diagPopup').style.display = 'none';
+        document.getElementById('btnDiag').classList.remove('active');
+    });
+
+    makeDraggable(document.getElementById('optionsPopupHeader'), document.getElementById('optionsPopup'));
+    makeDraggable(document.getElementById('diagPopupHeader'),    document.getElementById('diagPopup'));
+})();
 
 // ── Distance measurer ─────────────────────────────────────────────────────────
 function haversineKm(lat1, lon1, lat2, lon2) {

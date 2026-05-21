@@ -50,7 +50,7 @@ class MapRenderer {
     // showCoasts: draw coastline strokes (disable for overview renders)
     // onTileDrawn(done, total): progress callback (optional)
     // Tiles are loaded and painted in batches so the map fills in progressively.
-    async render(ctx, projection, year, showBorders, showDots, onTileDrawn, showCoasts = true, showCities = false, showCityNames = false, cityDetail = 10, showInlandWaters = false, showRivers = false, showCountryLabels = false, minPixels = 5000) {
+    async render(ctx, projection, year, showBorders, showDots, onTileDrawn, showCoasts = true, showCities = false, showCityNames = false, cityDetail = 10, showInlandWaters = false, showRivers = false, showCountryLabels = false, minPixels = 5000, cancelToken = null) {
         const { width: W, height: H } = ctx.canvas;
 
         // Water background
@@ -89,6 +89,7 @@ class MapRenderer {
             }
             if (onTileDrawn) onTileDrawn(start + batch.length, total);
             await new Promise(r => setTimeout(r, 0));
+            if (cancelToken && cancelToken.cancelled) throw new DOMException('Render cancelled', 'AbortError');
         }
 
         // Dot label pass: one label per unique name, drawn after all dots
@@ -390,15 +391,44 @@ class MapRenderer {
         ctx.textBaseline = 'middle';
         ctx.textAlign    = 'left';
         ctx.lineJoin     = 'round';
+
+        const placed  = [];
+        const overlaps = r => placed.some(p =>
+            r.x < p.x + p.w && r.x + r.w > p.x &&
+            r.y < p.y + p.h && r.y + r.h > p.y
+        );
+
         for (const [name, { x, y, r }] of seen) {
-            const tx = x + r + 3;
-            const ty = y;
-            // White halo for legibility
-            ctx.strokeStyle = 'white';
-            ctx.lineWidth   = 3;
-            ctx.strokeText(name, tx, ty);
-            ctx.fillStyle   = 'black';
-            ctx.fillText(name, tx, ty);
+            const w  = ctx.measureText(name).width;
+            const h  = 14;   // bold 10px + padding
+            const gap = r + 3;
+            const d   = gap * 0.707;
+
+            // 8 candidate positions around the dot, starting right (most readable)
+            const candidates = [
+                { lx: x + gap,         ly: y       },
+                { lx: x + d,           ly: y - d   },
+                { lx: x - w / 2,       ly: y - gap },
+                { lx: x - w - d,       ly: y - d   },
+                { lx: x - w - gap,     ly: y       },
+                { lx: x - w - d,       ly: y + d   },
+                { lx: x - w / 2,       ly: y + gap },
+                { lx: x + d,           ly: y + d   },
+            ];
+
+            for (const { lx, ly } of candidates) {
+                if (lx + w < 0 || lx > W || ly + h / 2 < 0 || ly - h / 2 > H) continue;
+                const rect = { x: lx - 2, y: ly - h / 2 - 2, w: w + 4, h: h + 4 };
+                if (!overlaps(rect)) {
+                    placed.push(rect);
+                    ctx.strokeStyle = 'white';
+                    ctx.lineWidth   = 3;
+                    ctx.strokeText(name, lx, ly);
+                    ctx.fillStyle   = 'black';
+                    ctx.fillText(name, lx, ly);
+                    break;
+                }
+            }
         }
         ctx.restore();
     }
