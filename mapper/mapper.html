@@ -536,6 +536,9 @@
         body.is-mobile #mobile-bar   { display: flex; }
         body.is-mobile #overlay      { touch-action: none; -webkit-user-select: none; user-select: none; }
         body.is-mobile #infoPopup    { position: fixed; left: 8px !important; right: 8px !important; width: auto; max-width: none; }
+        /* Use JS-set --mob-height so body shrinks when iOS keyboard opens,
+           keeping the mobile bar visible above the keyboard */
+        body.is-mobile { height: var(--mob-height, 100vh); }
 
     </style>
 </head>
@@ -3173,6 +3176,14 @@ _syncMobDate();
 
 // ── Mobile toolbar wiring ─────────────────────────────────────────────────────
 if (isMobile) {
+    // Set --mob-height to window.innerHeight so the body shrinks when the iOS
+    // keyboard opens, keeping the mobile bar above the keyboard instead of under it.
+    function _setMobHeight() {
+        document.documentElement.style.setProperty('--mob-height', window.innerHeight + 'px');
+    }
+    window.addEventListener('resize', _setMobHeight);
+    _setMobHeight();
+
     // Mirror desktop status → mobile status line
     const _mobStatusEl = document.getElementById('mobStatusLine');
     const _deskStatusEl = document.getElementById('status');
