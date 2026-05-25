@@ -803,19 +803,17 @@
 
 <!-- ── Mobile bottom bar ── -->
 <div id="mobile-bar">
-    <!-- Row 1: Vibe input (form makes Enter key reliable cross-platform) -->
-    <form id="mobVibeForm" action="#" style="display:contents;">
+    <!-- Row 1: Vibe input -->
     <div class="mob-row">
         <input type="text" id="mobVibeInput" class="mob-vibe-input"
                placeholder="Show Rome at 100 BCE"
                autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
                enterkeyhint="go">
-        <button type="submit" class="mob-btn" id="mobVibeGo"   style="color:#88ff88;border-color:#006600;background:#004400;font-size:18px;" title="Execute command">→</button>
-        <button type="button" class="mob-btn" id="mobMic"      title="Voice input">🎤</button>
-        <button type="button" class="mob-btn" id="mobBookmark" title="Save bookmark">⭐</button>
-        <button type="button" class="mob-btn" id="mobHelp"     title="Help">?</button>
+        <button class="mob-btn" id="mobVibeGo"   style="color:#88ff88;border-color:#006600;background:#004400;font-size:18px;" title="Execute command">→</button>
+        <button class="mob-btn" id="mobMic"      title="Voice input">🎤</button>
+        <button class="mob-btn" id="mobBookmark" title="Save bookmark">⭐</button>
+        <button class="mob-btn" id="mobHelp"     title="Help">?</button>
     </div>
-    </form>
     <!-- Row 2: Date -->
     <div class="mob-row">
         <button class="mob-btn" id="mobStepBack" style="font-size:18px;">◀</button>
@@ -3219,7 +3217,11 @@ if (isMobile) {
         // Do NOT blur — dismissing keyboard triggers iOS viewport resize which
         // clobbers the canvas resize and kills the in-progress render.
     }
-    document.getElementById('mobVibeForm').addEventListener('submit', e => { e.preventDefault(); _mobVibeGo(); });
+    // Both keydown and keyup: some mobile keyboards fire one but not the other.
+    // Double-execution is safe — _mobVibeGo clears the input on first call so the second gets empty and returns early.
+    const _onEnter = e => { if (e.key === 'Enter' || e.keyCode === 13) { e.preventDefault(); _mobVibeGo(); } };
+    mobVibe.addEventListener('keydown', _onEnter);
+    mobVibe.addEventListener('keyup',   _onEnter);
     document.getElementById('mobVibeGo').addEventListener('click', _mobVibeGo);
 
     // Keep mobile date display in sync with desktop (vibe commands, animation, timeline)
