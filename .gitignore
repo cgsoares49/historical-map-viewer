@@ -1,5 +1,8 @@
 shooter/
 New Compressed (zipped) Folder.zip
+dist/
+.wrangler/
+.claude/worktrees/
 
 # ── Tile data directories excluded from this build ───────────────────────────
 mapper/rivers/
