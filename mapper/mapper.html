@@ -803,16 +803,19 @@
 
 <!-- ── Mobile bottom bar ── -->
 <div id="mobile-bar">
-    <!-- Row 1: Vibe input -->
+    <!-- Row 1: Vibe input (form makes Enter key reliable cross-platform) -->
+    <form id="mobVibeForm" action="#" style="display:contents;">
     <div class="mob-row">
         <input type="text" id="mobVibeInput" class="mob-vibe-input"
                placeholder="Show Rome at 100 BCE"
-               autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-        <button class="mob-btn" id="mobVibeGo"   style="color:#88ff88;border-color:#006600;background:#004400;font-size:18px;" title="Execute command">→</button>
-        <button class="mob-btn" id="mobMic"      title="Voice input">🎤</button>
-        <button class="mob-btn" id="mobBookmark" title="Save bookmark">⭐</button>
-        <button class="mob-btn" id="mobHelp"     title="Help">?</button>
+               autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+               enterkeyhint="go">
+        <button type="submit" class="mob-btn" id="mobVibeGo"   style="color:#88ff88;border-color:#006600;background:#004400;font-size:18px;" title="Execute command">→</button>
+        <button type="button" class="mob-btn" id="mobMic"      title="Voice input">🎤</button>
+        <button type="button" class="mob-btn" id="mobBookmark" title="Save bookmark">⭐</button>
+        <button type="button" class="mob-btn" id="mobHelp"     title="Help">?</button>
     </div>
+    </form>
     <!-- Row 2: Date -->
     <div class="mob-row">
         <button class="mob-btn" id="mobStepBack" style="font-size:18px;">◀</button>
@@ -1870,8 +1873,16 @@ function vibeAddHistory(cmd, result, isError) {
         executeVibeCommand(cmd);
     });
     hist.insertBefore(row, hist.firstChild); // newest at top
-    // Keep at most 20 entries
     while (hist.children.length > 20) hist.removeChild(hist.lastChild);
+    // Update mobile status line directly — more reliable than window monkey-patch
+    if (result) {
+        const mobSL = document.getElementById('mobStatusLine');
+        if (mobSL) {
+            mobSL.textContent = result;
+            mobSL.classList.toggle('mob-error', isError);
+            mobSL.classList.toggle('mob-ok', !isError);
+        }
+    }
 }
 
 // Keep vibeSetStatus as alias for errors before a command is known
@@ -3195,18 +3206,7 @@ if (isMobile) {
         _mobStatusEl.classList.toggle('mob-ok', !isErr && t.length > 0);
     }).observe(_deskStatusEl, { childList: true, characterData: true, subtree: true });
 
-    // Also mirror vibe history → mobile status line
-    const _origVibeAddHistory = vibeAddHistory;
-    window.vibeAddHistory = function(cmd, result, isError) {
-        _origVibeAddHistory(cmd, result, isError);
-        if (result) {
-            _mobStatusEl.textContent = result;
-            _mobStatusEl.classList.toggle('mob-error', isError);
-            _mobStatusEl.classList.toggle('mob-ok', !isError);
-        }
-    };
-
-    // Vibe input + send button
+    // Vibe input + send button — vibeAddHistory updates mobStatusLine directly
     const mobVibe = document.getElementById('mobVibeInput');
     function _mobVibeGo() {
         const v = mobVibe.value.trim();
@@ -3219,7 +3219,7 @@ if (isMobile) {
         // Do NOT blur — dismissing keyboard triggers iOS viewport resize which
         // clobbers the canvas resize and kills the in-progress render.
     }
-    mobVibe.addEventListener('keydown', e => { if (e.key === 'Enter') _mobVibeGo(); });
+    document.getElementById('mobVibeForm').addEventListener('submit', e => { e.preventDefault(); _mobVibeGo(); });
     document.getElementById('mobVibeGo').addEventListener('click', _mobVibeGo);
 
     // Keep mobile date display in sync with desktop (vibe commands, animation, timeline)
