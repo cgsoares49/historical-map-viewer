@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>mapper.NET — Historical Map Viewer</title>
     <link rel="icon" type="image/png" href="sahm-logo.png">
     <!-- Privacy-friendly analytics by Plausible -->
@@ -426,6 +427,105 @@
         #infoPopupRefsVal a { color: #00c8f0; text-decoration: none; }
         #infoPopupRefsVal a:hover { text-decoration: underline; }
 
+
+        /* ── Mobile ──────────────────────────────────────────────────────────── */
+        #mobile-bar {
+            display: none;
+            flex-direction: column;
+            flex-shrink: 0;
+            background: #0d1b2a;
+            border-top: 2px solid #1a3a5e;
+            padding: 6px 8px;
+            padding-bottom: calc(6px + env(safe-area-inset-bottom, 0px));
+            gap: 5px;
+            z-index: 100;
+        }
+        .mob-row {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 5px;
+        }
+        .mob-btn {
+            background: #0b2040;
+            color: #c8d8e8;
+            border: 1px solid #2a3a5e;
+            font-family: monospace;
+            font-size: 15px;
+            cursor: pointer;
+            padding: 0;
+            height: 40px;
+            min-width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .mob-btn:active { background: #1a4a80; border-color: #00c8f0; }
+        .mob-vibe-input {
+            background: #1a1a2e;
+            border: 1px solid #555;
+            color: #eee;
+            font-size: 15px;
+            font-family: monospace;
+            height: 40px;
+            flex: 1;
+            min-width: 0;
+            padding: 0 8px;
+            border-radius: 4px;
+        }
+        .mob-date-input {
+            background: #050f20;
+            border: 1px solid #3a5a7a;
+            color: #ffffff;
+            font-size: 17px;
+            font-weight: bold;
+            font-family: monospace;
+            height: 40px;
+            text-align: center;
+            flex: 1;
+            min-width: 0;
+            border-radius: 4px;
+            padding: 0 4px;
+        }
+        .mob-display-btn {
+            background: #004400;
+            color: #88ff88;
+            border: 1px solid #006600;
+            font-weight: bold;
+            font-size: 15px;
+            height: 40px;
+            padding: 0 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .mob-display-btn:active { background: #006600; }
+        .mob-zoom-btn {
+            background: #003800;
+            color: #88ee88;
+            border: 1px solid #005500;
+            font-size: 22px;
+            font-weight: bold;
+            height: 40px;
+            min-width: 48px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .mob-zoom-btn:active { background: #006600; }
+        body.is-mobile #toolbar,
+        body.is-mobile #timeline-bar { display: none !important; }
+        body.is-mobile #mobile-bar   { display: flex; }
+        body.is-mobile #overlay      { touch-action: none; -webkit-user-select: none; user-select: none; }
+        body.is-mobile #infoPopup    { position: fixed; left: 8px !important; right: 8px !important; width: auto; max-width: none; }
+
     </style>
 </head>
 <body>
@@ -686,6 +786,34 @@
     <span id="timelineYear"></span>
 </div>
 <div id="timelineTooltip"></div>
+
+<!-- ── Mobile bottom bar ── -->
+<div id="mobile-bar">
+    <!-- Row 1: Vibe input -->
+    <div class="mob-row">
+        <input type="text" id="mobVibeInput" class="mob-vibe-input"
+               placeholder="Show Rome at 100 BCE"
+               autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+        <button class="mob-btn" id="mobMic"      title="Voice input">🎤</button>
+        <button class="mob-btn" id="mobBookmark" title="Save bookmark">⭐</button>
+        <button class="mob-btn" id="mobHelp"     title="Help">?</button>
+    </div>
+    <!-- Row 2: Date -->
+    <div class="mob-row">
+        <button class="mob-btn" id="mobStepBack" style="font-size:18px;">◀</button>
+        <input type="text" id="mobDate" class="mob-date-input" value="2000" placeholder="400 BCE">
+        <button class="mob-btn" id="mobStepFwd"  style="font-size:18px;">▶</button>
+        <button class="mob-display-btn" id="mobDisplay">Display</button>
+    </div>
+    <!-- Row 3: Zoom + actions -->
+    <div class="mob-row">
+        <button class="mob-zoom-btn" id="mobZoomOut">−</button>
+        <button class="mob-zoom-btn" id="mobZoomIn">+</button>
+        <button class="mob-btn" id="mobWorld" style="flex:1;font-size:12px;">🌍 World</button>
+        <button class="mob-btn" id="mobSave"  style="flex:1;font-size:12px;color:#ff66ff;border-color:#660088;">💾 Save</button>
+        <button class="mob-btn" id="mobOptions" style="font-size:18px;">⚙</button>
+    </div>
+</div>
 
 <!-- ── Help popup ── -->
 <div id="helpPopup" class="vibe-popup">
@@ -3016,6 +3144,237 @@ function _drawRefLine(proj, value, isLon, color) {
     octx.stroke();
     octx.setLineDash([]);
 }
+
+// ── Mobile support ────────────────────────────────────────────────────────────
+const isMobile = ('ontouchstart' in window || navigator.maxTouchPoints > 0) && window.innerWidth <= 1024;
+if (isMobile) document.body.classList.add('is-mobile');
+
+// ── Mobile date sync (desktop mapDate ↔ mobile mobDate) ───────────────────────
+const mobDateEl  = document.getElementById('mobDate');
+const deskDateEl = document.getElementById('mapDate');
+function _syncMobDate() { if (mobDateEl) mobDateEl.value = deskDateEl.value; }
+deskDateEl.addEventListener('change', _syncMobDate);
+deskDateEl.addEventListener('input',  _syncMobDate);
+_syncMobDate();
+
+// ── Mobile toolbar wiring ─────────────────────────────────────────────────────
+if (isMobile) {
+    // Vibe input
+    const mobVibe = document.getElementById('mobVibeInput');
+    mobVibe.addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+            const v = mobVibe.value.trim();
+            if (v) { executeVibeCommand(v); mobVibe.value = ''; }
+        }
+    });
+
+    // Mic — proxy to desktop mic button; sync visual state
+    function _syncMobMic() {
+        const btn = document.getElementById('mobMic');
+        const ref = document.getElementById('vibeMic');
+        btn.textContent = ref.textContent;
+        btn.style.color = ref.style.color;
+    }
+    document.getElementById('mobMic').addEventListener('click', () => {
+        document.getElementById('vibeMic').click();
+        setTimeout(_syncMobMic, 50);
+    });
+
+    // Bookmark save
+    document.getElementById('mobBookmark').addEventListener('click', () =>
+        document.getElementById('vibeBookmarkSave').click());
+
+    // Help popup: full-width above the bar
+    document.getElementById('mobHelp').addEventListener('click', e => {
+        e.stopPropagation();
+        const popup = document.getElementById('helpPopup');
+        if (popup.style.display !== 'none') { popup.style.display = 'none'; return; }
+        popup.style.left   = '8px';
+        popup.style.top    = '8px';
+        popup.style.width  = (window.innerWidth - 16) + 'px';
+        popup.style.height = '260px';
+        popup.style.display = 'flex';
+    });
+
+    // Date step back/forward
+    document.getElementById('mobStepBack').addEventListener('click', () => {
+        deskDateEl.value = mobDateEl.value;
+        document.getElementById('btnStepBack').click();
+        _syncMobDate();
+    });
+    document.getElementById('mobStepFwd').addEventListener('click', () => {
+        deskDateEl.value = mobDateEl.value;
+        document.getElementById('btnStepFwd').click();
+        _syncMobDate();
+    });
+
+    // Mobile date input → sync to desktop
+    mobDateEl.addEventListener('change', () => { deskDateEl.value = mobDateEl.value; syncTimelineFromDate(); });
+    mobDateEl.addEventListener('input',  () => { deskDateEl.value = mobDateEl.value; syncTimelineFromDate(); });
+
+    // Display
+    document.getElementById('mobDisplay').addEventListener('click', () => {
+        deskDateEl.value = mobDateEl.value;
+        scheduleRender();
+    });
+
+    // Zoom — works in both world-context and rendered modes
+    function _mobZoom(dir) {
+        const inp = getInputs();
+        let idx = ZOOM_PRESETS.indexOf(inp.zoom);
+        if (idx === -1) { idx = ZOOM_PRESETS.findIndex(z => z >= inp.zoom); if (idx < 0) idx = ZOOM_PRESETS.length - 1; }
+        const newIdx  = Math.max(0, Math.min(ZOOM_PRESETS.length - 1, idx + dir));
+        const newZoom = ZOOM_PRESETS[newIdx];
+        if (newZoom === inp.zoom) return;
+        const sel = document.getElementById('zoom');
+        const opt = [...sel.options].find(o => parseInt(o.value) === newZoom);
+        if (opt) { sel.value = newZoom; document.getElementById('zoomCustom').style.display = 'none'; }
+        else     { sel.value = 'custom'; document.getElementById('zoomCustom').style.display = ''; document.getElementById('zoomCustom').value = newZoom; }
+        if (_mapFullyRendered) scheduleRender(); else drawOverlay();
+    }
+    document.getElementById('mobZoomOut').addEventListener('click', () => _mobZoom(-1));
+    document.getElementById('mobZoomIn' ).addEventListener('click', () => _mobZoom( 1));
+
+    // World view
+    document.getElementById('mobWorld').addEventListener('click', () =>
+        document.getElementById('btnWorld').click());
+
+    // Save
+    document.getElementById('mobSave').addEventListener('click', () =>
+        document.getElementById('btnSave').click());
+
+    // Options popup: full-width above the bar
+    document.getElementById('mobOptions').addEventListener('click', e => {
+        e.stopPropagation();
+        const popup  = document.getElementById('optionsPopup');
+        const barH   = document.getElementById('mobile-bar').offsetHeight;
+        if (popup.style.display === 'block') {
+            popup.style.display = 'none';
+            document.getElementById('btnOptions').classList.remove('active');
+        } else {
+            popup.style.cssText = `display:block; left:8px; right:8px; width:${window.innerWidth - 16}px; bottom:${barH + 8}px; top:auto;`;
+            document.getElementById('btnOptions').classList.add('active');
+        }
+    });
+}
+
+// ── Touch gesture handling (works on all touch devices) ───────────────────────
+const _ts = {
+    start1: null,   // { x, y, lon, lat, time }
+    pinchDist0: 0,
+    pinchZoom0: 0,
+    dragging: false,
+    pinching: false,
+};
+
+function _touchOff(touch) {
+    const r = overlay.getBoundingClientRect();
+    return { x: touch.clientX - r.left, y: touch.clientY - r.top };
+}
+
+overlay.addEventListener('touchstart', e => {
+    e.preventDefault();
+    if (e.touches.length === 1) {
+        const off = _touchOff(e.touches[0]);
+        const inp = getInputs();
+        _ts.start1    = { x: off.x, y: off.y, lon: inp.centerLon, lat: inp.centerLat, time: Date.now() };
+        _ts.pinching  = false;
+        _ts.dragging  = false;
+    } else if (e.touches.length === 2) {
+        const a = _touchOff(e.touches[0]), b = _touchOff(e.touches[1]);
+        _ts.pinchDist0 = Math.hypot(b.x - a.x, b.y - a.y);
+        _ts.pinchZoom0 = getInputs().zoom;
+        _ts.pinching   = true;
+        _ts.dragging   = false;
+        canvas.style.transform = '';
+    }
+}, { passive: false });
+
+overlay.addEventListener('touchmove', e => {
+    e.preventDefault();
+    if (e.touches.length === 2 && _ts.pinching) {
+        const a = _touchOff(e.touches[0]), b = _touchOff(e.touches[1]);
+        const dist = Math.hypot(b.x - a.x, b.y - a.y);
+        if (_ts.pinchDist0 > 5) {
+            const ratio    = dist / _ts.pinchDist0;
+            const newZoomV = (_ts.pinchZoom0 + 1) * ratio - 1;
+            let best = ZOOM_PRESETS[0], bestDist = Math.abs(ZOOM_PRESETS[0] - newZoomV);
+            for (const p of ZOOM_PRESETS) {
+                const d = Math.abs(p - newZoomV);
+                if (d < bestDist) { bestDist = d; best = p; }
+            }
+            const sel = document.getElementById('zoom');
+            if (parseInt(sel.value) !== best) {
+                const opt = [...sel.options].find(o => parseInt(o.value) === best);
+                if (opt) { sel.value = best; document.getElementById('zoomCustom').style.display = 'none'; }
+                else     { sel.value = 'custom'; document.getElementById('zoomCustom').style.display = ''; document.getElementById('zoomCustom').value = best; }
+            }
+        }
+    } else if (e.touches.length === 1 && _ts.start1 && !_ts.pinching) {
+        const off = _touchOff(e.touches[0]);
+        const dx = off.x - _ts.start1.x, dy = off.y - _ts.start1.y;
+        if (Math.hypot(dx, dy) > 6) _ts.dragging = true;
+        if (_ts.dragging) {
+            if (_mapFullyRendered && contextProjection) {
+                canvas.style.transform = `translate(${dx}px,${dy}px)`;
+            } else if (contextProjection) {
+                const dLon =  dx / contextProjection.xScale;
+                const dLat = -dy / contextProjection.yScale;
+                document.getElementById('centerLon').value = Math.max(-180, Math.min(180, Math.round((_ts.start1.lon + dLon) * 10) / 10));
+                document.getElementById('centerLat').value = Math.max(-90,  Math.min(90,  Math.round((_ts.start1.lat + dLat) * 10) / 10));
+                drawOverlay();
+            }
+        }
+    }
+}, { passive: false });
+
+overlay.addEventListener('touchend', e => {
+    e.preventDefault();
+    const now = Date.now();
+
+    if (e.touches.length === 0) {
+        if (_ts.pinching) {
+            scheduleRender();
+        } else if (_ts.dragging && _mapFullyRendered && contextProjection) {
+            const ct  = e.changedTouches[0];
+            const off = _touchOff(ct);
+            const dx  = off.x - _ts.start1.x, dy = off.y - _ts.start1.y;
+            canvas.style.transform = '';
+            document.getElementById('centerLon').value = Math.max(-180, Math.min(180,
+                Math.round((_ts.start1.lon - dx / contextProjection.xScale) * 10) / 10));
+            document.getElementById('centerLat').value = Math.max(-90,  Math.min(90,
+                Math.round((_ts.start1.lat + dy / contextProjection.yScale) * 10) / 10));
+            scheduleRender();
+        } else if (!_ts.dragging && _ts.start1 && (now - _ts.start1.time) < 300) {
+            // Short tap
+            const ct  = e.changedTouches[0];
+            const off = _touchOff(ct);
+            if (_mapFullyRendered) {
+                const rect   = canvas.getBoundingClientRect();
+                const scaleX = canvas.width  / rect.width;
+                const scaleY = canvas.height / rect.height;
+                const px = (ct.clientX - rect.left) * scaleX;
+                const py = (ct.clientY - rect.top)  * scaleY;
+                showInfoPopupAtPixel(px, py, ct.clientX, ct.clientY);
+            } else if (contextProjection) {
+                const geo = contextProjection.pixelToGeo(off.x, off.y);
+                document.getElementById('centerLon').value = Math.max(-180, Math.min(180, Math.round(geo.lon * 10) / 10));
+                document.getElementById('centerLat').value = Math.max(-90,  Math.min(90,  Math.round(geo.lat * 10) / 10));
+                drawOverlay();
+            }
+        }
+        _ts.start1 = null; _ts.dragging = false; _ts.pinching = false;
+    } else if (e.touches.length === 1) {
+        // Second finger lifted; transition to single-finger pan
+        _ts.pinching = false;
+        const off = _touchOff(e.touches[0]);
+        const inp = getInputs();
+        _ts.start1 = { x: off.x, y: off.y, lon: inp.centerLon, lat: inp.centerLat, time: now };
+        _ts.dragging = false;
+        canvas.style.transform = '';
+        scheduleRender();
+    }
+}, { passive: false });
 
 </script>
 </body>
