@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>mapper.NET — Historical Map Viewer</title>
     <link rel="icon" type="image/png" href="sahm-logo.png">
     <!-- Privacy-friendly analytics by Plausible -->
@@ -464,32 +464,43 @@
             flex-shrink: 0;
         }
         .mob-btn:active { background: #1a4a80; border-color: #00c8f0; }
-        .mob-vibe-input {
-            background: #1a1a2e;
-            border: 1px solid #555;
-            color: #eee;
-            font-size: 16px;
-            font-family: monospace;
-            height: 40px;
+        input.mob-vibe-input {
+            background: #1a1a2e !important;
+            border: 1px solid #555 !important;
+            color: #eee !important;
+            font-size: 16px !important;
+            font-family: monospace !important;
+            height: 40px !important;
             flex: 1;
             min-width: 0;
-            padding: 0 8px;
+            padding: 0 8px !important;
             border-radius: 4px;
         }
-        .mob-date-input {
-            background: #050f20;
-            border: 1px solid #3a5a7a;
-            color: #ffffff;
-            font-size: 16px;
-            font-weight: bold;
-            font-family: monospace;
-            height: 40px;
-            text-align: center;
+        input.mob-date-input {
+            background: #050f20 !important;
+            border: 1px solid #3a5a7a !important;
+            color: #ffffff !important;
+            font-size: 16px !important;
+            font-weight: bold !important;
+            font-family: monospace !important;
+            height: 40px !important;
+            text-align: center !important;
             flex: 1;
             min-width: 0;
             border-radius: 4px;
-            padding: 0 4px;
+            padding: 0 4px !important;
         }
+        #mobStatusLine {
+            font-size: 12px;
+            color: #88aacc;
+            min-height: 14px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding: 0 2px;
+        }
+        #mobStatusLine.mob-error { color: #ff8888; }
+        #mobStatusLine.mob-ok    { color: #88ffaa; }
         .mob-display-btn {
             background: #004400;
             color: #88ff88;
@@ -814,6 +825,8 @@
         <button class="mob-btn" id="mobSave"  style="flex:1;font-size:12px;color:#ff66ff;border-color:#660088;">💾 Save</button>
         <button class="mob-btn" id="mobOptions" style="font-size:18px;">⚙</button>
     </div>
+    <!-- Status feedback -->
+    <div id="mobStatusLine">Ready — try "show Rome at 100 BCE"</div>
 </div>
 
 <!-- ── Help popup ── -->
@@ -3160,11 +3173,38 @@ _syncMobDate();
 
 // ── Mobile toolbar wiring ─────────────────────────────────────────────────────
 if (isMobile) {
+    // Mirror desktop status → mobile status line
+    const _mobStatusEl = document.getElementById('mobStatusLine');
+    const _deskStatusEl = document.getElementById('status');
+    new MutationObserver(() => {
+        const t = _deskStatusEl.textContent;
+        _mobStatusEl.textContent = t;
+        const isErr = t.startsWith('Error');
+        _mobStatusEl.classList.toggle('mob-error', isErr);
+        _mobStatusEl.classList.toggle('mob-ok', !isErr && t.length > 0);
+    }).observe(_deskStatusEl, { childList: true, characterData: true, subtree: true });
+
+    // Also mirror vibe history → mobile status line
+    const _origVibeAddHistory = vibeAddHistory;
+    window.vibeAddHistory = function(cmd, result, isError) {
+        _origVibeAddHistory(cmd, result, isError);
+        if (result) {
+            _mobStatusEl.textContent = result;
+            _mobStatusEl.classList.toggle('mob-error', isError);
+            _mobStatusEl.classList.toggle('mob-ok', !isError);
+        }
+    };
+
     // Vibe input + send button
     const mobVibe = document.getElementById('mobVibeInput');
     function _mobVibeGo() {
         const v = mobVibe.value.trim();
-        if (v) { executeVibeCommand(v); mobVibe.value = ''; mobVibe.blur(); }
+        if (!v) return;
+        _mobStatusEl.textContent = '⏳ ' + v;
+        _mobStatusEl.className = '';
+        executeVibeCommand(v);
+        mobVibe.value = '';
+        mobVibe.blur();
     }
     mobVibe.addEventListener('keydown', e => { if (e.key === 'Enter') _mobVibeGo(); });
     document.getElementById('mobVibeGo').addEventListener('click', _mobVibeGo);
