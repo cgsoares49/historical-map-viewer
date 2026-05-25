@@ -830,7 +830,7 @@
         <button class="mob-btn" id="mobOptions" style="font-size:18px;">⚙</button>
     </div>
     <!-- Status feedback -->
-    <div id="mobStatusLine">Ready — try "show Rome at 100 BCE"</div>
+    <div id="mobStatusLine">Ready [v8] — try "show Rome at 100 BCE"</div>
 </div>
 
 <!-- ── Help popup ── -->
@@ -2388,6 +2388,9 @@ document.getElementById('vibeMic').addEventListener('click', () => {
         rec.onresult = e => {
             const transcript = e.results[0][0].transcript.trim();
             document.getElementById('vibeInput').value = transcript;
+            // Mirror to mobile input so user can see what was heard
+            const mobIn = document.getElementById('mobVibeInput');
+            if (mobIn) mobIn.value = transcript;
             executeVibeCommand(transcript);
         };
         rec.onerror = e => {
