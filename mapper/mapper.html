@@ -3212,10 +3212,10 @@ if (isMobile) {
         _mobStatusEl.textContent = '⏳ ' + v;
         _mobStatusEl.className = '';
         mobVibe.value = '';
-        executeVibeCommand(v);
-        _syncMobDate();
-        // Do NOT blur — dismissing keyboard triggers iOS viewport resize which
-        // clobbers the canvas resize and kills the in-progress render.
+        // Delay so iOS keyboard-dismiss resize fires and settles BEFORE we call
+        // scheduleRender — tapping → naturally blurs the input, which collapses
+        // the keyboard, which fires resize+resizeCanvases mid-render and corrupts it.
+        setTimeout(() => { executeVibeCommand(v); _syncMobDate(); }, 350);
     }
     // Both keydown and keyup: some mobile keyboards fire one but not the other.
     // Double-execution is safe — _mobVibeGo clears the input on first call so the second gets empty and returns early.
