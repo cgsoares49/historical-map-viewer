@@ -923,7 +923,7 @@ function resizeCanvases() {
     canvas.height = overlay.height = backCanvas.height = container.clientHeight;
 }
 resizeCanvases();
-window.addEventListener('resize', () => { resizeCanvases(); scheduleRender(); });
+window.addEventListener('resize', () => { scheduleRender(); });
 
 // ── Selection rectangle state ────────────────────────────────────────────────
 let contextProjection = new MapProjection(0, 0, 0, canvas.width, canvas.height);
@@ -2452,6 +2452,9 @@ function scheduleRender() {
 function _startRender() {
     _renderQueued = false;
     _cancelToken  = { cancelled: false };
+    // Resize canvases here, not in the resize event handler, so the canvas is
+    // always at the correct size at render start and never cleared mid-render.
+    resizeCanvases();
     requestAnimationFrame(() => {
         if (_renderInProgress) { _renderQueued = true; return; }
         _renderInProgress = true;
