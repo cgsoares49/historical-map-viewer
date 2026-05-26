@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -2446,52 +2446,70 @@ function _drawWorldContextInfo(ctx, pngTop, pngBot, W, H) {
     const topH   = pngTop;
     const botH   = H - pngBot;
     const mobile = document.body.classList.contains('is-mobile');
+    const maxW   = W * 0.88;
 
     ctx.save();
     ctx.textAlign    = 'center';
     ctx.textBaseline = 'middle';
 
-    if (topH > 45) {
-        const titleSz = Math.min(20, Math.max(11, Math.round(topH * 0.21)));
-        const subSz   = Math.min(12, Math.max(9,  Math.round(topH * 0.12)));
+    function fitText(text, x, y, sz, bold) {
+        let s = sz;
+        ctx.font = (bold ? 'bold ' : '') + s + 'px sans-serif';
+        while (s > 7 && ctx.measureText(text).width > maxW) {
+            s--;
+            ctx.font = (bold ? 'bold ' : '') + s + 'px sans-serif';
+        }
+        ctx.fillText(text, x, y);
+    }
 
-        ctx.font      = `bold ${titleSz}px monospace`;
-        ctx.fillStyle = 'rgba(255,255,255,0.92)';
-        ctx.fillText('Historical Map Viewer', cx, topH * 0.30);
+    if (topH > 40) {
+        const pad = 5;
+        ctx.fillStyle = 'rgba(0,10,30,0.62)';
+        ctx.fillRect(W * 0.05, pad, W * 0.90, topH - pad * 2);
 
-        ctx.font      = `${subSz}px monospace`;
-        ctx.fillStyle = 'rgba(175,210,245,0.82)';
+        const titleSz = Math.min(18, Math.max(11, Math.round(topH * 0.22)));
+        const subSz   = Math.min(12, Math.max(8,  Math.round(topH * 0.13)));
         const limit   = Math.abs(Math.round(MAX_DATA_YEAR));
         const latest  = (_appVersion.latestYear || 2000);
-        ctx.fillText(`Ancient history through ${limit} BCE  ·  ${latest} CE reference`, cx, topH * 0.56);
+
+        ctx.fillStyle = '#ffffff';
+        fitText('Historical Map Viewer', cx, topH * 0.30, titleSz, true);
+
+        ctx.fillStyle = '#aaddff';
+        const coverStr = mobile
+            ? (limit + ' BCE – ' + latest + ' CE')
+            : ('Ancient history through ' + limit + ' BCE  ·  ' + latest + ' CE reference');
+        fitText(coverStr, cx, topH * 0.58, subSz, false);
 
         if (_appVersion.data) {
             const d = new Date(_appVersion.data + 'T00:00:00');
             const dateStr = d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
-            ctx.fillStyle = 'rgba(140,185,225,0.65)';
-            ctx.fillText(`Data updated ${dateStr}`, cx, topH * 0.80);
+            ctx.fillStyle = '#88bbdd';
+            fitText('Data: ' + dateStr, cx, topH * 0.82, subSz, false);
         }
     }
 
-    if (botH > 45) {
-        const tipSz = Math.min(12, Math.max(9, Math.round(botH * 0.14)));
-        const lh    = Math.min(22, Math.max(14, Math.round(botH * 0.19)));
-        let y       = pngBot + botH * 0.18;
+    if (botH > 40) {
+        const pad = 4;
+        ctx.fillStyle = 'rgba(0,10,30,0.62)';
+        ctx.fillRect(W * 0.05, pngBot + pad, W * 0.90, botH - pad * 2);
 
-        ctx.font      = `bold ${tipSz}px monospace`;
-        ctx.fillStyle = 'rgba(175,210,245,0.82)';
-        ctx.fillText('Quick start', cx, y);  y += lh;
+        const tipSz = Math.min(12, Math.max(8, Math.round(botH * 0.15)));
+        const lh    = Math.min(20, Math.max(13, Math.round(botH * 0.21)));
+        let y       = pngBot + botH * 0.20;
 
-        ctx.font      = `${tipSz}px monospace`;
-        ctx.fillStyle = 'rgba(145,190,225,0.72)';
+        ctx.fillStyle = '#aaddff';
+        fitText('Quick start', cx, y, tipSz, true);  y += lh;
+
+        ctx.fillStyle = '#ddf0ff';
         if (mobile) {
-            ctx.fillText('Type a place · date, tap → to navigate', cx, y);  y += lh;
-            ctx.fillText('Tap the map for country info', cx, y);  y += lh;
-            ctx.fillText('Pinch to zoom  ·  ◄ ► to step through time', cx, y);
+            fitText('Type place · date, tap → to navigate', cx, y, tipSz, false);  y += lh;
+            fitText('Tap map for country info', cx, y, tipSz, false);  y += lh;
+            fitText('Pinch to zoom  ◄ ► to step time', cx, y, tipSz, false);
         } else {
-            ctx.fillText('"show Rome at 300 BCE" + Enter to navigate', cx, y);  y += lh;
-            ctx.fillText('Right-click for country info  ·  scroll to zoom', cx, y);  y += lh;
-            ctx.fillText('Drag to pan  ·  Shift+click for region select', cx, y);
+            fitText('"show Rome at 300 BCE" + Enter', cx, y, tipSz, false);  y += lh;
+            fitText('Right-click for info  ·  scroll to zoom', cx, y, tipSz, false);  y += lh;
+            fitText('Drag to pan  ·  Shift+click to select region', cx, y, tipSz, false);
         }
     }
 
