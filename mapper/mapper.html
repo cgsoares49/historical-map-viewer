@@ -364,6 +364,10 @@
         #helpPopupHeader button { background: none; border: none; color: #c0d8f0; font-size: 14px; cursor: pointer; padding: 0 2px; line-height: 1; }
         #helpPopupBody { overflow-y: auto; flex: 1; padding: 8px 12px; line-height: 1.75; color: #fff; }
         #bookmarkList { min-width: 220px; max-height: 220px; overflow-y: auto; }
+        .desk-only { }
+        .mob-only  { display: none; }
+        body.is-mobile .desk-only { display: none; }
+        body.is-mobile .mob-only  { display: block; }
 
         /* ── Info Popup ──────────────────────────────────────────────────── */
         #infoPopup {
@@ -805,7 +809,7 @@
 <div id="map-container">
     <canvas id="mapCanvas"></canvas>
     <canvas id="overlay"></canvas>
-    <div id="mobVersionStamp">code version: 2026-05-26 14:15</div>
+    <div id="mobVersionStamp">code version: 2026-05-26 15:00</div>
 </div>
 
 <!-- ── Timeline bar ── -->
@@ -872,14 +876,21 @@
         <div><span class="hc">info [place]</span> — show info popup for a place</div>
         <div><span class="hc">dismiss</span> — close info popup</div>
         <div style="margin-top:4px;">Years: "100 BCE", "-100", "1648 CE", "1648"</div>
-        <div style="margin-top:8px;border-top:1px solid #1a3050;padding-top:6px;font-style:italic;margin-bottom:4px;">Map interactions</div>
-        <div><span class="hc">Drag</span> — pan the map; re-renders on release</div>
-        <div><span class="hc">Scroll wheel</span> — zoom in/out centered on cursor</div>
-        <div><span class="hc">Double-click</span> — zoom in centered on click point</div>
-        <div><span class="hc">Shift+click</span> — selection rectangle; drag to reposition; Display or Enter to render</div>
-        <div><span class="hc">Right-click</span> — country info popup</div>
-        <div><span class="hc">Alt+click</span> — distance measurer (click twice for measurement)</div>
-        <div><span class="hc">Escape</span> — cancel distance or selection mode</div>
+        <div class="desk-only" style="margin-top:8px;border-top:1px solid #1a3050;padding-top:6px;font-style:italic;margin-bottom:4px;">Map interactions</div>
+        <div class="desk-only"><span class="hc">Drag</span> — pan the map; re-renders on release</div>
+        <div class="desk-only"><span class="hc">Scroll wheel</span> — zoom in/out centered on cursor</div>
+        <div class="desk-only"><span class="hc">Double-click</span> — zoom in centered on click point</div>
+        <div class="desk-only"><span class="hc">Shift+click</span> — selection rectangle; drag to reposition; Display or Enter to render</div>
+        <div class="desk-only"><span class="hc">Right-click</span> — country info popup</div>
+        <div class="desk-only"><span class="hc">Alt+click</span> — distance measurer (click twice for measurement)</div>
+        <div class="desk-only"><span class="hc">Escape</span> — cancel distance or selection mode</div>
+        <div class="mob-only" style="margin-top:8px;border-top:1px solid #1a3050;padding-top:6px;font-style:italic;margin-bottom:4px;">Touch gestures</div>
+        <div class="mob-only"><span class="hc">Tap</span> — country info popup</div>
+        <div class="mob-only"><span class="hc">Drag</span> — pan the map; re-renders on release</div>
+        <div class="mob-only"><span class="hc">Pinch</span> — zoom in/out</div>
+        <div class="mob-only"><span class="hc">→ button</span> — execute typed or voice command</div>
+        <div class="mob-only"><span class="hc">Display</span> — re-render at current date &amp; position</div>
+        <div class="mob-only"><span class="hc">⭐ button</span> — save &amp; view bookmarks</div>
     </div>
 </div>
 
@@ -3266,9 +3277,72 @@ if (isMobile) {
         setTimeout(_syncMobMic, 50);
     });
 
-    // Bookmark save
-    document.getElementById('mobBookmark').addEventListener('click', () =>
-        document.getElementById('vibeBookmarkSave').click());
+    // Bookmark panel — save + recall
+    document.getElementById('mobBookmark').addEventListener('click', e => {
+        e.stopPropagation();
+        const panel = document.getElementById('bookmarkList');
+        if (panel.style.display !== 'none') { panel.style.display = 'none'; return; }
+        _renderMobBookmarkPanel();
+    });
+
+    function _renderMobBookmarkPanel() {
+        const panel = document.getElementById('bookmarkList');
+        panel.innerHTML = '';
+        panel.style.cssText = 'left:8px; top:8px; width:' + (window.innerWidth - 16) + 'px; padding:6px 8px; display:block; max-height:' + Math.round(window.innerHeight * 0.6) + 'px; overflow-y:auto;';
+
+        // Header
+        const hdr = document.createElement('div');
+        hdr.style.cssText = 'display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;font-weight:bold;font-size:13px;color:#88ccff;border-bottom:1px solid #1a3050;padding-bottom:4px;';
+        hdr.innerHTML = '<span>Bookmarks</span>';
+        const closeBtn = document.createElement('button');
+        closeBtn.textContent = '×';
+        closeBtn.style.cssText = 'background:none;border:none;color:#c0d8f0;font-size:18px;cursor:pointer;padding:0 2px;line-height:1;';
+        closeBtn.addEventListener('click', () => { panel.style.display = 'none'; });
+        hdr.appendChild(closeBtn);
+        panel.appendChild(hdr);
+
+        // Save current view button
+        const saveBtn = document.createElement('button');
+        saveBtn.textContent = '⭐ Save current view';
+        saveBtn.style.cssText = 'width:100%;padding:8px;background:#003300;border:1px solid #006600;color:#88ff88;font-size:13px;cursor:pointer;border-radius:3px;margin-bottom:6px;';
+        saveBtn.addEventListener('click', () => {
+            document.getElementById('vibeBookmarkSave').click();
+            panel.style.display = 'none';
+            setTimeout(_renderMobBookmarkPanel, 60);
+        });
+        panel.appendChild(saveBtn);
+
+        const list = loadBookmarks();
+        if (!list.length) {
+            const empty = document.createElement('div');
+            empty.style.cssText = 'color:#506070;padding:8px 4px;font-size:12px;';
+            empty.textContent = 'No bookmarks saved yet.';
+            panel.appendChild(empty);
+        } else {
+            list.forEach((bm, i) => {
+                const row = document.createElement('div');
+                row.style.cssText = 'padding:8px 4px;cursor:pointer;border-top:1px solid #1a2a3a;display:flex;justify-content:space-between;align-items:center;';
+                const lbl = document.createElement('span');
+                lbl.textContent = bm.label; lbl.style.cssText = 'color:#88ccff;font-size:12px;flex:1;';
+                const del = document.createElement('span');
+                del.textContent = '×'; del.style.cssText = 'color:#666;font-size:18px;padding:0 4px;line-height:1;';
+                del.addEventListener('click', ev => { ev.stopPropagation(); const l=loadBookmarks(); l.splice(i,1); saveBookmarks(l); row.remove(); });
+                row.appendChild(lbl); row.appendChild(del);
+                row.addEventListener('click', () => {
+                    document.getElementById('centerLon').value = bm.lon;
+                    document.getElementById('centerLat').value = bm.lat;
+                    const sel = document.getElementById('zoom');
+                    const opt = [...sel.options].find(o => parseInt(o.value) === bm.zoom);
+                    if (opt) { sel.value = bm.zoom; document.getElementById('zoomCustom').style.display='none'; }
+                    document.getElementById('mapDate').value = bm.year;
+                    syncTimelineFromDate();
+                    scheduleRender();
+                    panel.style.display = 'none';
+                });
+                panel.appendChild(row);
+            });
+        }
+    }
 
     // Help popup: full-width above the bar
     document.getElementById('mobHelp').addEventListener('click', e => {
