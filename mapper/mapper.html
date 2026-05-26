@@ -1265,9 +1265,10 @@ async function _saveMovieBlob() {
     if (!movieBlob) return;
     const filename = _movieFilename();
     const ext      = filename.endsWith('.mp4') ? 'mp4' : 'webm';
-    // Use bare MIME type — codecs suffix (e.g. video/webm;codecs=vp9) is rejected by showSaveFilePicker
     const pickMime = ext === 'mp4' ? 'video/mp4' : 'video/webm';
+    const statusEl = document.getElementById('status');
 
+    // Desktop Chrome/Edge: File System Access API
     if (window.showSaveFilePicker) {
         try {
             const handle = await window.showSaveFilePicker({
@@ -1277,19 +1278,35 @@ async function _saveMovieBlob() {
             const writable = await handle.createWritable();
             await writable.write(movieBlob);
             await writable.close();
-            document.getElementById('status').textContent = `Movie saved: ${filename}`;
+            statusEl.textContent = `Movie saved: ${filename}`;
             return;
         } catch (e) {
             if (e.name === 'AbortError') return;
             console.warn('showSaveFilePicker failed, falling back:', e);
         }
     }
-    // Fallback: auto-download
+
+    // iOS/Android: Web Share API — opens share sheet so user can save to Photos/Files
+    if (navigator.canShare) {
+        const file = new File([movieBlob], filename, { type: pickMime });
+        if (navigator.canShare({ files: [file] })) {
+            try {
+                await navigator.share({ files: [file], title: filename });
+                statusEl.textContent = `Movie ready to save: ${filename}`;
+                return;
+            } catch (e) {
+                if (e.name === 'AbortError') return;
+                console.warn('Web Share failed, falling back:', e);
+            }
+        }
+    }
+
+    // Last resort: anchor download (works on desktop browsers without showSaveFilePicker)
     const url = URL.createObjectURL(movieBlob);
     const a   = document.createElement('a');
     a.href = url; a.download = filename; a.click();
-    URL.revokeObjectURL(url);
-    document.getElementById('status').textContent = `Movie saved: ${filename}`;
+    setTimeout(() => URL.revokeObjectURL(url), 10000);
+    statusEl.textContent = `Movie saved: ${filename}`;
 }
 
 document.getElementById('btnMovieRec').addEventListener('click', () => {
