@@ -805,7 +805,7 @@
 <div id="map-container">
     <canvas id="mapCanvas"></canvas>
     <canvas id="overlay"></canvas>
-    <div id="mobVersionStamp">code version: 2026-05-26 12:15</div>
+    <div id="mobVersionStamp">code version: 2026-05-26 13:00</div>
 </div>
 
 <!-- ── Timeline bar ── -->
@@ -2014,6 +2014,10 @@ function vibeAddDisambiguation(originalText, matches) {
     hist.insertBefore(block, hist.firstChild);
     while (hist.children.length > 20) hist.removeChild(hist.lastChild);
     hist.scrollTop = 0;  // scroll to top so the new list is immediately visible
+    // Update mobile status line — the vibeHistory panel is desktop-only
+    const names = matches.slice(0, 4).map(([k]) => toTitleCase(k)).join(', ');
+    const mobSL = document.getElementById('mobStatusLine');
+    if (mobSL) mobSL.textContent = `${matches.length} matches: ${names}${matches.length > 4 ? '…' : ''} — be more specific`;
 }
 
 function vibeZoomForBounds(minLon, minLat, maxLon, maxLat) {
@@ -2310,13 +2314,15 @@ function executeVibeCommand(text) {
         vibeAddHistory(originalText, `"${placeName}" not found`, true);
         return;
     }
-    if (allMatches.length > 1) {
-        vibeAddDisambiguation(placeName, allMatches);
+    // Auto-select exact key match — avoids disambiguation for e.g. "rome"
+    // when "ancient rome" and "kingdom of rome" are also in GEODATA.
+    const exact = allMatches.find(([k]) => k === placeName);
+    if (exact || allMatches.length === 1) {
+        const [foundName, bounds] = exact || allMatches[0];
+        vibeNavigateTo(foundName, bounds, year, originalText);
         return;
     }
-    // Single match — navigate directly
-    const [foundName, bounds] = allMatches[0];
-    vibeNavigateTo(foundName, bounds, year, originalText);
+    vibeAddDisambiguation(placeName, allMatches);
 }
 
 // Navigate to a geodata entry — called both from command parser and disambiguation clicks.
