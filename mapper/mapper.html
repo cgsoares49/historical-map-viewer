@@ -805,7 +805,7 @@
 <div id="map-container">
     <canvas id="mapCanvas"></canvas>
     <canvas id="overlay"></canvas>
-    <div id="mobVersionStamp">code version: 2026-05-26 14:00</div>
+    <div id="mobVersionStamp">code version: 2026-05-26 14:15</div>
 </div>
 
 <!-- ── Timeline bar ── -->
@@ -3451,11 +3451,12 @@ overlay.addEventListener('touchend', e => {
         }
         _ts.start1 = null; _ts.dragging = false; _ts.pinching = false;
     } else if (e.touches.length === 1) {
-        // Second finger lifted; transition to single-finger pan
+        // Second finger lifted; transition to single-finger pan.
+        // Use time: 0 so the remaining finger's touchend never counts as a short tap.
         _ts.pinching = false;
         const off = _touchOff(e.touches[0]);
         const inp = getInputs();
-        _ts.start1 = { x: off.x, y: off.y, lon: inp.centerLon, lat: inp.centerLat, time: now };
+        _ts.start1 = { x: off.x, y: off.y, lon: inp.centerLon, lat: inp.centerLat, time: 0 };
         _ts.dragging = false;
         canvas.style.transform = '';
         scheduleRender();
