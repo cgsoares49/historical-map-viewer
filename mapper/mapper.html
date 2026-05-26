@@ -810,7 +810,7 @@
 <div id="map-container">
     <canvas id="mapCanvas"></canvas>
     <canvas id="overlay"></canvas>
-    <div id="mobVersionStamp">code version: 2026-05-26 15:30</div>
+    <div id="mobVersionStamp">code version: 2026-05-26 16:00</div>
 </div>
 
 <!-- ── Timeline bar ── -->
@@ -838,6 +838,7 @@
         <button class="mob-btn" id="mobStepBack" style="font-size:18px;">◀</button>
         <input type="text" id="mobDate" class="mob-date-input" value="2000" placeholder="400 BCE">
         <button class="mob-btn" id="mobStepFwd"  style="font-size:18px;">▶</button>
+        <button class="mob-btn" id="mobStepSize" style="font-size:11px;min-width:36px;" title="Tap to change step size">0.1y</button>
         <button class="mob-display-btn" id="mobDisplay">Display</button>
     </div>
     <!-- Row 3: Zoom + actions -->
@@ -3368,6 +3369,22 @@ if (isMobile) {
         document.getElementById('btnStepFwd').click();
         _syncMobDate();
     });
+
+    // Step size cycling button
+    const STEP_PRESETS = [0.1, 1, 5, 10, 25, 50, 100];
+    const mobStepSizeBtn = document.getElementById('mobStepSize');
+    function _syncMobStepBtn() {
+        const v = parseFloat(document.getElementById('yrPerStep').value) || 0.1;
+        mobStepSizeBtn.textContent = (v < 1 ? v : Math.round(v)) + 'y';
+    }
+    mobStepSizeBtn.addEventListener('click', () => {
+        const cur = parseFloat(document.getElementById('yrPerStep').value) || 0.1;
+        const idx = STEP_PRESETS.findIndex(v => Math.abs(v - cur) < 0.01);
+        const next = STEP_PRESETS[(idx + 1) % STEP_PRESETS.length];
+        document.getElementById('yrPerStep').value = next;
+        _syncMobStepBtn();
+    });
+    _syncMobStepBtn();
 
     // Mobile date input → sync to desktop
     mobDateEl.addEventListener('change', () => { deskDateEl.value = mobDateEl.value; syncTimelineFromDate(); });
