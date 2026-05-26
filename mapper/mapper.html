@@ -2441,7 +2441,7 @@ document.getElementById('vibeMic').addEventListener('click', () => {
 });
 
 // ── World context info overlay (drawn on canvas in letterbox space) ───────────
-function _drawWorldContextInfo(ctx, pngTop, pngBot, W, H) {
+function _drawWorldContextInfo(ctx, pngTop, pngBot, W, H, logoImg) {
     const cx     = W / 2;
     const topH   = pngTop;
     const botH   = H - pngBot;
@@ -2452,12 +2452,13 @@ function _drawWorldContextInfo(ctx, pngTop, pngBot, W, H) {
     ctx.textAlign    = 'center';
     ctx.textBaseline = 'middle';
 
-    function fitText(text, x, y, sz, bold) {
+    function fitText(text, x, y, sz, bold, italic) {
         let s = sz;
-        ctx.font = (bold ? 'bold ' : '') + s + 'px sans-serif';
+        const style = (bold ? 'bold ' : '') + (italic ? 'italic ' : '');
+        ctx.font = style + s + 'px sans-serif';
         while (s > 7 && ctx.measureText(text).width > maxW) {
             s--;
-            ctx.font = (bold ? 'bold ' : '') + s + 'px sans-serif';
+            ctx.font = style + s + 'px sans-serif';
         }
         ctx.fillText(text, x, y);
     }
@@ -2467,25 +2468,64 @@ function _drawWorldContextInfo(ctx, pngTop, pngBot, W, H) {
         ctx.fillStyle = 'rgba(0,10,30,0.62)';
         ctx.fillRect(W * 0.05, pad, W * 0.90, topH - pad * 2);
 
-        const titleSz = Math.min(18, Math.max(11, Math.round(topH * 0.22)));
-        const subSz   = Math.min(12, Math.max(8,  Math.round(topH * 0.13)));
-        const limit   = Math.abs(Math.round(MAX_DATA_YEAR));
-        const latest  = (_appVersion.latestYear || 2000);
+        const contentEnd = Math.abs((_appVersion.contentEnd) || 266);
+        const rangeStr   = '2400 BCE – ' + contentEnd + ' BCE';
+        let codeVerStr   = '';
+        if (_appVersion.app) {
+            const d = new Date(_appVersion.app + 'T00:00:00');
+            codeVerStr = 'Code Version: ' + d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+        }
 
-        ctx.fillStyle = '#ffffff';
-        fitText('Historical Map Viewer', cx, topH * 0.30, titleSz, true);
+        const hasLogo  = logoImg && logoImg.naturalWidth > 0;
+        const titleSz  = Math.min(16, Math.max(10, Math.round(topH * 0.19)));
+        const subSz    = Math.min(12, Math.max(8,  Math.round(topH * 0.13)));
+        const smallSz  = Math.min(10, Math.max(7,  Math.round(topH * 0.10)));
 
-        ctx.fillStyle = '#aaddff';
-        const coverStr = mobile
-            ? (limit + ' BCE – ' + latest + ' CE')
-            : ('Ancient history through ' + limit + ' BCE  ·  ' + latest + ' CE reference');
-        fitText(coverStr, cx, topH * 0.58, subSz, false);
+        if (hasLogo && topH > 70) {
+            // Logo left, text to its right — mirrors desktop header
+            const logoH = Math.min(38, topH * 0.50);
+            const logoW = Math.round(logoH * logoImg.naturalWidth / logoImg.naturalHeight);
+            ctx.font = 'bold ' + titleSz + 'px sans-serif';
+            const mapperW  = ctx.measureText('MAPPER').width;
+            ctx.font = 'italic ' + subSz + 'px sans-serif';
+            const vibingW  = ctx.measureText(' using Vibe Mapping').width;
+            const blockW   = logoW + 8 + mapperW + vibingW;
+            const bx       = Math.max(W * 0.06, (W - blockW) / 2);
+            ctx.drawImage(logoImg, bx, topH * 0.42 - logoH / 2, logoW, logoH);
+            const tx = bx + logoW + 8;
 
-        if (_appVersion.data) {
-            const d = new Date(_appVersion.data + 'T00:00:00');
-            const dateStr = d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
-            ctx.fillStyle = '#88bbdd';
-            fitText('Data: ' + dateStr, cx, topH * 0.82, subSz, false);
+            ctx.textAlign  = 'left';
+            ctx.font       = 'bold ' + titleSz + 'px sans-serif';
+            ctx.fillStyle  = '#ffffff';
+            ctx.fillText('MAPPER', tx, topH * 0.27);
+            const mw = ctx.measureText('MAPPER').width;
+            ctx.font      = 'italic ' + subSz + 'px sans-serif';
+            ctx.fillStyle = '#90d4a0';
+            ctx.fillText(' using Vibe Mapping', tx + mw, topH * 0.27);
+
+            ctx.fillStyle = '#6dbf8a';
+            ctx.fillText('the atlas for time travelers', tx, topH * 0.52);
+
+            ctx.textAlign = 'center';
+            ctx.font      = smallSz + 'px sans-serif';
+            ctx.fillStyle = '#aaddff';
+            ctx.fillText(rangeStr, cx, topH * 0.72);
+            if (codeVerStr) {
+                ctx.fillStyle = '#88bbdd';
+                ctx.fillText(codeVerStr, cx, topH * 0.87);
+            }
+        } else {
+            ctx.font      = 'bold ' + titleSz + 'px sans-serif';
+            ctx.fillStyle = '#ffffff';
+            ctx.fillText('MAPPER', cx, topH * 0.25);
+            ctx.fillStyle = '#6dbf8a';
+            fitText('the atlas for time travelers', cx, topH * 0.48, subSz, false, true);
+            ctx.fillStyle = '#aaddff';
+            fitText(rangeStr, cx, topH * 0.68, smallSz, false, false);
+            if (codeVerStr) {
+                ctx.fillStyle = '#88bbdd';
+                fitText(codeVerStr, cx, topH * 0.84, smallSz, false, false);
+            }
         }
     }
 
@@ -2498,18 +2538,19 @@ function _drawWorldContextInfo(ctx, pngTop, pngBot, W, H) {
         const lh    = Math.min(20, Math.max(13, Math.round(botH * 0.21)));
         let y       = pngBot + botH * 0.20;
 
+        ctx.textAlign = 'center';
         ctx.fillStyle = '#aaddff';
-        fitText('Quick start', cx, y, tipSz, true);  y += lh;
+        fitText('Quick start', cx, y, tipSz, true, false);  y += lh;
 
         ctx.fillStyle = '#ddf0ff';
         if (mobile) {
-            fitText('Type place · date, tap → to navigate', cx, y, tipSz, false);  y += lh;
-            fitText('Tap map for country info', cx, y, tipSz, false);  y += lh;
-            fitText('Pinch to zoom  ◄ ► to step time', cx, y, tipSz, false);
+            fitText('Type or say place · date, tap → to navigate', cx, y, tipSz, false, false);  y += lh;
+            fitText('Tap map for country info', cx, y, tipSz, false, false);  y += lh;
+            fitText('Pinch to zoom  ◄ ► to step time', cx, y, tipSz, false, false);
         } else {
-            fitText('"show Rome at 300 BCE" + Enter', cx, y, tipSz, false);  y += lh;
-            fitText('Right-click for info  ·  scroll to zoom', cx, y, tipSz, false);  y += lh;
-            fitText('Drag to pan  ·  Shift+click to select region', cx, y, tipSz, false);
+            fitText('"show Rome at 300 BCE" + Enter', cx, y, tipSz, false, false);  y += lh;
+            fitText('Right-click for info  ·  scroll to zoom', cx, y, tipSz, false, false);  y += lh;
+            fitText('Drag to pan  ·  Shift+click to select region', cx, y, tipSz, false, false);
         }
     }
 
@@ -2523,25 +2564,17 @@ async function renderWorldContext() {
     contextProjection = new MapProjection(0, 0, 0, canvas.width, canvas.height);
     colorNameMap = new Map();  // BMP pixel colors don't match computed colors
     const statusEl = document.getElementById('status');
-    await new Promise((resolve, reject) => {
-        const img = new Image();
-        img.onload = () => {
-            ctx.fillStyle = '#5ba3d9';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            // Derive the PNG's geographic lat extent from its natural dimensions
-            // (it was rendered at zoom=0 center=0,0 so degY = natH * 360 / natW).
-            // Project those bounds onto the display contextProjection so the image
-            // aligns correctly regardless of canvas size changes since the PNG was saved.
-            const pngProj = new MapProjection(0, 0, 0, img.naturalWidth, img.naturalHeight);
-            const tl = contextProjection.geoToPixel(-180,  pngProj.lat2);
-            const br = contextProjection.geoToPixel( 180,  pngProj.lat1);
-            ctx.drawImage(img, tl.x, tl.y, br.x - tl.x, br.y - tl.y);
-            _drawWorldContextInfo(ctx, tl.y, br.y, canvas.width, canvas.height);
-            resolve();
-        };
-        img.onerror = reject;
-        img.src = 'map_2000CE.png';
-    });
+    const [img, logoImg] = await Promise.all([
+        new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej;           i.src = 'map_2000CE.png';  }),
+        new Promise(res        => { const i = new Image(); i.onload = () => res(i); i.onerror = () => res(null); i.src = 'sahm-logo.png'; })
+    ]);
+    ctx.fillStyle = '#5ba3d9';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    const pngProj = new MapProjection(0, 0, 0, img.naturalWidth, img.naturalHeight);
+    const tl = contextProjection.geoToPixel(-180, pngProj.lat2);
+    const br = contextProjection.geoToPixel( 180, pngProj.lat1);
+    ctx.drawImage(img, tl.x, tl.y, br.x - tl.x, br.y - tl.y);
+    _drawWorldContextInfo(ctx, tl.y, br.y, canvas.width, canvas.height, logoImg);
     const { year } = getInputs();
     const yearLabel = year < 0 ? `${Math.abs(year)} BCE` : `${year} CE`;
     statusEl.textContent = `${yearLabel} — click or drag the rectangle to select a region, then press Display.`;
