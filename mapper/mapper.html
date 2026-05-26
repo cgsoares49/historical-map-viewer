@@ -839,7 +839,7 @@
         <button class="mob-btn" id="mobStepBack" style="font-size:18px;">◀</button>
         <input type="text" id="mobDate" class="mob-date-input" value="2000" placeholder="400 BCE">
         <button class="mob-btn" id="mobStepFwd"  style="font-size:18px;">▶</button>
-        <button class="mob-btn" id="mobPlay"     style="font-size:16px;min-width:36px;" title="Play / Stop animation">▶▶</button>
+        <button class="mob-btn" id="mobPlay"     style="font-size:11px;min-width:36px;" title="Run animation options">Run</button>
         <button class="mob-btn" id="mobStepSize" style="font-size:11px;min-width:36px;" title="Tap to change step size">0.1y</button>
         <button class="mob-display-btn" id="mobDisplay">Display</button>
     </div>
@@ -900,6 +900,43 @@
 
 <!-- ── Bookmark list ── -->
 <div id="bookmarkList" class="vibe-popup"></div>
+
+<!-- ── Mobile Run popup ── -->
+<div id="mobRunPopup" style="display:none; position:fixed; left:8px; right:8px; background:#0d1b2a; border:1px solid #2a4060; border-radius:6px; padding:10px 12px; z-index:200; color:#c8d8e8; font-size:13px; font-family:monospace;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+        <span style="font-weight:bold;color:#88ccff;font-size:14px;">Run Animation</span>
+        <button id="mobRunClose" style="background:none;border:none;color:#88ccff;font-size:18px;cursor:pointer;padding:0 4px;">✕</button>
+    </div>
+    <!-- Play controls -->
+    <div style="display:flex;gap:8px;margin-bottom:10px;">
+        <button id="mobRunReverse" class="mob-btn" style="flex:1;font-size:13px;">&lt;= Backward</button>
+        <button id="mobRunPlay"    class="mob-btn" style="flex:1;font-size:13px;">Forward =&gt;</button>
+        <button id="mobRunStop"    class="mob-btn" style="font-size:18px;color:#ff8888;border-color:#662222;">⏹</button>
+    </div>
+    <!-- Speed -->
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+        <span style="color:#88a8c8;">Speed:</span>
+        <input type="number" id="mobSecPerYr" value="2" min="0.1" step="0.1"
+               style="width:60px;background:#0b2040;color:#eee;border:1px solid #2a4060;padding:2px 4px;font-size:13px;">
+        <span style="color:#88a8c8;">sec / yr</span>
+    </div>
+    <!-- Movie recording -->
+    <div style="border-top:1px solid #1a3050;padding-top:8px;">
+        <div style="color:#6888a8;font-size:11px;margin-bottom:6px;letter-spacing:0.5px;">MOVIE RECORDING</div>
+        <div style="display:flex;gap:8px;margin-bottom:6px;">
+            <button id="mobMovieRec"   class="mob-btn" style="flex:1;font-size:13px;">⏺ Record</button>
+            <button id="mobMoviePause" class="mob-btn" style="font-size:18px;" disabled>⏸</button>
+            <button id="mobMovieStop2" class="mob-btn" style="font-size:18px;" disabled>⏹</button>
+            <button id="mobMovieSave"  class="mob-btn" style="font-size:18px;" disabled>💾</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+            <label style="display:flex;align-items:center;gap:4px;cursor:pointer;">
+                <input type="checkbox" id="mobMovieSkip" checked> Skip unchanged
+            </label>
+            <span id="mobMovieStatus" style="font-size:11px;color:#668899;flex:1;text-align:right;">ready</span>
+        </div>
+    </div>
+</div>
 
 <!-- ── Info Popup ── -->
 <div id="infoPopup">
@@ -3500,28 +3537,78 @@ if (isMobile) {
     });
     _syncMobStepBtn();
 
-    // Play / stop button
-    const mobPlayBtn = document.getElementById('mobPlay');
-    function _syncMobPlayBtn() {
-        if (animating) {
-            mobPlayBtn.textContent = '⏹';
-            mobPlayBtn.style.color = '#ff6666';
-        } else {
-            mobPlayBtn.textContent = '▶▶';
-            mobPlayBtn.style.color = '';
-        }
+    // Run popup
+    const mobRunPopup  = document.getElementById('mobRunPopup');
+    const mobSecPerYr  = document.getElementById('mobSecPerYr');
+    const deskSecPerYr = document.getElementById('secPerYr');
+
+    function _openRunPopup() {
+        // Sync speed from desktop
+        mobSecPerYr.value = deskSecPerYr.value;
+        _syncRunPopupState();
+        const barH = document.getElementById('mobile-bar').offsetHeight;
+        mobRunPopup.style.bottom = (barH + 8) + 'px';
+        mobRunPopup.style.display = 'block';
     }
-    mobPlayBtn.addEventListener('click', () => {
-        if (animating) {
-            animating = false;
-        } else {
-            deskDateEl.value = mobDateEl.value;
-            startAnimation(1);
-        }
-        _syncMobPlayBtn();
+    function _closeRunPopup() { mobRunPopup.style.display = 'none'; }
+
+    function _syncRunPopupState() {
+        const fwd = document.getElementById('mobRunPlay');
+        const rev = document.getElementById('mobRunReverse');
+        fwd.style.background = (animating && animDir ===  1) ? '#1a4a1a' : '';
+        rev.style.background = (animating && animDir === -1) ? '#1a4a1a' : '';
+        // Mirror desktop movie button states
+        const dMRec   = document.getElementById('btnMovieRec');
+        const dMPause = document.getElementById('btnMoviePause');
+        const dMStop  = document.getElementById('btnMovieStop');
+        const dMSave  = document.getElementById('btnMovieSave');
+        document.getElementById('mobMoviePause').disabled = dMPause.disabled;
+        document.getElementById('mobMovieStop2').disabled = dMStop.disabled;
+        document.getElementById('mobMovieSave').disabled  = dMSave.disabled;
+        document.getElementById('mobMovieStatus').textContent =
+            document.getElementById('movieStatus').textContent;
+    }
+
+    document.getElementById('mobPlay').addEventListener('click', () => {
+        if (mobRunPopup.style.display !== 'none') { _closeRunPopup(); return; }
+        _openRunPopup();
     });
-    // Keep button in sync when animation stops on its own (e.g. reaches content limit)
-    setInterval(_syncMobPlayBtn, 500);
+    document.getElementById('mobRunClose').addEventListener('click', _closeRunPopup);
+
+    document.getElementById('mobRunPlay').addEventListener('click', () => {
+        deskDateEl.value = mobDateEl.value;
+        startAnimation(1);
+        _syncRunPopupState();
+    });
+    document.getElementById('mobRunReverse').addEventListener('click', () => {
+        deskDateEl.value = mobDateEl.value;
+        startAnimation(-1);
+        _syncRunPopupState();
+    });
+    document.getElementById('mobRunStop').addEventListener('click', () => {
+        animating = false;
+        _syncRunPopupState();
+    });
+
+    // Speed — keep mobile and desktop inputs in sync
+    mobSecPerYr.addEventListener('input', () => { deskSecPerYr.value = mobSecPerYr.value; });
+
+    // Movie buttons — proxy to desktop counterparts
+    document.getElementById('mobMovieRec'  ).addEventListener('click', () => { document.getElementById('btnMovieRec').click();   _syncRunPopupState(); });
+    document.getElementById('mobMoviePause').addEventListener('click', () => { document.getElementById('btnMoviePause').click(); _syncRunPopupState(); });
+    document.getElementById('mobMovieStop2').addEventListener('click', () => { document.getElementById('btnMovieStop').click();  _syncRunPopupState(); });
+    document.getElementById('mobMovieSave' ).addEventListener('click', () => { document.getElementById('btnMovieSave').click(); });
+    document.getElementById('mobMovieSkip' ).addEventListener('change', e => {
+        document.getElementById('movieSkipUnchanged').checked = e.target.checked;
+    });
+
+    // Keep Run button label and popup state in sync while animating
+    const mobPlayBtn = document.getElementById('mobPlay');
+    setInterval(() => {
+        mobPlayBtn.textContent = animating ? '⏹' : 'Run';
+        mobPlayBtn.style.color = animating ? '#ff8888' : '';
+        if (mobRunPopup.style.display !== 'none') _syncRunPopupState();
+    }, 500);
 
     // Mobile date input → sync to desktop
     mobDateEl.addEventListener('change', () => { deskDateEl.value = mobDateEl.value; syncTimelineFromDate(); });
