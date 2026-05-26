@@ -971,7 +971,9 @@ let _selectionMode   = false;  // true after double-click: selection rect overla
 let geodataRefs = {};
 fetch('refs.json').then(r => r.json()).then(d => { geodataRefs = d; }).catch(() => {});
 
+let _appVersion = {};
 fetch('version.json').then(r => r.json()).then(v => {
+    _appVersion = v;
     const el = document.getElementById('versionInfo');
     const contentLimitStr = v.contentEnd != null ? `${Math.abs(Math.round(v.contentEnd))} BCE` : '?';
     if (el) el.innerHTML = `app ${v.app || '?'} · <span style="color:#fff">content limit</span> <span style="color:#fff; font-size:12px; font-weight:bold">${contentLimitStr}</span>`;
@@ -2438,12 +2440,68 @@ document.getElementById('vibeMic').addEventListener('click', () => {
     startRec();
 });
 
+// ── World context info overlay (drawn on canvas in letterbox space) ───────────
+function _drawWorldContextInfo(ctx, pngTop, pngBot, W, H) {
+    const cx     = W / 2;
+    const topH   = pngTop;
+    const botH   = H - pngBot;
+    const mobile = document.body.classList.contains('is-mobile');
+
+    ctx.save();
+    ctx.textAlign    = 'center';
+    ctx.textBaseline = 'middle';
+
+    if (topH > 45) {
+        const titleSz = Math.min(20, Math.max(11, Math.round(topH * 0.21)));
+        const subSz   = Math.min(12, Math.max(9,  Math.round(topH * 0.12)));
+
+        ctx.font      = `bold ${titleSz}px monospace`;
+        ctx.fillStyle = 'rgba(255,255,255,0.92)';
+        ctx.fillText('Historical Map Viewer', cx, topH * 0.30);
+
+        ctx.font      = `${subSz}px monospace`;
+        ctx.fillStyle = 'rgba(175,210,245,0.82)';
+        const limit   = Math.abs(Math.round(MAX_DATA_YEAR));
+        const latest  = (_appVersion.latestYear || 2000);
+        ctx.fillText(`Ancient history through ${limit} BCE  ·  ${latest} CE reference`, cx, topH * 0.56);
+
+        if (_appVersion.data) {
+            const d = new Date(_appVersion.data + 'T00:00:00');
+            const dateStr = d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+            ctx.fillStyle = 'rgba(140,185,225,0.65)';
+            ctx.fillText(`Data updated ${dateStr}`, cx, topH * 0.80);
+        }
+    }
+
+    if (botH > 45) {
+        const tipSz = Math.min(12, Math.max(9, Math.round(botH * 0.14)));
+        const lh    = Math.min(22, Math.max(14, Math.round(botH * 0.19)));
+        let y       = pngBot + botH * 0.18;
+
+        ctx.font      = `bold ${tipSz}px monospace`;
+        ctx.fillStyle = 'rgba(175,210,245,0.82)';
+        ctx.fillText('Quick start', cx, y);  y += lh;
+
+        ctx.font      = `${tipSz}px monospace`;
+        ctx.fillStyle = 'rgba(145,190,225,0.72)';
+        if (mobile) {
+            ctx.fillText('Type a place · date, tap → to navigate', cx, y);  y += lh;
+            ctx.fillText('Tap the map for country info', cx, y);  y += lh;
+            ctx.fillText('Pinch to zoom  ·  ◄ ► to step through time', cx, y);
+        } else {
+            ctx.fillText('"show Rome at 300 BCE" + Enter to navigate', cx, y);  y += lh;
+            ctx.fillText('Right-click for country info  ·  scroll to zoom', cx, y);  y += lh;
+            ctx.fillText('Drag to pan  ·  Shift+click for region select', cx, y);
+        }
+    }
+
+    ctx.restore();
+}
+
 // ── World context render ─────────────────────────────────────────────────────
 async function renderWorldContext() {
     _mapFullyRendered = false;
     _selectionMode    = false;
-    const _vs = document.getElementById('mobVersionStamp');
-    if (_vs) _vs.style.display = 'block';
     contextProjection = new MapProjection(0, 0, 0, canvas.width, canvas.height);
     colorNameMap = new Map();  // BMP pixel colors don't match computed colors
     const statusEl = document.getElementById('status');
@@ -2460,6 +2518,7 @@ async function renderWorldContext() {
             const tl = contextProjection.geoToPixel(-180,  pngProj.lat2);
             const br = contextProjection.geoToPixel( 180,  pngProj.lat1);
             ctx.drawImage(img, tl.x, tl.y, br.x - tl.x, br.y - tl.y);
+            _drawWorldContextInfo(ctx, tl.y, br.y, canvas.width, canvas.height);
             resolve();
         };
         img.onerror = reject;
