@@ -839,6 +839,7 @@
         <button class="mob-btn" id="mobStepBack" style="font-size:18px;">◀</button>
         <input type="text" id="mobDate" class="mob-date-input" value="2000" placeholder="400 BCE">
         <button class="mob-btn" id="mobStepFwd"  style="font-size:18px;">▶</button>
+        <button class="mob-btn" id="mobPlay"     style="font-size:16px;min-width:36px;" title="Play / Stop animation">▶▶</button>
         <button class="mob-btn" id="mobStepSize" style="font-size:11px;min-width:36px;" title="Tap to change step size">0.1y</button>
         <button class="mob-display-btn" id="mobDisplay">Display</button>
     </div>
@@ -3498,6 +3499,29 @@ if (isMobile) {
         _syncMobStepBtn();
     });
     _syncMobStepBtn();
+
+    // Play / stop button
+    const mobPlayBtn = document.getElementById('mobPlay');
+    function _syncMobPlayBtn() {
+        if (animating) {
+            mobPlayBtn.textContent = '⏹';
+            mobPlayBtn.style.color = '#ff6666';
+        } else {
+            mobPlayBtn.textContent = '▶▶';
+            mobPlayBtn.style.color = '';
+        }
+    }
+    mobPlayBtn.addEventListener('click', () => {
+        if (animating) {
+            animating = false;
+        } else {
+            deskDateEl.value = mobDateEl.value;
+            startAnimation(1);
+        }
+        _syncMobPlayBtn();
+    });
+    // Keep button in sync when animation stops on its own (e.g. reaches content limit)
+    setInterval(_syncMobPlayBtn, 500);
 
     // Mobile date input → sync to desktop
     mobDateEl.addEventListener('change', () => { deskDateEl.value = mobDateEl.value; syncTimelineFromDate(); });
