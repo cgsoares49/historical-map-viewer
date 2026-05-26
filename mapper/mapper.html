@@ -805,7 +805,7 @@
 <div id="map-container">
     <canvas id="mapCanvas"></canvas>
     <canvas id="overlay"></canvas>
-    <div id="mobVersionStamp">code version: 2026-05-26 11:30</div>
+    <div id="mobVersionStamp">code version: 2026-05-26 12:15</div>
 </div>
 
 <!-- ── Timeline bar ── -->
@@ -2456,23 +2456,12 @@ let _renderInProgress = false;
 let _renderQueued     = false;
 let _cancelToken      = null;
 
-function _mobDiag(msg) {
-    const el = document.getElementById('mobStatusLine');
-    if (el) { el.textContent = msg; el.className = ''; }
-}
-
 function scheduleRender() {
     if (!mapRenderer) {
         document.getElementById('status').textContent = 'Still loading color data…';
-        _mobDiag('DIAG: mapRenderer null — color data not loaded');
         return;
     }
-    if (_renderInProgress) {
-        _renderQueued = true;
-        _mobDiag('DIAG: render already in progress, queued');
-        return;
-    }
-    _mobDiag('DIAG: scheduleRender → _startRender');
+    if (_renderInProgress) { _renderQueued = true; return; }
     _startRender();
 }
 
@@ -2500,8 +2489,6 @@ async function doRender(skipColorMap = false, cancelToken = null) {
     const statusEl  = document.getElementById('status');
     const countEl   = document.getElementById('tile-count');
     const fillEl    = document.getElementById('progress-fill');
-    _mobDiag(`DIAG: doRender start — canvas ${backCanvas.width}×${backCanvas.height}`);
-
     btn.disabled = true;
     statusEl.textContent = 'Loading tiles…';
     fillEl.style.width = '0%';
@@ -2555,7 +2542,6 @@ async function doRender(skipColorMap = false, cancelToken = null) {
             ctx.drawImage(backCanvas, 0, 0);  // progressive flip: show each batch as it arrives
         }, showCoasts, showCities, showCityNames, cityDetail, showInlandWaters, showRivers, showCountryLabels, minPixels, cancelToken);
         ctx.drawImage(backCanvas, 0, 0);  // final flip: ensure complete frame is visible
-        _mobDiag(`DIAG: render complete — ${tileList.length} tiles`);
         _mapFullyRendered = true;
         _selectionMode    = false;
         const _vs = document.getElementById('mobVersionStamp');
@@ -2573,7 +2559,6 @@ async function doRender(skipColorMap = false, cancelToken = null) {
             _renderQueued = false;
         } else {
             statusEl.textContent = `Error: ${err.message}`;
-            _mobDiag(`DIAG ERR: ${err.message}`);
             console.error(err);
         }
     } finally {
