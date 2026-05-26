@@ -437,6 +437,7 @@
             display: none;
             flex-direction: column;
             flex-shrink: 0;
+            touch-action: manipulation;
             background: #0d1b2a;
             border-top: 2px solid #1a3a5e;
             padding: 6px 8px;
@@ -809,7 +810,7 @@
 <div id="map-container">
     <canvas id="mapCanvas"></canvas>
     <canvas id="overlay"></canvas>
-    <div id="mobVersionStamp">code version: 2026-05-26 15:00</div>
+    <div id="mobVersionStamp">code version: 2026-05-26 15:30</div>
 </div>
 
 <!-- ── Timeline bar ── -->
@@ -824,7 +825,7 @@
     <!-- Row 1: Vibe input -->
     <div class="mob-row">
         <input type="text" id="mobVibeInput" class="mob-vibe-input"
-               placeholder="Show Rome at 100 BCE"
+               placeholder="Show Rome at 300 BCE"
                autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
                enterkeyhint="go">
         <button class="mob-btn" id="mobVibeGo"   style="color:#88ff88;border-color:#006600;background:#004400;font-size:18px;" title="Execute command">→</button>
@@ -848,7 +849,7 @@
         <button class="mob-btn" id="mobOptions" style="font-size:18px;">⚙</button>
     </div>
     <!-- Status feedback -->
-    <div id="mobStatusLine">Ready — try "show Rome at 100 BCE"</div>
+    <div id="mobStatusLine">Ready — try "show Rome at 300 BCE"</div>
 </div>
 
 <!-- ── Help popup ── -->
