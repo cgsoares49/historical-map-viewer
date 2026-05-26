@@ -1322,7 +1322,7 @@ document.getElementById('btnMovieRec').addEventListener('click', () => {
     movieMimeType = _movieMime();
 
     const stream = canvas.captureStream(25);
-    movieRecorder = new MediaRecorder(stream, { mimeType: movieMimeType });
+    movieRecorder = new MediaRecorder(stream, { mimeType: movieMimeType, videoBitsPerSecond: 8_000_000 });
     movieRecorder.ondataavailable = e => { if (e.data.size > 0) movieChunks.push(e.data); };
     movieRecorder.onstop = () => {
         movieBlob = new Blob(movieChunks, { type: movieMimeType });
@@ -2725,12 +2725,15 @@ async function doRender(skipColorMap = false, cancelToken = null) {
         const showRivers        = document.getElementById('showRivers'        ).checked;
         const showCountryLabels = document.getElementById('showCountryLabels' ).checked;
         const minPixels         = parseInt(document.getElementById('minPixels').value) || 5000;
+        const _recording = movieRecorder && movieRecorder.state === 'recording';
         await mapRenderer.render(backCtx, proj, year, showBorders, showDots, (done, total) => {
             statusEl.textContent = `Rendering… ${done}/${total}`;
             fillEl.style.width = `${Math.round(100 * done / total)}%`;
-            ctx.drawImage(backCanvas, 0, 0);  // progressive flip: show each batch as it arrives
+            // During recording suppress progressive flips — labels aren't drawn yet,
+            // so intermediate frames would show a label-less partial render in the movie.
+            if (!_recording) ctx.drawImage(backCanvas, 0, 0);
         }, showCoasts, showCities, showCityNames, cityDetail, showInlandWaters, showRivers, showCountryLabels, minPixels, cancelToken);
-        ctx.drawImage(backCanvas, 0, 0);  // final flip: ensure complete frame is visible
+        ctx.drawImage(backCanvas, 0, 0);  // final flip: labels are now drawn, full frame
         _mapFullyRendered = true;
         _selectionMode    = false;
         const _vs = document.getElementById('mobVersionStamp');
