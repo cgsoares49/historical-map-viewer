@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>mapper.NET — Historical Map Viewer</title>
     <link rel="icon" type="image/png" href="sahm-logo.png">
     <!-- Privacy-friendly analytics by Plausible -->
@@ -22,6 +22,7 @@
             display: flex;
             flex-direction: column;
             height: 100vh;
+            height: 100dvh;
             overflow: hidden;
         }
 
@@ -556,7 +557,7 @@
         body.is-mobile #mobVersionStamp { display: none; }
         /* Use JS-set --mob-height so body shrinks when iOS keyboard opens,
            keeping the mobile bar visible above the keyboard */
-        body.is-mobile { height: var(--mob-height, 100vh); }
+        body.is-mobile { height: var(--mob-height, 100dvh); }
 
     </style>
 </head>
@@ -810,7 +811,7 @@
 <div id="map-container">
     <canvas id="mapCanvas"></canvas>
     <canvas id="overlay"></canvas>
-    <div id="mobVersionStamp">code version: 2026-05-26 16:00</div>
+    <div id="mobVersionStamp">code version: 2026-05-26 16:30</div>
 </div>
 
 <!-- ── Timeline bar ── -->
@@ -950,7 +951,9 @@ function resizeCanvases() {
     canvas.height = overlay.height = backCanvas.height = container.clientHeight;
 }
 resizeCanvases();
-window.addEventListener('resize', () => { scheduleRender(); });
+window.addEventListener('resize', () => {
+    if (_mapFullyRendered) { scheduleRender(); } else { renderWorldContext(); }
+});
 
 // ── Selection rectangle state ────────────────────────────────────────────────
 let contextProjection = new MapProjection(0, 0, 0, canvas.width, canvas.height);
