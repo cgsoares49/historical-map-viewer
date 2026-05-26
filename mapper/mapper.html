@@ -536,6 +536,19 @@
         body.is-mobile #mobile-bar   { display: flex; }
         body.is-mobile #overlay      { touch-action: none; -webkit-user-select: none; user-select: none; }
         body.is-mobile #infoPopup    { position: fixed; left: 8px !important; right: 8px !important; width: auto; max-width: none; }
+        #mobVersionStamp {
+            display: none;
+            position: absolute;
+            top: 8px; left: 0; right: 0;
+            text-align: center;
+            font-family: monospace;
+            font-size: 13px;
+            color: rgba(255,255,255,0.55);
+            pointer-events: none;
+            z-index: 10;
+            letter-spacing: 0.04em;
+        }
+        body.is-mobile #mobVersionStamp { display: block; }
         /* Use JS-set --mob-height so body shrinks when iOS keyboard opens,
            keeping the mobile bar visible above the keyboard */
         body.is-mobile { height: var(--mob-height, 100vh); }
@@ -792,6 +805,7 @@
 <div id="map-container">
     <canvas id="mapCanvas"></canvas>
     <canvas id="overlay"></canvas>
+    <div id="mobVersionStamp">2026-05-26 08:48</div>
 </div>
 
 <!-- ── Timeline bar ── -->
@@ -830,7 +844,7 @@
         <button class="mob-btn" id="mobOptions" style="font-size:18px;">⚙</button>
     </div>
     <!-- Status feedback -->
-    <div id="mobStatusLine">Ready [v8] — try "show Rome at 100 BCE"</div>
+    <div id="mobStatusLine">Ready — try "show Rome at 100 BCE"</div>
 </div>
 
 <!-- ── Help popup ── -->
