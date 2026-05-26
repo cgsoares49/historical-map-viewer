@@ -805,7 +805,7 @@
 <div id="map-container">
     <canvas id="mapCanvas"></canvas>
     <canvas id="overlay"></canvas>
-    <div id="mobVersionStamp">code version: 2026-05-26 13:00</div>
+    <div id="mobVersionStamp">code version: 2026-05-26 14:00</div>
 </div>
 
 <!-- ── Timeline bar ── -->
@@ -2371,8 +2371,6 @@ function vibeNavigateTo(foundName, bounds, year, label) {
     const cLat = parseFloat(document.getElementById('centerLat').value);
     const centerLabel = ` · ${cLon >= 0 ? cLon.toFixed(1)+'°E' : Math.abs(cLon).toFixed(1)+'°W'}, ${cLat >= 0 ? cLat.toFixed(1)+'°N' : Math.abs(cLat).toFixed(1)+'°S'}`;
     vibeAddHistory(label || foundName, `→ ${toTitleCase(foundName)}${yearLabel}${centerLabel}`, false);
-
-    
     drawOverlay();
     scheduleRender();
 }
