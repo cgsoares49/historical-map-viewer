@@ -1229,8 +1229,12 @@ function _frameHash() {
 }
 
 function _movieMime() {
-    const types = ['video/webm;codecs=vp9', 'video/webm;codecs=vp8', 'video/webm', 'video/mp4'];
-    return types.find(t => MediaRecorder.isTypeSupported(t)) || 'video/webm';
+    // On mobile prefer MP4 — iOS can save/play it; WebM is unplayable on iOS even if isTypeSupported returns true
+    const mobile = document.body.classList.contains('is-mobile');
+    const types = mobile
+        ? ['video/mp4;codecs=avc1', 'video/mp4', 'video/webm;codecs=vp9', 'video/webm']
+        : ['video/webm;codecs=vp9', 'video/webm;codecs=vp8', 'video/webm', 'video/mp4'];
+    return types.find(t => MediaRecorder.isTypeSupported(t)) || 'video/mp4';
 }
 
 function _updateMovieUI() {
