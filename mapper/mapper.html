@@ -3387,13 +3387,17 @@ function _drawRefLine(proj, value, isLon, color) {
 }
 
 // ── Mobile support ────────────────────────────────────────────────────────────
-const isMobile = ('ontouchstart' in window || navigator.maxTouchPoints > 0) && window.innerWidth <= 1024;
+// Treat any touch-primary device as mobile, regardless of screen width.
+// window.innerWidth <= 1024 misses iPads in landscape (which can be 1194–1366px wide).
+// (any-pointer: coarse) is true on iPads/phones even with an attached keyboard/trackpad.
+const isMobile = ('ontouchstart' in window || navigator.maxTouchPoints > 0) &&
+                 (window.innerWidth <= 1024 || window.matchMedia('(any-pointer: coarse)').matches);
 if (isMobile) document.body.classList.add('is-mobile');
 
 // ── Mobile date sync (desktop mapDate ↔ mobile mobDate) ───────────────────────
 const mobDateEl  = document.getElementById('mobDate');
 const deskDateEl = document.getElementById('mapDate');
-function _syncMobDate() { if (mobDateEl) mobDateEl.value = deskDateEl.value; }
+function _syncMobDate() { if (mobDateEl && document.activeElement !== mobDateEl) mobDateEl.value = deskDateEl.value; }
 deskDateEl.addEventListener('change', _syncMobDate);
 deskDateEl.addEventListener('input',  _syncMobDate);
 _syncMobDate();
