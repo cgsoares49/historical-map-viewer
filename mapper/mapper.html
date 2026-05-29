@@ -3709,7 +3709,7 @@ function _evOff(e) {
 }
 
 overlay.addEventListener('pointerdown', e => {
-    if (e.pointerType === 'mouse') return;
+    if (e.pointerType === 'mouse' && !isMobile) return;
     e.preventDefault();
     overlay.setPointerCapture(e.pointerId);
     const off = _evOff(e);
@@ -3731,7 +3731,7 @@ overlay.addEventListener('pointerdown', e => {
 }, { passive: false });
 
 overlay.addEventListener('pointermove', e => {
-    if (e.pointerType === 'mouse') return;
+    if (e.pointerType === 'mouse' && !isMobile) return;
     if (!_ts.ptrs.has(e.pointerId)) return;
     e.preventDefault();
     const off = _evOff(e);
@@ -3773,7 +3773,7 @@ overlay.addEventListener('pointermove', e => {
 }, { passive: false });
 
 function _onPointerEnd(e) {
-    if (e.pointerType === 'mouse') return;
+    if (e.pointerType === 'mouse' && !isMobile) return;
     if (!_ts.ptrs.has(e.pointerId)) return;
     e.preventDefault();
     overlay.releasePointerCapture(e.pointerId);
