@@ -1,5 +1,10 @@
 name = "historical-map-viewer"
 compatibility_date = "2024-09-23"
+workers_dev = true
+
+routes = [
+  { pattern = "mapper.historymaps.org/*", zone_name = "historymaps.org" }
+]
 
 [assets]
 directory = "dist"
