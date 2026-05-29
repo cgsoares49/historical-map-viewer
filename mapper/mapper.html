@@ -3054,8 +3054,8 @@ overlay.addEventListener('mousedown', e => {
         const inp = getInputs();
         selDragStartLon = inp.centerLon;
         selDragStartLat = inp.centerLat;
-    } else if (_mapFullyRendered) {
-        // Rendered map (normal): drag to pan
+    } else if (_mapFullyRendered && _ts.ptrs.size === 0) {
+        // Rendered map (normal): drag to pan — skip if pointer events are already tracking
         const inp = getInputs();
         mapDragStart = { x: mx, y: my, lon: inp.centerLon, lat: inp.centerLat };
         e.preventDefault();
@@ -3825,6 +3825,13 @@ function _onPointerEnd(e) {
 
 overlay.addEventListener('pointerup',     _onPointerEnd, { passive: false });
 overlay.addEventListener('pointercancel', _onPointerEnd, { passive: false });
+
+// Prevent iOS long-press callout (Copy/Look Up/Translate) and any default
+// touch browser behaviours that would interrupt the pointer event sequence.
+// These handlers carry no drag logic — that lives in the pointer handlers above.
+overlay.addEventListener('touchstart', e => { e.preventDefault(); }, { passive: false });
+overlay.addEventListener('touchmove',  e => { e.preventDefault(); }, { passive: false });
+overlay.addEventListener('touchend',   e => { e.preventDefault(); }, { passive: false });
 
 </script>
 </body>
