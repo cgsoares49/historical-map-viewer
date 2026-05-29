@@ -3688,31 +3688,41 @@ if (isMobile) {
     });
 }
 
-// ── Touch gesture handling (works on all touch devices) ───────────────────────
+// ── Pointer Events gesture handling (pan + pinch) ────────────────────────────
+// Uses the Pointer Events API (supported iOS 13+, Android, all modern browsers).
+// This replaces the older Touch Events approach which is unreliable on iPadOS
+// "Desktop Mode" (Safari's default since iPadOS 13) where touchmove may not fire.
+// CSS touch-action: none (set above for is-mobile) still prevents browser scroll/zoom.
+// Mouse events are handled separately; pointerType === 'mouse' is ignored here.
 const _ts = {
     start1: null,   // { x, y, lon, lat, time }
     pinchDist0: 0,
     pinchZoom0: 0,
     dragging: false,
     pinching: false,
+    ptrs: new Map(), // pointerId → { x, y }
 };
 
-function _touchOff(touch) {
+function _evOff(e) {
     const r = overlay.getBoundingClientRect();
-    return { x: touch.clientX - r.left, y: touch.clientY - r.top };
+    return { x: e.clientX - r.left, y: e.clientY - r.top };
 }
 
-overlay.addEventListener('touchstart', e => {
+overlay.addEventListener('pointerdown', e => {
+    if (e.pointerType === 'mouse') return;
     e.preventDefault();
-    if (e.touches.length === 1) {
-        const off = _touchOff(e.touches[0]);
+    overlay.setPointerCapture(e.pointerId);
+    const off = _evOff(e);
+    _ts.ptrs.set(e.pointerId, off);
+
+    if (_ts.ptrs.size === 1) {
         const inp = getInputs();
-        _ts.start1    = { x: off.x, y: off.y, lon: inp.centerLon, lat: inp.centerLat, time: Date.now() };
-        _ts.pinching  = false;
-        _ts.dragging  = false;
-    } else if (e.touches.length === 2) {
-        const a = _touchOff(e.touches[0]), b = _touchOff(e.touches[1]);
-        _ts.pinchDist0 = Math.hypot(b.x - a.x, b.y - a.y);
+        _ts.start1   = { x: off.x, y: off.y, lon: inp.centerLon, lat: inp.centerLat, time: Date.now() };
+        _ts.pinching = false;
+        _ts.dragging = false;
+    } else if (_ts.ptrs.size === 2) {
+        const pts = [..._ts.ptrs.values()];
+        _ts.pinchDist0 = Math.hypot(pts[1].x - pts[0].x, pts[1].y - pts[0].y);
         _ts.pinchZoom0 = getInputs().zoom;
         _ts.pinching   = true;
         _ts.dragging   = false;
@@ -3720,11 +3730,16 @@ overlay.addEventListener('touchstart', e => {
     }
 }, { passive: false });
 
-overlay.addEventListener('touchmove', e => {
+overlay.addEventListener('pointermove', e => {
+    if (e.pointerType === 'mouse') return;
+    if (!_ts.ptrs.has(e.pointerId)) return;
     e.preventDefault();
-    if (e.touches.length === 2 && _ts.pinching) {
-        const a = _touchOff(e.touches[0]), b = _touchOff(e.touches[1]);
-        const dist = Math.hypot(b.x - a.x, b.y - a.y);
+    const off = _evOff(e);
+    _ts.ptrs.set(e.pointerId, off);
+
+    if (_ts.ptrs.size === 2 && _ts.pinching) {
+        const pts = [..._ts.ptrs.values()];
+        const dist = Math.hypot(pts[1].x - pts[0].x, pts[1].y - pts[0].y);
         if (_ts.pinchDist0 > 5) {
             const ratio    = dist / _ts.pinchDist0;
             const newZoomV = (_ts.pinchZoom0 + 1) * ratio - 1;
@@ -3740,8 +3755,7 @@ overlay.addEventListener('touchmove', e => {
                 else     { sel.value = 'custom'; document.getElementById('zoomCustom').style.display = ''; document.getElementById('zoomCustom').value = best; }
             }
         }
-    } else if (e.touches.length === 1 && _ts.start1 && !_ts.pinching) {
-        const off = _touchOff(e.touches[0]);
+    } else if (_ts.ptrs.size === 1 && _ts.start1 && !_ts.pinching) {
         const dx = off.x - _ts.start1.x, dy = off.y - _ts.start1.y;
         if (Math.hypot(dx, dy) > 6) _ts.dragging = true;
         if (_ts.dragging) {
@@ -3758,16 +3772,19 @@ overlay.addEventListener('touchmove', e => {
     }
 }, { passive: false });
 
-overlay.addEventListener('touchend', e => {
+function _onPointerEnd(e) {
+    if (e.pointerType === 'mouse') return;
+    if (!_ts.ptrs.has(e.pointerId)) return;
     e.preventDefault();
+    overlay.releasePointerCapture(e.pointerId);
+    _ts.ptrs.delete(e.pointerId);
     const now = Date.now();
 
-    if (e.touches.length === 0) {
+    if (_ts.ptrs.size === 0) {
         if (_ts.pinching) {
             scheduleRender();
         } else if (_ts.dragging && _mapFullyRendered && contextProjection) {
-            const ct  = e.changedTouches[0];
-            const off = _touchOff(ct);
+            const off = _evOff(e);
             const dx  = off.x - _ts.start1.x, dy = off.y - _ts.start1.y;
             canvas.style.transform = '';
             document.getElementById('centerLon').value = Math.max(-180, Math.min(180,
@@ -3777,16 +3794,15 @@ overlay.addEventListener('touchend', e => {
             scheduleRender();
         } else if (!_ts.dragging && _ts.start1 && (now - _ts.start1.time) < 300) {
             // Short tap
-            const ct  = e.changedTouches[0];
-            const off = _touchOff(ct);
             if (_mapFullyRendered) {
                 const rect   = canvas.getBoundingClientRect();
                 const scaleX = canvas.width  / rect.width;
                 const scaleY = canvas.height / rect.height;
-                const px = (ct.clientX - rect.left) * scaleX;
-                const py = (ct.clientY - rect.top)  * scaleY;
-                showInfoPopupAtPixel(px, py, ct.clientX, ct.clientY);
+                const px = (e.clientX - rect.left) * scaleX;
+                const py = (e.clientY - rect.top)  * scaleY;
+                showInfoPopupAtPixel(px, py, e.clientX, e.clientY);
             } else if (contextProjection) {
+                const off = _evOff(e);
                 const geo = contextProjection.pixelToGeo(off.x, off.y);
                 document.getElementById('centerLon').value = Math.max(-180, Math.min(180, Math.round(geo.lon * 10) / 10));
                 document.getElementById('centerLat').value = Math.max(-90,  Math.min(90,  Math.round(geo.lat * 10) / 10));
@@ -3794,18 +3810,21 @@ overlay.addEventListener('touchend', e => {
             }
         }
         _ts.start1 = null; _ts.dragging = false; _ts.pinching = false;
-    } else if (e.touches.length === 1) {
+    } else if (_ts.ptrs.size === 1) {
         // Second finger lifted; transition to single-finger pan.
-        // Use time: 0 so the remaining finger's touchend never counts as a short tap.
+        // Use time: 0 so the remaining finger's pointerup never counts as a short tap.
         _ts.pinching = false;
-        const off = _touchOff(e.touches[0]);
+        const remaining = [..._ts.ptrs.values()][0];
         const inp = getInputs();
-        _ts.start1 = { x: off.x, y: off.y, lon: inp.centerLon, lat: inp.centerLat, time: 0 };
+        _ts.start1 = { x: remaining.x, y: remaining.y, lon: inp.centerLon, lat: inp.centerLat, time: 0 };
         _ts.dragging = false;
         canvas.style.transform = '';
         scheduleRender();
     }
-}, { passive: false });
+}
+
+overlay.addEventListener('pointerup',     _onPointerEnd, { passive: false });
+overlay.addEventListener('pointercancel', _onPointerEnd, { passive: false });
 
 </script>
 </body>
