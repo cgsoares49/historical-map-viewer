@@ -274,7 +274,7 @@
         /* ── Map container ────────────────────────────────────────────────── */
         #map-container { flex: 1; position: relative; overflow: hidden; min-height: 0; }
         #map-container canvas { display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        #overlay { cursor: crosshair; -webkit-touch-callout: none; user-select: none; -webkit-user-select: none; }
+        #overlay { cursor: crosshair; touch-action: none; -webkit-touch-callout: none; user-select: none; -webkit-user-select: none; }
 
         /* ── Timeline bar ─────────────────────────────────────────────────── */
         #timeline-bar {
@@ -540,7 +540,7 @@
         body.is-mobile #toolbar,
         body.is-mobile #timeline-bar { display: none !important; }
         body.is-mobile #mobile-bar   { display: flex; }
-        body.is-mobile #overlay      { touch-action: none; -webkit-user-select: none; user-select: none; }
+        body.is-mobile #overlay      { -webkit-user-select: none; user-select: none; }
         body.is-mobile #infoPopup    { position: fixed; left: 8px !important; right: 8px !important; width: auto; max-width: none; }
         #mobVersionStamp {
             display: none;
@@ -852,7 +852,7 @@
         <button class="mob-btn" id="mobOptions" style="font-size:18px;">⚙</button>
     </div>
     <!-- Status feedback -->
-    <div id="mobStatusLine">Ready — try "show Rome at 300 BCE"</div>
+    <div id="mobStatusLine">v29 Ready — try "show Rome at 300 BCE"</div>
 </div>
 
 <!-- ── Help popup ── -->
@@ -3391,7 +3391,7 @@ function _drawRefLine(proj, value, isLon, color) {
 // window.innerWidth <= 1024 misses iPads in landscape (which can be 1194–1366px wide).
 // (any-pointer: coarse) is true on iPads/phones even with an attached keyboard/trackpad.
 const isMobile = ('ontouchstart' in window || navigator.maxTouchPoints > 0) &&
-                 (window.innerWidth <= 1024 || window.matchMedia('(any-pointer: coarse)').matches);
+                 (window.innerWidth <= 1600 || window.matchMedia('(any-pointer: coarse)').matches);
 if (isMobile) document.body.classList.add('is-mobile');
 
 // ── Mobile date sync (desktop mapDate ↔ mobile mobDate) ───────────────────────
@@ -3439,8 +3439,9 @@ if (isMobile) {
     // Both keydown and keyup: some mobile keyboards fire one but not the other.
     // Double-execution is safe — _mobVibeGo clears the input on first call so the second gets empty and returns early.
     const _onEnter = e => { if (e.key === 'Enter' || e.keyCode === 13) { e.preventDefault(); _mobVibeGo(); } };
-    mobVibe.addEventListener('keydown', _onEnter);
-    mobVibe.addEventListener('keyup',   _onEnter);
+    mobVibe.addEventListener('keydown',  _onEnter);
+    mobVibe.addEventListener('keyup',    _onEnter);
+    mobVibe.addEventListener('keypress', _onEnter);
     document.getElementById('mobVibeGo').addEventListener('click', _mobVibeGo);
 
     // Keep mobile date display in sync with desktop (vibe commands, animation, timeline)
@@ -3826,12 +3827,68 @@ function _onPointerEnd(e) {
 overlay.addEventListener('pointerup',     _onPointerEnd, { passive: false });
 overlay.addEventListener('pointercancel', _onPointerEnd, { passive: false });
 
-// Prevent iOS long-press callout (Copy/Look Up/Translate) and any default
-// touch browser behaviours that would interrupt the pointer event sequence.
-// These handlers carry no drag logic — that lives in the pointer handlers above.
-overlay.addEventListener('touchstart', e => { e.preventDefault(); }, { passive: false });
-overlay.addEventListener('touchmove',  e => { e.preventDefault(); }, { passive: false });
-overlay.addEventListener('touchend',   e => { e.preventDefault(); }, { passive: false });
+// Touch-event drag fallback — handles iOS devices where pointer events don't
+// fire or fire with pointerType='mouse' while isMobile is false.
+// Guarded by _ts.ptrs.size so it stays dormant when pointer events are active.
+let _tDrag = null;
+overlay.addEventListener('touchstart', e => {
+    e.preventDefault();
+    if (_ts.ptrs.size > 0) return;
+    if (e.touches.length === 1) {
+        const t = e.touches[0];
+        const r = overlay.getBoundingClientRect();
+        const inp = getInputs();
+        _tDrag = { id: t.identifier, active: false, time: Date.now(),
+                   x0: t.clientX - r.left, y0: t.clientY - r.top,
+                   lon0: inp.centerLon, lat0: inp.centerLat };
+    }
+}, { passive: false });
+overlay.addEventListener('touchmove', e => {
+    e.preventDefault();
+    if (_ts.ptrs.size > 0) { _tDrag = null; return; }
+    if (!_tDrag || e.touches.length !== 1) return;
+    const t = [...e.touches].find(t => t.identifier === _tDrag.id);
+    if (!t) return;
+    const r  = overlay.getBoundingClientRect();
+    const dx = t.clientX - r.left - _tDrag.x0;
+    const dy = t.clientY - r.top  - _tDrag.y0;
+    if (Math.hypot(dx, dy) > 6) _tDrag.active = true;
+    if (_tDrag.active && contextProjection) {
+        if (_mapFullyRendered) {
+            canvas.style.transform = `translate(${dx}px,${dy}px)`;
+        } else {
+            document.getElementById('centerLon').value = Math.max(-180, Math.min(180,
+                Math.round((_tDrag.lon0 + dx / contextProjection.xScale) * 10) / 10));
+            document.getElementById('centerLat').value = Math.max(-90, Math.min(90,
+                Math.round((_tDrag.lat0 - dy / contextProjection.yScale) * 10) / 10));
+            drawOverlay();
+        }
+    }
+}, { passive: false });
+overlay.addEventListener('touchend', e => {
+    e.preventDefault();
+    if (_ts.ptrs.size > 0) { _tDrag = null; return; }
+    if (!_tDrag) return;
+    const t = e.changedTouches[0];
+    const r = overlay.getBoundingClientRect();
+    const dx = t.clientX - r.left - _tDrag.x0;
+    const dy = t.clientY - r.top  - _tDrag.y0;
+    if (_tDrag.active && _mapFullyRendered && contextProjection) {
+        canvas.style.transform = '';
+        document.getElementById('centerLon').value = Math.max(-180, Math.min(180,
+            Math.round((_tDrag.lon0 - dx / contextProjection.xScale) * 10) / 10));
+        document.getElementById('centerLat').value = Math.max(-90, Math.min(90,
+            Math.round((_tDrag.lat0 + dy / contextProjection.yScale) * 10) / 10));
+        scheduleRender();
+    } else if (!_tDrag.active && (Date.now() - _tDrag.time < 300) && _mapFullyRendered) {
+        const rect   = canvas.getBoundingClientRect();
+        const scaleX = canvas.width  / rect.width;
+        const scaleY = canvas.height / rect.height;
+        showInfoPopupAtPixel((t.clientX - rect.left) * scaleX, (t.clientY - rect.top) * scaleY,
+                             t.clientX, t.clientY);
+    }
+    _tDrag = null;
+}, { passive: false });
 
 </script>
 </body>
