@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>mapper.NET v29 — Historical Map Viewer</title>
+    <title>mapper.NET — Historical Map Viewer</title>
     <link rel="icon" type="image/png" href="sahm-logo.png">
     <!-- Privacy-friendly analytics by Plausible -->
     <script async src="https://plausible.io/js/pa-DESyQeWYdKkKpc8_WMOwZ.js"></script>
@@ -3391,7 +3391,7 @@ function _drawRefLine(proj, value, isLon, color) {
 // window.innerWidth <= 1024 misses iPads in landscape (which can be 1194–1366px wide).
 // (any-pointer: coarse) is true on iPads/phones even with an attached keyboard/trackpad.
 const isMobile = ('ontouchstart' in window || navigator.maxTouchPoints > 0) &&
-                 (window.innerWidth <= 1600 || window.matchMedia('(any-pointer: coarse)').matches);
+                 (window.innerWidth <= 1024 || window.matchMedia('(any-pointer: coarse)').matches);
 if (isMobile) document.body.classList.add('is-mobile');
 
 // ── Mobile date sync (desktop mapDate ↔ mobile mobDate) ───────────────────────
@@ -3695,8 +3695,6 @@ if (isMobile) {
 // "Desktop Mode" (Safari's default since iPadOS 13) where touchmove may not fire.
 // CSS touch-action: none (set above for is-mobile) still prevents browser scroll/zoom.
 // Mouse events are handled separately; pointerType === 'mouse' is ignored here.
-const _dbgEl = document.getElementById('mobStatusLine');
-function _dbg(msg) { if (_dbgEl) _dbgEl.textContent = msg; }
 const _ts = {
     start1: null,   // { x, y, lon, lat, time }
     pinchDist0: 0,
@@ -3712,7 +3710,6 @@ function _evOff(e) {
 }
 
 overlay.addEventListener('pointerdown', e => {
-    _dbg('PD:' + e.pointerType + ' mob:' + (isMobile?1:0) + ' rnd:' + (_mapFullyRendered?1:0) + ' cp:' + (contextProjection?1:0));
     if (e.pointerType === 'mouse' && !isMobile) return;
     e.preventDefault();
     overlay.setPointerCapture(e.pointerId);
@@ -3735,7 +3732,6 @@ overlay.addEventListener('pointerdown', e => {
 }, { passive: false });
 
 overlay.addEventListener('pointermove', e => {
-    if (!_ts.dragging) _dbg('PM:' + e.pointerType + ' has:' + _ts.ptrs.has(e.pointerId) + ' sz:' + _ts.ptrs.size);
     if (e.pointerType === 'mouse' && !isMobile) return;
     if (!_ts.ptrs.has(e.pointerId)) return;
     e.preventDefault();
@@ -3837,7 +3833,6 @@ overlay.addEventListener('pointercancel', _onPointerEnd, { passive: false });
 let _tDrag = null;
 overlay.addEventListener('touchstart', e => {
     e.preventDefault();
-    _dbg('TS:' + e.touches.length + ' ptrs:' + _ts.ptrs.size + ' mob:' + (isMobile?1:0));
     if (_ts.ptrs.size > 0) return;
     if (e.touches.length === 1) {
         const t = e.touches[0];
