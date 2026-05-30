@@ -471,6 +471,7 @@
             border-radius: 4px;
             white-space: nowrap;
             flex-shrink: 0;
+            touch-action: manipulation;
         }
         .mob-btn:active { background: #1a4a80; border-color: #00c8f0; }
         input.mob-vibe-input {
@@ -522,6 +523,7 @@
             cursor: pointer;
             white-space: nowrap;
             flex-shrink: 0;
+            touch-action: manipulation;
         }
         .mob-display-btn:active { background: #006600; }
         .mob-zoom-btn {
@@ -538,6 +540,7 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            touch-action: manipulation;
         }
         .mob-zoom-btn:active { background: #006600; }
         body.is-mobile #toolbar,
@@ -3702,6 +3705,24 @@ if (isMobile) {
             popup.style.cssText = `display:block; left:8px; right:8px; width:${window.innerWidth - 16}px; bottom:${barH + 8}px; top:auto;`;
             document.getElementById('btnOptions').classList.add('active');
         }
+    });
+
+    // iOS Safari sometimes doesn't synthesize click after touchstart on buttons.
+    // touchstart DOES fire (buttons show :active) — add fallbacks that fire el.click()
+    // directly.  e.preventDefault() suppresses the redundant native click synthesis.
+    ['mobDisplay','mobZoomOut','mobZoomIn','mobWorld','mobSave','mobOptions',
+     'mobStepBack','mobStepFwd','mobStepSize','mobPlay','mobVibeGo',
+     'mobBookmark','mobHelp'].forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        let _busy = false;
+        el.addEventListener('touchstart', e => {
+            e.preventDefault();
+            if (_busy) return;
+            _busy = true;
+            el.click();
+            setTimeout(() => { _busy = false; }, 300);
+        }, { passive: false });
     });
 }
 
