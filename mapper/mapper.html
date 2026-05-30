@@ -2681,9 +2681,6 @@ async function doRender(skipColorMap = false, cancelToken = null) {
     const statusEl = document.getElementById('status');
     const countEl  = document.getElementById('tile-count');
     const fillEl   = document.getElementById('progress-fill');
-    // Outer try/finally ensures _renderInProgress is ALWAYS reset even if
-    // code before the inner try throws (e.g. getProjection, getTiles).
-    try {
     btn.disabled = true;
     statusEl.textContent = 'Loading tiles…';
     fillEl.style.width = '0%';
@@ -2707,16 +2704,21 @@ async function doRender(skipColorMap = false, cancelToken = null) {
         statusEl.textContent = `No map data past ${limitLabel}`;
         fillEl.style.width = '0%';
         countEl.textContent = '';
+        btn.disabled = false;
+        _renderInProgress = false;
+        document.getElementById('btnAbort').disabled = true;
+        if (_renderQueued) _startRender();
         updateScaleDisplay();
         return;
     }
 
-    const proj = getProjection();
-    contextProjection = proj;
-    const tileList = tileManager.getTiles(proj);
-    countEl.textContent = `${tileList.length} tiles`;
-
+    // getProjection/getTiles inside try so any throw still resets _renderInProgress
     try {
+        const proj = getProjection();
+        contextProjection = proj;
+        const tileList = tileManager.getTiles(proj);
+        countEl.textContent = `${tileList.length} tiles`;
+
         const showBorders      = document.getElementById('showBorders'      ).checked;
         const showDots         = document.getElementById('showDots'         ).checked;
         const showCoasts       = document.getElementById('showCoasts'       ).checked;
@@ -2760,10 +2762,6 @@ async function doRender(skipColorMap = false, cancelToken = null) {
         btn.disabled = false;
         document.getElementById('btnAbort').disabled = true;
         if (_renderQueued) _startRender();
-    }
-    } finally {
-        // Outer guard: always reset even if pre-render setup threw
-        _renderInProgress = false;
     }
 }
 
@@ -3652,9 +3650,15 @@ if (isMobile) {
     // Display — delay matches _mobVibeGo to let iOS keyboard dismiss + resize settle
     document.getElementById('mobDisplay').addEventListener('click', () => {
         deskDateEl.value = mobDateEl.value;
-        _mobStatusEl.textContent = mapRenderer
-            ? (_renderInProgress ? 'Display: render busy…' : 'Display: starting…')
-            : 'Display: map data not loaded';
+        // Diagnostic: write to #status (MutationObserver mirrors to mobStatusLine)
+        const _diagMsg = mapRenderer
+            ? (_renderInProgress ? 'Display: busy' : 'Display: starting')
+            : 'Display: NO MAP DATA';
+        document.getElementById('status').textContent = _diagMsg;
+        // Also show on the version stamp so it can't be missed
+        const _vs = document.getElementById('mobVersionStamp');
+        _vs.style.display = 'block';
+        _vs.textContent = _diagMsg;
         setTimeout(() => scheduleRender(), 350);
     });
 
