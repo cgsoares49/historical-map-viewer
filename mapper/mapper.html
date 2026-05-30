@@ -852,7 +852,7 @@
         <button class="mob-btn" id="mobOptions" style="font-size:18px;">⚙</button>
     </div>
     <!-- Status feedback -->
-    <div id="mobStatusLine">v29 Ready — try "show Rome at 300 BCE"</div>
+    <div id="mobStatusLine">Ready — try "show Rome at 300 BCE"</div>
 </div>
 
 <!-- ── Help popup ── -->
@@ -2618,6 +2618,7 @@ function _drawWorldContextInfo(ctx, pngTop, pngBot, W, H, logoImg) {
 
 // ── World context render ─────────────────────────────────────────────────────
 async function renderWorldContext() {
+    if (_renderInProgress) return;  // don't overwrite an active doRender
     _mapFullyRendered = false;
     _selectionMode    = false;
     contextProjection = new MapProjection(0, 0, 0, canvas.width, canvas.height);
@@ -3643,10 +3644,10 @@ if (isMobile) {
     mobDateEl.addEventListener('change', () => { deskDateEl.value = mobDateEl.value; syncTimelineFromDate(); });
     mobDateEl.addEventListener('input',  () => { deskDateEl.value = mobDateEl.value; syncTimelineFromDate(); });
 
-    // Display
+    // Display — delay matches _mobVibeGo to let iOS keyboard dismiss + resize settle
     document.getElementById('mobDisplay').addEventListener('click', () => {
         deskDateEl.value = mobDateEl.value;
-        scheduleRender();
+        setTimeout(() => scheduleRender(), 350);
     });
 
     // Zoom — works in both world-context and rendered modes
