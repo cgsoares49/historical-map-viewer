@@ -811,7 +811,7 @@
 <div id="map-container">
     <canvas id="mapCanvas"></canvas>
     <canvas id="overlay"></canvas>
-    <div id="mobVersionStamp">code version: 2026-05-26 16:30</div>
+    <div id="mobVersionStamp">code version: 2026-05-29</div>
 </div>
 
 <!-- ── Timeline bar ── -->
@@ -1087,6 +1087,8 @@ Promise.all([
     colorLookup = new ColorLookup(primaries, offsets);
     mapRenderer = new MapRenderer(loader, tileManager, colorLookup);
     await renderWorldContext();
+}).catch(err => {
+    document.getElementById('status').textContent = `Map data load failed: ${err.message}`;
 });
 
 // ── Read inputs ──────────────────────────────────────────────────────────────
@@ -2675,10 +2677,13 @@ document.getElementById('btnAbort').addEventListener('click', () => {
 
 async function doRender(skipColorMap = false, cancelToken = null) {
     _renderInProgress = true;
-    const btn       = document.getElementById('btnDisplay');
-    const statusEl  = document.getElementById('status');
-    const countEl   = document.getElementById('tile-count');
-    const fillEl    = document.getElementById('progress-fill');
+    const btn      = document.getElementById('btnDisplay');
+    const statusEl = document.getElementById('status');
+    const countEl  = document.getElementById('tile-count');
+    const fillEl   = document.getElementById('progress-fill');
+    // Outer try/finally ensures _renderInProgress is ALWAYS reset even if
+    // code before the inner try throws (e.g. getProjection, getTiles).
+    try {
     btn.disabled = true;
     statusEl.textContent = 'Loading tiles…';
     fillEl.style.width = '0%';
@@ -2702,10 +2707,6 @@ async function doRender(skipColorMap = false, cancelToken = null) {
         statusEl.textContent = `No map data past ${limitLabel}`;
         fillEl.style.width = '0%';
         countEl.textContent = '';
-        btn.disabled = false;
-        _renderInProgress = false;
-        document.getElementById('btnAbort').disabled = true;
-        if (_renderQueued) _startRender();
         updateScaleDisplay();
         return;
     }
@@ -2759,6 +2760,10 @@ async function doRender(skipColorMap = false, cancelToken = null) {
         btn.disabled = false;
         document.getElementById('btnAbort').disabled = true;
         if (_renderQueued) _startRender();
+    }
+    } finally {
+        // Outer guard: always reset even if pre-render setup threw
+        _renderInProgress = false;
     }
 }
 
@@ -3647,6 +3652,9 @@ if (isMobile) {
     // Display — delay matches _mobVibeGo to let iOS keyboard dismiss + resize settle
     document.getElementById('mobDisplay').addEventListener('click', () => {
         deskDateEl.value = mobDateEl.value;
+        _mobStatusEl.textContent = mapRenderer
+            ? (_renderInProgress ? 'Display: render busy…' : 'Display: starting…')
+            : 'Display: map data not loaded';
         setTimeout(() => scheduleRender(), 350);
     });
 
