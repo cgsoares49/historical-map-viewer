@@ -811,6 +811,15 @@
     </div>
 </div>
 
+<!-- ── Tablet notice banner (only shown on wide-touch devices) ──────────── -->
+<div id="tabletBanner" style="display:none; background:#7a0000; color:#fff; font-family:monospace; font-size:13px; padding:7px 12px; flex-shrink:0; align-items:center; gap:8px; justify-content:space-between;">
+    <div>
+        <strong>mapper.NET · v2026-05-29 · tablet beta</strong><br>
+        <span style="font-size:12px;">Touch controls are under construction. Voice commands work — tap the 🎤 mic to navigate.</span>
+    </div>
+    <button id="tabletBannerClose" style="background:none;border:1px solid rgba(255,255,255,0.5);color:#fff;font-size:16px;padding:2px 8px;cursor:pointer;border-radius:3px;flex-shrink:0;">✕</button>
+</div>
+
 <!-- ══════════════════════════════════════════════════════════════════════ -->
 <!--  MAP                                                                   -->
 <!-- ══════════════════════════════════════════════════════════════════════ -->
@@ -3403,6 +3412,21 @@ function _drawRefLine(proj, value, isLon, color) {
 const isMobile = ('ontouchstart' in window || navigator.maxTouchPoints > 0) &&
                  (window.innerWidth <= 1024 || window.matchMedia('(any-pointer: coarse)').matches);
 if (isMobile) document.body.classList.add('is-mobile');
+
+// ── Tablet notice banner ──────────────────────────────────────────────────────
+// Show only on wide touch devices (tablets like iPad, not phones).
+// Dismissed state is persisted in localStorage so it doesn't reappear.
+(function() {
+    const isTablet = isMobile && window.innerWidth >= 768;
+    if (!isTablet) return;
+    if (localStorage.getItem('tabletBannerDismissed')) return;
+    const banner = document.getElementById('tabletBanner');
+    banner.style.display = 'flex';
+    document.getElementById('tabletBannerClose').addEventListener('click', () => {
+        banner.style.display = 'none';
+        localStorage.setItem('tabletBannerDismissed', '1');
+    });
+})();
 
 // ── Mobile date sync (desktop mapDate ↔ mobile mobDate) ───────────────────────
 const mobDateEl  = document.getElementById('mobDate');
