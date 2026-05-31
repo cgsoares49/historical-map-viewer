@@ -814,7 +814,7 @@
 <!-- ── Tablet notice banner (only shown on wide-touch devices) ──────────── -->
 <div id="tabletBanner" style="display:none; background:#7a0000; color:#fff; font-family:monospace; font-size:13px; padding:7px 12px; flex-shrink:0; align-items:center; gap:8px;">
     <div>
-        <strong>mapper.NET · tablet beta · built 2026-05-31 12:14 CDT</strong><br>
+        <strong>mapper.NET · tablet beta · built 2026-05-31 12:18 CDT</strong><br>
         <span style="font-size:12px;">Touch controls are under construction. Voice commands work — tap the 🎤 mic to navigate.</span>
     </div>
 </div>
@@ -3913,25 +3913,24 @@ overlay.addEventListener('pointercancel', _onPointerEnd, { passive: false });
 // fire or fire with pointerType='mouse' while isMobile is false.
 // Guarded by _ts.ptrs.size so it stays dormant when pointer events are active.
 let _tDrag = null;
-// ── Drag diagnostics: persistent overlay accumulates events ──────────────────
+// ── Drag diagnostics: appended to the tablet banner (guaranteed visible) ─────
 window._dbgLog = function() {}; // no-op on desktop
 if (isMobile) {
-    const _dbgEl = document.createElement('div');
-    _dbgEl.style.cssText = 'position:fixed;bottom:140px;left:8px;right:8px;background:#000;color:#0f0;font-family:monospace;font-size:14px;padding:8px 10px;z-index:99999;pointer-events:none;border:2px solid #0f0;border-radius:4px;white-space:pre-wrap;line-height:1.6;';
-    _dbgEl.textContent = 'DBG: waiting for touch events...';
-    document.body.appendChild(_dbgEl);
-    const _dbgLines = ['DBG: isMobile=' + isMobile + ' w=' + window.innerWidth];
+    const _banner = document.getElementById('tabletBanner');
+    const _dbgSpan = document.createElement('span');
+    _dbgSpan.style.cssText = 'display:block;margin-top:3px;font-size:12px;color:#ff0;word-break:break-all;';
+    _dbgSpan.textContent = 'DBG ready w=' + window.innerWidth;
+    if (_banner) _banner.firstElementChild.appendChild(_dbgSpan);
+    const _dbgLines = [];
     window._dbgLog = function(msg) {
-        _dbgLines.push(msg);
-        if (_dbgLines.length > 6) _dbgLines.shift();
-        _dbgEl.textContent = _dbgLines.join('\n');
+        _dbgLines.unshift(msg);
+        if (_dbgLines.length > 4) _dbgLines.pop();
+        _dbgSpan.textContent = _dbgLines.join(' | ');
     };
-    // Document-level: catches events on ANY element in the page
-    document.addEventListener('touchstart',  e => _dbgLog('DOC:touchstart tgt=' + (e.target.id||e.target.tagName)), { passive: true });
-    document.addEventListener('touchmove',   e => _dbgLog('DOC:touchmove tgt='  + (e.target.id||e.target.tagName)), { passive: true });
-    document.addEventListener('touchend',    e => _dbgLog('DOC:touchend'), { passive: true });
-    document.addEventListener('pointermove', e => _dbgLog('DOC:pointermove type=' + e.pointerType + ' btn=' + e.buttons), { passive: true });
-    document.addEventListener('mousemove',   e => { if (e.buttons > 0) _dbgLog('DOC:mousemove btn=' + e.buttons); });
+    document.addEventListener('touchstart',  e => _dbgLog('TS:' + (e.target.id||e.target.tagName)), { passive: true });
+    document.addEventListener('touchmove',   e => _dbgLog('TM:' + (e.target.id||e.target.tagName)), { passive: true });
+    document.addEventListener('pointermove', e => _dbgLog('PM:' + e.pointerType + ' b=' + e.buttons), { passive: true });
+    document.addEventListener('mousemove',   e => { if (e.buttons > 0) _dbgLog('MM b=' + e.buttons); });
 }
 
 overlay.addEventListener('touchstart', e => {
