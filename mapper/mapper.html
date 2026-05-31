@@ -1052,10 +1052,12 @@ async function saveRefs() {
     setTimeout(() => { statusEl.textContent = ''; }, 2500);
 }
 
-// ── Data coverage limit ──────────────────────────────────────────────────────
-// Update this when new tiles extend coverage. Dates past this year render blank
-// (2000 CE is always allowed as the modern reference year).
+// ── Data coverage limits ─────────────────────────────────────────────────────
+// Update MAX_DATA_YEAR when new tiles extend coverage toward the present.
+// (2000 CE is always allowed as the modern reference year.)
+// MIN_DATA_YEAR is the earliest date with any tile data.
 let MAX_DATA_YEAR = -272;
+const MIN_DATA_YEAR = -2400;
 
 // ── Shared objects ───────────────────────────────────────────────────────────
 const tileManager = new TileManager();
@@ -2703,6 +2705,27 @@ async function doRender(skipColorMap = false, cancelToken = null) {
     fillEl.style.width = '0%';
 
     const { year } = getInputs();
+
+    if (year < MIN_DATA_YEAR) {
+        const W = ctx.canvas.width, H = ctx.canvas.height;
+        ctx.fillStyle = '#050f20';
+        ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = '#8090a8';
+        ctx.font = 'bold 18px monospace';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(`No map data before ${Math.abs(MIN_DATA_YEAR)} BCE`, W / 2, H / 2);
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'alphabetic';
+        statusEl.textContent = `No map data before ${Math.abs(MIN_DATA_YEAR)} BCE`;
+        fillEl.style.width = '0%';
+        countEl.textContent = '';
+        btn.disabled = false;
+        _renderInProgress = false;
+        document.getElementById('btnAbort').disabled = true;
+        if (_renderQueued) _startRender();
+        return;
+    }
 
     if (year > MAX_DATA_YEAR && year !== 2000) {
         const W = ctx.canvas.width, H = ctx.canvas.height;
