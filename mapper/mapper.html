@@ -814,7 +814,7 @@
 <!-- ── Tablet notice banner (only shown on wide-touch devices) ──────────── -->
 <div id="tabletBanner" style="display:none; background:#7a0000; color:#fff; font-family:monospace; font-size:13px; padding:7px 12px; flex-shrink:0; align-items:center; gap:8px;">
     <div>
-        <strong>mapper.NET · tablet beta · built 2026-05-31 12:36 CDT</strong><br>
+        <strong>mapper.NET · tablet beta · built 2026-05-31 12:59 CDT</strong><br>
         <span style="font-size:12px;">Touch controls are under construction. Voice commands work — tap the 🎤 mic to navigate.</span>
     </div>
 </div>
@@ -3438,7 +3438,8 @@ if (isMobile) document.body.classList.add('is-mobile');
     b.firstElementChild.appendChild(d);
     function _upd(msg) { document.getElementById('dbgLine').textContent = msg; }
     window._dbgLog = _upd;
-    ['touchstart','touchmove','touchend','pointerdown','pointermove'].forEach(function(ev) {
+    // touchmove fires (confirmed) — drop it from doc listener; overlay handler shows richer info
+    ['touchstart','touchend','pointerdown','pointermove'].forEach(function(ev) {
         document.addEventListener(ev, function(e) {
             _upd(ev + ' tgt=' + (e.target && (e.target.id || e.target.tagName || '?')) + (e.pointerType ? ' pt=' + e.pointerType : ''));
         }, {passive: true});
@@ -3951,14 +3952,17 @@ overlay.addEventListener('touchstart', e => {
 }, { passive: false });
 overlay.addEventListener('touchmove', e => {
     e.preventDefault();
-    window._dbgLog('OV:touchmove touches=' + e.touches.length);
     if (_ts.ptrs.size > 0 && !isMobile) { _tDrag = null; return; }
-    if (!_tDrag || e.touches.length !== 1) return;
+    if (!_tDrag || e.touches.length !== 1) {
+        window._dbgLog('TM: tDrag=' + !!_tDrag + ' tc=' + e.touches.length);
+        return;
+    }
     const t = [...e.touches].find(t => t.identifier === _tDrag.id);
-    if (!t) return;
+    if (!t) { window._dbgLog('TM: touch id not found'); return; }
     const r  = overlay.getBoundingClientRect();
     const dx = t.clientX - r.left - _tDrag.x0;
     const dy = t.clientY - r.top  - _tDrag.y0;
+    window._dbgLog('TM dx=' + Math.round(dx) + ' dy=' + Math.round(dy) + ' act=' + _tDrag.active + ' cp=' + !!contextProjection);
     if (Math.hypot(dx, dy) > 6) _tDrag.active = true;
     if (_tDrag.active) _ts.dragging = true; // tell pointer-events system a drag is in progress
     if (_tDrag.active && contextProjection) {
