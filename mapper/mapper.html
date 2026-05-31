@@ -4028,17 +4028,58 @@ overlay.addEventListener('touchend', e => {
 // level. This self-contained system tracks drag completely independently of _ts.
 if (isMobile) {
     let _mobDrag = null;
+    const _mobPtrs = new Map(); // pointerId → {x, y} client coords
+    let _mobPinch0 = { dist: 0, zoom: 0 };
+
     document.addEventListener('pointerdown', function(e) {
         const tgt = e.target;
         if (tgt !== overlay && tgt !== canvas) return;
-        const r   = overlay.getBoundingClientRect();
-        const inp = getInputs();
-        _mobDrag = { pid: e.pointerId,
-                     x0: e.clientX - r.left, y0: e.clientY - r.top,
-                     lon0: inp.centerLon, lat0: inp.centerLat,
-                     active: false };
+        _mobPtrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
+
+        if (_mobPtrs.size >= 2) {
+            // Second finger down: start pinch, cancel any drag
+            const pts = [..._mobPtrs.values()];
+            _mobPinch0.dist = Math.hypot(pts[1].x - pts[0].x, pts[1].y - pts[0].y);
+            _mobPinch0.zoom = getInputs().zoom;
+            _ts.pinching = true;
+            _ts.dragging = false;
+            _mobDrag = null;
+            canvas.style.transform = '';
+        } else {
+            const r   = overlay.getBoundingClientRect();
+            const inp = getInputs();
+            _mobDrag = { pid: e.pointerId,
+                         x0: e.clientX - r.left, y0: e.clientY - r.top,
+                         lon0: inp.centerLon, lat0: inp.centerLat,
+                         active: false };
+        }
     }, { passive: true });
+
     document.addEventListener('pointermove', function(e) {
+        if (!_mobPtrs.has(e.pointerId)) return;
+        _mobPtrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
+
+        if (_ts.pinching && _mobPtrs.size >= 2) {
+            const pts  = [..._mobPtrs.values()];
+            const dist = Math.hypot(pts[1].x - pts[0].x, pts[1].y - pts[0].y);
+            if (_mobPinch0.dist > 5) {
+                const ratio    = dist / _mobPinch0.dist;
+                const newZoomV = (_mobPinch0.zoom + 1) * ratio - 1;
+                let best = ZOOM_PRESETS[0], bestDist = Math.abs(ZOOM_PRESETS[0] - newZoomV);
+                for (const p of ZOOM_PRESETS) {
+                    const d = Math.abs(p - newZoomV);
+                    if (d < bestDist) { bestDist = d; best = p; }
+                }
+                const sel = document.getElementById('zoom');
+                if (parseInt(sel.value) !== best) {
+                    const opt = [...sel.options].find(o => parseInt(o.value) === best);
+                    if (opt) { sel.value = best; document.getElementById('zoomCustom').style.display = 'none'; }
+                    else     { sel.value = 'custom'; document.getElementById('zoomCustom').style.display = ''; document.getElementById('zoomCustom').value = best; }
+                }
+            }
+            return;
+        }
+
         if (!_mobDrag || e.pointerId !== _mobDrag.pid) return;
         const r  = overlay.getBoundingClientRect();
         const dx = e.clientX - r.left - _mobDrag.x0;
@@ -4057,21 +4098,30 @@ if (isMobile) {
             }
         }
     }, { passive: true });
+
     document.addEventListener('pointerup', function(e) {
-        if (!_mobDrag || e.pointerId !== _mobDrag.pid) return;
-        const r  = overlay.getBoundingClientRect();
-        const dx = e.clientX - r.left - _mobDrag.x0;
-        const dy = e.clientY - r.top  - _mobDrag.y0;
-        if (_mobDrag.active && _mapFullyRendered && contextProjection) {
-            canvas.style.transform = '';
-            document.getElementById('centerLon').value = Math.max(-180, Math.min(180,
-                Math.round((_mobDrag.lon0 + dx / contextProjection.xScale) * 10) / 10));
-            document.getElementById('centerLat').value = Math.max(-90, Math.min(90,
-                Math.round((_mobDrag.lat0 - dy / contextProjection.yScale) * 10) / 10));
+        _mobPtrs.delete(e.pointerId);
+
+        if (_mobDrag && e.pointerId === _mobDrag.pid) {
+            const r  = overlay.getBoundingClientRect();
+            const dx = e.clientX - r.left - _mobDrag.x0;
+            const dy = e.clientY - r.top  - _mobDrag.y0;
+            if (_mobDrag.active && _mapFullyRendered && contextProjection) {
+                canvas.style.transform = '';
+                document.getElementById('centerLon').value = Math.max(-180, Math.min(180,
+                    Math.round((_mobDrag.lon0 + dx / contextProjection.xScale) * 10) / 10));
+                document.getElementById('centerLat').value = Math.max(-90, Math.min(90,
+                    Math.round((_mobDrag.lat0 - dy / contextProjection.yScale) * 10) / 10));
+                scheduleRender();
+            }
+            _ts.dragging = false; _ts.start1 = null;
+            _mobDrag = null;
+        }
+
+        if (_mobPtrs.size < 2 && _ts.pinching) {
+            _ts.pinching = false;
             scheduleRender();
         }
-        _ts.dragging = false; _ts.start1 = null;
-        _mobDrag = null;
     }, { passive: true });
 }
 
