@@ -814,7 +814,7 @@
 <!-- ── Tablet notice banner (only shown on wide-touch devices) ──────────── -->
 <div id="tabletBanner" style="display:none; background:#7a0000; color:#fff; font-family:monospace; font-size:13px; padding:7px 12px; flex-shrink:0; align-items:center; gap:8px;">
     <div>
-        <strong>mapper.NET · tablet beta · built 2026-05-31 13:40 CDT</strong><br>
+        <strong>mapper.NET · tablet beta · built 2026-05-31 13:45 CDT</strong><br>
         <span style="font-size:12px;">Touch controls are under construction. Voice commands work — tap the 🎤 mic to navigate.</span>
     </div>
 </div>
@@ -3427,26 +3427,11 @@ if (isMobile) document.body.classList.add('is-mobile');
     document.getElementById('tabletBanner').style.display = 'flex';
 })();
 
-// ── Drag diagnostic — runs right after banner, independent of isMobile block ─
-(function() {
-    const b = document.getElementById('tabletBanner');
-    if (!b || b.style.display !== 'flex') return;
-    const d = document.createElement('div');
-    d.id = 'dbgLine';
-    d.style.cssText = 'color:#ff0;font-size:11px;font-family:monospace;margin-top:3px;';
-    d.textContent = 'DBG ok | isMob=' + isMobile + ' w=' + window.innerWidth;
-    b.firstElementChild.appendChild(d);
-    function _upd(msg) { document.getElementById('dbgLine').textContent = msg; }
-    window._dbgLog = _upd;
-    window._ovPM = 'ovPM:not fired';  // set by overlay pointermove handler
-    ['touchstart','touchend','pointerdown'].forEach(function(ev) {
-        document.addEventListener(ev, function(e) {
-            _upd(ev + ' tgt=' + (e.target && (e.target.id || e.target.tagName || '?')) + (e.pointerType ? ' pt=' + e.pointerType : ''));
-        }, {passive: true});
-    });
+// ── Mobile drag fallback via document-level pointermove ──────────────────────
+// On older iOS, pointerdown.preventDefault() suppresses pointermove on element
+// listeners but doc-level passive listeners still receive it. Handle drag here.
+if (isMobile) {
     document.addEventListener('pointermove', function(e) {
-        _upd(window._ovPM + ' | doc:' + (e.target && (e.target.id||e.target.tagName)) + ' pt=' + e.pointerType + ' has=' + (_ts && _ts.ptrs && _ts.ptrs.has(e.pointerId)));
-        // iOS suppresses pointermove on overlay's own listener — handle mobile drag here instead
         if (!_ts || !_ts.ptrs || !_ts.ptrs.has(e.pointerId)) return;
         const r   = overlay.getBoundingClientRect();
         const off = { x: e.clientX - r.left, y: e.clientY - r.top };
@@ -3465,10 +3450,7 @@ if (isMobile) document.body.classList.add('is-mobile');
             }
         }
     }, {passive: true});
-    document.addEventListener('mousemove', function(e) {
-        if (e.buttons) _upd('mousemove btn=' + e.buttons);
-    });
-})();
+}
 
 // ── Mobile date sync (desktop mapDate ↔ mobile mobDate) ───────────────────────
 const mobDateEl  = document.getElementById('mobDate');
@@ -3834,7 +3816,6 @@ function _evOff(e) {
 
 overlay.addEventListener('pointerdown', e => {
     if (e.pointerType === 'mouse' && !isMobile) return;
-    window._dbgLog('PD:' + e.pointerType);
     // e.preventDefault() on mobile prevents touchstart from firing, which prevents
     // touchstart.preventDefault() from cancelling subsequent pointermove events.
     // Without this, pointercancel fires after touchstart and kills all pointer events.
@@ -3859,7 +3840,6 @@ overlay.addEventListener('pointerdown', e => {
 }, { passive: false });
 
 overlay.addEventListener('pointermove', e => {
-    window._ovPM = 'ovPM:ran has=' + _ts.ptrs.has(e.pointerId) + ' sz=' + _ts.ptrs.size + ' pt=' + e.pointerType;
     if (e.pointerType === 'mouse' && !isMobile) return;
     const _has = _ts.ptrs.has(e.pointerId);
     if (!_has) return;
@@ -3961,11 +3941,9 @@ overlay.addEventListener('pointercancel', _onPointerEnd, { passive: false });
 // fire or fire with pointerType='mouse' while isMobile is false.
 // Guarded by _ts.ptrs.size so it stays dormant when pointer events are active.
 let _tDrag = null;
-// _dbgLog is set up by the early diagnostic IIFE above the mobile date sync
 
 overlay.addEventListener('touchstart', e => {
     e.preventDefault();
-    window._dbgLog('OV:touchstart ptrs=' + _ts.ptrs.size);
     if (_ts.ptrs.size > 0 && !isMobile) return; // on mobile let touch fallback run alongside pointer events
     if (e.touches.length === 1) {
         const t = e.touches[0];
@@ -3979,16 +3957,12 @@ overlay.addEventListener('touchstart', e => {
 overlay.addEventListener('touchmove', e => {
     e.preventDefault();
     if (_ts.ptrs.size > 0 && !isMobile) { _tDrag = null; return; }
-    if (!_tDrag || e.touches.length !== 1) {
-        window._dbgLog('TM: tDrag=' + !!_tDrag + ' tc=' + e.touches.length);
-        return;
-    }
+    if (!_tDrag || e.touches.length !== 1) return;
     const t = [...e.touches].find(t => t.identifier === _tDrag.id);
-    if (!t) { window._dbgLog('TM: touch id not found'); return; }
+    if (!t) return;
     const r  = overlay.getBoundingClientRect();
     const dx = t.clientX - r.left - _tDrag.x0;
     const dy = t.clientY - r.top  - _tDrag.y0;
-    window._dbgLog('TM dx=' + Math.round(dx) + ' dy=' + Math.round(dy) + ' act=' + _tDrag.active + ' cp=' + !!contextProjection);
     if (Math.hypot(dx, dy) > 6) _tDrag.active = true;
     if (_tDrag.active) _ts.dragging = true; // tell pointer-events system a drag is in progress
     if (_tDrag.active && contextProjection) {
@@ -4044,7 +4018,6 @@ if (isMobile) {
                      x0: e.clientX - r.left, y0: e.clientY - r.top,
                      lon0: inp.centerLon, lat0: inp.centerLat,
                      active: false };
-        window._dbgLog('mobDrag:start pid=' + e.pointerId);
     }, { passive: true });
     document.addEventListener('pointermove', function(e) {
         if (!_mobDrag || e.pointerId !== _mobDrag.pid) return;
@@ -4052,7 +4025,6 @@ if (isMobile) {
         const dx = e.clientX - r.left - _mobDrag.x0;
         const dy = e.clientY - r.top  - _mobDrag.y0;
         if (Math.hypot(dx, dy) > 6) _mobDrag.active = true;
-        window._dbgLog('mobDrag:move dx=' + Math.round(dx) + ' act=' + _mobDrag.active + ' cp=' + !!contextProjection);
         if (_mobDrag.active && contextProjection) {
             _ts.dragging = true;
             if (_mapFullyRendered) {
