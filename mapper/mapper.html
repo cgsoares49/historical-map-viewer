@@ -814,7 +814,7 @@
 <!-- ── Tablet notice banner (only shown on wide-touch devices) ──────────── -->
 <div id="tabletBanner" style="display:none; background:#7a0000; color:#fff; font-family:monospace; font-size:13px; padding:7px 12px; flex-shrink:0; align-items:center; gap:8px;">
     <div>
-        <strong>mapper.NET · tablet beta · built 2026-05-31 11:56 CDT</strong><br>
+        <strong>mapper.NET · tablet beta · built 2026-05-31 12:00 CDT</strong><br>
         <span style="font-size:12px;">Touch controls are under construction. Voice commands work — tap the 🎤 mic to navigate.</span>
     </div>
 </div>
@@ -826,6 +826,7 @@
     <canvas id="mapCanvas"></canvas>
     <canvas id="overlay"></canvas>
     <div id="mobVersionStamp">code version: 2026-05-29</div>
+    <div id="tabletDbg" style="display:none;position:absolute;top:4px;left:4px;right:4px;background:rgba(0,0,0,0.88);color:#0f0;font-family:monospace;font-size:13px;padding:6px 8px;z-index:9999;pointer-events:none;border-radius:4px;white-space:pre;line-height:1.5;"></div>
 </div>
 
 <!-- ── Timeline bar ── -->
@@ -3791,7 +3792,7 @@ function _evOff(e) {
 
 overlay.addEventListener('pointerdown', e => {
     if (e.pointerType === 'mouse' && !isMobile) return;
-    document.getElementById('status').textContent = 'DBG:pointerdown type=' + e.pointerType + ' mob=' + isMobile;
+    window._dbgLog('OV:pointerdown type=' + e.pointerType + ' mob=' + isMobile);
     e.preventDefault();
     if (!isMobile) overlay.setPointerCapture(e.pointerId); // mobile: skip — setPointerCapture suppresses touchmove on iOS
     const off = _evOff(e);
@@ -3814,7 +3815,7 @@ overlay.addEventListener('pointerdown', e => {
 
 overlay.addEventListener('pointermove', e => {
     if (e.pointerType === 'mouse' && !isMobile) return;
-    document.getElementById('status').textContent = 'DBG:pointermove type=' + e.pointerType;
+    window._dbgLog('OV:pointermove type=' + e.pointerType);
     if (!_ts.ptrs.has(e.pointerId)) return;
     e.preventDefault();
     const off = _evOff(e);
@@ -3913,17 +3914,28 @@ overlay.addEventListener('pointercancel', _onPointerEnd, { passive: false });
 // fire or fire with pointerType='mouse' while isMobile is false.
 // Guarded by _ts.ptrs.size so it stays dormant when pointer events are active.
 let _tDrag = null;
-// ── Drag diagnostics: document-level to catch events on any element ──────────
+// ── Drag diagnostics: persistent overlay accumulates events ──────────────────
+window._dbgLog = function() {}; // no-op on desktop
 if (isMobile) {
-    const _dbgS = document.getElementById('status');
-    document.addEventListener('touchmove',   e => { _dbgS.textContent = 'DOC:touchmove tgt=' + (e.target.id||e.target.tagName); }, { passive: true });
-    document.addEventListener('pointermove', e => { _dbgS.textContent = 'DOC:pointermove type=' + e.pointerType + ' btn=' + e.buttons; }, { passive: true });
-    document.addEventListener('mousemove',   e => { if (e.buttons > 0) _dbgS.textContent = 'DOC:mousemove btn=' + e.buttons; });
+    const _dbgEl = document.getElementById('tabletDbg');
+    _dbgEl.style.display = 'block';
+    const _dbgLines = [];
+    window._dbgLog = function(msg) {
+        _dbgLines.push(msg);
+        if (_dbgLines.length > 6) _dbgLines.shift();
+        _dbgEl.textContent = _dbgLines.join('\n');
+    };
+    // Document-level: catches events on ANY element in the page
+    document.addEventListener('touchstart',  e => _dbgLog('DOC:touchstart tgt=' + (e.target.id||e.target.tagName)), { passive: true });
+    document.addEventListener('touchmove',   e => _dbgLog('DOC:touchmove tgt='  + (e.target.id||e.target.tagName)), { passive: true });
+    document.addEventListener('touchend',    e => _dbgLog('DOC:touchend'), { passive: true });
+    document.addEventListener('pointermove', e => _dbgLog('DOC:pointermove type=' + e.pointerType + ' btn=' + e.buttons), { passive: true });
+    document.addEventListener('mousemove',   e => { if (e.buttons > 0) _dbgLog('DOC:mousemove btn=' + e.buttons); });
 }
 
 overlay.addEventListener('touchstart', e => {
     e.preventDefault();
-    document.getElementById('status').textContent = 'DBG:touchstart ptrs=' + _ts.ptrs.size;
+    window._dbgLog('OV:touchstart ptrs=' + _ts.ptrs.size);
     if (_ts.ptrs.size > 0 && !isMobile) return; // on mobile let touch fallback run alongside pointer events
     if (e.touches.length === 1) {
         const t = e.touches[0];
@@ -3936,7 +3948,7 @@ overlay.addEventListener('touchstart', e => {
 }, { passive: false });
 overlay.addEventListener('touchmove', e => {
     e.preventDefault();
-    document.getElementById('status').textContent = 'DBG:touchmove touches=' + e.touches.length;
+    window._dbgLog('OV:touchmove touches=' + e.touches.length);
     if (_ts.ptrs.size > 0 && !isMobile) { _tDrag = null; return; }
     if (!_tDrag || e.touches.length !== 1) return;
     const t = [...e.touches].find(t => t.identifier === _tDrag.id);
