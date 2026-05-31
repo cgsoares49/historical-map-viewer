@@ -1921,7 +1921,7 @@ document.getElementById('vibeBookmarkShow').addEventListener('click', e => {
 document.getElementById('vibeHelp').addEventListener('click', e => {
     e.stopPropagation();
     const popup = document.getElementById('helpPopup');
-    if (popup.style.display !== 'none') { popup.style.display = 'none'; return; }
+    if (popup.style.display === 'flex') { popup.style.display = 'none'; return; }
     const r = e.currentTarget.getBoundingClientRect();
     popup.style.left = Math.min(r.left, window.innerWidth - 310) + 'px';
     popup.style.top  = (r.bottom + 4) + 'px';
@@ -3437,7 +3437,7 @@ if (isMobile) {
     const mobVibe = document.getElementById('mobVibeInput');
     function _mobVibeGo() {
         const v = mobVibe.value.trim();
-        if (!v) return;
+        if (!v) { _mobStatusEl.textContent = '⚠️ Nothing in box — type a command first'; return; }
         _mobStatusEl.textContent = '⏳ ' + v;
         _mobStatusEl.className = '';
         mobVibe.value = '';
@@ -3540,7 +3540,7 @@ if (isMobile) {
     document.getElementById('mobHelp').addEventListener('click', e => {
         e.stopPropagation();
         const popup = document.getElementById('helpPopup');
-        if (popup.style.display !== 'none') { popup.style.display = 'none'; return; }
+        if (popup.style.display === 'flex') { popup.style.display = 'none'; return; }
         popup.style.left   = '8px';
         popup.style.top    = '8px';
         popup.style.width  = (window.innerWidth - 16) + 'px';
@@ -3670,6 +3670,7 @@ if (isMobile) {
 
     // Zoom — works in both world-context and rendered modes
     function _mobZoom(dir) {
+        _mobStatusEl.textContent = dir > 0 ? '🔍 Zoom in…' : '🔍 Zoom out…';
         const inp = getInputs();
         let idx = ZOOM_PRESETS.indexOf(inp.zoom);
         if (idx === -1) { idx = ZOOM_PRESETS.findIndex(z => z >= inp.zoom); if (idx < 0) idx = ZOOM_PRESETS.length - 1; }
@@ -3685,9 +3686,14 @@ if (isMobile) {
     document.getElementById('mobZoomOut').addEventListener('click', () => _mobZoom(-1));
     document.getElementById('mobZoomIn' ).addEventListener('click', () => _mobZoom( 1));
 
-    // World view
-    document.getElementById('mobWorld').addEventListener('click', () =>
-        document.getElementById('btnWorld').click());
+    // World view — call renderWorldContext directly so we bypass btnWorld's
+    // mapRenderer/disabled guards; abort any active render first so the world
+    // context isn't blocked by _renderInProgress.
+    document.getElementById('mobWorld').addEventListener('click', () => {
+        _mobStatusEl.textContent = '🌍 World…';
+        document.getElementById('btnAbort').click();   // cancel in-progress render if any
+        setTimeout(() => renderWorldContext(), 50);    // give abort a tick to clear the flag
+    });
 
     // Save
     document.getElementById('mobSave').addEventListener('click', () =>
@@ -3696,6 +3702,7 @@ if (isMobile) {
     // Options popup: full-width above the bar
     document.getElementById('mobOptions').addEventListener('click', e => {
         e.stopPropagation();
+        _mobStatusEl.textContent = '⚙ Options…';
         const popup  = document.getElementById('optionsPopup');
         const barH   = document.getElementById('mobile-bar').offsetHeight;
         if (popup.style.display === 'block') {
