@@ -3918,7 +3918,7 @@ overlay.addEventListener('pointercancel', _onPointerEnd, { passive: false });
 let _tDrag = null;
 overlay.addEventListener('touchstart', e => {
     e.preventDefault();
-    if (_ts.ptrs.size > 0) return;
+    if (_ts.ptrs.size > 0 && !isMobile) return; // on mobile let touch fallback run alongside pointer events
     if (e.touches.length === 1) {
         const t = e.touches[0];
         const r = overlay.getBoundingClientRect();
@@ -3930,7 +3930,7 @@ overlay.addEventListener('touchstart', e => {
 }, { passive: false });
 overlay.addEventListener('touchmove', e => {
     e.preventDefault();
-    if (_ts.ptrs.size > 0) { _tDrag = null; return; }
+    if (_ts.ptrs.size > 0 && !isMobile) { _tDrag = null; return; }
     if (!_tDrag || e.touches.length !== 1) return;
     const t = [...e.touches].find(t => t.identifier === _tDrag.id);
     if (!t) return;
@@ -3938,6 +3938,7 @@ overlay.addEventListener('touchmove', e => {
     const dx = t.clientX - r.left - _tDrag.x0;
     const dy = t.clientY - r.top  - _tDrag.y0;
     if (Math.hypot(dx, dy) > 6) _tDrag.active = true;
+    if (_tDrag.active) _ts.dragging = true; // tell pointer-events system a drag is in progress
     if (_tDrag.active && contextProjection) {
         if (_mapFullyRendered) {
             canvas.style.transform = `translate(${dx}px,${dy}px)`;
@@ -3952,7 +3953,7 @@ overlay.addEventListener('touchmove', e => {
 }, { passive: false });
 overlay.addEventListener('touchend', e => {
     e.preventDefault();
-    if (_ts.ptrs.size > 0) { _tDrag = null; return; }
+    if (_ts.ptrs.size > 0 && !isMobile) { _tDrag = null; return; }
     if (!_tDrag) return;
     const t = e.changedTouches[0];
     const r = overlay.getBoundingClientRect();
@@ -3965,7 +3966,9 @@ overlay.addEventListener('touchend', e => {
         document.getElementById('centerLat').value = Math.max(-90, Math.min(90,
             Math.round((_tDrag.lat0 + dy / contextProjection.yScale) * 10) / 10));
         scheduleRender();
-    } else if (!_tDrag.active && (Date.now() - _tDrag.time < 300) && _mapFullyRendered) {
+        _ts.dragging = false; // consumed here — prevent pointerup from double-panning
+    } else if (!_tDrag.active && (Date.now() - _tDrag.time < 300) && _mapFullyRendered && !isMobile) {
+        // tap on rendered map — on mobile, let pointerup handle this to avoid duplicate popup
         const rect   = canvas.getBoundingClientRect();
         const scaleX = canvas.width  / rect.width;
         const scaleY = canvas.height / rect.height;
