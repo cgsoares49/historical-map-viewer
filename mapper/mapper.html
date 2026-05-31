@@ -3493,13 +3493,15 @@ if (isMobile) {
         setTimeout(_syncMobMic, 50);
     });
 
-    // Bookmark panel — save + recall
-    document.getElementById('mobBookmark').addEventListener('click', e => {
-        e.stopPropagation();
+    // ── Named action functions (called from both click listeners and touch handlers) ──
+    function _mobBookmarkToggle() {
         const panel = document.getElementById('bookmarkList');
         if (panel.style.display !== 'none') { panel.style.display = 'none'; return; }
         _renderMobBookmarkPanel();
-    });
+    }
+
+    // Bookmark panel — save + recall
+    document.getElementById('mobBookmark').addEventListener('click', _mobBookmarkToggle);
 
     function _renderMobBookmarkPanel() {
         const panel = document.getElementById('bookmarkList');
@@ -3560,9 +3562,7 @@ if (isMobile) {
         }
     }
 
-    // Help popup: full-width above the bar
-    document.getElementById('mobHelp').addEventListener('click', e => {
-        e.stopPropagation();
+    function _mobHelpToggle() {
         const popup = document.getElementById('helpPopup');
         if (popup.style.display === 'flex') { popup.style.display = 'none'; return; }
         popup.style.left   = '8px';
@@ -3570,19 +3570,24 @@ if (isMobile) {
         popup.style.width  = (window.innerWidth - 16) + 'px';
         popup.style.height = '260px';
         popup.style.display = 'flex';
-    });
-
-    // Date step back/forward
-    document.getElementById('mobStepBack').addEventListener('click', () => {
+    }
+    function _mobStepBackAction() {
         deskDateEl.value = mobDateEl.value;
         document.getElementById('btnStepBack').click();
         _syncMobDate();
-    });
-    document.getElementById('mobStepFwd').addEventListener('click', () => {
+    }
+    function _mobStepFwdAction() {
         deskDateEl.value = mobDateEl.value;
         document.getElementById('btnStepFwd').click();
         _syncMobDate();
-    });
+    }
+
+    // Help popup: full-width above the bar
+    document.getElementById('mobHelp').addEventListener('click', _mobHelpToggle);
+
+    // Date step back/forward
+    document.getElementById('mobStepBack').addEventListener('click', _mobStepBackAction);
+    document.getElementById('mobStepFwd' ).addEventListener('click', _mobStepFwdAction);
 
     // Step size cycling button
     const STEP_PRESETS = [0.1, 1, 5, 10, 25, 50, 100];
@@ -3591,13 +3596,14 @@ if (isMobile) {
         const v = parseFloat(document.getElementById('yrPerStep').value) || 0.1;
         mobStepSizeBtn.textContent = (v < 1 ? v : Math.round(v)) + 'y';
     }
-    mobStepSizeBtn.addEventListener('click', () => {
+    function _mobStepSizeAction() {
         const cur = parseFloat(document.getElementById('yrPerStep').value) || 0.1;
         const idx = STEP_PRESETS.findIndex(v => Math.abs(v - cur) < 0.01);
         const next = STEP_PRESETS[(idx + 1) % STEP_PRESETS.length];
         document.getElementById('yrPerStep').value = next;
         _syncMobStepBtn();
-    });
+    }
+    mobStepSizeBtn.addEventListener('click', _mobStepSizeAction);
     _syncMobStepBtn();
 
     // Run popup
@@ -3632,10 +3638,11 @@ if (isMobile) {
             document.getElementById('movieStatus').textContent;
     }
 
-    document.getElementById('mobPlay').addEventListener('click', () => {
+    function _mobPlayToggle() {
         if (mobRunPopup.style.display !== 'none') { _closeRunPopup(); return; }
         _openRunPopup();
-    });
+    }
+    document.getElementById('mobPlay').addEventListener('click', _mobPlayToggle);
     document.getElementById('mobRunClose').addEventListener('click', _closeRunPopup);
 
     document.getElementById('mobRunPlay').addEventListener('click', () => {
@@ -3677,20 +3684,15 @@ if (isMobile) {
     mobDateEl.addEventListener('change', () => { deskDateEl.value = mobDateEl.value; syncTimelineFromDate(); });
     mobDateEl.addEventListener('input',  () => { deskDateEl.value = mobDateEl.value; syncTimelineFromDate(); });
 
-    // Display — delay matches _mobVibeGo to let iOS keyboard dismiss + resize settle
-    document.getElementById('mobDisplay').addEventListener('click', () => {
+    function _mobDisplayAction() {
         deskDateEl.value = mobDateEl.value;
-        // Diagnostic: write to #status (MutationObserver mirrors to mobStatusLine)
-        const _diagMsg = mapRenderer
-            ? (_renderInProgress ? 'Display: busy' : 'Display: starting')
-            : 'Display: NO MAP DATA';
-        document.getElementById('status').textContent = _diagMsg;
-        // Also show on the version stamp so it can't be missed
-        const _vs = document.getElementById('mobVersionStamp');
-        _vs.style.display = 'block';
-        _vs.textContent = _diagMsg;
+        _mobStatusEl.textContent = mapRenderer
+            ? (_renderInProgress ? '⏳ Display: busy…' : '⏳ Display: starting…')
+            : '⚠️ Display: map data not loaded';
         setTimeout(() => scheduleRender(), 350);
-    });
+    }
+    // Display — delay matches _mobVibeGo to let iOS keyboard dismiss + resize settle
+    document.getElementById('mobDisplay').addEventListener('click', _mobDisplayAction);
 
     // Zoom — works in both world-context and rendered modes
     function _mobZoom(dir) {
@@ -3710,25 +3712,16 @@ if (isMobile) {
     document.getElementById('mobZoomOut').addEventListener('click', () => _mobZoom(-1));
     document.getElementById('mobZoomIn' ).addEventListener('click', () => _mobZoom( 1));
 
-    // World view — call renderWorldContext directly so we bypass btnWorld's
-    // mapRenderer/disabled guards; abort any active render first so the world
-    // context isn't blocked by _renderInProgress.
-    document.getElementById('mobWorld').addEventListener('click', () => {
+    function _mobWorldAction() {
         _mobStatusEl.textContent = '🌍 World…';
-        document.getElementById('btnAbort').click();   // cancel in-progress render if any
-        setTimeout(() => renderWorldContext(), 50);    // give abort a tick to clear the flag
-    });
-
-    // Save
-    document.getElementById('mobSave').addEventListener('click', () =>
-        document.getElementById('btnSave').click());
-
-    // Options popup: full-width above the bar
-    document.getElementById('mobOptions').addEventListener('click', e => {
-        e.stopPropagation();
+        document.getElementById('btnAbort').click();
+        setTimeout(() => renderWorldContext(), 50);
+    }
+    function _mobSaveAction() { document.getElementById('btnSave').click(); }
+    function _mobOptionsToggle() {
         _mobStatusEl.textContent = '⚙ Options…';
-        const popup  = document.getElementById('optionsPopup');
-        const barH   = document.getElementById('mobile-bar').offsetHeight;
+        const popup = document.getElementById('optionsPopup');
+        const barH  = document.getElementById('mobile-bar').offsetHeight;
         if (popup.style.display === 'block') {
             popup.style.display = 'none';
             document.getElementById('btnOptions').classList.remove('active');
@@ -3736,25 +3729,45 @@ if (isMobile) {
             popup.style.cssText = `display:block; left:8px; right:8px; width:${window.innerWidth - 16}px; bottom:${barH + 8}px; top:auto;`;
             document.getElementById('btnOptions').classList.add('active');
         }
-    });
+    }
 
-    // iOS Safari sometimes doesn't synthesize click after touchstart on buttons.
-    // touchstart DOES fire (buttons show :active) — add fallbacks that fire el.click()
-    // directly.  e.preventDefault() suppresses the redundant native click synthesis.
-    ['mobDisplay','mobZoomOut','mobZoomIn','mobWorld','mobSave','mobOptions',
-     'mobStepBack','mobStepFwd','mobStepSize','mobPlay','mobVibeGo',
-     'mobBookmark','mobHelp'].forEach(id => {
+    // World view
+    document.getElementById('mobWorld'  ).addEventListener('click', _mobWorldAction);
+    // Save
+    document.getElementById('mobSave'   ).addEventListener('click', _mobSaveAction);
+    // Options popup: full-width above the bar
+    document.getElementById('mobOptions').addEventListener('click', _mobOptionsToggle);
+
+    // ── Touch fallbacks: call action fn DIRECTLY from touchstart ─────────────
+    // el.click() proved unreliable on this iPad — calling the named function
+    // directly is the only approach that works consistently.
+    // e.preventDefault() suppresses the ghost click iOS would synthesize.
+    function _mbt(id, fn) {
         const el = document.getElementById(id);
         if (!el) return;
-        let _busy = false;
+        let _b = false;
         el.addEventListener('touchstart', e => {
             e.preventDefault();
-            if (_busy) return;
-            _busy = true;
-            el.click();
-            setTimeout(() => { _busy = false; }, 300);
+            e.stopPropagation();
+            if (_b) return;
+            _b = true;
+            fn();
+            setTimeout(() => { _b = false; }, 300);
         }, { passive: false });
-    });
+    }
+    _mbt('mobVibeGo',   _mobVibeGo);
+    _mbt('mobBookmark', _mobBookmarkToggle);
+    _mbt('mobHelp',     _mobHelpToggle);
+    _mbt('mobStepBack', _mobStepBackAction);
+    _mbt('mobStepFwd',  _mobStepFwdAction);
+    _mbt('mobStepSize', _mobStepSizeAction);
+    _mbt('mobPlay',     _mobPlayToggle);
+    _mbt('mobDisplay',  _mobDisplayAction);
+    _mbt('mobZoomOut',  () => _mobZoom(-1));
+    _mbt('mobZoomIn',   () => _mobZoom( 1));
+    _mbt('mobWorld',    _mobWorldAction);
+    _mbt('mobSave',     _mobSaveAction);
+    _mbt('mobOptions',  _mobOptionsToggle);
 }
 
 // ── Pointer Events gesture handling (pan + pinch) ────────────────────────────
