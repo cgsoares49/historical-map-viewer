@@ -3783,6 +3783,34 @@ if (isMobile) {
     // Options popup: full-width above the bar
     document.getElementById('mobOptions').addEventListener('click', _mobOptionsToggle);
 
+    // _mbt: bind fn() directly from touchstart, bypassing el.click() which is unreliable on iOS
+    function _mbt(id, fn) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        let _b = false;
+        el.addEventListener('touchstart', e => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (_b) return;
+            _b = true;
+            fn();
+            setTimeout(() => { _b = false; }, 300);
+        }, { passive: false });
+    }
+    _mbt('mobVibeGo',   _mobVibeGo);
+    _mbt('mobBookmark', _mobBookmarkToggle);
+    _mbt('mobHelp',     _mobHelpToggle);
+    _mbt('mobStepBack', _mobStepBackAction);
+    _mbt('mobStepFwd',  _mobStepFwdAction);
+    _mbt('mobStepSize', _mobStepSizeAction);
+    _mbt('mobPlay',     _mobPlayToggle);
+    _mbt('mobDisplay',  _mobDisplayAction);
+    _mbt('mobZoomOut',  () => _mobZoom(-1));
+    _mbt('mobZoomIn',   () => _mobZoom( 1));
+    _mbt('mobWorld',    _mobWorldAction);
+    _mbt('mobSave',     _mobSaveAction);
+    _mbt('mobOptions',  _mobOptionsToggle);
+
 }
 
 // ── Pointer Events gesture handling (pan + pinch) ────────────────────────────
