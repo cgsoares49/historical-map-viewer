@@ -814,7 +814,7 @@
 <!-- ── Tablet notice banner (only shown on wide-touch devices) ──────────── -->
 <div id="tabletBanner" style="display:none; background:#7a0000; color:#fff; font-family:monospace; font-size:13px; padding:7px 12px; flex-shrink:0; align-items:center; gap:8px;">
     <div>
-        <strong>mapper.NET · tablet beta · built 2026-05-31 13:25 CDT</strong><br>
+        <strong>mapper.NET · tablet beta · built 2026-05-31 13:28 CDT</strong><br>
         <span style="font-size:12px;">Touch controls are under construction. Voice commands work — tap the 🎤 mic to navigate.</span>
     </div>
 </div>
@@ -4028,6 +4028,60 @@ overlay.addEventListener('touchend', e => {
     }
     _tDrag = null;
 }, { passive: false });
+
+// ── Mobile drag via document-level pointer events ─────────────────────────────
+// iOS suppresses pointermove on element listeners but delivers it at document
+// level. This self-contained system tracks drag completely independently of _ts.
+if (isMobile) {
+    let _mobDrag = null;
+    document.addEventListener('pointerdown', function(e) {
+        const tgt = e.target;
+        if (tgt !== overlay && tgt !== canvas) return;
+        const r   = overlay.getBoundingClientRect();
+        const inp = getInputs();
+        _mobDrag = { pid: e.pointerId,
+                     x0: e.clientX - r.left, y0: e.clientY - r.top,
+                     lon0: inp.centerLon, lat0: inp.centerLat,
+                     active: false };
+        window._dbgLog('mobDrag:start pid=' + e.pointerId);
+    }, { passive: true });
+    document.addEventListener('pointermove', function(e) {
+        if (!_mobDrag || e.pointerId !== _mobDrag.pid) return;
+        const r  = overlay.getBoundingClientRect();
+        const dx = e.clientX - r.left - _mobDrag.x0;
+        const dy = e.clientY - r.top  - _mobDrag.y0;
+        if (Math.hypot(dx, dy) > 6) _mobDrag.active = true;
+        window._dbgLog('mobDrag:move dx=' + Math.round(dx) + ' act=' + _mobDrag.active + ' cp=' + !!contextProjection);
+        if (_mobDrag.active && contextProjection) {
+            _ts.dragging = true;
+            if (_mapFullyRendered) {
+                canvas.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+            } else {
+                document.getElementById('centerLon').value = Math.max(-180, Math.min(180,
+                    Math.round((_mobDrag.lon0 + dx / contextProjection.xScale) * 10) / 10));
+                document.getElementById('centerLat').value = Math.max(-90, Math.min(90,
+                    Math.round((_mobDrag.lat0 - dy / contextProjection.yScale) * 10) / 10));
+                drawOverlay();
+            }
+        }
+    }, { passive: true });
+    document.addEventListener('pointerup', function(e) {
+        if (!_mobDrag || e.pointerId !== _mobDrag.pid) return;
+        const r  = overlay.getBoundingClientRect();
+        const dx = e.clientX - r.left - _mobDrag.x0;
+        const dy = e.clientY - r.top  - _mobDrag.y0;
+        if (_mobDrag.active && _mapFullyRendered && contextProjection) {
+            canvas.style.transform = '';
+            document.getElementById('centerLon').value = Math.max(-180, Math.min(180,
+                Math.round((_mobDrag.lon0 + dx / contextProjection.xScale) * 10) / 10));
+            document.getElementById('centerLat').value = Math.max(-90, Math.min(90,
+                Math.round((_mobDrag.lat0 - dy / contextProjection.yScale) * 10) / 10));
+            scheduleRender();
+        }
+        _ts.dragging = false; _ts.start1 = null;
+        _mobDrag = null;
+    }, { passive: true });
+}
 
 </script>
 
