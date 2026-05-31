@@ -814,7 +814,7 @@
 <!-- ── Tablet notice banner (only shown on wide-touch devices) ──────────── -->
 <div id="tabletBanner" style="display:none; background:#7a0000; color:#fff; font-family:monospace; font-size:13px; padding:7px 12px; flex-shrink:0; align-items:center; gap:8px;">
     <div>
-        <strong>mapper.NET · tablet beta · built 2026-05-31 13:28 CDT</strong><br>
+        <strong>mapper.NET · tablet beta · built 2026-05-31 13:40 CDT</strong><br>
         <span style="font-size:12px;">Touch controls are under construction. Voice commands work — tap the 🎤 mic to navigate.</span>
     </div>
 </div>
@@ -3835,9 +3835,10 @@ function _evOff(e) {
 overlay.addEventListener('pointerdown', e => {
     if (e.pointerType === 'mouse' && !isMobile) return;
     window._dbgLog('PD:' + e.pointerType);
-    // mobile: touch-action:none on overlay already prevents scroll/zoom — calling
-    // e.preventDefault() here suppresses pointermove on the element itself (iOS bug)
-    if (!isMobile) e.preventDefault();
+    // e.preventDefault() on mobile prevents touchstart from firing, which prevents
+    // touchstart.preventDefault() from cancelling subsequent pointermove events.
+    // Without this, pointercancel fires after touchstart and kills all pointer events.
+    e.preventDefault();
     if (!isMobile) overlay.setPointerCapture(e.pointerId);
     const off = _evOff(e);
     _ts.ptrs.set(e.pointerId, off);
