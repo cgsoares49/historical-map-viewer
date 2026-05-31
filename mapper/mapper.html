@@ -2655,6 +2655,8 @@ async function renderWorldContext() {
     const yearLabel = year < 0 ? `${Math.abs(year)} BCE` : `${year} CE`;
     statusEl.textContent = `${yearLabel} — click or drag the rectangle to select a region, then press Display.`;
     drawOverlay();
+    const _tb = document.getElementById('tabletBanner');
+    if (_tb && window.innerWidth >= 768 && navigator.maxTouchPoints > 0) _tb.style.display = 'flex';
 }
 
 // ── Render pipeline ──────────────────────────────────────────────────────────
@@ -2756,6 +2758,8 @@ async function doRender(skipColorMap = false, cancelToken = null) {
         _selectionMode    = false;
         const _vs = document.getElementById('mobVersionStamp');
         if (_vs) _vs.style.display = 'none';
+        const _tb = document.getElementById('tabletBanner');
+        if (_tb) _tb.style.display = 'none';
         drawOverlay();
         fillEl.style.width = '100%';
         const yearLabel = year < 0 ? `${Math.abs(year)} BCE` : `${year} CE`;
