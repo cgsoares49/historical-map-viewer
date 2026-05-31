@@ -859,6 +859,9 @@
     </div>
     <!-- Row 3: Zoom + actions -->
     <div class="mob-row">
+        <a href="https://historymaps.org" target="_blank" title="historymaps.org" style="display:flex;align-items:center;padding:0 4px;flex-shrink:0;">
+            <img src="sahm-logo.png" style="height:28px;width:auto;display:block;opacity:0.9;">
+        </a>
         <button class="mob-zoom-btn" id="mobZoomOut">−</button>
         <button class="mob-zoom-btn" id="mobZoomIn">+</button>
         <button class="mob-btn" id="mobWorld" style="flex:1;font-size:12px;">🌍 World</button>
@@ -3418,7 +3421,8 @@ if (isMobile) document.body.classList.add('is-mobile');
 (function() {
     const isTablet = isMobile && window.innerWidth >= 768;
     if (!isTablet) return;
-    document.getElementById('tabletBanner').style.display = 'flex';
+    // Banner hidden — uncomment to re-enable for debugging:
+    // document.getElementById('tabletBanner').style.display = 'flex';
 })();
 
 // ── Mobile drag fallback via document-level pointermove ──────────────────────
