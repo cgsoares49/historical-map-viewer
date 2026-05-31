@@ -814,7 +814,7 @@
 <!-- ── Tablet notice banner (only shown on wide-touch devices) ──────────── -->
 <div id="tabletBanner" style="display:none; background:#7a0000; color:#fff; font-family:monospace; font-size:13px; padding:7px 12px; flex-shrink:0; align-items:center; gap:8px;">
     <div>
-        <strong>mapper.NET · tablet beta · built 2026-05-31 12:04 CDT</strong><br>
+        <strong>mapper.NET · tablet beta · built 2026-05-31 12:09 CDT</strong><br>
         <span style="font-size:12px;">Touch controls are under construction. Voice commands work — tap the 🎤 mic to navigate.</span>
     </div>
 </div>
@@ -3916,9 +3916,13 @@ let _tDrag = null;
 // ── Drag diagnostics: persistent overlay accumulates events ──────────────────
 window._dbgLog = function() {}; // no-op on desktop
 if (isMobile) {
-    const _dbgEl = document.getElementById('tabletDbg');
-    _dbgEl.style.display = 'block';
-    const _dbgLines = [];
+    // Create element programmatically — the HTML div placed after </script> doesn't
+    // exist in the DOM yet when this script executes.
+    const _dbgEl = document.createElement('div');
+    _dbgEl.style.cssText = 'position:fixed;bottom:140px;left:8px;right:8px;background:#000;color:#0f0;font-family:monospace;font-size:14px;padding:8px 10px;z-index:99999;pointer-events:none;border:2px solid #0f0;border-radius:4px;white-space:pre-wrap;line-height:1.6;';
+    _dbgEl.textContent = 'DBG: waiting for touch events...';
+    document.body.appendChild(_dbgEl);
+    const _dbgLines = ['DBG: isMobile=' + isMobile + ' w=' + window.innerWidth];
     window._dbgLog = function(msg) {
         _dbgLines.push(msg);
         if (_dbgLines.length > 6) _dbgLines.shift();
@@ -3998,7 +4002,5 @@ overlay.addEventListener('touchend', e => {
 
 </script>
 
-<!-- Drag diagnostic overlay — fixed, on top of everything, always visible on tablet -->
-<div id="tabletDbg" style="display:none;position:fixed;bottom:140px;left:8px;right:8px;background:#000;color:#0f0;font-family:monospace;font-size:14px;padding:8px 10px;z-index:99999;pointer-events:none;border:2px solid #0f0;border-radius:4px;white-space:pre-wrap;line-height:1.6;">DBG: waiting for touch events...</div>
 </body>
 </html>
