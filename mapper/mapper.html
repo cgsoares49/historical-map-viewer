@@ -814,7 +814,7 @@
 <!-- ── Tablet notice banner (only shown on wide-touch devices) ──────────── -->
 <div id="tabletBanner" style="display:none; background:#7a0000; color:#fff; font-family:monospace; font-size:13px; padding:7px 12px; flex-shrink:0; align-items:center; gap:8px;">
     <div>
-        <strong>mapper.NET · tablet beta · built 2026-05-31 14:32 CDT</strong><br>
+        <strong>mapper.NET · tablet beta · built 2026-05-31 14:44 CDT</strong><br>
         <span style="font-size:12px;">Touch controls are under construction. Voice commands work — tap the 🎤 mic to navigate.</span>
     </div>
 </div>
@@ -3756,36 +3756,6 @@ if (isMobile) {
     // Options popup: full-width above the bar
     document.getElementById('mobOptions').addEventListener('click', _mobOptionsToggle);
 
-    // ── Touch fallbacks: call action fn DIRECTLY from touchstart ─────────────
-    // el.click() proved unreliable on this iPad — calling the named function
-    // directly is the only approach that works consistently.
-    // e.preventDefault() suppresses the ghost click iOS would synthesize.
-    function _mbt(id, fn) {
-        const el = document.getElementById(id);
-        if (!el) return;
-        let _b = false;
-        el.addEventListener('touchstart', e => {
-            e.preventDefault();
-            e.stopPropagation();
-            if (_b) return;
-            _b = true;
-            fn();
-            setTimeout(() => { _b = false; }, 300);
-        }, { passive: false });
-    }
-    _mbt('mobVibeGo',   _mobVibeGo);
-    _mbt('mobBookmark', _mobBookmarkToggle);
-    _mbt('mobHelp',     _mobHelpToggle);
-    _mbt('mobStepBack', _mobStepBackAction);
-    _mbt('mobStepFwd',  _mobStepFwdAction);
-    _mbt('mobStepSize', _mobStepSizeAction);
-    _mbt('mobPlay',     _mobPlayToggle);
-    _mbt('mobDisplay',  _mobDisplayAction);
-    _mbt('mobZoomOut',  () => _mobZoom(-1));
-    _mbt('mobZoomIn',   () => _mobZoom( 1));
-    _mbt('mobWorld',    _mobWorldAction);
-    _mbt('mobSave',     _mobSaveAction);
-    _mbt('mobOptions',  _mobOptionsToggle);
 }
 
 // ── Pointer Events gesture handling (pan + pinch) ────────────────────────────
