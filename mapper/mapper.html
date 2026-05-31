@@ -2669,6 +2669,8 @@ function scheduleRender() {
         document.getElementById('status').textContent = 'Still loading color data…';
         return;
     }
+    const _tb = document.getElementById('tabletBanner');
+    if (_tb) _tb.style.display = 'none';
     if (_renderInProgress) { _renderQueued = true; return; }
     _startRender();
 }
