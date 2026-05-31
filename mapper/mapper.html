@@ -814,7 +814,7 @@
 <!-- ── Tablet notice banner (only shown on wide-touch devices) ──────────── -->
 <div id="tabletBanner" style="display:none; background:#7a0000; color:#fff; font-family:monospace; font-size:13px; padding:7px 12px; flex-shrink:0; align-items:center; gap:8px;">
     <div>
-        <strong>mapper.NET · tablet beta · built 2026-05-31 12:00 CDT</strong><br>
+        <strong>mapper.NET · tablet beta · built 2026-05-31 12:04 CDT</strong><br>
         <span style="font-size:12px;">Touch controls are under construction. Voice commands work — tap the 🎤 mic to navigate.</span>
     </div>
 </div>
@@ -826,7 +826,6 @@
     <canvas id="mapCanvas"></canvas>
     <canvas id="overlay"></canvas>
     <div id="mobVersionStamp">code version: 2026-05-29</div>
-    <div id="tabletDbg" style="display:none;position:absolute;top:4px;left:4px;right:4px;background:rgba(0,0,0,0.88);color:#0f0;font-family:monospace;font-size:13px;padding:6px 8px;z-index:9999;pointer-events:none;border-radius:4px;white-space:pre;line-height:1.5;"></div>
 </div>
 
 <!-- ── Timeline bar ── -->
@@ -3998,5 +3997,8 @@ overlay.addEventListener('touchend', e => {
 }, { passive: false });
 
 </script>
+
+<!-- Drag diagnostic overlay — fixed, on top of everything, always visible on tablet -->
+<div id="tabletDbg" style="display:none;position:fixed;bottom:140px;left:8px;right:8px;background:#000;color:#0f0;font-family:monospace;font-size:14px;padding:8px 10px;z-index:99999;pointer-events:none;border:2px solid #0f0;border-radius:4px;white-space:pre-wrap;line-height:1.6;">DBG: waiting for touch events...</div>
 </body>
 </html>
