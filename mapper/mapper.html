@@ -2786,7 +2786,8 @@ async function doRender(skipColorMap = false, cancelToken = null) {
         fillEl.style.width = '100%';
         const yearLabel = year < 0 ? `${Math.abs(year)} BCE` : `${year} CE`;
         statusEl.textContent = `${yearLabel} — ${tileList.length} tiles`;
-        plausible('Map Render', { props: { year: yearLabel, zoom: getInputs().zoom } });
+        const _inp = getInputs();
+        plausible('Map Render', { props: { year: yearLabel, zoom: _inp.zoom, lat: Math.round(_inp.centerLat), lon: Math.round(_inp.centerLon) } });
         if (!skipColorMap) await rebuildColorNameMap(proj, year);
     } catch (err) {
         if (err.name === 'AbortError') {
