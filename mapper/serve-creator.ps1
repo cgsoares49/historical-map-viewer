@@ -68,34 +68,57 @@ while ($listener.IsListening) {
             $type = if ($query['type']) { $query['type'] } else { 'all' }
             if (-not $q) { Send-Json $ctx @{error='missing q'} 400; continue }
 
-            $dirMap = @{ par='polareas'; pol='pols'; cst='coasts' }
+            $year = $query['year']
+            $dirMap     = @{ par='polareas'; pol='pols'; niw='niw'; cities='cities' }
             $searchDirs = if ($dirMap[$type]) { @($dirMap[$type]) } else {
-                @('polareas','pols','coasts','cities','niw')
+                @('polareas','pols','niw','cities','inwaters')
             }
 
-            $results   = [System.Collections.Generic.List[object]]::new()
+            $results   = @()
             $truncated = $false
 
-            foreach ($dir in $searchDirs) {
-                $fullDir = Join-Path $dataRoot $dir
-                if (-not (Test-Path $fullDir)) { continue }
-                Get-ChildItem $fullDir -Recurse -File | ForEach-Object {
-                    if ($truncated) { return }
-                    $file  = $_
-                    $lines = Get-Content $file.FullName -Encoding UTF8 -ErrorAction SilentlyContinue
-                    if (-not $lines) { return }
-                    for ($i = 0; $i -lt $lines.Count; $i++) {
-                        if ($lines[$i] -match [regex]::Escape($q)) {
-                            $rel = $file.FullName.Substring($dataRoot.Length).TrimStart('\') -replace '\\','/'
-                            $results.Add(@{ file=$rel; line=($i+1); content=$lines[$i].Trim() })
-                            if ($results.Count -ge 500) { $truncated = $true; break }
+            try {
+                foreach ($dir in $searchDirs) {
+                    if ($truncated) { break }
+                    $fullDir = Join-Path $dataRoot $dir
+                    if (-not (Test-Path $fullDir)) { continue }
+                    foreach ($file in (Get-ChildItem $fullDir -Recurse -File)) {
+                        if ($truncated) { break }
+                        $lines = [System.IO.File]::ReadAllLines($file.FullName)
+                        # Year filter: skip file entirely if it doesn't contain the year string
+                        if ($year) {
+                            $fileText = [string]::Join(' ', $lines)
+                            if ($fileText.IndexOf($year, [System.StringComparison]::OrdinalIgnoreCase) -lt 0) { continue }
+                        }
+                        for ($i = 0; $i -lt $lines.Count; $i++) {
+                            if ($lines[$i].IndexOf($q, [System.StringComparison]::OrdinalIgnoreCase) -ge 0) {
+                                $rel = $file.FullName.Substring($dataRoot.Length).TrimStart('\') -replace '\\','/'
+                                $results += [PSCustomObject]@{ file=$rel; line=($i+1); content=$lines[$i].Trim() }
+                                if ($results.Count -ge 500) { $truncated = $true; break }
+                            }
                         }
                     }
                 }
+            } catch {
+                Write-Host "Search error: $_" -ForegroundColor Red
             }
 
-            Write-Host "GET /search?q=$q type=$type  ($($results.Count) hits)" -ForegroundColor Cyan
-            Send-Json $ctx @{results=$results; count=$results.Count; truncated=$truncated}
+            $yearMsg = if ($year) { " year=$year" } else { '' }
+            Write-Host "GET /search?q=$q type=$type$yearMsg  ($($results.Count) hits)" -ForegroundColor Cyan
+            # Build JSON manually — avoids PS 5.1 ConvertTo-Json array/depth issues
+            $itemsJson = ($results | ForEach-Object {
+                $f = $_.file   -replace '\\','/' -replace '"','\"'
+                $c = $_.content -replace '\\','\\' -replace '"','\"'
+                "{`"file`":`"$f`",`"line`":$($_.line),`"content`":`"$c`"}"
+            }) -join ','
+            $trunc = if ($truncated) { 'true' } else { 'false' }
+            $json  = "{`"results`":[$itemsJson],`"count`":$($results.Count),`"truncated`":$trunc}"
+            $bytes = [System.Text.Encoding]::UTF8.GetBytes($json)
+            $ctx.Response.ContentType     = 'application/json'
+            $ctx.Response.StatusCode      = 200
+            $ctx.Response.ContentLength64 = $bytes.Length
+            $ctx.Response.OutputStream.Write($bytes, 0, $bytes.Length)
+            $ctx.Response.OutputStream.Close()
             continue
         }
 
