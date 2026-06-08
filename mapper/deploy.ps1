@@ -1,9 +1,12 @@
 # deploy.ps1
-# Rebuilds geodata from PAR/primaries, then commits and pushes all mapper changes.
+# Rebuilds geodata from PAR/primaries, commits code to GitHub, builds dist,
+# and deploys to Cloudflare Workers (mapper.historymaps.org).
 # Run from any directory — it finds the repo root automatically.
 
 $RepoRoot  = Split-Path $PSScriptRoot -Parent
 $MapperDir = $PSScriptRoot
+$DataDir   = 'C:\My stuff\mapper'   # canonical data source
+$DistDir   = Join-Path $RepoRoot 'dist\mapper'
 
 Set-Location $RepoRoot
 
@@ -54,7 +57,7 @@ $versionObj.app = Get-Date -Format 'yyyy-MM-dd'
 $versionObj | ConvertTo-Json | Set-Content $versionFile
 Write-Host "App version stamped: $($versionObj.app)" -ForegroundColor Cyan
 
-# ── Step 5: Stage, commit, push ───────────────────────────────────────────────
+# ── Step 5: Stage, commit, push (code only — data excluded by .gitignore) ─────
 Write-Host ""
 Write-Host "Staging files..." -ForegroundColor Yellow
 git add mapper/
@@ -72,10 +75,36 @@ Write-Host ""
 Write-Host "Pushing to GitHub..." -ForegroundColor Yellow
 git push
 
+# ── Step 6: Build dist from canonical data ────────────────────────────────────
+Write-Host ""
+Write-Host "Building dist from $DataDir ..." -ForegroundColor Yellow
+
+Copy-Item "$MapperDir\mapper.html"   "$DistDir\mapper.html"   -Force
+Copy-Item "$MapperDir\version.json"  "$DistDir\version.json"  -Force
+Copy-Item "$MapperDir\refs.json"     "$DistDir\refs.json"     -Force
+Copy-Item "$MapperDir\sahm-logo.png" "$DistDir\sahm-logo.png" -Force
+Copy-Item "$MapperDir\map_2000CE.png" "$DistDir\map_2000CE.png" -Force
+Copy-Item "$MapperDir\favicon.ico"   "$DistDir\favicon.ico"   -Force
+Copy-Item "$MapperDir\js"            "$DistDir\js"            -Recurse -Force
+
+Copy-Item "$DataDir\primaries.txt"   "$DistDir\primaries.txt" -Force
+Copy-Item "$DataDir\polareas\*"      "$DistDir\polareas\"     -Recurse -Force
+Copy-Item "$DataDir\pols\*"          "$DistDir\pols\"         -Recurse -Force
+Copy-Item "$DataDir\coasts\*"        "$DistDir\coasts\"       -Recurse -Force
+Copy-Item "$DataDir\niw\*"           "$DistDir\niw\"          -Recurse -Force
+Copy-Item "$DataDir\cities\*"        "$DistDir\cities\"       -Recurse -Force
+Copy-Item "$DataDir\inwaters\*"      "$DistDir\inwaters\"     -Recurse -Force
+
+Write-Host "Dist built." -ForegroundColor Green
+
+# ── Step 7: Deploy to Cloudflare ──────────────────────────────────────────────
+Write-Host ""
+Write-Host "Deploying to Cloudflare..." -ForegroundColor Yellow
+npx wrangler deploy
+
 Write-Host ""
 Write-Host "══════════════════════════════════════════════" -ForegroundColor Green
-Write-Host "  Done! Beta site will update in ~1 minute." -ForegroundColor Green
-Write-Host "  https://cgsoares49.github.io/historical-map-viewer/mapper/mapper.html" -ForegroundColor Green
+Write-Host "  Done! Live at mapper.historymaps.org" -ForegroundColor Green
 Write-Host "══════════════════════════════════════════════" -ForegroundColor Green
 Write-Host ""
 Read-Host "Press Enter to close"

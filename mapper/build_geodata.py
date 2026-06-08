@@ -8,6 +8,7 @@ import os, csv, re
 from collections import defaultdict
 
 MAPPER_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR   = r'C:\My stuff\mapper'  # canonical data lives here, not in ClaudeTest
 
 # ── Tile geometry ─────────────────────────────────────────────────────────────
 # Must match N_VALUES in tiles.js exactly
@@ -139,7 +140,7 @@ def fmt_date(val, is_to):
         return '1 BCE'
 
 def main():
-    primaries = load_primaries(os.path.join(MAPPER_DIR, 'primaries.txt'))
+    primaries = load_primaries(os.path.join(DATA_DIR, 'primaries.txt'))
     print(f"Loaded {len(primaries)} primaries")
 
     # results[display_name] = {min_lon, max_lon, min_lat, max_lat, min_date, max_date}
@@ -153,7 +154,7 @@ def main():
                       'min_date_exact': INF, 'max_date_exact': -INF}
                for name in primaries.values()}
 
-    par_dir = os.path.join(MAPPER_DIR, 'polareas')
+    par_dir = os.path.join(DATA_DIR, 'polareas')
     files_scanned = 0
     entries_matched = 0
 
