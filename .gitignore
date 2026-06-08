@@ -4,9 +4,18 @@ dist/
 .wrangler/
 .claude/worktrees/
 
-# ── Tile data directories excluded from this build ───────────────────────────
+# ── Tile data directories (local only — not committed to GitHub) ─────────────
 mapper/rivers/
 mapper/counties/
+mapper/polareas/
+mapper/pols/
+mapper/coasts/
+mapper/niw/
+mapper/cities/
+mapper/inwaters/
+mapper/primaries.txt
+mapper/geodata_from_par.csv
+mapper/coasts/125/CST020old.PRN
 rivers/
 counties/
 
