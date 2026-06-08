@@ -1,4 +1,4 @@
-$root = 'C:\Users\csoar\OneDrive\Desktop\ClaudeTest\mapper'
+$root = 'C:\My stuff\ClaudeTest\mapper'
 $port = 8080
 
 $mimeTypes = @{

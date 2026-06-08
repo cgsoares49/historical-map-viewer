@@ -9,5 +9,5 @@ if %errorLevel% neq 0 (
 echo Starting mapper server at http://localhost:8080/mapper.html
 echo Close this window to stop the server.
 echo.
-powershell -ExecutionPolicy Bypass -File "C:\Users\csoar\OneDrive\Desktop\ClaudeTest\mapper\serve.ps1"
+powershell -ExecutionPolicy Bypass -File "C:\My stuff\ClaudeTest\mapper\serve.ps1"
 pause
