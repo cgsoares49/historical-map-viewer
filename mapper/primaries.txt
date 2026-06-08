@@ -1093,7 +1093,7 @@
 1092, Revolt of Hermias, 252, 48, 48
 1093, Anti Roman Alliance, 208, 16, 0
 1094, Istros, 224, 192, 32
-1095, Anti Macedon Alliance, 212, 208, 16
+1095, Anti Macedon Alliance, 252, 224, 80
 1096, Pardabathra, 240, 96, 128
 1097, Musicanus, 248, 192, 0
 1098, Taxila, 144, 224, 192

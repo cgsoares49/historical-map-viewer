@@ -147,7 +147,7 @@ Bottiaeans,18,40,24.0,45,650.3 BCE,492.1 BCE
 Brahmana,80,25,85.0,30,610.1 BCE,467.5 BCE
 Brazil,-75,-35,-25.0,10,1990 CE,present
 Brunei,110,0,120.0,10,1990 CE,present
-Bruttian League,12,35,20.0,45,356.5 BCE,1 BCE
+Bruttian League,12,35,20.0,45,356.5 BCE,267.5 BCE
 Bruttians,15,35,20.0,40,450.1 BCE,400.1 BCE
 Bruttii,15,35,20.0,40,500.1 BCE,436.5 BCE
 Bu geng,110,30,115.0,35,770.1 BCE,533.5 BCE
@@ -338,7 +338,7 @@ Estonia,16,55,32.0,60,1990 CE,present
 Ethiopia,30,0,50.0,15,1990 CE,present
 Etiukhi,40,35,48.0,45,931.1 BCE,709.5 BCE
 Etiuni,42,40,48.0,45,880.1 BCE,703.5 BCE
-Etruria,6,35,20.0,50,760 BCE,1 BCE
+Etruria,6,35,20.0,50,760 BCE,266.5 BCE
 Etruscans,6,40,18.0,50,1725.1 BCE,515.5 BCE
 Euboea,20,35,25.0,40,348.4 BCE,309.5 BCE
 Fan,115,30,120.0,35,770.1 BCE,504.5 BCE
@@ -635,7 +635,7 @@ Lu,115,30,120.0,40,807.5 BCE,562.5 BCE
 Lu(2),110,30,115.0,35,770.1 BCE,688.5 BCE
 Lu(3),110,30,115.0,35,770.1 BCE,690.5 BCE
 Lucani,12,40,18.0,45,500.1 BCE,436.5 BCE
-Lucanians,12,35,20.0,45,450.1 BCE,1 BCE
+Lucanians,12,35,20.0,45,450.1 BCE,267.5 BCE
 Luhun Rong,105,30,115.0,35,771.1 BCE,525.5 BCE
 Lukka,25,35,35.0,40,1535.5 BCE,1235.5 BCE
 Lullubi,40,35,50.0,40,,2050.1 BCE
@@ -699,7 +699,7 @@ Mercenaries under Leosthenes,20,35,25.0,40,,
 Mercenaries under Phalaecus,20,35,30.0,40,,
 Mercenaries under Thibron,20,30,25.0,40,,
 Mesoamerican Peoples,-105,5,-70.0,25,2400.1 BCE,1 BCE
-Messapians,12,35,24.0,45,800.1 BCE,1 BCE
+Messapians,12,35,24.0,45,800.1 BCE,267.5 BCE
 Messapii,12,35,24.0,45,500.1 BCE,280.4 CE
 Messenia,15,35,25.0,40,770.5 BCE,1 BCE
 Mexico,-120,10,-85.0,35,1990 CE,present
@@ -812,7 +812,7 @@ Persian Empire,15,20,78.0,50,550.5 BCE,1 BCE
 Persian Revolt,45,25,70.0,35,,
 Persian Vassal,18,35,30.0,45,491.5 BCE,409.6 BCE
 Peru,-85,-20,-65.0,0,1990 CE,present
-Peucetians,12,40,18.0,45,800.1 BCE,1 BCE
+Peucetians,12,40,18.0,45,800.1 BCE,267.5 BCE
 Pharsalos,20,35,25.0,40,405.5 BCE,375.3 BCE
 Pherae,18,35,25.0,45,405.5 BCE,352.4 BCE
 Philippines,115,0,130.0,25,1990 CE,present
@@ -901,8 +901,8 @@ Revolt of Wangzi Tui,110,30,115.0,40,675.6 BCE,673.5 BCE
 Revolt of Wangzi Zhao,110,30,115.0,40,520.5 BCE,516.5 BCE
 Rhegion,12,35,20.0,45,621.5 BCE,1 BCE
 Rhodos,25,35,30.0,40,319.5 BCE,1 BCE
-Roman Ally,0,35,20.0,45,305.5 BCE,1 BCE
-Roman Latin Colony,12,40,18.0,45,495.7 BCE,1 BCE
+Roman Ally,0,35,24.0,45,305.5 BCE,1 BCE
+Roman Latin Colony,6,40,18.0,45,495.7 BCE,1 BCE
 Roman Republic,6,35,24.0,45,509.4 BCE,1 BCE
 Romania,18,40,30.0,50,1990 CE,present
 Rong,110,30,120.0,40,770.1 BCE,593.5 BCE
@@ -923,7 +923,7 @@ Salwa,70,25,75.0,30,610.1 BCE,322.5 BCE
 Sambus,65,20,75.0,35,329.5 BCE,325.2 BCE
 Samian Thalassocracy,20,35,30.0,40,542.5 BCE,522.5 BCE
 Samnite Ally,12,40,24.0,45,326.5 BCE,304.5 BCE
-Samnite Confederation,12,40,18.0,45,438.5 BCE,1 BCE
+Samnite Confederation,12,40,18.0,45,438.5 BCE,267.5 BCE
 Samnites,12,40,18.0,45,800.1 BCE,438.5 BCE
 Samnium,12,40,18.0,45,500.1 BCE,438.5 BCE
 Samoa,-175,-15,-170.0,-10,1990 CE,present
@@ -1036,7 +1036,7 @@ Teutons,0,50,24.0,65,2050.1 BCE,1 BCE
 Thai Peoples,95,20,105.0,35,2400.1 BCE,1 BCE
 Thailand,95,5,110.0,25,1990 CE,present
 Theban Ally,18,35,30.0,45,370.7 BCE,338.2 BCE
-Thebes,18,35,36.0,45,386.5 BCE,1 BCE
+Thebes,18,35,36.0,45,386.5 BCE,267.7 BCE
 Thespiae,20,35,25.0,40,386.5 BCE,378.8 BCE
 Thesprotia,20,35,25.0,40,395.5 BCE,350.5 BCE
 Thesprotians,20,35,25.0,40,500.1 BCE,430.8 BCE
