@@ -4,6 +4,9 @@ dist/
 .wrangler/
 .claude/worktrees/
 
+# ── CREATOR private files (local only) ───────────────────────────────────────
+mapper/mapper-local.html
+
 # ── Tile data directories (local only — not committed to GitHub) ─────────────
 mapper/rivers/
 mapper/counties/
