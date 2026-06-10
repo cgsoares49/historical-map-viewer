@@ -27,6 +27,7 @@ try {
     Write-Host "Data root : $dataRoot" -ForegroundColor DarkCyan
     Write-Host "Code root : $codeRoot" -ForegroundColor DarkCyan
     Write-Host "Press Ctrl+C to stop." -ForegroundColor Yellow
+    Start-Process "http://localhost:$port/mapper-local.html"
 } catch {
     Write-Host "ERROR starting listener: $_" -ForegroundColor Red
     Write-Host "Try running as Administrator." -ForegroundColor Yellow

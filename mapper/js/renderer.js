@@ -77,7 +77,7 @@ class MapRenderer {
                 if (showCoasts)         this._drawCoastOutlines(ctx, projection, cst, year);
                 if (showBorders)        this._drawBorders(ctx, projection, pol, year);
                 if (showRivers)         for (const p of riv) allRivPolys.push(p);
-                if (showDots)         { this._drawDots(ctx, projection, par, year); allDotPars.push({ par, cst, pol }); }
+                if (showDots && year >= -2400) { this._drawDots(ctx, projection, par, year); allDotPars.push({ par, cst, pol }); }
                 if (showCities) {
                     this._drawCities(ctx, projection, cities, year, cityDetail);
                     if (showCityNames) allCities.push(cities);
@@ -93,7 +93,7 @@ class MapRenderer {
         }
 
         // Dot label pass: one label per unique name, drawn after all dots
-        if (showDots) {
+        if (showDots && year >= -2400) {
             this._drawDotLabels(ctx, projection, allDotPars, year);
         }
 
@@ -311,7 +311,7 @@ class MapRenderer {
         ctx.lineWidth   = _lineWidth(projection, 0.7);
         for (const poly of pol) {
             const m = matchDate(poly.dateRanges, year);
-            if (!m || m.from < SENTINEL_FROM) continue;
+            if (!m) continue;
             const path = this._buildPath(projection, poly.points, false);  // open — no tile-edge closing line
             if (path) ctx.stroke(path);
         }
