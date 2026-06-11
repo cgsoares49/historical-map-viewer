@@ -16,27 +16,23 @@ Write-Host "  Mapper Deploy Script" -ForegroundColor Cyan
 Write-Host "══════════════════════════════════════════════" -ForegroundColor Cyan
 Write-Host ""
 
-# ── Step 1: Rebuild geodata if primaries.txt or PAR files changed ─────────────
-$rebuild = Read-Host "Rebuild geodata from PAR/primaries? (y/n)"
-if ($rebuild -match '^[Yy]') {
-    Write-Host ""
-    Write-Host "Running build_geodata.py..." -ForegroundColor Yellow
-    python "$MapperDir\build_geodata.py"
-    if ($LASTEXITCODE -ne 0) { Write-Host "ERROR in build_geodata.py" -ForegroundColor Red; Read-Host "Press Enter to exit"; exit 1 }
+# ── Step 1: Rebuild geodata from PAR/primaries (always) ───────────────────────
+Write-Host "Running build_geodata.py..." -ForegroundColor Yellow
+python "$MapperDir\build_geodata.py"
+if ($LASTEXITCODE -ne 0) { Write-Host "ERROR in build_geodata.py" -ForegroundColor Red; Read-Host "Press Enter to exit"; exit 1 }
 
-    Write-Host ""
-    Write-Host "Running merge_geodata.py..." -ForegroundColor Yellow
-    python "$MapperDir\merge_geodata.py"
-    if ($LASTEXITCODE -ne 0) { Write-Host "ERROR in merge_geodata.py" -ForegroundColor Red; Read-Host "Press Enter to exit"; exit 1 }
+Write-Host ""
+Write-Host "Running merge_geodata.py..." -ForegroundColor Yellow
+python "$MapperDir\merge_geodata.py"
+if ($LASTEXITCODE -ne 0) { Write-Host "ERROR in merge_geodata.py" -ForegroundColor Red; Read-Host "Press Enter to exit"; exit 1 }
 
-    Write-Host ""
-    Write-Host "Running add_whe_refs.py..." -ForegroundColor Yellow
-    python "$MapperDir\add_whe_refs.py"
-    if ($LASTEXITCODE -ne 0) { Write-Host "ERROR in add_whe_refs.py" -ForegroundColor Red; Read-Host "Press Enter to exit"; exit 1 }
+Write-Host ""
+Write-Host "Running add_whe_refs.py..." -ForegroundColor Yellow
+python "$MapperDir\add_whe_refs.py"
+if ($LASTEXITCODE -ne 0) { Write-Host "ERROR in add_whe_refs.py" -ForegroundColor Red; Read-Host "Press Enter to exit"; exit 1 }
 
-    Write-Host ""
-    Write-Host "Geodata rebuild complete." -ForegroundColor Green
-}
+Write-Host ""
+Write-Host "Geodata rebuild complete." -ForegroundColor Green
 
 # ── Step 2: Show what changed ─────────────────────────────────────────────────
 Write-Host ""
@@ -47,7 +43,7 @@ git status --short
 Write-Host ""
 $msg = Read-Host "Commit message (Enter for timestamp)"
 if ([string]::IsNullOrWhiteSpace($msg)) {
-    $msg = "Update mapper data and code — $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
+    $msg = "Update mapper data and code - $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
 }
 
 # ── Step 4: Write app version into version.json ───────────────────────────────
@@ -79,21 +75,24 @@ git push
 Write-Host ""
 Write-Host "Building dist from $DataDir ..." -ForegroundColor Yellow
 
-Copy-Item "$MapperDir\mapper.html"   "$DistDir\mapper.html"   -Force
-Copy-Item "$MapperDir\version.json"  "$DistDir\version.json"  -Force
-Copy-Item "$MapperDir\refs.json"     "$DistDir\refs.json"     -Force
-Copy-Item "$MapperDir\sahm-logo.png" "$DistDir\sahm-logo.png" -Force
+Copy-Item "$MapperDir\mapper.html"    "$DistDir\mapper.html"    -Force
+Copy-Item "$MapperDir\version.json"  "$DistDir\version.json"   -Force
+Copy-Item "$MapperDir\refs.json"     "$DistDir\refs.json"      -Force
+Copy-Item "$MapperDir\sahm-logo.png" "$DistDir\sahm-logo.png"  -Force
 Copy-Item "$MapperDir\map_2000CE.png" "$DistDir\map_2000CE.png" -Force
-Copy-Item "$MapperDir\favicon.ico"   "$DistDir\favicon.ico"   -Force
-Copy-Item "$MapperDir\js"            "$DistDir\js"            -Recurse -Force
+Copy-Item "$MapperDir\favicon.ico"   "$DistDir\favicon.ico"    -Force
+Copy-Item "$MapperDir\js"            "$DistDir\js"             -Recurse -Force
 
-Copy-Item "$DataDir\primaries.txt"   "$DistDir\primaries.txt" -Force
-Copy-Item "$DataDir\polareas\*"      "$DistDir\polareas\"     -Recurse -Force
-Copy-Item "$DataDir\pols\*"          "$DistDir\pols\"         -Recurse -Force
-Copy-Item "$DataDir\coasts\*"        "$DistDir\coasts\"       -Recurse -Force
-Copy-Item "$DataDir\niw\*"           "$DistDir\niw\"          -Recurse -Force
-Copy-Item "$DataDir\cities\*"        "$DistDir\cities\"       -Recurse -Force
-Copy-Item "$DataDir\inwaters\*"      "$DistDir\inwaters\"     -Recurse -Force
+# robocopy: only copies files newer in source (/XO), including subdirs (/E)
+# exit codes 0-7 are success; 8+ are errors
+robocopy "$DataDir"          "$DistDir"          "primaries.txt" /XO | Out-Null
+robocopy "$DataDir\polareas" "$DistDir\polareas" /E /XO | Out-Null
+robocopy "$DataDir\pols"     "$DistDir\pols"     /E /XO | Out-Null
+robocopy "$DataDir\coasts"   "$DistDir\coasts"   /E /XO | Out-Null
+robocopy "$DataDir\niw"      "$DistDir\niw"      /E /XO | Out-Null
+robocopy "$DataDir\cities"   "$DistDir\cities"   /E /XO | Out-Null
+robocopy "$DataDir\inwaters"  "$DistDir\inwaters" /E /XO | Out-Null
+if ($LASTEXITCODE -ge 8) { Write-Host "ERROR: robocopy failed (exit $LASTEXITCODE)" -ForegroundColor Red; Read-Host "Press Enter to exit"; exit 1 }
 
 Write-Host "Dist built." -ForegroundColor Green
 

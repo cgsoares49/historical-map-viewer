@@ -232,7 +232,7 @@ const GEODATA = {
     'aboriginal peoples':              [   95,  -45,   165,   20, -2400.1, -1],  // 2400.1 BCE–1 BCE
     'acarnania':                       [   20,   35,    25,   40, -695.5, -1],  // 695.5 BCE–1 BCE
     'achaea':                          [   12,   35,    25,   45, -720.5, -280.4],  // 720.5 BCE–280.4 BCE
-    'achaean league':                  [   20,   35,    25,   40, -280.4, -268.2],  // 280.4 BCE–268.2 BCE
+    'achaean league':                  [   20,   35,    25,   40, -280.4, -1],  // 280.4 BCE–1 BCE
     'achaeans':                        [   18,   35,    25,   45, -1100.5, -720.5],  // 1100.5 BCE–720.5 BCE
     'adena culture':                   [  -90,   35,   -75,   45, -800.1, -1],  // 800.1 BCE–1 BCE
     'aegina':                          [   20,   35,    25,   40, -520.5, -338.2],  // 520.5 BCE–338.2 BCE
@@ -249,7 +249,7 @@ const GEODATA = {
     'akkadian empire':                 [   30,   25,    60,   40, -2279.3, -2193.4],  // 2279.3 BCE–2193.4 BCE
     'akkadian tributary':              [   45,   25,    60,   40, -2297.5, -2220.5],  // 2297.5 BCE–2220.5 BCE
     'akraephia':                       [   20,   35,    25,   40, -386.5, -378.8],  // 386.5 BCE–378.8 BCE
-    'akragas':                         [   10,   35,    20,   40, -500.1, -1],  // 500.1 BCE–1 BCE
+    'akragas':                         [   10,   35,    20,   40, -500.1, -268.5],  // 500.1 BCE–268.5 BCE
     'alasiya':                         [   30,   30,    35,   40, -1875.5, -1200.6],  // 1875.5 BCE–1200.6 BCE
     'alavi':                           [   80,   25,    85,   30, -610.1, -467.5],  // 610.1 BCE–467.5 BCE
     'albanians':                       [   42,   35,    54,   45, -612.3, -1],  // 612.3 BCE–1 BCE
@@ -293,7 +293,7 @@ const GEODATA = {
     'aram-zobah':                      [   35,   30,    40,   35, -1145.5, -750.5],  // 1145.5 BCE–750.5 BCE
     'aramaeans':                       [   35,   30,    50,   40, -1280, -1],  // 1280 BCE–1 BCE
     'arcadia':                         [   20,   35,    25,   40, -742.5, -445.5],  // 742.5 BCE–445.5 BCE
-    'arcadian league':                 [   20,   35,    25,   40, -363.3, -268.2],  // 363.3 BCE–268.2 BCE
+    'arcadian league':                 [   20,   35,    25,   40, -363.3, -1],  // 363.3 BCE–1 BCE
     'arctic marine mammal hunters':    [  100,   60,   192,   80, -2400.1, -1],  // 2400.1 BCE–1 BCE
     'arctic peoples':                  [ -170,   55,   -40,   75, -2400.1, -1],  // 2400.1 BCE–1 BCE
     'ardiaei':                         [   18,   40,    24,   45, -346.5, -1],  // 346.5 BCE–1 BCE
@@ -380,7 +380,7 @@ const GEODATA = {
     'carthaginian ally':               [   -5,   30,    20,   40, -500.1, -277.3],  // 500.1 BCE–277.3 BCE
     'carthaginian tributary':          [   10,   35,    15,   40, -405.1, -375.5],  // 405.1 BCE–375.5 BCE
     'carystus':                        [   20,   35,    25,   40, -386.5, -294.2],  // 386.5 BCE–294.2 BCE
-    'catane':                          [   10,   35,    20,   40, -461.5, -1],  // 461.5 BCE–1 BCE
+    'catane':                          [   10,   35,    20,   40, -461.5, -269.5],  // 461.5 BCE–269.5 BCE
     'caucasians':                      [   30,   35,    50,   45, -2400.1, -690.5],  // 2400.1 BCE–690.5 BCE
     'cedi':                            [   75,   20,    85,   30, -825.1, -319.5],  // 825.1 BCE–319.5 BCE
     'celtic mercenaries':              [   18,   35,    35,   45],
@@ -521,7 +521,7 @@ const GEODATA = {
     'enchele':                         [   18,   40,    24,   45, -650.1, -500.1],  // 650.1 BCE–500.1 BCE
     'enzite':                          [   35,   35,    45,   40, -931.1, -802.5],  // 931.1 BCE–802.5 BCE
     'eordaia':                         [   18,   40,    24,   45, -540.5, -475.5],  // 540.5 BCE–475.5 BCE
-    'epicnemidian locris':             [   18,   35,    25,   45, -695.5, -1],  // 695.5 BCE–1 BCE
+    'epicnemidian locris':             [   18,   35,    25,   45, -695.5, -264.5],  // 695.5 BCE–264.5 BCE
     'epidauria':                       [   20,   35,    25,   40, -780.5, -670.5],  // 780.5 BCE–670.5 BCE
     'epirote ally':                    [   10,   35,    24,   45, -292.5, 275.1],  // 292.5 BCE–275.1 CE
     'equatorial guinea':               [    5,   -5,    15,    5, 1990],  // 1990 CE–present
@@ -625,7 +625,7 @@ const GEODATA = {
     'iberians':                        [  -12,   35,    48,   50, -1725.1, -1],  // 1725.1 BCE–1 BCE
     'idamaraz':                        [   40,   30,    45,   40, -1741.5, -1615.5],  // 1741.5 BCE–1615.5 BCE
     'ikshvakus':                       [   80,   25,    85,   30, -364.5, -361.5],  // 364.5 BCE–361.5 BCE
-    'illyrian kingdom':                [   18,   40,    24,   45, -279.1, -1],  // 279.1 BCE–1 BCE
+    'illyrian kingdom':                [   18,   35,    25,   45, -279.1, -1],  // 279.1 BCE–1 BCE
     'illyrian tributary':              [   18,   40,    24,   45, -372.5, -370.5],  // 372.5 BCE–370.5 BCE
     'illyrians':                       [   12,   40,    24,   50, -1725.1, -1],  // 1725.1 BCE–1 BCE
     'illyrioi':                        [   12,   40,    18,   45, -500.1, -1],  // 500.1 BCE–1 BCE
@@ -701,7 +701,7 @@ const GEODATA = {
     'kingdom of cyrene':               [    5,   30,    30,   40, -632.5, -1],  // 632.5 BCE–1 BCE
     'kingdom of der':                  [   40,   30,    50,   35, -2018.6, -1227.5],  // 2018.6 BCE–1227.5 BCE
     'kingdom of ebla':                 [   35,   30,    45,   40, -2380.5, -2000.5],  // 2380.5 BCE–2000.5 BCE
-    'kingdom of epirus':               [   10,   35,    30,   45, -330.5, -1],  // 330.5 BCE–1 BCE
+    'kingdom of epirus':               [   10,   35,    30,   45, -330.5, -264.5],  // 330.5 BCE–264.5 BCE
     'kingdom of eshnunna':             [   40,   30,    50,   40, -2026.5, -1730.5],  // 2026.5 BCE–1730.5 BCE
     'kingdom of hamath':               [   35,   30,    40,   40, -1180.5, -605.5],  // 1180.5 BCE–605.5 BCE
     'kingdom of illyria':              [   15,   35,    25,   45, -399.5, -1],  // 399.5 BCE–1 BCE
@@ -720,7 +720,7 @@ const GEODATA = {
     'kingdom of larsa':                [   40,   30,    50,   35, -2270.5, -1736.5],  // 2270.5 BCE–1736.5 BCE
     'kingdom of lysimakhos':           [   18,   35,    36,   50, -305.5, -281.4],  // 305.5 BCE–281.4 BCE
     'kingdom of macedon':              [   15,   20,    80,   50, -650.5, -301.3],  // 650.5 BCE–301.3 BCE
-    'kingdom of macedonia':            [   18,   35,    30,   45, -277, -1],  // 277 BCE–1 BCE
+    'kingdom of macedonia':            [   15,   35,    30,   45, -277, -1],  // 277 BCE–1 BCE
     'kingdom of malgium':              [   40,   30,    50,   35, -1935.5, -1845.5],  // 1935.5 BCE–1845.5 BCE
     'kingdom of mari':                 [   35,   30,    50,   40, -2311.4, -2190.5],  // 2311.4 BCE–2190.5 BCE
     'kingdom of melid':                [   35,   35,    40,   40, -1190.5, -625.5],  // 1190.5 BCE–625.5 BCE
@@ -732,7 +732,7 @@ const GEODATA = {
     'kingdom of sam\'al':              [   35,   35,    40,   40, -920.5, -604.7],  // 920.5 BCE–604.7 BCE
     'kingdom of sindica':              [   36,   40,    42,   50, -480.1, -380.5],  // 480.1 BCE–380.5 BCE
     'kingdom of sparta':               [   10,   30,    30,   45, -777.5, -268.2],  // 777.5 BCE–268.2 BCE
-    'kingdom of syracuse':             [   10,   35,    25,   45, -304.5, -289.5],  // 304.5 BCE–289.5 BCE
+    'kingdom of syracuse':             [   10,   35,    25,   45, -304.5, -263.3],  // 304.5 BCE–263.3 BCE
     'kingdom of terqa':                [   35,   30,    45,   40, -1741.5, -1512.5],  // 1741.5 BCE–1512.5 BCE
     'kingdom of the grabaei':          [   18,   40,    24,   45, -429.1, -295.5],  // 429.1 BCE–295.5 BCE
     'kingdom of tuttul':               [   35,   35,    45,   40, -2380.5, -2196.5],  // 2380.5 BCE–2196.5 BCE
@@ -779,7 +779,7 @@ const GEODATA = {
     'league of argos':                 [   18,   35,    30,   45, -421.7, -417.5],  // 421.7 BCE–417.5 BCE
     'lebadeia':                        [   20,   35,    25,   40, -386.5, -378.8],  // 386.5 BCE–378.8 BCE
     'leichtenstein':                   [    6,   45,    12,   50, 1990],  // 1990 CE–present
-    'leontini':                        [   10,   35,    20,   40, -466.5, -1],  // 466.5 BCE–1 BCE
+    'leontini':                        [   10,   35,    20,   40, -466.5, -270.5],  // 466.5 BCE–270.5 BCE
     'lesbos':                          [   25,   35,    30,   40, -386.5, -1],  // 386.5 BCE–1 BCE
     'lesotho':                         [   25,  -35,    30,  -25, 1990],  // 1990 CE–present
     'li':                              [  115,   30,   120,   35, -770.1, -538.5],  // 770.1 BCE–538.5 BCE
@@ -833,7 +833,7 @@ const GEODATA = {
     'malta':                           [   10,   35,    15,   40, 1990],  // 1990 CE–present
     'mama':                            [   35,   35,    40,   40, -1850.5, -1644.5],  // 1850.5 BCE–1644.5 BCE
     'mamertine mercenaries':           [   15,   35,    20,   40, -289.1, -287.5],  // 289.1 BCE–287.5 BCE
-    'mamertines':                      [   10,   35,    20,   40, -287.5, -1],  // 287.5 BCE–1 BCE
+    'mamertines':                      [   10,   35,    20,   40, -287.5, -263.3],  // 287.5 BCE–263.3 BCE
     'manchurian peoples':              [  114,   35,   144,   55, -2400.1, -1],  // 2400.1 BCE–1 BCE
     'mannaea':                         [   40,   35,    50,   40, -843.1, -608.5],  // 843.1 BCE–608.5 BCE
     'manshi':                          [  110,   30,   115,   35, -770.1, -491.5],  // 770.1 BCE–491.5 BCE
@@ -1132,7 +1132,7 @@ const GEODATA = {
     'st. kitts and nevis':             [  -65,   15,   -60,   20, 1990],  // 1990 CE–present
     'st. lucia':                       [  -65,   10,   -60,   15, 1990],  // 1990 CE–present
     'st. vincent and the grenadines':  [  -65,   10,   -60,   15, 1990],  // 1990 CE–present
-    'stasis':                          [   10,   30,    45,   45, -586.6, -312.7],  // 586.6 BCE–312.7 BCE
+    'stasis':                          [   10,   30,    45,   45, -586.6, 264.4],  // 586.6 BCE–264.4 CE
     'su':                              [  115,   35,   120,   40, -770.1, -684.5],  // 770.1 BCE–684.5 BCE
     'subarctic peoples':               [ -168,   45,   -56,   70, -2400.1, -1],  // 2400.1 BCE–1 BCE
     'subartum':                        [   40,   35,    45,   40, -1741.5, -1615.5],  // 1741.5 BCE–1615.5 BCE
@@ -1145,7 +1145,7 @@ const GEODATA = {
     'surasena':                        [   75,   25,    80,   30, -900.1, -360.5],  // 900.1 BCE–360.5 BCE
     'suriname':                        [  -60,    0,   -50,   10, 1990],  // 1990 CE–present
     'swaziland':                       [   30,  -30,    35,  -25, 1990],  // 1990 CE–present
-    'syracuse':                        [    6,   35,    30,   45, -715.5, -1],  // 715.5 BCE–1 BCE
+    'syracuse':                        [    6,   35,    30,   45, -715.5, -265.5],  // 715.5 BCE–265.5 BCE
     'syracuse exiles':                 [   10,   35,    20,   40, -316.4, -305.5],  // 316.4 BCE–305.5 BCE
     'são tomé and príncipe':           [    5,   -5,    10,    5, 1990],  // 1990 CE–present
     'tabal':                           [   30,   35,    40,   40, -1190.5, -678.5],  // 1190.5 BCE–678.5 BCE
@@ -1159,7 +1159,7 @@ const GEODATA = {
     'tarhuntassa':                     [   30,   35,    35,   40, -1535.5, -1200.5],  // 1535.5 BCE–1200.5 BCE
     'tartessos':                       [  -10,   35,    -5,   40, -1000.1, -1],  // 1000.1 BCE–1 BCE
     'taulanti':                        [   15,   35,    25,   45, -800.1, -279.1],  // 800.1 BCE–279.1 BCE
-    'tauromenion':                     [   15,   35,    20,   40, -288.5, -1],  // 288.5 BCE–1 BCE
+    'tauromenion':                     [   15,   35,    20,   40, -288.5, -267.5],  // 288.5 BCE–267.5 BCE
     'taxila':                          [   70,   30,    75,   40, -338.5, -326.4],  // 338.5 BCE–326.4 BCE
     'tegea':                           [   20,   35,    25,   40, -300.5, -268.2],  // 300.5 BCE–268.2 BCE
     'teng':                            [  115,   30,   120,   40, -770.1, -297.5],  // 770.1 BCE–297.5 BCE
