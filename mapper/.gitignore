@@ -11,6 +11,7 @@ mapper.NET.runtimeconfig.json
 mapper.NET.runtimeconfig.dev.json
 
 # ── Misc data / work files ───────────────────────────────────────────────────
+*.vbp
 Work Area/
 NVALUES.DAT
 offsets.txt

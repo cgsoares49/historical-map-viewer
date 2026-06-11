@@ -19,17 +19,17 @@ Write-Host ""
 # ── Step 1: Rebuild geodata from PAR/primaries (always) ───────────────────────
 Write-Host "Running build_geodata.py..." -ForegroundColor Yellow
 python "$MapperDir\build_geodata.py"
-if ($LASTEXITCODE -ne 0) { Write-Host "ERROR in build_geodata.py" -ForegroundColor Red; Read-Host "Press Enter to exit"; exit 1 }
+if ($LASTEXITCODE -ne 0) { Write-Host "ERROR in build_geodata.py" -ForegroundColor Red; exit 1 }
 
 Write-Host ""
 Write-Host "Running merge_geodata.py..." -ForegroundColor Yellow
 python "$MapperDir\merge_geodata.py"
-if ($LASTEXITCODE -ne 0) { Write-Host "ERROR in merge_geodata.py" -ForegroundColor Red; Read-Host "Press Enter to exit"; exit 1 }
+if ($LASTEXITCODE -ne 0) { Write-Host "ERROR in merge_geodata.py" -ForegroundColor Red; exit 1 }
 
 Write-Host ""
 Write-Host "Running add_whe_refs.py..." -ForegroundColor Yellow
 python "$MapperDir\add_whe_refs.py"
-if ($LASTEXITCODE -ne 0) { Write-Host "ERROR in add_whe_refs.py" -ForegroundColor Red; Read-Host "Press Enter to exit"; exit 1 }
+if ($LASTEXITCODE -ne 0) { Write-Host "ERROR in add_whe_refs.py" -ForegroundColor Red; exit 1 }
 
 Write-Host ""
 Write-Host "Geodata rebuild complete." -ForegroundColor Green
@@ -40,11 +40,7 @@ Write-Host "Changed files:" -ForegroundColor Yellow
 git status --short
 
 # ── Step 3: Commit message ────────────────────────────────────────────────────
-Write-Host ""
-$msg = Read-Host "Commit message (Enter for timestamp)"
-if ([string]::IsNullOrWhiteSpace($msg)) {
-    $msg = "Update mapper data and code - $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
-}
+$msg = "Update mapper data and code - $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
 
 # ── Step 4: Write app version into version.json ───────────────────────────────
 $versionFile = "$MapperDir\version.json"
@@ -63,7 +59,6 @@ git commit -m $msg
 
 if ($LASTEXITCODE -ne 0) {
     Write-Host "Nothing to commit or commit failed." -ForegroundColor Red
-    Read-Host "Press Enter to exit"
     exit 1
 }
 
@@ -92,7 +87,7 @@ robocopy "$DataDir\coasts"   "$DistDir\coasts"   /E /XO | Out-Null
 robocopy "$DataDir\niw"      "$DistDir\niw"      /E /XO | Out-Null
 robocopy "$DataDir\cities"   "$DistDir\cities"   /E /XO | Out-Null
 robocopy "$DataDir\inwaters"  "$DistDir\inwaters" /E /XO | Out-Null
-if ($LASTEXITCODE -ge 8) { Write-Host "ERROR: robocopy failed (exit $LASTEXITCODE)" -ForegroundColor Red; Read-Host "Press Enter to exit"; exit 1 }
+if ($LASTEXITCODE -ge 8) { Write-Host "ERROR: robocopy failed (exit $LASTEXITCODE)" -ForegroundColor Red; exit 1 }
 
 Write-Host "Dist built." -ForegroundColor Green
 
@@ -105,5 +100,3 @@ Write-Host ""
 Write-Host "══════════════════════════════════════════════" -ForegroundColor Green
 Write-Host "  Done! Live at mapper.historymaps.org" -ForegroundColor Green
 Write-Host "══════════════════════════════════════════════" -ForegroundColor Green
-Write-Host ""
-Read-Host "Press Enter to close"
