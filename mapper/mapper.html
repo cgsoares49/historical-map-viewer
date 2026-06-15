@@ -969,14 +969,8 @@
         <div id="infoPopupRefs">
             <div class="info-section-label">References</div>
             <div id="infoPopupRefsVal" class="info-section-value"></div>
-            <div id="infoPopupRefAdd" style="display:flex;gap:4px;margin-top:4px;">
-                <input id="infoPopupRefInput" type="text" placeholder="Paste URL or citation…"
-                       style="flex:1;font-size:11px;height:20px;padding:1px 4px;">
-                <button id="infoPopupRefSave" style="font-size:11px;padding:0 6px;height:20px;">Add</button>
-            </div>
         </div>
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;">
-            <span id="infoPopupSaveStatus" style="font-size:10px;color:#507090;"></span>
+        <div style="display:flex;justify-content:flex-end;margin-top:6px;">
             <button id="infoPopupDismiss">Dismiss</button>
         </div>
     </div>
@@ -1037,20 +1031,6 @@ fetch('version.json').then(r => r.json()).then(v => {
     resizeTimeline();
 }).catch(() => {});
 
-async function saveRefs() {
-    const statusEl = document.getElementById('infoPopupSaveStatus');
-    try {
-        const resp = await fetch('/save-refs', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(geodataRefs, null, 2),
-        });
-        statusEl.textContent = resp.ok ? 'Saved.' : 'Save failed.';
-    } catch (e) {
-        statusEl.textContent = 'Save error.';
-    }
-    setTimeout(() => { statusEl.textContent = ''; }, 2500);
-}
 
 // ── Data coverage limits ─────────────────────────────────────────────────────
 // Update MAX_DATA_YEAR when new tiles extend coverage toward the present.
@@ -3293,52 +3273,22 @@ function showInfoPopup(rawName, screenX, screenY) {
 }
 
 function renderPopupRefs(refKey) {
-    const refs     = geodataRefs[refKey] || [];
+    const refs      = geodataRefs[refKey] || [];
     const refsValEl = document.getElementById('infoPopupRefsVal');
     refsValEl.innerHTML = '';
-    refs.forEach((r, i) => {
+    refs.forEach(r => {
         const row = document.createElement('div');
-        row.style.cssText = 'display:flex;align-items:center;gap:4px;margin-bottom:2px;';
-        const link = document.createElement('span');
-        link.style.flex = '1';
+        row.style.marginBottom = '2px';
         if (/^https?:\/\//.test(r)) {
-            link.innerHTML = `<a href="${r}" target="_blank" rel="noopener" style="color:#00c8f0;text-decoration:none;font-size:11px;">${r}</a>`;
+            row.innerHTML = `<a href="${r}" target="_blank" rel="noopener" style="color:#00c8f0;text-decoration:none;font-size:11px;">${r}</a>`;
         } else {
-            link.textContent = r;
-            link.style.fontSize = '11px';
+            row.textContent = r;
+            row.style.fontSize = '11px';
         }
-        const del = document.createElement('button');
-        del.textContent = '×';
-        del.title = 'Remove';
-        del.style.cssText = 'background:none;border:none;color:#884444;font-size:13px;cursor:pointer;padding:0 2px;height:auto;line-height:1;';
-        del.addEventListener('click', () => {
-            geodataRefs[refKey].splice(i, 1);
-            if (geodataRefs[refKey].length === 0) delete geodataRefs[refKey];
-            renderPopupRefs(refKey);
-            saveRefs();
-        });
-        row.appendChild(link);
-        row.appendChild(del);
         refsValEl.appendChild(row);
     });
 }
 
-document.getElementById('infoPopupRefSave').addEventListener('click', () => {
-    const popup  = document.getElementById('infoPopup');
-    const refKey = popup._refKey;
-    if (!refKey) return;
-    const val = document.getElementById('infoPopupRefInput').value.trim();
-    if (!val) return;
-    if (!geodataRefs[refKey]) geodataRefs[refKey] = [];
-    geodataRefs[refKey].push(val);
-    renderPopupRefs(refKey);
-    document.getElementById('infoPopupRefInput').value = '';
-    saveRefs();
-});
-
-document.getElementById('infoPopupRefInput').addEventListener('keydown', e => {
-    if (e.key === 'Enter') document.getElementById('infoPopupRefSave').click();
-});
 
 function showInfoPopupAtPixel(px, py, screenX, screenY) {
     if (!backCtx) { showInfoPopup('(map not ready)', screenX, screenY); return; }
