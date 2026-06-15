@@ -2425,12 +2425,13 @@ function vibeNavigateTo(foundName, bounds, year, label) {
 
     // Use explicit year, else place's start date + 0.1 to cross the exclusive lower bound
     // (PAR date match is year > range.from, so from=-725.5 first shows at -725.4)
-    // 1990.1 is the magic marker for modern countries — leave it as-is.
+    // Modern nations (bounds[4] === 1990.1) use year 2000, the always-loaded modern reference.
+    const isModern = bounds[4] === 1990.1;
     let placeYear;
     if (year !== null && year !== undefined) {
         placeYear = year;
     } else if (bounds[4] !== undefined) {
-        placeYear = bounds[4] === 1990.1 ? 1990.1 : bounds[4] + 0.1;
+        placeYear = isModern ? 2000 : bounds[4] + 0.1;
     } else {
         placeYear = null;
     }
@@ -2439,7 +2440,7 @@ function vibeNavigateTo(foundName, bounds, year, label) {
     }
 
     // Label shows the clean integer start year, not the +0.1 adjusted value
-    const labelYear = placeYear === 1990.1 ? 'present'
+    const labelYear = isModern ? 'present'
         : placeYear !== null ? (placeYear < 0
             ? Math.ceil(Math.abs(placeYear)) + ' BCE'
             : Math.floor(placeYear) + ' CE')
