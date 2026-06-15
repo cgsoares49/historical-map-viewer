@@ -5,11 +5,20 @@ Only touches entries not already in refs.json (hand-curated entries with Wikiped
 links are left alone). User can verify/remove broken links later.
 """
 
-import re, json, os
+import re, json, os, csv
 
 MAPPER_DIR = os.path.dirname(os.path.abspath(__file__))
 GEODATA_JS = os.path.join(MAPPER_DIR, 'js', 'geodata.js')
 REFS_JSON  = os.path.join(MAPPER_DIR, 'refs.json')
+WHE_AUDIT  = os.path.join(MAPPER_DIR, 'whe_link_audit.csv')
+
+# Build set of confirmed-dead WHE URLs so they are never re-added
+dead_whe = set()
+if os.path.exists(WHE_AUDIT):
+    with open(WHE_AUDIT, encoding='utf-8') as f:
+        for row in csv.DictReader(f):
+            if row['Status'] == '404':
+                dead_whe.add(row['URL'])
 
 def to_whe_url(key):
     """Convert a geodata key to a World History Encyclopedia URL."""
@@ -51,14 +60,18 @@ for key in par_keys:
     whe_url  = to_whe_url(key)
     wiki_url = to_wiki_url(key)
     if real_key not in refs:
-        refs[real_key] = [whe_url, wiki_url]
+        urls_to_add = []
+        if whe_url not in dead_whe:
+            urls_to_add.append(whe_url)
+        urls_to_add.append(wiki_url)
+        refs[real_key] = urls_to_add
         added += 1
     else:
         urls = refs[real_key]
         whe_urls  = [u for u in urls if 'worldhistory.org' in u]
         wiki_urls = [u for u in urls if 'wikipedia.org' in u]
         other     = [u for u in urls if 'worldhistory.org' not in u and 'wikipedia.org' not in u]
-        if not whe_urls:
+        if not whe_urls and whe_url not in dead_whe:
             whe_urls = [whe_url]
             added += 1
         if not wiki_urls:
