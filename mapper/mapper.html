@@ -3253,8 +3253,6 @@ function showInfoPopup(rawName, screenX, screenY) {
     }
 
     renderPopupRefs(refKey);
-    document.getElementById('infoPopupRefInput').value = '';
-    document.getElementById('infoPopupSaveStatus').textContent = '';
 
     const popup = document.getElementById('infoPopup');
     plausible('Info Popup', { props: { name: toTitleCase(rawName) } });
