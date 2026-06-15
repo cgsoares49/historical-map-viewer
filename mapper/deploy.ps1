@@ -58,8 +58,7 @@ Write-Host "Committing..." -ForegroundColor Yellow
 git commit -m $msg
 
 if ($LASTEXITCODE -ne 0) {
-    Write-Host "Nothing to commit or commit failed." -ForegroundColor Red
-    exit 1
+    Write-Host "Nothing new to commit — continuing to deploy." -ForegroundColor Yellow
 }
 
 Write-Host ""
