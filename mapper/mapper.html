@@ -1539,16 +1539,23 @@ document.getElementById('btnHome').addEventListener('click', async () => {
     btn.disabled = false;
 });
 
+// Rounds a coordinate to enough decimal places for the current zoom (1px of movement is visible).
+function roundCoord(val, xScale) {
+    const p = Math.max(1, Math.ceil(Math.log10(Math.max(1, xScale))));
+    return Math.round(val * Math.pow(10, p)) / Math.pow(10, p);
+}
+
 // Pan buttons: move by factor × viewport width/height
 function pan(dLon, dLat) {
     const inp    = getInputs();
     const factor = parseFloat(document.getElementById('panFactor').value) || 1.0;
     const degX   = 360 / (inp.zoom + 1);
     const degY   = degX * canvas.height / canvas.width;
+    const xScale = canvas.width / degX;
     const newLon = Math.max(-180, Math.min(180, inp.centerLon + dLon * degX * factor));
     const newLat = Math.max(-90,  Math.min(90,  inp.centerLat + dLat * degY * factor));
-    document.getElementById('centerLon').value = Math.round(newLon * 10) / 10;
-    document.getElementById('centerLat').value = Math.round(newLat * 10) / 10;
+    document.getElementById('centerLon').value = roundCoord(newLon, xScale);
+    document.getElementById('centerLat').value = roundCoord(newLat, xScale);
     scheduleRender();
 }
 
@@ -1642,9 +1649,9 @@ function _stepZoom(direction, px, py) {
     const dx = px - canvas.width  / 2;
     const dy = py - canvas.height / 2;
     const newLon = Math.max(-180, Math.min(180,
-        Math.round((inp.centerLon + dx * (oldDegX - newDegX) / canvas.width) * 10) / 10));
+        roundCoord(inp.centerLon + dx * (oldDegX - newDegX) / canvas.width, canvas.width / newDegX)));
     const newLat = Math.max(-90,  Math.min(90,
-        Math.round((inp.centerLat - dy * (oldDegX - newDegX) / canvas.width) * 10) / 10));
+        roundCoord(inp.centerLat - dy * (oldDegX - newDegX) / canvas.width, canvas.width / newDegX)));
 
     // Update zoom dropdown + slider
     const zoomSel = document.getElementById('zoom');
@@ -3099,8 +3106,8 @@ overlay.addEventListener('mousedown', e => {
     } else {
         // Snap selection center (world-context click outside rect)
         const geo = contextProjection.pixelToGeo(mx, my);
-        const lon = Math.max(-180, Math.min(180, Math.round(geo.lon * 10) / 10));
-        const lat = Math.max(-90,  Math.min(90,  Math.round(geo.lat * 10) / 10));
+        const lon = Math.max(-180, Math.min(180, roundCoord(geo.lon, contextProjection.xScale)));
+        const lat = Math.max(-90,  Math.min(90,  roundCoord(geo.lat, contextProjection.xScale)));
         document.getElementById('centerLon').value = lon;
         document.getElementById('centerLat').value = lat;
         drawOverlay();
@@ -3119,8 +3126,8 @@ overlay.addEventListener('mousemove', e => {
     if (selDragging && contextProjection) {
         const dLon =  (mx - selDragStartX) / contextProjection.xScale;
         const dLat = -(my - selDragStartY) / contextProjection.yScale;
-        const lon = Math.max(-180, Math.min(180, Math.round((selDragStartLon + dLon) * 10) / 10));
-        const lat = Math.max(-90,  Math.min(90,  Math.round((selDragStartLat + dLat) * 10) / 10));
+        const lon = Math.max(-180, Math.min(180, roundCoord(selDragStartLon + dLon, contextProjection.xScale)));
+        const lat = Math.max(-90,  Math.min(90,  roundCoord(selDragStartLat + dLat, contextProjection.xScale)));
         document.getElementById('centerLon').value = lon;
         document.getElementById('centerLat').value = lat;
         drawOverlay();
@@ -3161,9 +3168,9 @@ overlay.addEventListener('mouseup', e => {
         canvas.style.transform = '';
         if (mapDragging) {
             const newLon = Math.max(-180, Math.min(180,
-                Math.round((mapDragStart.lon - dx / contextProjection.xScale) * 10) / 10));
+                roundCoord(mapDragStart.lon - dx / contextProjection.xScale, contextProjection.xScale)));
             const newLat = Math.max(-90,  Math.min(90,
-                Math.round((mapDragStart.lat + dy / contextProjection.yScale) * 10) / 10));
+                roundCoord(mapDragStart.lat + dy / contextProjection.yScale, contextProjection.xScale)));
             document.getElementById('centerLon').value = newLon;
             document.getElementById('centerLat').value = newLat;
             scheduleRender();
@@ -3417,8 +3424,8 @@ if (isMobile) {
                 if (_mapFullyRendered) {
                     canvas.style.transform = `translate(${dx}px,${dy}px)`;
                 } else {
-                    document.getElementById('centerLon').value = Math.max(-180, Math.min(180, Math.round((_ts.start1.lon + dx / contextProjection.xScale) * 10) / 10));
-                    document.getElementById('centerLat').value = Math.max(-90,  Math.min(90,  Math.round((_ts.start1.lat - dy / contextProjection.yScale) * 10) / 10));
+                    document.getElementById('centerLon').value = Math.max(-180, Math.min(180, roundCoord(_ts.start1.lon + dx / contextProjection.xScale, contextProjection.xScale)));
+                    document.getElementById('centerLat').value = Math.max(-90,  Math.min(90,  roundCoord(_ts.start1.lat - dy / contextProjection.yScale, contextProjection.xScale)));
                     drawOverlay();
                 }
             }
@@ -3847,8 +3854,8 @@ overlay.addEventListener('pointermove', e => {
             } else if (contextProjection) {
                 const dLon =  dx / contextProjection.xScale;
                 const dLat = -dy / contextProjection.yScale;
-                document.getElementById('centerLon').value = Math.max(-180, Math.min(180, Math.round((_ts.start1.lon + dLon) * 10) / 10));
-                document.getElementById('centerLat').value = Math.max(-90,  Math.min(90,  Math.round((_ts.start1.lat + dLat) * 10) / 10));
+                document.getElementById('centerLon').value = Math.max(-180, Math.min(180, roundCoord(_ts.start1.lon + dLon, contextProjection.xScale)));
+                document.getElementById('centerLat').value = Math.max(-90,  Math.min(90,  roundCoord(_ts.start1.lat + dLat, contextProjection.xScale)));
                 drawOverlay();
             }
         }
@@ -3871,9 +3878,9 @@ function _onPointerEnd(e) {
             const dx  = off.x - _ts.start1.x, dy = off.y - _ts.start1.y;
             canvas.style.transform = '';
             document.getElementById('centerLon').value = Math.max(-180, Math.min(180,
-                Math.round((_ts.start1.lon - dx / contextProjection.xScale) * 10) / 10));
+                roundCoord(_ts.start1.lon - dx / contextProjection.xScale, contextProjection.xScale)));
             document.getElementById('centerLat').value = Math.max(-90,  Math.min(90,
-                Math.round((_ts.start1.lat + dy / contextProjection.yScale) * 10) / 10));
+                roundCoord(_ts.start1.lat + dy / contextProjection.yScale, contextProjection.xScale)));
             scheduleRender();
         } else if (!_ts.dragging && _ts.start1 && (now - _ts.start1.time) < 300) {
             // Short tap
@@ -3887,8 +3894,8 @@ function _onPointerEnd(e) {
             } else if (contextProjection) {
                 const off = _evOff(e);
                 const geo = contextProjection.pixelToGeo(off.x, off.y);
-                document.getElementById('centerLon').value = Math.max(-180, Math.min(180, Math.round(geo.lon * 10) / 10));
-                document.getElementById('centerLat').value = Math.max(-90,  Math.min(90,  Math.round(geo.lat * 10) / 10));
+                document.getElementById('centerLon').value = Math.max(-180, Math.min(180, roundCoord(geo.lon, contextProjection.xScale)));
+                document.getElementById('centerLat').value = Math.max(-90,  Math.min(90,  roundCoord(geo.lat, contextProjection.xScale)));
                 drawOverlay();
             }
         }
@@ -3942,9 +3949,9 @@ overlay.addEventListener('touchmove', e => {
             canvas.style.transform = `translate(${dx}px,${dy}px)`;
         } else {
             document.getElementById('centerLon').value = Math.max(-180, Math.min(180,
-                Math.round((_tDrag.lon0 + dx / contextProjection.xScale) * 10) / 10));
+                roundCoord(_tDrag.lon0 + dx / contextProjection.xScale, contextProjection.xScale)));
             document.getElementById('centerLat').value = Math.max(-90, Math.min(90,
-                Math.round((_tDrag.lat0 - dy / contextProjection.yScale) * 10) / 10));
+                roundCoord(_tDrag.lat0 - dy / contextProjection.yScale, contextProjection.xScale)));
             drawOverlay();
         }
     }
@@ -3960,9 +3967,9 @@ overlay.addEventListener('touchend', e => {
     if (_tDrag.active && _mapFullyRendered && contextProjection) {
         canvas.style.transform = '';
         document.getElementById('centerLon').value = Math.max(-180, Math.min(180,
-            Math.round((_tDrag.lon0 - dx / contextProjection.xScale) * 10) / 10));
+            roundCoord(_tDrag.lon0 - dx / contextProjection.xScale, contextProjection.xScale)));
         document.getElementById('centerLat').value = Math.max(-90, Math.min(90,
-            Math.round((_tDrag.lat0 + dy / contextProjection.yScale) * 10) / 10));
+            roundCoord(_tDrag.lat0 + dy / contextProjection.yScale, contextProjection.xScale)));
         scheduleRender();
         _ts.dragging = false; // consumed here — prevent pointerup from double-panning
     } else if (!_tDrag.active && (Date.now() - _tDrag.time < 300) && _mapFullyRendered && !isMobile) {
@@ -4044,9 +4051,9 @@ if (isMobile) {
                 canvas.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
             } else {
                 document.getElementById('centerLon').value = Math.max(-180, Math.min(180,
-                    Math.round((_mobDrag.lon0 + dx / contextProjection.xScale) * 10) / 10));
+                    roundCoord(_mobDrag.lon0 + dx / contextProjection.xScale, contextProjection.xScale)));
                 document.getElementById('centerLat').value = Math.max(-90, Math.min(90,
-                    Math.round((_mobDrag.lat0 - dy / contextProjection.yScale) * 10) / 10));
+                    roundCoord(_mobDrag.lat0 - dy / contextProjection.yScale, contextProjection.xScale)));
                 drawOverlay();
             }
         }
@@ -4062,9 +4069,9 @@ if (isMobile) {
             if (_mobDrag.active && _mapFullyRendered && contextProjection) {
                 canvas.style.transform = '';
                 document.getElementById('centerLon').value = Math.max(-180, Math.min(180,
-                    Math.round((_mobDrag.lon0 + dx / contextProjection.xScale) * 10) / 10));
+                    roundCoord(_mobDrag.lon0 + dx / contextProjection.xScale, contextProjection.xScale)));
                 document.getElementById('centerLat').value = Math.max(-90, Math.min(90,
-                    Math.round((_mobDrag.lat0 - dy / contextProjection.yScale) * 10) / 10));
+                    roundCoord(_mobDrag.lat0 - dy / contextProjection.yScale, contextProjection.xScale)));
                 scheduleRender();
             }
             _ts.dragging = false; _ts.start1 = null;
