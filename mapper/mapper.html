@@ -565,6 +565,61 @@
            keeping the mobile bar visible above the keyboard */
         body.is-mobile { height: var(--mob-height, 100dvh); }
 
+        /* ── News banner ───────────────────────────────────────────────────── */
+        #newsBanner {
+            display: none;
+            background: #0a2a18;
+            border-bottom: 1px solid #1a6a3a;
+            color: #88ffbb;
+            font-family: monospace;
+            font-size: 12px;
+            padding: 5px 12px;
+            flex-shrink: 0;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* ── Feedback popup ────────────────────────────────────────────────── */
+        #feedbackPopup {
+            display: none;
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 340px;
+            background: #0d1b2a;
+            border: 1px solid #2a8060;
+            border-radius: 6px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.85);
+            z-index: 3000;
+            font-family: monospace;
+            color: #c0d8f0;
+            font-size: 12px;
+        }
+        #feedbackPopup textarea {
+            width: 100%;
+            background: #050f20;
+            border: 1px solid #1a4a3a;
+            color: #e0e0e0;
+            font-family: monospace;
+            font-size: 12px;
+            padding: 5px 7px;
+            resize: vertical;
+            min-height: 90px;
+            box-sizing: border-box;
+        }
+        #feedbackPopup input[type=email] {
+            width: 100%;
+            background: #050f20;
+            border: 1px solid #1a4a3a;
+            color: #e0e0e0;
+            font-family: monospace;
+            font-size: 12px;
+            height: 26px;
+            padding: 2px 7px;
+            box-sizing: border-box;
+        }
+
     </style>
 </head>
 <body>
@@ -744,8 +799,9 @@
             <button class="btn-abort" id="btnAbort" disabled style="width:100%;">ABORT</button>
         </div>
         <div class="tb-row" style="gap:4px; margin-top:3px; border-top:1px solid #1a3050; padding-top:3px;">
-            <button id="btnOptions" class="btn-popup-toggle" title="Map display options">⚙ Options</button>
-            <button id="btnDiag"    class="btn-popup-toggle" title="Status and diagnostics">📊 Status</button>
+            <button id="btnOptions"  class="btn-popup-toggle" title="Map display options">⚙ Options</button>
+            <button id="btnDiag"     class="btn-popup-toggle" title="Status and diagnostics">📊 Status</button>
+            <button id="btnFeedback" class="btn-popup-toggle" title="Send feedback" style="color:#88ffcc;">💬</button>
         </div>
     </div>
 
@@ -820,6 +876,12 @@
     </div>
 </div>
 
+<!-- ── News banner ── -->
+<div id="newsBanner">
+    <span>💬 <strong>New:</strong> You can now send feedback — use the 💬 button in the toolbar (or mobile bar) to share thoughts or report issues.</span>
+    <button id="newsBannerClose" style="background:none;border:none;color:#88ffbb;cursor:pointer;font-size:18px;margin-left:auto;padding:0 5px;height:auto;line-height:1;" title="Dismiss">×</button>
+</div>
+
 <!-- ══════════════════════════════════════════════════════════════════════ -->
 <!--  MAP                                                                   -->
 <!-- ══════════════════════════════════════════════════════════════════════ -->
@@ -867,7 +929,8 @@
         <button class="mob-zoom-btn" id="mobZoomIn">+</button>
         <button class="mob-btn" id="mobWorld" style="flex:1;font-size:12px;">🌍 World</button>
         <button class="mob-btn" id="mobSave"  style="flex:1;font-size:12px;color:#ff66ff;border-color:#660088;">💾 Save</button>
-        <button class="mob-btn" id="mobOptions" style="font-size:18px;">⚙</button>
+        <button class="mob-btn" id="mobOptions"  style="font-size:18px;">⚙</button>
+        <button class="mob-btn" id="mobFeedback" style="font-size:18px;" title="Send feedback">💬</button>
     </div>
     <!-- Status feedback -->
     <div id="mobStatusLine">Ready — try "show Rome at 300 BCE"</div>
@@ -974,6 +1037,30 @@
         <div style="display:flex;justify-content:flex-end;margin-top:6px;">
             <button id="infoPopupDismiss">Dismiss</button>
         </div>
+    </div>
+</div>
+
+<!-- ── Feedback popup ── -->
+<div id="feedbackPopup">
+    <div style="background:#0f2a1e;padding:7px 10px;border-radius:6px 6px 0 0;border-bottom:1px solid #1a6040;display:flex;justify-content:space-between;align-items:center;">
+        <span style="color:#66ffaa;font-weight:bold;font-size:13px;">💬 Send Feedback</span>
+        <button id="feedbackClose" style="background:none;border:none;color:#88bbaa;font-size:18px;cursor:pointer;padding:0 3px;height:auto;line-height:1;">×</button>
+    </div>
+    <div style="padding:10px 12px;display:flex;flex-direction:column;gap:7px;">
+        <div style="color:#80b8a0;font-size:11px;">Your feedback helps improve MAPPER. Anonymous unless you add your email.</div>
+        <div>
+            <div style="color:#507090;font-size:10px;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:3px;">Feedback</div>
+            <textarea id="feedbackText" placeholder="What's working well? What could be better?"></textarea>
+        </div>
+        <div>
+            <div style="color:#507090;font-size:10px;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:3px;">Email (optional — for a reply)</div>
+            <input type="email" id="feedbackEmail" placeholder="you@example.com">
+        </div>
+        <div style="display:flex;justify-content:flex-end;gap:7px;margin-top:3px;">
+            <button id="feedbackCancel">Cancel</button>
+            <button id="feedbackSubmit" style="background:#0a3a22;color:#66ffaa;border-color:#1a6a40;">Send</button>
+        </div>
+        <div id="feedbackThanks" style="display:none;color:#66ffaa;font-size:11px;text-align:center;padding:4px 0;">Thank you! Your feedback has been received.</div>
     </div>
 </div>
 
@@ -4084,6 +4171,50 @@ if (isMobile) {
         }
     }, { passive: true });
 }
+
+// ── Feedback popup ────────────────────────────────────────────────────────────
+(function() {
+    const BANNER_KEY = 'mapperFeedbackAnnounceV1';
+
+    function openFeedback() {
+        document.getElementById('feedbackText').value  = '';
+        document.getElementById('feedbackEmail').value = '';
+        document.getElementById('feedbackThanks').style.display = 'none';
+        document.getElementById('feedbackSubmit').disabled = false;
+        document.getElementById('feedbackPopup').style.display = 'block';
+        document.getElementById('feedbackText').focus();
+    }
+    function closeFeedback() {
+        document.getElementById('feedbackPopup').style.display = 'none';
+    }
+
+    document.getElementById('btnFeedback').addEventListener('click', openFeedback);
+    document.getElementById('mobFeedback').addEventListener('click', openFeedback);
+    document.getElementById('feedbackClose').addEventListener('click', closeFeedback);
+    document.getElementById('feedbackCancel').addEventListener('click', closeFeedback);
+
+    document.getElementById('feedbackSubmit').addEventListener('click', () => {
+        const msg   = document.getElementById('feedbackText').value.trim();
+        const email = document.getElementById('feedbackEmail').value.trim();
+        if (!msg) { document.getElementById('feedbackText').focus(); return; }
+        const props = { message: msg };
+        if (email) props.email = email;
+        plausible('Feedback', { props });
+        document.getElementById('feedbackThanks').style.display = 'block';
+        document.getElementById('feedbackSubmit').disabled = true;
+        setTimeout(closeFeedback, 2200);
+    });
+
+    // News banner: show once per browser, dismiss to localStorage
+    if (!localStorage.getItem(BANNER_KEY)) {
+        const banner = document.getElementById('newsBanner');
+        banner.style.display = 'flex';
+        document.getElementById('newsBannerClose').addEventListener('click', () => {
+            banner.style.display = 'none';
+            localStorage.setItem(BANNER_KEY, '1');
+        });
+    }
+})();
 
 </script>
 
