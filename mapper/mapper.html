@@ -4193,15 +4193,37 @@ if (isMobile) {
     document.getElementById('feedbackClose').addEventListener('click', closeFeedback);
     document.getElementById('feedbackCancel').addEventListener('click', closeFeedback);
 
-    document.getElementById('feedbackSubmit').addEventListener('click', () => {
+    document.getElementById('feedbackSubmit').addEventListener('click', async () => {
         const msg   = document.getElementById('feedbackText').value.trim();
         const email = document.getElementById('feedbackEmail').value.trim();
         if (!msg) { document.getElementById('feedbackText').focus(); return; }
-        const props = { message: msg };
-        if (email) props.email = email;
-        plausible('Feedback', { props });
-        document.getElementById('feedbackThanks').style.display = 'block';
+
         document.getElementById('feedbackSubmit').disabled = true;
+
+        const body = { message: msg };
+        if (email) body.email = email;
+
+        try {
+            const res = await fetch('https://formspree.io/f/mjgqgobe', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(body),
+            });
+            if (!res.ok) throw new Error('submit failed');
+        } catch(e) {
+            const t = document.getElementById('feedbackThanks');
+            t.textContent = 'Send failed — please try again.';
+            t.style.color = '#ff8888';
+            t.style.display = 'block';
+            document.getElementById('feedbackSubmit').disabled = false;
+            return;
+        }
+
+        plausible('Feedback', { props: { replied: email ? 'yes' : 'no' } });
+        const t = document.getElementById('feedbackThanks');
+        t.textContent = 'Thank you! Your feedback has been received.';
+        t.style.color = '#66ffaa';
+        t.style.display = 'block';
         setTimeout(closeFeedback, 2200);
     });
 
