@@ -27,12 +27,8 @@ python "$MapperDir\merge_geodata.py"
 if ($LASTEXITCODE -ne 0) { Write-Host "ERROR in merge_geodata.py" -ForegroundColor Red; exit 1 }
 
 Write-Host ""
-Write-Host "Running add_whe_refs.py..." -ForegroundColor Yellow
-python "$MapperDir\add_whe_refs.py"
-if ($LASTEXITCODE -ne 0) { Write-Host "ERROR in add_whe_refs.py" -ForegroundColor Red; exit 1 }
-
-Write-Host ""
 Write-Host "Geodata rebuild complete." -ForegroundColor Green
+Write-Host "(WHE refs managed separately via whe_api_audit.py)" -ForegroundColor DarkGray
 
 # ── Step 2: Show what changed ─────────────────────────────────────────────────
 Write-Host ""
