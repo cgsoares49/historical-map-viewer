@@ -4,7 +4,7 @@
     "https://en.wikipedia.org/wiki/Africa"
   ],
   "europe": [
-    "https://www.worldhistory.org/Europe/",
+    "https://www.worldhistory.org/europe/",
     "https://en.wikipedia.org/wiki/Europe"
   ],
   "asia": [
@@ -48,7 +48,7 @@
     "https://en.wikipedia.org/wiki/Fertile_Crescent"
   ],
   "sumer": [
-    "https://www.worldhistory.org/Sumer/",
+    "https://www.worldhistory.org/sumer/",
     "https://en.wikipedia.org/wiki/Sumer"
   ],
   "akkad": [
@@ -60,19 +60,19 @@
     "https://en.wikipedia.org/wiki/Babylonia"
   ],
   "babylon": [
-    "https://www.worldhistory.org/Babylon/",
+    "https://www.worldhistory.org/babylon/",
     "https://en.wikipedia.org/wiki/Babylon"
   ],
   "assyria": [
-    "https://www.worldhistory.org/Assyria/",
+    "https://www.worldhistory.org/assyria/",
     "https://en.wikipedia.org/wiki/Assyria"
   ],
   "nineveh": [
-    "https://www.worldhistory.org/Nineveh/",
+    "https://www.worldhistory.org/nineveh/",
     "https://en.wikipedia.org/wiki/Nineveh"
   ],
   "ancient egypt": [
-    "https://www.worldhistory.org/Ancient_Egypt/",
+    "https://www.worldhistory.org/egypt/",
     "https://en.wikipedia.org/wiki/Ancient_Egypt"
   ],
   "nile valley": [
@@ -84,7 +84,7 @@
     "https://en.wikipedia.org/wiki/Nubia"
   ],
   "carthage": [
-    "https://www.worldhistory.org/Carthage/",
+    "https://www.worldhistory.org/carthage/",
     "https://en.wikipedia.org/wiki/Carthage"
   ],
   "north africa": [
@@ -92,15 +92,15 @@
     "https://en.wikipedia.org/wiki/North_Africa"
   ],
   "levant": [
-    "https://www.worldhistory.org/Levant/",
+    "https://www.worldhistory.org/levant/",
     "https://en.wikipedia.org/wiki/Levant"
   ],
   "canaan": [
-    "https://www.worldhistory.org/Canaan/",
+    "https://www.worldhistory.org/canaan/",
     "https://en.wikipedia.org/wiki/Canaan"
   ],
   "phoenicia": [
-    "https://www.worldhistory.org/Phoenicia/",
+    "https://www.worldhistory.org/phoenicia/",
     "https://en.wikipedia.org/wiki/Phoenicia"
   ],
   "judea": [
@@ -108,11 +108,9 @@
     "https://en.wikipedia.org/wiki/Judea"
   ],
   "israel (ancient)": [
-    "https://www.worldhistory.org/Israel_(ancient)/",
     "https://en.wikipedia.org/wiki/Kingdom_of_Israel_(united_monarchy)"
   ],
   "persia (ancient)": [
-    "https://www.worldhistory.org/Persia_(ancient)/",
     "https://en.wikipedia.org/wiki/Persia"
   ],
   "achaemenid empire": [
@@ -128,11 +126,11 @@
     "https://en.wikipedia.org/wiki/Anatolia"
   ],
   "ancient greece": [
-    "https://www.worldhistory.org/Ancient_Greece/",
+    "https://www.worldhistory.org/greece/",
     "https://en.wikipedia.org/wiki/Ancient_Greece"
   ],
   "ancient rome": [
-    "https://www.worldhistory.org/Ancient_Rome/",
+    "https://www.worldhistory.org/Rome/",
     "https://en.wikipedia.org/wiki/Ancient_Rome"
   ],
   "roman empire": [
@@ -140,7 +138,7 @@
     "https://en.wikipedia.org/wiki/Roman_Empire"
   ],
   "gaul": [
-    "https://www.worldhistory.org/Gaul/",
+    "https://www.worldhistory.org/gaul/",
     "https://en.wikipedia.org/wiki/Gaul"
   ],
   "britannia": [
@@ -148,7 +146,6 @@
     "https://en.wikipedia.org/wiki/Roman_Britain"
   ],
   "iberia (ancient)": [
-    "https://www.worldhistory.org/Iberia_(ancient)/",
     "https://en.wikipedia.org/wiki/Iberian_Peninsula"
   ],
   "germania": [
@@ -160,7 +157,6 @@
     "https://en.wikipedia.org/wiki/Scythia"
   ],
   "pontic steppe": [
-    "https://www.worldhistory.org/Pontic_Steppe/",
     "https://en.wikipedia.org/wiki/Pontic–Caspian_steppe"
   ],
   "steppe": [
@@ -172,7 +168,7 @@
     "https://en.wikipedia.org/wiki/Indus_Valley_Civilisation"
   ],
   "ancient india": [
-    "https://www.worldhistory.org/Ancient_India/",
+    "https://www.worldhistory.org/india/",
     "https://en.wikipedia.org/wiki/History_of_India"
   ],
   "maurya empire": [
@@ -180,15 +176,13 @@
     "https://en.wikipedia.org/wiki/Maurya_Empire"
   ],
   "ancient china": [
-    "https://www.worldhistory.org/Ancient_China/",
+    "https://www.worldhistory.org/china/",
     "https://en.wikipedia.org/wiki/History_of_China"
   ],
   "arabia (ancient)": [
-    "https://www.worldhistory.org/Arabia_(ancient)/",
     "https://en.wikipedia.org/wiki/Arabian_Peninsula"
   ],
   "arabian peninsula": [
-    "https://www.worldhistory.org/Arabian_Peninsula/",
     "https://en.wikipedia.org/wiki/Arabian_Peninsula"
   ],
   "near east": [
@@ -212,7 +206,6 @@
     "https://en.wikipedia.org/wiki/Horn_of_Africa"
   ],
   "sub-saharan africa": [
-    "https://www.worldhistory.org/Sub-Saharan_Africa/",
     "https://en.wikipedia.org/wiki/Sub-Saharan_Africa"
   ],
   "mali empire": [
@@ -264,7 +257,7 @@
     "https://en.wikipedia.org/wiki/Wales"
   ],
   "ireland": [
-    "https://www.worldhistory.org/Ireland/",
+    "https://www.worldhistory.org/Ancient_Ireland/",
     "https://en.wikipedia.org/wiki/Ireland"
   ],
   "spain": [
@@ -276,11 +269,11 @@
     "https://en.wikipedia.org/wiki/Portugal"
   ],
   "italy": [
-    "https://www.worldhistory.org/Italy/",
+    "https://www.worldhistory.org/italy/",
     "https://en.wikipedia.org/wiki/Italy"
   ],
   "greece": [
-    "https://www.worldhistory.org/Greece/",
+    "https://www.worldhistory.org/greece/",
     "https://en.wikipedia.org/wiki/Greece"
   ],
   "turkey": [
@@ -308,7 +301,6 @@
     "https://en.wikipedia.org/wiki/Norway"
   ],
   "finland": [
-    "https://www.worldhistory.org/Finland/",
     "https://en.wikipedia.org/wiki/Finland"
   ],
   "denmark": [
@@ -336,7 +328,6 @@
     "https://en.wikipedia.org/wiki/Hungary"
   ],
   "romania": [
-    "https://www.worldhistory.org/Romania/",
     "https://en.wikipedia.org/wiki/Romania"
   ],
   "bulgaria": [
@@ -364,7 +355,6 @@
     "https://en.wikipedia.org/wiki/Albania"
   ],
   "north macedonia": [
-    "https://www.worldhistory.org/North_Macedonia/",
     "https://en.wikipedia.org/wiki/North_Macedonia"
   ],
   "bosnia": [
@@ -399,11 +389,10 @@
     "https://en.wikipedia.org/wiki/Iceland"
   ],
   "luxembourg": [
-    "https://www.worldhistory.org/Luxembourg/",
     "https://en.wikipedia.org/wiki/Luxembourg"
   ],
   "egypt": [
-    "https://www.worldhistory.org/Egypt/",
+    "https://www.worldhistory.org/egypt/",
     "https://en.wikipedia.org/wiki/Egypt"
   ],
   "israel": [
@@ -411,7 +400,7 @@
     "https://en.wikipedia.org/wiki/Israel"
   ],
   "palestine": [
-    "https://www.worldhistory.org/Palestine/",
+    "https://www.worldhistory.org/palestine/",
     "https://en.wikipedia.org/wiki/State_of_Palestine"
   ],
   "jordan": [
@@ -419,7 +408,7 @@
     "https://en.wikipedia.org/wiki/Jordan"
   ],
   "syria": [
-    "https://www.worldhistory.org/Syria/",
+    "https://www.worldhistory.org/syria/",
     "https://en.wikipedia.org/wiki/Syria"
   ],
   "lebanon": [
@@ -450,18 +439,16 @@
     "https://en.wikipedia.org/wiki/United_Arab_Emirates"
   ],
   "kuwait": [
-    "https://www.worldhistory.org/Kuwait/",
     "https://en.wikipedia.org/wiki/Kuwait"
   ],
   "qatar": [
     "https://en.wikipedia.org/wiki/Qatar"
   ],
   "bahrain": [
-    "https://www.worldhistory.org/Bahrain/",
     "https://en.wikipedia.org/wiki/Bahrain"
   ],
   "afghanistan": [
-    "https://www.worldhistory.org/Afghanistan/",
+    "https://www.worldhistory.org/Ancient_Afghanistan/",
     "https://en.wikipedia.org/wiki/Afghanistan"
   ],
   "pakistan": [
@@ -545,15 +532,15 @@
     "https://en.wikipedia.org/wiki/Zimbabwe"
   ],
   "india": [
-    "https://www.worldhistory.org/India/",
+    "https://www.worldhistory.org/india/",
     "https://en.wikipedia.org/wiki/India"
   ],
   "china": [
-    "https://www.worldhistory.org/China/",
+    "https://www.worldhistory.org/china/",
     "https://en.wikipedia.org/wiki/China"
   ],
   "japan": [
-    "https://www.worldhistory.org/Japan/",
+    "https://www.worldhistory.org/Ancient_Japan/",
     "https://en.wikipedia.org/wiki/Japan"
   ],
   "korea": [
@@ -616,7 +603,7 @@
     "https://en.wikipedia.org/wiki/Georgia_(country)"
   ],
   "armenia": [
-    "https://www.worldhistory.org/Armenia/",
+    "https://www.worldhistory.org/armenia/",
     "https://en.wikipedia.org/wiki/Armenia"
   ],
   "azerbaijan": [
@@ -684,23 +671,21 @@
     "https://en.wikipedia.org/wiki/Athens"
   ],
   "jerusalem": [
-    "https://www.worldhistory.org/Jerusalem/",
+    "https://www.worldhistory.org/jerusalem/",
     "https://en.wikipedia.org/wiki/Jerusalem"
   ],
   "ur": [
-    "https://www.worldhistory.org/Ur/",
+    "https://www.worldhistory.org/ur/",
     "https://en.wikipedia.org/wiki/Ur"
   ],
   "babylon (city)": [
-    "https://www.worldhistory.org/Babylon_(city)/",
     "https://en.wikipedia.org/wiki/Babylon"
   ],
   "persepolis": [
-    "https://www.worldhistory.org/Persepolis/",
+    "https://www.worldhistory.org/persepolis/",
     "https://en.wikipedia.org/wiki/Persepolis"
   ],
   "carthage (city)": [
-    "https://www.worldhistory.org/Carthage_(city)/",
     "https://en.wikipedia.org/wiki/Carthage"
   ],
   "alexandria": [
@@ -744,7 +729,6 @@
     "https://en.wikipedia.org/wiki/Baghdad"
   ],
   "tehran": [
-    "https://www.worldhistory.org/Tehran/",
     "https://en.wikipedia.org/wiki/Tehran"
   ],
   "delhi": [
@@ -772,7 +756,6 @@
     "https://en.wikipedia.org/wiki/Abisara"
   ],
   "aboriginal peoples": [
-    "https://www.worldhistory.org/Aboriginal_Peoples/",
     "https://en.wikipedia.org/wiki/Aboriginal_Peoples"
   ],
   "acarnania": [
@@ -787,7 +770,6 @@
     "https://en.wikipedia.org/wiki/Achaean_League"
   ],
   "achaeans": [
-    "https://www.worldhistory.org/Achaeans/",
     "https://en.wikipedia.org/wiki/Achaeans"
   ],
   "adena culture": [
@@ -802,15 +784,12 @@
     "https://en.wikipedia.org/wiki/Aeniania"
   ],
   "aeolian league": [
-    "https://www.worldhistory.org/Aeolian_League/",
     "https://en.wikipedia.org/wiki/Aeolian_League"
   ],
   "aeolians": [
-    "https://www.worldhistory.org/Aeolians/",
     "https://en.wikipedia.org/wiki/Aeolians"
   ],
   "aequi": [
-    "https://www.worldhistory.org/Aequi/",
     "https://en.wikipedia.org/wiki/Aequi"
   ],
   "aetolia": [
@@ -828,11 +807,9 @@
     "https://en.wikipedia.org/wiki/Ahhiya"
   ],
   "ainu": [
-    "https://www.worldhistory.org/Ainu/",
     "https://en.wikipedia.org/wiki/Ainu"
   ],
   "aitna": [
-    "https://www.worldhistory.org/Aitna/",
     "https://en.wikipedia.org/wiki/Aitna"
   ],
   "akkadian empire": [
@@ -840,7 +817,6 @@
     "https://en.wikipedia.org/wiki/Akkadian_Empire"
   ],
   "akkadian tributary": [
-    "https://www.worldhistory.org/Akkadian_Tributary/",
     "https://en.wikipedia.org/wiki/Akkadian_Tributary"
   ],
   "akraephia": [
@@ -851,14 +827,12 @@
     "https://en.wikipedia.org/wiki/Akragas"
   ],
   "alasiya": [
-    "https://www.worldhistory.org/Alasiya/",
     "https://en.wikipedia.org/wiki/Alasiya"
   ],
   "alavi": [
     "https://en.wikipedia.org/wiki/Alavi"
   ],
   "albanians": [
-    "https://www.worldhistory.org/Albanians/",
     "https://en.wikipedia.org/wiki/Albanians"
   ],
   "aleuts": [
@@ -874,7 +848,6 @@
     "https://en.wikipedia.org/wiki/Allakappa"
   ],
   "allied armies of the eastern satraps": [
-    "https://www.worldhistory.org/Allied_Armies_Of_The_Eastern_Satraps/",
     "https://en.wikipedia.org/wiki/Allied_Armies_Of_The_Eastern_Satraps"
   ],
   "alshe": [
@@ -884,33 +857,28 @@
     "https://en.wikipedia.org/wiki/Alzi"
   ],
   "amazonian peoples": [
-    "https://www.worldhistory.org/Amazonian_Peoples/",
     "https://en.wikipedia.org/wiki/Amazonian_Peoples"
   ],
   "ambashthas": [
     "https://en.wikipedia.org/wiki/Ambashthas"
   ],
   "ambracia": [
-    "https://www.worldhistory.org/Ambracia/",
     "https://en.wikipedia.org/wiki/Ambracia"
   ],
   "ammonites": [
     "https://en.wikipedia.org/wiki/Ammonites"
   ],
   "amorite ebla": [
-    "https://www.worldhistory.org/Amorite_Ebla/",
     "https://en.wikipedia.org/wiki/Amorite_Ebla"
   ],
   "amorite mari": [
-    "https://www.worldhistory.org/Amorite_Mari/",
     "https://en.wikipedia.org/wiki/Amorite_Mari"
   ],
   "amorite tuttul": [
-    "https://www.worldhistory.org/Amorite_Tuttul/",
     "https://en.wikipedia.org/wiki/Amorite_Tuttul"
   ],
   "amorites": [
-    "https://www.worldhistory.org/Amorites/",
+    "https://www.worldhistory.org/amorite/",
     "https://en.wikipedia.org/wiki/Amorites"
   ],
   "amurru": [
@@ -921,42 +889,33 @@
     "https://en.wikipedia.org/wiki/Anarta"
   ],
   "andean peoples": [
-    "https://www.worldhistory.org/Andean_Peoples/",
     "https://en.wikipedia.org/wiki/Andean_Peoples"
   ],
   "andhra": [
-    "https://www.worldhistory.org/Andhra/",
     "https://en.wikipedia.org/wiki/Andhra"
   ],
   "andorra": [
     "https://en.wikipedia.org/wiki/Andorra"
   ],
   "anga": [
-    "https://www.worldhistory.org/Anga/",
     "https://en.wikipedia.org/wiki/Anga"
   ],
   "anshan": [
-    "https://www.worldhistory.org/Anshan/",
     "https://en.wikipedia.org/wiki/Anshan"
   ],
   "antandros": [
-    "https://www.worldhistory.org/Antandros/",
     "https://en.wikipedia.org/wiki/Antandros"
   ],
   "anti macedon alliance": [
-    "https://www.worldhistory.org/Anti_Macedon_Alliance/",
     "https://en.wikipedia.org/wiki/Anti_Macedon_Alliance"
   ],
   "anti roman alliance": [
-    "https://www.worldhistory.org/Anti_Roman_Alliance/",
     "https://en.wikipedia.org/wiki/Anti_Roman_Alliance"
   ],
   "anti spartan alliance": [
-    "https://www.worldhistory.org/Anti_Spartan_Alliance/",
     "https://en.wikipedia.org/wiki/Anti_Spartan_Alliance"
   ],
   "antigonid ally": [
-    "https://www.worldhistory.org/Antigonid_Ally/",
     "https://en.wikipedia.org/wiki/Antigonid_Ally"
   ],
   "antigonid kingdom": [
@@ -964,7 +923,6 @@
     "https://en.wikipedia.org/wiki/Antigonid_Kingdom"
   ],
   "antigua and barbuda": [
-    "https://www.worldhistory.org/Antigua_And_Barbuda/",
     "https://en.wikipedia.org/wiki/Antigua_And_Barbuda"
   ],
   "antipatrid ally": [
@@ -974,7 +932,6 @@
     "https://en.wikipedia.org/wiki/Anupa"
   ],
   "anuradhapura": [
-    "https://www.worldhistory.org/Anuradhapura/",
     "https://en.wikipedia.org/wiki/Anuradhapura"
   ],
   "aparytae": [
@@ -985,23 +942,18 @@
     "https://en.wikipedia.org/wiki/Apollonia"
   ],
   "arabs": [
-    "https://www.worldhistory.org/Arabs/",
     "https://en.wikipedia.org/wiki/Arabs"
   ],
   "aram damascus": [
-    "https://www.worldhistory.org/Aram_Damascus/",
     "https://en.wikipedia.org/wiki/Aram_Damascus"
   ],
   "aram-naharim": [
-    "https://www.worldhistory.org/Aram-Naharim/",
     "https://en.wikipedia.org/wiki/Aram-Naharim"
   ],
   "aram-zobah": [
-    "https://www.worldhistory.org/Aram-Zobah/",
     "https://en.wikipedia.org/wiki/Aram-Zobah"
   ],
   "aramaeans": [
-    "https://www.worldhistory.org/Aramaeans/",
     "https://en.wikipedia.org/wiki/Aramaeans"
   ],
   "arcadia": [
@@ -1013,11 +965,9 @@
     "https://en.wikipedia.org/wiki/Arcadian_League"
   ],
   "arctic marine mammal hunters": [
-    "https://www.worldhistory.org/Arctic_Marine_Mammal_Hunters/",
     "https://en.wikipedia.org/wiki/Arctic_Marine_Mammal_Hunters"
   ],
   "arctic peoples": [
-    "https://www.worldhistory.org/Arctic_Peoples/",
     "https://en.wikipedia.org/wiki/Arctic_Peoples"
   ],
   "ardiaei": [
@@ -1025,15 +975,13 @@
     "https://en.wikipedia.org/wiki/Ardiaei"
   ],
   "argaric culture": [
-    "https://www.worldhistory.org/Argaric_Culture/",
     "https://en.wikipedia.org/wiki/Argaric_Culture"
   ],
   "argos": [
-    "https://www.worldhistory.org/Argos/",
+    "https://www.worldhistory.org/argos/",
     "https://en.wikipedia.org/wiki/Argos"
   ],
   "aryan people": [
-    "https://www.worldhistory.org/Aryan_People/",
     "https://en.wikipedia.org/wiki/Aryan_People"
   ],
   "arzawa": [
@@ -1050,11 +998,9 @@
     "https://en.wikipedia.org/wiki/Assakenoi"
   ],
   "assyrian kingdoms": [
-    "https://www.worldhistory.org/Assyrian_Kingdoms/",
     "https://en.wikipedia.org/wiki/Assyrian_Kingdoms"
   ],
   "assyrian revolt": [
-    "https://www.worldhistory.org/Assyrian_Revolt/",
     "https://en.wikipedia.org/wiki/Assyrian_Revolt"
   ],
   "asvaka": [
@@ -1064,11 +1010,9 @@
     "https://en.wikipedia.org/wiki/Athamania"
   ],
   "athenian ally": [
-    "https://www.worldhistory.org/Athenian_Ally/",
     "https://en.wikipedia.org/wiki/Athenian_Ally"
   ],
   "atropatene": [
-    "https://www.worldhistory.org/Atropatene/",
     "https://en.wikipedia.org/wiki/Atropatene"
   ],
   "atuna": [
@@ -1081,19 +1025,15 @@
     "https://en.wikipedia.org/wiki/Aurunci"
   ],
   "austro-asiatic peoples": [
-    "https://www.worldhistory.org/Austro-Asiatic_Peoples/",
     "https://en.wikipedia.org/wiki/Austro-Asiatic_Peoples"
   ],
   "austronesians": [
-    "https://www.worldhistory.org/Austronesians/",
     "https://en.wikipedia.org/wiki/Austronesians"
   ],
   "avanti": [
-    "https://www.worldhistory.org/Avanti/",
     "https://en.wikipedia.org/wiki/Avanti"
   ],
   "azzi-hayasa": [
-    "https://www.worldhistory.org/Azzi-Hayasa/",
     "https://en.wikipedia.org/wiki/Azzi-Hayasa"
   ],
   "ba": [
@@ -1101,23 +1041,18 @@
     "https://en.wikipedia.org/wiki/Ba"
   ],
   "babylonia (chaldaeans)": [
-    "https://www.worldhistory.org/Babylonia_(chaldaeans)/",
     "https://en.wikipedia.org/wiki/Babylonia_(chaldaeans)"
   ],
   "babylonia (isin dynasty)": [
-    "https://www.worldhistory.org/Babylonia_(isin_Dynasty)/",
     "https://en.wikipedia.org/wiki/Babylonia_(isin_Dynasty)"
   ],
   "babylonian revolt": [
-    "https://www.worldhistory.org/Babylonian_Revolt/",
     "https://en.wikipedia.org/wiki/Babylonian_Revolt"
   ],
   "babylonian tributary": [
-    "https://www.worldhistory.org/Babylonian_Tributary/",
     "https://en.wikipedia.org/wiki/Babylonian_Tributary"
   ],
   "bactrians": [
-    "https://www.worldhistory.org/Bactrians/",
     "https://en.wikipedia.org/wiki/Bactrians"
   ],
   "bahamas": [
@@ -1128,22 +1063,18 @@
     "https://en.wikipedia.org/wiki/Baipu"
   ],
   "balts": [
-    "https://www.worldhistory.org/Balts/",
     "https://en.wikipedia.org/wiki/Balts"
   ],
   "bantu peoples": [
-    "https://www.worldhistory.org/Bantu_Peoples/",
     "https://en.wikipedia.org/wiki/Bantu_Peoples"
   ],
   "bao": [
     "https://en.wikipedia.org/wiki/Bao"
   ],
   "bao clan": [
-    "https://www.worldhistory.org/Bao_Clan/",
     "https://en.wikipedia.org/wiki/Bao_Clan"
   ],
   "barbados": [
-    "https://www.worldhistory.org/Barbados/",
     "https://en.wikipedia.org/wiki/Barbados"
   ],
   "bedouins": [
@@ -1154,7 +1085,6 @@
     "https://en.wikipedia.org/wiki/Belize"
   ],
   "bell beaker peoples": [
-    "https://www.worldhistory.org/Bell_Beaker_Peoples/",
     "https://en.wikipedia.org/wiki/Bell_Beaker_Peoples"
   ],
   "benin": [
@@ -1179,23 +1109,18 @@
     "https://en.wikipedia.org/wiki/Bhutan"
   ],
   "bit agusi": [
-    "https://www.worldhistory.org/Bit_Agusi/",
     "https://en.wikipedia.org/wiki/Bit_Agusi"
   ],
   "bit-adini": [
-    "https://www.worldhistory.org/Bit-Adini/",
     "https://en.wikipedia.org/wiki/Bit-Adini"
   ],
   "bit-bahiani": [
-    "https://www.worldhistory.org/Bit-Bahiani/",
     "https://en.wikipedia.org/wiki/Bit-Bahiani"
   ],
   "bit-halupe": [
-    "https://www.worldhistory.org/Bit-Halupe/",
     "https://en.wikipedia.org/wiki/Bit-Halupe"
   ],
   "bit-zamani": [
-    "https://www.worldhistory.org/Bit-Zamani/",
     "https://en.wikipedia.org/wiki/Bit-Zamani"
   ],
   "bithynia": [
@@ -1221,7 +1146,6 @@
     "https://en.wikipedia.org/wiki/Bolivia"
   ],
   "bosnia and herzegovina": [
-    "https://www.worldhistory.org/Bosnia_And_Herzegovina/",
     "https://en.wikipedia.org/wiki/Bosnia_And_Herzegovina"
   ],
   "bosporan kingdom": [
@@ -1235,14 +1159,12 @@
     "https://en.wikipedia.org/wiki/Bottiaeans"
   ],
   "brahmana": [
-    "https://www.worldhistory.org/Brahmana/",
     "https://en.wikipedia.org/wiki/Brahmana"
   ],
   "brunei": [
     "https://en.wikipedia.org/wiki/Brunei"
   ],
   "bruttian league": [
-    "https://www.worldhistory.org/Bruttian_League/",
     "https://en.wikipedia.org/wiki/Bruttian_League"
   ],
   "bruttians": [
@@ -1255,11 +1177,9 @@
     "https://en.wikipedia.org/wiki/Bu_Geng"
   ],
   "burkina faso": [
-    "https://www.worldhistory.org/Burkina_Faso/",
     "https://en.wikipedia.org/wiki/Burkina_Faso"
   ],
   "burundi": [
-    "https://www.worldhistory.org/Burundi/",
     "https://en.wikipedia.org/wiki/Burundi"
   ],
   "cai": [
@@ -1267,14 +1187,12 @@
     "https://en.wikipedia.org/wiki/Cai"
   ],
   "california peoples": [
-    "https://www.worldhistory.org/California_Peoples/",
     "https://en.wikipedia.org/wiki/California_Peoples"
   ],
   "callatis": [
     "https://en.wikipedia.org/wiki/Callatis"
   ],
   "cameroon": [
-    "https://www.worldhistory.org/Cameroon/",
     "https://en.wikipedia.org/wiki/Cameroon"
   ],
   "campania": [
@@ -1285,7 +1203,6 @@
     "https://en.wikipedia.org/wiki/Campanians"
   ],
   "canaanites": [
-    "https://www.worldhistory.org/Canaanites/",
     "https://en.wikipedia.org/wiki/Canaanites"
   ],
   "cao": [
@@ -1300,19 +1217,15 @@
     "https://en.wikipedia.org/wiki/Carduchii"
   ],
   "carians": [
-    "https://www.worldhistory.org/Carians/",
     "https://en.wikipedia.org/wiki/Carians"
   ],
   "caribbean peoples": [
-    "https://www.worldhistory.org/Caribbean_Peoples/",
     "https://en.wikipedia.org/wiki/Caribbean_Peoples"
   ],
   "carthaginian ally": [
-    "https://www.worldhistory.org/Carthaginian_Ally/",
     "https://en.wikipedia.org/wiki/Carthaginian_Ally"
   ],
   "carthaginian tributary": [
-    "https://www.worldhistory.org/Carthaginian_Tributary/",
     "https://en.wikipedia.org/wiki/Carthaginian_Tributary"
   ],
   "carystus": [
@@ -1323,38 +1236,31 @@
     "https://en.wikipedia.org/wiki/Catane"
   ],
   "caucasians": [
-    "https://www.worldhistory.org/Caucasians/",
     "https://en.wikipedia.org/wiki/Caucasians"
   ],
   "cedi": [
     "https://en.wikipedia.org/wiki/Cedi"
   ],
   "celtic mercenaries": [
-    "https://www.worldhistory.org/Celtic_Mercenaries/",
     "https://en.wikipedia.org/wiki/Celtic_Mercenaries"
   ],
   "celto-ligurians": [
-    "https://www.worldhistory.org/Celto-Ligurians/",
     "https://en.wikipedia.org/wiki/Celto-Ligurians"
   ],
   "celts": [
-    "https://www.worldhistory.org/Celts/",
+    "https://www.worldhistory.org/celt/",
     "https://en.wikipedia.org/wiki/Celts"
   ],
   "central african peoples": [
-    "https://www.worldhistory.org/Central_African_Peoples/",
     "https://en.wikipedia.org/wiki/Central_African_Peoples"
   ],
   "central african republic": [
-    "https://www.worldhistory.org/Central_African_Republic/",
     "https://en.wikipedia.org/wiki/Central_African_Republic"
   ],
   "chad": [
-    "https://www.worldhistory.org/Chad/",
     "https://en.wikipedia.org/wiki/Chad"
   ],
   "chadian people": [
-    "https://www.worldhistory.org/Chadian_People/",
     "https://en.wikipedia.org/wiki/Chadian_People"
   ],
   "chalcidian league": [
@@ -1372,7 +1278,6 @@
     "https://en.wikipedia.org/wiki/Changdi"
   ],
   "chao": [
-    "https://www.worldhistory.org/Chao/",
     "https://en.wikipedia.org/wiki/Chao"
   ],
   "chaonia": [
@@ -1382,7 +1287,6 @@
     "https://en.wikipedia.org/wiki/Chaonians"
   ],
   "chavin culture": [
-    "https://www.worldhistory.org/Chavin_Culture/",
     "https://en.wikipedia.org/wiki/Chavin_Culture"
   ],
   "chen": [
@@ -1390,15 +1294,12 @@
     "https://en.wikipedia.org/wiki/Chen"
   ],
   "cheng": [
-    "https://www.worldhistory.org/Cheng/",
     "https://en.wikipedia.org/wiki/Cheng"
   ],
   "chera": [
-    "https://www.worldhistory.org/Chera/",
     "https://en.wikipedia.org/wiki/Chera"
   ],
   "chinchorro culture": [
-    "https://www.worldhistory.org/Chinchorro_Culture/",
     "https://en.wikipedia.org/wiki/Chinchorro_Culture"
   ],
   "chios": [
@@ -1410,7 +1311,6 @@
     "https://en.wikipedia.org/wiki/Chola"
   ],
   "chorrera culture": [
-    "https://www.worldhistory.org/Chorrera_Culture/",
     "https://en.wikipedia.org/wiki/Chorrera_Culture"
   ],
   "chu": [
@@ -1422,7 +1322,6 @@
     "https://en.wikipedia.org/wiki/Cilicia"
   ],
   "cimmerian kingdom": [
-    "https://www.worldhistory.org/Cimmerian_Kingdom/",
     "https://en.wikipedia.org/wiki/Cimmerian_Kingdom"
   ],
   "cimmerians": [
@@ -1434,7 +1333,6 @@
     "https://en.wikipedia.org/wiki/Civil_War"
   ],
   "clan warfare": [
-    "https://www.worldhistory.org/Clan_Warfare/",
     "https://en.wikipedia.org/wiki/Clan_Warfare"
   ],
   "colchis": [
@@ -1442,15 +1340,13 @@
     "https://en.wikipedia.org/wiki/Colchis"
   ],
   "comoros": [
-    "https://www.worldhistory.org/Comoros/",
     "https://en.wikipedia.org/wiki/Comoros"
   ],
   "cong": [
-    "https://www.worldhistory.org/Cong/",
     "https://en.wikipedia.org/wiki/Cong"
   ],
   "corcyra": [
-    "https://www.worldhistory.org/Corcyra/",
+    "https://www.worldhistory.org/corcyra/",
     "https://en.wikipedia.org/wiki/Corcyra"
   ],
   "corinthia": [
@@ -1468,7 +1364,6 @@
     "https://en.wikipedia.org/wiki/Costa_Rica"
   ],
   "cretan city states": [
-    "https://www.worldhistory.org/Cretan_City_States/",
     "https://en.wikipedia.org/wiki/Cretan_City_States"
   ],
   "croton": [
@@ -1476,15 +1371,13 @@
     "https://en.wikipedia.org/wiki/Croton"
   ],
   "cushitic people": [
-    "https://www.worldhistory.org/Cushitic_People/",
     "https://en.wikipedia.org/wiki/Cushitic_People"
   ],
   "cypriot kingdoms": [
-    "https://www.worldhistory.org/Cypriot_Kingdoms/",
     "https://en.wikipedia.org/wiki/Cypriot_Kingdoms"
   ],
   "cyprus": [
-    "https://www.worldhistory.org/Cyprus/",
+    "https://www.worldhistory.org/cyprus/",
     "https://en.wikipedia.org/wiki/Cyprus"
   ],
   "cyzicus": [
@@ -1492,7 +1385,6 @@
     "https://en.wikipedia.org/wiki/Cyzicus"
   ],
   "côte d'ivoire": [
-    "https://www.worldhistory.org/Côte_D'ivoire/",
     "https://en.wikipedia.org/wiki/Côte_D'ivoire"
   ],
   "d'mt": [
@@ -1503,11 +1395,9 @@
     "https://en.wikipedia.org/wiki/Dai"
   ],
   "dai(2)": [
-    "https://www.worldhistory.org/Dai(2)/",
     "https://en.wikipedia.org/wiki/Dai(2)"
   ],
   "dali": [
-    "https://www.worldhistory.org/Dali/",
     "https://en.wikipedia.org/wiki/Dali"
   ],
   "dan": [
@@ -1547,14 +1437,13 @@
     "https://en.wikipedia.org/wiki/Delian_League"
   ],
   "delphi": [
-    "https://www.worldhistory.org/Delphi/",
+    "https://www.worldhistory.org/delphi/",
     "https://en.wikipedia.org/wiki/Delphi"
   ],
   "deng": [
     "https://en.wikipedia.org/wiki/Deng"
   ],
   "desert cultures": [
-    "https://www.worldhistory.org/Desert_Cultures/",
     "https://en.wikipedia.org/wiki/Desert_Cultures"
   ],
   "di": [
@@ -1579,110 +1468,84 @@
     "https://en.wikipedia.org/wiki/Dolopia"
   ],
   "domain of amphimakhos": [
-    "https://www.worldhistory.org/Domain_Of_Amphimakhos/",
     "https://en.wikipedia.org/wiki/Domain_Of_Amphimakhos"
   ],
   "domain of antigenes": [
-    "https://www.worldhistory.org/Domain_Of_Antigenes/",
     "https://en.wikipedia.org/wiki/Domain_Of_Antigenes"
   ],
   "domain of antigonus": [
-    "https://www.worldhistory.org/Domain_Of_Antigonus/",
     "https://en.wikipedia.org/wiki/Domain_Of_Antigonus"
   ],
   "domain of asandros": [
-    "https://www.worldhistory.org/Domain_Of_Asandros/",
     "https://en.wikipedia.org/wiki/Domain_Of_Asandros"
   ],
   "domain of cassander": [
-    "https://www.worldhistory.org/Domain_Of_Cassander/",
     "https://en.wikipedia.org/wiki/Domain_Of_Cassander"
   ],
   "domain of eudemus": [
-    "https://www.worldhistory.org/Domain_Of_Eudemus/",
     "https://en.wikipedia.org/wiki/Domain_Of_Eudemus"
   ],
   "domain of eumenes": [
-    "https://www.worldhistory.org/Domain_Of_Eumenes/",
     "https://en.wikipedia.org/wiki/Domain_Of_Eumenes"
   ],
   "domain of lysimakhos": [
-    "https://www.worldhistory.org/Domain_Of_Lysimakhos/",
     "https://en.wikipedia.org/wiki/Domain_Of_Lysimakhos"
   ],
   "domain of mithridates": [
-    "https://www.worldhistory.org/Domain_Of_Mithridates/",
     "https://en.wikipedia.org/wiki/Domain_Of_Mithridates"
   ],
   "domain of oxyartes": [
-    "https://www.worldhistory.org/Domain_Of_Oxyartes/",
     "https://en.wikipedia.org/wiki/Domain_Of_Oxyartes"
   ],
   "domain of peithon": [
-    "https://www.worldhistory.org/Domain_Of_Peithon/",
     "https://en.wikipedia.org/wiki/Domain_Of_Peithon"
   ],
   "domain of peithon (son of agenor)": [
-    "https://www.worldhistory.org/Domain_Of_Peithon_(son_Of_Agenor)/",
     "https://en.wikipedia.org/wiki/Domain_Of_Peithon_(son_Of_Agenor)"
   ],
   "domain of peukestas": [
-    "https://www.worldhistory.org/Domain_Of_Peukestas/",
     "https://en.wikipedia.org/wiki/Domain_Of_Peukestas"
   ],
   "domain of philip": [
-    "https://www.worldhistory.org/Domain_Of_Philip/",
     "https://en.wikipedia.org/wiki/Domain_Of_Philip"
   ],
   "domain of philoxenos": [
-    "https://www.worldhistory.org/Domain_Of_Philoxenos/",
     "https://en.wikipedia.org/wiki/Domain_Of_Philoxenos"
   ],
   "domain of polyperchon": [
-    "https://www.worldhistory.org/Domain_Of_Polyperchon/",
     "https://en.wikipedia.org/wiki/Domain_Of_Polyperchon"
   ],
   "domain of ptolemy": [
-    "https://www.worldhistory.org/Domain_Of_Ptolemy/",
     "https://en.wikipedia.org/wiki/Domain_Of_Ptolemy"
   ],
   "domain of seleucus": [
-    "https://www.worldhistory.org/Domain_Of_Seleucus/",
     "https://en.wikipedia.org/wiki/Domain_Of_Seleucus"
   ],
   "domain of sibyrtios": [
-    "https://www.worldhistory.org/Domain_Of_Sibyrtios/",
     "https://en.wikipedia.org/wiki/Domain_Of_Sibyrtios"
   ],
   "domain of stasandros": [
-    "https://www.worldhistory.org/Domain_Of_Stasandros/",
     "https://en.wikipedia.org/wiki/Domain_Of_Stasandros"
   ],
   "domain of stasanor": [
-    "https://www.worldhistory.org/Domain_Of_Stasanor/",
     "https://en.wikipedia.org/wiki/Domain_Of_Stasanor"
   ],
   "domain of tlepolemos": [
-    "https://www.worldhistory.org/Domain_Of_Tlepolemos/",
     "https://en.wikipedia.org/wiki/Domain_Of_Tlepolemos"
   ],
   "dominica": [
     "https://en.wikipedia.org/wiki/Dominica"
   ],
   "dominican republic": [
-    "https://www.worldhistory.org/Dominican_Republic/",
     "https://en.wikipedia.org/wiki/Dominican_Republic"
   ],
   "donghu": [
-    "https://www.worldhistory.org/Donghu/",
     "https://en.wikipedia.org/wiki/Donghu"
   ],
   "dongyi peoples": [
-    "https://www.worldhistory.org/Dongyi_Peoples/",
     "https://en.wikipedia.org/wiki/Dongyi_Peoples"
   ],
   "dorians": [
-    "https://www.worldhistory.org/Dorians/",
     "https://en.wikipedia.org/wiki/Dorians"
   ],
   "doris": [
@@ -1690,7 +1553,6 @@
     "https://en.wikipedia.org/wiki/Doris"
   ],
   "dravidians": [
-    "https://www.worldhistory.org/Dravidians/",
     "https://en.wikipedia.org/wiki/Dravidians"
   ],
   "du": [
@@ -1701,7 +1563,6 @@
     "https://en.wikipedia.org/wiki/Duan"
   ],
   "duchy of jin": [
-    "https://www.worldhistory.org/Duchy_Of_Jin/",
     "https://en.wikipedia.org/wiki/Duchy_Of_Jin"
   ],
   "dun": [
@@ -1709,7 +1570,6 @@
     "https://en.wikipedia.org/wiki/Dun"
   ],
   "dvaraka": [
-    "https://www.worldhistory.org/Dvaraka/",
     "https://en.wikipedia.org/wiki/Dvaraka"
   ],
   "e": [
@@ -1717,15 +1577,12 @@
     "https://en.wikipedia.org/wiki/E"
   ],
   "east african peoples": [
-    "https://www.worldhistory.org/East_African_Peoples/",
     "https://en.wikipedia.org/wiki/East_African_Peoples"
   ],
   "eastern guo": [
-    "https://www.worldhistory.org/Eastern_Guo/",
     "https://en.wikipedia.org/wiki/Eastern_Guo"
   ],
   "eastern woodland peoples": [
-    "https://www.worldhistory.org/Eastern_Woodland_Peoples/",
     "https://en.wikipedia.org/wiki/Eastern_Woodland_Peoples"
   ],
   "ecuador": [
@@ -1733,103 +1590,79 @@
     "https://en.wikipedia.org/wiki/Ecuador"
   ],
   "edomites": [
-    "https://www.worldhistory.org/Edomites/",
     "https://en.wikipedia.org/wiki/Edomites"
   ],
   "egypt: (herakleopolis)": [
-    "https://www.worldhistory.org/Egypt:_(herakleopolis)/",
     "https://en.wikipedia.org/wiki/Egypt:_(herakleopolis)"
   ],
   "egypt: (hermopolis)": [
-    "https://www.worldhistory.org/Egypt:_(hermopolis)/",
     "https://en.wikipedia.org/wiki/Egypt:_(hermopolis)"
   ],
   "egypt: areas of unrest": [
-    "https://www.worldhistory.org/Egypt:_Areas_Of_Unrest/",
     "https://en.wikipedia.org/wiki/Egypt:_Areas_Of_Unrest"
   ],
   "egypt: heracleopolitans": [
-    "https://www.worldhistory.org/Egypt:_Heracleopolitans/",
     "https://en.wikipedia.org/wiki/Egypt:_Heracleopolitans"
   ],
   "egypt: hyksos": [
-    "https://www.worldhistory.org/Egypt:_Hyksos/",
     "https://en.wikipedia.org/wiki/Egypt:_Hyksos"
   ],
   "egypt: middle kingdom": [
-    "https://www.worldhistory.org/Egypt:_Middle_Kingdom/",
     "https://en.wikipedia.org/wiki/Egypt:_Middle_Kingdom"
   ],
   "egypt: new kingdom": [
-    "https://www.worldhistory.org/Egypt:_New_Kingdom/",
     "https://en.wikipedia.org/wiki/Egypt:_New_Kingdom"
   ],
   "egypt: old kdm": [
-    "https://www.worldhistory.org/Egypt:_Old_Kdm/",
     "https://en.wikipedia.org/wiki/Egypt:_Old_Kdm"
   ],
   "egypt: rebellion of pedubast": [
-    "https://www.worldhistory.org/Egypt:_Rebellion_Of_Pedubast/",
     "https://en.wikipedia.org/wiki/Egypt:_Rebellion_Of_Pedubast"
   ],
   "egypt: revolt of amasis": [
-    "https://www.worldhistory.org/Egypt:_Revolt_Of_Amasis/",
     "https://en.wikipedia.org/wiki/Egypt:_Revolt_Of_Amasis"
   ],
   "egypt: tanites": [
-    "https://www.worldhistory.org/Egypt:_Tanites/",
     "https://en.wikipedia.org/wiki/Egypt:_Tanites"
   ],
   "egypt: thebans": [
-    "https://www.worldhistory.org/Egypt:_Thebans/",
     "https://en.wikipedia.org/wiki/Egypt:_Thebans"
   ],
   "egypt: thirtieth dynasty": [
-    "https://www.worldhistory.org/Egypt:_Thirtieth_Dynasty/",
     "https://en.wikipedia.org/wiki/Egypt:_Thirtieth_Dynasty"
   ],
   "egypt: twenty eighth dynasty": [
-    "https://www.worldhistory.org/Egypt:_Twenty_Eighth_Dynasty/",
     "https://en.wikipedia.org/wiki/Egypt:_Twenty_Eighth_Dynasty"
   ],
   "egypt: twenty fourth dynasty": [
-    "https://www.worldhistory.org/Egypt:_Twenty_Fourth_Dynasty/",
     "https://en.wikipedia.org/wiki/Egypt:_Twenty_Fourth_Dynasty"
   ],
   "egypt: twenty ninth dynasty": [
-    "https://www.worldhistory.org/Egypt:_Twenty_Ninth_Dynasty/",
     "https://en.wikipedia.org/wiki/Egypt:_Twenty_Ninth_Dynasty"
   ],
   "egypt: twenty second dynasty": [
-    "https://www.worldhistory.org/Egypt:_Twenty_Second_Dynasty/",
     "https://en.wikipedia.org/wiki/Egypt:_Twenty_Second_Dynasty"
   ],
   "egypt: twenty sixth dynasty": [
-    "https://www.worldhistory.org/Egypt:_Twenty_Sixth_Dynasty/",
     "https://en.wikipedia.org/wiki/Egypt:_Twenty_Sixth_Dynasty"
   ],
   "egypt: twenty sixth dynasty tributary": [
-    "https://www.worldhistory.org/Egypt:_Twenty_Sixth_Dynasty_Tributary/",
     "https://en.wikipedia.org/wiki/Egypt:_Twenty_Sixth_Dynasty_Tributary"
   ],
   "egypt: twenty third dynasty": [
-    "https://www.worldhistory.org/Egypt:_Twenty_Third_Dynasty/",
     "https://en.wikipedia.org/wiki/Egypt:_Twenty_Third_Dynasty"
   ],
   "el paraiso culture": [
-    "https://www.worldhistory.org/El_Paraiso_Culture/",
     "https://en.wikipedia.org/wiki/El_Paraiso_Culture"
   ],
   "el salvador": [
-    "https://www.worldhistory.org/El_Salvador/",
     "https://en.wikipedia.org/wiki/El_Salvador"
   ],
   "elam": [
-    "https://www.worldhistory.org/Elam/",
+    "https://www.worldhistory.org/elam/",
     "https://en.wikipedia.org/wiki/Elam"
   ],
   "elamite tributary": [
-    "https://www.worldhistory.org/Elamite_Tributary/",
     "https://en.wikipedia.org/wiki/Elamite_Tributary"
   ],
   "elimiotis": [
@@ -1855,18 +1688,15 @@
     "https://en.wikipedia.org/wiki/Eordaia"
   ],
   "epicnemidian locris": [
-    "https://www.worldhistory.org/Epicnemidian_Locris/",
     "https://en.wikipedia.org/wiki/Epicnemidian_Locris"
   ],
   "epidauria": [
     "https://en.wikipedia.org/wiki/Epidauria"
   ],
   "epirote ally": [
-    "https://www.worldhistory.org/Epirote_Ally/",
     "https://en.wikipedia.org/wiki/Epirote_Ally"
   ],
   "equatorial guinea": [
-    "https://www.worldhistory.org/Equatorial_Guinea/",
     "https://en.wikipedia.org/wiki/Equatorial_Guinea"
   ],
   "er": [
@@ -1888,11 +1718,9 @@
     "https://en.wikipedia.org/wiki/Eritrea"
   ],
   "erligang culture": [
-    "https://www.worldhistory.org/Erligang_Culture/",
     "https://en.wikipedia.org/wiki/Erligang_Culture"
   ],
   "erlitou culture": [
-    "https://www.worldhistory.org/Erlitou_Culture/",
     "https://en.wikipedia.org/wiki/Erlitou_Culture"
   ],
   "etiukhi": [
@@ -1918,7 +1746,6 @@
     "https://en.wikipedia.org/wiki/Fan"
   ],
   "fan clan": [
-    "https://www.worldhistory.org/Fan_Clan/",
     "https://en.wikipedia.org/wiki/Fan_Clan"
   ],
   "fan(2)": [
@@ -1932,7 +1759,6 @@
     "https://en.wikipedia.org/wiki/Fei"
   ],
   "feng": [
-    "https://www.worldhistory.org/Feng/",
     "https://en.wikipedia.org/wiki/Feng"
   ],
   "fiji": [
@@ -1940,14 +1766,12 @@
     "https://en.wikipedia.org/wiki/Fiji"
   ],
   "finns": [
-    "https://www.worldhistory.org/Finns/",
     "https://en.wikipedia.org/wiki/Finns"
   ],
   "gabon": [
     "https://en.wikipedia.org/wiki/Gabon"
   ],
   "gambia": [
-    "https://www.worldhistory.org/Gambia/",
     "https://en.wikipedia.org/wiki/Gambia"
   ],
   "gandhara": [
@@ -1959,14 +1783,12 @@
     "https://en.wikipedia.org/wiki/Gao"
   ],
   "gao clan": [
-    "https://www.worldhistory.org/Gao_Clan/",
     "https://en.wikipedia.org/wiki/Gao_Clan"
   ],
   "gaoluo": [
     "https://en.wikipedia.org/wiki/Gaoluo"
   ],
   "garamantes": [
-    "https://www.worldhistory.org/Garamantes/",
     "https://en.wikipedia.org/wiki/Garamantes"
   ],
   "ge": [
@@ -1991,7 +1813,6 @@
     "https://en.wikipedia.org/wiki/Geshur"
   ],
   "getae": [
-    "https://www.worldhistory.org/Getae/",
     "https://en.wikipedia.org/wiki/Getae"
   ],
   "gilead": [
@@ -2007,23 +1828,18 @@
     "https://en.wikipedia.org/wiki/Gojoseon"
   ],
   "gong": [
-    "https://www.worldhistory.org/Gong/",
     "https://en.wikipedia.org/wiki/Gong"
   ],
   "gong(2)": [
-    "https://www.worldhistory.org/Gong(2)/",
     "https://en.wikipedia.org/wiki/Gong(2)"
   ],
   "great chiefs of the meshwesh": [
-    "https://www.worldhistory.org/Great_Chiefs_Of_The_Meshwesh/",
     "https://en.wikipedia.org/wiki/Great_Chiefs_Of_The_Meshwesh"
   ],
   "greek alliance": [
-    "https://www.worldhistory.org/Greek_Alliance/",
     "https://en.wikipedia.org/wiki/Greek_Alliance"
   ],
   "greek mercenaries": [
-    "https://www.worldhistory.org/Greek_Mercenaries/",
     "https://en.wikipedia.org/wiki/Greek_Mercenaries"
   ],
   "greeks": [
@@ -2056,18 +1872,15 @@
     "https://en.wikipedia.org/wiki/Guifang"
   ],
   "guinea": [
-    "https://www.worldhistory.org/Guinea/",
     "https://en.wikipedia.org/wiki/Guinea"
   ],
   "guinea bissau": [
-    "https://www.worldhistory.org/Guinea_Bissau/",
     "https://en.wikipedia.org/wiki/Guinea_Bissau"
   ],
   "guo": [
     "https://en.wikipedia.org/wiki/Guo"
   ],
   "guo clan": [
-    "https://www.worldhistory.org/Guo_Clan/",
     "https://en.wikipedia.org/wiki/Guo_Clan"
   ],
   "gurgum": [
@@ -2078,7 +1891,6 @@
     "https://en.wikipedia.org/wiki/Guti"
   ],
   "guti tributary": [
-    "https://www.worldhistory.org/Guti_Tributary/",
     "https://en.wikipedia.org/wiki/Guti_Tributary"
   ],
   "guyana": [
@@ -2116,7 +1928,6 @@
     "https://en.wikipedia.org/wiki/Hann"
   ],
   "hann clan": [
-    "https://www.worldhistory.org/Hann_Clan/",
     "https://en.wikipedia.org/wiki/Hann_Clan"
   ],
   "hapalla": [
@@ -2132,19 +1943,15 @@
     "https://en.wikipedia.org/wiki/Hattians"
   ],
   "hellenic league": [
-    "https://www.worldhistory.org/Hellenic_League/",
     "https://en.wikipedia.org/wiki/Hellenic_League"
   ],
   "helmand and jiroft cultures": [
-    "https://www.worldhistory.org/Helmand_And_Jiroft_Cultures/",
     "https://en.wikipedia.org/wiki/Helmand_And_Jiroft_Cultures"
   ],
   "helot revolt": [
-    "https://www.worldhistory.org/Helot_Revolt/",
     "https://en.wikipedia.org/wiki/Helot_Revolt"
   ],
   "heraklea pontica": [
-    "https://www.worldhistory.org/Heraklea_Pontica/",
     "https://en.wikipedia.org/wiki/Heraklea_Pontica"
   ],
   "hermionis": [
@@ -2164,11 +1971,10 @@
     "https://en.wikipedia.org/wiki/Hindanu"
   ],
   "hittites": [
-    "https://www.worldhistory.org/Hittites/",
+    "https://www.worldhistory.org/hittite/",
     "https://en.wikipedia.org/wiki/Hittites"
   ],
   "honduras": [
-    "https://www.worldhistory.org/Honduras/",
     "https://en.wikipedia.org/wiki/Honduras"
   ],
   "hu": [
@@ -2176,11 +1982,9 @@
     "https://en.wikipedia.org/wiki/Hu"
   ],
   "hu(2)": [
-    "https://www.worldhistory.org/Hu(2)/",
     "https://en.wikipedia.org/wiki/Hu(2)"
   ],
   "hu(3)": [
-    "https://www.worldhistory.org/Hu(3)/",
     "https://en.wikipedia.org/wiki/Hu(3)"
   ],
   "hua": [
@@ -2191,11 +1995,9 @@
     "https://en.wikipedia.org/wiki/Huaiyi"
   ],
   "huaiyi peoples": [
-    "https://www.worldhistory.org/Huaiyi_Peoples/",
     "https://en.wikipedia.org/wiki/Huaiyi_Peoples"
   ],
   "huang": [
-    "https://www.worldhistory.org/Huang/",
     "https://en.wikipedia.org/wiki/Huang"
   ],
   "hubushkia": [
@@ -2208,11 +2010,9 @@
     "https://en.wikipedia.org/wiki/Hupis(h)na"
   ],
   "hurrian kingdom": [
-    "https://www.worldhistory.org/Hurrian_Kingdom/",
     "https://en.wikipedia.org/wiki/Hurrian_Kingdom"
   ],
   "hurrian kingdoms": [
-    "https://www.worldhistory.org/Hurrian_Kingdoms/",
     "https://en.wikipedia.org/wiki/Hurrian_Kingdoms"
   ],
   "hurrians": [
@@ -2232,15 +2032,12 @@
     "https://en.wikipedia.org/wiki/Ikshvakus"
   ],
   "illyrian kingdom": [
-    "https://www.worldhistory.org/Illyrian_Kingdom/",
     "https://en.wikipedia.org/wiki/Illyrian_Kingdom"
   ],
   "illyrian tributary": [
-    "https://www.worldhistory.org/Illyrian_Tributary/",
     "https://en.wikipedia.org/wiki/Illyrian_Tributary"
   ],
   "illyrians": [
-    "https://www.worldhistory.org/Illyrians/",
     "https://en.wikipedia.org/wiki/Illyrians"
   ],
   "illyrioi": [
@@ -2250,7 +2047,6 @@
     "https://en.wikipedia.org/wiki/Imbros"
   ],
   "indo-aryans": [
-    "https://www.worldhistory.org/Indo-Aryans/",
     "https://en.wikipedia.org/wiki/Indo-Aryans"
   ],
   "indus valley civilization": [
@@ -2258,7 +2054,6 @@
     "https://en.wikipedia.org/wiki/Indus_Valley_Civilization"
   ],
   "indus valley peoples": [
-    "https://www.worldhistory.org/Indus_Valley_Peoples/",
     "https://en.wikipedia.org/wiki/Indus_Valley_Peoples"
   ],
   "ionian league": [
@@ -2266,66 +2061,51 @@
     "https://en.wikipedia.org/wiki/Ionian_League"
   ],
   "ionians": [
-    "https://www.worldhistory.org/Ionians/",
     "https://en.wikipedia.org/wiki/Ionians"
   ],
   "iranians": [
-    "https://www.worldhistory.org/Iranians/",
     "https://en.wikipedia.org/wiki/Iranians"
   ],
   "ishtu(a)nda": [
     "https://en.wikipedia.org/wiki/Ishtu(a)nda"
   ],
   "israel/samaria": [
-    "https://www.worldhistory.org/Israel/samaria/",
     "https://en.wikipedia.org/wiki/Israel/samaria"
   ],
   "israelites": [
-    "https://www.worldhistory.org/Israelites/",
     "https://en.wikipedia.org/wiki/Israelites"
   ],
   "istros": [
-    "https://www.worldhistory.org/Istros/",
     "https://en.wikipedia.org/wiki/Istros"
   ],
   "isuwa": [
-    "https://www.worldhistory.org/Isuwa/",
     "https://en.wikipedia.org/wiki/Isuwa"
   ],
   "itabalhum": [
-    "https://www.worldhistory.org/Itabalhum/",
     "https://en.wikipedia.org/wiki/Itabalhum"
   ],
   "italics": [
-    "https://www.worldhistory.org/Italics/",
     "https://en.wikipedia.org/wiki/Italics"
   ],
   "italiote league": [
-    "https://www.worldhistory.org/Italiote_League/",
     "https://en.wikipedia.org/wiki/Italiote_League"
   ],
   "jamaica": [
-    "https://www.worldhistory.org/Jamaica/",
     "https://en.wikipedia.org/wiki/Jamaica"
   ],
   "ji": [
-    "https://www.worldhistory.org/Ji/",
     "https://en.wikipedia.org/wiki/Ji"
   ],
   "ji(2)": [
-    "https://www.worldhistory.org/Ji(2)/",
     "https://en.wikipedia.org/wiki/Ji(2)"
   ],
   "ji(3)": [
-    "https://www.worldhistory.org/Ji(3)/",
     "https://en.wikipedia.org/wiki/Ji(3)"
   ],
   "ji(4)": [
-    "https://www.worldhistory.org/Ji(4)/",
     "https://en.wikipedia.org/wiki/Ji(4)"
   ],
   "ji(5)": [
-    "https://www.worldhistory.org/Ji(5)/",
     "https://en.wikipedia.org/wiki/Ji(5)"
   ],
   "ji(6)": [
@@ -2337,19 +2117,15 @@
     "https://en.wikipedia.org/wiki/Jia"
   ],
   "jiang": [
-    "https://www.worldhistory.org/Jiang/",
     "https://en.wikipedia.org/wiki/Jiang"
   ],
   "jiang qi": [
-    "https://www.worldhistory.org/Jiang_Qi/",
     "https://en.wikipedia.org/wiki/Jiang_Qi"
   ],
   "jiang(2)": [
-    "https://www.worldhistory.org/Jiang(2)/",
     "https://en.wikipedia.org/wiki/Jiang(2)"
   ],
   "jiao": [
-    "https://www.worldhistory.org/Jiao/",
     "https://en.wikipedia.org/wiki/Jiao"
   ],
   "jie": [
@@ -2360,7 +2136,6 @@
     "https://en.wikipedia.org/wiki/Jin"
   ],
   "jomon culture": [
-    "https://www.worldhistory.org/Jomon_Culture/",
     "https://en.wikipedia.org/wiki/Jomon_Culture"
   ],
   "ju": [
@@ -2368,7 +2143,6 @@
     "https://en.wikipedia.org/wiki/Ju"
   ],
   "ju(2)": [
-    "https://www.worldhistory.org/Ju(2)/",
     "https://en.wikipedia.org/wiki/Ju(2)"
   ],
   "judah": [
@@ -2376,7 +2150,6 @@
     "https://en.wikipedia.org/wiki/Judah"
   ],
   "judah tributary": [
-    "https://www.worldhistory.org/Judah_Tributary/",
     "https://en.wikipedia.org/wiki/Judah_Tributary"
   ],
   "jun": [
@@ -2399,11 +2172,9 @@
     "https://en.wikipedia.org/wiki/Kalaurian_Amphictiony"
   ],
   "kalinga": [
-    "https://www.worldhistory.org/Kalinga/",
     "https://en.wikipedia.org/wiki/Kalinga"
   ],
   "kamarina": [
-    "https://www.worldhistory.org/Kamarina/",
     "https://en.wikipedia.org/wiki/Kamarina"
   ],
   "kamboja": [
@@ -2444,7 +2215,6 @@
     "https://en.wikipedia.org/wiki/Kekaya"
   ],
   "khoisan peoples": [
-    "https://www.worldhistory.org/Khoisan_Peoples/",
     "https://en.wikipedia.org/wiki/Khoisan_Peoples"
   ],
   "khorasmia": [
@@ -2454,51 +2224,39 @@
     "https://en.wikipedia.org/wiki/Kimash"
   ],
   "kingdom of adab": [
-    "https://www.worldhistory.org/Kingdom_Of_Adab/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Adab"
   ],
   "kingdom of adanaya": [
-    "https://www.worldhistory.org/Kingdom_Of_Adanaya/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Adanaya"
   ],
   "kingdom of akshak": [
-    "https://www.worldhistory.org/Kingdom_Of_Akshak/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Akshak"
   ],
   "kingdom of alakhtum": [
-    "https://www.worldhistory.org/Kingdom_Of_Alakhtum/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Alakhtum"
   ],
   "kingdom of andarig": [
-    "https://www.worldhistory.org/Kingdom_Of_Andarig/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Andarig"
   ],
   "kingdom of argos": [
-    "https://www.worldhistory.org/Kingdom_Of_Argos/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Argos"
   ],
   "kingdom of armenia": [
-    "https://www.worldhistory.org/Kingdom_Of_Armenia/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Armenia"
   ],
   "kingdom of arrapha": [
-    "https://www.worldhistory.org/Kingdom_Of_Arrapha/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Arrapha"
   ],
   "kingdom of assyria": [
-    "https://www.worldhistory.org/Kingdom_Of_Assyria/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Assyria"
   ],
   "kingdom of awan": [
-    "https://www.worldhistory.org/Kingdom_Of_Awan/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Awan"
   ],
   "kingdom of babylon": [
-    "https://www.worldhistory.org/Kingdom_Of_Babylon/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Babylon"
   ],
   "kingdom of carchemish": [
-    "https://www.worldhistory.org/Kingdom_Of_Carchemish/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Carchemish"
   ],
   "kingdom of cyrene": [
@@ -2506,83 +2264,65 @@
     "https://en.wikipedia.org/wiki/Kingdom_Of_Cyrene"
   ],
   "kingdom of der": [
-    "https://www.worldhistory.org/Kingdom_Of_Der/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Der"
   ],
   "kingdom of ebla": [
-    "https://www.worldhistory.org/Kingdom_Of_Ebla/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Ebla"
   ],
   "kingdom of epirus": [
-    "https://www.worldhistory.org/Kingdom_Of_Epirus/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Epirus"
   ],
   "kingdom of eshnunna": [
-    "https://www.worldhistory.org/Kingdom_Of_Eshnunna/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Eshnunna"
   ],
   "kingdom of hamath": [
-    "https://www.worldhistory.org/Kingdom_Of_Hamath/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Hamath"
   ],
   "kingdom of illyria": [
-    "https://www.worldhistory.org/Kingdom_Of_Illyria/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Illyria"
   ],
   "kingdom of irqata": [
-    "https://www.worldhistory.org/Kingdom_Of_Irqata/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Irqata"
   ],
   "kingdom of isin": [
-    "https://www.worldhistory.org/Kingdom_Of_Isin/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Isin"
   ],
   "kingdom of israel": [
-    "https://www.worldhistory.org/Kingdom_Of_Israel/",
+    "https://www.worldhistory.org/Kingdom_of_Israel/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Israel"
   ],
   "kingdom of judah": [
-    "https://www.worldhistory.org/Kingdom_Of_Judah/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Judah"
   ],
   "kingdom of kanesh": [
-    "https://www.worldhistory.org/Kingdom_Of_Kanesh/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Kanesh"
   ],
   "kingdom of kazallu": [
-    "https://www.worldhistory.org/Kingdom_Of_Kazallu/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Kazallu"
   ],
   "kingdom of kish": [
-    "https://www.worldhistory.org/Kingdom_Of_Kish/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Kish"
   ],
   "kingdom of kisurra": [
-    "https://www.worldhistory.org/Kingdom_Of_Kisurra/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Kisurra"
   ],
   "kingdom of kummuh": [
-    "https://www.worldhistory.org/Kingdom_Of_Kummuh/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Kummuh"
   ],
   "kingdom of kush": [
-    "https://www.worldhistory.org/Kingdom_Of_Kush/",
+    "https://www.worldhistory.org/Kush/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Kush"
   ],
   "kingdom of kussara": [
-    "https://www.worldhistory.org/Kingdom_Of_Kussara/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Kussara"
   ],
   "kingdom of lagash": [
-    "https://www.worldhistory.org/Kingdom_Of_Lagash/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Lagash"
   ],
   "kingdom of larsa": [
-    "https://www.worldhistory.org/Kingdom_Of_Larsa/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Larsa"
   ],
   "kingdom of lysimakhos": [
-    "https://www.worldhistory.org/Kingdom_Of_Lysimakhos/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Lysimakhos"
   ],
   "kingdom of macedon": [
@@ -2590,87 +2330,66 @@
     "https://en.wikipedia.org/wiki/Kingdom_Of_Macedon"
   ],
   "kingdom of macedonia": [
-    "https://www.worldhistory.org/Kingdom_Of_Macedonia/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Macedonia"
   ],
   "kingdom of malgium": [
-    "https://www.worldhistory.org/Kingdom_Of_Malgium/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Malgium"
   ],
   "kingdom of mari": [
-    "https://www.worldhistory.org/Kingdom_Of_Mari/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Mari"
   ],
   "kingdom of melid": [
-    "https://www.worldhistory.org/Kingdom_Of_Melid/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Melid"
   ],
   "kingdom of mitanni": [
-    "https://www.worldhistory.org/Kingdom_Of_Mitanni/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Mitanni"
   ],
   "kingdom of purushanda": [
-    "https://www.worldhistory.org/Kingdom_Of_Purushanda/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Purushanda"
   ],
   "kingdom of qadesh": [
-    "https://www.worldhistory.org/Kingdom_Of_Qadesh/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Qadesh"
   ],
   "kingdom of qatna": [
-    "https://www.worldhistory.org/Kingdom_Of_Qatna/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Qatna"
   ],
   "kingdom of rome": [
-    "https://www.worldhistory.org/Kingdom_Of_Rome/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Rome"
   ],
   "kingdom of sam'al": [
-    "https://www.worldhistory.org/Kingdom_Of_Sam'al/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Sam'al"
   ],
   "kingdom of sindica": [
-    "https://www.worldhistory.org/Kingdom_Of_Sindica/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Sindica"
   ],
   "kingdom of sparta": [
-    "https://www.worldhistory.org/Kingdom_Of_Sparta/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Sparta"
   ],
   "kingdom of syracuse": [
-    "https://www.worldhistory.org/Kingdom_Of_Syracuse/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Syracuse"
   ],
   "kingdom of terqa": [
-    "https://www.worldhistory.org/Kingdom_Of_Terqa/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Terqa"
   ],
   "kingdom of the grabaei": [
-    "https://www.worldhistory.org/Kingdom_Of_The_Grabaei/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_The_Grabaei"
   ],
   "kingdom of tuttul": [
-    "https://www.worldhistory.org/Kingdom_Of_Tuttul/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Tuttul"
   ],
   "kingdom of tylis": [
-    "https://www.worldhistory.org/Kingdom_Of_Tylis/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Tylis"
   ],
   "kingdom of ugarit": [
-    "https://www.worldhistory.org/Kingdom_Of_Ugarit/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Ugarit"
   ],
   "kingdom of ur": [
-    "https://www.worldhistory.org/Kingdom_Of_Ur/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Ur"
   ],
   "kingdom of uruk": [
-    "https://www.worldhistory.org/Kingdom_Of_Uruk/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Uruk"
   ],
   "kingdom of zalpa": [
-    "https://www.worldhistory.org/Kingdom_Of_Zalpa/",
     "https://en.wikipedia.org/wiki/Kingdom_Of_Zalpa"
   ],
   "kios": [
@@ -2687,30 +2406,24 @@
     "https://en.wikipedia.org/wiki/Kirruru"
   ],
   "kizzuwatna": [
-    "https://www.worldhistory.org/Kizzuwatna/",
     "https://en.wikipedia.org/wiki/Kizzuwatna"
   ],
   "koliya": [
-    "https://www.worldhistory.org/Koliya/",
     "https://en.wikipedia.org/wiki/Koliya"
   ],
   "konkana": [
     "https://en.wikipedia.org/wiki/Konkana"
   ],
   "kopai": [
-    "https://www.worldhistory.org/Kopai/",
     "https://en.wikipedia.org/wiki/Kopai"
   ],
   "koreans": [
-    "https://www.worldhistory.org/Koreans/",
     "https://en.wikipedia.org/wiki/Koreans"
   ],
   "kosala": [
-    "https://www.worldhistory.org/Kosala/",
     "https://en.wikipedia.org/wiki/Kosala"
   ],
   "kotosh culture": [
-    "https://www.worldhistory.org/Kotosh_Culture/",
     "https://en.wikipedia.org/wiki/Kotosh_Culture"
   ],
   "ksudrakas": [
@@ -2730,18 +2443,15 @@
     "https://en.wikipedia.org/wiki/Kuntala"
   ],
   "kunti": [
-    "https://www.worldhistory.org/Kunti/",
     "https://en.wikipedia.org/wiki/Kunti"
   ],
   "kunwu": [
     "https://en.wikipedia.org/wiki/Kunwu"
   ],
   "kuru": [
-    "https://www.worldhistory.org/Kuru/",
     "https://en.wikipedia.org/wiki/Kuru"
   ],
   "kush tributary": [
-    "https://www.worldhistory.org/Kush_Tributary/",
     "https://en.wikipedia.org/wiki/Kush_Tributary"
   ],
   "kyme": [
@@ -2764,57 +2474,46 @@
     "https://en.wikipedia.org/wiki/Laiyi"
   ],
   "land of bel-harran-beli-user": [
-    "https://www.worldhistory.org/Land_Of_Bel-Harran-Beli-User/",
     "https://en.wikipedia.org/wiki/Land_Of_Bel-Harran-Beli-User"
   ],
   "land of shamash-resha-user": [
-    "https://www.worldhistory.org/Land_Of_Shamash-Resha-User/",
     "https://en.wikipedia.org/wiki/Land_Of_Shamash-Resha-User"
   ],
   "land of tartanu shamshi-ilu": [
-    "https://www.worldhistory.org/Land_Of_Tartanu_Shamshi-Ilu/",
     "https://en.wikipedia.org/wiki/Land_Of_Tartanu_Shamshi-Ilu"
   ],
   "laqe": [
-    "https://www.worldhistory.org/Laqe/",
     "https://en.wikipedia.org/wiki/Laqe"
   ],
   "larak": [
-    "https://www.worldhistory.org/Larak/",
     "https://en.wikipedia.org/wiki/Larak"
   ],
   "larissa": [
-    "https://www.worldhistory.org/Larissa/",
     "https://en.wikipedia.org/wiki/Larissa"
   ],
   "latin league": [
-    "https://www.worldhistory.org/Latin_League/",
     "https://en.wikipedia.org/wiki/Latin_League"
   ],
   "latins": [
-    "https://www.worldhistory.org/Latins/",
     "https://en.wikipedia.org/wiki/Latins"
   ],
   "lauhitya": [
     "https://en.wikipedia.org/wiki/Lauhitya"
   ],
   "league of argos": [
-    "https://www.worldhistory.org/League_Of_Argos/",
     "https://en.wikipedia.org/wiki/League_Of_Argos"
   ],
   "lebadeia": [
-    "https://www.worldhistory.org/Lebadeia/",
     "https://en.wikipedia.org/wiki/Lebadeia"
   ],
   "leichtenstein": [
     "https://en.wikipedia.org/wiki/Leichtenstein"
   ],
   "leontini": [
-    "https://www.worldhistory.org/Leontini/",
     "https://en.wikipedia.org/wiki/Leontini"
   ],
   "lesbos": [
-    "https://www.worldhistory.org/Lesbos/",
+    "https://www.worldhistory.org/lesbos/",
     "https://en.wikipedia.org/wiki/Lesbos"
   ],
   "lesotho": [
@@ -2848,21 +2547,18 @@
     "https://en.wikipedia.org/wiki/Liao(2)"
   ],
   "liberia": [
-    "https://www.worldhistory.org/Liberia/",
     "https://en.wikipedia.org/wiki/Liberia"
   ],
   "liburnians": [
     "https://en.wikipedia.org/wiki/Liburnians"
   ],
   "libyans": [
-    "https://www.worldhistory.org/Libyans/",
     "https://en.wikipedia.org/wiki/Libyans"
   ],
   "libyphoenices": [
     "https://en.wikipedia.org/wiki/Libyphoenices"
   ],
   "ligurians": [
-    "https://www.worldhistory.org/Ligurians/",
     "https://en.wikipedia.org/wiki/Ligurians"
   ],
   "lingzhi": [
@@ -2872,7 +2568,6 @@
     "https://en.wikipedia.org/wiki/Linhu"
   ],
   "little guo": [
-    "https://www.worldhistory.org/Little_Guo/",
     "https://en.wikipedia.org/wiki/Little_Guo"
   ],
   "liu": [
@@ -2890,7 +2585,6 @@
     "https://en.wikipedia.org/wiki/Loufan"
   ],
   "lower macedon": [
-    "https://www.worldhistory.org/Lower_Macedon/",
     "https://en.wikipedia.org/wiki/Lower_Macedon"
   ],
   "lu": [
@@ -2909,7 +2603,6 @@
     "https://en.wikipedia.org/wiki/Lucani"
   ],
   "lucanians": [
-    "https://www.worldhistory.org/Lucanians/",
     "https://en.wikipedia.org/wiki/Lucanians"
   ],
   "luhun rong": [
@@ -2920,7 +2613,6 @@
     "https://en.wikipedia.org/wiki/Lukka"
   ],
   "lullubi": [
-    "https://www.worldhistory.org/Lullubi/",
     "https://en.wikipedia.org/wiki/Lullubi"
   ],
   "lullubum": [
@@ -2931,19 +2623,16 @@
     "https://en.wikipedia.org/wiki/Luo"
   ],
   "luwians": [
-    "https://www.worldhistory.org/Luwians/",
     "https://en.wikipedia.org/wiki/Luwians"
   ],
   "lycians": [
-    "https://www.worldhistory.org/Lycians/",
     "https://en.wikipedia.org/wiki/Lycians"
   ],
   "lydia": [
-    "https://www.worldhistory.org/Lydia/",
+    "https://www.worldhistory.org/lydia/",
     "https://en.wikipedia.org/wiki/Lydia"
   ],
   "lydians": [
-    "https://www.worldhistory.org/Lydians/",
     "https://en.wikipedia.org/wiki/Lydians"
   ],
   "lynkestis": [
@@ -2951,7 +2640,7 @@
     "https://en.wikipedia.org/wiki/Lynkestis"
   ],
   "macedon": [
-    "https://www.worldhistory.org/Macedon/",
+    "https://www.worldhistory.org/macedon/",
     "https://en.wikipedia.org/wiki/Macedon"
   ],
   "macedonia": [
@@ -2959,7 +2648,6 @@
     "https://en.wikipedia.org/wiki/Macedonia"
   ],
   "macedonian ally": [
-    "https://www.worldhistory.org/Macedonian_Ally/",
     "https://en.wikipedia.org/wiki/Macedonian_Ally"
   ],
   "madra": [
@@ -2973,7 +2661,6 @@
     "https://en.wikipedia.org/wiki/Magadha"
   ],
   "magan": [
-    "https://www.worldhistory.org/Magan/",
     "https://en.wikipedia.org/wiki/Magan"
   ],
   "magnesia": [
@@ -2984,15 +2671,12 @@
     "https://en.wikipedia.org/wiki/Malavas"
   ],
   "malawi": [
-    "https://www.worldhistory.org/Malawi/",
     "https://en.wikipedia.org/wiki/Malawi"
   ],
   "maldives": [
-    "https://www.worldhistory.org/Maldives/",
     "https://en.wikipedia.org/wiki/Maldives"
   ],
   "malis": [
-    "https://www.worldhistory.org/Malis/",
     "https://en.wikipedia.org/wiki/Malis"
   ],
   "malla": [
@@ -3004,19 +2688,15 @@
     "https://en.wikipedia.org/wiki/Malta"
   ],
   "mama": [
-    "https://www.worldhistory.org/Mama/",
     "https://en.wikipedia.org/wiki/Mama"
   ],
   "mamertine mercenaries": [
-    "https://www.worldhistory.org/Mamertine_Mercenaries/",
     "https://en.wikipedia.org/wiki/Mamertine_Mercenaries"
   ],
   "mamertines": [
-    "https://www.worldhistory.org/Mamertines/",
     "https://en.wikipedia.org/wiki/Mamertines"
   ],
   "manchurian peoples": [
-    "https://www.worldhistory.org/Manchurian_Peoples/",
     "https://en.wikipedia.org/wiki/Manchurian_Peoples"
   ],
   "mannaea": [
@@ -3026,7 +2706,6 @@
     "https://en.wikipedia.org/wiki/Manshi"
   ],
   "mantineia": [
-    "https://www.worldhistory.org/Mantineia/",
     "https://en.wikipedia.org/wiki/Mantineia"
   ],
   "mao": [
@@ -3045,7 +2724,6 @@
     "https://en.wikipedia.org/wiki/Marrucini"
   ],
   "marshall islands": [
-    "https://www.worldhistory.org/Marshall_Islands/",
     "https://en.wikipedia.org/wiki/Marshall_Islands"
   ],
   "marsi": [
@@ -3060,11 +2738,9 @@
     "https://en.wikipedia.org/wiki/Massagetai"
   ],
   "matsya": [
-    "https://www.worldhistory.org/Matsya/",
     "https://en.wikipedia.org/wiki/Matsya"
   ],
   "mauritania": [
-    "https://www.worldhistory.org/Mauritania/",
     "https://en.wikipedia.org/wiki/Mauritania"
   ],
   "mauritius": [
@@ -3088,7 +2764,6 @@
     "https://en.wikipedia.org/wiki/Media"
   ],
   "median vassal": [
-    "https://www.worldhistory.org/Median_Vassal/",
     "https://en.wikipedia.org/wiki/Median_Vassal"
   ],
   "megalopolis": [
@@ -3099,50 +2774,39 @@
     "https://en.wikipedia.org/wiki/Megaris"
   ],
   "mercenaries of bithynia": [
-    "https://www.worldhistory.org/Mercenaries_Of_Bithynia/",
     "https://en.wikipedia.org/wiki/Mercenaries_Of_Bithynia"
   ],
   "mercenaries under agathocles": [
-    "https://www.worldhistory.org/Mercenaries_Under_Agathocles/",
     "https://en.wikipedia.org/wiki/Mercenaries_Under_Agathocles"
   ],
   "mercenaries under amyntas": [
-    "https://www.worldhistory.org/Mercenaries_Under_Amyntas/",
     "https://en.wikipedia.org/wiki/Mercenaries_Under_Amyntas"
   ],
   "mercenaries under cleonymus": [
-    "https://www.worldhistory.org/Mercenaries_Under_Cleonymus/",
     "https://en.wikipedia.org/wiki/Mercenaries_Under_Cleonymus"
   ],
   "mercenaries under harpalus": [
-    "https://www.worldhistory.org/Mercenaries_Under_Harpalus/",
     "https://en.wikipedia.org/wiki/Mercenaries_Under_Harpalus"
   ],
   "mercenaries under leosthenes": [
-    "https://www.worldhistory.org/Mercenaries_Under_Leosthenes/",
     "https://en.wikipedia.org/wiki/Mercenaries_Under_Leosthenes"
   ],
   "mercenaries under phalaecus": [
-    "https://www.worldhistory.org/Mercenaries_Under_Phalaecus/",
     "https://en.wikipedia.org/wiki/Mercenaries_Under_Phalaecus"
   ],
   "mercenaries under thibron": [
-    "https://www.worldhistory.org/Mercenaries_Under_Thibron/",
     "https://en.wikipedia.org/wiki/Mercenaries_Under_Thibron"
   ],
   "mesoamerican peoples": [
-    "https://www.worldhistory.org/Mesoamerican_Peoples/",
     "https://en.wikipedia.org/wiki/Mesoamerican_Peoples"
   ],
   "messapians": [
-    "https://www.worldhistory.org/Messapians/",
     "https://en.wikipedia.org/wiki/Messapians"
   ],
   "messapii": [
     "https://en.wikipedia.org/wiki/Messapii"
   ],
   "messenia": [
-    "https://www.worldhistory.org/Messenia/",
     "https://en.wikipedia.org/wiki/Messenia"
   ],
   "mianzhu": [
@@ -3157,25 +2821,21 @@
     "https://en.wikipedia.org/wiki/Middle_Assyrian_Empire"
   ],
   "minoans": [
-    "https://www.worldhistory.org/Minoans/",
     "https://en.wikipedia.org/wiki/Minoans"
   ],
   "mithila": [
-    "https://www.worldhistory.org/Mithila/",
     "https://en.wikipedia.org/wiki/Mithila"
   ],
   "mixtecs": [
     "https://en.wikipedia.org/wiki/Mixtecs"
   ],
   "moabites": [
-    "https://www.worldhistory.org/Moabites/",
     "https://en.wikipedia.org/wiki/Moabites"
   ],
   "molossis": [
     "https://en.wikipedia.org/wiki/Molossis"
   ],
   "moriya": [
-    "https://www.worldhistory.org/Moriya/",
     "https://en.wikipedia.org/wiki/Moriya"
   ],
   "mou": [
@@ -3186,7 +2846,6 @@
     "https://en.wikipedia.org/wiki/Mulaka"
   ],
   "musasir": [
-    "https://www.worldhistory.org/Musasir/",
     "https://en.wikipedia.org/wiki/Musasir"
   ],
   "musicanus": [
@@ -3200,29 +2859,24 @@
     "https://en.wikipedia.org/wiki/Mutibas"
   ],
   "mutinous troops": [
-    "https://www.worldhistory.org/Mutinous_Troops/",
     "https://en.wikipedia.org/wiki/Mutinous_Troops"
   ],
   "mycenaean kingdoms": [
-    "https://www.worldhistory.org/Mycenaean_Kingdoms/",
     "https://en.wikipedia.org/wiki/Mycenaean_Kingdoms"
   ],
   "mycenaeans": [
-    "https://www.worldhistory.org/Mycenaeans/",
     "https://en.wikipedia.org/wiki/Mycenaeans"
   ],
   "mysians": [
     "https://en.wikipedia.org/wiki/Mysians"
   ],
   "nabataean kingdom": [
-    "https://www.worldhistory.org/Nabataean_Kingdom/",
     "https://en.wikipedia.org/wiki/Nabataean_Kingdom"
   ],
   "nabataeans": [
     "https://en.wikipedia.org/wiki/Nabataeans"
   ],
   "nairi": [
-    "https://www.worldhistory.org/Nairi/",
     "https://en.wikipedia.org/wiki/Nairi"
   ],
   "namibia": [
@@ -3232,7 +2886,6 @@
     "https://en.wikipedia.org/wiki/Namri"
   ],
   "nanda empire": [
-    "https://www.worldhistory.org/Nanda_Empire/",
     "https://en.wikipedia.org/wiki/Nanda_Empire"
   ],
   "nanyan": [
@@ -3250,19 +2903,15 @@
     "https://en.wikipedia.org/wiki/Neo_Assyrian_Empire"
   ],
   "neo assyrian revolt": [
-    "https://www.worldhistory.org/Neo_Assyrian_Revolt/",
     "https://en.wikipedia.org/wiki/Neo_Assyrian_Revolt"
   ],
   "neo assyrian tributary": [
-    "https://www.worldhistory.org/Neo_Assyrian_Tributary/",
     "https://en.wikipedia.org/wiki/Neo_Assyrian_Tributary"
   ],
   "neo babylonian empire": [
-    "https://www.worldhistory.org/Neo_Babylonian_Empire/",
     "https://en.wikipedia.org/wiki/Neo_Babylonian_Empire"
   ],
   "neo babylonian empire tributary": [
-    "https://www.worldhistory.org/Neo_Babylonian_Empire_Tributary/",
     "https://en.wikipedia.org/wiki/Neo_Babylonian_Empire_Tributary"
   ],
   "neo-assyrian empire": [
@@ -3274,174 +2923,132 @@
     "https://en.wikipedia.org/wiki/Neo-Babylonian_Empire"
   ],
   "new hittite kingdom": [
-    "https://www.worldhistory.org/New_Hittite_Kingdom/",
     "https://en.wikipedia.org/wiki/New_Hittite_Kingdom"
   ],
   "new zealand": [
-    "https://www.worldhistory.org/New_Zealand/",
     "https://en.wikipedia.org/wiki/New_Zealand"
   ],
   "ni": [
-    "https://www.worldhistory.org/Ni/",
     "https://en.wikipedia.org/wiki/Ni"
   ],
   "nicaragua": [
-    "https://www.worldhistory.org/Nicaragua/",
     "https://en.wikipedia.org/wiki/Nicaragua"
   ],
   "niger": [
-    "https://www.worldhistory.org/Niger/",
     "https://en.wikipedia.org/wiki/Niger"
   ],
   "nilotic peoples": [
-    "https://www.worldhistory.org/Nilotic_Peoples/",
     "https://en.wikipedia.org/wiki/Nilotic_Peoples"
   ],
   "nok people": [
-    "https://www.worldhistory.org/Nok_People/",
     "https://en.wikipedia.org/wiki/Nok_People"
   ],
   "norte chico civilization": [
-    "https://www.worldhistory.org/Norte_Chico_Civilization/",
     "https://en.wikipedia.org/wiki/Norte_Chico_Civilization"
   ],
   "north arabian semites": [
-    "https://www.worldhistory.org/North_Arabian_Semites/",
     "https://en.wikipedia.org/wiki/North_Arabian_Semites"
   ],
   "northern league": [
-    "https://www.worldhistory.org/Northern_League/",
     "https://en.wikipedia.org/wiki/Northern_League"
   ],
   "northern zone peoples": [
-    "https://www.worldhistory.org/Northern_Zone_Peoples/",
     "https://en.wikipedia.org/wiki/Northern_Zone_Peoples"
   ],
   "northwest coast peoples": [
-    "https://www.worldhistory.org/Northwest_Coast_Peoples/",
     "https://en.wikipedia.org/wiki/Northwest_Coast_Peoples"
   ],
   "nu": [
-    "https://www.worldhistory.org/Nu/",
     "https://en.wikipedia.org/wiki/Nu"
   ],
   "nubians": [
-    "https://www.worldhistory.org/Nubians/",
     "https://en.wikipedia.org/wiki/Nubians"
   ],
   "nuhashshi": [
-    "https://www.worldhistory.org/Nuhashshi/",
     "https://en.wikipedia.org/wiki/Nuhashshi"
   ],
   "numidians": [
-    "https://www.worldhistory.org/Numidians/",
     "https://en.wikipedia.org/wiki/Numidians"
   ],
   "odra": [
-    "https://www.worldhistory.org/Odra/",
     "https://en.wikipedia.org/wiki/Odra"
   ],
   "odrysia": [
-    "https://www.worldhistory.org/Odrysia/",
     "https://en.wikipedia.org/wiki/Odrysia"
   ],
   "odrysian kingdom": [
-    "https://www.worldhistory.org/Odrysian_Kingdom/",
     "https://en.wikipedia.org/wiki/Odrysian_Kingdom"
   ],
   "oetaea": [
-    "https://www.worldhistory.org/Oetaea/",
     "https://en.wikipedia.org/wiki/Oetaea"
   ],
   "old hittite kingdom": [
-    "https://www.worldhistory.org/Old_Hittite_Kingdom/",
     "https://en.wikipedia.org/wiki/Old_Hittite_Kingdom"
   ],
   "olmecs": [
-    "https://www.worldhistory.org/Olmecs/",
     "https://en.wikipedia.org/wiki/Olmecs"
   ],
   "opuntian locris": [
-    "https://www.worldhistory.org/Opuntian_Locris/",
     "https://en.wikipedia.org/wiki/Opuntian_Locris"
   ],
   "oreitai": [
-    "https://www.worldhistory.org/Oreitai/",
     "https://en.wikipedia.org/wiki/Oreitai"
   ],
   "orestis": [
-    "https://www.worldhistory.org/Orestis/",
     "https://en.wikipedia.org/wiki/Orestis"
   ],
   "oxycanus": [
-    "https://www.worldhistory.org/Oxycanus/",
     "https://en.wikipedia.org/wiki/Oxycanus"
   ],
   "ozolian locris": [
-    "https://www.worldhistory.org/Ozolian_Locris/",
     "https://en.wikipedia.org/wiki/Ozolian_Locris"
   ],
   "paeligni": [
-    "https://www.worldhistory.org/Paeligni/",
     "https://en.wikipedia.org/wiki/Paeligni"
   ],
   "paeonia": [
-    "https://www.worldhistory.org/Paeonia/",
     "https://en.wikipedia.org/wiki/Paeonia"
   ],
   "paeonians": [
-    "https://www.worldhistory.org/Paeonians/",
     "https://en.wikipedia.org/wiki/Paeonians"
   ],
   "paiones": [
-    "https://www.worldhistory.org/Paiones/",
     "https://en.wikipedia.org/wiki/Paiones"
   ],
   "pala": [
-    "https://www.worldhistory.org/Pala/",
     "https://en.wikipedia.org/wiki/Pala"
   ],
   "palau": [
-    "https://www.worldhistory.org/Palau/",
     "https://en.wikipedia.org/wiki/Palau"
   ],
   "paleosiberians": [
-    "https://www.worldhistory.org/Paleosiberians/",
     "https://en.wikipedia.org/wiki/Paleosiberians"
   ],
   "pampas cultures": [
-    "https://www.worldhistory.org/Pampas_Cultures/",
     "https://en.wikipedia.org/wiki/Pampas_Cultures"
   ],
   "pamphylians": [
-    "https://www.worldhistory.org/Pamphylians/",
     "https://en.wikipedia.org/wiki/Pamphylians"
   ],
   "panama": [
-    "https://www.worldhistory.org/Panama/",
     "https://en.wikipedia.org/wiki/Panama"
   ],
   "panchala": [
-    "https://www.worldhistory.org/Panchala/",
     "https://en.wikipedia.org/wiki/Panchala"
   ],
   "pandya": [
-    "https://www.worldhistory.org/Pandya/",
     "https://en.wikipedia.org/wiki/Pandya"
   ],
   "paphlagonia": [
-    "https://www.worldhistory.org/Paphlagonia/",
     "https://en.wikipedia.org/wiki/Paphlagonia"
   ],
   "papua new guinea": [
-    "https://www.worldhistory.org/Papua_New_Guinea/",
     "https://en.wikipedia.org/wiki/Papua_New_Guinea"
   ],
   "papuans": [
     "https://en.wikipedia.org/wiki/Papuans"
   ],
   "paraguay": [
-    "https://www.worldhistory.org/Paraguay/",
     "https://en.wikipedia.org/wiki/Paraguay"
   ],
   "parauaea": [
@@ -3451,7 +3058,6 @@
     "https://en.wikipedia.org/wiki/Pardabathra"
   ],
   "parsua": [
-    "https://www.worldhistory.org/Parsua/",
     "https://en.wikipedia.org/wiki/Parsua"
   ],
   "parthia": [
@@ -3462,7 +3068,6 @@
     "https://en.wikipedia.org/wiki/Pashime"
   ],
   "patagonian peoples": [
-    "https://www.worldhistory.org/Patagonian_Peoples/",
     "https://en.wikipedia.org/wiki/Patagonian_Peoples"
   ],
   "patin (unqi)": [
@@ -3482,14 +3087,13 @@
     "https://en.wikipedia.org/wiki/Peloponnesian_League"
   ],
   "peng": [
-    "https://www.worldhistory.org/Peng/",
     "https://en.wikipedia.org/wiki/Peng"
   ],
   "pengzhi": [
     "https://en.wikipedia.org/wiki/Pengzhi"
   ],
   "pergamon": [
-    "https://www.worldhistory.org/Pergamon/",
+    "https://www.worldhistory.org/pergamon/",
     "https://en.wikipedia.org/wiki/Pergamon"
   ],
   "persia": [
@@ -3501,11 +3105,9 @@
     "https://en.wikipedia.org/wiki/Persian_Empire"
   ],
   "persian revolt": [
-    "https://www.worldhistory.org/Persian_Revolt/",
     "https://en.wikipedia.org/wiki/Persian_Revolt"
   ],
   "persian vassal": [
-    "https://www.worldhistory.org/Persian_Vassal/",
     "https://en.wikipedia.org/wiki/Persian_Vassal"
   ],
   "peucetians": [
@@ -3515,11 +3117,9 @@
     "https://en.wikipedia.org/wiki/Pharsalos"
   ],
   "pherae": [
-    "https://www.worldhistory.org/Pherae/",
     "https://en.wikipedia.org/wiki/Pherae"
   ],
   "philistia": [
-    "https://www.worldhistory.org/Philistia/",
     "https://en.wikipedia.org/wiki/Philistia"
   ],
   "philistines": [
@@ -3527,11 +3127,9 @@
     "https://en.wikipedia.org/wiki/Philistines"
   ],
   "phlius": [
-    "https://www.worldhistory.org/Phlius/",
     "https://en.wikipedia.org/wiki/Phlius"
   ],
   "phocis": [
-    "https://www.worldhistory.org/Phocis/",
     "https://en.wikipedia.org/wiki/Phocis"
   ],
   "phoenicians": [
@@ -3539,11 +3137,9 @@
     "https://en.wikipedia.org/wiki/Phoenicians"
   ],
   "phrygian kingdom": [
-    "https://www.worldhistory.org/Phrygian_Kingdom/",
     "https://en.wikipedia.org/wiki/Phrygian_Kingdom"
   ],
   "phrygians": [
-    "https://www.worldhistory.org/Phrygians/",
     "https://en.wikipedia.org/wiki/Phrygians"
   ],
   "pi": [
@@ -3561,11 +3157,9 @@
     "https://en.wikipedia.org/wiki/Picenum"
   ],
   "ping zhou": [
-    "https://www.worldhistory.org/Ping_Zhou/",
     "https://en.wikipedia.org/wiki/Ping_Zhou"
   ],
   "pirate mercenaries": [
-    "https://www.worldhistory.org/Pirate_Mercenaries/",
     "https://en.wikipedia.org/wiki/Pirate_Mercenaries"
   ],
   "pirates": [
@@ -3582,15 +3176,12 @@
     "https://en.wikipedia.org/wiki/Pitassa"
   ],
   "plains peoples": [
-    "https://www.worldhistory.org/Plains_Peoples/",
     "https://en.wikipedia.org/wiki/Plains_Peoples"
   ],
   "plateau peoples": [
-    "https://www.worldhistory.org/Plateau_Peoples/",
     "https://en.wikipedia.org/wiki/Plateau_Peoples"
   ],
   "plebian secession": [
-    "https://www.worldhistory.org/Plebian_Secession/",
     "https://en.wikipedia.org/wiki/Plebian_Secession"
   ],
   "pontians": [
@@ -3605,39 +3196,30 @@
     "https://en.wikipedia.org/wiki/Poverty_Point_Culture"
   ],
   "praeneste": [
-    "https://www.worldhistory.org/Praeneste/",
     "https://en.wikipedia.org/wiki/Praeneste"
   ],
   "proto-burmese": [
-    "https://www.worldhistory.org/Proto-Burmese/",
     "https://en.wikipedia.org/wiki/Proto-Burmese"
   ],
   "proto-canaanites": [
-    "https://www.worldhistory.org/Proto-Canaanites/",
     "https://en.wikipedia.org/wiki/Proto-Canaanites"
   ],
   "proto-ethiopians": [
-    "https://www.worldhistory.org/Proto-Ethiopians/",
     "https://en.wikipedia.org/wiki/Proto-Ethiopians"
   ],
   "proto-greeks": [
-    "https://www.worldhistory.org/Proto-Greeks/",
     "https://en.wikipedia.org/wiki/Proto-Greeks"
   ],
   "proto-mongol peoples": [
-    "https://www.worldhistory.org/Proto-Mongol_Peoples/",
     "https://en.wikipedia.org/wiki/Proto-Mongol_Peoples"
   ],
   "proto-tibetans": [
-    "https://www.worldhistory.org/Proto-Tibetans/",
     "https://en.wikipedia.org/wiki/Proto-Tibetans"
   ],
   "proto-turkic peoples": [
-    "https://www.worldhistory.org/Proto-Turkic_Peoples/",
     "https://en.wikipedia.org/wiki/Proto-Turkic_Peoples"
   ],
   "ptolemaic ally": [
-    "https://www.worldhistory.org/Ptolemaic_Ally/",
     "https://en.wikipedia.org/wiki/Ptolemaic_Ally"
   ],
   "ptolemaic kingdom": [
@@ -3658,11 +3240,10 @@
     "https://en.wikipedia.org/wiki/Pundra"
   ],
   "punt": [
-    "https://www.worldhistory.org/Punt/",
+    "https://www.worldhistory.org/punt/",
     "https://en.wikipedia.org/wiki/Punt"
   ],
   "qedarite confederation": [
-    "https://www.worldhistory.org/Qedarite_Confederation/",
     "https://en.wikipedia.org/wiki/Qedarite_Confederation"
   ],
   "qedarites": [
@@ -3712,26 +3293,21 @@
     "https://en.wikipedia.org/wiki/Quwo"
   ],
   "rang": [
-    "https://www.worldhistory.org/Rang/",
     "https://en.wikipedia.org/wiki/Rang"
   ],
   "rathikas": [
     "https://en.wikipedia.org/wiki/Rathikas"
   ],
   "rebel aranzik": [
-    "https://www.worldhistory.org/Rebel_Aranzik/",
     "https://en.wikipedia.org/wiki/Rebel_Aranzik"
   ],
   "rebel irridu": [
-    "https://www.worldhistory.org/Rebel_Irridu/",
     "https://en.wikipedia.org/wiki/Rebel_Irridu"
   ],
   "rebel israelites": [
-    "https://www.worldhistory.org/Rebel_Israelites/",
     "https://en.wikipedia.org/wiki/Rebel_Israelites"
   ],
   "red di": [
-    "https://www.worldhistory.org/Red_Di/",
     "https://en.wikipedia.org/wiki/Red_Di"
   ],
   "ren": [
@@ -3743,83 +3319,63 @@
     "https://en.wikipedia.org/wiki/Revolt"
   ],
   "revolt of antigonus": [
-    "https://www.worldhistory.org/Revolt_Of_Antigonus/",
     "https://en.wikipedia.org/wiki/Revolt_Of_Antigonus"
   ],
   "revolt of antipater": [
-    "https://www.worldhistory.org/Revolt_Of_Antipater/",
     "https://en.wikipedia.org/wiki/Revolt_Of_Antipater"
   ],
   "revolt of ariobarzanes": [
-    "https://www.worldhistory.org/Revolt_Of_Ariobarzanes/",
     "https://en.wikipedia.org/wiki/Revolt_Of_Ariobarzanes"
   ],
   "revolt of artabazus": [
-    "https://www.worldhistory.org/Revolt_Of_Artabazus/",
     "https://en.wikipedia.org/wiki/Revolt_Of_Artabazus"
   ],
   "revolt of autophradates": [
-    "https://www.worldhistory.org/Revolt_Of_Autophradates/",
     "https://en.wikipedia.org/wiki/Revolt_Of_Autophradates"
   ],
   "revolt of cyrus the younger": [
-    "https://www.worldhistory.org/Revolt_Of_Cyrus_The_Younger/",
     "https://en.wikipedia.org/wiki/Revolt_Of_Cyrus_The_Younger"
   ],
   "revolt of datames": [
-    "https://www.worldhistory.org/Revolt_Of_Datames/",
     "https://en.wikipedia.org/wiki/Revolt_Of_Datames"
   ],
   "revolt of eumenes": [
-    "https://www.worldhistory.org/Revolt_Of_Eumenes/",
     "https://en.wikipedia.org/wiki/Revolt_Of_Eumenes"
   ],
   "revolt of hermias": [
-    "https://www.worldhistory.org/Revolt_Of_Hermias/",
     "https://en.wikipedia.org/wiki/Revolt_Of_Hermias"
   ],
   "revolt of hua clan": [
-    "https://www.worldhistory.org/Revolt_Of_Hua_Clan/",
     "https://en.wikipedia.org/wiki/Revolt_Of_Hua_Clan"
   ],
   "revolt of inaros": [
-    "https://www.worldhistory.org/Revolt_Of_Inaros/",
     "https://en.wikipedia.org/wiki/Revolt_Of_Inaros"
   ],
   "revolt of khababash": [
-    "https://www.worldhistory.org/Revolt_Of_Khababash/",
     "https://en.wikipedia.org/wiki/Revolt_Of_Khababash"
   ],
   "revolt of luan": [
-    "https://www.worldhistory.org/Revolt_Of_Luan/",
     "https://en.wikipedia.org/wiki/Revolt_Of_Luan"
   ],
   "revolt of lysimachus": [
-    "https://www.worldhistory.org/Revolt_Of_Lysimachus/",
     "https://en.wikipedia.org/wiki/Revolt_Of_Lysimachus"
   ],
   "revolt of mausolus": [
-    "https://www.worldhistory.org/Revolt_Of_Mausolus/",
     "https://en.wikipedia.org/wiki/Revolt_Of_Mausolus"
   ],
   "revolt of orontes": [
-    "https://www.worldhistory.org/Revolt_Of_Orontes/",
     "https://en.wikipedia.org/wiki/Revolt_Of_Orontes"
   ],
   "revolt of pissuthnes": [
-    "https://www.worldhistory.org/Revolt_Of_Pissuthnes/",
     "https://en.wikipedia.org/wiki/Revolt_Of_Pissuthnes"
   ],
   "revolt of ptolemy": [
-    "https://www.worldhistory.org/Revolt_Of_Ptolemy/",
     "https://en.wikipedia.org/wiki/Revolt_Of_Ptolemy"
   ],
   "revolt of wangzi tui": [
-    "https://www.worldhistory.org/Revolt_Of_Wangzi_Tui/",
     "https://en.wikipedia.org/wiki/Revolt_Of_Wangzi_Tui"
   ],
   "revolt of wangzi zhao": [
-    "https://www.worldhistory.org/Revolt_Of_Wangzi_Zhao/",
     "https://en.wikipedia.org/wiki/Revolt_Of_Wangzi_Zhao"
   ],
   "rhegion": [
@@ -3827,15 +3383,12 @@
     "https://en.wikipedia.org/wiki/Rhegion"
   ],
   "rhodos": [
-    "https://www.worldhistory.org/Rhodos/",
     "https://en.wikipedia.org/wiki/Rhodos"
   ],
   "roman ally": [
-    "https://www.worldhistory.org/Roman_Ally/",
     "https://en.wikipedia.org/wiki/Roman_Ally"
   ],
   "roman latin colony": [
-    "https://www.worldhistory.org/Roman_Latin_Colony/",
     "https://en.wikipedia.org/wiki/Roman_Latin_Colony"
   ],
   "roman republic": [
@@ -3853,11 +3406,9 @@
     "https://en.wikipedia.org/wiki/Ruo"
   ],
   "ruo'ao revolt": [
-    "https://www.worldhistory.org/Ruo'ao_Revolt/",
     "https://en.wikipedia.org/wiki/Ruo'ao_Revolt"
   ],
   "rwanda": [
-    "https://www.worldhistory.org/Rwanda/",
     "https://en.wikipedia.org/wiki/Rwanda"
   ],
   "saba": [
@@ -3865,14 +3416,12 @@
     "https://en.wikipedia.org/wiki/Saba"
   ],
   "sabines": [
-    "https://www.worldhistory.org/Sabines/",
     "https://en.wikipedia.org/wiki/Sabines"
   ],
   "sabini": [
     "https://en.wikipedia.org/wiki/Sabini"
   ],
   "saharan peoples": [
-    "https://www.worldhistory.org/Saharan_Peoples/",
     "https://en.wikipedia.org/wiki/Saharan_Peoples"
   ],
   "sakas": [
@@ -3896,15 +3445,12 @@
     "https://en.wikipedia.org/wiki/Sambus"
   ],
   "samian thalassocracy": [
-    "https://www.worldhistory.org/Samian_Thalassocracy/",
     "https://en.wikipedia.org/wiki/Samian_Thalassocracy"
   ],
   "samnite ally": [
-    "https://www.worldhistory.org/Samnite_Ally/",
     "https://en.wikipedia.org/wiki/Samnite_Ally"
   ],
   "samnite confederation": [
-    "https://www.worldhistory.org/Samnite_Confederation/",
     "https://en.wikipedia.org/wiki/Samnite_Confederation"
   ],
   "samnites": [
@@ -3920,19 +3466,16 @@
     "https://en.wikipedia.org/wiki/Samoa"
   ],
   "samos": [
-    "https://www.worldhistory.org/Samos/",
+    "https://www.worldhistory.org/samos/",
     "https://en.wikipedia.org/wiki/Samos"
   ],
   "san marino": [
-    "https://www.worldhistory.org/San_Marino/",
     "https://en.wikipedia.org/wiki/San_Marino"
   ],
   "sanxingdui culture": [
-    "https://www.worldhistory.org/Sanxingdui_Culture/",
     "https://en.wikipedia.org/wiki/Sanxingdui_Culture"
   ],
   "sardinians": [
-    "https://www.worldhistory.org/Sardinians/",
     "https://en.wikipedia.org/wiki/Sardinians"
   ],
   "sattagydia": [
@@ -3951,7 +3494,6 @@
     "https://en.wikipedia.org/wiki/Sauvira"
   ],
   "savanna peoples": [
-    "https://www.worldhistory.org/Savanna_Peoples/",
     "https://en.wikipedia.org/wiki/Savanna_Peoples"
   ],
   "savaras": [
@@ -3969,23 +3511,18 @@
     "https://en.wikipedia.org/wiki/Sealand"
   ],
   "second athenian league": [
-    "https://www.worldhistory.org/Second_Athenian_League/",
     "https://en.wikipedia.org/wiki/Second_Athenian_League"
   ],
   "seleucid ally": [
-    "https://www.worldhistory.org/Seleucid_Ally/",
     "https://en.wikipedia.org/wiki/Seleucid_Ally"
   ],
   "seleucid kingdom": [
-    "https://www.worldhistory.org/Seleucid_Kingdom/",
     "https://en.wikipedia.org/wiki/Seleucid_Kingdom"
   ],
   "semitic nomads": [
-    "https://www.worldhistory.org/Semitic_Nomads/",
     "https://en.wikipedia.org/wiki/Semitic_Nomads"
   ],
   "senegal": [
-    "https://www.worldhistory.org/Senegal/",
     "https://en.wikipedia.org/wiki/Senegal"
   ],
   "seychelles": [
@@ -4003,7 +3540,6 @@
     "https://en.wikipedia.org/wiki/Shanrong"
   ],
   "shao": [
-    "https://www.worldhistory.org/Shao/",
     "https://en.wikipedia.org/wiki/Shao"
   ],
   "shen": [
@@ -4019,7 +3555,6 @@
     "https://en.wikipedia.org/wiki/Shi"
   ],
   "shimashki": [
-    "https://www.worldhistory.org/Shimashki/",
     "https://en.wikipedia.org/wiki/Shimashki"
   ],
   "shinuhtu": [
@@ -4030,19 +3565,15 @@
     "https://en.wikipedia.org/wiki/Shu"
   ],
   "shu bao": [
-    "https://www.worldhistory.org/Shu_Bao/",
     "https://en.wikipedia.org/wiki/Shu_Bao"
   ],
   "shu jiu": [
-    "https://www.worldhistory.org/Shu_Jiu/",
     "https://en.wikipedia.org/wiki/Shu_Jiu"
   ],
   "shu long": [
-    "https://www.worldhistory.org/Shu_Long/",
     "https://en.wikipedia.org/wiki/Shu_Long"
   ],
   "shu yong": [
-    "https://www.worldhistory.org/Shu_Yong/",
     "https://en.wikipedia.org/wiki/Shu_Yong"
   ],
   "shu(2)": [
@@ -4062,7 +3593,6 @@
     "https://en.wikipedia.org/wiki/Sicelia"
   ],
   "sicels": [
-    "https://www.worldhistory.org/Sicels/",
     "https://en.wikipedia.org/wiki/Sicels"
   ],
   "sicyon": [
@@ -4073,7 +3603,6 @@
     "https://en.wikipedia.org/wiki/Sidicini"
   ],
   "sierra leone": [
-    "https://www.worldhistory.org/Sierra_Leone/",
     "https://en.wikipedia.org/wiki/Sierra_Leone"
   ],
   "sikanoi": [
@@ -4109,7 +3638,6 @@
     "https://en.wikipedia.org/wiki/Sogdians"
   ],
   "solomon islands": [
-    "https://www.worldhistory.org/Solomon_Islands/",
     "https://en.wikipedia.org/wiki/Solomon_Islands"
   ],
   "song": [
@@ -4117,27 +3645,21 @@
     "https://en.wikipedia.org/wiki/Song"
   ],
   "south china peoples": [
-    "https://www.worldhistory.org/South_China_Peoples/",
     "https://en.wikipedia.org/wiki/South_China_Peoples"
   ],
   "spratly islands": [
-    "https://www.worldhistory.org/Spratly_Islands/",
     "https://en.wikipedia.org/wiki/Spratly_Islands"
   ],
   "st. kitts and nevis": [
-    "https://www.worldhistory.org/St._Kitts_And_Nevis/",
     "https://en.wikipedia.org/wiki/St._Kitts_And_Nevis"
   ],
   "st. lucia": [
-    "https://www.worldhistory.org/St._Lucia/",
     "https://en.wikipedia.org/wiki/St._Lucia"
   ],
   "st. vincent and the grenadines": [
-    "https://www.worldhistory.org/St._Vincent_And_The_Grenadines/",
     "https://en.wikipedia.org/wiki/St._Vincent_And_The_Grenadines"
   ],
   "stasis": [
-    "https://www.worldhistory.org/Stasis/",
     "https://en.wikipedia.org/wiki/Stasis"
   ],
   "su": [
@@ -4145,14 +3667,12 @@
     "https://en.wikipedia.org/wiki/Su"
   ],
   "subarctic peoples": [
-    "https://www.worldhistory.org/Subarctic_Peoples/",
     "https://en.wikipedia.org/wiki/Subarctic_Peoples"
   ],
   "subartum": [
     "https://en.wikipedia.org/wiki/Subartum"
   ],
   "succession struggle": [
-    "https://www.worldhistory.org/Succession_Struggle/",
     "https://en.wikipedia.org/wiki/Succession_Struggle"
   ],
   "suhma": [
@@ -4162,7 +3682,6 @@
     "https://en.wikipedia.org/wiki/Suhne"
   ],
   "suhu": [
-    "https://www.worldhistory.org/Suhu/",
     "https://en.wikipedia.org/wiki/Suhu"
   ],
   "sui": [
@@ -4177,27 +3696,22 @@
     "https://en.wikipedia.org/wiki/Surasena"
   ],
   "suriname": [
-    "https://www.worldhistory.org/Suriname/",
     "https://en.wikipedia.org/wiki/Suriname"
   ],
   "swaziland": [
-    "https://www.worldhistory.org/Swaziland/",
     "https://en.wikipedia.org/wiki/Swaziland"
   ],
   "syracuse": [
-    "https://www.worldhistory.org/Syracuse/",
+    "https://www.worldhistory.org/syracuse/",
     "https://en.wikipedia.org/wiki/Syracuse"
   ],
   "syracuse exiles": [
-    "https://www.worldhistory.org/Syracuse_Exiles/",
     "https://en.wikipedia.org/wiki/Syracuse_Exiles"
   ],
   "são tomé and príncipe": [
-    "https://www.worldhistory.org/São_Tomé_And_Príncipe/",
     "https://en.wikipedia.org/wiki/São_Tomé_And_Príncipe"
   ],
   "tabal": [
-    "https://www.worldhistory.org/Tabal/",
     "https://en.wikipedia.org/wiki/Tabal"
   ],
   "taiwan": [
@@ -4232,7 +3746,7 @@
     "https://en.wikipedia.org/wiki/Tarhuntassa"
   ],
   "tartessos": [
-    "https://www.worldhistory.org/Tartessos/",
+    "https://www.worldhistory.org/tartessos/",
     "https://en.wikipedia.org/wiki/Tartessos"
   ],
   "taulanti": [
@@ -4242,7 +3756,7 @@
     "https://en.wikipedia.org/wiki/Tauromenion"
   ],
   "taxila": [
-    "https://www.worldhistory.org/Taxila/",
+    "https://www.worldhistory.org/taxila/",
     "https://en.wikipedia.org/wiki/Taxila"
   ],
   "tegea": [
@@ -4261,7 +3775,6 @@
     "https://en.wikipedia.org/wiki/Teutons"
   ],
   "thai peoples": [
-    "https://www.worldhistory.org/Thai_Peoples/",
     "https://en.wikipedia.org/wiki/Thai_Peoples"
   ],
   "the netherlands": [
@@ -4269,7 +3782,6 @@
     "https://en.wikipedia.org/wiki/The_Netherlands"
   ],
   "theban ally": [
-    "https://www.worldhistory.org/Theban_Ally/",
     "https://en.wikipedia.org/wiki/Theban_Ally"
   ],
   "thebes": [
@@ -4277,7 +3789,6 @@
     "https://en.wikipedia.org/wiki/Thebes"
   ],
   "thespiae": [
-    "https://www.worldhistory.org/Thespiae/",
     "https://en.wikipedia.org/wiki/Thespiae"
   ],
   "thesprotia": [
@@ -4295,33 +3806,27 @@
     "https://en.wikipedia.org/wiki/Thrace"
   ],
   "thracians": [
-    "https://www.worldhistory.org/Thracians/",
     "https://en.wikipedia.org/wiki/Thracians"
   ],
   "thraco cimmerians": [
-    "https://www.worldhistory.org/Thraco_Cimmerians/",
     "https://en.wikipedia.org/wiki/Thraco_Cimmerians"
   ],
   "thraikes": [
     "https://en.wikipedia.org/wiki/Thraikes"
   ],
   "three guards rebellion": [
-    "https://www.worldhistory.org/Three_Guards_Rebellion/",
     "https://en.wikipedia.org/wiki/Three_Guards_Rebellion"
   ],
   "three yi tribes": [
-    "https://www.worldhistory.org/Three_Yi_Tribes/",
     "https://en.wikipedia.org/wiki/Three_Yi_Tribes"
   ],
   "thyni": [
     "https://en.wikipedia.org/wiki/Thyni"
   ],
   "tian clan": [
-    "https://www.worldhistory.org/Tian_Clan/",
     "https://en.wikipedia.org/wiki/Tian_Clan"
   ],
   "tian qi": [
-    "https://www.worldhistory.org/Tian_Qi/",
     "https://en.wikipedia.org/wiki/Tian_Qi"
   ],
   "tibur": [
@@ -4329,7 +3834,6 @@
     "https://en.wikipedia.org/wiki/Tibur"
   ],
   "togo": [
-    "https://www.worldhistory.org/Togo/",
     "https://en.wikipedia.org/wiki/Togo"
   ],
   "tong": [
@@ -4337,7 +3841,6 @@
     "https://en.wikipedia.org/wiki/Tong"
   ],
   "tonga": [
-    "https://www.worldhistory.org/Tonga/",
     "https://en.wikipedia.org/wiki/Tonga"
   ],
   "triballi": [
@@ -4348,14 +3851,12 @@
     "https://en.wikipedia.org/wiki/Trigarta"
   ],
   "trinidad and tobago": [
-    "https://www.worldhistory.org/Trinidad_And_Tobago/",
     "https://en.wikipedia.org/wiki/Trinidad_And_Tobago"
   ],
   "triphylia": [
     "https://en.wikipedia.org/wiki/Triphylia"
   ],
   "troezen": [
-    "https://www.worldhistory.org/Troezen/",
     "https://en.wikipedia.org/wiki/Troezen"
   ],
   "tuhe": [
@@ -4368,7 +3869,6 @@
     "https://en.wikipedia.org/wiki/Turkmenistan"
   ],
   "turks and caicos islands": [
-    "https://www.worldhistory.org/Turks_And_Caicos_Islands/",
     "https://en.wikipedia.org/wiki/Turks_And_Caicos_Islands"
   ],
   "tuvalu": [
@@ -4381,14 +3881,12 @@
     "https://en.wikipedia.org/wiki/Tymphaea"
   ],
   "tyranny of syracuse": [
-    "https://www.worldhistory.org/Tyranny_Of_Syracuse/",
     "https://en.wikipedia.org/wiki/Tyranny_Of_Syracuse"
   ],
   "uelikukhi": [
     "https://en.wikipedia.org/wiki/Uelikukhi"
   ],
   "uganda": [
-    "https://www.worldhistory.org/Uganda/",
     "https://en.wikipedia.org/wiki/Uganda"
   ],
   "ugrians": [
@@ -4413,7 +3911,6 @@
     "https://en.wikipedia.org/wiki/United_Arab_Emirates"
   ],
   "ur iii tributary": [
-    "https://www.worldhistory.org/Ur_Iii_Tributary/",
     "https://en.wikipedia.org/wiki/Ur_Iii_Tributary"
   ],
   "urartu": [
@@ -4421,7 +3918,6 @@
     "https://en.wikipedia.org/wiki/Urartu"
   ],
   "urartu tributary": [
-    "https://www.worldhistory.org/Urartu_Tributary/",
     "https://en.wikipedia.org/wiki/Urartu_Tributary"
   ],
   "uruguay": [
@@ -4438,23 +3934,18 @@
     "https://en.wikipedia.org/wiki/Utkala"
   ],
   "vajjika league": [
-    "https://www.worldhistory.org/Vajjika_League/",
     "https://en.wikipedia.org/wiki/Vajjika_League"
   ],
   "valdivia culture": [
-    "https://www.worldhistory.org/Valdivia_Culture/",
     "https://en.wikipedia.org/wiki/Valdivia_Culture"
   ],
   "vanga": [
-    "https://www.worldhistory.org/Vanga/",
     "https://en.wikipedia.org/wiki/Vanga"
   ],
   "vanuatu": [
-    "https://www.worldhistory.org/Vanuatu/",
     "https://en.wikipedia.org/wiki/Vanuatu"
   ],
   "vatsa": [
-    "https://www.worldhistory.org/Vatsa/",
     "https://en.wikipedia.org/wiki/Vatsa"
   ],
   "vemaka": [
@@ -4478,7 +3969,6 @@
     "https://en.wikipedia.org/wiki/Vitihotras"
   ],
   "volga battle axe culture": [
-    "https://www.worldhistory.org/Volga_Battle_Axe_Culture/",
     "https://en.wikipedia.org/wiki/Volga_Battle_Axe_Culture"
   ],
   "volsci": [
@@ -4486,7 +3976,6 @@
     "https://en.wikipedia.org/wiki/Volsci"
   ],
   "vriji": [
-    "https://www.worldhistory.org/Vriji/",
     "https://en.wikipedia.org/wiki/Vriji"
   ],
   "wahsusana": [
@@ -4497,7 +3986,6 @@
     "https://en.wikipedia.org/wiki/Wei"
   ],
   "wei clan": [
-    "https://www.worldhistory.org/Wei_Clan/",
     "https://en.wikipedia.org/wiki/Wei_Clan"
   ],
   "wen": [
@@ -4505,30 +3993,24 @@
     "https://en.wikipedia.org/wiki/Wen"
   ],
   "west african peoples": [
-    "https://www.worldhistory.org/West_African_Peoples/",
     "https://en.wikipedia.org/wiki/West_African_Peoples"
   ],
   "western guo": [
-    "https://www.worldhistory.org/Western_Guo/",
     "https://en.wikipedia.org/wiki/Western_Guo"
   ],
   "western mediterraneans": [
-    "https://www.worldhistory.org/Western_Mediterraneans/",
     "https://en.wikipedia.org/wiki/Western_Mediterraneans"
   ],
   "western odrysia": [
-    "https://www.worldhistory.org/Western_Odrysia/",
     "https://en.wikipedia.org/wiki/Western_Odrysia"
   ],
   "western rong": [
-    "https://www.worldhistory.org/Western_Rong/",
     "https://en.wikipedia.org/wiki/Western_Rong"
   ],
   "wey": [
     "https://en.wikipedia.org/wiki/Wey"
   ],
   "white di": [
-    "https://www.worldhistory.org/White_Di/",
     "https://en.wikipedia.org/wiki/White_Di"
   ],
   "wilusa": [
@@ -4539,7 +4021,6 @@
     "https://en.wikipedia.org/wiki/Wu"
   ],
   "wucheng culture": [
-    "https://www.worldhistory.org/Wucheng_Culture/",
     "https://en.wikipedia.org/wiki/Wucheng_Culture"
   ],
   "wushi rong": [
@@ -4557,34 +4038,27 @@
     "https://en.wikipedia.org/wiki/Xia_Dynasty"
   ],
   "xian": [
-    "https://www.worldhistory.org/Xian/",
     "https://en.wikipedia.org/wiki/Xian"
   ],
   "xian peoples": [
-    "https://www.worldhistory.org/Xian_Peoples/",
     "https://en.wikipedia.org/wiki/Xian_Peoples"
   ],
   "xiang": [
-    "https://www.worldhistory.org/Xiang/",
     "https://en.wikipedia.org/wiki/Xiang"
   ],
   "xiang(2)": [
-    "https://www.worldhistory.org/Xiang(2)/",
     "https://en.wikipedia.org/wiki/Xiang(2)"
   ],
   "xianyu": [
     "https://en.wikipedia.org/wiki/Xianyu"
   ],
   "xiao": [
-    "https://www.worldhistory.org/Xiao/",
     "https://en.wikipedia.org/wiki/Xiao"
   ],
   "xing": [
-    "https://www.worldhistory.org/Xing/",
     "https://en.wikipedia.org/wiki/Xing"
   ],
   "xirong": [
-    "https://www.worldhistory.org/Xirong/",
     "https://en.wikipedia.org/wiki/Xirong"
   ],
   "xu": [
@@ -4642,14 +4116,12 @@
     "https://en.wikipedia.org/wiki/Yi"
   ],
   "yi-luo rong": [
-    "https://www.worldhistory.org/Yi-Luo_Rong/",
     "https://en.wikipedia.org/wiki/Yi-Luo_Rong"
   ],
   "yihu": [
     "https://en.wikipedia.org/wiki/Yihu"
   ],
   "ying": [
-    "https://www.worldhistory.org/Ying/",
     "https://en.wikipedia.org/wiki/Ying"
   ],
   "yingshi": [
@@ -4679,11 +4151,9 @@
     "https://en.wikipedia.org/wiki/Yue"
   ],
   "yue peoples": [
-    "https://www.worldhistory.org/Yue_Peoples/",
     "https://en.wikipedia.org/wiki/Yue_Peoples"
   ],
   "yueshi culture": [
-    "https://www.worldhistory.org/Yueshi_Culture/",
     "https://en.wikipedia.org/wiki/Yueshi_Culture"
   ],
   "yuezhi": [
@@ -4707,18 +4177,15 @@
     "https://en.wikipedia.org/wiki/Zahara"
   ],
   "zaire": [
-    "https://www.worldhistory.org/Zaire/",
     "https://en.wikipedia.org/wiki/Zaire"
   ],
   "zalmaqum": [
     "https://en.wikipedia.org/wiki/Zalmaqum"
   ],
   "zamua": [
-    "https://www.worldhistory.org/Zamua/",
     "https://en.wikipedia.org/wiki/Zamua"
   ],
   "zapotecs": [
-    "https://www.worldhistory.org/Zapotecs/",
     "https://en.wikipedia.org/wiki/Zapotecs"
   ],
   "zeng": [
@@ -4730,7 +4197,6 @@
     "https://en.wikipedia.org/wiki/Zeng(2)"
   ],
   "zhang": [
-    "https://www.worldhistory.org/Zhang/",
     "https://en.wikipedia.org/wiki/Zhang"
   ],
   "zhangzhung": [
@@ -4741,7 +4207,6 @@
     "https://en.wikipedia.org/wiki/Zhao"
   ],
   "zhao clan": [
-    "https://www.worldhistory.org/Zhao_Clan/",
     "https://en.wikipedia.org/wiki/Zhao_Clan"
   ],
   "zhen": [
@@ -4753,11 +4218,9 @@
     "https://en.wikipedia.org/wiki/Zheng"
   ],
   "zhi clan": [
-    "https://www.worldhistory.org/Zhi_Clan/",
     "https://en.wikipedia.org/wiki/Zhi_Clan"
   ],
   "zhonghang clan": [
-    "https://www.worldhistory.org/Zhonghang_Clan/",
     "https://en.wikipedia.org/wiki/Zhonghang_Clan"
   ],
   "zhongli": [
@@ -4807,7 +4270,6 @@
     "https://en.wikipedia.org/wiki/Zippasla"
   ],
   "zong": [
-    "https://www.worldhistory.org/Zong/",
     "https://en.wikipedia.org/wiki/Zong"
   ],
   "zuo": [
