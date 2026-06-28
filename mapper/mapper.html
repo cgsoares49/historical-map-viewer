@@ -3474,8 +3474,11 @@ function showInfoPopup(rawName, screenX, screenY, cityCoords) {
 
 function renderPopupRefs(refKey) {
     const refs      = geodataRefs[refKey] || [];
+    const refsEl    = document.getElementById('infoPopupRefs');
     const refsValEl = document.getElementById('infoPopupRefsVal');
     refsValEl.innerHTML = '';
+    if (!refs.length) { refsEl.style.display = 'none'; return; }
+    refsEl.style.display = '';
     refs.forEach(r => {
         const row = document.createElement('div');
         row.style.marginBottom = '2px';
