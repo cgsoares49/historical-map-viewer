@@ -122,8 +122,7 @@ def load_primaries(path):
 # ── Aggregation ───────────────────────────────────────────────────────────────
 
 SENTINEL_FROM = -9990   # below this → content-creation sentinel, skip
-MIN_SPAN      = 1.0     # date ranges shorter than this (years) are transitions/revolts;
-                        # ignored for min/max date calculation (but not for bounding box)
+MIN_SPAN      = 0.01    # exclude only zero-span sentinel entries from date calculation
 
 def fmt_date(val, is_to):
     """Format a date as a plain integer (negative = BC). Open-ended to-dates → empty."""

@@ -6,152 +6,33 @@ red sea,-2400,,21.0,38.0
 mesopotamia,-2400,-539,33.5,44.0
 fertile crescent,-2400,-539,33.5,42.5
 sumer,-2400,-2004,31.0,45.5
-akkad,,,34.0,44.5
-babylon,,,32.5,44.5
-assyria,,,36.0,43.0
-nineveh,,,36.5,43.5
-nile valley,-2400,-261,22.0,32.5
-nubia,-2400,-261,17.5,32.5
-carthage (city),,,36.5,10.0
+nile valley,-2400,,22.0,32.5
 north africa,,,26.5,9.5
 sub-saharan africa,,,-7.5,17.0
 horn of africa,,,10.0,45.0
-levant,-2400,-200,32.5,35.5
 canaan,-2000,-900,31.5,35.0
-persia (ancient),-2000,-261,32.5,54.5
-near east,-2400,-261,33.5,45.0
-middle east,-2400,-261,28.5,45.0
-arabia (ancient),-2000,-261,21.0,46.0
-arabian peninsula,-2000,-261,21.0,46.0
-anatolia,-2400,-261,39.0,35.5
-asia minor,-2400,-261,39.0,35.5
-gaul,-600,-261,47.0,2.5
-britannia,-600,-261,55.5,-2.5
-iberia (ancient),-800,-261,40.0,-2.5
-germania,-800,-261,52.5,15.0
-pontic steppe,-1500,-261,48.0,41.5
-steppe,-1500,-261,51.5,75.0
+arabia (ancient),-2000,,21.0,46.0
 indus valley,,,29.0,72.0
 caucasus,,,41.0,44.0
 central asia,,,45.0,67.5
-france,1990,1990,46.5,2.5
-germany,1990,1990,51.5,10.5
-united kingdom,1990,1990,55.0,-3.0
 great britain,1990,1990,55.0,-3.0
 uk,1990,1990,55.0,-3.0
 britain,1990,1990,55.0,-3.0
 england,1990,1990,53.0,-2.0
 scotland,1990,1990,57.5,-4.5
 wales,1990,1990,52.5,-4.0
-ireland,1990,1990,53.5,-8.0
-spain,1990,1990,40.0,-2.5
-portugal,1990,1990,39.0,-8.0
-italy,1990,1990,42.0,12.5
-greece,1990,1990,38.5,23.5
-turkey,1990,1990,39.0,35.5
-ukraine,1990,1990,48.5,31.0
-russia,1990,1990,60.0,105.0
-poland,1990,1990,52.0,19.0
-sweden,1990,1990,62.0,17.5
-norway,1990,1990,64.0,17.5
-finland,1990,1990,64.5,26.0
-denmark,1990,1990,56.0,11.5
 netherlands,1990,1990,52.0,5.5
-belgium,1990,1990,50.5,4.5
-switzerland,1990,1990,46.5,8.5
-austria,1990,1990,47.5,13.5
-hungary,1990,1990,47.0,19.5
-romania,1990,1990,46.0,26.0
-bulgaria,1990,1990,42.5,25.5
 serbia,1990,1990,44.0,21.0
-croatia,1990,1990,44.5,16.5
-czech republic,1990,1990,50.0,15.5
-slovakia,1990,1990,48.5,19.5
-albania,1990,1990,41.0,20.0
 north macedonia,1990,1990,41.5,21.5
 bosnia,1990,1990,44.0,17.5
-slovenia,1990,1990,46.0,15.0
-latvia,1990,1990,56.5,24.5
-lithuania,1990,1990,55.0,24.0
-estonia,1990,1990,58.5,24.5
-belarus,1990,1990,53.5,28.0
-moldova,1990,1990,47.0,29.0
-iceland,1990,1990,65.0,-19.0
-luxembourg,1990,1990,50.0,6.0
-egypt,1990,1990,27.0,31.0
-israel,1990,1990,31.5,35.0
 palestine,1990,1990,31.5,35.0
-jordan,1990,1990,31.5,37.5
-syria,1990,1990,35.0,39.5
-lebanon,1990,1990,34.0,36.0
-iraq,1990,1990,33.5,43.5
-iran,1990,1990,32.5,54.0
-saudi arabia,1990,1990,24.0,46.0
-yemen,1990,1990,15.5,49.0
-oman,1990,1990,20.5,56.0
 uae,1990,1990,24.5,53.5
-kuwait,1990,1990,29.5,48.0
-qatar,1990,1990,25.5,51.0
-bahrain,1990,1990,26.0,50.5
-afghanistan,1990,1990,34.0,68.0
-pakistan,1990,1990,30.0,69.5
-morocco,1990,1990,31.5,-6.0
-algeria,1990,1990,28.0,1.5
-libya,1990,1990,26.5,17.5
-tunisia,1990,1990,34.0,9.5
-sudan,1990,1990,15.5,31.0
-ethiopia,1990,1990,10.5,40.5
-somalia,1990,1990,5.0,46.5
-kenya,1990,1990,0.0,38.0
-tanzania,1990,1990,-6.5,35.0
-nigeria,1990,1990,9.0,8.5
-ghana,1990,1990,8.0,-1.0
-mali,1990,1990,17.5,0.0
-south africa,1990,1990,-28.5,24.5
-madagascar,1990,1990,-19.0,47.5
-congo,1990,1990,0.0,21.5
-angola,1990,1990,-11.5,18.0
-mozambique,1990,1990,-18.5,36.5
-zambia,1990,1990,-13.0,27.5
-zimbabwe,1990,1990,-19.0,29.5
-india,1990,1990,22.5,83.0
-china,1990,1990,36.0,104.0
-japan,1990,1990,38.0,137.5
 korea,1990,1990,38.0,128.0
-north korea,1990,1990,40.0,127.5
-south korea,1990,1990,36.5,127.5
-mongolia,1990,1990,46.5,103.5
-vietnam,1990,1990,16.0,106.0
-thailand,1990,1990,13.0,101.5
-myanmar,1990,1990,19.5,97.0
 burma,1990,1990,19.5,97.0
-cambodia,1990,1990,12.5,105.0
-laos,1990,1990,18.0,104.0
-indonesia,1990,1990,-2.5,118.0
-malaysia,1990,1990,4.0,110.0
-philippines,1990,1990,12.5,121.5
-uzbekistan,1990,1990,41.5,65.0
-kazakhstan,1990,1990,48.0,68.5
-georgia,1990,1990,42.5,43.5
-armenia,1990,1990,40.0,45.0
-azerbaijan,1990,1990,40.0,47.5
-nepal,1990,1990,28.5,84.5
-bangladesh,1990,1990,23.5,90.5
-sri lanka,1990,1990,8.0,81.0
 ceylon,1990,1990,8.0,81.0
 usa,1990,1990,37.0,-96.0
-united states,1990,1990,37.0,-96.0
 us,1990,1990,37.0,-96.0
 america,1990,1990,37.0,-96.0
-canada,1990,1990,62.5,-96.5
-mexico,1990,1990,23.5,-102.5
-brazil,1990,1990,-14.0,-54.5
-argentina,1990,1990,-38.5,-63.5
-chile,1990,1990,-36.5,-71.0
-peru,1990,1990,-9.5,-75.0
-colombia,1990,1990,4.0,-72.5
-venezuela,1990,1990,6.5,-66.5
-cuba,1990,1990,21.5,-79.5
 (marhashi),-2286,-2006,28.0,55.5
 abhiras,-610,-318,27.5,72.5
 abilianikhi,-880,-592,42.5,45.0
@@ -166,22 +47,25 @@ aegina,-520,-338,37.5,22.5
 aeniania,-696,-274,37.5,22.5
 aeolian league,-696,-544,37.5,27.5
 aeolians,-1224,-696,39.4,26.4
-aequi,-800,-304,42.5,15.0
+aequi,-800,-302,42.5,15.0
 aetolia,-696,371,37.5,22.5
 aetolian league,-310,-1,37.5,22.5
+afghanistan,1990,,32.5,67.5
 agathoclid ally,-308,-290,39.0,14.0
 ahhiya,-1430,-1202,37.4,28.6
 ainu,-2400,-1,47.4,145.3
 aitna,-466,-462,37.5,15.0
-akkadian empire,-2279,-2193,33.0,45.8
+akkadian empire,-2279,-2154,33.0,45.8
 akkadian tributary,-2298,-2220,28.3,54.3
 akraephia,-386,-379,37.5,22.5
 akragas,-500,-268,37.5,12.7
 alasiya,-1876,-1201,34.9,32.5
 alavi,-610,-468,27.5,82.5
+albania,1990,,40.0,20.0
 albanians,-612,-1,39.6,47.1
 aleuts,-2400,-1,60.8,-159.7
 alfaterni,-438,-1,42.5,15.0
+algeria,1990,,27.5,2.5
 allabria,-860,-717,37.5,47.5
 allakappa,-610,-468,27.5,82.5
 allied armies of the eastern satraps,-318,-317,34.9,56.2
@@ -194,17 +78,18 @@ ammonites,-1280,-587,32.5,37.5
 amorite ebla,-1900,-1826,34.9,37.5
 amorite mari,-2100,-1761,35.8,39.5
 amorite tuttul,-1900,-1826,37.5,40.0
-amorites,-2200,-1280,33.6,40.8
+amorites,-2298,-1081,33.6,40.8
 amurru,-1728,-968,33.9,37.3
 anarta,-610,-318,22.5,72.5
 andean peoples,-2400,-1,-15.4,-73.1
 andhra,-610,-300,17.5,82.5
 andorra,1990,,42.5,3.0
 anga,-775,-530,25.4,87.5
+angola,1990,,-10.0,17.5
 anshan,-2348,-653,28.7,52.3
-antandros,-478,-428,37.5,27.5
+antandros,-478,-410,37.5,27.5
 antarctica,1990,,-75.0,32.5
-anti macedon alliance,-268,-262,37.5,23.3
+anti macedon alliance,-339,-262,37.5,23.3
 anti roman alliance,-341,-338,42.5,15.0
 anti spartan alliance,-395,-386,38.5,25.3
 antigonid ally,-313,-290,37.6,23.5
@@ -214,26 +99,28 @@ antipatrid ally,-310,-306,41.0,27.2
 anupa,-610,-348,22.5,77.5
 anuradhapura,-326,-1,7.5,78.7
 aparytae,-610,-544,32.5,72.5
-apollonia,-490,-283,42.5,21.0
+apollonia,-491,-283,42.5,21.0
 arabs,-1000,-1,25.5,45.4
 aram damascus,-1146,-606,33.0,37.4
 aram-naharim,-1146,-1106,37.5,37.5
 aram-zobah,-1146,-750,32.5,37.5
 aramaeans,-1280,-1,33.8,40.6
 arcadia,-742,-446,37.5,22.5
-arcadian league,-363,-1,37.5,22.5
+arcadian league,-370,-1,37.5,22.5
 arctic marine mammal hunters,-2400,-1,69.5,150.4
 arctic peoples,-2400,-1,66.3,-100.8
 ardiaei,-346,-1,42.5,21.0
 argaric culture,-2200,-1500,37.5,-2.5
+argentina,1990,,-40.0,-65.0
 argos,-494,-272,37.5,22.5
+armenia,1990,,40.0,45.0
 aryan people,-2050,-532,31.8,70.3
 arzawa,-1776,-1202,37.7,29.3
 asinia,-780,-758,37.5,22.5
 assaka,-725,-300,17.5,80.0
 assakenoi,-610,-516,34.9,72.5
 assyrian kingdoms,-2218,-1920,35.6,43.1
-assyrian revolt,,,35.0,42.5
+assyrian revolt,-1196,-1056,36.2,42.5
 asvaka,-610,-516,34.1,72.5
 athamania,-431,-1,37.5,22.5
 athenian ally,-384,-379,37.5,27.5
@@ -243,25 +130,31 @@ atuna,-827,-680,37.5,33.8
 audumbaras,-600,-323,32.5,75.8
 aurunci,-800,-334,42.5,15.0
 australia,1990,,-30.0,121.0
+austria,1990,,47.5,12.0
 austro-asiatic peoples,-2400,-1,18.6,102.6
 austronesians,-2400,-1,4.1,117.9
 avanti,-850,-400,24.4,75.5
+azerbaijan,1990,,40.0,47.0
 azzi-hayasa,-1506,-1200,38.9,39.1
 ba,-1075,-316,30.8,108.4
 babylonia,-978,-732,32.4,45.3
 babylonia (chaldaeans),-780,-616,32.3,45.4
 babylonia (isin dynasty),-1158,-978,32.6,45.9
-babylonian revolt,-852,-648,32.2,44.9
+babylonian revolt,-852,-549,32.2,44.9
 babylonian tributary,-1764,-1702,34.8,43.1
 bactrians,-1700,-546,36.8,65.0
 bahamas,1990,,25.0,-77.5
+bahrain,1990,,27.5,52.5
 baipu,-770,-524,29.1,110.8
 balts,-2050,-1,54.2,26.2
+bangladesh,1990,,25.0,90.0
 bantu peoples,-2000,-1,-1.0,18.7
 bao,-771,-500,32.5,107.5
 bao clan,-500,-482,37.5,117.5
 barbados,1990,,12.5,-57.5
-bedouins,-1990,-843,30.6,34.7
+bedouins,-2048,-843,30.6,34.7
+belarus,1990,,55.0,28.0
+belgium,1990,,50.0,4.0
 belize,1990,,17.5,-87.5
 bell beaker peoples,-2400,-2050,52.9,12.4
 benin,1990,,10.0,2.5
@@ -271,7 +164,7 @@ bhagga,-610,-560,27.5,82.5
 bhojas,-322,-302,22.5,77.5
 bhutan,1990,,27.5,90.0
 bit agusi,-900,-606,37.5,37.5
-bit-adini,-1076,-859,37.5,37.5
+bit-adini,-1076,-857,37.5,37.5
 bit-bahiani,-1076,-896,37.5,40.0
 bit-halupe,-1076,-894,37.5,40.0
 bit-zamani,-1026,-882,37.5,40.0
@@ -279,28 +172,32 @@ bithynia,-323,-1,42.5,30.3
 bithynians,-696,-552,42.5,29.6
 biyang,-770,-564,32.5,117.5
 bo,-770,-640,32.5,112.5
-boeotia,-730,-338,37.5,22.5
+boeotia,-730,-288,37.5,22.5
 bolivia,1990,,-15.0,-62.5
 bosnia and herzegovina,1990,,45.0,18.0
 bosporan kingdom,-480,-1,46.7,37.3
 botswana,1990,,-22.5,22.5
-bottiaeans,-650,-492,42.5,21.0
+bottiaeans,-650,-650,42.5,21.0
 brahmana,-610,-468,27.5,82.5
+brazil,1990,,-12.5,-50.0
 brunei,1990,,5.0,115.0
 bruttian league,-356,-268,38.4,17.0
 bruttians,-450,-400,37.5,17.5
 bruttii,-500,-436,37.5,17.5
 bu geng,-770,-534,32.5,112.5
+bulgaria,1990,,42.5,24.0
 burkina faso,1990,,12.5,-2.5
 burundi,1990,,-2.5,30.0
 byzantium,-356,-1,42.5,27.0
 cai,-770,-448,32.5,114.8
 california peoples,-2400,-1,37.0,-120.6
 callatis,-360,-1,42.5,27.0
+cambodia,1990,,12.5,105.0
 cameroon,1990,,7.5,12.5
 campania,-438,-343,42.5,15.0
 campanians,-370,-345,37.5,12.5
 canaanites,-1850,-1146,32.5,35.9
+canada,1990,,62.5,-97.5
 cao,-770,-488,35.1,116.6
 cape verde,1990,,15.0,-25.0
 carduchii,-386,-384,37.5,42.5
@@ -313,14 +210,14 @@ carystus,-386,-294,37.5,22.5
 catane,-462,-270,37.5,14.6
 caucasians,-2400,-690,39.9,42.1
 cedi,-825,-320,25.2,80.3
-celtic mercenaries,,,40.0,26.5
+celtic mercenaries,-277,-273,41.4,23.6
 celto-ligurians,-2050,-1,49.1,5.2
 celts,-1250,-1,44.4,17.1
 central african peoples,-2400,-1,2.7,22.2
 central african republic,1990,,7.5,20.0
 chad,1990,,15.0,17.5
 chadian people,-2250,-1,13.9,12.3
-chalcidian league,-418,-353,41.9,24.1
+chalcidian league,-422,-353,41.9,24.1
 chalcis,-710,-294,37.5,22.5
 chaldaea,-800,-790,31.5,46.5
 changdi,-770,-608,37.5,117.5
@@ -331,6 +228,8 @@ chavin culture,-900,-1,-11.0,-76.5
 chen,-770,-480,32.5,114.6
 cheng,-770,-408,37.5,115.8
 chera,-326,-1,10.0,77.5
+chile,1990,,-37.5,-87.0
+china,1990,,35.0,104.0
 chinchorro culture,-2400,-1,-18.5,-69.5
 chios,-386,-1,37.5,27.5
 chola,-326,-1,12.5,80.0
@@ -339,22 +238,27 @@ chu,-1075,-1,31.5,116.8
 cilicia,-588,-539,37.5,34.4
 cimmerian kingdom,-654,-638,38.5,32.7
 cimmerians,-1450,-1,44.0,35.5
-civil war,-464,-314,37.5,82.5
-clan warfare,,,37.5,117.5
+civil war,-548,-314,37.5,82.5
+clan warfare,-547,-532,37.5,117.5
 colchis,-1250,-1,42.5,41.6
+colombia,1990,,5.0,-75.0
 comoros,1990,,-12.5,45.0
 cong,-770,-600,32.5,107.5
+congo,1990,,-2.5,15.0
 corcyra,-666,-300,38.8,20.0
 corinthia,-748,-339,38.3,20.3
 coronea,-386,-379,37.5,22.5
 cossaeans,-330,-324,32.5,47.5
 costa rica,1990,,10.0,-85.0
 cretan city states,-500,-1,36.6,25.2
+croatia,1990,,45.0,18.0
 croton,-550,-430,37.5,17.5
+cuba,1990,,20.0,-77.5
 cushitic people,-1000,-1,6.0,43.9
 cypriot kingdoms,-1180,-1050,34.9,32.5
 cyprus,1990,,35.0,32.5
 cyzicus,-323,-280,42.5,27.0
+czech republic,1990,,50.0,16.0
 côte d'ivoire,1990,,7.5,-5.0
 d'mt,-980,-1,17.3,40.9
 dai,-770,-458,41.0,113.5
@@ -369,17 +273,18 @@ dardani,-800,-1,42.5,21.0
 dasarnas,-610,-350,22.5,77.5
 dassaretis,-500,-400,42.5,21.0
 daunians,-800,-324,42.5,15.0
-dayenu,,,37.5,42.5
+dayenu,-735,-734,37.5,42.5
 delian league,-478,-405,38.4,24.5
-delphi,,,37.5,22.5
+delphi,-449,-448,37.5,22.5
 deng,-772,-678,32.5,112.5
+denmark,1990,,67.5,-37.0
 desert cultures,-2400,-1,32.4,-108.6
 di,-771,-408,37.2,113.1
 di(2),-771,-362,32.5,105.0
 diauekhi,-931,-592,41.0,42.1
 dilmun,-2400,-1550,27.2,50.7
 djibouti,1990,,12.5,42.5
-dolopia,-696,-339,37.5,22.5
+dolopia,-696,-276,37.5,22.5
 domain of amphimakhos,-320,-317,35.5,41.3
 domain of antigenes,-320,-317,30.8,49.1
 domain of antigonus,-319,-306,36.5,34.7
@@ -394,7 +299,7 @@ domain of peithon,-320,-317,35.2,53.9
 domain of peithon (son of agenor),-320,-316,23.9,67.7
 domain of peukestas,-320,-316,28.6,53.0
 domain of philip,-320,-318,34.9,57.5
-domain of philoxenos,,,37.5,35.0
+domain of philoxenos,-320,-319,37.5,34.5
 domain of polyperchon,-317,-315,37.5,22.9
 domain of ptolemy,-320,-306,32.7,31.6
 domain of seleucus,-320,-306,31.4,55.2
@@ -405,7 +310,7 @@ domain of tlepolemos,-320,-316,30.8,58.4
 dominica,1990,,17.5,-62.5
 dominican republic,1990,,17.5,-70.0
 donghu,-770,-1,44.9,120.0
-dongyi peoples,-1500,-1080,37.5,121.5
+dongyi peoples,-1500,-770,37.5,121.5
 dorians,-1224,-1,37.4,25.2
 doris,-696,-268,37.5,22.5
 dravidians,-2400,-1,20.4,80.1
@@ -414,36 +319,37 @@ duan,-744,-722,33.3,112.5
 duchy of jin,-678,-350,36.0,113.0
 dun,-770,-496,32.5,115.0
 dvaraka,-610,-318,22.5,69.5
-e,-770,-700,30.8,114.6
+e,-862,-700,30.8,114.6
 east african peoples,-2400,-1,6.1,44.0
 eastern guo,-772,-768,32.5,112.5
 eastern woodland peoples,-2400,-1,41.2,-80.5
 ecuador,1990,,0.0,-85.0
 edomites,-1280,-526,30.4,35.4
+egypt,1990,,27.5,30.0
 egypt: (herakleopolis),-756,-726,27.5,32.5
 egypt: (hermopolis),-756,-726,27.5,32.5
-egypt: areas of unrest,-1992,-1990,30.8,32.5
-egypt: heracleopolitans,-2160,-2160,30.8,32.5
+egypt: areas of unrest,-1992,-410,30.8,32.5
+egypt: heracleopolitans,-2400,-2160,30.8,32.5
 egypt: hyksos,-1720,-1566,30.9,32.4
 egypt: middle kingdom,-2003,-1662,29.8,31.9
 egypt: new kingdom,-1568,-1086,30.7,34.2
-egypt: old kdm,-2400,-9998,30.8,32.5
+egypt: old kdm,-2400,-2400,30.8,32.5
 egypt: rebellion of pedubast,-830,-828,26.6,32.5
-egypt: revolt of amasis,,,32.5,27.5
+egypt: revolt of amasis,-572,-571,32.5,27.5
 egypt: tanites,-1086,-945,32.3,32.5
-egypt: thebans,-1568,-1568,28.9,32.4
+egypt: thebans,-2151,-1568,28.9,32.4
 egypt: thirtieth dynasty,-380,-342,31.2,32.4
 egypt: twenty eighth dynasty,-402,-399,30.7,32.3
 egypt: twenty fourth dynasty,-716,-714,32.2,32.4
 egypt: twenty ninth dynasty,-399,-380,30.7,32.3
-egypt: twenty second dynasty,-946,-726,30.5,32.6
+egypt: twenty second dynasty,-946,-720,30.5,32.6
 egypt: twenty sixth dynasty,-652,-526,31.1,32.8
 egypt: twenty sixth dynasty tributary,-610,-606,32.5,35.6
 egypt: twenty third dynasty,-880,-756,26.9,32.5
 el paraiso culture,-2000,-900,-10.6,-76.3
 el salvador,1990,,12.5,-90.0
-elam,-2348,-539,31.4,48.7
-elamite tributary,-1770,-708,34.2,44.6
+elam,-2356,-520,31.4,48.7
+elamite tributary,-1770,-694,34.2,44.6
 elimiotis,-540,-358,42.5,21.0
 elis,-726,-1,37.5,22.5
 ellipi,-970,-703,32.5,47.5
@@ -453,7 +359,7 @@ enzite,-931,-802,37.5,40.0
 eordaia,-540,-476,42.5,21.0
 epicnemidian locris,-696,-264,38.6,22.2
 epidauria,-780,-670,37.5,22.5
-epirote ally,-292,275,39.6,16.6
+epirote ally,-278,-277,39.6,16.6
 equatorial guinea,1990,,0.0,10.0
 er,-770,-700,32.5,112.5
 eretria,-710,-294,37.5,22.7
@@ -462,11 +368,13 @@ erikuakhi,-880,-706,40.1,43.8
 eritrea,1990,,15.0,40.0
 erligang culture,-1600,-1400,37.1,109.6
 erlitou culture,-1900,-1600,37.2,110.1
+estonia,1990,,57.5,24.0
+ethiopia,1990,,7.5,40.0
 etiukhi,-931,-710,40.1,43.8
 etiuni,-880,-704,42.5,45.0
 etruria,-760,-266,42.5,13.2
 etruscans,-1725,-516,42.7,11.0
-euboea,-348,-310,37.5,22.5
+euboea,-447,-446,37.5,22.5
 fan,-770,-504,32.5,117.5
 fan clan,-500,-491,37.5,112.5
 fan(2),-770,-660,37.5,112.5
@@ -474,7 +382,9 @@ fang,-770,-638,32.5,112.5
 fei,-770,-530,37.5,115.0
 feng,-771,-550,32.5,107.5
 fiji,1990,,-17.5,180.0
+finland,1990,,65.0,25.0
 finns,-2400,-1,58.1,43.9
+france,1990,,0.0,15.0
 gabon,1990,,0.0,10.0
 gambia,1990,,12.5,-15.0
 gandhara,-975,-518,33.1,73.1
@@ -484,20 +394,24 @@ gaoluo,-770,-660,37.5,112.5
 garamantes,-500,-1,27.5,20.0
 ge,-1750,-594,32.5,117.5
 gedrosia,-330,-325,29.4,61.5
-gela,-506,-405,37.5,15.1
+gela,-506,-311,37.5,15.1
 geng,-770,-662,37.5,112.5
 genmou,-770,-600,37.5,117.5
+georgia,1990,,42.5,42.0
+germany,1990,,52.5,9.0
 geshur,-1152,-988,32.5,37.5
 getae,-470,-1,44.0,27.0
+ghana,1990,,7.5,0.0
 gilead,-1152,-740,32.5,37.5
-gilzanu,-864,-724,37.5,42.5
+gilzanu,-864,-714,37.5,42.5
 gojoseon,-770,-280,39.3,122.7
 gong,-770,-280,32.2,109.9
 gong(2),-770,-670,27.5,107.5
 great chiefs of the meshwesh,-746,-726,32.5,32.5
+greece,1990,,37.5,22.5
 greek alliance,-481,-478,37.6,25.5
-greek mercenaries,,,35.0,32.5
-greeks,-630,-402,38.9,33.5
+greek mercenaries,-333,-332,36.0,31.8
+greeks,-631,-630,38.9,33.5
 grenada,1990,,12.5,-62.5
 gu,-1750,-700,34.9,114.9
 gu(2),-770,-520,37.5,117.5
@@ -526,7 +440,7 @@ hann clan,-500,-453,34.9,112.5
 hapalla,-1396,-1386,37.5,32.5
 harhar,-970,-737,32.5,46.2
 harshi,-1986,-1600,34.9,45.0
-hattians,-2199,-1862,38.2,34.7
+hattians,-2200,-1862,38.2,34.7
 hellenic league,-323,-322,37.8,23.1
 helmand and jiroft cultures,-2400,-1750,30.3,62.4
 helot revolt,-466,-457,37.5,22.5
@@ -546,6 +460,7 @@ huaiyi,-770,-512,34.1,119.2
 huaiyi peoples,-1500,-584,32.5,119.4
 huang,-770,-648,32.5,114.2
 hubushkia,-864,-698,37.5,42.5
+hungary,1990,,47.5,18.0
 huo,-770,-662,37.5,112.5
 hupis(h)na,-827,-738,37.5,32.5
 hurrian kingdom,-1616,-1346,37.5,40.4
@@ -553,6 +468,7 @@ hurrian kingdoms,-2218,-1826,37.5,41.7
 hurrians,-2400,-864,37.4,41.4
 iapygii,-500,-318,42.5,15.0
 iberians,-1725,-1,41.2,1.6
+iceland,1990,,65.0,-23.0
 idamaraz,-1742,-1616,35.4,42.5
 ikshvakus,-364,-362,27.5,82.5
 illyrian kingdom,-279,-1,42.0,21.1
@@ -560,26 +476,34 @@ illyrian tributary,-372,-370,42.5,21.0
 illyrians,-1725,-1,42.7,18.6
 illyrioi,-500,-1,42.5,15.0
 imbros,-282,-1,42.5,27.0
+india,1990,,22.5,82.5
 indo-aryans,-1500,-300,25.8,75.8
+indonesia,1990,,-2.5,120.0
 indus valley civilization,-2400,-1750,23.4,69.0
 indus valley peoples,-1750,-775,25.2,69.7
 ionian league,-690,-478,38.3,27.5
 ionians,-1202,-1,39.6,24.9
+iran,1990,,32.5,52.5
 iranians,-2400,-532,39.7,62.6
+iraq,1990,,32.5,42.5
+ireland,1990,,55.0,-8.0
 ishtu(a)nda,-827,-738,37.5,37.5
+israel,1990,,30.0,35.0
 israel/samaria,-932,-720,32.5,36.9
 israelites,-1230,-1036,32.4,36.7
 istros,-360,-314,44.1,27.0
-isuwa,-1506,-1460,37.5,40.0
+isuwa,-1506,-1434,37.5,40.0
 itabalhum,-1850,-1600,37.5,45.0
 italics,-2050,-450,42.1,14.5
-italiote league,-430,-280,40.2,16.4
+italiote league,-430,-274,40.2,16.4
+italy,1990,,42.5,14.5
 jamaica,1990,,17.5,-77.5
+japan,1990,,35.0,137.5
 ji,-770,-658,37.5,112.5
 ji(2),-770,-690,37.5,117.5
 ji(3),-770,-722,34.9,117.5
 ji(4),-770,-750,32.5,112.5
-ji(5),,,40.0,117.0
+ji(5),-770,-770,40.1,117.2
 ji(6),-771,-688,32.5,107.5
 jia,-770,-678,37.5,112.5
 jiang,-770,-624,32.5,112.5
@@ -589,9 +513,10 @@ jiao,-770,-700,32.5,112.5
 jie,-770,-600,37.5,117.5
 jin,-770,-678,36.0,112.5
 jomon culture,-2400,-1,35.9,137.3
+jordan,1990,,30.0,35.0
 ju,-770,-432,36.8,117.8
 ju(2),-771,-550,32.5,107.5
-judah,-932,-587,32.2,35.6
+judah,-932,-582,32.2,35.6
 judah tributary,-794,-736,30.4,35.5
 jun,-770,-612,32.5,110.8
 kaccha,-610,-318,22.5,70.0
@@ -611,8 +536,10 @@ kasheyas,-364,-364,24.9,82.5
 kasi,-850,-600,25.8,82.5
 kaskas,-1600,-712,41.4,35.5
 kasmira,-500,-1,34.9,75.0
-kassites,-2100,-1618,33.5,46.1
+kassites,-2100,-1313,33.5,46.1
+kazakhstan,1990,,50.0,65.0
 kekaya,-950,-516,32.5,72.5
+kenya,1990,,2.5,37.5
 khoisan peoples,-2400,-1,-16.8,27.1
 khorasmia,-330,-1,40.6,59.4
 kimash,-1752,-1600,32.5,47.5
@@ -626,10 +553,10 @@ kingdom of armenia,-323,-1,38.9,41.1
 kingdom of arrapha,-1726,-760,37.5,44.5
 kingdom of assyria,-1920,-906,36.4,42.4
 kingdom of awan,-2286,-1170,31.1,50.6
-kingdom of babylon,-1898,-1596,32.8,44.8
+kingdom of babylon,-1898,-482,32.8,44.8
 kingdom of carchemish,-1190,-606,37.5,37.5
 kingdom of cyrene,-632,-1,33.1,20.7
-kingdom of der,-2019,-1228,32.5,46.1
+kingdom of der,-2075,-1228,32.5,46.1
 kingdom of ebla,-2380,-2000,35.6,38.6
 kingdom of epirus,-330,-1,39.4,19.5
 kingdom of eshnunna,-2026,-1730,34.0,43.8
@@ -654,7 +581,7 @@ kingdom of macedonia,-277,-1,39.5,22.8
 kingdom of malgium,-1936,-1846,32.5,45.0
 kingdom of mari,-2311,-2190,34.3,41.7
 kingdom of melid,-1190,-626,37.5,37.5
-kingdom of mitanni,-1586,-1344,37.2,38.5
+kingdom of mitanni,-1586,-1290,37.2,38.5
 kingdom of purushanda,-1776,-1627,37.5,35.0
 kingdom of qadesh,-1362,-1336,34.9,37.5
 kingdom of qatna,-1930,-1444,34.9,37.5
@@ -667,7 +594,7 @@ kingdom of terqa,-1742,-1512,34.9,40.0
 kingdom of the grabaei,-429,-296,42.5,21.0
 kingdom of tuttul,-2380,-2196,37.5,40.0
 kingdom of tylis,-277,-1,42.5,27.0
-kingdom of ugarit,-2348,-2200,37.5,37.5
+kingdom of ugarit,-2348,-1336,37.5,37.5
 kingdom of ur,-2280,-2006,34.0,46.2
 kingdom of uruk,-2334,-1810,33.1,44.5
 kingdom of zalpa,-1950,-1676,41.0,35.9
@@ -675,7 +602,7 @@ kios,-274,-1,42.5,27.0
 kirati,-610,-1,27.5,85.0
 kiribati,1990,,-5.0,2.5
 kirruru,-735,-708,37.5,45.0
-kizzuwatna,-1511,-1420,37.5,35.0
+kizzuwatna,-1515,-1420,37.5,35.0
 koliya,-610,-480,27.5,82.5
 konkana,-610,-1,17.5,72.5
 kopai,-386,-379,37.5,22.5
@@ -683,31 +610,35 @@ koreans,-2400,-1,37.1,127.5
 kosala,-950,-466,27.1,82.5
 kotosh culture,-2300,-1199,-9.5,-77.5
 ksudrakas,-610,-326,32.5,72.5
-kuai,,,32.5,112.5
+kuai,-770,-770,32.5,112.5
 kui,-770,-634,32.5,112.5
 kuninda,-450,-322,32.5,77.5
 kuntala,-600,-300,17.5,77.5
 kunti,-610,-536,27.5,77.5
 kunwu,-1750,-1604,37.5,112.5
 kuru,-1150,-500,29.9,76.1
-kush tributary,-726,-680,32.1,32.4
+kush tributary,-726,-668,32.1,32.4
+kuwait,1990,,30.0,47.5
 kyme,-500,-422,42.5,15.0
 kyrgyzstan,1990,,40.0,74.5
-lagash,-2397,-2352,32.5,46.7
+lagash,-2398,-2352,32.5,46.7
 lai,-1040,-568,37.5,119.5
 lai(2),-770,-640,32.5,112.5
 laiyi,-770,-500,37.5,120.0
 land of bel-harran-beli-user,-754,-745,37.5,40.0
 land of shamash-resha-user,-754,-745,34.4,40.5
 land of tartanu shamshi-ilu,-754,-745,37.5,37.5
+laos,1990,,17.5,105.0
 laqe,-1080,-608,35.4,40.5
 larak,-2395,-2284,32.5,44.5
-larissa,-406,-375,37.5,22.5
+larissa,-406,-345,37.5,22.5
 latin league,-730,-534,42.5,15.0
 latins,-800,-730,42.5,15.0
+latvia,1990,,57.5,24.0
 lauhitya,-610,-1,27.5,92.5
 league of argos,-422,-418,39.4,23.8
 lebadeia,-386,-379,37.5,22.5
+lebanon,1990,,32.5,37.5
 leichtenstein,1990,,47.5,9.0
 leontini,-466,-270,37.5,15.0
 lesbos,-386,-1,37.5,27.5
@@ -716,21 +647,23 @@ li,-770,-538,32.5,117.5
 li rong,-770,-672,37.5,112.5
 li(2),-770,-664,37.5,112.5
 li(3),-698,-680,32.5,112.5
-liang,-771,-642,35.8,110.0
+liang,-772,-642,35.8,110.0
 liao,-770,-622,32.5,117.5
 liao(2),-770,-700,32.5,112.5
 liberia,1990,,5.0,-10.0
 liburnians,-1000,-1,42.5,15.1
+libya,1990,,25.0,17.5
 libyans,-2400,-1,31.6,23.8
 libyphoenices,-500,-1,32.5,17.5
 ligurians,-800,-1,44.1,8.3
 lingzhi,-770,-662,40.1,117.2
 linhu,-770,-1,40.1,109.0
+lithuania,1990,,55.0,24.0
 little guo,-771,-688,32.5,107.5
 liu,-770,-622,32.5,117.5
 locri,-346,-274,37.5,17.5
 longshan culture,-2400,-1900,36.7,112.5
-loufan,-770,-308,38.3,112.3
+loufan,-771,-308,38.3,112.3
 lower macedon,-454,-432,42.5,21.0
 lu,-808,-562,35.7,117.5
 lu(2),-770,-688,32.5,112.5
@@ -743,6 +676,7 @@ lullubi,,,37.5,45.0
 lullubum,-2054,-2051,37.5,45.0
 luo,-770,-690,32.5,112.5
 luwians,-2023,-1000,38.6,30.1
+luxembourg,1990,,50.0,6.0
 lycians,-1000,-362,37.5,29.4
 lydia,-850,-547,38.7,29.2
 lydians,-1000,-850,37.5,27.5
@@ -750,6 +684,7 @@ lynkestis,-540,-392,42.5,21.0
 macedon,-281,-277,39.9,23.0
 macedonia,1990,,42.5,21.0
 macedonian ally,-338,-322,37.9,26.3
+madagascar,1990,,-20.0,47.5
 madra,-950,-326,32.5,75.0
 maeotians,-380,-326,44.9,39.0
 magadha,-775,-355,26.2,82.5
@@ -757,7 +692,9 @@ magan,-2400,-1550,26.9,57.2
 magnesia,-650,-580,37.5,22.5
 malavas,-610,-326,32.5,72.5
 malawi,1990,,-12.5,35.0
+malaysia,1990,,5.0,107.5
 maldives,1990,,2.5,72.5
+mali,1990,,20.0,-5.0
 malis,-696,-371,37.5,22.5
 malla,-750,-364,27.5,84.2
 malta,1990,,37.5,12.5
@@ -767,10 +704,10 @@ mamertines,-288,-263,37.5,16.1
 manchurian peoples,-2400,-1,47.1,127.5
 mannaea,-843,-608,37.5,46.5
 manshi,-770,-492,32.5,112.5
-mantineia,-418,-268,37.5,22.5
+mantineia,-423,-268,37.5,22.5
 mao,-771,-688,32.5,107.5
 mao(2),-770,-560,34.9,117.5
-margiana,-330,-328,34.9,65.0
+margiana,-522,-328,34.9,65.0
 marrucini,-438,-304,42.5,15.0
 marshall islands,1990,,7.5,167.5
 marsi,-492,-304,42.5,15.0
@@ -783,22 +720,23 @@ maurya,-324,-322,31.1,75.2
 maurya empire,-322,-1,23.7,81.4
 maya,-1000,-1,17.5,-89.7
 medes,-800,-674,35.2,50.1
-media,-713,-550,37.1,45.7
+media,-713,-522,37.1,45.7
 median vassal,-586,-550,29.5,53.0
 megalopolis,-300,-272,37.5,22.5
 megaris,-744,-268,39.5,23.6
-mercenaries of bithynia,,,42.5,30.0
-mercenaries under agathocles,-320,-316,37.5,15.3
-mercenaries under amyntas,,,30.0,35.0
-mercenaries under cleonymus,-303,-302,40.9,17.4
-mercenaries under harpalus,,,37.5,27.5
-mercenaries under leosthenes,,,37.5,22.5
-mercenaries under phalaecus,,,37.5,25.0
-mercenaries under thibron,,,35.0,22.5
+mercenaries of bithynia,-279,-278,42.5,29.0
+mercenaries under agathocles,-326,-316,37.5,15.3
+mercenaries under amyntas,-333,-333,31.6,33.3
+mercenaries under cleonymus,-304,-302,40.9,17.4
+mercenaries under harpalus,-324,-324,37.5,26.5
+mercenaries under leosthenes,-324,-323,37.5,22.5
+mercenaries under phalaecus,-344,-344,37.5,25.5
+mercenaries under thibron,-324,-324,34.9,22.5
 mesoamerican peoples,-2400,-1,14.8,-88.0
 messapians,-800,-268,42.0,16.7
 messapii,-500,280,41.0,17.9
 messenia,-770,-1,37.5,21.4
+mexico,1990,,22.5,-102.5
 mianzhu,-771,-362,32.5,107.5
 micronesia,1990,,10.0,150.0
 middle assyrian empire,-1346,-1076,35.2,42.0
@@ -806,49 +744,59 @@ minoans,-2000,-1488,36.0,25.2
 mithila,-364,-364,27.5,85.0
 mixtecs,-1500,-1,17.5,-97.5
 moabites,-1280,-587,32.5,37.5
+moldova,1990,,47.5,30.0
 molossis,-431,-350,40.4,21.6
+mongolia,1990,,47.5,102.0
 moriya,-610,-468,27.5,82.5
+morocco,1990,,30.0,-10.0
 mou,-770,-650,37.5,117.5
+mozambique,1990,,-20.0,37.5
 mulaka,-610,-302,17.5,75.0
 musasir,-735,-724,37.5,45.0
 musicanus,-338,-325,27.5,67.5
-musri,-900,-859,37.5,37.5
+musri,-900,-826,37.5,37.5
 mutibas,-610,-600,17.5,80.0
-mutinous troops,,,42.5,15.0
+mutinous troops,-342,-342,42.5,15.0
+myanmar,1990,,17.5,97.5
 mycenaean kingdoms,-1220,-1210,37.5,23.8
 mycenaeans,-1506,-1100,37.3,24.9
 mysians,-1000,-542,38.9,27.4
 nabataean kingdom,-331,-1,29.9,35.3
 nabataeans,-843,-526,28.3,37.5
-nairi,,,37.5,42.5
+nairi,-860,-860,37.5,42.5
 namibia,1990,,-22.5,20.0
 namri,-852,-738,34.4,47.0
 nanda empire,-356,-322,24.9,81.0
 nanyan,-770,-640,37.5,112.5
 nauru,1990,,-2.5,167.5
 naxos,-466,-404,37.5,17.5
-neo assyrian empire,-843,-608,34.0,39.6
-neo assyrian revolt,-828,-762,34.1,44.2
+neo assyrian empire,-911,-608,34.0,39.6
+neo assyrian revolt,-828,-520,34.1,44.2
 neo assyrian tributary,-896,-612,33.2,38.4
-neo babylonian empire,-616,-574,33.5,38.5
+neo babylonian empire,-616,-550,33.5,38.5
 neo babylonian empire tributary,-606,-554,32.1,36.2
 neo-assyrian empire,-906,-608,35.9,42.5
 neo-babylonian empire,-616,-539,33.3,39.9
-new hittite kingdom,-1439,-1190,38.2,34.2
+nepal,1990,,30.0,85.0
+new hittite kingdom,-1368,-1336,38.2,34.2
 new zealand,1990,,-30.0,8.0
 ni,-770,-335,34.9,117.5
 nicaragua,1990,,15.0,-85.0
 niger,1990,,17.5,10.0
+nigeria,1990,,7.5,7.5
 nilotic peoples,-1000,-1,9.3,30.7
 nok people,-1500,-1,10.7,6.6
 norte chico civilization,-2400,-1800,-8.7,-77.5
 north arabian semites,-500,-1,29.9,42.5
+north korea,1990,,40.0,126.0
 northern league,-282,-274,42.5,27.9
 northern zone peoples,-1400,-1000,36.8,109.4
 northwest coast peoples,-2400,-1,55.3,-131.7
+norway,1990,,15.0,15.0
 nu,-770,-600,29.9,107.5
+nubia,-1086,-776,22.5,32.5
 nubians,-2400,-1,19.6,33.6
-nuhashshi,-1338,-1336,37.5,37.5
+nuhashshi,-1351,-1336,37.5,37.5
 numidians,-1000,-1,34.3,3.5
 odra,-610,-344,22.5,85.0
 odrysia,-360,-1,42.5,26.4
@@ -856,6 +804,7 @@ odrysian kingdom,-476,-342,42.0,25.8
 oetaea,-696,-274,37.5,22.5
 old hittite kingdom,-1760,-1438,38.1,35.8
 olmecs,-1250,-1,17.5,-95.0
+oman,1990,,22.5,55.0
 opuntian locris,-696,-272,37.5,22.5
 oreitai,-330,-325,26.9,67.5
 orestis,-540,-476,42.5,21.0
@@ -865,6 +814,7 @@ paeligni,-438,-304,42.5,15.0
 paeonia,-352,-260,42.5,21.0
 paeonians,-850,-340,42.5,21.0
 paiones,-500,-356,42.5,21.0
+pakistan,1990,,30.0,70.0
 pala,-1536,-1382,42.5,33.0
 palau,1990,,5.0,132.5
 paleosiberians,-2400,-1,63.6,112.9
@@ -880,7 +830,7 @@ paraguay,1990,,-22.5,-57.5
 parauaea,-431,-350,42.5,21.0
 pardabathra,-338,-325,22.9,67.5
 parsua,-860,-744,34.9,45.0
-parthia,,,35.0,57.5
+parthia,-522,-521,35.8,57.0
 pashime,-2348,-1346,28.2,52.1
 patagonian peoples,-2400,-1,-49.5,-72.0
 patin (unqi),-1190,-605,37.5,37.5
@@ -893,11 +843,13 @@ pengzhi,-771,-698,32.5,110.0
 pergamon,-274,-1,37.5,27.5
 persia,-653,-550,29.2,53.0
 persian empire,-550,-1,35.2,36.7
-persian revolt,,,30.0,57.5
+persian revolt,-522,-521,29.4,54.0
 persian vassal,-492,-410,37.7,23.0
+peru,1990,,-10.0,-75.0
 peucetians,-800,-268,42.5,15.0
 pharsalos,-406,-375,37.5,22.5
-pherae,-406,-352,37.7,22.4
+pherae,-406,-345,37.7,22.4
+philippines,1990,,12.5,122.5
 philistia,-1020,-604,32.5,34.7
 philistines,-1180,-1020,32.5,36.6
 phlius,-656,-338,37.5,22.5
@@ -910,16 +862,18 @@ piceni,-500,-438,42.5,15.0
 picentes,-800,-438,42.5,15.0
 picenum,-438,-269,42.5,15.0
 ping zhou,-771,-550,32.5,107.5
-pirate mercenaries,,,40.0,29.0
-pirates,,,37.5,25.0
+pirate mercenaries,-276,-274,38.9,30.6
+pirates,-345,-344,37.5,25.0
 pisatis,-684,-572,37.5,22.5
 pisidians,-558,-1,37.5,32.5
-pitassa,-1546,-1438,37.5,32.5
+pitassa,-1546,-1432,37.5,32.5
 plains peoples,-2400,-1,44.1,-102.3
 plateau peoples,-2400,-1,47.3,-117.0
-plebian secession,,,42.5,15.0
+plebian secession,-494,-287,42.5,15.0
+poland,1990,,50.0,20.0
 pontians,-612,-514,42.5,39.0
 pontus,-281,-1,41.6,35.0
+portugal,1990,,37.5,-20.0
 poverty point culture,-2200,-1,32.5,-90.4
 praeneste,-360,-341,42.5,15.0
 proto-burmese,-2400,-1,29.0,96.6
@@ -936,13 +890,14 @@ pugu,-1036,-1026,37.5,117.5
 pulinda,-610,-320,22.5,80.0
 pundra,-610,-312,24.9,87.5
 punt,-2400,-1100,16.2,41.8
+qatar,1990,,25.0,52.5
 qedarite confederation,-870,-550,31.1,41.2
 qedarites,-925,-1,32.1,38.8
 qi,-770,-1,36.7,117.0
 qi(2),-770,-446,37.5,117.5
 qi(3),-770,-706,37.5,117.5
 qiang,-771,-1,37.5,100.0
-qin,-771,-1,33.9,110.2
+qin,-772,-1,33.9,110.2
 qiuyou,-770,-458,37.5,112.5
 qu,-770,-678,37.5,112.5
 quaman,-770,-612,32.5,110.8
@@ -957,36 +912,38 @@ rebel irridu,-1718,-1710,37.5,40.0
 rebel israelites,-1098,-1096,32.5,37.5
 red di,-770,-594,37.5,112.5
 ren,-770,-336,37.5,117.5
-revolt,-519,-1,37.2,33.7
-revolt of antigonus,,,37.5,30.0
-revolt of antipater,,,40.0,24.0
+revolt,-553,-1,37.2,33.7
+revolt of antigonus,-322,-321,37.5,30.0
+revolt of antipater,-322,-321,41.3,22.8
 revolt of ariobarzanes,-367,-362,40.7,27.5
 revolt of artabazus,-356,-353,40.5,27.5
 revolt of autophradates,-364,-360,37.5,27.9
-revolt of cyrus the younger,,,35.0,35.0
+revolt of cyrus the younger,-402,-401,37.2,35.5
 revolt of datames,-372,-360,39.5,34.7
-revolt of eumenes,-321,-320,37.0,35.1
+revolt of eumenes,-320,-320,37.0,35.1
 revolt of hermias,-346,-342,37.5,27.5
 revolt of hua clan,-522,-520,32.5,117.5
 revolt of inaros,-462,-450,31.5,31.5
 revolt of khababash,-336,-336,32.5,32.5
-revolt of luan,,,37.5,112.5
-revolt of lysimachus,,,42.5,24.0
+revolt of luan,-552,-550,37.5,112.5
+revolt of lysimachus,-322,-321,42.5,26.0
 revolt of mausolus,-364,-360,37.5,27.5
 revolt of orontes,-364,-360,40.1,42.0
 revolt of pissuthnes,-420,-416,37.5,28.1
-revolt of ptolemy,,,30.0,27.5
+revolt of ptolemy,-322,-321,30.9,32.1
 revolt of wangzi tui,-676,-674,34.6,112.5
 revolt of wangzi zhao,-520,-516,33.7,112.5
 rhegion,-622,-1,38.3,17.1
 rhodos,-320,-1,37.5,27.5
-roman ally,-306,-1,41.3,14.3
+roman ally,-308,-1,41.3,14.3
 roman latin colony,-496,-1,42.5,14.8
 roman republic,-509,-1,42.1,14.9
+romania,1990,,45.0,24.0
 rong,-770,-594,34.4,115.5
-rui,-771,-642,33.7,110.0
+rui,-772,-642,33.7,110.0
 ruo,-770,-622,32.5,112.5
 ruo'ao revolt,-606,-604,32.5,112.5
+russia,1990,,62.5,97.5
 rwanda,1990,,-2.5,30.0
 saba,-1100,-1,14.5,44.5
 sabines,-800,-438,42.5,15.0
@@ -1010,6 +967,7 @@ sanxingdui culture,-1700,-1000,31.3,103.6
 sardinians,-1250,-510,40.1,8.3
 sattagydia,-610,-516,32.5,70.0
 sattyaputas,-326,-1,12.5,75.0
+saudi arabia,1990,,25.0,45.0
 saurashtra,-610,-318,22.5,70.0
 sauromatians,-550,-1,46.3,46.7
 sauvira,-610,-516,27.5,67.5
@@ -1017,8 +975,8 @@ savanna peoples,-2400,-1,-20.0,-51.4
 savaras,-610,-430,17.5,82.5
 scythia,-678,-1,41.9,39.4
 scythians,-1201,-1,46.6,58.0
-sea peoples,-1205,-1180,35.4,31.4
-sealand,-1734,-1440,32.5,45.6
+sea peoples,-1233,-1180,35.4,31.4
+sealand,-1734,-1438,32.5,45.6
 second athenian league,-376,-338,39.1,24.4
 seleucid ally,-282,-1,38.5,27.8
 seleucid kingdom,-306,-1,35.6,42.6
@@ -1027,7 +985,7 @@ senegal,1990,,15.0,-15.0
 seychelles,1990,,-7.5,52.5
 shang,-1750,-1104,34.6,114.3
 shang dynasty,-1600,-1044,35.8,113.4
-shanrong,-770,-282,40.1,117.2
+shanrong,-771,-282,40.1,117.2
 shao,-771,-688,32.5,107.5
 shen,-772,-688,33.2,109.7
 shen(2),-770,-507,32.5,115.0
@@ -1050,25 +1008,33 @@ sidicini,-438,-334,42.5,15.0
 sierra leone,1990,,10.0,-12.5
 sikanoi,-500,-405,37.5,12.5
 sikeloi,-500,-440,37.5,15.0
-simurrum,-2053,-1600,34.9,47.5
+simurrum,-2064,-1600,34.9,47.5
 sindhu,-610,-516,27.5,70.0
 singapore,1990,,2.5,102.5
 sinope,-323,-1,42.5,33.0
 sivi,-610,-544,27.5,67.5
 slavs,-2050,-1,52.3,26.6
+slovakia,1990,,47.5,18.0
+slovenia,1990,,47.5,15.0
 sogdians,-1700,-532,38.3,68.9
 solomon islands,1990,,-10.0,162.5
+somalia,1990,,5.0,47.5
 song,-770,-286,33.8,116.1
+south africa,1990,,-35.0,28.5
 south china peoples,-2400,-1,30.2,112.8
+south korea,1990,,35.0,127.5
+spain,1990,,35.0,-7.0
 spratly islands,1990,,10.0,115.0
+sri lanka,1990,,7.5,80.0
 st. kitts and nevis,1990,,17.5,-62.5
 st. lucia,1990,,12.5,-62.5
 st. vincent and the grenadines,1990,,12.5,-62.5
-stasis,-587,264,37.7,22.2
+stasis,-637,264,37.7,22.2
 su,-770,-684,37.5,117.5
 subarctic peoples,-2400,-1,59.2,-110.3
 subartum,-1742,-1616,37.5,42.5
-succession struggle,-786,-352,36.3,88.3
+succession struggle,-817,-268,36.3,88.3
+sudan,1990,,12.5,30.0
 suhma,-610,-346,22.5,87.5
 suhne,-931,-864,37.5,42.5
 suhu,-1120,-612,32.5,42.5
@@ -1077,8 +1043,11 @@ sui(2),-770,-682,37.5,117.5
 surasena,-900,-360,27.5,77.5
 suriname,1990,,5.0,-55.0
 swaziland,1990,,-27.5,32.5
+sweden,1990,,62.5,22.0
+switzerland,1990,,47.5,6.0
 syracuse,-716,-266,37.9,15.0
 syracuse exiles,-316,-306,37.5,13.4
+syria,1990,,35.0,40.0
 são tomé and príncipe,1990,,0.0,7.5
 tabal,-1190,-678,37.5,35.8
 taiwan,1990,,25.0,120.0
@@ -1087,24 +1056,26 @@ tan,-770,-473,34.1,117.5
 tan(2),-770,-684,37.5,117.5
 tanagra,-386,-382,37.5,22.5
 tang,-770,-505,32.5,112.5
+tanzania,1990,,-7.5,35.0
 taras,-500,-380,42.5,15.9
 tarhuntassa,-1536,-1200,37.5,32.5
 tartessos,-1000,-1,37.5,-7.5
 taulanti,-800,-279,41.3,20.9
 tauromenion,-288,-268,37.5,17.5
 taxila,-338,-326,33.9,72.5
-tegea,-300,-1,37.5,22.5
+tegea,-423,-1,37.5,22.5
 teng,-770,-298,35.4,117.5
 terramare culture,-1550,-1250,45.7,9.0
 teutons,-2050,-1,56.0,11.7
 thai peoples,-2400,-1,28.2,102.4
+thailand,1990,,15.0,102.5
 the netherlands,1990,,32.5,-33.5
 theban ally,-371,-338,38.0,22.4
 thebes,-386,-268,38.2,23.4
 thespiae,-386,-379,37.5,22.5
 thesprotia,-396,-350,37.5,22.5
 thesprotians,-500,-431,37.5,22.5
-thessaly,-650,-335,38.0,22.3
+thessaly,-650,-276,38.0,22.3
 thrace,-277,-1,42.5,26.0
 thracians,-1450,-1,43.6,25.4
 thraco cimmerians,-2400,-1450,45.8,31.7
@@ -1125,6 +1096,8 @@ triphylia,-726,-1,37.5,22.5
 troezen,-494,-1,37.5,22.5
 tuhe,-770,-308,42.5,119.0
 tummanna,-1536,-1326,40.3,32.8
+tunisia,1990,,35.0,10.0
+turkey,1990,,40.0,36.0
 turkmenistan,1990,,40.0,59.0
 turks and caicos islands,1990,,22.5,-72.5
 tuvalu,1990,,-7.5,177.5
@@ -1134,11 +1107,14 @@ tyranny of syracuse,-478,-278,37.4,14.1
 uelikukhi,-880,-706,39.9,45.0
 uganda,1990,,0.0,32.5
 ugrians,-750,-1,62.4,59.7
-umbri,-800,-438,42.5,15.0
-umbria,-438,-290,42.5,14.0
+ukraine,1990,,47.5,29.0
+umbri,-800,-308,42.5,15.0
+umbria,-438,-266,42.5,14.0
 umbrii,-500,-438,42.5,15.0
 umma,-2395,-2310,32.5,47.5
 united arab emirates,1990,,25.0,55.0
+united kingdom,1990,,2.5,-30.0
+united states,1990,,30.0,8.0
 ur iii tributary,-2108,-2019,33.2,47.8
 urartu,-935,-592,38.9,44.0
 urartu tributary,-802,-715,39.9,42.3
@@ -1146,6 +1122,7 @@ uruguay,1990,,-35.0,-55.0
 usinara,-610,-354,29.4,77.5
 utica,-950,-948,37.5,10.0
 utkala,-610,-346,21.2,87.5
+uzbekistan,1990,,42.5,66.0
 vajjika league,-610,-468,27.5,85.4
 valdivia culture,-2400,-1700,-2.5,-82.5
 vanga,-675,-312,22.5,91.2
@@ -1153,9 +1130,11 @@ vanuatu,1990,,-17.5,170.0
 vatsa,-875,-492,26.5,81.5
 vemaka,-450,-1,32.5,77.5
 veneti,-800,-1,47.5,12.0
+venezuela,1990,,7.5,-65.0
 vestini,-438,-302,42.5,15.0
 vidarbha,-700,-302,21.0,78.9
 videha,-800,-610,27.5,85.0
+vietnam,1990,,15.0,105.0
 vitihotras,-400,-350,22.5,73.5
 volga battle axe culture,-2050,-1250,56.2,44.1
 volsci,-800,-341,42.5,15.0
@@ -1182,7 +1161,7 @@ xian,-770,-656,32.5,112.5
 xian peoples,-1424,-1414,32.5,107.5
 xiang,-770,-722,37.5,117.5
 xiang(2),-770,-644,32.5,117.5
-xianyu,-770,-506,37.5,113.6
+xianyu,-771,-506,37.5,113.6
 xiao,-500,-496,32.5,117.5
 xing,-770,-636,37.5,115.4
 xirong,-770,-690,32.5,112.5
@@ -1200,6 +1179,7 @@ yang,-770,-678,37.5,112.5
 yang(2),-770,-660,37.5,117.5
 yangyue,-770,-500,27.5,115.0
 yaudheya,-550,-322,29.1,75.0
+yemen,1990,,15.0,47.5
 yi,-770,-660,37.5,122.5
 yi-luo rong,-770,-588,32.5,112.5
 yihu,-770,-492,32.5,117.5
@@ -1218,9 +1198,10 @@ yugoslavia,1990,,45.0,21.0
 yun,-770,-700,32.5,112.5
 yuqui,-770,-692,32.5,117.5
 zabakhi,-880,-592,42.5,45.0
-zahara,,,30.0,52.5
+zahara,-2277,-2206,30.8,52.1
 zaire,1990,,-2.5,22.5
 zalmaqum,-1778,-1616,37.5,40.0
+zambia,1990,,-12.5,27.5
 zamua,-882,-880,37.5,44.2
 zapotecs,-1400,-1,17.5,-97.5
 zeng,-772,-678,32.5,112.5
@@ -1232,7 +1213,7 @@ zhao clan,-500,-453,37.5,112.5
 zhen,-770,-700,32.5,112.5
 zheng,-770,-376,33.0,113.0
 zhi clan,-500,-454,37.5,112.5
-zhonghang clan,-500,-491,37.5,113.5
+zhonghang clan,-500,-490,37.5,113.5
 zhongli,-770,-560,32.5,117.5
 zhongshan,-506,-296,37.5,113.5
 zhongwu,-770,-512,32.5,117.5
@@ -1246,6 +1227,7 @@ zhu(2),-770,-518,37.5,117.5
 zhu(3),-770,-768,37.5,117.5
 zhuan,-770,-586,32.5,117.5
 zhuanyu,-770,-484,37.5,117.5
-zippasla,-1416,-1396,37.0,31.1
+zimbabwe,1990,,-20.0,30.0
+zippasla,-1422,-1396,37.0,31.1
 zong,-770,-616,32.5,117.5
 zuo,-770,-750,34.9,112.5
