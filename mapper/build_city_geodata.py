@@ -11,8 +11,24 @@ Sentinel from-dates (-9999) are floored to -2400 (content range start).
 Open-ended to-dates (9999) are written as empty (no end date).
 """
 
-import os, csv, re
+import os, csv, re, unicodedata
 from collections import defaultdict
+
+# Characters that don't decompose via NFD but have obvious Latin equivalents
+_CHAR_MAP = str.maketrans({
+    'Ø': 'O', 'ø': 'o', 'Ð': 'D', 'ð': 'd', 'Þ': 'Th', 'þ': 'th',
+    'Æ': 'Ae', 'æ': 'ae', 'Œ': 'Oe', 'œ': 'oe', 'ß': 'ss',
+    'Ł': 'L', 'ł': 'l', 'ı': 'i',
+    '‘': "'", '’': "'",  # curly apostrophes → straight
+    '“': '"', '”': '"',  # curly quotes → straight
+})
+
+def to_ascii(s):
+    """Replace non-Latin characters with their closest ASCII equivalents."""
+    s = s.translate(_CHAR_MAP)
+    # NFD decomposition strips combining diacritical marks (é→e, ñ→n, ü→u, etc.)
+    decomposed = unicodedata.normalize('NFD', s)
+    return ''.join(c for c in decomposed if unicodedata.category(c) != 'Mn' and ord(c) < 128)
 
 DATA_DIR   = r'C:\My stuff\mapper'
 MAPPER_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -137,7 +153,7 @@ def main():
                 if not dr:
                     continue
 
-                ref = reference_name(dr)
+                ref = to_ascii(reference_name(dr))
 
                 # Full date span across all ranges
                 from_yr = min(floor_from(r['from']) for r in dr)
@@ -145,9 +161,10 @@ def main():
 
                 # Collect unique historical names with their combined date spans
                 # (same name may appear in multiple date ranges — take min/max)
+                # Apply ASCII normalization to all names
                 name_spans = defaultdict(lambda: {'from': float('inf'), 'to': float('-inf')})
                 for r in dr:
-                    n = r['name']
+                    n = to_ascii(r['name'])
                     name_spans[n]['from'] = min(name_spans[n]['from'], floor_from(r['from']))
                     name_spans[n]['to']   = max(name_spans[n]['to'],   r['to'])
 
