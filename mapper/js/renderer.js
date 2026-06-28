@@ -611,7 +611,7 @@ class MapRenderer {
     // Hybrid test: total visible cities <= MAX_COUNT AND fewer than MAX_CROWD
     // cities have a neighbour within CROWD_R pixels.
     _autoCityNames(projection, allCities, year, cityDetail, W, H) {
-        const MAX_COUNT = 20;
+        const MAX_COUNT = 30;
         const CROWD_R   = 60;   // px — label-width proxy
         const MAX_CROWD = 3;    // crowded cities tolerated before suppressing
         const BASE_DEG  = 0.01;
