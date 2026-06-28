@@ -3435,7 +3435,7 @@ function showInfoPopup(rawName, screenX, screenY, cityCoords) {
             div.style.cssText = 'font-size:11px; margin-bottom:2px;';
             const fromStr = entry.from !== null ? fmtYearInt(entry.from) : '?';
             const toStr   = entry.to   !== null ? fmtYearInt(entry.to)   : 'present';
-            const isCurrent = toAsciiName(entry.name) === cityNorm || toAsciiName(entry.name) === cityNorm2;
+            const isCurrent = toAsciiName(entry.name) === toAsciiName(norm1);
             div.textContent = `${toTitleCase(entry.name)} (${fromStr} – ${toStr})`;
             if (isCurrent) div.style.color = '#00eeff';
             histValEl.appendChild(div);
