@@ -91,7 +91,11 @@
       "PowerShell(python \"C:\\\\my stuff\\\\claudetest\\\\mapper\\\\find_no_links.py\")",
       "PowerShell(git)",
       "PowerShell($sha = git -C \"C:\\\\my stuff\\\\ClaudeTest\" subtree split --prefix=mapper; Write-Host \"Split SHA: $sha\")",
-      "PowerShell(& \"C:\\\\my stuff\\\\claudetest\\\\mapper\\\\push-creator.ps1\")"
+      "PowerShell(& \"C:\\\\my stuff\\\\claudetest\\\\mapper\\\\push-creator.ps1\")",
+      "Bash(python *)",
+      "Bash(git checkout *)",
+      "Bash(git -C \"C:\\\\my stuff\\\\claudetest\" diff HEAD -- mapper/refs_export.csv)",
+      "Bash(powershell -Command \"Get-Content 'C:\\\\my stuff\\\\claudetest\\\\mapper\\\\js\\\\refs.json' | Select-Object -First 20\")"
     ]
   },
   "hooks": {
