@@ -3454,7 +3454,7 @@ function showInfoPopup(rawName, screenX, screenY, cityCoords) {
         histEl.style.display = 'none';
     }
 
-    renderPopupRefs(refKey);
+    renderPopupRefs(cityRefKey || refKey);
 
     const popup = document.getElementById('infoPopup');
     plausible('Info Popup', { props: { name: toTitleCase(rawName) } });
