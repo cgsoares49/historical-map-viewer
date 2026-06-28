@@ -80,7 +80,7 @@ class MapRenderer {
                 if (showDots && year >= -2400) { this._drawDots(ctx, projection, par, year); allDotPars.push({ par, cst, pol }); }
                 if (showCities) {
                     this._drawCities(ctx, projection, cities, year, cityDetail);
-                    if (showCityNames) allCities.push(cities);
+                    allCities.push(cities);
                 }
                 if (showCountryLabels) {
                     const ld = this._collectTileLabelData(par, cst, pol, year);
@@ -97,8 +97,11 @@ class MapRenderer {
             this._drawDotLabels(ctx, projection, allDotPars, year);
         }
 
-        // Second pass: greedy label placement after all dots are drawn
-        if (showCities && showCityNames) {
+        // Second pass: greedy label placement after all dots are drawn.
+        // Auto-show names when few enough cities are visible and none are crowded.
+        const effectiveCityNames = showCityNames ||
+            (showCities && this._autoCityNames(projection, allCities, year, cityDetail));
+        if (showCities && effectiveCityNames) {
             this._placeAndDrawCityLabels(ctx, projection, allCities, year, cityDetail);
         }
 
@@ -604,6 +607,48 @@ class MapRenderer {
     //
     // Color = offsets[colorIndex] directly (VB uses offset RGB as city color, no primaries base).
     // Minimum radius of 2px applied so cities are always visible at world zoom.
+    // Returns true when city names should be shown automatically.
+    // Hybrid test: total visible cities <= MAX_COUNT AND fewer than MAX_CROWD
+    // cities have a neighbour within CROWD_R pixels.
+    _autoCityNames(projection, allCities, year, cityDetail) {
+        const MAX_COUNT = 20;
+        const CROWD_R   = 60;   // px — label-width proxy
+        const MAX_CROWD = 3;    // crowded cities tolerated before suppressing
+        const BASE_DEG  = 0.01;
+        const scale     = projection.xScale;
+
+        const pts = [];
+        for (const cities of allCities) {
+            for (const city of cities) {
+                const match = matchDate(city.dateRanges, year);
+                if (!match || match.detCode <= 0 || match.detCode > cityDetail) continue;
+                const sym = match.symCode;
+                if (sym >= 0) {
+                    const r = (sym !== 0 ? (Math.abs(sym) + 1) * BASE_DEG : BASE_DEG) * scale;
+                    if (r < 0.5) continue;
+                } else {
+                    if ((0.05 * Math.abs(sym) * scale) / Math.SQRT2 < 0.5) continue;
+                }
+                const { x, y } = projection.geoToPixel(city.lon, city.lat);
+                pts.push({ x, y });
+                if (pts.length > MAX_COUNT) return false;  // early exit
+            }
+        }
+        if (pts.length === 0) return false;
+
+        const R2 = CROWD_R * CROWD_R;
+        let crowded = 0;
+        for (let i = 0; i < pts.length; i++) {
+            for (let j = 0; j < pts.length; j++) {
+                if (i === j) continue;
+                const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+                if (dx * dx + dy * dy < R2) { crowded++; break; }
+            }
+            if (crowded >= MAX_CROWD) return false;
+        }
+        return true;
+    }
+
     _drawCities(ctx, projection, cities, year, cityDetail = 10) {
         if (!cities || !cities.length) return;
         const BASE_DEG = 0.01;
