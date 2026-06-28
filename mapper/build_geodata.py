@@ -211,11 +211,17 @@ def main():
                     # like "Roman Republic - Anxur" should not shift the canonical
                     # start date of "Roman Republic".
                     is_exact = (name.strip() == first_name)
-                    if span >= MIN_SPAN and frm > SENTINEL_FROM:
-                        r['min_date'] = min(r['min_date'], frm)
-                        if is_exact:
-                            r['min_date_exact'] = min(r['min_date_exact'], frm)
                     if span >= MIN_SPAN:
+                        if frm > SENTINEL_FROM:
+                            r['min_date'] = min(r['min_date'], frm)
+                            if is_exact:
+                                r['min_date_exact'] = min(r['min_date_exact'], frm)
+                        else:
+                            # Sentinel from-date: entity predates our content range.
+                            # Floor to -2400 so it gets a usable start date.
+                            r['min_date'] = min(r['min_date'], -2400.0)
+                            if is_exact:
+                                r['min_date_exact'] = min(r['min_date_exact'], -2400.0)
                         r['max_date'] = max(r['max_date'], to)
                         if is_exact:
                             r['max_date_exact'] = max(r['max_date_exact'], to)
