@@ -78,20 +78,43 @@ for loc in sorted(locations, key=lambda r: r['RefName'].lower()):
 
 lines += ['};', '', 'const CITY_ALIASES = {']
 
-for alias in sorted(aliases, key=lambda r: r['AliasName'].lower()):
+# CITY_ALIASES: historical names only (IsRef != '1'), for vibe search
+non_ref_aliases = [a for a in aliases if a.get('IsRef', '0') != '1']
+for alias in sorted(non_ref_aliases, key=lambda r: r['AliasName'].lower()):
     alias_key = js_key(alias['AliasName'])
     ref_key   = js_key(alias['RefName'])
     from_yr   = parse_year(alias['FromYear'])
     to_yr     = parse_year(alias['ToYear'])
-
-    from_str = str(from_yr) if from_yr is not None else 'null'
-    to_str   = str(to_yr)   if to_yr   is not None else 'null'
-
+    from_str  = str(from_yr) if from_yr is not None else 'null'
+    to_str    = str(to_yr)   if to_yr   is not None else 'null'
     lines.append(f"    '{alias_key}': {{ key: '{ref_key}', from: {from_str}, to: {to_str} }},")
+
+# CITY_HISTORY: all names (including ref) grouped by ref key, for popups
+from collections import defaultdict
+history = defaultdict(list)
+for alias in aliases:
+    ref_key  = js_key(alias['RefName'])
+    from_yr  = parse_year(alias['FromYear'])
+    to_yr    = parse_year(alias['ToYear'])
+    history[ref_key].append({
+        'name': alias['AliasName'],
+        'from': from_yr,
+        'to':   to_yr,
+    })
+
+lines += ['};', '', 'const CITY_HISTORY = {']
+for ref_key in sorted(history.keys()):
+    entries = sorted(history[ref_key], key=lambda e: (e['from'] is None, e['from'] or 0))
+    parts = []
+    for e in entries:
+        from_str = str(e['from']) if e['from'] is not None else 'null'
+        to_str   = str(e['to'])   if e['to']   is not None else 'null'
+        parts.append(f"{{ name: '{e['name'].replace(chr(39), chr(92)+chr(39))}', from: {from_str}, to: {to_str} }}")
+    lines.append(f"    '{ref_key}': [{', '.join(parts)}],")
 
 lines += ['};', '']
 
 with open(OUT_JS, 'w', encoding='utf-8') as f:
     f.write('\n'.join(lines))
 
-print(f"Wrote {len(locations)} city entries and {len(aliases)} aliases to {OUT_JS}")
+print(f"Wrote {len(locations)} city entries, {len(non_ref_aliases)} aliases, and {len(history)} history entries to {OUT_JS}")

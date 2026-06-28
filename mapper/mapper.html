@@ -1030,6 +1030,10 @@
             <div class="info-section-label">Temporal Extent</div>
             <div id="infoPopupDatesVal" class="info-section-value"></div>
         </div>
+        <div id="infoPopupHistory" style="display:none;">
+            <div class="info-section-label">Name History</div>
+            <div id="infoPopupHistoryVal" class="info-section-value"></div>
+        </div>
         <div id="infoPopupRefs">
             <div class="info-section-label">References</div>
             <div id="infoPopupRefsVal" class="info-section-value"></div>
@@ -2518,12 +2522,8 @@ function executeVibeCommand(text) {
         vibeAddHistory(originalText, `"${placeName}" not found`, true);
         return;
     }
-    // Auto-select exact key match — avoids disambiguation for e.g. "rome"
-    // when "ancient rome" and "kingdom of rome" are also in GEODATA.
-    const exact = allMatches.find(([k]) => k === placeName);
-    if (exact || allMatches.length === 1) {
-        const [foundName, bounds] = exact || allMatches[0];
-        vibeNavigateTo(foundName, bounds, year, originalText);
+    if (allMatches.length === 1) {
+        vibeNavigateTo(allMatches[0][0], allMatches[0][1], year, originalText);
         return;
     }
     plausible('Disambiguate', { props: { query: placeName.substring(0, 60), count: String(allMatches.length) } });
@@ -3362,6 +3362,11 @@ function toTitleCase(s) {
     return s.replace(/\b([a-z])/g, c => c.toUpperCase());
 }
 
+// Strip combining diacritical marks for city name lookup (matches build_city_geodata.py to_ascii())
+function toAsciiName(s) {
+    return s.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^\x00-\x7F]/g, '');
+}
+
 function showInfoPopup(rawName, screenX, screenY) {
     // Try exact lowercase key, then strip region qualifiers ( " - ", " (", " – " )
     const norm1 = rawName.toLowerCase().trim();
@@ -3370,18 +3375,64 @@ function showInfoPopup(rawName, screenX, screenY) {
     // Active key for refs — whichever resolves
     const refKey  = geodataRefs[norm1] !== undefined ? norm1 : norm2;
 
-    document.getElementById('infoPopup')._refKey = refKey;  // store for add/remove handlers
+    document.getElementById('infoPopup')._refKey = refKey;
     document.getElementById('infoPopupTitle').textContent = toTitleCase(rawName);
 
     const datesEl    = document.getElementById('infoPopupDates');
     const datesValEl = document.getElementById('infoPopupDatesVal');
-    if (bounds && bounds[4] !== undefined) {
-        const from = fmtYear(bounds[4]);
-        const to   = bounds[5] !== undefined ? fmtYear(bounds[5]) : null;
-        datesValEl.textContent = (to && to !== from) ? `${from} – ${to}` : from;
-        datesEl.style.display = '';
+    const histEl     = document.getElementById('infoPopupHistory');
+    const histValEl  = document.getElementById('infoPopupHistoryVal');
+
+    // Check if this is a city name
+    const cityNorm = toAsciiName(norm1);
+    const cityNorm2 = toAsciiName(norm2);
+    const cityAlias = (typeof CITY_ALIASES !== 'undefined') &&
+                      (CITY_ALIASES[cityNorm] || CITY_ALIASES[cityNorm2]);
+    const cityRef   = (typeof CITY_DATA !== 'undefined') &&
+                      (CITY_DATA[cityNorm] || CITY_DATA[cityNorm2]);
+    const cityRefKey = cityAlias ? cityAlias.key : (cityRef ? (CITY_DATA[cityNorm] ? cityNorm : cityNorm2) : null);
+
+    if (cityRefKey && typeof CITY_HISTORY !== 'undefined' && CITY_HISTORY[cityRefKey]) {
+        // City popup: show temporal extent for current name + full name history
+        if (cityAlias && cityAlias.from !== null) {
+            const from = fmtYear(cityAlias.from);
+            const to   = cityAlias.to !== null ? fmtYear(cityAlias.to) : null;
+            datesValEl.textContent = (to && to !== from) ? `${from} – ${to}` : from;
+            datesEl.style.display = '';
+        } else if (cityRef && cityRef[4] !== undefined) {
+            const from = fmtYear(cityRef[4]);
+            const to   = cityRef[5] !== undefined ? fmtYear(cityRef[5]) : null;
+            datesValEl.textContent = (to && to !== from) ? `${from} – ${to}` : from;
+            datesEl.style.display = '';
+        } else {
+            datesEl.style.display = 'none';
+        }
+
+        const history = [...CITY_HISTORY[cityRefKey]];
+        history.sort((a, b) => (a.from ?? -9999) - (b.from ?? -9999));
+        histValEl.innerHTML = '';
+        for (const entry of history) {
+            const div = document.createElement('div');
+            div.style.cssText = 'font-size:11px; margin-bottom:2px;';
+            const fromStr = entry.from !== null ? fmtYearInt(entry.from) : '?';
+            const toStr   = entry.to   !== null ? fmtYearInt(entry.to)   : 'present';
+            const isCurrent = toAsciiName(entry.name) === cityNorm || toAsciiName(entry.name) === cityNorm2;
+            div.textContent = `${toTitleCase(entry.name)} (${fromStr} – ${toStr})`;
+            if (isCurrent) div.style.color = '#00eeff';
+            histValEl.appendChild(div);
+        }
+        histEl.style.display = '';
     } else {
-        datesEl.style.display = 'none';
+        // PAR / non-city popup: existing behaviour
+        if (bounds && bounds[4] !== undefined) {
+            const from = fmtYear(bounds[4]);
+            const to   = bounds[5] !== undefined ? fmtYear(bounds[5]) : null;
+            datesValEl.textContent = (to && to !== from) ? `${from} – ${to}` : from;
+            datesEl.style.display = '';
+        } else {
+            datesEl.style.display = 'none';
+        }
+        histEl.style.display = 'none';
     }
 
     renderPopupRefs(refKey);

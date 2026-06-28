@@ -168,16 +168,17 @@ def main():
                     name_spans[n]['from'] = min(name_spans[n]['from'], floor_from(r['from']))
                     name_spans[n]['to']   = max(name_spans[n]['to'],   r['to'])
 
-                # Aliases = all names that are NOT the reference and NOT parenthetical
+                # Aliases = all non-parenthetical names.
+                # The reference name is included (is_ref=True) so CITY_HISTORY can show
+                # the full name sequence; CITY_ALIASES only uses is_ref=False entries.
                 aliases = []
                 for name, span in name_spans.items():
-                    if name == ref:
-                        continue
                     if is_parenthetical(name):
                         continue
-                    aliases.append({'name': name,
-                                    'from': span['from'],
-                                    'to':   span['to']})
+                    aliases.append({'name':   name,
+                                    'from':   span['from'],
+                                    'to':     span['to'],
+                                    'is_ref': name == ref})
 
                 all_locations.append({
                     'ref':     ref,
@@ -203,12 +204,12 @@ def main():
             ])
     print(f"Wrote {len(all_locations)} city locations to {loc_path}")
 
-    # Write city_aliases.csv
+    # Write city_aliases.csv (all names including ref, tagged with IsRef)
     alias_path = os.path.join(MAPPER_DIR, 'city_aliases.csv')
     alias_count = 0
     with open(alias_path, 'w', newline='', encoding='utf-8') as f:
         w = csv.writer(f)
-        w.writerow(['RefName', 'AliasName', 'FromYear', 'ToYear'])
+        w.writerow(['RefName', 'AliasName', 'FromYear', 'ToYear', 'IsRef'])
         for loc in all_locations:
             for alias in loc['aliases']:
                 w.writerow([
@@ -216,6 +217,7 @@ def main():
                     alias['name'],
                     fmt_year(alias['from']),
                     fmt_year(alias['to'], is_to=True),
+                    '1' if alias['is_ref'] else '0',
                 ])
                 alias_count += 1
     print(f"Wrote {alias_count} city aliases to {alias_path}")
