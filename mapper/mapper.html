@@ -2486,6 +2486,7 @@ function executeVibeCommand(text) {
     // Look up all matches; disambiguate if more than one
     const allMatches = vibeFindAllMatches(placeName);
     if (allMatches.length === 0) {
+        plausible('Not Found', { props: { query: placeName.substring(0, 60) } });
         vibeAddHistory(originalText, `"${placeName}" not found`, true);
         return;
     }
@@ -2497,6 +2498,7 @@ function executeVibeCommand(text) {
         vibeNavigateTo(foundName, bounds, year, originalText);
         return;
     }
+    plausible('Disambiguate', { props: { query: placeName.substring(0, 60), count: String(allMatches.length) } });
     vibeAddDisambiguation(placeName, allMatches);
 }
 
