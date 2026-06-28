@@ -32,6 +32,16 @@ python "$MapperDir\export_geodata_csv.py"
 if ($LASTEXITCODE -ne 0) { Write-Host "ERROR in export_geodata_csv.py" -ForegroundColor Red; exit 1 }
 
 Write-Host ""
+Write-Host "Running build_city_geodata.py..." -ForegroundColor Yellow
+python "$MapperDir\build_city_geodata.py"
+if ($LASTEXITCODE -ne 0) { Write-Host "ERROR in build_city_geodata.py" -ForegroundColor Red; exit 1 }
+
+Write-Host ""
+Write-Host "Running merge_city_geodata.py..." -ForegroundColor Yellow
+python "$MapperDir\merge_city_geodata.py"
+if ($LASTEXITCODE -ne 0) { Write-Host "ERROR in merge_city_geodata.py" -ForegroundColor Red; exit 1 }
+
+Write-Host ""
 Write-Host "Geodata rebuild complete." -ForegroundColor Green
 Write-Host "(WHE refs managed separately via whe_api_audit.py)" -ForegroundColor DarkGray
 

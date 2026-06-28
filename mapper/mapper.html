@@ -1065,6 +1065,7 @@
 </div>
 
 <script src="js/geodata.js"></script>
+<script src="js/city_data.js"></script>
 <script src="js/projection.js"></script>
 <script src="js/tiles.js"></script>
 <script src="js/dataloader.js"></script>
@@ -2134,11 +2135,38 @@ function vibeFindAllMatches(name) {
     const seen = new Set();
     const results = [];
     for (const term of terms) {
+        // PAR / hand-curated geodata
         for (const [k, v] of Object.entries(GEODATA)) {
             if (seen.has(k)) continue;
             if (k.includes(term) || (k.length >= 4 && term.includes(k))) {
                 results.push([k, v]);
                 seen.add(k);
+            }
+        }
+        // City locations (direct reference name match)
+        if (typeof CITY_DATA !== 'undefined') {
+            for (const [k, v] of Object.entries(CITY_DATA)) {
+                if (seen.has(k)) continue;
+                if (k.includes(term) || (k.length >= 4 && term.includes(k))) {
+                    results.push([k, v]);
+                    seen.add(k);
+                }
+            }
+        }
+        // City aliases (historical names → reference city)
+        if (typeof CITY_ALIASES !== 'undefined' && typeof CITY_DATA !== 'undefined') {
+            for (const [alias, info] of Object.entries(CITY_ALIASES)) {
+                if (seen.has(alias)) continue;
+                if (alias.includes(term) || (alias.length >= 4 && term.includes(alias))) {
+                    const cityEntry = CITY_DATA[info.key];
+                    if (!cityEntry) continue;
+                    // Synthetic bounds: city coords + alias date range for correct era navigation
+                    const bounds = [cityEntry[0], cityEntry[1], cityEntry[2], cityEntry[3],
+                                    ...(info.from !== null ? [info.from] : []),
+                                    ...(info.to   !== null ? [info.to]   : [])];
+                    results.push([alias, bounds]);
+                    seen.add(alias);
+                }
             }
         }
     }
