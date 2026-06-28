@@ -1166,7 +1166,7 @@ async function rebuildColorNameMap(proj, year) {
                 if (!match || match.detCode <= 0 || match.detCode > cityDetail) continue;
                 const { r, g, b } = colorLookup.resolveCityRgb(match.colorIndex);
                 const key = r | (g << 8) | (b << 16);
-                colorNameMap.set(key, match.name);
+                colorNameMap.set(key, { name: match.name, lon: city.lon, lat: city.lat });
             }
         }
     }));
@@ -3274,8 +3274,9 @@ overlay.addEventListener('mousemove', e => {
         document.getElementById('txtGreen').value = g;
         document.getElementById('txtBlue' ).value = b;
         if (colorNameMap) {
-            const key  = r | (g << 8) | (b << 16);
-            const name = colorNameMap.get(key) || '';
+            const key   = r | (g << 8) | (b << 16);
+            const entry = colorNameMap.get(key);
+            const name  = entry ? (typeof entry === 'object' ? entry.name : entry) : '';
             document.getElementById('txtPixelColor').textContent = name;
             if (name) lastHoveredCountry = { name, x: e.clientX, y: e.clientY };
         }
@@ -3367,7 +3368,7 @@ function toAsciiName(s) {
     return s.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^\x00-\x7F]/g, '');
 }
 
-function showInfoPopup(rawName, screenX, screenY) {
+function showInfoPopup(rawName, screenX, screenY, cityCoords) {
     // Try exact lowercase key, then strip region qualifiers ( " - ", " (", " – " )
     const norm1 = rawName.toLowerCase().trim();
     const norm2 = norm1.replace(/\s*[-–—(].*$/, '').trim();
@@ -3383,25 +3384,43 @@ function showInfoPopup(rawName, screenX, screenY) {
     const histEl     = document.getElementById('infoPopupHistory');
     const histValEl  = document.getElementById('infoPopupHistoryVal');
 
-    // Check if this is a city name
-    const cityNorm = toAsciiName(norm1);
-    const cityNorm2 = toAsciiName(norm2);
-    const cityAlias = (typeof CITY_ALIASES !== 'undefined') &&
-                      (CITY_ALIASES[cityNorm] || CITY_ALIASES[cityNorm2]);
-    const cityRef   = (typeof CITY_DATA !== 'undefined') &&
-                      (CITY_DATA[cityNorm] || CITY_DATA[cityNorm2]);
-    const cityRefKey = cityAlias ? cityAlias.key : (cityRef ? (CITY_DATA[cityNorm] ? cityNorm : cityNorm2) : null);
+    // Check if this is a city name — use coordinate lookup first (precise), then name
+    // Build coord→refKey index lazily on first popup call
+    if (!showInfoPopup._byCoord && typeof CITY_DATA !== 'undefined') {
+        showInfoPopup._byCoord = {};
+        for (const [k, b] of Object.entries(CITY_DATA)) {
+            const lon = ((b[0] + b[2]) / 2).toFixed(4);
+            const lat = ((b[1] + b[3]) / 2).toFixed(4);
+            showInfoPopup._byCoord[`${lon},${lat}`] = k;
+        }
+    }
+    let cityRefKey = null;
+    let cityAlias  = null;
+    if (cityCoords && showInfoPopup._byCoord) {
+        const clon = cityCoords.lon.toFixed(4), clat = cityCoords.lat.toFixed(4);
+        cityRefKey = showInfoPopup._byCoord[`${clon},${clat}`] || null;
+    }
+    if (!cityRefKey && typeof CITY_DATA !== 'undefined') {
+        // Name-based fallback — use norm1 ONLY (not norm2, to avoid "Thebes (Greece)"→"thebes" collision)
+        const cityNorm = toAsciiName(norm1);
+        cityAlias  = (typeof CITY_ALIASES !== 'undefined') && CITY_ALIASES[cityNorm];
+        cityRefKey = cityAlias ? cityAlias.key : (CITY_DATA[cityNorm] ? cityNorm : null);
+    }
+    if (!cityAlias && cityRefKey && typeof CITY_ALIASES !== 'undefined') {
+        cityAlias = CITY_ALIASES[toAsciiName(norm1)] || null;
+    }
 
     if (cityRefKey && typeof CITY_HISTORY !== 'undefined' && CITY_HISTORY[cityRefKey]) {
-        // City popup: show temporal extent for current name + full name history
+        // City popup: temporal extent for the specific name clicked + full name history
+        const cityEntry = typeof CITY_DATA !== 'undefined' && CITY_DATA[cityRefKey];
         if (cityAlias && cityAlias.from !== null) {
             const from = fmtYear(cityAlias.from);
             const to   = cityAlias.to !== null ? fmtYear(cityAlias.to) : null;
             datesValEl.textContent = (to && to !== from) ? `${from} – ${to}` : from;
             datesEl.style.display = '';
-        } else if (cityRef && cityRef[4] !== undefined) {
-            const from = fmtYear(cityRef[4]);
-            const to   = cityRef[5] !== undefined ? fmtYear(cityRef[5]) : null;
+        } else if (cityEntry && cityEntry[4] !== undefined) {
+            const from = fmtYear(cityEntry[4]);
+            const to   = cityEntry[5] !== undefined ? fmtYear(cityEntry[5]) : null;
             datesValEl.textContent = (to && to !== from) ? `${from} – ${to}` : from;
             datesEl.style.display = '';
         } else {
@@ -3473,18 +3492,23 @@ function renderPopupRefs(refKey) {
 
 function showInfoPopupAtPixel(px, py, screenX, screenY) {
     if (!backCtx) { showInfoPopup('(map not ready)', screenX, screenY); return; }
-    let name = null;
+    let name = null, cityCoords = null;
     try {
         const imgData = backCtx.getImageData(Math.round(px), Math.round(py), 1, 1).data;
         if (imgData[3] > 0) {
             const colorKey = imgData[0] | (imgData[1] << 8) | (imgData[2] << 16);
-            name = colorNameMap.get(colorKey) || null;
+            const entry = colorNameMap.get(colorKey) || null;
+            if (entry) {
+                name = typeof entry === 'object' ? entry.name : entry;
+                if (typeof entry === 'object' && entry.lon != null)
+                    cityCoords = { lon: entry.lon, lat: entry.lat };
+            }
         }
     } catch (err) {
         showInfoPopup(`(canvas error: ${err.message})`, screenX, screenY);
         return;
     }
-    showInfoPopup(name || '(water / no data)', screenX, screenY);
+    showInfoPopup(name || '(water / no data)', screenX, screenY, cityCoords);
 }
 
 function dismissInfoPopup() {
