@@ -11,10 +11,11 @@ CITY_ALIASES: historicalName → { key: refName, from: year, to: year }
 
 import os, csv
 
-MAPPER_DIR = os.path.dirname(os.path.abspath(__file__))
-LOC_CSV    = os.path.join(MAPPER_DIR, 'city_locations.csv')
-ALIAS_CSV  = os.path.join(MAPPER_DIR, 'city_aliases.csv')
-OUT_JS     = os.path.join(MAPPER_DIR, 'js', 'city_data.js')
+MAPPER_DIR     = os.path.dirname(os.path.abspath(__file__))
+LOC_CSV        = os.path.join(MAPPER_DIR, 'city_locations.csv')
+ALIAS_CSV      = os.path.join(MAPPER_DIR, 'city_aliases.csv')
+OVERRIDES_CSV  = os.path.join(MAPPER_DIR, 'city_overrides.csv')
+OUT_JS         = os.path.join(MAPPER_DIR, 'js', 'city_data.js')
 
 HALF = 0.5   # ±0.5° → zoom ~359
 
@@ -37,15 +38,55 @@ def fmt(v):
     return str(int(v)) if v == int(v) else f"{v:.6f}".rstrip('0')
 
 
+# Load overrides: keyed by (lon_4dp, lat_4dp, from_year)
+overrides = {}
+if os.path.exists(OVERRIDES_CSV):
+    with open(OVERRIDES_CSV, encoding='utf-8', newline='') as f:
+        for row in csv.DictReader(f):
+            key = (round(float(row['Lon']), 4), round(float(row['Lat']), 4), row['FromYear'].strip())
+            overrides[key] = {'action': row['Action'].strip(), 'new_name': row['NewRefName'].strip()}
+    print(f"Loaded {len(overrides)} city overrides")
+
+
+def apply_override(row):
+    """Returns (keep, new_row). keep=False means skip this row."""
+    key = (round(float(row['Lon']), 4), round(float(row['Lat']), 4), row['FromYear'].strip())
+    ov = overrides.get(key)
+    if not ov:
+        return True, row
+    if ov['action'] in ('SKIP', 'SKIP_DUPE'):
+        return False, row
+    if ov['action'] == 'RENAME' and ov['new_name']:
+        row = dict(row)
+        row['RefName'] = ov['new_name']
+    return True, row
+
+
 locations = []
+skipped_loc = 0
 with open(LOC_CSV, encoding='utf-8', newline='') as f:
     for row in csv.DictReader(f):
-        locations.append(row)
+        keep, row = apply_override(row)
+        if keep:
+            locations.append(row)
+        else:
+            skipped_loc += 1
+if skipped_loc:
+    print(f"Overrides: skipped {skipped_loc} location rows")
 
+# Aliases now include Lon/Lat so we can apply the same coordinate-based overrides
 aliases = []
+skipped_alias = 0
 with open(ALIAS_CSV, encoding='utf-8', newline='') as f:
     for row in csv.DictReader(f):
-        aliases.append(row)
+        # Use the alias row's own Lon/Lat for override lookup
+        keep, row = apply_override(row)
+        if keep:
+            aliases.append(row)
+        else:
+            skipped_alias += 1
+if skipped_alias:
+    print(f"Overrides: skipped {skipped_alias} alias rows")
 
 lines = [
     '// city_data.js — City locations and historical name aliases',

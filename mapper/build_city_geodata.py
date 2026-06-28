@@ -209,11 +209,13 @@ def main():
     alias_count = 0
     with open(alias_path, 'w', newline='', encoding='utf-8') as f:
         w = csv.writer(f)
-        w.writerow(['RefName', 'AliasName', 'FromYear', 'ToYear', 'IsRef'])
+        w.writerow(['RefName', 'Lon', 'Lat', 'AliasName', 'FromYear', 'ToYear', 'IsRef'])
         for loc in all_locations:
             for alias in loc['aliases']:
                 w.writerow([
                     loc['ref'],
+                    round(loc['lon'], 6),
+                    round(loc['lat'], 6),
                     alias['name'],
                     fmt_year(alias['from']),
                     fmt_year(alias['to'], is_to=True),

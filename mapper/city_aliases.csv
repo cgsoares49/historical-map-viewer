@@ -1,2011 +1,2011 @@
-RefName,AliasName,FromYear,ToYear,IsRef
-Caral,Caral,-2400,-1800,1
-Madurai,Madurai,-350,,1
-Muziris,Muchiri,-350,-250,0
-Muziris,Muziris,-250,1341,1
-Kaveripattanam,Kaveripattanam,-350,-300,1
-Karur,Karuvur,-350,-250,0
-Karur,Karur,-250,-9999,1
-Anuradhapura,Anuradhapura,-437,,1
-Kerma,Kerma,-2400,-1100,1
-Karima,Napata,-1474,680,0
-Karima,Karima,680,,1
-Meroe,Meroe,-1800,400,1
-Ma'rib,Ma'rib,-1200,,1
-Bodhan,Parudanyapura,-750,1196,0
-Bodhan,Bodhan,1196,,1
-Apollonopolis Magna,Djeba/Watjeset-hor,-2400,-332,0
-Apollonopolis Magna,Apollonopolis Magna,-332,600,1
-Ombos,Nubyt,-2400,-332,0
-Ombos,Ombos,-332,550,1
-Elephantine,Abu,-1800,-332,0
-Elephantine,Elephantine,-332,560,1
-Aswan,Swenet,-2400,-332,0
-Aswan,Syrene,-332,641,0
-Aswan,Aswan,641,,1
-Buhen,Buhen,-1860,-1,1
-al-Medina,Yatribu,-850,-537,0
-al-Medina,Yathrib,-537,-30,0
-al-Medina,Iathrippa,-30,630,0
-al-Medina,al-Medina,630,,1
-Thatta,Sarnee Nagar,-1000,-332,0
-Thatta,Patala,-332,1526,0
-Thatta,Nagar Tatta,1526,1750,0
-Thatta,Thatta,1750,,1
-Bharuch,Bharuch,-1100,,1
-Tewar,Tripuri,-825,1192,0
-Tewar,Tewar,1192,,1
-Vidisha,Vidisha,-850,,1
-Ujjayini,Ujjayini,-871,,1
-Mahishmati,Mahishmati,-861,1300,1
-Siwa,Ammon,-750,1150,0
-Siwa,Siwa,1150,,1
-Memphis,Ineb(ou)-Hedj(ou),-2400,-1550,0
-Memphis,Men-nefer,-1550,-332,0
-Memphis,Memphis,-332,1400,1
-Atfih,Itj-Tawy/Tepihu,-2400,-332,0
-Atfih,Aphroditopolis,-332,640,0
-Atfih,Atfih,640,,1
-Faiyum,Shedyet,-2400,-332,0
-Faiyum,Ptolemais Euergetis,-332,-280,0
-Faiyum,Arsinoe,-280,-20,0
-Faiyum,Krokodilopolis,-20,642,0
-Faiyum,Faiyum,642,,1
-Narmouthis,Dja,-1830,-332,0
-Narmouthis,Narmouthis,-332,1000,1
-Senusrethotem,Senusrethotem,-1890,-1100,1
-Herakleopolis (Magna),Henen-nesut,-2400,-332,0
-Herakleopolis (Magna),Herakleopolis (Magna),-332,500,1
-Theodosiopolis,Tutun/Tebtunis,-1800,-332,0
-Theodosiopolis,Theodosiopolis,-332,550,1
-Hwt-nsw/Hutnesut,Hwt-nsw/Hutnesut,-2400,1000,1
-Pemje,Per-Medjed,-2400,-332,0
-Pemje,Oxyrhynchus,-332,300,0
-Pemje,Pemje,300,641,1
-Akoris (Tenis he kai Hakoreos),Mer-nefer(et),-2400,-1550,0
-Akoris (Tenis he kai Hakoreos),Per-Imen-met-khent(j),-1550,-685,0
-Akoris (Tenis he kai Hakoreos),Dehenet,-685,-332,0
-Akoris (Tenis he kai Hakoreos),Akoris (Tenis he kai Hakoreos),-332,350,1
-Alabastronopolis/Alabastrine,Henenu,-2400,-332,0
-Alabastronopolis/Alabastrine,Alabastronopolis/Alabastrine,-332,1000,1
-el Ashmunein,Khmun(w),-2400,-332,0
-el Ashmunein,Hermopolis Magna,-332,300,0
-el Ashmunein,Schmun(ein),300,641,0
-el Ashmunein,el Ashmunein,641,,1
-el-Qusiya,Qis,-2400,-332,0
-el-Qusiya,Koussai,-332,-20,0
-el-Qusiya,Cusae,-20,641,0
-el-Qusiya,el-Qusiya,641,,1
-Asyut,Zawty,-2400,-332,0
-Asyut,Lykopolis,-332,300,0
-Asyut,Siout,300,641,0
-Asyut,Asyut,641,,1
-al Atawla,Per-Nemty,-2400,-332,0
-al Atawla,Hierakion,-332,641,0
-al Atawla,al Atawla,641,,1
-Abutig,Shashotep,-2400,-332,0
-Abutig,Apotheke,-332,641,0
-Abutig,Abutig,641,,1
-Qaw el-Kebir,Tjebu,-2400,-332,0
-Qaw el-Kebir,Antaeopolis,-332,641,0
-Qaw el-Kebir,Qaw el-Kebir,641,,1
-Akhmim,Ipu/Apu/Khent-mim,-2400,-332,0
-Akhmim,Panopolis,-332,300,0
-Akhmim,Khmin/Shmin,300,641,0
-Akhmim,Akhmim,641,,1
-Thinis/This,Tjenu,-2400,-332,0
-Thinis/This,Thinis/This,-332,1000,1
-El Araba el Madfuna,Abdju,-2400,-332,0
-El Araba el Madfuna,Abydos,-332,300,0
-El Araba el Madfuna,Ebot,300,641,0
-El Araba el Madfuna,El Araba el Madfuna,641,,1
-Hiw,Hut-Sekhem,-2400,-332,0
-Hiw,Diospolis Parva/Mikra,-332,641,0
-Hiw,Hiw,641,,1
-Dandarah/Dendera,Iunet/Ta-ynt-netert,-2400,-332,0
-Dandarah/Dendera,Tentyra/Tentyris,-332,641,0
-Dandarah/Dendera,Dandarah/Dendera,641,,1
-Qift,Gebtu,-2400,-332,0
-Qift,Coptos,-332,300,0
-Qift,Keft (Kebto),300,535,0
-Qift,Justinianopolis,535,641,0
-Qift,Qift,641,,1
-Naqada,Nubt,-2400,-332,0
-Naqada,Pallas,-332,641,0
-Naqada,Naqada,641,,1
-Qus,Gesy/Gesa,-2400,-332,0
-Qus,Apollinopolis Parva,-332,290,0
-Qus,Diocletianopolis,290,641,0
-Qus,Qus,641,,1
-Luxor,Waset,-2400,-1500,0
-Luxor,Thebes,-1500,-332,0
-Luxor,Thebai,-332,-20,0
-Luxor,Thebae/Diospolis Magna,-20,641,0
-Luxor,Luxor,641,,1
-Armant,Iuny,-2400,-332,0
-Armant,Hermonthis,-332,300,0
-Armant,Erment,300,641,0
-Armant,Armant,641,,1
-El-Tod,Djerty,-2400,-332,0
-El-Tod,Touphion,-332,-20,0
-El-Tod,Tuphium,-20,300,0
-El-Tod,Tout,300,641,0
-El-Tod,El-Tod,641,,1
-Gebelein,Per Hathor/Inerty,-2400,-332,0
-Gebelein,Pathyris/Aphroditopolis,-332,641,0
-Gebelein,Gebelein,641,,1
-Eileithyiaspolis,Nekheb,-2400,-332,0
-Eileithyiaspolis,Eileithyiaspolis,-332,380,1
-Hierakonpolis,Nekhen,-2400,-332,0
-Hierakonpolis,Hierakonpolis,-332,250,1
-Mersa Gawasis,Saww,-1996,-332,0
-Mersa Gawasis,Mersa Gawasis,641,,1
-Amarna,Amarna,-1376,-1358,1
-Aqaba,Elath,-1500,-330,0
-Aqaba,Berenice,-330,-64,0
-Aqaba,Aela,-64,650,0
-Aqaba,Aila,650,1520,0
-Aqaba,Aqaba,1180,,1
-Tayma,Tayma,-1100,,1
-al-'Ula,Dedan,-1100,600,0
-al-'Ula,al-'Ula,600,,1
-Dumat al-Jandal,Dumat,-950,-690,0
-Dumat al-Jandal,Adammatu,-690,106,0
-Dumat al-Jandal,Dumatha,106,633,0
-Dumat al-Jandal,Dumat al-Jandal,633,,1
-Test Battle,Test Battle,-2400,-2000,1
-Persepolis,Parsa,-516,-330,0
-Persepolis,Persepolis,-330,-100,1
-Taoke,Temukan,-450,-330,0
-Taoke,Taoke,-330,500,1
-Jiroft,Karmana,-600,600,0
-Jiroft,Jiroft,600,,1
-Hormuz,Armuzia,-600,-334,0
-Hormuz,Harmozeia,-334,640,0
-Hormuz,Hormuz,640,1000,1
-Poura,Pura,-1000,-334,0
-Poura,Poura,-334,640,1
-Assandh,Asandivat,-1200,-300,0
-Assandh,Assandh,-300,,1
-Hastinapura,Hastinapura,-900,,1
-New Delhi,Indraprastha,-950,1192,0
-New Delhi,Delhi,1192,1927,0
-New Delhi,New Delhi,1927,,1
-Ahichchhatra,Ahichchhatra,-1050,1100,1
-Kampil,Kampilya,-1025,1192,0
-Kampil,Kampil,1192,,1
-Mathura,Mathura,-925,,1
-Bairat,Viratnagar,-950,1192,0
-Bairat,Bairat,1192,,1
-Shravasti,Shravasti,-975,650,1
-Ayodhya,Saketa,-750,436,0
-Ayodhya,Ayodhya,436,,1
-Kausambi,Kausambi,-900,600,1
-Banares,Varanasi,-875,1192,0
-Banares,Banares,1192,,1
-Suktimati,Suktimati,-850,-200,1
-Kusinagara,Kusavati,-775,-500,0
-Kusinagara,Kushinara,-500,1192,0
-Kusinagara,Kusinagara,1192,,1
-Vaishali,Vaishali,-775,300,1
-Pataliputra,Pataliputra,-490,800,1
-Rajgir,Rajagrha,-800,-450,0
-Rajgir,Rajgir,-450,,1
-Champapuri,Champa,-800,1192,0
-Champapuri,Champapuri,1192,,1
-Janakpur,Methila,-900,-300,0
-Janakpur,Janakpur,-300,,1
-Lepcis Magna,Neapolis (Lepcis),-146,-27,0
-Lepcis Magna,Lepcis Magna,-27,647,1
-Kinyps,Kinyps,-514,-512,1
-Plateia,Plateia,-640,-639,1
-Aziris,Aziris,-638,-633,1
-Cyrene,Cyrene,-632,999,1
-Cyrene,Claudiopolis,269,400,0
-Tokara,Taucheira,-630,645,0
-Tokara,Arsinoe,-275,-27,0
-Tokara,Tokara,645,,1
-Sozousa,Apollonia (Cyrene),-606,550,0
-Sozousa,Sozousa,550,643,1
-Marj,Barke,-552,-78,0
-Marj,Barca,-78,644,0
-Marj,Barqah,644,1542,0
-Marj,Barka,1542,1700,0
-Marj,Marj,1850,,1
-Marj,Barce,1913,1945,0
-Benghazi,Euesperides,-526,-246,0
-Benghazi,Berenice,-246,643,0
-Benghazi,Benghazi,643,,1
-Mersa Matruh,Ammonia,-332,-175,0
-Mersa Matruh,Paraitonion,-175,-29,0
-Mersa Matruh,Paraitonium,-29,645,0
-Mersa Matruh,Baritun,645,1800,0
-Mersa Matruh,Mersa Matruh,1800,,1
-Alexandria,Alexandria,-332,,1
-Kouvouklia,Pa-ap-pa?,-1400,-1250,0
-Kouvouklia,Paphos,-1250,-320,0
-Kouvouklia,Palaepaphos,-320,400,0
-Kouvouklia,Kouvouklia,400,1000,1
-Gath,Gimti/Gintu,-2400,-1200,0
-Gath,Gath,-1175,-600,1
-Beth Shemesh,Beth Shemesh,-1170,-701,1
-Akkaron,Ekron,-1170,-701,0
-Akkaron,Amqarruna,-701,-603,0
-Akkaron,Akkaron,-300,550,1
-Asdud,Ashdod,-1120,-615,0
-Asdud,Azotos,-529,650,0
-Asdud,Isdud,650,1850,0
-Asdud,Asdud,1850,2000,1
-Gezer,Gazru,-1380,-1207,0
-Gezer,Gezer,-1180,250,1
-Antipatris,Pagai,-1180,-925,0
-Antipatris,Antipatris,-9,363,1
-Dora,Dor,-1180,-332,0
-Dora,Dora,-332,650,1
-Gaza,Azzati,-1475,-1125,0
-Gaza,Gaza,-1100,,1
-Lachish,Lakisha,-1350,-1150,0
-Lachish,Lachish,-900,-200,1
-Ascalon,Ascanu,-1550,-1150,0
-Ascalon,Ashqelon,-1150,-332,0
-Ascalon,Ascalon,-332,1270,1
-Boukolonpolis,Boukolonpolis,-332,-100,1
-Gath-rimmon?,Gath-rimmon?,-950,-925,1
-Yafa,Yapu,-1440,-1000,0
-Yafa,Yafa,-1000,,1
-Yafa,Ioppe,-300,1100,0
-Yafa,Jaffa,1100,1350,0
-St. Jorge de Lydde,Lod,-630,-300,0
-St. Jorge de Lydde,Lydda,-300,200,0
-St. Jorge de Lydde,Diospolis,200,550,0
-St. Jorge de Lydde,Giorgioupolis,550,635,0
-St. Jorge de Lydde,St. Jorge de Lydde,1099,1250,1
-Timna(t)h,Timna(t)h,-1150,-701,1
-Yarmut,Yarmut,-1300,-600,1
-Azeka(h),Azeka(h),-780,150,1
-Sharuhen?,Sharuhen?,-2100,-1410,1
-Debir,Kiriath Sepher,-1500,-990,0
-Debir,Debir,-990,-50,1
-Gerar,Gerar,-1900,300,1
-Ziklag,Ziklag,-1150,-610,1
-Arsa,Arza,-2000,-1150,0
-Arsa,Yurza,-1150,-701,0
-Arsa,Arsa,-701,-600,1
-Thala,Rimmon,-1150,-701,0
-Thala,Thala,-400,1000,1
-Aboukir,Pikuat,-2400,-332,0
-Aboukir,Canopus,-332,640,0
-Aboukir,Aboukir,640,,1
-Pi-Ramesses,Hut-waret,-1783,-1720,0
-Pi-Ramesses,Avaris,-1720,-1550,0
-Pi-Ramesses,Pi-Ramesses,-1260,-1000,1
-Leontopolis,Nayta-hut/Taremu,-1600,-332,0
-Leontopolis,Leontopolis,-332,640,1
-Ausim,Khem,-2400,-332,0
-Ausim,Letopolis,-332,640,0
-Ausim,Ausim,640,,1
-Heliopolis,Iunu,-2400,-332,0
-Heliopolis,Heliopolis,-332,1000,1
-Terenuthis,Tarrana,-1850,-332,0
-Terenuthis,Terenuthis,-332,640,1
-Anthribis,Hut-hery-ib,-2400,-332,0
-Anthribis,Anthribis,-332,640,1
-Bubastis,Per-Bast(et),-2400,-332,0
-Bubastis,Bubastis,-332,650,1
-Gynaekopolis?/Momemphis,Imu/Yamu,-2400,-332,0
-Gynaekopolis?/Momemphis,Gynaekopolis?/Momemphis,-332,640,1
-Sais,Sa/Zau,-2400,-332,0
-Sais,Sais,-332,640,1
-Busiris,Djedu/Per-Wsir,-2400,-332,0
-Busiris,Busiris,-332,640,1
-Sebennytos,Djebnetjer (Tjebnutjer),-2400,-332,0
-Sebennytos,Sebennytos,-332,640,1
-Mendes,Per-Banebdjedet (Djedet),-2400,-332,0
-Mendes,Mendes,-332,,1
-Sakha,Khasut/Khaset/Khasu),-2400,-332,0
-Sakha,Xois,-332,640,0
-Sakha,Sakha,640,,1
-Buto,Pe-Dep,-2400,-1570,0
-Buto,Per-Wadjit,-1570,-332,0
-Buto,Buto,-332,640,1
-Tura,Troyu/Royu,-2400,-332,0
-Tura,Troia,-332,300,0
-Tura,Tura,1000,,1
-Tanis,Djanet/Suan,-1150,-332,0
-Tanis,Tanis,-332,550,1
-Beersheba,Beersheba,-1000,,1
-Beersheba,Berosaba,-450,640,0
-Beersheba,Bir ssebi,1500,1918,0
-Citium,Kition,-1250,-58,0
-Citium,Citium,-58,342,1
-Yavne,Yavne,-1000,,1
-Yavne,Iamneia,-332,640,0
-Yavne,Yibna,640,1917,0
-Iamneia Paralios,Iamneia Paralios,-332,640,1
-Rafah,Robihwa,-1350,-1000,0
-Rafah,Rafiah,-1000,-730,0
-Rafah,Rafihu,-730,-332,0
-Rafah,Rhaphia,-332,-30,0
-Rafah,Raphia,-30,635,0
-Rafah,Rafh,635,1917,0
-Rafah,Rafah,1917,,1
-al-Farama,Sena,-2400,-1086,0
-al-Farama,Per-Amun,-1086,-332,0
-al-Farama,Pelusium,-332,632,0
-al-Farama,al-Farama,632,1516,1
-Naukratis,Naukratis,-630,540,1
-Tahpanhes,Tahpanhes,-650,-450,1
-Amathous,Amathous,-1100,700,1
-Kourion,Kourion,-1050,650,1
-Limassol,Limassol,-850,,1
-Limassol,Neapolis/Theodosias,400,650,0
-Paphos,Nea Paphos,-320,400,0
-Paphos,Paphos,400,,1
-Hebron,Hebron,-1150,1600,1
-Jerusalem,Jerusalem,-2400,,1
-Jerusalem,Aelia Capitolina,130,638,0
-Jericho,Jericho,-1875,-586,1
-Amman,Rabat Amon,-2400,-250,0
-Amman,Philadelphia,-250,500,0
-Amman,Amman,500,,1
-Shechem,Shechem,-1900,-107,1
-Baysan,Beth-Shean,-1700,-280,0
-Baysan,Beit She'an,-1000,-732,0
-Baysan,Scythopolis,-280,635,0
-Baysan,Baysan,635,1100,1
-Megiddo,Megiddo,-2400,-332,1
-Megiddo,Megiddu,-732,-610,0
-Philoteria,Bet Yerah,-450,-250,0
-Philoteria,Philoteria,-250,640,1
-Akko,Akko,-2000,1918,1
-Akko,Ake,-350,-260,0
-Akko,Ptolemais,-260,638,0
-Akko,Akka,638,1104,0
-Akko,Acre,1104,1291,0
-Hazor,Hazor,-2400,-250,1
-Dan,Laish,-2400,-1150,0
-Dan,Dan,-1150,350,1
-Damascus,Damascus,-2400,,1
-Damascus,Demetrias,-90,-64,0
-Sayda,Sidon,-2400,636,0
-Sayda,Col. Aurelia Pia,220,250,0
-Sayda,Sayda,636,,1
-Kumidi,Kumidi,-2400,550,1
-Jubail,Gebal,-2400,-1190,0
-Jubail,Byblos,-1190,636,0
-Jubail,Gibelet,636,1516,0
-Jubail,Jubail,1516,,1
-Tadmor (Palmyra),Tadmor,-2100,-330,0
-Tadmor (Palmyra),Palmyra,-330,634,0
-Tadmor (Palmyra),Tadmur,634,1600,0
-Tadmor (Palmyra),Tadmor (Palmyra),1600,,1
-Qatna,Qatna,-2400,-600,1
-Beirut,Biruta,-2400,-600,0
-Beirut,Berytus,-600,635,0
-Beirut,Laodikeia en te Phoinike,-135,-14,0
-Beirut,Col. Iulia Augusta Felix,-14,300,0
-Beirut,Beirut,635,,1
-es-Sur,Sur,-1600,-1190,0
-es-Sur,Tyre,-1190,1291,0
-es-Sur,Tyrus,-331,635,0
-es-Sur,Col. Septimia Severa,200,300,0
-es-Sur,es-Sur,635,,1
-Rouad,Arwad(a),-2200,-332,0
-Rouad,Arados,-332,635,0
-Rouad,Rouad,635,,1
-Arqa,Irqata,-2400,-800,0
-Arqa,Arqa,-800,,1
-Arqa,Herakleia en Phoinike,-300,-10,0
-Arqa,Caesarea ad Libanum,-10,300,0
-Arqa,Arca,300,635,0
-Amrit,Amrit,-2100,-330,1
-Castle Umberti,Achziv,-2000,-701,0
-Castle Umberti,Ekdippa,-500,1100,0
-Castle Umberti,Castle Umberti,1100,1290,1
-Kabrita,Rehob,-1350,-701,0
-Kabrita,Kabrita,-500,300,1
-Achshaph?,Achshaph?,-1150,-1000,1
-Gennesar,Kinnereth,-1650,-300,0
-Gennesar,Gennesar,-300,550,1
-Shihor-Libna(t)h?,Shihor-Libna(t)h?,-1050,-700,1
-Yokneam,Yokneam,-2400,-700,1
-Kadasa,Kedesh,-2000,-148,0
-Kadasa,Kadasa,100,550,1
-Tha'anach,Taanach,-1750,-300,0
-Tha'anach,Tha'anach,-300,1750,1
-Tabaqat Fahl,Pihil(u),-2400,-700,0
-Tabaqat Fahl,Pella,-250,635,0
-Tabaqat Fahl,Berenice/Philippeia,-200,-50,0
-Tabaqat Fahl,Tabaqat Fahl,635,,1
-Dothan,Dothan,-2400,-721,1
-Tizrah,Tizrah,-1150,-610,1
-Zarethan,Zarethan,-780,-721,1
-Silo,Shiloh,-1110,-720,0
-Silo,Silo,-300,700,1
-Beitin,Luz?,-1400,-1200,0
-Beitin,Bethel,-1150,-590,0
-Beitin,Beitin,1810,,1
-el-Jib,Gibeon,-1150,-600,0
-el-Jib,Gabaon,-30,638,0
-el-Jib,el-Jib,638,999,1
-Tell Iktanu,Tell Iktanu,1600,,1
-Bethsoura,Beth-Zur,-1060,-587,0
-Bethsoura,Beth Zur,-450,-300,0
-Bethsoura,Bethsoura,-300,-100,1
-Dhiban,Dibon,-1000,638,0
-Dhiban,Dhiban,638,,1
-Lehun,Lehun,-1300,-539,1
-Aroer,Aroer,-1250,-582,1
-Laodicea ad Libanum,Qadesh,-2400,-550,0
-Laodicea ad Libanum,Laodicea ad Libanum,-310,550,1
-Ullassa,Ullassa,-1600,-1150,1
-Simyra,Sumri,-2000,-1476,0
-Simyra,Sumur,-1476,-1180,0
-Simyra,Simirra,-1000,-330,0
-Simyra,Simyra,-330,640,1
-Jabesh-Gilead,Jabesh-Gilead,-1152,-600,1
-Kabul,Cabul,-1100,-330,0
-Kabul,Chabolo,-330,640,0
-Kabul,Kabul,640,,1
-Sebeste,Samaria,-876,-30,0
-Sebeste,Sebeste,-30,,1
-Jenin,Gina,-1500,-30,0
-Jenin,Ginai,-30,640,0
-Jenin,Jenin,640,,1
-Succoth,Succoth,-1050,-450,1
-Ramoth-Gilead,Ramoth-Gilead,-1050,-500,1
-Al-Karak,Karak,-2400,-330,0
-Al-Karak,Kir-Haresheth,-1200,-582,0
-Al-Karak,Characmoba,-330,640,0
-Al-Karak,Al-Karak,640,,1
-Al-Karak,Kerak,1099,1291,0
-Madaba,Medeba,-1500,-330,0
-Madaba,Madaba,-330,,1
-Petra,Petra,-1200,363,1
-Arad,Arad,-2400,700,1
-Tripoli,Athar,-750,-333,0
-Tripoli,Tripolis,-333,635,0
-Tripoli,Tarabulus,635,1920,0
-Tripoli,Tripoli,1109,,1
-Babylon,Babylon,-2400,,1
-Kish,Kish,-2400,560,1
-Cutha,Cutha,-2400,-100,1
-Marad,Marda,-2400,-2300,0
-Marad,Marad,-2300,-150,1
-Dilbat,Dilbat,-2400,800,1
-Akkad,Agade,-2400,-2333,0
-Akkad,Akkad,-2333,-415,1
-Borsippa,Borsippa,-2050,700,1
-Urum?,Urum?,-2400,-560,1
-Sippar,Sippar,-2400,200,1
-Dur-Samsu-iluna,Tutub,-2400,-1725,0
-Dur-Samsu-iluna,Dur-Samsu-iluna,-1725,-1500,1
-Shaduppum,Shaduppum,-2400,-1792,1
-Eshnunna,Eshnunna,-2400,-1700,1
-Harada,Haradum,-1900,-1629,0
-Harada,Harada,-1050,-550,1
-Mari,Mari,-2400,-300,1
-Ashara,Terqa,-2400,-1150,0
-Ashara,Sirqu,-900,-700,0
-Ashara,Asichia,-100,650,0
-Ashara,Ashara,650,,1
-Kazallu,Kazallu,-2400,-1700,1
-Ctesiphon,Upi,-2100,-1100,0
-Ctesiphon,Opis,-1100,-200,0
-Ctesiphon,Ctesiphon,-200,750,1
-Rapiqu(m),Rapiqu(m),-2200,-650,1
-Hit,Id(u),-2400,-900,0
-Hit,Itu,-900,-500,0
-Hit,Is,-500,-100,0
-Hit,Diacira,-100,600,0
-Hit,Hit,600,,1
-Nerebtum,Nerebtum,-2100,-1200,1
-Ana,Hanat,-1950,-1000,0
-Ana,Ana(t),-1000,-50,0
-Ana,Anatho,-50,700,0
-Ana,Ana,700,,1
-Harbu,Herbe,-1875,-1000,0
-Harbu,Harbu,-1000,-575,1
-Yabliya,Yabliya,-1975,-1200,1
-Mulhan,Mulhan,-1925,-1300,1
-Sab/piritu,Sabiratum,-2000,-1000,0
-Sab/piritu,Sab/piritu,-1000,-750,1
-Mishlan,Mishlan,-1950,-1400,1
-Samanum,Samanum,-1975,-1450,1
-Sippar-Anunnitu,Sippar-Amnanum,-2250,-1550,0
-Sippar-Anunnitu,Sippar-Anunnitu,-1400,-425,1
-Mankisum,Mankisum,-2125,-1375,1
-Shitallum,Shitallum,-1925,-1650,1
-Dur-Galzu,Dur-Kurigalzu,-1397,-1150,0
-Dur-Galzu,Parsa,-1120,-950,0
-Dur-Galzu,Dur-Galzu,-950,-475,1
-Eridu,Eridu,-2400,-550,1
-Dur-Yakin,Kuara,-2400,-1000,0
-Dur-Yakin,Dur-Yakin,-1000,-707,1
-Ur,Ur,-2400,-400,1
-Larsa,Larsa,-2400,100,1
-Uruk,Uruk,-2400,700,1
-City of Lagash,City of Lagash,-2400,-1750,1
-Girsu,Girsu,-2400,-1700,1
-Umma,Umma,-2400,-1600,1
-Zabala,Zabala,-2400,-1500,1
-Bad-tibira,Bad-tibira,-2400,-1750,1
-Shuruppak,Shuruppak,-2400,-1980,1
-Kisurra,Kisurra,-2400,-1300,1
-Isin,Isin,-2400,-330,1
-Adab,Adab,-2400,-1250,1
-Dur Untush,Dur Untush,-1250,-1240,1
-Kabnak,Kabnak,-1600,-500,1
-Nufar,Nippur,-2400,100,0
-Nufar,Nufar,100,800,1
-Der,Der,-2400,-300,1
-Shush,Susa,-2400,-280,0
-Shush,Seleukeia,-280,638,0
-Shush,Shush,638,,1
-Me-Turran,Me-Turran,-2075,-375,1
-Zurghul,Nina-Sirana,-2400,-2075,0
-Zurghul,Nina,-800,-500,0
-Zurghul,Zurghul,1000,,1
-Kutalla,Kutalla,-2000,-1550,1
-Kakru,Karkar,-2400,-1800,0
-Kakru,Kakru,-1800,-1250,1
-Awan,Awan,-2400,-1950,1
-Larak,Larak,-2400,-525,1
-Akshak,Akshak,-2400,-2000,1
-Urua (Arawa)?,Urua (Arawa)?,-2400,-1500,1
-Ram Hormizd,Ram Hormizd,220,700,1
-Zabban,Simurrum,-2400,-1500,0
-Zabban,Zabban,-800,-500,1
-Malgium,Malgium,-2000,-1550,1
-Hamadan,Hamadan,-1200,,1
-Hamadan,Hagmatana,-750,-330,0
-Hamadan,Ecbatana,-330,632,0
-Isfahan,Gabae/Aspadana,-330,-170,0
-Isfahan,Gay/Spahan,-170,220,0
-Isfahan,Jayy/(I)Spahan,220,644,0
-Isfahan,Isfahan,644,,1
-Anshan,Anshan,-2400,600,1
-Huhnur,Huhnur,-2400,-1100,1
-Pasargadae,Pasargadae,-550,300,1
-Herat,Artakoana,-520,-330,0
-Herat,Alexandria Ariana,-330,-167,0
-Herat,Hariy,-167,652,0
-Herat,Herat,652,,1
-Farah,Alexandria Prophthasia,-330,-150,0
-Farah,Phrah,-150,640,0
-Farah,Farah,640,,1
-Zranka/Zarin,Zranka/Zarin,-544,-309,1
-Kapisa,Kapisa,-1250,1400,1
-Kabul,Kubha,-1200,-545,0
-Kabul,Ortospana,-545,-330,0
-Kabul,Kophen,-330,226,0
-Kabul,Kabul,226,,1
-Ghazni,Gazaca,-700,-543,0
-Ghazni,Arachtos,-543,-329,0
-Ghazni,Alexandria in Opiana,-329,-30,0
-Ghazni,Arachosiorum Oppidum,-30,226,0
-Ghazni,Jaguda,226,684,0
-Ghazni,Ghazni,684,,1
-Kandahar,Arakhotoi,-543,-329,0
-Kandahar,Alexandreia,-329,-30,0
-Kandahar,Cufis,-30,690,0
-Kandahar,Kandahar,690,,1
-Kandahar,Teginabad,950,1150,0
-Peucela,Pushkalavati,-1300,-150,0
-Peucela,Peucela,-150,180,1
-Taxila,Takshasila,-1000,-326,0
-Taxila,Taxila,-326,700,1
-Sialkot,Sakala,-950,10,0
-Sialkot,Sialkot,10,,1
-Chengdu,Chengdu,-1200,,1
-Quanqiu,Xichui,-1034,-800,0
-Quanqiu,Quanqiu,-800,,1
-Xi'an,Feng,-1051,-1044,0
-Xi'an,Fenghao,-1044,-771,0
-Xi'an,Xianyang,-350,-206,0
-Xi'an,Chang'an,-202,904,0
-Xi'an,Daxing,582,618,0
-Xi'an,Xincheng,904,1370,0
-Xi'an,Xi'an,1370,,1
-Qishan,Zhouyuan,-1066,-771,0
-Qishan,Qishan,-755,-200,1
-Baoji,Yu,-1120,-771,0
-Baoji,Baoji,700,,1
-Enshi,Yicheng,-1100,-771,0
-Enshi,Enshi,-771,,1
-Tianshui,Qin City,-900,-206,0
-Tianshui,Tianshui,-206,,1
-Qian,Qian,-776,-210,1
-Xidu,Yong,-762,618,0
-Xidu,Xidu,618,1000,1
-Baoji,Pingtang,-900,-210,0
-Baoji,Baoji,-210,,1
-Zhengzhou,Ao,-1570,-1045,0
-Zhengzhou,Guancheng,-1045,605,0
-Zhengzhou,Zhengzhou,605,,1
-Qi,Qi,-1590,-770,1
-Luoyang,Zhenxun,-2070,-1600,0
-Luoyang,Western Bo,-1600,-1200,0
-Luoyang,Chong,-1200,-1036,0
-Luoyang,Chengzhou,-1036,25,0
-Luoyang,Luoyang,25,,1
-Wangcheng,Wangcheng,-1026,25,1
-Dengfeng,Yangcheng,-2070,-1600,0
-Dengfeng,Ying,-1600,-1,0
-Dengfeng,Dengfeng,-1,,1
-Shangcai,Cai,-1045,-531,0
-Shangcai,Shangcai,-1,,1
-Danyang,Danyang,-1030,-600,1
-Ezhou,Ezhou,-1020,,1
-Ezhou,Wuchang,250,1915,0
-Sanmenxia,Shangyang,-816,-220,0
-Sanmenxia,Sanmenxia,-220,,1
-Xi,Xi,-1122,-200,1
-Jingzhou,Ying,-2400,-200,0
-Jingzhou,Jingzhou,-200,,1
-Xuzhou,Qiuwan,-1450,-640,0
-Xuzhou,Pengcheng,-640,421,0
-Xuzhou,Xuzhou,421,,1
-Xintai,Qi,-770,-445,0
-Xintai,Xintai,1730,,1
-Shangqiu,Shangqiu,-1045,,1
-Wuxi,Meili,-1126,-1000,0
-Wuxi,Wuxi,-1000,,1
-Shaoxing,Kuaji,-489,1131,0
-Shaoxing,Shaoxing,1131,,1
-Suzhou,Gusu,-700,-514,0
-Suzhou,Helu City,-514,-470,0
-Suzhou,Wujun,-470,-220,0
-Suzhou,Kuaiji,-220,589,0
-Suzhou,Suzhou,589,,1
-Ibiza,Ibossim,-654,-205,0
-Ibiza,Ebusus,-205,902,0
-Ibiza,Yabisah,902,1235,0
-Ibiza,Elvissa,1235,1715,0
-Ibiza,Ibiza,1715,,1
-Tipaza,Tipasa,-610,696,0
-Tipaza,Tefassid,696,1852,0
-Tipaza,Tipaza,1852,,1
-Algiers,Yksm,-400,-146,0
-Algiers,Icosium,-146,720,0
-Algiers,Algiers,944,,1
-Annaba,Hippo Regius,-206,399,0
-Annaba,Hippona,399,698,0
-Annaba,Bona,431,1160,0
-Annaba,Annaba,1160,,1
-Annaba,Bone,1832,1962,0
-Nora,Nora,-780,750,1
-Sulci,SLKY (Sulci),-716,-258,0
-Sulci,Sulci,-258,700,1
-Tharros,Tharros,-710,1070,1
-Cagliari,KRLY (Karaly),-700,-258,0
-Cagliari,Caralis,-258,850,0
-Cagliari,Cagliari,850,,1
-Jijel,Yglglt,-500,-146,0
-Jijel,Igilgili,-146,698,0
-Jijel,Jijel,698,,1
-Bizerte,PWN (Hippo),-1100,-146,0
-Bizerte,Hippo Diarrhytus (Acra),-146,698,0
-Bizerte,Bizerte,698,,1
-Dugga,TBGG,-595,-146,0
-Dugga,Thugga,-146,698,0
-Dugga,Dugga,698,1000,1
-Utica,Utica,-1102,700,1
-Carthage,Carthage,-814,,1
-Carthage,Colonia Iunonia,-122,-90,0
-Carthage,Colonia Julia Carthago,-50,696,0
-Lentini,Leontini,-730,300,0
-Lentini,Lentini,300,,1
-Motya,Motya,-716,-30,1
-Hadrumetum,DRMT (Hadrumetum),-850,-146,0
-Hadrumetum,Hadrumetum,-146,696,1
-Palermo,Ziz,-734,-400,0
-Palermo,Panormus,-400,900,0
-Palermo,Palermo,900,,1
-Mdina,Maleth,-703,-218,0
-Mdina,Melite,-210,545,0
-Mdina,Melita,545,1048,0
-Mdina,Medina,1058,1091,0
-Mdina,Malta,1091,1964,0
-Mdina,Mdina,1964,,1
-Terranova di Sicilia,Gela,-688,1233,0
-Terranova di Sicilia,Terranova,1233,1927,0
-Terranova di Sicilia,Terranova di Sicilia,1927,,1
-Acre,Acrae,-664,-211,0
-Acre,Acre,-211,540,1
-Termini Imerese,Himera,-648,-409,0
-Termini Imerese,Thermae,-409,1100,0
-Termini Imerese,Termini Imerese,1100,,1
-Kasmenai,Kasmenai,-644,-212,1
-Selinus,Selinus,-628,-250,1
-Camarina,Kamarina,-598,-258,0
-Camarina,Camarina,-258,853,1
-Agrigento,Akragas,-582,-210,0
-Agrigento,Agrigentum,-210,828,0
-Agrigento,Kirkent/Jirjent,828,1038,0
-Agrigento,Girgenti,1038,1087,0
-Agrigento,Agrigento,1087,,1
-Segesta,Segesta,-900,900,1
-Lipari,Lipara,-578,839,0
-Lipari,Lipari,1100,,1
-Heraclea Minoa,Minoa,-550,-510,0
-Heraclea Minoa,Heraclea Minoa,-510,70,1
-Eryx,Eryx,-850,100,1
-Trapani,Drepanon,-511,-241,0
-Trapani,Drepanum,-241,827,0
-Trapani,Trapani,827,,1
-Soluntum,Kapara,-725,-396,0
-Soluntum,Solontinos,-396,-254,0
-Soluntum,Soluntum,-254,830,1
-Mineo,Menai,-460,-330,0
-Mineo,Menainon,-330,1000,0
-Mineo,Mineo,1000,,1
-Palike,Palike,-454,-440,1
-Inessa/Aetna,Inessa/Aetna,-476,100,1
-Caronia,Kale Akte,-447,-100,0
-Caronia,Caleacte,-100,800,0
-Caronia,Caronia,800,,1
-Enna,Enna,-1150,,1
-Adrano,Adranon,-400,-263,0
-Adrano,Adranum,-263,950,0
-Adrano,Adrano,950,,1
-Entella,Entella,-750,1240,1
-Agira,Agyrion,-550,-263,0
-Agira,Agyrium,-263,950,0
-Agira,Agira,950,,1
-Centuripe,Centuripe,-500,,1
-Centuripe,Centorbi,1548,1863,0
-Kelibia,Aspis,-450,-146,0
-Kelibia,Clypea,-146,696,0
-Kelibia,Kelibia,696,,1
-Cefalu,Kephaloidion,-380,-254,0
-Cefalu,Cephaloedium,-254,858,0
-Cefalu,Gafludi,858,1063,0
-Cefalu,Cefalu,1063,,1
-Apollonia (Sicily),Apollonia (Sicily),-390,250,1
-Licata,Phintias,-282,750,0
-Licata,Licata,750,,1
-Halaesa,Halaesa,-403,100,1
-Corfu,Corcyra,-740,900,0
-Corfu,Corfu,900,,1
-Naxos,Naxos,-734,-404,1
-Syracuse,Syracuse,-734,,1
-Megara/Hyblaea,Megara Hyblaea,-726,-484,0
-Megara/Hyblaea,Megara/Hyblaea,-414,-30,1
-Catania,Catane,-728,-263,0
-Catania,Aitna,-476,-462,0
-Catania,Catana,-263,650,0
-Catania,Catania,650,,1
-Messina,Zancle,-724,-490,0
-Messina,Messina,-490,,1
-Messina,Messana,-263,630,0
-Reggio di Calabria,Erythra,-1100,-721,0
-Reggio di Calabria,Rhegion,-721,-263,0
-Reggio di Calabria,Rhegium,-263,918,0
-Reggio di Calabria,Rivah,918,1060,0
-Reggio di Calabria,Risa,1060,1266,0
-Reggio di Calabria,Regols,1266,1510,0
-Reggio di Calabria,Reggio,1510,1860,0
-Reggio di Calabria,Reggio di Calabria,1860,,1
-Copia/Thruii,Sybaris,-720,-444,0
-Copia/Thruii,Thurii,-444,-204,0
-Copia/Thruii,Thruii,-204,-194,0
-Copia/Thruii,Copia/Thruii,-194,1350,1
-Milazzo,Mylae,-716,900,0
-Milazzo,Milazzo,900,,1
-Crotone,Croton,-710,900,0
-Crotone,Crotone,900,,1
-Helorus,Helorus,-700,50,1
-Epizephyrian Locris,Epizephyrian Locris,-680,915,1
-Caulonia,Caulonia,-650,-200,1
-Vibo Valentia,Hipponion,-646,-194,0
-Vibo Valentia,Vibo Valentia,-194,,1
-Vibo Valentia,Monteleone,1235,1928,0
-Laus,Laus,-638,50,1
-Medma,Medma,-614,100,1
-Tempsa,Temesa,-516,-194,0
-Tempsa,Tempsa,-194,550,1
-Terina,Terina,-480,540,1
-Sybaris on the Traeis,Sybaris on the Traeis,-444,-350,1
-Tindari,Tyndaris,-396,600,0
-Tindari,Tindari,600,900,1
-Taormina,Tauromenion,-396,-241,0
-Taormina,Tauromenium,-241,962,0
-Taormina,Al-Mu'izziyya,962,1078,0
-Taormina,Taormina,1078,,1
-Cosenza,Consentia,-500,800,0
-Cosenza,Cosenza,800,,1
-Phaistos,Phaistos,-2400,-220,1
-Aegina,Aegina,-2000,,1
-Mycenae,Mycenae,-2400,-464,1
-Tiryns,Tiryns,-2400,-468,1
-Iolcos,Iolcos,-1700,-294,1
-Thebes (Greece),Thebes (Greece),-2400,,1
-Thebes (Greece),Istefe,1458,1832,0
-Gla,Gla,-379,-378,1
-Orchomenus (Boeotia),Orchomenus (Boeotia),-1650,,1
-Therapne,Therapne,-2000,-1160,1
-Kichyros,Kichyros,-1550,330,1
-Kichyros,Ephyra,-750,-340,0
-Thermon,Thermon,-1500,-189,1
-Delphi,Python,-1600,-1050,0
-Delphi,Delphi,-1050,,1
-Delphi,Kastri,1430,1870,0
-Kirra,Krisa,-1350,-650,0
-Kirra,Kirra,-650,-586,1
-Calydon,Calydon,-1575,-31,1
-Eutresis,Eutresis,-2400,-1180,1
-Old Eretria,Xeropolis,-1050,-800,0
-Old Eretria,Old Eretria,-800,-600,1
-Brauron,Vrauron,-2000,-1250,0
-Brauron,Brauron,-750,-250,1
-Argos,Argos,-2400,,1
-Lerna,Lerna,-2400,-2100,1
-Athens,Athenae,-2400,750,0
-Athens,Athens,750,,1
-Pylos,Pylos,-2400,-621,1
-Aigeira,Hyperesia,-2400,-688,0
-Aigeira,Aigeira,-688,,1
-Sparti,Sparta,-950,1834,0
-Sparti,Sparti,1834,,1
-Amyclae,Amyclae,-930,-740,1
-Messene,Messene,-950,,1
-Helos,Helos,-950,-10,1
-Chalkida,Chalcis,-1550,395,0
-Chalkida,Euripos,395,1209,0
-Chalkida,Negropont,1209,1470,0
-Chalkida,Chalkida,1470,,1
-Asine,Asine,-850,-700,1
-Ampheia,Ampheia,-750,350,1
-Corinth,Corinth,-900,1858,1
-Corinth,Gordes,1458,1832,0
-Megara,Megara,-850,,1
-Elis,Elis,-1100,,1
-Olympia,Olympia,-776,,1
-Lepreum,Lepreum,-725,950,1
-Helike,Helike,-1250,-374,1
-Rhypes,Rhypes,-750,-30,1
-Scione,Scione,-702,540,1
-Buchetium,Bouchetion,-702,-30,0
-Buchetium,Buchetium,-30,640,1
-Eretria,Eretria,-700,540,1
-Makyneia,Makyneia,-700,,1
-Karystos,Carystus,-1300,1830,0
-Karystos,Karystos,1830,,1
-Pandosia,Pandosia,-685,330,1
-Sicyon,Sicyon,-1350,300,1
-Sicyon,Demetrias,-303,-275,0
-Elateia (Epirus),Elateia (Epirus),-668,-350,1
-Alea,Tegea,-875,875,0
-Alea,Amyklion,875,1205,0
-Alea,Nikli,1205,1450,0
-Alea,Piali,1450,1915,0
-Alea,Alea,1915,,1
-Anactorium,Anactorium,-654,530,1
-Lefkada,Leucas,-648,1350,0
-Lefkada,Lefkada,1350,,1
-Arta,Ambracia,-636,800,0
-Arta,Arta,800,,1
-Arta,Narda,1449,1881,0
-Nafplio,Nauplia,-680,600,0
-Nafplio,Nafplion,600,1388,0
-Nafplio,Napoli di Romania,1388,1715,0
-Nafplio,Mora Yenisehir,1540,1823,0
-Nafplio,Nafplio,1823,,1
-Methoni,Methone,-1400,1820,0
-Methoni,Methoni,1820,,1
-Kalaureia,Kalaureia,-675,-100,1
-Ermione,Hermione,-1120,600,0
-Ermione,Ermione,600,,1
-Epidavros,Epidauros,-900,1820,0
-Epidavros,Epidavros,1820,,1
-Prasiai,Prasiai,-850,550,1
-Anthela,Anthela,-750,,1
-Marathon,Marathon,-900,,1
-Thyrea,Thyrea,-850,550,1
-Plataea,Plataea,-700,400,1
-Khanea,Kydonia,-2400,825,0
-Khanea,al-Hanim,825,962,0
-Khanea,Khanea,962,,1
-Khanea,Canae,1205,1899,0
-Hysiae,Hysiae,-750,100,1
-Oenoe,Oenoe,-750,550,1
-Thronion,Thronion,-750,-30,1
-Farsala,Pharsalos,-750,-191,0
-Farsala,Pharsalus,-191,1450,0
-Farsala,Aatalca,1450,1881,0
-Farsala,Farsala,1881,,1
-Pherae,Pherae,-780,540,1
-Larissa,Larissa,-760,,1
-Larissa,Yeni-Aehir i-Fenari,1423,1881,0
-Mantineia,Mantineia,-500,160,1
-Mantineia,Antigoneia,-223,130,0
-Halieis,Halieis,-760,-310,1
-Tanagra,Tanagra,-740,,1
-Nefpaktos,Naupactus,-850,1499,0
-Nefpaktos,Aynabahti,1499,1829,0
-Nefpaktos,Nefpaktos,1829,,1
-Oeniadae,Oiniadai,-870,-211,0
-Oeniadae,Oeniadae,-211,50,1
-Pegai,Pegai,-790,800,1
-Chaironeia,Arne,-1500,-1200,0
-Chaironeia,Chaeronea,-900,1250,0
-Chaironeia,Kapraina,1250,1916,0
-Chaironeia,Chaironeia,1916,,1
-Coronea,Coronea,-800,,1
-Amfilochia,Amphilochia,-700,1400,0
-Amfilochia,Karvasaras,1400,1911,0
-Amfilochia,Amfilochia,1911,,1
-Astakos,Astakos,-550,,1
-Cranium,Krane,-700,-198,0
-Cranium,Cranium,-198,200,1
-Kalabaka,Aiginion,-540,-167,0
-Kalabaka,Aeginium,-167,476,0
-Kalabaka,Stagos,476,1350,0
-Kalabaka,Kalabaka,1350,1600,1
-Stratus,Stratos,-680,-168,0
-Stratus,Stratus,-168,-25,1
-Pylos,Pylos,-426,1281,1
-Toroni,Torone,-720,1650,0
-Toroni,Toroni,1650,,1
-Heraklea/Trachis,Heraklea/Trachis,-426,550,1
-Patras,Aroe,-1400,-800,0
-Patras,Patrae,-800,1458,0
-Patras,Baliabadra,1458,1821,0
-Patras,Patras,1821,,1
-Orchomenus (Arcadia),Orchomenus (Arcadia),-426,550,1
-Epidauros Limera,Epidauros Limera,-731,545,1
-Oropos,Oropos,-650,,1
-Oropos,Oropus,-200,395,0
-Eleusis,Eleusis,-1000,396,1
-Haliartos,Haliartos,-800,-171,1
-Phlius,Phlius,-1300,400,1
-Oreus,Hestiaea,-1300,-446,0
-Oreus,Oreus,-446,150,1
-Thespiae,Thespiae,-800,200,1
-Livadeia,Lebadeia,-750,1000,0
-Livadeia,Livadeia,1000,,1
-Phigaleia,Phigaleia,-775,175,1
-Heraea,Heraea,-825,225,1
-Megalopoli,Megalopolis,-368,550,0
-Megalopoli,Sinano,800,1829,0
-Megalopoli,Megalopoli,1829,,1
-Pellene,Pellene,-1250,250,1
-Krannon,Ephyra,-1250,250,0
-Krannon,Krannon,-1250,250,1
-Sellasia,Sellasia,-725,-222,1
-Lasiona,Lasion,-780,1000,0
-Lasiona,Lasiona,1000,,1
-Pagasai,Pagasae,-1300,-168,0
-Pagasai,Pagasai,-168,600,1
-Passaron,Passaron,-410,300,1
-Amfissa,Amphissa,-700,1205,0
-Amfissa,Salona,1205,1833,0
-Amfissa,Amfissa,1833,,1
-Elateia,Elateia,-690,550,1
-Phthiotic Thebes,Phthiotic Thebes,-500,950,1
-Phthiotic Thebes,Phthiotic Philippopolis,-217,-185,0
-Lamia,Lamia,-600,,1
-Lamia,Zetounion,680,1425,0
-Lamia,Gerton,1204,1318,0
-Lamia,El Cito,1318,1391,0
-Lamia,Izdin,1425,1832,0
-Alyzeia,Alyzeia,-450,200,1
-Kyllene,Kyllene,-900,300,1
-Dyme,Dyme,-600,200,1
-Aigio,Aigion,-950,-146,0
-Aigio,Aegium,-146,860,0
-Aigio,Vostitsa,860,1826,0
-Aigio,Aigio,1826,,1
-Igoumenitsa,Gitanae,-600,1450,0
-Igoumenitsa,Grava,1450,1938,0
-Igoumenitsa,Igoumenitsa,1938,,1
-Demetrias (Magnesia),Demetrias (Magnesia),-294,1000,1
-Troizen,Troizen,-900,,1
-Troizen,Troezen,-146,800,0
-Troizen,Damala,800,1205,0
-Troizen,Damalet,1205,1821,0
-Gortyna,Gortyna,-1950,1000,1
-Aptera,Aptera,-1300,650,1
-Polyrrhenia,Polyrrhenia,-1100,700,1
-Axos,Axos,-1150,,1
-Rhamnous,Rhamnous,-750,400,1
-Marmara,Malia,-2000,-1225,0
-Marmara,Marmara,100,550,1
-Zakros,Zakros,-2000,-1450,1
-Knossos,Knossos,-2000,,1
-Akrotiri,Akrotiri,-2200,-1628,1
-Troy,Troy,-2400,500,1
-Cantaloyuk,Hinduwa,-2000,-1200,0
-Cantaloyuk,Kandyba,-1200,-60,0
-Cantaloyuk,Candyba,-60,1500,0
-Cantaloyuk,Cantaloyuk,1500,,1
-Tlos,Dalawa,-2400,-1150,0
-Tlos,Tlawa,-1150,-400,0
-Tlos,Tlos,-400,1800,1
-Patara,Pttara,-1750,-333,0
-Patara,Patara,-333,550,1
-Pinara,Pina(li),-1700,-1150,0
-Pinara,Pinara,-1150,850,1
-Miletos,Milawata,-2400,-1475,0
-Miletos,Miletus,-1475,640,0
-Miletos,Miletos,640,,1
-Afsis,Apasa,-2200,-1320,0
-Afsis,Ephesus,-950,1304,0
-Afsis,Arsinoe,-286,-280,0
-Afsis,Afsis,1304,1480,1
-Metropolis,Puranda,-2000,-330,0
-Metropolis,Metropolis,-330,640,1
-Pitane,Pitane,-1600,640,1
-Izmir,Smyrna,-1100,1930,0
-Izmir,Izmir,1930,,1
-Colophon,Colophon,-1000,-310,1
-Sart,Sfard,-1450,-680,0
-Sart,Sardis,-680,1200,0
-Sart,Sart,1200,,1
-Litri,Erythrae,-1125,1450,0
-Litri,Litri,1450,,1
-Camirus,Kamiros,-1350,-30,0
-Camirus,Camirus,-30,350,1
-Lindos,Lindos,-950,,1
-Rhodos,Ialysus,-1150,-408,0
-Rhodos,Rhodos,-408,,1
-Priene,Priene,-1000,-665,1
-Priene,Priene,-665,-500,1
-Priene,Priene,-500,-350,1
-Samsun Kale,Priene,-350,1250,0
-Samsun Kale,Sampson,1250,1300,0
-Samsun Kale,Samsun Kale,1300,1923,1
-Myus,Myus,-975,-275,1
-Teos,Teos,-1025,600,1
-Clazomenae,Clazomenae,-1050,1400,1
-Foca,Phocaea,-900,1275,0
-Foca,Foca,1275,,1
-Lebedus,Lebedus,-1000,1000,1
-Lebedus,Ptolemais,-266,-200,0
-Cyme (Aeolis),Cyme (Aeolis),-1100,1500,1
-Laris(s)a Phrikonis,Laris(s)a Phrikonis,-1200,200,1
-Temnos,Temnos,-950,60,1
-Myrina,Myrina,-1150,1000,1
-Myrina,Myrina Sebastopolis,-30,200,0
-Gryneium,Gryneium,-1075,150,1
-Colophon ad Mare,Notion,-1125,-310,0
-Colophon ad Mare,Colophon ad Mare,-310,-60,1
-Aegae (Aeolis),Aegae (Aeolis),-1075,500,1
-Assos,Assos,-950,550,1
-Methymna,Methymna,-1130,,1
-Methymna,Molova,1258,1912,0
-Mytilene,Mytilene,-975,,1
-Chios,Chios,-1100,,1
-Samos,Samos,-1030,,1
-Maeandropolis,Leukophrys,-1175,-1075,0
-Maeandropolis,Magnesia ad Maeandrum,-1075,-30,0
-Maeandropolis,Maeandropolis,-30,400,1
-Panionium,Carium,-770,-670,0
-Panionium,Panionium,-670,350,1
-Iasos,Iasos,-2400,1450,1
-Manisa,Sipylus,-950,-650,0
-Manisa,Magnesia ad Sipylum,-650,1475,0
-Manisa,Manisa,1475,,1
-Thera,Thera,-850,726,1
-Bodrum,Halicarnassus,-900,1402,0
-Bodrum,Petronium,1402,1522,0
-Bodrum,Bodrum,1522,,1
-Cnidus,Cnidus,-950,-360,1
-Sigeum,Sigeion,-650,-60,0
-Sigeum,Sigeum,-60,-35,1
-Xanthos,Arnna,-710,-470,0
-Xanthos,Xanthos,-470,1000,1
-Xanthos,Xanthus,-100,400,0
-Antandros,Antandros,-800,540,1
-Kaunos,Kaunos,-950,1450,1
-Kaunos,Caunus,-189,395,0
-Pergamum,Pergamon,-750,-133,0
-Pergamum,Pergamum,-133,1300,1
-Lyktos,Lyktos,-1800,100,1
-Atarneus,Atarneus,-850,-40,1
-Edremit,Adramyttion,-550,1334,0
-Edremit,Adramyttium,-133,395,0
-Edremit,Edremit,1334,,1
-Cnidus,Cnidus,-360,900,1
-Tyatrra,Pelopia,-850,-700,0
-Tyatrra,Semiramis,-700,-290,0
-Tyatrra,Thyatiera,-290,-70,0
-Tyatrra,Tyatrra,-70,550,1
-Itanus,Itanos,-750,-100,0
-Itanus,Itanus,-100,1450,1
-Praisos,Praisos,-1800,-140,1
-Hierapytna,Hierapytna,-1850,950,1
-Olous,Olous,-1950,750,1
-Antalya,Attalya/Attalea,-150,1310,0
-Antalya,Antalya,1310,,1
-Tarsus,Tarsa,-2400,-333,0
-Tarsus,Tarsos,-333,-65,0
-Tarsus,Antiochia ad Cydnum,-180,-171,0
-Tarsus,Tarsus,-65,,1
-Ullamma,Ullamma,-2400,-1646,1
-Konya,Ikkuwaniya,-1800,-1050,0
-Konya,Icuna,-1050,-330,0
-Konya,Iconium,-330,1134,0
-Konya,Claudiconium,50,130,0
-Konya,Col. Aelia Hadriana,130,395,0
-Konya,Konya,1134,,1
-Purushanda,Purushattum,-2400,-1900,0
-Purushanda,Purushanda,-1900,-1100,1
-Mersin,Zephyrion,-330,150,0
-Mersin,Hadrianopolis,150,600,0
-Mersin,Mersin,1100,,1
-Kemenhisar,Tuwanuwa,-2000,-1050,0
-Kemenhisar,Tuwana,-1050,-330,0
-Kemenhisar,Tyana,-330,708,0
-Kemenhisar,Col. Aurelia Antoniniana,215,272,0
-Kemenhisar,Kilenhisar,1050,1550,0
-Kemenhisar,Kemenhisar,1500,,1
-Silifke,Ura,-1900,-1150,0
-Silifke,Olba,-1150,-290,0
-Silifke,Seleucia ad Calycadnum,-290,1350,0
-Silifke,Silifke,1350,,1
-Perge,Parha,-2000,-1200,0
-Perge,Perge,-1200,1350,1
-Hyde,Uda,-1800,-750,0
-Hyde,Hyde,-750,640,1
-Salaberina,Sallapa,-1700,-30,0
-Salaberina,Salambriai,-30,300,0
-Salaberina,Salaberina,300,640,1
-Gordium,Gordion,-1150,-30,0
-Gordium,Gordium,-30,-650,1
-Aksaray,Shinuktu,-1000,-30,0
-Aksaray,Garsaura,-30,330,0
-Aksaray,Koloneia,330,640,0
-Aksaray,Aksaray,640,,1
-Phaselis,Phaselis,-698,1100,1
-Nagidos,Nagidos,-668,-110,1
-Aydincik,Celenderis,-664,1228,0
-Aydincik,Gilindere,1228,1965,0
-Aydincik,Aydincik,1965,,1
-Side,Side,-662,950,1
-Pompeiopolis,Soli,-660,-67,0
-Pompeiopolis,Pompeiopolis,-67,525,1
-Holmi,Holmi,-658,-210,1
-Mut,Kirshu,-612,-330,0
-Mut,Ninica,-330,-200,0
-Mut,Claudiopolis,50,1000,0
-Mut,Mut,1000,,1
-Gazipasa,Sallune,-1000,-330,0
-Gazipasa,Selinous,-330,1200,0
-Gazipasa,Traianopolis,120,640,0
-Gazipasa,Gazipasa,1200,,1
-Polis Chrysochou,Marion,-1400,-270,0
-Polis Chrysochou,Arsinoe/Marion,-270,660,0
-Polis Chrysochou,Polis Chrysochou,1200,,1
-Soloi,Aipeia?/Soloi,-1300,-585,0
-Soloi,Soloi,-585,660,1
-Lapethos,Lapethos,-1000,655,1
-Politiko,Tamassos,-1800,1100,0
-Politiko,Politiko,1100,,1
-Nicosia,Ledrai,-1000,300,0
-Nicosia,Leukousia,300,1200,0
-Nicosia,Nicosia,1200,,1
-Nicosia,Lefkosa,1570,1878,0
-Idalion,Idalion,-1200,100,1
-Chyt(h)roi,Chyt(h)roi,-1150,912,1
-Salamis/Konstantia,Salamis,-1080,350,0
-Salamis/Konstantia,Salamis/Konstantia,350,653,1
-Vouni,Vouni,-500,-380,1
-Makaria,Makaria,-1175,650,1
-Karpasia,Karpasia,-700,650,1
-Aspendos,Aspendos,-750,1050,1
-Aspendos,Aspendus,-190,395,0
-Sagalassos,Salawassa,-1350,-800,0
-Sagalassos,Sagalassos,-800,680,1
-Apamea,Kelainai,-650,-270,0
-Apamea,Apamea,-270,1500,1
-Ankara,Ancyra,-350,1400,0
-Ankara,Angora,1400,1923,0
-Ankara,Ankara,1923,,1
-Suhut,Synnada,-725,1300,0
-Suhut,Schifout Kassaba,1300,1923,0
-Suhut,Suhut,1923,,1
-Sarhuyok,Dorylaion,-330,-100,0
-Sarhuyok,Dorylaeum,-100,1071,0
-Sarhuyok,Sarhuyok,1071,1350,1
-Pessinus,Pessinus,-400,715,1
-Tavium,Taouion,-330,-36,0
-Tavium,Tavium,-36,800,1
-Hama,Hamath,-2400,-170,0
-Hama,Epiphaneia,-170,300,0
-Hama,Amathe,300,640,0
-Hama,Hama,640,,1
-Ugarit,Ugarit,-2400,-1000,1
-Bersiba,Shubat-Shamash,-1900,-1100,0
-Bersiba,Masuwari,-1100,-857,0
-Bersiba,Kar-Shalmaneser,-857,-575,0
-Bersiba,Bersiba,-150,550,1
-Ebla,Ebla,-2400,650,1
-Posideion,Posideion,-675,640,1
-Barbalissus,Emar,-2400,-1186,0
-Barbalissus,Barbalissus,-50,750,1
-Alep,Aleppo,-2400,-300,0
-Alep,Beroea,-300,637,0
-Alep,Alep,637,,1
-Alalah,Alakhtum,-2400,-1750,0
-Alalah,Alalakh,-1750,-1500,0
-Alalah,Alalah,-1500,-1195,1
-Europos,Carchemish,-2400,-580,0
-Europos,Europos,-250,550,1
-Harran,Harran,-2400,850,1
-Harran,Carrhae,-250,637,0
-Melitene,Maldiya/Malitiya,-1500,-1150,0
-Melitene,Malatya,-1150,-875,0
-Melitene,Melid,-875,-600,0
-Melitene,Melitene,100,500,1
-Anisa,Kanesh,-2400,-715,0
-Anisa,Anisa,-250,250,1
-Ankuwa?,Ankuwa?,-2400,-1200,1
-Apishal?,Apishal?,-2400,-1200,1
-Eragiza,Azu,-2400,-1330,0
-Eragiza,Eragiza,50,550,1
-Abattum?,Abattum?,-2025,-1500,1
-Lasqum,Lasqum,-2050,-1550,1
-Ariseria,Tashiniya,-1900,-1650,0
-Ariseria,Til-Bashere,-1000,-857,0
-Ariseria,Ariseria,100,550,1
-Tuttul,Tuttul,-2400,-1700,1
-Tuba,Tuba,-2400,-1200,1
-Sam'al,Yadiya,-1900,-1050,0
-Sam'al,Sam'al,-1050,-675,1
-?anl?ufa,Adma,-1050,-330,0
-?anl?ufa,Edessa,-304,1144,0
-?anl?ufa,Antiochia ad Callirhoem,-175,-165,0
-?anl?ufa,Justinopolis,525,638,0
-?anl?ufa,Urfa,638,1984,0
-?anl?ufa,?anl?ufa,1984,,1
-Kayseri,Mazaka,-2400,-140,0
-Kayseri,Eusebeia,-140,-17,0
-Kayseri,Caesarea,-17,1064,0
-Kayseri,Kaisariyah,647,1064,0
-Kayseri,Kayseri,1064,,1
-Gaziantep,Urshu,-2400,-300,0
-Gaziantep,Antiochia ad Taurum,-300,-20,0
-Gaziantep,Doliche,-20,640,0
-Gaziantep,A ntap,640,1500,0
-Gaziantep,Antep,1500,1921,0
-Gaziantep,Gaziantep,1921,,1
-Samsat,Hahha,-1900,-1500,0
-Samsat,Hahhum,-1500,-1200,0
-Samsat,Kummuh,-1200,-250,0
-Samsat,Samosata,-250,650,0
-Samsat,Antiochia in Commagene,-160,-72,0
-Samsat,Samsat,650,1989,1
-Adana,Adaniya,-1900,-1050,0
-Adana,Adanawa,-1050,-600,0
-Adana,Adana,-600,,1
-Adana,Antiochia ad Sarum,-295,-200,0
-?ar,Kummanni,-2000,-500,0
-?ar,Comana,-500,530,0
-?ar,Comana/Hierapolis,-330,-65,0
-?ar,Comana Chryse,530,700,0
-?ar,?ar,700,,1
-G r n,Tegarama,-2000,-1050,0
-G r n,Til-garimmu,-1050,-330,0
-G r n,Gauraina,-330,700,0
-G r n,G r n,700,,1
-Kussara,Kussara,-2050,-1150,1
-Lawazantiya,Lawazantiya,-1900,-1200,1
-Irradu,Irradu,-1900,-1250,1
-Zalpa/Zalbar,Zalpa/Zalbar,-2000,-1500,1
-Hassuwa,Hassuwa,-2400,-1500,1
-Samuha,Samuha,-1700,-1180,1
-Sarissa,Sarissa,-1550,-1050,1
-Tunip,Tunip,-1800,-1150,1
-Hostra,Huzerina,-1000,-610,0
-Hostra,Hostra,-150,250,1
-Tell Rifa'at,Arpad,-1000,-30,0
-Tell Rifa'at,Niara,-30,640,0
-Tell Rifa'at,Tell Rifa'at,640,,1
-Azatiwataya,Azatiwataya,-1000,-500,1
-Tell Qarqur,Qarqar,-1200,-330,0
-Tell Qarqur,Tell Qarqur,1350,,1
-Muru,Muru,-1300,-740,1
-Gephyra,Kinulua,-1150,-30,0
-Gephyra,Gephyra,-30,640,1
-Potamoi Karon?,Potamoi Karon?,-810,-312,1
-Palu,Shebeteria,-1200,-330,0
-Palu,Baioulous,-330,30,0
-Palu,Balisbiga,30,640,0
-Palu,Palu,640,,1
-Hazrek,Hatarikka,-1150,-737,0
-Hazrek,Hazrek,-737,-680,1
-Masyaf,Mansuate,-850,-330,0
-Masyaf,Marsya,-330,640,0
-Masyaf,Masyaf,640,,1
-Kahramanmarash,Gurgum City,-1200,-712,0
-Kahramanmarash,Marqas,-712,-30,0
-Kahramanmarash,Germanicia Caesarea,-30,645,0
-Kahramanmarash,Marash,645,1973,0
-Kahramanmarash,Germanikeia,962,1100,0
-Kahramanmarash,Kahramanmarash,1973,,1
-Selevcia,Hydratos Potamoi,-550,-300,0
-Selevcia,Seleukia Pieria,-300,-30,0
-Selevcia,Seleucia Pieria,-30,300,0
-Selevcia,Selevcia,300,640,1
-Antioch,Antioch-on-the-Orontes,-300,-63,0
-Antioch,Antioch,-63,1500,1
-Latikia,Ramitha,-1000,-300,0
-Latikia,Laodikeia-on-Sea,-300,-63,0
-Latikia,Laodicea ad Mare,-63,637,0
-Latikia,Lazkiye,637,1920,0
-Latikia,Latikia,1920,,1
-Afamiya,Pella (Syria),-321,-300,0
-Afamiya,Apamea,-300,637,0
-Afamiya,Afamiya,637,1152,1
-Nuzi,Gasur,-2400,-1950,0
-Nuzi,Nuzi,-1950,-1330,1
-Kirkuk,Arrapha,-2400,-250,0
-Kirkuk,Arraphka,-1600,-1330,0
-Kirkuk,Karka,-250,1055,0
-Kirkuk,Kirkuk,1055,,1
-Magdalu,Dur-Katlimmu,-1300,-600,0
-Magdalu,Magdalu,-600,200,1
-Nimrud,Kalhu,-1900,-613,0
-Nimrud,Larisa,-550,640,0
-Nimrud,Nimrud,640,,1
-Kilizu,Kilizu,-1850,350,1
-Arbil/Erbil,Urbilum,-2400,-1780,0
-Arbil/Erbil,Arbail(u),-1780,-1000,0
-Arbil/Erbil,Arbela,-1000,640,0
-Arbil/Erbil,Arbil/Erbil,640,,1
-Shusharra,Shusharra,-2100,-1750,1
-Zamahu,Karana,-2400,-1100,0
-Zamahu,Zamahu,-940,-600,1
-Qattara,Qattara,-2100,-1100,1
-Thebat(h)a,Tabatum,-2100,-1800,0
-Thebat(h)a,Tabatu,-1800,-600,0
-Thebat(h)a,Tabite,-600,200,0
-Thebat(h)a,Thebat(h)a,200,550,1
-Nineveh,Nineveh,-2400,,1
-Nineveh,Ninos,-300,550,0
-Ashur,Ashur,-2400,-614,1
-Nabula,Nagar,-2400,-1500,0
-Nabula,Nawar,-1500,-1325,0
-Nabula,Nabula,-1325,-600,1
-Nabada,Nabada,-2400,-2100,1
-Kahat,Kahat,-2400,1260,1
-Taidu (1),Tadum,-2400,-1700,0
-Taidu (1),Taidu (1),-1700,-600,1
-Ra's al-'Ayn,Sikanu,-2100,-1600,0
-Ra's al-'Ayn,Washshukanni,-1600,-1290,0
-Ra's al-'Ayn,Sikkan,-1290,-300,0
-Ra's al-'Ayn,Resaina,-300,390,0
-Ra's al-'Ayn,Theodosopolis,390,640,0
-Ra's al-'Ayn,Ra's al-'Ayn,640,,1
-Shubat-Enlil,Shehna,-2400,-2140,0
-Shubat-Enlil,Apum,-1910,-1806,0
-Shubat-Enlil,Shubat-Enlil,-1806,-1728,1
-Urkesh,Urkesh,-2400,-1350,1
-Elallate,Ekallatum,-2100,-1000,0
-Elallate,Elallate,-1000,-600,1
-Allahad,Allahad,-2000,-1600,1
-Andarig,Andarig,-2000,-1300,1
-Kurda,Kurda,-2000,-1500,1
-Sangaritu,Saggaratum,-2400,-1200,0
-Sangaritu,Sangaritu,-1200,-600,1
-Qattunan,Qattunan,-2200,-1200,1
-Ashnakkum,Ashnakkum,-1900,-1500,1
-Dur-Yahdun-Lim,Dur-Yahdun-Lim,-1805,-1550,1
-Dur-Yahdun-Lim,Dur-Yasmah-Addu,-1792,-1778,0
-Razama,Razama,-1900,-1500,1
-Tidu,Taite,-1600,-1287,0
-Tidu,Taidu (2),-1287,-1050,0
-Tidu,Tidu,-1050,-330,1
-Tell Halaf,Guzana,-1150,-330,0
-Tell Halaf,Tell Halaf,800,,1
-Nusaybin,Nasibina,-896,-300,0
-Nusaybin,Antiochia Mygdonia,-300,-280,0
-Nusaybin,Nisibis,-280,640,0
-Nusaybin,Nusaybin,640,,1
-Gidara/Raqamatu,Gidara,-1125,-924,0
-Gidara/Raqamatu,Raqamatu,-924,-898,0
-Gidara/Raqamatu,Gidara/Raqamatu,-898,-700,1
-Apqu,Apqu,-1180,-500,1
-Al-Busayra,Suru,-1000,-330,0
-Al-Busayra,Circesium,-330,640,0
-Al-Busayra,Al-Busayra,640,,1
-Tushha,Tushha,-2400,1000,1
-Diyarbakir,Amedi,-1300,-720,0
-Diyarbakir,Amedu,-720,-330,0
-Diyarbakir,Amida,-330,640,0
-Diyarbakir,Diyarbakir,640,,1
-Van,Tushpa,-2000,-550,0
-Van,Thospia,-550,640,0
-Van,Van,640,,1
-Arzashkun,Arzashkun,-1200,-700,1
-Mush,Mush,-950,,1
-Ardini,Musasir,-1200,-810,0
-Ardini,Ardini,-810,-700,1
-Sarduri(k)hinili,Sarduri(k)hinili,-740,-680,1
-Dur-Sharrukin,Dur-Sharrukin,-718,-600,1
-Rusa-patari,Rusa-patari,-660,-580,1
-Uasi?,Uasi?,-796,-570,1
-Menuahinili,Menuahinili,-784,-560,1
-Rusahinili Qilbanikai,Rusahinili Qilbanikai,-720,-610,1
-Rusahinili Eidurukai,Rusahinili Eidurukai,-672,-610,1
-Khaldi Ziuquni,Khaldi Ziuquni,-668,-605,1
-Malazgirt,Manazkert,-550,968,0
-Malazgirt,Manzikert,968,1072,0
-Malazgirt,Malazgirt,1072,,1
-Hamazi,Hamazi,-2400,-1800,1
-Qabra,Qabra,-2000,-1200,1
-Bakr Awa,Atlila,-1200,-880,0
-Bakr Awa,Dur-Ashur,-880,-330,0
-Bakr Awa,Bakr Awa,640,,1
-Qalatgah,Ushnu,-800,-650,0
-Qalatgah,Qalatgah,-650,-30,1
-Reyy,Ragai,-625,-330,0
-Reyy,Europos/Arsakia,-330,300,0
-Reyy,Rai,300,632,0
-Reyy,ar-Rayy,632,1258,0
-Reyy,Reyy,1258,,1
-Qumis,Saddarvazeh,-625,860,0
-Qumis,Hekatompylos,-330,-237,0
-Qumis,Qumis,860,,1
-Zadracarta,Zadracarta,-601,-601,1
-Zadrakarta,Zadrakarta,-601,1000,1
-Tus/Sousia,Tus/Sousia,-650,1600,1
-Merv,Mouru,-2100,-545,0
-Merv,Margos,-545,-330,0
-Merv,Alexandria (Margiana),-330,-270,0
-Merv,Antiochia Margiana,-270,220,0
-Merv,Merv,220,,1
-Balkh,Zariaspa,-1750,-550,0
-Balkh,Bactra,-550,670,0
-Balkh,Balkh,670,,1
-Kunduz,Drapsaka,-1500,670,0
-Kunduz,Walwalij,670,1390,0
-Kunduz,Kunduz,1390,,1
-Samarkand,Marakanda,-700,710,0
-Samarkand,Samarkand,710,,1
-Shahrisabz,Naukata,-750,710,0
-Shahrisabz,Kesh,710,1730,0
-Shahrisabz,Shahrisabz,1730,,1
-Hei & Luan,Hei & Luan,-1120,-771,1
-Rui,Rui,-800,-100,1
-Taosi,Taosi,-2400,-1900,1
-Yin,Yin,-1500,-900,1
-Changzhi,Li (Qi),-1075,-1035,0
-Changzhi,Changzhi,-1500,-1100,1
-Qinyang,Yu (2),-1075,-221,0
-Qinyang,Yewang,-221,581,0
-Qinyang,Henei,581,618,0
-Qinyang,Huaizhou,618,1636,0
-Qinyang,Huaiqing fu,1636,1913,0
-Qinyang,Qinyang,1913,,1
-Zhaoge,Zhaoge,-1150,-1,1
-Huozhou,Huo,-1045,-1,0
-Huozhou,Huozhou,-1,,1
-Houma,Tang,-1045,-990,0
-Houma,Jiang (Yi),-990,-800,0
-Houma,Quwo,-800,-376,0
-Houma,Xintian,-376,-1,0
-Houma,Houma,-1,,1
-Hancheng,Liang,-800,-200,0
-Hancheng,Hancheng,-200,,1
-Yi,Yi,-800,-200,1
-Taiyuan,Jinyang,-498,-248,0
-Taiyuan,Taiyuan,-248,-9999,1
-Handan,Handan,-1800,,1
-Yan,Yan,-1045,-990,1
-Beijing,City of Ji,-1045,607,0
-Beijing,Zhuojun,607,616,0
-Beijing,Youzhou,616,938,0
-Beijing,Fanyang,742,759,0
-Beijing,Nanjing,938,1122,0
-Beijing,Yanjing,1122,1271,0
-Beijing,Zhongdu,1151,1215,0
-Beijing,Dadu,1271,1368,0
-Beijing,Beijing,1368,,1
-Taoqui,Taoqui,-1045,-400,1
-Linzi,Yingqui,-1045,-875,0
-Linzi,Linzi,-875,-1,1
-Qufu,Qufu,-1045,,1
-Qufu,Xianyuan,1012,1142,0
-Tengzhou,Teng,-1045,-1,0
-Tengzhou,Tengzhou,-1,,1
-Zoucheng,Zou,-1045,-1,0
-Zoucheng,Zoucheng,-1,,1
-Ju,Ju,-1050,1000,1
-Jimo,Jimo,-1040,,1
-Jimo,Tsimo,1898,1922,0
-Cadiz,Gadir,-1104,-206,0
-Cadiz,Gades,-206,771,0
-Cadiz,Qadir,771,1262,0
-Cadiz,Cadiz,1262,,1
-Lixus,Lixus,-1102,650,1
-Carteia,Carteia,-940,1000,1
-Huelva,Unubal,-863,-195,0
-Huelva,Onuba,-195,740,0
-Huelva,Walba,740,1290,0
-Huelva,Huelva,1290,,1
-Tangier,Tingi,-925,710,0
-Tangier,Tangier,710,,1
-Carmona,Kar-Hammon,-800,-204,0
-Carmona,Carmo,-204,715,0
-Carmona,Qarmuna,715,1247,0
-Carmona,Carmona,1247,,1
-Melila,Rusadir,-1150,40,0
-Melila,Rusaddir,-206,771,0
-Melila,Mlila,771,1262,0
-Melila,Melila,1262,,1
-Malaga,Malake,-770,-218,0
-Malaga,Malaca,-218,715,0
-Malaga,Malaqah,715,1487,0
-Malaga,Malaga,1487,,1
-Abdera (Iberia),Abdera (Iberia),-750,640,1
-Almunecar,Sexi,-800,-218,0
-Almunecar,Saxetanum,-218,715,0
-Almunecar,Almunecar,715,,1
-Marseille,Massalia,-600,-49,0
-Marseille,Massilia,-49,650,0
-Marseille,Marseille,650,,1
-Empuries,Indika,-600,-576,0
-Empuries,Emporion,-576,-44,0
-Empuries,Emporiae,-44,750,0
-Empuries,Empuries,750,1200,1
-Agda,Agatha,-526,450,0
-Agda,Agda,450,,1
-Tarquinia,Tarchuna,-900,-230,0
-Tarquinia,Taquinii,-230,800,0
-Tarquinia,Corneto,800,1922,0
-Tarquinia,Tarquinia,1922,,1
-Arezzo,Aritim,-875,-311,0
-Arezzo,Arretium,-311,650,0
-Arezzo,Arezzo,650,,1
-Chiusi,Clevsin,-885,-300,0
-Chiusi,Clusium,-300,540,0
-Chiusi,Chiusi,540,,1
-Cortona,Curtun,-860,-290,0
-Cortona,Corito,-290,1000,0
-Cortona,Cortona,1000,,1
-Populonia,Fulfluna,-900,-300,0
-Populonia,Populonia,-300,570,1
-Vetulonium,Vatluna,-885,-300,0
-Vetulonium,Vetulonium,-300,540,1
-Volterra,V(F)elathri,-780,-250,0
-Volterra,Volaterrae,-250,650,0
-Volterra,Volterra,650,,1
-Vulci,Velch,-850,-280,0
-Vulci,Vulci,-280,750,1
-Aleria,Allalia,-566,-80,0
-Aleria,Aleria,-80,550,1
-Prygi,Prygi,-890,100,1
-Bologna,Felsina,-535,-395,0
-Bologna,Bona,-395,-196,0
-Bologna,Boninia,-196,1000,0
-Bologna,Bologna,1000,,1
-Roselle,Rusellae,-650,490,0
-Roselle,Roselle,490,935,1
-Cosa,Cosa,-274,600,1
-Castrum Novum,Castrum Novum,-264,600,1
-Cerveteri,Caisra,-870,-300,0
-Cerveteri,Caere,-300,200,0
-Cerveteri,Caere Vetus,200,1200,0
-Cerveteri,Cerveteri,1200,,1
-Purugia,Purusna,-850,-290,0
-Purugia,Purusia,-290,600,0
-Purugia,Purugia,600,,1
-Veii,Veii,-890,500,1
-Orvieto,Velzna,-850,-264,0
-Orvieto,Volsinii Veteras,-264,600,0
-Orvieto,Orvieto,600,,1
-Rome,Rome,-754,,1
-Cumae,Kyme,-726,-421,0
-Cumae,Cumae,-421,1207,1
-Taranto,Taras,-706,-272,0
-Taranto,Tarentum,-272,1170,0
-Taranto,Taranto,1170,,1
-Siris,Siris,-664,-530,1
-Metapontum,Metapontum,-660,100,1
-Fidenae,Fidenae,-730,100,1
-Alba Longa,Alba Longa,-850,-660,1
-Policastro Bussentino,Pyxous,-634,-197,0
-Policastro Bussentino,Buxentum,-197,1050,0
-Policastro Bussentino,Policastro Bussentino,1050,,1
-Ostia,Ostia,-630,850,1
-Velletri,Velester,-725,-494,0
-Velletri,Velitrae,-494,1000,0
-Velletri,Velletri,1000,,1
-Pesto,Poseidonia,-618,-400,0
-Pesto,Paistos,-400,-274,0
-Pesto,Paestum,-274,400,0
-Pesto,Pesto,400,1150,1
-Korcula,Korkyra Melaina,-598,1150,0
-Korcula,Curzola,1150,1921,0
-Korcula,Korcula,1921,,1
-Apiolae,Apiolae,-700,-330,1
-Collatia,Collatia,-780,-30,1
-Corniculum,Corniculum,-730,540,1
-Ficulea,Ficulea,-710,540,1
-Crustumerium,Crustumerium,-770,-330,1
-Mentana,Nomentum,-760,1200,0
-Mentana,Mentana,1200,,1
-Velia,Elea,-540,-273,0
-Velia,Velia,-273,300,1
-Puzzuoli,Dikaiarcheia,-532,-194,0
-Puzzuoli,Puteoli,-194,1000,0
-Puzzuoli,Puzzuoli,1000,,1
-Tusculum,Tusculum,-800,500,1
-Gabii,Gabii,-600,300,1
-Suessa Pometia,Suessa Pometia,-735,-502,1
-Ardea,Ardea,-760,,1
-Ariccia,Aricia,-805,1000,0
-Ariccia,Ariccia,1000,,1
-Lanuvio,Lanuvium,-820,1100,0
-Lanuvio,Civita Lavinia,1100,1750,0
-Lanuvio,Lanuvio,1750,,1
-Pratica di Mare,Lavinium,-795,1939,0
-Pratica di Mare,Pratica di Mare,1939,,1
-Cori,Cora,-785,150,0
-Cori,Cori,1250,,1
-Tivoli,Tibur,-870,300,0
-Tivoli,Tivoli,300,,1
-Capua,Capeva,-600,-424,0
-Capua,Capua,-424,840,1
-Signi,Signia,-520,550,0
-Signi,Signi,550,,1
-Circeii,Circeii,-514,-30,1
-Spina,Spina,-526,589,1
-Palestina,Praeneste,-750,1000,0
-Palestina,Palestina,1000,,1
-Labicum,Labicum,-730,-300,1
-Pedum,Pedum,-725,-200,1
-Antium,Antium,-468,950,1
-Norba,Norba,-492,-82,1
-Ceglie Messapica,Kailia,-700,-272,0
-Ceglie Messapica,Caelia,-272,600,0
-Ceglie Messapica,Celie de Galdo,600,1870,0
-Ceglie Messapica,Ceglie Messapica,1870,,1
-Oria,Uria,-700,-500,0
-Oria,Hyria,-500,-272,0
-Oria,Oria,-272,,1
-Manduria,Manduria,-725,,1
-Manduria,Amandrinum,-272,530,0
-Manduria,Casalnuovo,977,1700,0
-Naples,Parthenope,-850,-470,0
-Naples,Neapolis,-470,1000,0
-Naples,Naples,1000,,1
-Brindisi,Brention,-750,-267,0
-Brindisi,Brundisium,-267,800,0
-Brindisi,Brindisi,800,,1
-Heraclea Lucania,Heraclea Lucania,-438,530,1
-Falerii,Falerii,-780,-235,1
-Capena,Capena,-780,-235,1
-Terracina,Tarchna?,-700,-550,0
-Terracina,Anxur,-550,-330,0
-Terracina,Terracina,-330,,1
-Satricum,Satricum,-520,-346,1
-Nepi,Nepete,-750,700,0
-Nepi,Nepi,700,,1
-Sutri,Sutrium,-700,700,0
-Sutri,Sutri,700,,1
-Ancona,Ancona,-386,,1
-Stari Grad (Croatia),Pharos,-385,-168,0
-Stari Grad (Croatia),Faria,-160,710,0
-Stari Grad (Croatia),Hvar,710,1300,0
-Stari Grad (Croatia),Stari Grad (Croatia),1300,,1
-Zadar,Idassa,-850,-59,0
-Zadar,Iader,-59,1069,0
-Zadar,Zadar,1069,,1
-Zadar,Zara,1202,1947,0
-Sezze,Setia,-450,850,0
-Sezze,Sezze,850,,1
-Ferentino,Ferentinum,-500,850,0
-Ferentino,Ferentino,850,,1
-Privernum,Privernum,-550,550,1
-Sora,Sora,-530,,1
-Saticula,Saticula,-530,-100,1
-Suessula,Suessula,-530,-100,1
-Avella,Abella,-530,-200,0
-Avella,Avella,-200,450,1
-Nola,Nuvlana,-580,-313,0
-Nola,Nola,-313,,1
-Caudium,Caudium,-525,900,1
-Cales,Cales,-575,,1
-Teano,Teanum Sidicinum,-545,900,0
-Teano,Teano,900,,1
-Cassino,Casinum,-650,800,0
-Cassino,San Germano,800,1871,0
-Cassino,Cassino,1871,,1
-Alfidena,Aufidena,-435,800,0
-Alfidena,Alfidena,800,,1
-Lucera,Luceria,-790,800,0
-Lucera,Lucera,800,,1
-Ascoli Satriano,Ausculum,-750,-280,0
-Ascoli Satriano,Asculum,-280,1040,0
-Ascoli Satriano,Ascoli Satriano,1040,,1
-Corfinio,Corfinium,-600,550,0
-Corfinio,Italica,-91,-89,0
-Corfinio,Pentima,550,1100,0
-Corfinio,Valva,1100,1928,0
-Corfinio,Corfinio,1928,,1
-Chiete,Theate,-680,-304,0
-Chiete,Teate,-304,1000,0
-Chiete,Chiete,1000,,1
-Fregellae,Fregellae,-850,-125,1
-Nocera,Nuvkrinum,-600,-450,0
-Nocera,Nuvkrinum Alfaternum,-450,-300,0
-Nocera,Nuceria,-300,1270,0
-Nocera,Nuceria Constantia,-57,570,0
-Nocera,Nocera,1270,,1
-Casoli,Cluviae,-615,878,0
-Casoli,Casoli,878,,1
-Acerra,Akeru,-610,-332,0
-Acerra,Acerrae,-332,-800,0
-Acerra,Acerra,800,,1
-Fondi,Fundi,-790,750,0
-Fondi,Fondi,750,,1
-Ferento,Ferentium,-450,800,0
-Ferento,Ferento,800,1172,1
-Canosa,Canusion,-600,-318,0
-Canosa,Canusium,-318,600,0
-Canosa,Canosa,600,,1
-Civitate,Tiati,-650,-318,0
-Civitate,Teanum Apulum,-318,100,0
-Civitate,Civitate,100,550,1
-Arpi,Argos Hippium,-800,-500,0
-Arpi,Argyippa,-500,-320,0
-Arpi,Arpi,-320,-100,1
-Bojano,Bovianum,-650,75,0
-Bojano,Bovianum Undecimanoruin,75,662,0
-Bojano,Bojano,662,1913,1
-Benevento,Maloeis,-850,-350,0
-Benevento,Maleventum,-350,-268,0
-Benevento,Beneventum,-268,576,0
-Benevento,Benevento,576,,1
-Sessa Aurunca,Suessa Aurunca,-750,600,0
-Sessa Aurunca,Sessa Aurunca,600,,1
-Calatia,Calatia,-600,250,1
-Atina,Atina,-575,,1
-Interamna Lirenas,Interamna Lirenas,-312,275,1
-Camerino,Camerium,-575,600,0
-Camerino,Camerino,600,,1
-Pompeii,Pompeii,-590,80,1
-Ocriculum,Ocriculum,-500,587,1
-Alatri,Aletrium,-306,600,0
-Alatri,Alatri,600,,1
-Veroli,Verulae,-550,600,0
-Veroli,Veroli,600,,1
-Anagni,Anagnia,-700,600,0
-Anagni,Anagni,600,,1
-Alba Fucens,Alba Fucens,-304,950,1
-Narni,Nequinum,-750,-300,0
-Narni,Narnia,-300,900,0
-Narni,Narni,900,,1
-Carsoli,Carseoli,-298,800,0
-Carsoli,Carsoli,800,1250,1
-Potenza,Potentia,-450,800,0
-Potenza,Potenza,800,1250,1
-Minturnae,Minturnae,-530,900,1
-Sinuessa,Sinuessa,-296,550,1
-Venosa,Aphrodisia,-800,-292,0
-Venosa,Venusia,-292,800,0
-Venosa,Venosa,800,,1
-Atria,Hadria,-288,-100,0
-Atria,Hatria,-100,800,0
-Atria,Atria,800,,1
-Senigallia,Sena Gallica,-283,800,0
-Senigallia,Senigallia,800,,1
-Rimini,Ariminum,-268,800,0
-Rimini,Rimini,800,,1
-Isernia,Aesernia,-268,700,0
-Isernia,Isernia,700,,1
-Fermo,Firmum,-268,800,0
-Fermo,Fermo,800,,1
-Veles,Bylazora,-800,1374,0
-Veles,Koprulu,1374,1912,0
-Veles,Veles,1912,,1
-Stobi,Stobi,-740,1000,1
-Stip,Astibos,-700,550,0
-Stip,Stip,550,,1
-Stip,Istip,1384,1912,0
-Methone (Thrace),Methone (Thrace),-735,-354,1
-Ouranopolis,Sane,-656,-316,0
-Ouranopolis,Ouranopolis,-316,,1
-Ierissos,Acanthus,-656,1,0
-Ierissos,Ericius,1,330,0
-Ierissos,Erissos,330,1430,0
-Ierissos,Halkidiki,1430,1912,0
-Ierissos,Ierissos,1912,,1
-Stagira,Stageira,-656,1,0
-Stagira,Stagirus,1,330,0
-Stagira,Siderokafsia,330,1912,0
-Stagira,Stagira,1912,,1
-Aigai,Aigai,-650,150,1
-Olynthus,Olynthus,-650,-348,1
-Galepsus,Galepsus,-632,300,1
-Durres,Epidamnos,-628,-229,0
-Durres,Dyrrachium,-229,950,0
-Durres,Durres,950,,1
-Durres,Durazzo,1292,1945,0
-Durres,Dirac,1501,1912,0
-Kassandreia,Poteidaia,-604,-356,0
-Kassandreia,Kassandreia,-316,540,1
-Apollonia (Illyria),Gylakeia,-594,-588,0
-Apollonia (Illyria),Apollonia (Illyria),-588,600,1
-Chrysopolis?,Eion,-700,500,0
-Chrysopolis?,Chrysopolis?,500,1400,1
-Thronion (Illyria),Thronion (Illyria),-650,-490,1
-Amphipolis,Amphipolis,-438,800,1
-Aiane,Aiane,-550,-10,1
-Argos Orestiko,Argos Orestikon,-550,1400,0
-Argos Orestiko,Argos Orestiko,1400,,1
-Arnisa,Arnisa,-600,,1
-Arnisa,Ostrovon,1400,1926,0
-Stuberra,Stuberra,-500,550,1
-Sofia,Sedica,-200,115,0
-Sofia,Ulpia Serdica,115,535,0
-Sofia,Triaditsa,535,810,0
-Sofia,Sredets,810,1376,0
-Sofia,Sofia,1376,,1
-Pydna,Pydna,-650,,1
-Therme,Therme,-610,-100,1
-Spartolos,Spartolos,-600,-250,1
-Lezhe,Lissos,-388,-200,0
-Lezhe,Lissus,-200,1386,0
-Lezhe,Alisso,1396,1506,0
-Lezhe,Lesh,1506,1900,0
-Lezhe,Lezhe,1900,,1
-Pella,Pella,-400,350,1
-Anthemous,Anthemous,-550,550,1
-Thessaloniki,Thessaloniki,-316,,1
-Thessaloniki,Thessalonica,-168,395,0
-Thessaloniki,Selanik,1430,1912,0
-Barat,Antipatreia,-314,-200,0
-Barat,Antipatreia/Pulcheriopolis,-200,850,0
-Barat,Belegrada,850,1385,0
-Barat,Barat,1385,,1
-Astacus,Astacus,-712,-286,1
-Parium,Parium,-709,1450,1
-Cyzicus,Cyzicus,-700,1500,1
-Silivri,Selymbria,-680,1454,0
-Silivri,Eudoxiopolis,400,450,0
-Silivri,Silivri,1454,,1
-Kadikoy,Chalcedon,-686,1353,0
-Kadikoy,Kadikoy,1353,,1
-Istanbul,Byzantium,-668,1454,0
-Istanbul,Nova Roma,330,338,0
-Istanbul,Istanbul,1454,,1
-Abydos,Abydos,-666,1315,1
-Abydos,Abydos (Hellespont),-330,300,0
-Histria,Istros,-658,30,0
-Histria,Histria,30,680,1
-Maroneia,Maroneia,-656,,1
-Lampsacus,Pityusa,-654,-575,0
-Lampsacus,Lampsacus,-575,1400,1
-Abdera,Abdera,-666,300,1
-Thasos,Thasos,-652,,1
-Thasos,Tasoz,1456,1213,0
-Stryme,Stryme,-646,-348,1
-Kavala,Neapolis (Thrace),-640,800,0
-Kavala,Christoupolis,800,1387,0
-Kavala,Kavala,1387,,1
-Emathia,Oisyme,-636,-355,0
-Emathia,Emathia,-355,500,1
-Prusias ad Mare,Kios,-628,-196,0
-Prusias ad Mare,Prusias ad Mare,-196,1600,1
-Sozopol,Antheia,-610,-450,0
-Sozopol,Apollonia Pontica,-450,300,0
-Sozopol,Sozopolis,300,1914,0
-Sozopol,Sozopol,1914,,1
-Eregli,Perinthus,-602,300,0
-Eregli,Heraclea,300,1453,0
-Eregli,Eregli,1453,,1
-Sestos,Sestos,-900,1500,1
-Lysimacheia,Kardia,-558,-309,0
-Lysimacheia,Lysimacheia,-309,330,1
-Samothrace,Samothrace,-542,1457,1
-Samothrace,Semadirek,1457,1913,0
-Doriskos,Doriskos,-513,-300,1
-Nesebar,Menebria,-1000,-510,0
-Nesebar,Mesembria,-510,1050,0
-Nesebar,Nesebar,1050,,1
-Enez,Ainos,-880,1456,0
-Enez,Aenus,-185,395,0
-Enez,Enez,1456,,1
-Dascylium,Daskyleion,-800,-70,0
-Dascylium,Dascylium,-70,800,1
-Philippi,Krenides,-360,-357,0
-Philippi,Philippi,-357,1390,1
-Plovdiv,Eumolpias,-1275,-341,0
-Plovdiv,Philippopolis,-341,1364,0
-Plovdiv,Trimontium,-46,200,0
-Plovdiv,Filibe,1364,1878,0
-Plovdiv,Plovdiv,1878,,1
-Stara Zagora,Beroe,-500,1000,0
-Stara Zagora,Ulpia Augusta Traiana,120,330,0
-Stara Zagora,Vereia,600,784,0
-Stara Zagora,Irenopolis,784,812,0
-Stara Zagora,Boruj,1000,1371,0
-Stara Zagora,Eski Hisar,1371,1650,0
-Stara Zagora,Eski Zagra,1650,1871,0
-Stara Zagora,Stara Zagora,1871,,1
-Varna,Odessus,-570,-60,0
-Varna,Odessos,-60,650,0
-Varna,Varna,650,,1
-Edirne,Uskudama,-550,-341,0
-Edirne,Orestias,-341,124,0
-Edirne,Hadrianople,124,1205,0
-Edirne,Adrianople,1205,1369,0
-Edirne,Edirne,1369,,1
-Seuthopolis,Seuthopolis,-325,-280,1
-Mangalia,Callatis,-550,1250,0
-Mangalia,Pangalia,1250,1550,0
-Mangalia,Mangalia,1550,,1
-Tylis,Tylis,-277,-212,1
-Izmit,Nicomedia,-264,1337,0
-Izmit,Izmit,1337,,1
-Hattusa,Hattus,-2000,-1700,0
-Hattusa,Hattusa,-1670,-800,1
-Arinna,Arinna,-2000,-1200,1
-Zalpa,Zalpa,-2000,-1500,1
-Tabigga/Tabikka,Tabigga/Tabikka,-2100,-1225,1
-Sapinuwa,Sapinuwa,-1700,-1210,1
-Nerik,Nerik,-2100,-1200,1
-Hakpis(sa),Hakpis(sa),-1700,-1200,1
-Sanahuitta,Sanahuitta,-1750,-1350,1
-Sinop,Sinope,-764,1214,0
-Sinop,Sinop,1214,,1
-Karadeniz Eregli,Heraclea (Pontica),-560,450,0
-Karadeniz Eregli,Pontoheraclea,450,1450,0
-Karadeniz Eregli,Karadeniz Eregli,1450,,1
-Amasra,Sesamus,-540,-301,0
-Amasra,Amastris,-301,1461,0
-Amasra,Amasra,1461,,1
-Tios,Tios,-540,860,1
-Trabzon,Trapezous,-756,100,0
-Trabzon,Trapezus,100,800,0
-Trabzon,Trebezond,800,1462,0
-Trabzon,Trabzon,1462,,1
-Samson,Amisos,-564,-71,0
-Samson,Amisus,-71,1000,0
-Samson,Samson,1000,,1
-Ordu,Kotyora,-730,1461,0
-Ordu,Bayramli,1461,1869,0
-Ordu,Ordu,1869,,1
-Erevan,Erebuni,-782,-321,0
-Erevan,Erevan,-321,,1
-Gavar,City of Khaldi,-730,-555,0
-Gavar,Gavar,-555,,1
-Gavar,Nor Bayezet,1930,1959,0
-Gavar,Kamo,1959,1996,0
-Teishebaini,Teishebaini,-660,-590,1
-Istaravshan,Cyropolis,-536,-30,0
-Istaravshan,Cyreschata,-30,640,0
-Istaravshan,Kyra,640,1870,0
-Istaravshan,Ura-Tayub,1770,2000,0
-Istaravshan,Istaravshan,2000,,1
-Tabigga/Tabikka,Tabigga/Tabikka,-2100,-1225,1
-Sapinuwa,Sapinuwa,-1700,-1210,1
-Mantua,Mantua,-520,,1
-Padua,Patavium,-300,800,0
-Padua,Padua,800,,1
-Adria,Atria,-530,-230,0
-Adria,Hatria,-230,1600,0
-Adria,Adria,1600,,1
-Borysthenes/Olbia,Borysthenes/Olbia,-648,390,1
-Feodosiya,Theodosia,-546,1290,0
-Feodosiya,Kaffa,1290,1476,0
-Feodosiya,Kefe,1476,1784,0
-Feodosiya,Feodosiya,1784,,1
-Kerch,Pantikapaion,-604,700,0
-Kerch,Karcha,700,1016,0
-Kerch,Korchev,1016,1318,0
-Kerch,Cerco,1311,1475,0
-Kerch,Kerch,1475,,1
-Phanagoria,Phanagoria,-544,1360,1
-Nymphaeum,Nymphaion,-570,-60,0
-Nymphaeum,Nymphaeum,-60,375,1
-Matracha,Hermonassa,-588,700,0
-Matracha,Tamatarkha,700,1000,0
-Matracha,Tmutarakan,1000,1125,0
-Matracha,Matracha,1125,1400,1
-Kimmerikon,Kimmerikon,-588,700,1
+RefName,Lon,Lat,AliasName,FromYear,ToYear,IsRef
+Caral,-77.52028,-10.89361,Caral,-2400,-1800,1
+Madurai,78.122503,9.90839,Madurai,-350,,1
+Muziris,76.213146,10.153976,Muchiri,-350,-250,0
+Muziris,76.213146,10.153976,Muziris,-250,1341,1
+Kaveripattanam,79.855,11.144,Kaveripattanam,-350,-300,1
+Karur,78.079902,10.951893,Karuvur,-350,-250,0
+Karur,78.079902,10.951893,Karur,-250,-9999,1
+Anuradhapura,80.41276,8.32444,Anuradhapura,-437,,1
+Kerma,30.4097,19.6008,Kerma,-2400,-1100,1
+Karima,31.853738,18.565952,Napata,-1474,680,0
+Karima,31.853738,18.565952,Karima,680,,1
+Meroe,33.70098,16.911636,Meroe,-1800,400,1
+Ma'rib,45.35,15.416667,Ma'rib,-1200,,1
+Bodhan,77.9,18.67,Parudanyapura,-750,1196,0
+Bodhan,77.9,18.67,Bodhan,1196,,1
+Apollonopolis Magna,32.87333,24.97778,Djeba/Watjeset-hor,-2400,-332,0
+Apollonopolis Magna,32.87333,24.97778,Apollonopolis Magna,-332,600,1
+Ombos,32.96193,24.47345,Nubyt,-2400,-332,0
+Ombos,32.96193,24.47345,Ombos,-332,550,1
+Elephantine,32.88757,24.09412,Abu,-1800,-332,0
+Elephantine,32.88757,24.09412,Elephantine,-332,560,1
+Aswan,32.89744,24.08145,Swenet,-2400,-332,0
+Aswan,32.89744,24.08145,Syrene,-332,641,0
+Aswan,32.89744,24.08145,Aswan,641,,1
+Buhen,31.2833,21.9167,Buhen,-1860,-1,1
+al-Medina,39.611122,24.471153,Yatribu,-850,-537,0
+al-Medina,39.611122,24.471153,Yathrib,-537,-30,0
+al-Medina,39.611122,24.471153,Iathrippa,-30,630,0
+al-Medina,39.611122,24.471153,al-Medina,630,,1
+Thatta,68.065079,24.72237,Sarnee Nagar,-1000,-332,0
+Thatta,68.065079,24.72237,Patala,-332,1526,0
+Thatta,68.065079,24.72237,Nagar Tatta,1526,1750,0
+Thatta,68.065079,24.72237,Thatta,1750,,1
+Bharuch,72.993,21.712,Bharuch,-1100,,1
+Tewar,79.8465,23.143,Tripuri,-825,1192,0
+Tewar,79.8465,23.143,Tewar,1192,,1
+Vidisha,77.82,23.53,Vidisha,-850,,1
+Ujjayini,75.79,23.17,Ujjayini,-871,,1
+Mahishmati,76.151056,22.245583,Mahishmati,-861,1300,1
+Siwa,25.54353,29.205173,Ammon,-750,1150,0
+Siwa,25.54353,29.205173,Siwa,1150,,1
+Memphis,31.25974,29.8678,Ineb(ou)-Hedj(ou),-2400,-1550,0
+Memphis,31.25974,29.8678,Men-nefer,-1550,-332,0
+Memphis,31.25974,29.8678,Memphis,-332,1400,1
+Atfih,31.25149,29.40565,Itj-Tawy/Tepihu,-2400,-332,0
+Atfih,31.25149,29.40565,Aphroditopolis,-332,640,0
+Atfih,31.25149,29.40565,Atfih,640,,1
+Faiyum,30.84411,29.30837,Shedyet,-2400,-332,0
+Faiyum,30.84411,29.30837,Ptolemais Euergetis,-332,-280,0
+Faiyum,30.84411,29.30837,Arsinoe,-280,-20,0
+Faiyum,30.84411,29.30837,Krokodilopolis,-20,642,0
+Faiyum,30.84411,29.30837,Faiyum,642,,1
+Narmouthis,30.65116,29.19119,Dja,-1830,-332,0
+Narmouthis,30.65116,29.19119,Narmouthis,-332,1000,1
+Senusrethotem,30.96667,29.23333,Senusrethotem,-1890,-1100,1
+Herakleopolis (Magna),30.93444,29.08556,Henen-nesut,-2400,-332,0
+Herakleopolis (Magna),30.93444,29.08556,Herakleopolis (Magna),-332,500,1
+Theodosiopolis,30.76645,29.10734,Tutun/Tebtunis,-1800,-332,0
+Theodosiopolis,30.76645,29.10734,Theodosiopolis,-332,550,1
+Hwt-nsw/Hutnesut,30.84615,28.55367,Hwt-nsw/Hutnesut,-2400,1000,1
+Pemje,30.65417,28.55028,Per-Medjed,-2400,-332,0
+Pemje,30.65417,28.55028,Oxyrhynchus,-332,300,0
+Pemje,30.65417,28.55028,Pemje,300,641,1
+Akoris (Tenis he kai Hakoreos),30.7759,28.18983,Mer-nefer(et),-2400,-1550,0
+Akoris (Tenis he kai Hakoreos),30.7759,28.18983,Per-Imen-met-khent(j),-1550,-685,0
+Akoris (Tenis he kai Hakoreos),30.7759,28.18983,Dehenet,-685,-332,0
+Akoris (Tenis he kai Hakoreos),30.7759,28.18983,Akoris (Tenis he kai Hakoreos),-332,350,1
+Alabastronopolis/Alabastrine,30.84143,28.04407,Henenu,-2400,-332,0
+Alabastronopolis/Alabastrine,30.84143,28.04407,Alabastronopolis/Alabastrine,-332,1000,1
+el Ashmunein,30.80389,27.78139,Khmun(w),-2400,-332,0
+el Ashmunein,30.80389,27.78139,Hermopolis Magna,-332,300,0
+el Ashmunein,30.80389,27.78139,Schmun(ein),300,641,0
+el Ashmunein,30.80389,27.78139,el Ashmunein,641,,1
+el-Qusiya,30.81982,27.43706,Qis,-2400,-332,0
+el-Qusiya,30.81982,27.43706,Koussai,-332,-20,0
+el-Qusiya,30.81982,27.43706,Cusae,-20,641,0
+el-Qusiya,30.81982,27.43706,el-Qusiya,641,,1
+Asyut,31.18078,27.18079,Zawty,-2400,-332,0
+Asyut,31.18078,27.18079,Lykopolis,-332,300,0
+Asyut,31.18078,27.18079,Siout,300,641,0
+Asyut,31.18078,27.18079,Asyut,641,,1
+al Atawla,31.21667,27.23333,Per-Nemty,-2400,-332,0
+al Atawla,31.21667,27.23333,Hierakion,-332,641,0
+al Atawla,31.21667,27.23333,al Atawla,641,,1
+Abutig,31.32111,27.04294,Shashotep,-2400,-332,0
+Abutig,31.32111,27.04294,Apotheke,-332,641,0
+Abutig,31.32111,27.04294,Abutig,641,,1
+Qaw el-Kebir,31.5202,26.9096,Tjebu,-2400,-332,0
+Qaw el-Kebir,31.5202,26.9096,Antaeopolis,-332,641,0
+Qaw el-Kebir,31.5202,26.9096,Qaw el-Kebir,641,,1
+Akhmim,31.74307,26.55932,Ipu/Apu/Khent-mim,-2400,-332,0
+Akhmim,31.74307,26.55932,Panopolis,-332,300,0
+Akhmim,31.74307,26.55932,Khmin/Shmin,300,641,0
+Akhmim,31.74307,26.55932,Akhmim,641,,1
+Thinis/This,31.84422,26.34124,Tjenu,-2400,-332,0
+Thinis/This,31.84422,26.34124,Thinis/This,-332,1000,1
+El Araba el Madfuna,31.91888,26.18486,Abdju,-2400,-332,0
+El Araba el Madfuna,31.91888,26.18486,Abydos,-332,300,0
+El Araba el Madfuna,31.91888,26.18486,Ebot,300,641,0
+El Araba el Madfuna,31.91888,26.18486,El Araba el Madfuna,641,,1
+Hiw,32.30326,26.00452,Hut-Sekhem,-2400,-332,0
+Hiw,32.30326,26.00452,Diospolis Parva/Mikra,-332,641,0
+Hiw,32.30326,26.00452,Hiw,641,,1
+Dandarah/Dendera,32.6495,26.16136,Iunet/Ta-ynt-netert,-2400,-332,0
+Dandarah/Dendera,32.6495,26.16136,Tentyra/Tentyris,-332,641,0
+Dandarah/Dendera,32.6495,26.16136,Dandarah/Dendera,641,,1
+Qift,32.81583,25.99556,Gebtu,-2400,-332,0
+Qift,32.81583,25.99556,Coptos,-332,300,0
+Qift,32.81583,25.99556,Keft (Kebto),300,535,0
+Qift,32.81583,25.99556,Justinianopolis,535,641,0
+Qift,32.81583,25.99556,Qift,641,,1
+Naqada,32.71667,25.9,Nubt,-2400,-332,0
+Naqada,32.71667,25.9,Pallas,-332,641,0
+Naqada,32.71667,25.9,Naqada,641,,1
+Qus,32.74687,25.91299,Gesy/Gesa,-2400,-332,0
+Qus,32.74687,25.91299,Apollinopolis Parva,-332,290,0
+Qus,32.74687,25.91299,Diocletianopolis,290,641,0
+Qus,32.74687,25.91299,Qus,641,,1
+Luxor,32.61028,25.72056,Waset,-2400,-1500,0
+Luxor,32.61028,25.72056,Thebes,-1500,-332,0
+Luxor,32.61028,25.72056,Thebai,-332,-20,0
+Luxor,32.61028,25.72056,Thebae/Diospolis Magna,-20,641,0
+Luxor,32.61028,25.72056,Luxor,641,,1
+Armant,32.54625,25.62486,Iuny,-2400,-332,0
+Armant,32.54625,25.62486,Hermonthis,-332,300,0
+Armant,32.54625,25.62486,Erment,300,641,0
+Armant,32.54625,25.62486,Armant,641,,1
+El-Tod,32.545,25.59322,Djerty,-2400,-332,0
+El-Tod,32.545,25.59322,Touphion,-332,-20,0
+El-Tod,32.545,25.59322,Tuphium,-20,300,0
+El-Tod,32.545,25.59322,Tout,300,641,0
+El-Tod,32.545,25.59322,El-Tod,641,,1
+Gebelein,32.50961,25.45424,Per Hathor/Inerty,-2400,-332,0
+Gebelein,32.50961,25.45424,Pathyris/Aphroditopolis,-332,641,0
+Gebelein,32.50961,25.45424,Gebelein,641,,1
+Eileithyiaspolis,32.79778,25.11889,Nekheb,-2400,-332,0
+Eileithyiaspolis,32.79778,25.11889,Eileithyiaspolis,-332,380,1
+Hierakonpolis,32.77944,25.09722,Nekhen,-2400,-332,0
+Hierakonpolis,32.77944,25.09722,Hierakonpolis,-332,250,1
+Mersa Gawasis,34.0364,26.5572,Saww,-1996,-332,0
+Mersa Gawasis,34.0364,26.5572,Mersa Gawasis,641,,1
+Amarna,30.9056,27.6617,Amarna,-1376,-1358,1
+Aqaba,35.0056,29.5319,Elath,-1500,-330,0
+Aqaba,35.0056,29.5319,Berenice,-330,-64,0
+Aqaba,35.0056,29.5319,Aela,-64,650,0
+Aqaba,35.0056,29.5319,Aila,650,1520,0
+Aqaba,35.0056,29.5319,Aqaba,1180,,1
+Tayma,38.5439,27.6297,Tayma,-1100,,1
+al-'Ula,37.9228,26.6127,Dedan,-1100,600,0
+al-'Ula,37.9228,26.6127,al-'Ula,600,,1
+Dumat al-Jandal,39.8822,29.8032,Dumat,-950,-690,0
+Dumat al-Jandal,39.8822,29.8032,Adammatu,-690,106,0
+Dumat al-Jandal,39.8822,29.8032,Dumatha,106,633,0
+Dumat al-Jandal,39.8822,29.8032,Dumat al-Jandal,633,,1
+Test Battle,42.5,27.5,Test Battle,-2400,-2000,1
+Persepolis,52.889437,29.93534,Parsa,-516,-330,0
+Persepolis,52.889437,29.93534,Persepolis,-330,-100,1
+Taoke,51.187805,29.275641,Temukan,-450,-330,0
+Taoke,51.187805,29.275641,Taoke,-330,500,1
+Jiroft,57.743416,28.665408,Karmana,-600,600,0
+Jiroft,57.743416,28.665408,Jiroft,600,,1
+Hormuz,56.22236,27.161555,Armuzia,-600,-334,0
+Hormuz,56.22236,27.161555,Harmozeia,-334,640,0
+Hormuz,56.22236,27.161555,Hormuz,640,1000,1
+Poura,60.45583,27.19444,Pura,-1000,-334,0
+Poura,60.45583,27.19444,Poura,-334,640,1
+Assandh,76.72,29.51,Asandivat,-1200,-300,0
+Assandh,76.72,29.51,Assandh,-300,,1
+Hastinapura,78.02,29.17,Hastinapura,-900,,1
+New Delhi,77.244167,28.609444,Indraprastha,-950,1192,0
+New Delhi,77.244167,28.609444,Delhi,1192,1927,0
+New Delhi,77.244167,28.609444,New Delhi,1927,,1
+Ahichchhatra,79.136,28.371,Ahichchhatra,-1050,1100,1
+Kampil,79.28,27.62,Kampilya,-1025,1192,0
+Kampil,79.28,27.62,Kampil,1192,,1
+Mathura,77.673611,27.4925,Mathura,-925,,1
+Bairat,76.181591,27.433189,Viratnagar,-950,1192,0
+Bairat,76.181591,27.433189,Bairat,1192,,1
+Shravasti,82.033944,27.517083,Shravasti,-975,650,1
+Ayodhya,82.2,26.8,Saketa,-750,436,0
+Ayodhya,82.2,26.8,Ayodhya,436,,1
+Kausambi,81.392899,25.338984,Kausambi,-900,600,1
+Banares,83.012778,25.318889,Varanasi,-875,1192,0
+Banares,83.012778,25.318889,Banares,1192,,1
+Suktimati,80.333333,25.483333,Suktimati,-850,-200,1
+Kusinagara,83.888,26.741,Kusavati,-775,-500,0
+Kusinagara,83.888,26.741,Kushinara,-500,1192,0
+Kusinagara,83.888,26.741,Kusinagara,1192,,1
+Vaishali,85.13,25.99,Vaishali,-775,300,1
+Pataliputra,85.1283,25.6125,Pataliputra,-490,800,1
+Rajgir,85.42,25.03,Rajagrha,-800,-450,0
+Rajgir,85.42,25.03,Rajgir,-450,,1
+Champapuri,86.9417,25.2374,Champa,-800,1192,0
+Champapuri,86.9417,25.2374,Champapuri,1192,,1
+Janakpur,85.925,26.7286,Methila,-900,-300,0
+Janakpur,85.925,26.7286,Janakpur,-300,,1
+Lepcis Magna,14.291378,32.637957,Neapolis (Lepcis),-146,-27,0
+Lepcis Magna,14.291378,32.637957,Lepcis Magna,-27,647,1
+Kinyps,14.44733,32.527937,Kinyps,-514,-512,1
+Plateia,23.1305,32.3999,Plateia,-640,-639,1
+Aziris,22.880611,32.683784,Aziris,-638,-633,1
+Cyrene,21.856555,32.820349,Cyrene,-632,999,1
+Cyrene,21.856555,32.820349,Claudiopolis,269,400,0
+Tokara,20.567298,32.536399,Taucheira,-630,645,0
+Tokara,20.567298,32.536399,Arsinoe,-275,-27,0
+Tokara,20.567298,32.536399,Tokara,645,,1
+Sozousa,21.95676,32.893176,Apollonia (Cyrene),-606,550,0
+Sozousa,21.95676,32.893176,Sozousa,550,643,1
+Marj,20.892778,32.498333,Barke,-552,-78,0
+Marj,20.892778,32.498333,Barca,-78,644,0
+Marj,20.892778,32.498333,Barqah,644,1542,0
+Marj,20.892778,32.498333,Barka,1542,1700,0
+Marj,20.892778,32.498333,Marj,1850,,1
+Marj,20.892778,32.498333,Barce,1913,1945,0
+Benghazi,20.091198,32.109789,Euesperides,-526,-246,0
+Benghazi,20.091198,32.109789,Berenice,-246,643,0
+Benghazi,20.091198,32.109789,Benghazi,643,,1
+Mersa Matruh,27.236845,31.350136,Ammonia,-332,-175,0
+Mersa Matruh,27.236845,31.350136,Paraitonion,-175,-29,0
+Mersa Matruh,27.236845,31.350136,Paraitonium,-29,645,0
+Mersa Matruh,27.236845,31.350136,Baritun,645,1800,0
+Mersa Matruh,27.236845,31.350136,Mersa Matruh,1800,,1
+Alexandria,29.909773,31.201435,Alexandria,-332,,1
+Kouvouklia,32.58356,34.70724,Pa-ap-pa?,-1400,-1250,0
+Kouvouklia,32.58356,34.70724,Paphos,-1250,-320,0
+Kouvouklia,32.58356,34.70724,Palaepaphos,-320,400,0
+Kouvouklia,32.58356,34.70724,Kouvouklia,400,1000,1
+Gath,34.84688,31.69979,Gimti/Gintu,-2400,-1200,0
+Gath,34.84688,31.69979,Gath,-1175,-600,1
+Beth Shemesh,34.98665,31.74569,Beth Shemesh,-1170,-701,1
+Akkaron,34.84992,31.77889,Ekron,-1170,-701,0
+Akkaron,34.84992,31.77889,Amqarruna,-701,-603,0
+Akkaron,34.84992,31.77889,Akkaron,-300,550,1
+Asdud,34.65517,31.76384,Ashdod,-1120,-615,0
+Asdud,34.65517,31.76384,Azotos,-529,650,0
+Asdud,34.65517,31.76384,Isdud,650,1850,0
+Asdud,34.65517,31.76384,Asdud,1850,2000,1
+Gezer,34.919,31.859,Gazru,-1380,-1207,0
+Gezer,34.919,31.859,Gezer,-1180,250,1
+Antipatris,34.93028,32.105,Pagai,-1180,-925,0
+Antipatris,34.93028,32.105,Antipatris,-9,363,1
+Dora,34.91639,32.6175,Dor,-1180,-332,0
+Dora,34.91639,32.6175,Dora,-332,650,1
+Gaza,34.41107,31.5087,Azzati,-1475,-1125,0
+Gaza,34.41107,31.5087,Gaza,-1100,,1
+Lachish,34.849,31.565,Lakisha,-1350,-1150,0
+Lachish,34.849,31.565,Lachish,-900,-200,1
+Ascalon,34.56667,31.66667,Ascanu,-1550,-1150,0
+Ascalon,34.56667,31.66667,Ashqelon,-1150,-332,0
+Ascalon,34.56667,31.66667,Ascalon,-332,1270,1
+Boukolonpolis,34.93833,32.68722,Boukolonpolis,-332,-100,1
+Gath-rimmon?,34.8075,32.09167,Gath-rimmon?,-950,-925,1
+Yafa,34.75099,32.04836,Yapu,-1440,-1000,0
+Yafa,34.75099,32.04836,Yafa,-1000,,1
+Yafa,34.75099,32.04836,Ioppe,-300,1100,0
+Yafa,34.75099,32.04836,Jaffa,1100,1350,0
+St. Jorge de Lydde,34.889,31.9485,Lod,-630,-300,0
+St. Jorge de Lydde,34.889,31.9485,Lydda,-300,200,0
+St. Jorge de Lydde,34.889,31.9485,Diospolis,200,550,0
+St. Jorge de Lydde,34.889,31.9485,Giorgioupolis,550,635,0
+St. Jorge de Lydde,34.889,31.9485,St. Jorge de Lydde,1099,1250,1
+Timna(t)h,34.9112,31.78502,Timna(t)h,-1150,-701,1
+Yarmut,34.98801,31.72357,Yarmut,-1300,-600,1
+Azeka(h),34.93567,31.70035,Azeka(h),-780,150,1
+Sharuhen?,34.4043,31.46767,Sharuhen?,-2100,-1410,1
+Debir,34.99473,31.44746,Kiriath Sepher,-1500,-990,0
+Debir,34.99473,31.44746,Debir,-990,-50,1
+Gerar,34.60658,31.39186,Gerar,-1900,300,1
+Ziklag,34.68075,31.39057,Ziklag,-1150,-610,1
+Arsa,34.44472,31.3875,Arza,-2000,-1150,0
+Arsa,34.44472,31.3875,Yurza,-1150,-701,0
+Arsa,34.44472,31.3875,Arsa,-701,-600,1
+Thala,34.86447,31.38102,Rimmon,-1150,-701,0
+Thala,34.86447,31.38102,Thala,-400,1000,1
+Aboukir,30.05112,31.30418,Pikuat,-2400,-332,0
+Aboukir,30.05112,31.30418,Canopus,-332,640,0
+Aboukir,30.05112,31.30418,Aboukir,640,,1
+Pi-Ramesses,31.82137,30.78742,Hut-waret,-1783,-1720,0
+Pi-Ramesses,31.82137,30.78742,Avaris,-1720,-1550,0
+Pi-Ramesses,31.82137,30.78742,Pi-Ramesses,-1260,-1000,1
+Leontopolis,31.38794,30.76045,Nayta-hut/Taremu,-1600,-332,0
+Leontopolis,31.38794,30.76045,Leontopolis,-332,640,1
+Ausim,31.13854,30.1435,Khem,-2400,-332,0
+Ausim,31.13854,30.1435,Letopolis,-332,640,0
+Ausim,31.13854,30.1435,Ausim,640,,1
+Heliopolis,31.28889,30.12953,Iunu,-2400,-332,0
+Heliopolis,31.28889,30.12953,Heliopolis,-332,1000,1
+Terenuthis,30.83007,30.42938,Tarrana,-1850,-332,0
+Terenuthis,30.83007,30.42938,Terenuthis,-332,640,1
+Anthribis,31.17546,30.46328,Hut-hery-ib,-2400,-332,0
+Anthribis,31.17546,30.46328,Anthribis,-332,640,1
+Bubastis,31.51,30.57278,Per-Bast(et),-2400,-332,0
+Bubastis,31.51,30.57278,Bubastis,-332,650,1
+Gynaekopolis?/Momemphis,30.62123,30.79435,Imu/Yamu,-2400,-332,0
+Gynaekopolis?/Momemphis,30.62123,30.79435,Gynaekopolis?/Momemphis,-332,640,1
+Sais,30.76833,30.96472,Sa/Zau,-2400,-332,0
+Sais,30.76833,30.96472,Sais,-332,640,1
+Busiris,31.24444,30.91111,Djedu/Per-Wsir,-2400,-332,0
+Busiris,31.24444,30.91111,Busiris,-332,640,1
+Sebennytos,31.26003,30.98508,Djebnetjer (Tjebnutjer),-2400,-332,0
+Sebennytos,31.26003,30.98508,Sebennytos,-332,640,1
+Mendes,31.51583,30.95833,Per-Banebdjedet (Djedet),-2400,-332,0
+Mendes,31.51583,30.95833,Mendes,-332,,1
+Sakha,30.95921,31.02599,Khasut/Khaset/Khasu),-2400,-332,0
+Sakha,30.95921,31.02599,Xois,-332,640,0
+Sakha,30.95921,31.02599,Sakha,640,,1
+Buto,30.74472,31.19639,Pe-Dep,-2400,-1570,0
+Buto,30.74472,31.19639,Per-Wadjit,-1570,-332,0
+Buto,30.74472,31.19639,Buto,-332,640,1
+Tura,31.26042,30.00226,Troyu/Royu,-2400,-332,0
+Tura,31.26042,30.00226,Troia,-332,300,0
+Tura,31.26042,30.00226,Tura,1000,,1
+Tanis,31.88,30.976944,Djanet/Suan,-1150,-332,0
+Tanis,31.88,30.976944,Tanis,-332,550,1
+Beersheba,34.799708,31.249772,Beersheba,-1000,,1
+Beersheba,34.799708,31.249772,Berosaba,-450,640,0
+Beersheba,34.799708,31.249772,Bir ssebi,1500,1918,0
+Citium,33.635714,34.932127,Kition,-1250,-58,0
+Citium,33.635714,34.932127,Citium,-58,342,1
+Yavne,34.738425,31.876462,Yavne,-1000,,1
+Yavne,34.738425,31.876462,Iamneia,-332,640,0
+Yavne,34.738425,31.876462,Yibna,640,1917,0
+Iamneia Paralios,34.696549,31.929643,Iamneia Paralios,-332,640,1
+Rafah,34.242503,31.290688,Robihwa,-1350,-1000,0
+Rafah,34.242503,31.290688,Rafiah,-1000,-730,0
+Rafah,34.242503,31.290688,Rafihu,-730,-332,0
+Rafah,34.242503,31.290688,Rhaphia,-332,-30,0
+Rafah,34.242503,31.290688,Raphia,-30,635,0
+Rafah,34.242503,31.290688,Rafh,635,1917,0
+Rafah,34.242503,31.290688,Rafah,1917,,1
+al-Farama,32.600128,31.049917,Sena,-2400,-1086,0
+al-Farama,32.600128,31.049917,Per-Amun,-1086,-332,0
+al-Farama,32.600128,31.049917,Pelusium,-332,632,0
+al-Farama,32.600128,31.049917,al-Farama,632,1516,1
+Naukratis,30.591928,30.900508,Naukratis,-630,540,1
+Tahpanhes,32.171531,30.860655,Tahpanhes,-650,-450,1
+Amathous,33.137081,34.712264,Amathous,-1100,700,1
+Kourion,32.883723,34.666227,Kourion,-1050,650,1
+Limassol,33.039628,34.67624,Limassol,-850,,1
+Limassol,33.039628,34.67624,Neapolis/Theodosias,400,650,0
+Paphos,32.406593,34.757212,Nea Paphos,-320,400,0
+Paphos,32.406593,34.757212,Paphos,400,,1
+Hebron,35.095,31.53333,Hebron,-1150,1600,1
+Jerusalem,35.2328,31.7887,Jerusalem,-2400,,1
+Jerusalem,35.2328,31.7887,Aelia Capitolina,130,638,0
+Jericho,35.46218,31.85544,Jericho,-1875,-586,1
+Amman,35.93278,31.94972,Rabat Amon,-2400,-250,0
+Amman,35.93278,31.94972,Philadelphia,-250,500,0
+Amman,35.93278,31.94972,Amman,500,,1
+Shechem,35.2875,32.2225,Shechem,-1900,-107,1
+Baysan,35.5,32.50395,Beth-Shean,-1700,-280,0
+Baysan,35.5,32.50395,Beit She'an,-1000,-732,0
+Baysan,35.5,32.50395,Scythopolis,-280,635,0
+Baysan,35.5,32.50395,Baysan,635,1100,1
+Megiddo,35.18056,32.57889,Megiddo,-2400,-332,1
+Megiddo,35.18056,32.57889,Megiddu,-732,-610,0
+Philoteria,35.57186,32.71796,Bet Yerah,-450,-250,0
+Philoteria,35.57186,32.71796,Philoteria,-250,640,1
+Akko,35.08167,32.92778,Akko,-2000,1918,1
+Akko,35.08167,32.92778,Ake,-350,-260,0
+Akko,35.08167,32.92778,Ptolemais,-260,638,0
+Akko,35.08167,32.92778,Akka,638,1104,0
+Akko,35.08167,32.92778,Acre,1104,1291,0
+Hazor,35.56905,33.01824,Hazor,-2400,-250,1
+Dan,35.652,33.249,Laish,-2400,-1150,0
+Dan,35.652,33.249,Dan,-1150,350,1
+Damascus,36.292,33.513,Damascus,-2400,,1
+Damascus,36.292,33.513,Demetrias,-90,-64,0
+Sayda,35.37348,33.56271,Sidon,-2400,636,0
+Sayda,35.37348,33.56271,Col. Aurelia Pia,220,250,0
+Sayda,35.37348,33.56271,Sayda,636,,1
+Kumidi,35.816,33.616,Kumidi,-2400,550,1
+Jubail,35.65111,34.12361,Gebal,-2400,-1190,0
+Jubail,35.65111,34.12361,Byblos,-1190,636,0
+Jubail,35.65111,34.12361,Gibelet,636,1516,0
+Jubail,35.65111,34.12361,Jubail,1516,,1
+Tadmor (Palmyra),38.27945,34.56109,Tadmor,-2100,-330,0
+Tadmor (Palmyra),38.27945,34.56109,Palmyra,-330,634,0
+Tadmor (Palmyra),38.27945,34.56109,Tadmur,634,1600,0
+Tadmor (Palmyra),38.27945,34.56109,Tadmor (Palmyra),1600,,1
+Qatna,36.86583,34.835,Qatna,-2400,-600,1
+Beirut,35.51306,33.88694,Biruta,-2400,-600,0
+Beirut,35.51306,33.88694,Berytus,-600,635,0
+Beirut,35.51306,33.88694,Laodikeia en te Phoinike,-135,-14,0
+Beirut,35.51306,33.88694,Col. Iulia Augusta Felix,-14,300,0
+Beirut,35.51306,33.88694,Beirut,635,,1
+es-Sur,35.1964,33.27254,Sur,-1600,-1190,0
+es-Sur,35.1964,33.27254,Tyre,-1190,1291,0
+es-Sur,35.1964,33.27254,Tyrus,-331,635,0
+es-Sur,35.1964,33.27254,Col. Septimia Severa,200,300,0
+es-Sur,35.1964,33.27254,es-Sur,635,,1
+Rouad,35.86207,34.85989,Arwad(a),-2200,-332,0
+Rouad,35.86207,34.85989,Arados,-332,635,0
+Rouad,35.86207,34.85989,Rouad,635,,1
+Arqa,36.04583,34.53056,Irqata,-2400,-800,0
+Arqa,36.04583,34.53056,Arqa,-800,,1
+Arqa,36.04583,34.53056,Herakleia en Phoinike,-300,-10,0
+Arqa,36.04583,34.53056,Caesarea ad Libanum,-10,300,0
+Arqa,36.04583,34.53056,Arca,300,635,0
+Amrit,35.91185,34.82712,Amrit,-2100,-330,1
+Castle Umberti,35.10506,33.05107,Achziv,-2000,-701,0
+Castle Umberti,35.10506,33.05107,Ekdippa,-500,1100,0
+Castle Umberti,35.10506,33.05107,Castle Umberti,1100,1290,1
+Kabrita,35.13908,33.00838,Rehob,-1350,-701,0
+Kabrita,35.13908,33.00838,Kabrita,-500,300,1
+Achshaph?,35.17635,32.87542,Achshaph?,-1150,-1000,1
+Gennesar,35.5302,32.86102,Kinnereth,-1650,-300,0
+Gennesar,35.5302,32.86102,Gennesar,-300,550,1
+Shihor-Libna(t)h?,35.0192,32.8008,Shihor-Libna(t)h?,-1050,-700,1
+Yokneam,35.2072,32.64834,Yokneam,-2400,-700,1
+Kadasa,35.52952,33.11164,Kedesh,-2000,-148,0
+Kadasa,35.52952,33.11164,Kadasa,100,550,1
+Tha'anach,35.2139,32.47345,Taanach,-1750,-300,0
+Tha'anach,35.2139,32.47345,Tha'anach,-300,1750,1
+Tabaqat Fahl,35.61364,32.46102,Pihil(u),-2400,-700,0
+Tabaqat Fahl,35.61364,32.46102,Pella,-250,635,0
+Tabaqat Fahl,35.61364,32.46102,Berenice/Philippeia,-200,-50,0
+Tabaqat Fahl,35.61364,32.46102,Tabaqat Fahl,635,,1
+Dothan,35.23986,32.41353,Dothan,-2400,-721,1
+Tizrah,35.3378,32.28739,Tizrah,-1150,-610,1
+Zarethan,35.57656,32.27571,Zarethan,-780,-721,1
+Silo,35.28647,32.05989,Shiloh,-1110,-720,0
+Silo,35.28647,32.05989,Silo,-300,700,1
+Beitin,35.23817,31.92834,Luz?,-1400,-1200,0
+Beitin,35.23817,31.92834,Bethel,-1150,-590,0
+Beitin,35.23817,31.92834,Beitin,1810,,1
+el-Jib,35.18808,31.85198,Gibeon,-1150,-600,0
+el-Jib,35.18808,31.85198,Gabaon,-30,638,0
+el-Jib,35.18808,31.85198,el-Jib,638,999,1
+Tell Iktanu,35.66667,31.81667,Tell Iktanu,1600,,1
+Bethsoura,35.093,31.58621,Beth-Zur,-1060,-587,0
+Bethsoura,35.093,31.58621,Beth Zur,-450,-300,0
+Bethsoura,35.093,31.58621,Bethsoura,-300,-100,1
+Dhiban,35.78336,31.49944,Dibon,-1000,638,0
+Dhiban,35.78336,31.49944,Dhiban,638,,1
+Lehun,35.85205,31.50441,Lehun,-1300,-539,1
+Aroer,35.80449,31.45903,Aroer,-1250,-582,1
+Laodicea ad Libanum,36.50714,34.55706,Qadesh,-2400,-550,0
+Laodicea ad Libanum,36.50714,34.55706,Laodicea ad Libanum,-310,550,1
+Ullassa,35.851,34.4424,Ullassa,-1600,-1150,1
+Simyra,35.997,34.7173,Sumri,-2000,-1476,0
+Simyra,35.997,34.7173,Sumur,-1476,-1180,0
+Simyra,35.997,34.7173,Simirra,-1000,-330,0
+Simyra,35.997,34.7173,Simyra,-330,640,1
+Jabesh-Gilead,35.5951,32.399,Jabesh-Gilead,-1152,-600,1
+Kabul,35.2022,32.8697,Cabul,-1100,-330,0
+Kabul,35.2022,32.8697,Chabolo,-330,640,0
+Kabul,35.2022,32.8697,Kabul,640,,1
+Sebeste,35.195,32.2764,Samaria,-876,-30,0
+Sebeste,35.195,32.2764,Sebeste,-30,,1
+Jenin,35.3025,32.4618,Gina,-1500,-30,0
+Jenin,35.3025,32.4618,Ginai,-30,640,0
+Jenin,35.3025,32.4618,Jenin,640,,1
+Succoth,35.6031,32.1889,Succoth,-1050,-450,1
+Ramoth-Gilead,36.0167,32.5,Ramoth-Gilead,-1050,-500,1
+Al-Karak,35.7033,31.1832,Karak,-2400,-330,0
+Al-Karak,35.7033,31.1832,Kir-Haresheth,-1200,-582,0
+Al-Karak,35.7033,31.1832,Characmoba,-330,640,0
+Al-Karak,35.7033,31.1832,Al-Karak,640,,1
+Al-Karak,35.7033,31.1832,Kerak,1099,1291,0
+Madaba,35.7945,31.7173,Medeba,-1500,-330,0
+Madaba,35.7945,31.7173,Madaba,-330,,1
+Petra,35.4419,30.3286,Petra,-1200,363,1
+Arad,35.125,31.2808,Arad,-2400,700,1
+Tripoli,35.812,34.449,Athar,-750,-333,0
+Tripoli,35.812,34.449,Tripolis,-333,635,0
+Tripoli,35.812,34.449,Tarabulus,635,1920,0
+Tripoli,35.812,34.449,Tripoli,1109,,1
+Babylon,44.42083,32.60306,Babylon,-2400,,1
+Kish,44.65,32.55,Kish,-2400,560,1
+Cutha,44.61278,32.75722,Cutha,-2400,-100,1
+Marad,44.78333,32.06667,Marda,-2400,-2300,0
+Marad,44.78333,32.06667,Marad,-2300,-150,1
+Dilbat,44.45745,32.28507,Dilbat,-2400,800,1
+Akkad,44.3871,33.3258,Agade,-2400,-2333,0
+Akkad,44.3871,33.3258,Akkad,-2333,-415,1
+Borsippa,44.34169,32.392,Borsippa,-2050,700,1
+Urum?,44.68333,32.78333,Urum?,-2400,-560,1
+Sippar,44.25222,33.05889,Sippar,-2400,200,1
+Dur-Samsu-iluna,44.55575,33.35468,Tutub,-2400,-1725,0
+Dur-Samsu-iluna,44.55575,33.35468,Dur-Samsu-iluna,-1725,-1500,1
+Shaduppum,44.46667,33.36667,Shaduppum,-2400,-1792,1
+Eshnunna,44.75,33.75,Eshnunna,-2400,-1700,1
+Harada,41.6,34.43333,Haradum,-1900,-1629,0
+Harada,41.6,34.43333,Harada,-1050,-550,1
+Mari,40.89,34.54944,Mari,-2400,-300,1
+Ashara,40.567,34.9321,Terqa,-2400,-1150,0
+Ashara,40.567,34.9321,Sirqu,-900,-700,0
+Ashara,40.567,34.9321,Asichia,-100,650,0
+Ashara,40.567,34.9321,Ashara,650,,1
+Kazallu,44.4255,32.7195,Kazallu,-2400,-1700,1
+Ctesiphon,44.5806,33.0936,Upi,-2100,-1100,0
+Ctesiphon,44.5806,33.0936,Opis,-1100,-200,0
+Ctesiphon,44.5806,33.0936,Ctesiphon,-200,750,1
+Rapiqu(m),43.9052,33.2783,Rapiqu(m),-2200,-650,1
+Hit,42.8696,33.6335,Id(u),-2400,-900,0
+Hit,42.8696,33.6335,Itu,-900,-500,0
+Hit,42.8696,33.6335,Is,-500,-100,0
+Hit,42.8696,33.6335,Diacira,-100,600,0
+Hit,42.8696,33.6335,Hit,600,,1
+Nerebtum,44.65,33.7167,Nerebtum,-2100,-1200,1
+Ana,41.9918,34.4593,Hanat,-1950,-1000,0
+Ana,41.9918,34.4593,Ana(t),-1000,-50,0
+Ana,41.9918,34.4593,Anatho,-50,700,0
+Ana,41.9918,34.4593,Ana,700,,1
+Harbu,42.6355,33.7135,Herbe,-1875,-1000,0
+Harbu,42.6355,33.7135,Harbu,-1000,-575,1
+Yabliya,42.6221,33.8177,Yabliya,-1975,-1200,1
+Mulhan,42.4833,33.9421,Mulhan,-1925,-1300,1
+Sab/piritu,42.2147,34.1993,Sabiratum,-2000,-1000,0
+Sab/piritu,42.2147,34.1993,Sab/piritu,-1000,-750,1
+Mishlan,40.9319,34.3988,Mishlan,-1950,-1400,1
+Samanum,40.518,34.8236,Samanum,-1975,-1450,1
+Sippar-Anunnitu,44.4833,33.1667,Sippar-Amnanum,-2250,-1550,0
+Sippar-Anunnitu,44.4833,33.1667,Sippar-Anunnitu,-1400,-425,1
+Mankisum,44.4859,33.6514,Mankisum,-2125,-1375,1
+Shitallum,43.7759,34.4981,Shitallum,-1925,-1650,1
+Dur-Galzu,44.2022,33.3536,Dur-Kurigalzu,-1397,-1150,0
+Dur-Galzu,44.2022,33.3536,Parsa,-1120,-950,0
+Dur-Galzu,44.2022,33.3536,Dur-Galzu,-950,-475,1
+Eridu,45.99607,30.81584,Eridu,-2400,-550,1
+Dur-Yakin,46.33333,30.83333,Kuara,-2400,-1000,0
+Dur-Yakin,46.33333,30.83333,Dur-Yakin,-1000,-707,1
+Ur,46.10306,30.9625,Ur,-2400,-400,1
+Larsa,45.85361,31.28583,Larsa,-2400,100,1
+Uruk,45.63611,31.32222,Uruk,-2400,700,1
+City of Lagash,46.40722,31.41139,City of Lagash,-2400,-1750,1
+Girsu,46.15,31.61667,Girsu,-2400,-1700,1
+Umma,45.86667,31.63333,Umma,-2400,-1600,1
+Zabala,45.87139,31.73639,Zabala,-2400,-1500,1
+Bad-tibira,46.0,31.76667,Bad-tibira,-2400,-1750,1
+Shuruppak,45.50976,31.77736,Shuruppak,-2400,-1980,1
+Kisurra,45.43333,31.83333,Kisurra,-2400,-1300,1
+Isin,45.28333,31.93333,Isin,-2400,-330,1
+Adab,45.96667,31.95,Adab,-2400,-1250,1
+Dur Untush,48.52083,32.00833,Dur Untush,-1250,-1240,1
+Kabnak,48.32639,32.07889,Kabnak,-1600,-500,1
+Nufar,45.23083,32.12694,Nippur,-2400,100,0
+Nufar,45.23083,32.12694,Nufar,100,800,1
+Der,45.931389,33.123611,Der,-2400,-300,1
+Shush,48.25779,32.18922,Susa,-2400,-280,0
+Shush,48.25779,32.18922,Seleukeia,-280,638,0
+Shush,48.25779,32.18922,Shush,638,,1
+Me-Turran,45.05464,34.09729,Me-Turran,-2075,-375,1
+Zurghul,46.64737,31.37104,Nina-Sirana,-2400,-2075,0
+Zurghul,46.64737,31.37104,Nina,-800,-500,0
+Zurghul,46.64737,31.37104,Zurghul,1000,,1
+Kutalla,45.64737,31.46154,Kutalla,-2000,-1550,1
+Kakru,45.71164,31.80995,Karkar,-2400,-1800,0
+Kakru,45.71164,31.80995,Kakru,-1800,-1250,1
+Awan,47.5269,33.1244,Awan,-2400,-1950,1
+Larak,45.51852,32.60259,Larak,-2400,-525,1
+Akshak,45.7043,34.181,Akshak,-2400,-2000,1
+Urua (Arawa)?,47.12995,32.67453,Urua (Arawa)?,-2400,-1500,1
+Ram Hormizd,49.41222,31.36028,Ram Hormizd,220,700,1
+Zabban,45.6017,34.8808,Simurrum,-2400,-1500,0
+Zabban,45.6017,34.8808,Zabban,-800,-500,1
+Malgium,45.2293,32.7703,Malgium,-2000,-1550,1
+Hamadan,48.512209,34.799294,Hamadan,-1200,,1
+Hamadan,48.512209,34.799294,Hagmatana,-750,-330,0
+Hamadan,48.512209,34.799294,Ecbatana,-330,632,0
+Isfahan,51.69519,32.64706,Gabae/Aspadana,-330,-170,0
+Isfahan,51.69519,32.64706,Gay/Spahan,-170,220,0
+Isfahan,51.69519,32.64706,Jayy/(I)Spahan,220,644,0
+Isfahan,51.69519,32.64706,Isfahan,644,,1
+Anshan,52.40778,30.01167,Anshan,-2400,600,1
+Huhnur,50.52802,30.78231,Huhnur,-2400,-1100,1
+Pasargadae,53.172733,30.191439,Pasargadae,-550,300,1
+Herat,62.188384,34.345833,Artakoana,-520,-330,0
+Herat,62.188384,34.345833,Alexandria Ariana,-330,-167,0
+Herat,62.188384,34.345833,Hariy,-167,652,0
+Herat,62.188384,34.345833,Herat,652,,1
+Farah,61.490615,32.452692,Alexandria Prophthasia,-330,-150,0
+Farah,61.490615,32.452692,Phrah,-150,640,0
+Farah,61.490615,32.452692,Farah,640,,1
+Zranka/Zarin,61.136446,30.779792,Zranka/Zarin,-544,-309,1
+Kapisa,69.755491,34.951323,Kapisa,-1250,1400,1
+Kabul,69.18024,34.521818,Kubha,-1200,-545,0
+Kabul,69.18024,34.521818,Ortospana,-545,-330,0
+Kabul,69.18024,34.521818,Kophen,-330,226,0
+Kabul,69.18024,34.521818,Kabul,226,,1
+Ghazni,68.388483,33.498616,Gazaca,-700,-543,0
+Ghazni,68.388483,33.498616,Arachtos,-543,-329,0
+Ghazni,68.388483,33.498616,Alexandria in Opiana,-329,-30,0
+Ghazni,68.388483,33.498616,Arachosiorum Oppidum,-30,226,0
+Ghazni,68.388483,33.498616,Jaguda,226,684,0
+Ghazni,68.388483,33.498616,Ghazni,684,,1
+Kandahar,65.700272,31.61088,Arakhotoi,-543,-329,0
+Kandahar,65.700272,31.61088,Alexandreia,-329,-30,0
+Kandahar,65.700272,31.61088,Cufis,-30,690,0
+Kandahar,65.700272,31.61088,Kandahar,690,,1
+Kandahar,65.700272,31.61088,Teginabad,950,1150,0
+Peucela,71.736,34.168,Pushkalavati,-1300,-150,0
+Peucela,71.736,34.168,Peucela,-150,180,1
+Taxila,72.7875,33.745833,Takshasila,-1000,-326,0
+Taxila,72.7875,33.745833,Taxila,-326,700,1
+Sialkot,74.541542,32.238201,Sakala,-950,10,0
+Sialkot,74.541542,32.238201,Sialkot,10,,1
+Chengdu,104.066111,30.656944,Chengdu,-1200,,1
+Quanqiu,104.976944,34.100833,Xichui,-1034,-800,0
+Quanqiu,104.976944,34.100833,Quanqiu,-800,,1
+Xi'an,108.768333,34.2755,Feng,-1051,-1044,0
+Xi'an,108.768333,34.2755,Fenghao,-1044,-771,0
+Xi'an,108.768333,34.2755,Xianyang,-350,-206,0
+Xi'an,108.768333,34.2755,Chang'an,-202,904,0
+Xi'an,108.768333,34.2755,Daxing,582,618,0
+Xi'an,108.768333,34.2755,Xincheng,904,1370,0
+Xi'an,108.768333,34.2755,Xi'an,1370,,1
+Qishan,107.842697,34.494169,Zhouyuan,-1066,-771,0
+Qishan,107.842697,34.494169,Qishan,-755,-200,1
+Baoji,107.238056,34.363056,Yu,-1120,-771,0
+Baoji,107.238056,34.363056,Baoji,700,,1
+Enshi,109.483333,30.283333,Yicheng,-1100,-771,0
+Enshi,109.483333,30.283333,Enshi,-771,,1
+Tianshui,105.733333,34.583333,Qin City,-900,-206,0
+Tianshui,105.733333,34.583333,Tianshui,-206,,1
+Qian,106.789722,34.834722,Qian,-776,-210,1
+Xidu,107.420556,34.56,Yong,-762,618,0
+Xidu,107.420556,34.56,Xidu,618,1000,1
+Baoji,107.238056,34.363056,Pingtang,-900,-210,0
+Baoji,107.238056,34.363056,Baoji,-210,,1
+Zhengzhou,113.683889,34.763889,Ao,-1570,-1045,0
+Zhengzhou,113.683889,34.763889,Guancheng,-1045,605,0
+Zhengzhou,113.683889,34.763889,Zhengzhou,605,,1
+Qi,114.7831,34.5489,Qi,-1590,-770,1
+Luoyang,112.442222,34.669722,Zhenxun,-2070,-1600,0
+Luoyang,112.442222,34.669722,Western Bo,-1600,-1200,0
+Luoyang,112.442222,34.669722,Chong,-1200,-1036,0
+Luoyang,112.442222,34.669722,Chengzhou,-1036,25,0
+Luoyang,112.442222,34.669722,Luoyang,25,,1
+Wangcheng,112.307622,34.669722,Wangcheng,-1026,25,1
+Dengfeng,113.025278,34.455278,Yangcheng,-2070,-1600,0
+Dengfeng,113.025278,34.455278,Ying,-1600,-1,0
+Dengfeng,113.025278,34.455278,Dengfeng,-1,,1
+Shangcai,114.2639,33.2619,Cai,-1045,-531,0
+Shangcai,114.2639,33.2619,Shangcai,-1,,1
+Danyang,111.4241,32.6379,Danyang,-1030,-600,1
+Ezhou,114.8833,30.4,Ezhou,-1020,,1
+Ezhou,114.8833,30.4,Wuchang,250,1915,0
+Sanmenxia,111.2011,34.7731,Shangyang,-816,-220,0
+Sanmenxia,111.2011,34.7731,Sanmenxia,-220,,1
+Xi,114.74,32.3431,Xi,-1122,-200,1
+Jingzhou,112.2419,30.3361,Ying,-2400,-200,0
+Jingzhou,112.2419,30.3361,Jingzhou,-200,,1
+Xuzhou,117.216667,34.266667,Qiuwan,-1450,-640,0
+Xuzhou,117.216667,34.266667,Pengcheng,-640,421,0
+Xuzhou,117.216667,34.266667,Xuzhou,421,,1
+Xintai,117.768056,34.908889,Qi,-770,-445,0
+Xintai,117.768056,34.908889,Xintai,1730,,1
+Shangqiu,115.656111,34.415,Shangqiu,-1045,,1
+Wuxi,120.3,31.566667,Meili,-1126,-1000,0
+Wuxi,120.3,31.566667,Wuxi,-1000,,1
+Shaoxing,120.579167,30.001667,Kuaji,-489,1131,0
+Shaoxing,120.579167,30.001667,Shaoxing,1131,,1
+Suzhou,120.585278,31.299722,Gusu,-700,-514,0
+Suzhou,120.585278,31.299722,Helu City,-514,-470,0
+Suzhou,120.585278,31.299722,Wujun,-470,-220,0
+Suzhou,120.585278,31.299722,Kuaiji,-220,589,0
+Suzhou,120.585278,31.299722,Suzhou,589,,1
+Ibiza,1.432146,38.908393,Ibossim,-654,-205,0
+Ibiza,1.432146,38.908393,Ebusus,-205,902,0
+Ibiza,1.432146,38.908393,Yabisah,902,1235,0
+Ibiza,1.432146,38.908393,Elvissa,1235,1715,0
+Ibiza,1.432146,38.908393,Ibiza,1715,,1
+Tipaza,2.441918,36.594243,Tipasa,-610,696,0
+Tipaza,2.441918,36.594243,Tefassid,696,1852,0
+Tipaza,2.441918,36.594243,Tipaza,1852,,1
+Algiers,3.053218,36.768912,Yksm,-400,-146,0
+Algiers,3.053218,36.768912,Icosium,-146,720,0
+Algiers,3.053218,36.768912,Algiers,944,,1
+Annaba,7.751272,36.882478,Hippo Regius,-206,399,0
+Annaba,7.751272,36.882478,Hippona,399,698,0
+Annaba,7.751272,36.882478,Bona,431,1160,0
+Annaba,7.751272,36.882478,Annaba,1160,,1
+Annaba,7.751272,36.882478,Bone,1832,1962,0
+Nora,9.015282,38.984818,Nora,-780,750,1
+Sulci,8.4547,39.061743,SLKY (Sulci),-716,-258,0
+Sulci,8.4547,39.061743,Sulci,-258,700,1
+Tharros,8.440249,39.879432,Tharros,-710,1070,1
+Cagliari,9.109522,39.214886,KRLY (Karaly),-700,-258,0
+Cagliari,9.109522,39.214886,Caralis,-258,850,0
+Cagliari,9.109522,39.214886,Cagliari,850,,1
+Jijel,5.766168,36.8213,Yglglt,-500,-146,0
+Jijel,5.766168,36.8213,Igilgili,-146,698,0
+Jijel,5.766168,36.8213,Jijel,698,,1
+Bizerte,9.87311,37.27615,PWN (Hippo),-1100,-146,0
+Bizerte,9.87311,37.27615,Hippo Diarrhytus (Acra),-146,698,0
+Bizerte,9.87311,37.27615,Bizerte,698,,1
+Dugga,9.21869,36.42324,TBGG,-595,-146,0
+Dugga,9.21869,36.42324,Thugga,-146,698,0
+Dugga,9.21869,36.42324,Dugga,698,1000,1
+Utica,10.061305,37.055611,Utica,-1102,700,1
+Carthage,10.3233,36.8528,Carthage,-814,,1
+Carthage,10.3233,36.8528,Colonia Iunonia,-122,-90,0
+Carthage,10.3233,36.8528,Colonia Julia Carthago,-50,696,0
+Lentini,14.998115,37.285478,Leontini,-730,300,0
+Lentini,14.998115,37.285478,Lentini,300,,1
+Motya,12.469698,37.868091,Motya,-716,-30,1
+Hadrumetum,10.63878,35.825866,DRMT (Hadrumetum),-850,-146,0
+Hadrumetum,10.63878,35.825866,Hadrumetum,-146,696,1
+Palermo,13.353442,38.11127,Ziz,-734,-400,0
+Palermo,13.353442,38.11127,Panormus,-400,900,0
+Palermo,13.353442,38.11127,Palermo,900,,1
+Mdina,14.400124,35.885167,Maleth,-703,-218,0
+Mdina,14.400124,35.885167,Melite,-210,545,0
+Mdina,14.400124,35.885167,Melita,545,1048,0
+Mdina,14.400124,35.885167,Medina,1058,1091,0
+Mdina,14.400124,35.885167,Malta,1091,1964,0
+Mdina,14.400124,35.885167,Mdina,1964,,1
+Terranova di Sicilia,14.25847,37.063093,Gela,-688,1233,0
+Terranova di Sicilia,14.25847,37.063093,Terranova,1233,1927,0
+Terranova di Sicilia,14.25847,37.063093,Terranova di Sicilia,1927,,1
+Acre,14.896706,37.058593,Acrae,-664,-211,0
+Acre,14.896706,37.058593,Acre,-211,540,1
+Termini Imerese,13.822496,37.970797,Himera,-648,-409,0
+Termini Imerese,13.822496,37.970797,Thermae,-409,1100,0
+Termini Imerese,13.822496,37.970797,Termini Imerese,1100,,1
+Kasmenai,14.836284,37.073804,Kasmenai,-644,-212,1
+Selinus,12.872912,37.572937,Selinus,-628,-250,1
+Camarina,14.46942,36.860289,Kamarina,-598,-258,0
+Camarina,14.46942,36.860289,Camarina,-258,853,1
+Agrigento,13.58548,37.290594,Akragas,-582,-210,0
+Agrigento,13.58548,37.290594,Agrigentum,-210,828,0
+Agrigento,13.58548,37.290594,Kirkent/Jirjent,828,1038,0
+Agrigento,13.58548,37.290594,Girgenti,1038,1087,0
+Agrigento,13.58548,37.290594,Agrigento,1087,,1
+Segesta,12.83249,37.941433,Segesta,-900,900,1
+Lipari,14.9539,38.467419,Lipara,-578,839,0
+Lipari,14.9539,38.467419,Lipari,1100,,1
+Heraclea Minoa,13.27982,37.391916,Minoa,-550,-510,0
+Heraclea Minoa,13.27982,37.391916,Heraclea Minoa,-510,70,1
+Eryx,12.58361,38.036517,Eryx,-850,100,1
+Trapani,12.51782,38.017128,Drepanon,-511,-241,0
+Trapani,12.51782,38.017128,Drepanum,-241,827,0
+Trapani,12.51782,38.017128,Trapani,827,,1
+Soluntum,13.5313,38.092439,Kapara,-725,-396,0
+Soluntum,13.5313,38.092439,Solontinos,-396,-254,0
+Soluntum,13.5313,38.092439,Soluntum,-254,830,1
+Mineo,14.69094,37.266404,Menai,-460,-330,0
+Mineo,14.69094,37.266404,Menainon,-330,1000,0
+Mineo,14.69094,37.266404,Mineo,1000,,1
+Palike,14.69736,37.329954,Palike,-454,-440,1
+Inessa/Aetna,14.9,37.61667,Inessa/Aetna,-476,100,1
+Caronia,14.44077,38.024474,Kale Akte,-447,-100,0
+Caronia,14.44077,38.024474,Caleacte,-100,800,0
+Caronia,14.44077,38.024474,Caronia,800,,1
+Enna,14.28015,37.5672,Enna,-1150,,1
+Adrano,14.83337,37.66197,Adranon,-400,-263,0
+Adrano,14.83337,37.66197,Adranum,-263,950,0
+Adrano,14.83337,37.66197,Adrano,950,,1
+Entella,13.12498,37.77398,Entella,-750,1240,1
+Agira,14.52599,37.65624,Agyrion,-550,-263,0
+Agira,14.52599,37.65624,Agyrium,-263,950,0
+Agira,14.52599,37.65624,Agira,950,,1
+Centuripe,14.74002,37.62407,Centuripe,-500,,1
+Centuripe,14.74002,37.62407,Centorbi,1548,1863,0
+Kelibia,11.11579,36.83851,Aspis,-450,-146,0
+Kelibia,11.11579,36.83851,Clypea,-146,696,0
+Kelibia,11.11579,36.83851,Kelibia,696,,1
+Cefalu,14.02557,38.03814,Kephaloidion,-380,-254,0
+Cefalu,14.02557,38.03814,Cephaloedium,-254,858,0
+Cefalu,14.02557,38.03814,Gafludi,858,1063,0
+Cefalu,14.02557,38.03814,Cefalu,1063,,1
+Apollonia (Sicily),14.59565,38.03247,Apollonia (Sicily),-390,250,1
+Licata,13.93184,37.10001,Phintias,-282,750,0
+Licata,13.93184,37.10001,Licata,750,,1
+Halaesa,14.2629,37.99799,Halaesa,-403,100,1
+Corfu,19.9156,39.6063,Corcyra,-740,900,0
+Corfu,19.9156,39.6063,Corfu,900,,1
+Naxos,15.2678,37.8225,Naxos,-734,-404,1
+Syracuse,15.2792,37.0716,Syracuse,-734,,1
+Megara/Hyblaea,15.1818,37.2037,Megara Hyblaea,-726,-484,0
+Megara/Hyblaea,15.1818,37.2037,Megara/Hyblaea,-414,-30,1
+Catania,15.0881,37.503,Catane,-728,-263,0
+Catania,15.0881,37.503,Aitna,-476,-462,0
+Catania,15.0881,37.503,Catana,-263,650,0
+Catania,15.0881,37.503,Catania,650,,1
+Messina,15.5566,38.1923,Zancle,-724,-490,0
+Messina,15.5566,38.1923,Messina,-490,,1
+Messina,15.5566,38.1923,Messana,-263,630,0
+Reggio di Calabria,15.647,38.1107,Erythra,-1100,-721,0
+Reggio di Calabria,15.647,38.1107,Rhegion,-721,-263,0
+Reggio di Calabria,15.647,38.1107,Rhegium,-263,918,0
+Reggio di Calabria,15.647,38.1107,Rivah,918,1060,0
+Reggio di Calabria,15.647,38.1107,Risa,1060,1266,0
+Reggio di Calabria,15.647,38.1107,Regols,1266,1510,0
+Reggio di Calabria,15.647,38.1107,Reggio,1510,1860,0
+Reggio di Calabria,15.647,38.1107,Reggio di Calabria,1860,,1
+Copia/Thruii,16.4909,39.7157,Sybaris,-720,-444,0
+Copia/Thruii,16.4909,39.7157,Thurii,-444,-204,0
+Copia/Thruii,16.4909,39.7157,Thruii,-204,-194,0
+Copia/Thruii,16.4909,39.7157,Copia/Thruii,-194,1350,1
+Milazzo,15.240438,38.219365,Mylae,-716,900,0
+Milazzo,15.240438,38.219365,Milazzo,900,,1
+Crotone,17.12797,39.08117,Croton,-710,900,0
+Crotone,17.12797,39.08117,Crotone,900,,1
+Helorus,15.1074,36.8415,Helorus,-700,50,1
+Epizephyrian Locris,16.2443,38.2263,Epizephyrian Locris,-680,915,1
+Caulonia,16.4098,38.3825,Caulonia,-650,-200,1
+Vibo Valentia,16.0976,38.6756,Hipponion,-646,-194,0
+Vibo Valentia,16.0976,38.6756,Vibo Valentia,-194,,1
+Vibo Valentia,16.0976,38.6756,Monteleone,1235,1928,0
+Laus,15.8244,39.7677,Laus,-638,50,1
+Medma,15.9764,38.4873,Medma,-614,100,1
+Tempsa,16.1596,39.0365,Temesa,-516,-194,0
+Tempsa,16.1596,39.0365,Tempsa,-194,550,1
+Terina,16.2389,38.9449,Terina,-480,540,1
+Sybaris on the Traeis,16.771,39.5906,Sybaris on the Traeis,-444,-350,1
+Tindari,15.0446,38.1427,Tyndaris,-396,600,0
+Tindari,15.0446,38.1427,Tindari,600,900,1
+Taormina,15.2921,37.8524,Tauromenion,-396,-241,0
+Taormina,15.2921,37.8524,Tauromenium,-241,962,0
+Taormina,15.2921,37.8524,Al-Mu'izziyya,962,1078,0
+Taormina,15.2921,37.8524,Taormina,1078,,1
+Cosenza,16.253611,39.295395,Consentia,-500,800,0
+Cosenza,16.253611,39.295395,Cosenza,800,,1
+Phaistos,24.8143,35.0465,Phaistos,-2400,-220,1
+Aegina,23.4469,37.7506,Aegina,-2000,,1
+Mycenae,22.7564,37.7308,Mycenae,-2400,-464,1
+Tiryns,22.7997,37.5994,Tiryns,-2400,-468,1
+Iolcos,22.96886,39.366305,Iolcos,-1700,-294,1
+Thebes (Greece),23.327577,38.319156,Thebes (Greece),-2400,,1
+Thebes (Greece),23.327577,38.319156,Istefe,1458,1832,0
+Gla,23.181914,38.484051,Gla,-379,-378,1
+Orchomenus (Boeotia),22.978315,38.494575,Orchomenus (Boeotia),-1650,,1
+Therapne,22.454916,37.060007,Therapne,-2000,-1160,1
+Kichyros,20.527922,39.246912,Kichyros,-1550,330,1
+Kichyros,20.527922,39.246912,Ephyra,-750,-340,0
+Thermon,21.667571,38.558783,Thermon,-1500,-189,1
+Delphi,22.501169,38.482289,Python,-1600,-1050,0
+Delphi,22.501169,38.482289,Delphi,-1050,,1
+Delphi,22.501169,38.482289,Kastri,1430,1870,0
+Kirra,22.45194,38.44704,Krisa,-1350,-650,0
+Kirra,22.45194,38.44704,Kirra,-650,-586,1
+Calydon,21.533182,38.372926,Calydon,-1575,-31,1
+Eutresis,23.2086,38.1846,Eutresis,-2400,-1180,1
+Old Eretria,23.682171,38.411782,Xeropolis,-1050,-800,0
+Old Eretria,23.682171,38.411782,Old Eretria,-800,-600,1
+Brauron,23.993611,37.929167,Vrauron,-2000,-1250,0
+Brauron,23.993611,37.929167,Brauron,-750,-250,1
+Argos,22.719464,37.631561,Argos,-2400,,1
+Lerna,22.718326,37.551241,Lerna,-2400,-2100,1
+Athens,23.726158,37.97583,Athenae,-2400,750,0
+Athens,23.726158,37.97583,Athens,750,,1
+Pylos,21.695,37.028,Pylos,-2400,-621,1
+Aigeira,22.377887,38.129793,Hyperesia,-2400,-688,0
+Aigeira,22.377887,38.129793,Aigeira,-688,,1
+Sparti,22.427298,37.077905,Sparta,-950,1834,0
+Sparti,22.427298,37.077905,Sparti,1834,,1
+Amyclae,22.437225,37.026007,Amyclae,-930,-740,1
+Messene,21.92169,37.179299,Messene,-950,,1
+Helos,22.6075,36.843333,Helos,-950,-10,1
+Chalkida,23.621937,38.457139,Chalcis,-1550,395,0
+Chalkida,23.621937,38.457139,Euripos,395,1209,0
+Chalkida,23.621937,38.457139,Negropont,1209,1470,0
+Chalkida,23.621937,38.457139,Chalkida,1470,,1
+Asine,22.874167,37.526667,Asine,-850,-700,1
+Ampheia,22.075138,37.264193,Ampheia,-750,350,1
+Corinth,22.89998,37.898002,Corinth,-900,1858,1
+Corinth,22.89998,37.898002,Gordes,1458,1832,0
+Megara,23.340163,37.985078,Megara,-850,,1
+Elis,21.375091,37.891781,Elis,-1100,,1
+Olympia,21.630875,37.638689,Olympia,-776,,1
+Lepreum,21.726002,37.432321,Lepreum,-725,950,1
+Helike,22.144303,38.220538,Helike,-1250,-374,1
+Rhypes,22.018942,38.213931,Rhypes,-750,-30,1
+Scione,23.574785,39.939063,Scione,-702,540,1
+Buchetium,20.850515,39.160816,Bouchetion,-702,-30,0
+Buchetium,20.850515,39.160816,Buchetium,-30,640,1
+Eretria,23.791806,38.399266,Eretria,-700,540,1
+Makyneia,21.726328,38.355157,Makyneia,-700,,1
+Karystos,24.420381,38.016541,Carystus,-1300,1830,0
+Karystos,24.420381,38.016541,Karystos,1830,,1
+Pandosia,20.677687,39.278395,Pandosia,-685,330,1
+Sicyon,22.712193,37.983819,Sicyon,-1350,300,1
+Sicyon,22.712193,37.983819,Demetrias,-303,-275,0
+Elateia (Epirus),20.715556,39.163333,Elateia (Epirus),-668,-350,1
+Alea,22.420672,37.455301,Tegea,-875,875,0
+Alea,22.420672,37.455301,Amyklion,875,1205,0
+Alea,22.420672,37.455301,Nikli,1205,1450,0
+Alea,22.420672,37.455301,Piali,1450,1915,0
+Alea,22.420672,37.455301,Alea,1915,,1
+Anactorium,20.843498,38.920935,Anactorium,-654,530,1
+Lefkada,20.713116,38.807342,Leucas,-648,1350,0
+Lefkada,20.713116,38.807342,Lefkada,1350,,1
+Arta,20.990092,39.154924,Ambracia,-636,800,0
+Arta,20.990092,39.154924,Arta,800,,1
+Arta,20.990092,39.154924,Narda,1449,1881,0
+Nafplio,22.808706,37.568123,Nauplia,-680,600,0
+Nafplio,22.808706,37.568123,Nafplion,600,1388,0
+Nafplio,22.808706,37.568123,Napoli di Romania,1388,1715,0
+Nafplio,22.808706,37.568123,Mora Yenisehir,1540,1823,0
+Nafplio,22.808706,37.568123,Nafplio,1823,,1
+Methoni,21.705878,36.81618,Methone,-1400,1820,0
+Methoni,21.705878,36.81618,Methoni,1820,,1
+Kalaureia,23.479167,37.518611,Kalaureia,-675,-100,1
+Ermione,23.243591,37.385218,Hermione,-1120,600,0
+Ermione,23.243591,37.385218,Ermione,600,,1
+Epidavros,23.160156,37.633463,Epidauros,-900,1820,0
+Epidavros,23.160156,37.633463,Epidavros,1820,,1
+Prasiai,22.890275,37.144402,Prasiai,-850,550,1
+Anthela,22.510613,38.800123,Anthela,-750,,1
+Marathon,23.979372,38.137916,Marathon,-900,,1
+Thyrea,22.733056,37.395,Thyrea,-850,550,1
+Plataea,23.271847,38.21573,Plataea,-700,400,1
+Khanea,24.01869,35.515775,Kydonia,-2400,825,0
+Khanea,24.01869,35.515775,al-Hanim,825,962,0
+Khanea,24.01869,35.515775,Khanea,962,,1
+Khanea,24.01869,35.515775,Canae,1205,1899,0
+Hysiae,23.344419,38.217217,Hysiae,-750,100,1
+Oenoe,23.448889,38.168056,Oenoe,-750,550,1
+Thronion,22.725727,38.775841,Thronion,-750,-30,1
+Farsala,22.351389,39.31387,Pharsalos,-750,-191,0
+Farsala,22.351389,39.31387,Pharsalus,-191,1450,0
+Farsala,22.351389,39.31387,Aatalca,1450,1881,0
+Farsala,22.351389,39.31387,Farsala,1881,,1
+Pherae,22.753851,39.379043,Pherae,-780,540,1
+Larissa,22.42097,39.634851,Larissa,-760,,1
+Larissa,22.42097,39.634851,Yeni-Aehir i-Fenari,1423,1881,0
+Mantineia,22.392578,37.617379,Mantineia,-500,160,1
+Mantineia,22.392578,37.617379,Antigoneia,-223,130,0
+Halieis,23.144814,37.308292,Halieis,-760,-310,1
+Tanagra,23.581173,38.300198,Tanagra,-740,,1
+Nefpaktos,21.831267,38.399726,Naupactus,-850,1499,0
+Nefpaktos,21.831267,38.399726,Aynabahti,1499,1829,0
+Nefpaktos,21.831267,38.399726,Nefpaktos,1829,,1
+Oeniadae,21.196384,38.407067,Oiniadai,-870,-211,0
+Oeniadae,21.196384,38.407067,Oeniadae,-211,50,1
+Pegai,23.197116,38.084923,Pegai,-790,800,1
+Chaironeia,22.84143,38.493968,Arne,-1500,-1200,0
+Chaironeia,22.84143,38.493968,Chaeronea,-900,1250,0
+Chaironeia,22.84143,38.493968,Kapraina,1250,1916,0
+Chaironeia,22.84143,38.493968,Chaironeia,1916,,1
+Coronea,22.95711,38.3912,Coronea,-800,,1
+Amfilochia,21.24253,38.98962,Amphilochia,-700,1400,0
+Amfilochia,21.24253,38.98962,Karvasaras,1400,1911,0
+Amfilochia,21.24253,38.98962,Amfilochia,1911,,1
+Astakos,21.08725,38.54715,Astakos,-550,,1
+Cranium,20.5167,38.16783,Krane,-700,-198,0
+Cranium,20.5167,38.16783,Cranium,-198,200,1
+Kalabaka,21.36335,39.82819,Aiginion,-540,-167,0
+Kalabaka,21.36335,39.82819,Aeginium,-167,476,0
+Kalabaka,21.36335,39.82819,Stagos,476,1350,0
+Kalabaka,21.36335,39.82819,Kalabaka,1350,1600,1
+Stratus,21.31787,38.67229,Stratos,-680,-168,0
+Stratus,21.31787,38.67229,Stratus,-168,-25,1
+Pylos,21.65989,36.95203,Pylos,-426,1281,1
+Toroni,23.90445,39.97667,Torone,-720,1650,0
+Toroni,23.90445,39.97667,Toroni,1650,,1
+Heraklea/Trachis,22.44758,38.79204,Heraklea/Trachis,-426,550,1
+Patras,21.73852,38.24327,Aroe,-1400,-800,0
+Patras,21.73852,38.24327,Patrae,-800,1458,0
+Patras,21.73852,38.24327,Baliabadra,1458,1821,0
+Patras,21.73852,38.24327,Patras,1821,,1
+Orchomenus (Arcadia),22.31536,37.72472,Orchomenus (Arcadia),-426,550,1
+Epidauros Limera,23.02637,36.7313,Epidauros Limera,-731,545,1
+Oropos,23.79,38.31946,Oropos,-650,,1
+Oropos,23.79,38.31946,Oropus,-200,395,0
+Eleusis,23.5374,38.0411,Eleusis,-1000,396,1
+Haliartos,23.0866,38.37832,Haliartos,-800,-171,1
+Phlius,22.64917,37.84639,Phlius,-1300,400,1
+Oreus,23.09053,38.9466,Hestiaea,-1300,-446,0
+Oreus,23.09053,38.9466,Oreus,-446,150,1
+Thespiae,23.15236,38.29453,Thespiae,-800,200,1
+Livadeia,22.87496,38.43537,Lebadeia,-750,1000,0
+Livadeia,22.87496,38.43537,Livadeia,1000,,1
+Phigaleia,21.83911,37.39629,Phigaleia,-775,175,1
+Heraea,21.86378,37.61346,Heraea,-825,225,1
+Megalopoli,22.1264,37.41427,Megalopolis,-368,550,0
+Megalopoli,22.1264,37.41427,Sinano,800,1829,0
+Megalopoli,22.1264,37.41427,Megalopoli,1829,,1
+Pellene,22.54834,38.04321,Pellene,-1250,250,1
+Krannon,22.30413,39.49911,Ephyra,-1250,250,0
+Krannon,22.30413,39.49911,Krannon,-1250,250,1
+Sellasia,22.4406,37.16927,Sellasia,-725,-222,1
+Lasiona,21.74346,37.79803,Lasion,-780,1000,0
+Lasiona,21.74346,37.79803,Lasiona,1000,,1
+Pagasai,22.9444,39.31084,Pagasae,-1300,-168,0
+Pagasai,22.9444,39.31084,Pagasai,-168,600,1
+Passaron,20.75239,39.73301,Passaron,-410,300,1
+Amfissa,22.37417,38.5184,Amphissa,-700,1205,0
+Amfissa,22.37417,38.5184,Salona,1205,1833,0
+Amfissa,22.37417,38.5184,Amfissa,1833,,1
+Elateia,22.77999,38.64563,Elateia,-690,550,1
+Phthiotic Thebes,22.76177,39.27339,Phthiotic Thebes,-500,950,1
+Phthiotic Thebes,22.76177,39.27339,Phthiotic Philippopolis,-217,-185,0
+Lamia,22.44259,38.903,Lamia,-600,,1
+Lamia,22.44259,38.903,Zetounion,680,1425,0
+Lamia,22.44259,38.903,Gerton,1204,1318,0
+Lamia,22.44259,38.903,El Cito,1318,1391,0
+Lamia,22.44259,38.903,Izdin,1425,1832,0
+Alyzeia,20.94771,38.70891,Alyzeia,-450,200,1
+Kyllene,21.14387,37.93324,Kyllene,-900,300,1
+Dyme,21.55143,38.14463,Dyme,-600,200,1
+Aigio,22.08195,38.25271,Aigion,-950,-146,0
+Aigio,22.08195,38.25271,Aegium,-146,860,0
+Aigio,22.08195,38.25271,Vostitsa,860,1826,0
+Aigio,22.08195,38.25271,Aigio,1826,,1
+Igoumenitsa,20.26223,39.57066,Gitanae,-600,1450,0
+Igoumenitsa,20.26223,39.57066,Grava,1450,1938,0
+Igoumenitsa,20.26223,39.57066,Igoumenitsa,1938,,1
+Demetrias (Magnesia),22.92403,39.34348,Demetrias (Magnesia),-294,1000,1
+Troizen,23.34849,37.50311,Troizen,-900,,1
+Troizen,23.34849,37.50311,Troezen,-146,800,0
+Troizen,23.34849,37.50311,Damala,800,1205,0
+Troizen,23.34849,37.50311,Damalet,1205,1821,0
+Gortyna,24.946943,35.062107,Gortyna,-1950,1000,1
+Aptera,24.141397,35.462662,Aptera,-1300,650,1
+Polyrrhenia,23.656412,35.458635,Polyrrhenia,-1100,700,1
+Axos,24.844133,35.308042,Axos,-1150,,1
+Rhamnous,24.026915,38.219286,Rhamnous,-750,400,1
+Marmara,25.489,35.3001,Malia,-2000,-1225,0
+Marmara,25.489,35.3001,Marmara,100,550,1
+Zakros,26.2614,35.0981,Zakros,-2000,-1450,1
+Knossos,25.1631,35.2981,Knossos,-2000,,1
+Akrotiri,25.4036,36.3514,Akrotiri,-2200,-1628,1
+Troy,26.2389,39.9575,Troy,-2400,500,1
+Cantaloyuk,29.661739,36.309428,Hinduwa,-2000,-1200,0
+Cantaloyuk,29.661739,36.309428,Kandyba,-1200,-60,0
+Cantaloyuk,29.661739,36.309428,Candyba,-60,1500,0
+Cantaloyuk,29.661739,36.309428,Cantaloyuk,1500,,1
+Tlos,29.4208,36.552536,Dalawa,-2400,-1150,0
+Tlos,29.4208,36.552536,Tlawa,-1150,-400,0
+Tlos,29.4208,36.552536,Tlos,-400,1800,1
+Patara,29.3145,36.2618,Pttara,-1750,-333,0
+Patara,29.3145,36.2618,Patara,-333,550,1
+Pinara,29.252035,36.49381,Pina(li),-1700,-1150,0
+Pinara,29.252035,36.49381,Pinara,-1150,850,1
+Miletos,27.277706,37.521576,Milawata,-2400,-1475,0
+Miletos,27.277706,37.521576,Miletus,-1475,640,0
+Miletos,27.277706,37.521576,Miletos,640,,1
+Afsis,27.34551,37.94218,Apasa,-2200,-1320,0
+Afsis,27.34551,37.94218,Ephesus,-950,1304,0
+Afsis,27.34551,37.94218,Arsinoe,-286,-280,0
+Afsis,27.34551,37.94218,Afsis,1304,1480,1
+Metropolis,27.3225,38.125,Puranda,-2000,-330,0
+Metropolis,27.3225,38.125,Metropolis,-330,640,1
+Pitane,26.937453,38.928297,Pitane,-1600,640,1
+Izmir,27.170278,38.464167,Smyrna,-1100,1930,0
+Izmir,27.170278,38.464167,Izmir,1930,,1
+Colophon,27.141667,38.108889,Colophon,-1000,-310,1
+Sart,28.040278,38.488333,Sfard,-1450,-680,0
+Sart,28.040278,38.488333,Sardis,-680,1200,0
+Sart,28.040278,38.488333,Sart,1200,,1
+Litri,26.47994,38.382361,Erythrae,-1125,1450,0
+Litri,26.47994,38.382361,Litri,1450,,1
+Camirus,27.921195,36.336185,Kamiros,-1350,-30,0
+Camirus,27.921195,36.336185,Camirus,-30,350,1
+Lindos,28.088203,36.091221,Lindos,-950,,1
+Rhodos,28.15629,36.41451,Ialysus,-1150,-408,0
+Rhodos,28.15629,36.41451,Rhodos,-408,,1
+Priene,27.410278,37.750833,Priene,-1000,-665,1
+Priene,27.3662,37.7059,Priene,-665,-500,1
+Priene,27.246111,37.639167,Priene,-500,-350,1
+Samsun Kale,27.298333,37.66,Priene,-350,1250,0
+Samsun Kale,27.298333,37.66,Sampson,1250,1300,0
+Samsun Kale,27.298333,37.66,Samsun Kale,1300,1923,1
+Myus,27.429444,37.595556,Myus,-975,-275,1
+Teos,26.785397,38.185491,Teos,-1025,600,1
+Clazomenae,26.77774,38.367858,Clazomenae,-1050,1400,1
+Foca,26.754884,38.670327,Phocaea,-900,1275,0
+Foca,26.754884,38.670327,Foca,1275,,1
+Lebedus,26.964722,38.077883,Lebedus,-1000,1000,1
+Lebedus,26.964722,38.077883,Ptolemais,-266,-200,0
+Cyme (Aeolis),26.939218,38.760689,Cyme (Aeolis),-1100,1500,1
+Laris(s)a Phrikonis,27.033411,38.689068,Laris(s)a Phrikonis,-1200,200,1
+Temnos,27.196998,38.671912,Temnos,-950,60,1
+Myrina,26.985537,38.840097,Myrina,-1150,1000,1
+Myrina,26.985537,38.840097,Myrina Sebastopolis,-30,200,0
+Gryneium,27.069173,38.874665,Gryneium,-1075,150,1
+Colophon ad Mare,27.200852,37.995278,Notion,-1125,-310,0
+Colophon ad Mare,27.200852,37.995278,Colophon ad Mare,-310,-60,1
+Aegae (Aeolis),27.19367,38.83379,Aegae (Aeolis),-1075,500,1
+Assos,26.338358,39.491111,Assos,-950,550,1
+Methymna,26.176891,39.369167,Methymna,-1130,,1
+Methymna,26.176891,39.369167,Molova,1258,1912,0
+Mytilene,26.547048,39.110475,Mytilene,-975,,1
+Chios,26.134234,38.37641,Chios,-1100,,1
+Samos,26.944483,37.68825,Samos,-1030,,1
+Maeandropolis,27.526039,37.850549,Leukophrys,-1175,-1075,0
+Maeandropolis,27.526039,37.850549,Magnesia ad Maeandrum,-1075,-30,0
+Maeandropolis,27.526039,37.850549,Maeandropolis,-30,400,1
+Panionium,27.280208,37.707373,Carium,-770,-670,0
+Panionium,27.280208,37.707373,Panionium,-670,350,1
+Iasos,27.585075,37.278837,Iasos,-2400,1450,1
+Manisa,27.487302,38.541317,Sipylus,-950,-650,0
+Manisa,27.487302,38.541317,Magnesia ad Sipylum,-650,1475,0
+Manisa,27.487302,38.541317,Manisa,1475,,1
+Thera,25.477816,36.363374,Thera,-850,726,1
+Bodrum,27.420201,37.042901,Halicarnassus,-900,1402,0
+Bodrum,27.420201,37.042901,Petronium,1402,1522,0
+Bodrum,27.420201,37.042901,Bodrum,1522,,1
+Cnidus,27.692613,36.733283,Cnidus,-950,-360,1
+Sigeum,26.180869,39.983531,Sigeion,-650,-60,0
+Sigeum,26.180869,39.983531,Sigeum,-60,-35,1
+Xanthos,29.31836,36.355934,Arnna,-710,-470,0
+Xanthos,29.31836,36.355934,Xanthos,-470,1000,1
+Xanthos,29.31836,36.355934,Xanthus,-100,400,0
+Antandros,26.791496,39.5785,Antandros,-800,540,1
+Kaunos,28.622085,36.825288,Kaunos,-950,1450,1
+Kaunos,28.622085,36.825288,Caunus,-189,395,0
+Pergamum,27.184167,39.1325,Pergamon,-750,-133,0
+Pergamum,27.184167,39.1325,Pergamum,-133,1300,1
+Lyktos,25.3682,35.2081,Lyktos,-1800,100,1
+Atarneus,26.921325,39.091454,Atarneus,-850,-40,1
+Edremit,26.936098,39.49864,Adramyttion,-550,1334,0
+Edremit,26.936098,39.49864,Adramyttium,-133,395,0
+Edremit,26.936098,39.49864,Edremit,1334,,1
+Cnidus,27.372839,36.688179,Cnidus,-360,900,1
+Tyatrra,27.836216,38.920152,Pelopia,-850,-700,0
+Tyatrra,27.836216,38.920152,Semiramis,-700,-290,0
+Tyatrra,27.836216,38.920152,Thyatiera,-290,-70,0
+Tyatrra,27.836216,38.920152,Tyatrra,-70,550,1
+Itanus,26.262979,35.263259,Itanos,-750,-100,0
+Itanus,26.262979,35.263259,Itanus,-100,1450,1
+Praisos,26.09054,35.123297,Praisos,-1800,-140,1
+Hierapytna,25.73875,35.009529,Hierapytna,-1850,950,1
+Olous,25.738816,35.257679,Olous,-1950,750,1
+Antalya,33.70051,36.89379,Attalya/Attalea,-150,1310,0
+Antalya,33.70051,36.89379,Antalya,1310,,1
+Tarsus,34.89263,36.91412,Tarsa,-2400,-333,0
+Tarsus,34.89263,36.91412,Tarsos,-333,-65,0
+Tarsus,34.89263,36.91412,Antiochia ad Cydnum,-180,-171,0
+Tarsus,34.89263,36.91412,Tarsus,-65,,1
+Ullamma,33.83583,38.41139,Ullamma,-2400,-1646,1
+Konya,32.50571,37.86757,Ikkuwaniya,-1800,-1050,0
+Konya,32.50571,37.86757,Icuna,-1050,-330,0
+Konya,32.50571,37.86757,Iconium,-330,1134,0
+Konya,32.50571,37.86757,Claudiconium,50,130,0
+Konya,32.50571,37.86757,Col. Aelia Hadriana,130,395,0
+Konya,32.50571,37.86757,Konya,1134,,1
+Purushanda,32.4482,37.8202,Purushattum,-2400,-1900,0
+Purushanda,32.4482,37.8202,Purushanda,-1900,-1100,1
+Mersin,34.6116,36.7953,Zephyrion,-330,150,0
+Mersin,34.6116,36.7953,Hadrianopolis,150,600,0
+Mersin,34.6116,36.7953,Mersin,1100,,1
+Kemenhisar,34.6079,37.8278,Tuwanuwa,-2000,-1050,0
+Kemenhisar,34.6079,37.8278,Tuwana,-1050,-330,0
+Kemenhisar,34.6079,37.8278,Tyana,-330,708,0
+Kemenhisar,34.6079,37.8278,Col. Aurelia Antoniniana,215,272,0
+Kemenhisar,34.6079,37.8278,Kilenhisar,1050,1550,0
+Kemenhisar,34.6079,37.8278,Kemenhisar,1500,,1
+Silifke,33.969124,36.584382,Ura,-1900,-1150,0
+Silifke,33.969124,36.584382,Olba,-1150,-290,0
+Silifke,33.969124,36.584382,Seleucia ad Calycadnum,-290,1350,0
+Silifke,33.969124,36.584382,Silifke,1350,,1
+Perge,30.853,36.96,Parha,-2000,-1200,0
+Perge,30.853,36.96,Perge,-1200,1350,1
+Hyde,33.517464,37.440842,Uda,-1800,-750,0
+Hyde,33.517464,37.440842,Hyde,-750,640,1
+Salaberina,34.034002,38.120083,Sallapa,-1700,-30,0
+Salaberina,34.034002,38.120083,Salambriai,-30,300,0
+Salaberina,34.034002,38.120083,Salaberina,300,640,1
+Gordium,31.988313,39.651996,Gordion,-1150,-30,0
+Gordium,31.988313,39.651996,Gordium,-30,-650,1
+Aksaray,34.028889,38.374167,Shinuktu,-1000,-30,0
+Aksaray,34.028889,38.374167,Garsaura,-30,330,0
+Aksaray,34.028889,38.374167,Koloneia,330,640,0
+Aksaray,34.028889,38.374167,Aksaray,640,,1
+Phaselis,30.549049,36.522806,Phaselis,-698,1100,1
+Nagidos,32.976596,36.100825,Nagidos,-668,-110,1
+Aydincik,33.317412,36.143273,Celenderis,-664,1228,0
+Aydincik,33.317412,36.143273,Gilindere,1228,1965,0
+Aydincik,33.317412,36.143273,Aydincik,1965,,1
+Side,31.394088,36.772309,Side,-662,950,1
+Pompeiopolis,34.539222,36.740056,Soli,-660,-67,0
+Pompeiopolis,34.539222,36.740056,Pompeiopolis,-67,525,1
+Holmi,33.880575,36.320374,Holmi,-658,-210,1
+Mut,33.433701,36.644396,Kirshu,-612,-330,0
+Mut,33.433701,36.644396,Ninica,-330,-200,0
+Mut,33.433701,36.644396,Claudiopolis,50,1000,0
+Mut,33.433701,36.644396,Mut,1000,,1
+Gazipasa,32.282734,36.258509,Sallune,-1000,-330,0
+Gazipasa,32.282734,36.258509,Selinous,-330,1200,0
+Gazipasa,32.282734,36.258509,Traianopolis,120,640,0
+Gazipasa,32.282734,36.258509,Gazipasa,1200,,1
+Polis Chrysochou,32.436032,35.037245,Marion,-1400,-270,0
+Polis Chrysochou,32.436032,35.037245,Arsinoe/Marion,-270,660,0
+Polis Chrysochou,32.436032,35.037245,Polis Chrysochou,1200,,1
+Soloi,32.81307,35.138224,Aipeia?/Soloi,-1300,-585,0
+Soloi,32.81307,35.138224,Soloi,-585,660,1
+Lapethos,33.20211,35.350592,Lapethos,-1000,655,1
+Politiko,33.24443,35.029628,Tamassos,-1800,1100,0
+Politiko,33.24443,35.029628,Politiko,1100,,1
+Nicosia,33.3473,35.157167,Ledrai,-1000,300,0
+Nicosia,33.3473,35.157167,Leukousia,300,1200,0
+Nicosia,33.3473,35.157167,Nicosia,1200,,1
+Nicosia,33.3473,35.157167,Lefkosa,1570,1878,0
+Idalion,33.42377,35.015737,Idalion,-1200,100,1
+Chyt(h)roi,33.49069,35.245772,Chyt(h)roi,-1150,912,1
+Salamis/Konstantia,33.90305,35.17995,Salamis,-1080,350,0
+Salamis/Konstantia,33.90305,35.17995,Salamis/Konstantia,350,653,1
+Vouni,32.77299,35.156326,Vouni,-500,-380,1
+Makaria,33.65723,35.3622,Makaria,-1175,650,1
+Karpasia,34.36993,35.626206,Karpasia,-700,650,1
+Aspendos,31.17,36.939024,Aspendos,-750,1050,1
+Aspendos,31.17,36.939024,Aspendus,-190,395,0
+Sagalassos,30.51416,37.672887,Salawassa,-1350,-800,0
+Sagalassos,30.51416,37.672887,Sagalassos,-800,680,1
+Apamea,30.1689,38.068367,Kelainai,-650,-270,0
+Apamea,30.1689,38.068367,Apamea,-270,1500,1
+Ankara,32.85933,39.943793,Ancyra,-350,1400,0
+Ankara,32.85933,39.943793,Angora,1400,1923,0
+Ankara,32.85933,39.943793,Ankara,1923,,1
+Suhut,30.54613,38.533961,Synnada,-725,1300,0
+Suhut,30.54613,38.533961,Schifout Kassaba,1300,1923,0
+Suhut,30.54613,38.533961,Suhut,1923,,1
+Sarhuyok,30.51684,39.77489,Dorylaion,-330,-100,0
+Sarhuyok,30.51684,39.77489,Dorylaeum,-100,1071,0
+Sarhuyok,30.51684,39.77489,Sarhuyok,1071,1350,1
+Pessinus,31.58356,39.332882,Pessinus,-400,715,1
+Tavium,34.51833,39.85833,Taouion,-330,-36,0
+Tavium,34.51833,39.85833,Tavium,-36,800,1
+Hama,36.74199,35.14463,Hamath,-2400,-170,0
+Hama,36.74199,35.14463,Epiphaneia,-170,300,0
+Hama,36.74199,35.14463,Amathe,300,640,0
+Hama,36.74199,35.14463,Hama,640,,1
+Ugarit,35.782,35.602,Ugarit,-2400,-1000,1
+Bersiba,38.1223,36.69718,Shubat-Shamash,-1900,-1100,0
+Bersiba,38.1223,36.69718,Masuwari,-1100,-857,0
+Bersiba,38.1223,36.69718,Kar-Shalmaneser,-857,-575,0
+Bersiba,38.1223,36.69718,Bersiba,-150,550,1
+Ebla,36.798,35.798,Ebla,-2400,650,1
+Posideion,35.838,35.846,Posideion,-675,640,1
+Barbalissus,38.10934,35.99096,Emar,-2400,-1186,0
+Barbalissus,38.10934,35.99096,Barbalissus,-50,750,1
+Alep,37.14566,36.21695,Aleppo,-2400,-300,0
+Alep,37.14566,36.21695,Beroea,-300,637,0
+Alep,37.14566,36.21695,Alep,637,,1
+Alalah,36.38472,36.23778,Alakhtum,-2400,-1750,0
+Alalah,36.38472,36.23778,Alalakh,-1750,-1500,0
+Alalah,36.38472,36.23778,Alalah,-1500,-1195,1
+Europos,38.015,36.82972,Carchemish,-2400,-580,0
+Europos,38.015,36.82972,Europos,-250,550,1
+Harran,39.03389,36.8775,Harran,-2400,850,1
+Harran,39.03389,36.8775,Carrhae,-250,637,0
+Melitene,38.36494,38.42486,Maldiya/Malitiya,-1500,-1150,0
+Melitene,38.36494,38.42486,Malatya,-1150,-875,0
+Melitene,38.36494,38.42486,Melid,-875,-600,0
+Melitene,38.36494,38.42486,Melitene,100,500,1
+Anisa,35.60725,38.84972,Kanesh,-2400,-715,0
+Anisa,35.60725,38.84972,Anisa,-250,250,1
+Ankuwa?,35.26139,39.43944,Ankuwa?,-2400,-1200,1
+Apishal?,37.36194,36.51444,Apishal?,-2400,-1200,1
+Eragiza,38.07659,36.19435,Azu,-2400,-1330,0
+Eragiza,38.07659,36.19435,Eragiza,50,550,1
+Abattum?,38.50553,35.74274,Abattum?,-2025,-1500,1
+Lasqum,39.87782,35.44402,Lasqum,-2050,-1550,1
+Ariseria,37.58873,36.87571,Tashiniya,-1900,-1650,0
+Ariseria,37.58873,36.87571,Til-Bashere,-1000,-857,0
+Ariseria,37.58873,36.87571,Ariseria,100,550,1
+Tuttul,38.97071,35.96158,Tuttul,-2400,-1700,1
+Tuba,37.6897,36.1599,Tuba,-2400,-1200,1
+Sam'al,36.6786,37.1036,Yadiya,-1900,-1050,0
+Sam'al,36.6786,37.1036,Sam'al,-1050,-675,1
+?anl?ufa,38.7938,37.1568,Adma,-1050,-330,0
+?anl?ufa,38.7938,37.1568,Edessa,-304,1144,0
+?anl?ufa,38.7938,37.1568,Antiochia ad Callirhoem,-175,-165,0
+?anl?ufa,38.7938,37.1568,Justinopolis,525,638,0
+?anl?ufa,38.7938,37.1568,Urfa,638,1984,0
+?anl?ufa,38.7938,37.1568,?anl?ufa,1984,,1
+Kayseri,35.4833,38.7333,Mazaka,-2400,-140,0
+Kayseri,35.4833,38.7333,Eusebeia,-140,-17,0
+Kayseri,35.4833,38.7333,Caesarea,-17,1064,0
+Kayseri,35.4833,38.7333,Kaisariyah,647,1064,0
+Kayseri,35.4833,38.7333,Kayseri,1064,,1
+Gaziantep,37.3833,37.0667,Urshu,-2400,-300,0
+Gaziantep,37.3833,37.0667,Antiochia ad Taurum,-300,-20,0
+Gaziantep,37.3833,37.0667,Doliche,-20,640,0
+Gaziantep,37.3833,37.0667,A ntap,640,1500,0
+Gaziantep,37.3833,37.0667,Antep,1500,1921,0
+Gaziantep,37.3833,37.0667,Gaziantep,1921,,1
+Samsat,38.5165,37.5288,Hahha,-1900,-1500,0
+Samsat,38.5165,37.5288,Hahhum,-1500,-1200,0
+Samsat,38.5165,37.5288,Kummuh,-1200,-250,0
+Samsat,38.5165,37.5288,Samosata,-250,650,0
+Samsat,38.5165,37.5288,Antiochia in Commagene,-160,-72,0
+Samsat,38.5165,37.5288,Samsat,650,1989,1
+Adana,35.3305,36.991,Adaniya,-1900,-1050,0
+Adana,35.3305,36.991,Adanawa,-1050,-600,0
+Adana,35.3305,36.991,Adana,-600,,1
+Adana,35.3305,36.991,Antiochia ad Sarum,-295,-200,0
+?ar,36.3237,38.3331,Kummanni,-2000,-500,0
+?ar,36.3237,38.3331,Comana,-500,530,0
+?ar,36.3237,38.3331,Comana/Hierapolis,-330,-65,0
+?ar,36.3237,38.3331,Comana Chryse,530,700,0
+?ar,36.3237,38.3331,?ar,700,,1
+G r n,37.2775,38.7225,Tegarama,-2000,-1050,0
+G r n,37.2775,38.7225,Til-garimmu,-1050,-330,0
+G r n,37.2775,38.7225,Gauraina,-330,700,0
+G r n,37.2775,38.7225,G r n,700,,1
+Kussara,36.02585,38.5203,Kussara,-2050,-1150,1
+Lawazantiya,35.75,37.0,Lawazantiya,-1900,-1200,1
+Irradu,38.5279,36.891,Irradu,-1900,-1250,1
+Zalpa/Zalbar,36.70417,37.03,Zalpa/Zalbar,-2000,-1500,1
+Hassuwa,37.8241,37.2892,Hassuwa,-2400,-1500,1
+Samuha,37.4465,39.8794,Samuha,-1700,-1180,1
+Sarissa,36.90972,39.30833,Sarissa,-1550,-1050,1
+Tunip,36.3978,35.2869,Tunip,-1800,-1150,1
+Hostra,38.906111,37.050278,Huzerina,-1000,-610,0
+Hostra,38.906111,37.050278,Hostra,-150,250,1
+Tell Rifa'at,37.097222,36.473333,Arpad,-1000,-30,0
+Tell Rifa'at,37.097222,36.473333,Niara,-30,640,0
+Tell Rifa'at,37.097222,36.473333,Tell Rifa'at,640,,1
+Azatiwataya,36.247601,37.258801,Azatiwataya,-1000,-500,1
+Tell Qarqur,36.330556,35.742778,Qarqar,-1200,-330,0
+Tell Qarqur,36.330556,35.742778,Tell Qarqur,1350,,1
+Muru,36.852083,36.459361,Muru,-1300,-740,1
+Gephyra,36.376389,36.2475,Kinulua,-1150,-30,0
+Gephyra,36.376389,36.2475,Gephyra,-30,640,1
+Potamoi Karon?,35.973533,36.061425,Potamoi Karon?,-810,-312,1
+Palu,39.951111,38.703889,Shebeteria,-1200,-330,0
+Palu,39.951111,38.703889,Baioulous,-330,30,0
+Palu,39.951111,38.703889,Balisbiga,30,640,0
+Palu,39.951111,38.703889,Palu,640,,1
+Hazrek,36.798611,35.905,Hatarikka,-1150,-737,0
+Hazrek,36.798611,35.905,Hazrek,-737,-680,1
+Masyaf,36.339563,35.070199,Mansuate,-850,-330,0
+Masyaf,36.339563,35.070199,Marsya,-330,640,0
+Masyaf,36.339563,35.070199,Masyaf,640,,1
+Kahramanmarash,36.925326,37.586682,Gurgum City,-1200,-712,0
+Kahramanmarash,36.925326,37.586682,Marqas,-712,-30,0
+Kahramanmarash,36.925326,37.586682,Germanicia Caesarea,-30,645,0
+Kahramanmarash,36.925326,37.586682,Marash,645,1973,0
+Kahramanmarash,36.925326,37.586682,Germanikeia,962,1100,0
+Kahramanmarash,36.925326,37.586682,Kahramanmarash,1973,,1
+Selevcia,35.928596,36.121265,Hydratos Potamoi,-550,-300,0
+Selevcia,35.928596,36.121265,Seleukia Pieria,-300,-30,0
+Selevcia,35.928596,36.121265,Seleucia Pieria,-30,300,0
+Selevcia,35.928596,36.121265,Selevcia,300,640,1
+Antioch,36.183214,36.222552,Antioch-on-the-Orontes,-300,-63,0
+Antioch,36.183214,36.222552,Antioch,-63,1500,1
+Latikia,35.77663,35.518923,Ramitha,-1000,-300,0
+Latikia,35.77663,35.518923,Laodikeia-on-Sea,-300,-63,0
+Latikia,35.77663,35.518923,Laodicea ad Mare,-63,637,0
+Latikia,35.77663,35.518923,Lazkiye,637,1920,0
+Latikia,35.77663,35.518923,Latikia,1920,,1
+Afamiya,36.402413,35.421377,Pella (Syria),-321,-300,0
+Afamiya,36.402413,35.421377,Apamea,-300,637,0
+Afamiya,36.402413,35.421377,Afamiya,637,1152,1
+Nuzi,44.25838,35.36471,Gasur,-2400,-1950,0
+Nuzi,44.25838,35.36471,Nuzi,-1950,-1330,1
+Kirkuk,44.39227,35.47285,Arrapha,-2400,-250,0
+Kirkuk,44.39227,35.47285,Arraphka,-1600,-1330,0
+Kirkuk,44.39227,35.47285,Karka,-250,1055,0
+Kirkuk,44.39227,35.47285,Kirkuk,1055,,1
+Magdalu,40.74028,35.64333,Dur-Katlimmu,-1300,-600,0
+Magdalu,40.74028,35.64333,Magdalu,-600,200,1
+Nimrud,43.3275,36.09917,Kalhu,-1900,-613,0
+Nimrud,43.3275,36.09917,Larisa,-550,640,0
+Nimrud,43.3275,36.09917,Nimrud,640,,1
+Kilizu,43.72961,36.10181,Kilizu,-1850,350,1
+Arbil/Erbil,44.00639,36.19111,Urbilum,-2400,-1780,0
+Arbil/Erbil,44.00639,36.19111,Arbail(u),-1780,-1000,0
+Arbil/Erbil,44.00639,36.19111,Arbela,-1000,640,0
+Arbil/Erbil,44.00639,36.19111,Arbil/Erbil,640,,1
+Shusharra,44.93835,36.20071,Shusharra,-2100,-1750,1
+Zamahu,42.44934,36.25709,Karana,-2400,-1100,0
+Zamahu,42.44934,36.25709,Zamahu,-940,-600,1
+Qattara,42.49315,36.20742,Qattara,-2100,-1100,1
+Thebat(h)a,40.79832,36.33484,Tabatum,-2100,-1800,0
+Thebat(h)a,40.79832,36.33484,Tabatu,-1800,-600,0
+Thebat(h)a,40.79832,36.33484,Tabite,-600,200,0
+Thebat(h)a,40.79832,36.33484,Thebat(h)a,200,550,1
+Nineveh,43.15278,36.35944,Nineveh,-2400,,1
+Nineveh,43.15278,36.35944,Ninos,-300,550,0
+Ashur,43.2625,35.45667,Ashur,-2400,-614,1
+Nabula,41.05833,36.66722,Nagar,-2400,-1500,0
+Nabula,41.05833,36.66722,Nawar,-1500,-1325,0
+Nabula,41.05833,36.66722,Nabula,-1325,-600,1
+Nabada,40.58694,36.73778,Nabada,-2400,-2100,1
+Kahat,40.14124,37.74389,Kahat,-2400,1260,1
+Taidu (1),41.33708,36.82805,Tadum,-2400,-1700,0
+Taidu (1),41.33708,36.82805,Taidu (1),-1700,-600,1
+Ra's al-'Ayn,40.07303,37.84389,Sikanu,-2100,-1600,0
+Ra's al-'Ayn,40.07303,37.84389,Washshukanni,-1600,-1290,0
+Ra's al-'Ayn,40.07303,37.84389,Sikkan,-1290,-300,0
+Ra's al-'Ayn,40.07303,37.84389,Resaina,-300,390,0
+Ra's al-'Ayn,40.07303,37.84389,Theodosopolis,390,640,0
+Ra's al-'Ayn,40.07303,37.84389,Ra's al-'Ayn,640,,1
+Shubat-Enlil,41.50528,36.95722,Shehna,-2400,-2140,0
+Shubat-Enlil,41.50528,36.95722,Apum,-1910,-1806,0
+Shubat-Enlil,41.50528,36.95722,Shubat-Enlil,-1806,-1728,1
+Urkesh,40.99722,37.05694,Urkesh,-2400,-1350,1
+Elallate,43.263,35.51077,Ekallatum,-2100,-1000,0
+Elallate,43.263,35.51077,Elallate,-1000,-600,1
+Allahad,42.01583,36.06636,Allahad,-2000,-1600,1
+Andarig,41.70756,36.07466,Andarig,-2000,-1300,1
+Kurda,41.71241,36.21143,Kurda,-2000,-1500,1
+Sangaritu,40.5839,35.054,Saggaratum,-2400,-1200,0
+Sangaritu,40.5839,35.054,Sangaritu,-1200,-600,1
+Qattunan,40.9319,35.834,Qattunan,-2200,-1200,1
+Ashnakkum,40.535,36.523,Ashnakkum,-1900,-1500,1
+Dur-Yahdun-Lim,40.16621,35.17849,Dur-Yahdun-Lim,-1805,-1550,1
+Dur-Yahdun-Lim,40.16621,35.17849,Dur-Yasmah-Addu,-1792,-1778,0
+Razama,42.7465,35.7921,Razama,-1900,-1500,1
+Tidu,40.54,37.825,Taite,-1600,-1287,0
+Tidu,40.54,37.825,Taidu (2),-1287,-1050,0
+Tidu,40.54,37.825,Tidu,-1050,-330,1
+Tell Halaf,40.04,36.824,Guzana,-1150,-330,0
+Tell Halaf,40.04,36.824,Tell Halaf,800,,1
+Nusaybin,41.215694,37.075333,Nasibina,-896,-300,0
+Nusaybin,41.215694,37.075333,Antiochia Mygdonia,-300,-280,0
+Nusaybin,41.215694,37.075333,Nisibis,-280,640,0
+Nusaybin,41.215694,37.075333,Nusaybin,640,,1
+Gidara/Raqamatu,40.1141,37.1869,Gidara,-1125,-924,0
+Gidara/Raqamatu,40.1141,37.1869,Raqamatu,-924,-898,0
+Gidara/Raqamatu,40.1141,37.1869,Gidara/Raqamatu,-898,-700,1
+Apqu,42.601124,36.321267,Apqu,-1180,-500,1
+Al-Busayra,40.430045,35.156614,Suru,-1000,-330,0
+Al-Busayra,40.430045,35.156614,Circesium,-330,640,0
+Al-Busayra,40.430045,35.156614,Al-Busayra,640,,1
+Tushha,40.793056,37.793611,Tushha,-2400,1000,1
+Diyarbakir,40.233444,37.912245,Amedi,-1300,-720,0
+Diyarbakir,40.233444,37.912245,Amedu,-720,-330,0
+Diyarbakir,40.233444,37.912245,Amida,-330,640,0
+Diyarbakir,40.233444,37.912245,Diyarbakir,640,,1
+Van,43.341667,38.499722,Tushpa,-2000,-550,0
+Van,43.341667,38.499722,Thospia,-550,640,0
+Van,43.341667,38.499722,Van,640,,1
+Arzashkun,42.5371,39.1594,Arzashkun,-1200,-700,1
+Mush,41.4911,38.7333,Mush,-950,,1
+Ardini,44.8362,36.9007,Musasir,-1200,-810,0
+Ardini,44.8362,36.9007,Ardini,-810,-700,1
+Sarduri(k)hinili,43.4594,38.3524,Sarduri(k)hinili,-740,-680,1
+Dur-Sharrukin,43.2293,36.5095,Dur-Sharrukin,-718,-600,1
+Rusa-patari,44.95,38.8833,Rusa-patari,-660,-580,1
+Uasi?,44.8954,37.6569,Uasi?,-796,-570,1
+Menuahinili,44.2564,39.9394,Menuahinili,-784,-560,1
+Rusahinili Qilbanikai,43.4039,38.5206,Rusahinili Qilbanikai,-720,-610,1
+Rusahinili Eidurukai,43.2133,38.7025,Rusahinili Eidurukai,-672,-610,1
+Khaldi Ziuquni,42.7469,38.8058,Khaldi Ziuquni,-668,-605,1
+Malazgirt,42.5442,39.1478,Manazkert,-550,968,0
+Malazgirt,42.5442,39.1478,Manzikert,968,1072,0
+Malazgirt,42.5442,39.1478,Malazgirt,1072,,1
+Hamazi,45.6897,35.2035,Hamazi,-2400,-1800,1
+Qabra,45.34086,35.73568,Qabra,-2000,-1200,1
+Bakr Awa,45.940556,35.220556,Atlila,-1200,-880,0
+Bakr Awa,45.940556,35.220556,Dur-Ashur,-880,-330,0
+Bakr Awa,45.940556,35.220556,Bakr Awa,640,,1
+Qalatgah,45.247586,37.026732,Ushnu,-800,-650,0
+Qalatgah,45.247586,37.026732,Qalatgah,-650,-30,1
+Reyy,51.44716,35.59427,Ragai,-625,-330,0
+Reyy,51.44716,35.59427,Europos/Arsakia,-330,300,0
+Reyy,51.44716,35.59427,Rai,300,632,0
+Reyy,51.44716,35.59427,ar-Rayy,632,1258,0
+Reyy,51.44716,35.59427,Reyy,1258,,1
+Qumis,54.03829,35.96109,Saddarvazeh,-625,860,0
+Qumis,54.03829,35.96109,Hekatompylos,-330,-237,0
+Qumis,54.03829,35.96109,Qumis,860,,1
+Zadracarta,53.0589,36.56145,Zadracarta,-601,-601,1
+Zadrakarta,54.41951,36.8128,Zadrakarta,-601,1000,1
+Tus/Sousia,59.54046,36.46471,Tus/Sousia,-650,1600,1
+Merv,62.1925,37.66278,Mouru,-2100,-545,0
+Merv,62.1925,37.66278,Margos,-545,-330,0
+Merv,62.1925,37.66278,Alexandria (Margiana),-330,-270,0
+Merv,62.1925,37.66278,Antiochia Margiana,-270,220,0
+Merv,62.1925,37.66278,Merv,220,,1
+Balkh,66.9011,36.76794,Zariaspa,-1750,-550,0
+Balkh,66.9011,36.76794,Bactra,-550,670,0
+Balkh,66.9011,36.76794,Balkh,670,,1
+Kunduz,68.86774,36.72209,Drapsaka,-1500,670,0
+Kunduz,68.86774,36.72209,Walwalij,670,1390,0
+Kunduz,68.86774,36.72209,Kunduz,1390,,1
+Samarkand,66.94722,39.6565,Marakanda,-700,710,0
+Samarkand,66.94722,39.6565,Samarkand,710,,1
+Shahrisabz,66.82551,39.04603,Naukata,-750,710,0
+Shahrisabz,66.82551,39.04603,Kesh,710,1730,0
+Shahrisabz,66.82551,39.04603,Shahrisabz,1730,,1
+Hei & Luan,107.425833,35.061944,Hei & Luan,-1120,-771,1
+Rui,109.814,35.275,Rui,-800,-100,1
+Taosi,111.498611,35.881944,Taosi,-2400,-1900,1
+Yin,114.303056,36.139444,Yin,-1500,-900,1
+Changzhi,113.116944,36.195,Li (Qi),-1075,-1035,0
+Changzhi,113.116944,36.195,Changzhi,-1500,-1100,1
+Qinyang,112.951111,35.088056,Yu (2),-1075,-221,0
+Qinyang,112.951111,35.088056,Yewang,-221,581,0
+Qinyang,112.951111,35.088056,Henei,581,618,0
+Qinyang,112.951111,35.088056,Huaizhou,618,1636,0
+Qinyang,112.951111,35.088056,Huaiqing fu,1636,1913,0
+Qinyang,112.951111,35.088056,Qinyang,1913,,1
+Zhaoge,114.303056,35.689444,Zhaoge,-1150,-1,1
+Huozhou,111.755556,36.569306,Huo,-1045,-1,0
+Huozhou,111.755556,36.569306,Huozhou,-1,,1
+Houma,111.4,35.7276,Tang,-1045,-990,0
+Houma,111.4,35.7276,Jiang (Yi),-990,-800,0
+Houma,111.4,35.7276,Quwo,-800,-376,0
+Houma,111.4,35.7276,Xintian,-376,-1,0
+Houma,111.4,35.7276,Houma,-1,,1
+Hancheng,110.4333,35.4667,Liang,-800,-200,0
+Hancheng,110.4333,35.4667,Hancheng,-200,,1
+Yi,111.7189,35.7397,Yi,-800,-200,1
+Taiyuan,112.5497,37.8703,Jinyang,-498,-248,0
+Taiyuan,112.5497,37.8703,Taiyuan,-248,-9999,1
+Handan,114.4869,36.6011,Handan,-1800,,1
+Yan,116.05,39.6153,Yan,-1045,-990,1
+Beijing,116.3833,39.9167,City of Ji,-1045,607,0
+Beijing,116.3833,39.9167,Zhuojun,607,616,0
+Beijing,116.3833,39.9167,Youzhou,616,938,0
+Beijing,116.3833,39.9167,Fanyang,742,759,0
+Beijing,116.3833,39.9167,Nanjing,938,1122,0
+Beijing,116.3833,39.9167,Yanjing,1122,1271,0
+Beijing,116.3833,39.9167,Zhongdu,1151,1215,0
+Beijing,116.3833,39.9167,Dadu,1271,1368,0
+Beijing,116.3833,39.9167,Beijing,1368,,1
+Taoqui,115.5911,35.1425,Taoqui,-1045,-400,1
+Linzi,118.3554,36.8829,Yingqui,-1045,-875,0
+Linzi,118.3554,36.8829,Linzi,-875,-1,1
+Qufu,117.0333,35.6,Qufu,-1045,,1
+Qufu,117.0333,35.6,Xianyuan,1012,1142,0
+Tengzhou,117.15,35.0833,Teng,-1045,-1,0
+Tengzhou,117.15,35.0833,Tengzhou,-1,,1
+Zoucheng,117.0069,35.4031,Zou,-1045,-1,0
+Zoucheng,117.0069,35.4031,Zoucheng,-1,,1
+Ju,118.8336,35.5769,Ju,-1050,1000,1
+Jimo,120.4667,36.3833,Jimo,-1040,,1
+Jimo,120.4667,36.3833,Tsimo,1898,1922,0
+Cadiz,-6.293121,36.529278,Gadir,-1104,-206,0
+Cadiz,-6.293121,36.529278,Gades,-206,771,0
+Cadiz,-6.293121,36.529278,Qadir,771,1262,0
+Cadiz,-6.293121,36.529278,Cadiz,1262,,1
+Lixus,-6.11029,35.199267,Lixus,-1102,650,1
+Carteia,-5.409391,36.185191,Carteia,-940,1000,1
+Huelva,-6.949713,37.257074,Unubal,-863,-195,0
+Huelva,-6.949713,37.257074,Onuba,-195,740,0
+Huelva,-6.949713,37.257074,Walba,740,1290,0
+Huelva,-6.949713,37.257074,Huelva,1290,,1
+Tangier,-5.810233,35.787546,Tingi,-925,710,0
+Tangier,-5.810233,35.787546,Tangier,710,,1
+Carmona,-5.646469,37.470304,Kar-Hammon,-800,-204,0
+Carmona,-5.646469,37.470304,Carmo,-204,715,0
+Carmona,-5.646469,37.470304,Qarmuna,715,1247,0
+Carmona,-5.646469,37.470304,Carmona,1247,,1
+Melila,-2.938778,35.292201,Rusadir,-1150,40,0
+Melila,-2.938778,35.292201,Rusaddir,-206,771,0
+Melila,-2.938778,35.292201,Mlila,771,1262,0
+Melila,-2.938778,35.292201,Melila,1262,,1
+Malaga,-4.420163,36.719658,Malake,-770,-218,0
+Malaga,-4.420163,36.719658,Malaca,-218,715,0
+Malaga,-4.420163,36.719658,Malaqah,715,1487,0
+Malaga,-4.420163,36.719658,Malaga,1487,,1
+Abdera (Iberia),-3.022514,36.748068,Abdera (Iberia),-750,640,1
+Almunecar,-3.690755,36.734589,Sexi,-800,-218,0
+Almunecar,-3.690755,36.734589,Saxetanum,-218,715,0
+Almunecar,-3.690755,36.734589,Almunecar,715,,1
+Marseille,5.3825,43.29685,Massalia,-600,-49,0
+Marseille,5.3825,43.29685,Massilia,-49,650,0
+Marseille,5.3825,43.29685,Marseille,650,,1
+Empuries,3.11455,42.13342,Indika,-600,-576,0
+Empuries,3.11455,42.13342,Emporion,-576,-44,0
+Empuries,3.11455,42.13342,Emporiae,-44,750,0
+Empuries,3.11455,42.13342,Empuries,750,1200,1
+Agda,3.47313,43.30583,Agatha,-526,450,0
+Agda,3.47313,43.30583,Agda,450,,1
+Tarquinia,11.758173,42.254532,Tarchuna,-900,-230,0
+Tarquinia,11.758173,42.254532,Taquinii,-230,800,0
+Tarquinia,11.758173,42.254532,Corneto,800,1922,0
+Tarquinia,11.758173,42.254532,Tarquinia,1922,,1
+Arezzo,11.863,43.4713,Aritim,-875,-311,0
+Arezzo,11.863,43.4713,Arretium,-311,650,0
+Arezzo,11.863,43.4713,Arezzo,650,,1
+Chiusi,11.9487,43.0164,Clevsin,-885,-300,0
+Chiusi,11.9487,43.0164,Clusium,-300,540,0
+Chiusi,11.9487,43.0164,Chiusi,540,,1
+Cortona,11.9878,43.2741,Curtun,-860,-290,0
+Cortona,11.9878,43.2741,Corito,-290,1000,0
+Cortona,11.9878,43.2741,Cortona,1000,,1
+Populonia,10.4899,42.9884,Fulfluna,-900,-300,0
+Populonia,10.4899,42.9884,Populonia,-300,570,1
+Vetulonium,10.9719,42.8594,Vatluna,-885,-300,0
+Vetulonium,10.9719,42.8594,Vetulonium,-300,540,1
+Volterra,10.8601,43.4016,V(F)elathri,-780,-250,0
+Volterra,10.8601,43.4016,Volaterrae,-250,650,0
+Volterra,10.8601,43.4016,Volterra,650,,1
+Vulci,11.6299,42.419,Velch,-850,-280,0
+Vulci,11.6299,42.419,Vulci,-280,750,1
+Aleria,9.5113,42.1023,Allalia,-566,-80,0
+Aleria,9.5113,42.1023,Aleria,-80,550,1
+Prygi,11.9632,42.0153,Prygi,-890,100,1
+Bologna,11.3455,44.4946,Felsina,-535,-395,0
+Bologna,11.3455,44.4946,Bona,-395,-196,0
+Bologna,11.3455,44.4946,Boninia,-196,1000,0
+Bologna,11.3455,44.4946,Bologna,1000,,1
+Roselle,11.16,42.8277,Rusellae,-650,490,0
+Roselle,11.16,42.8277,Roselle,490,935,1
+Cosa,11.2885,42.4113,Cosa,-274,600,1
+Castrum Novum,11.8335,42.0353,Castrum Novum,-264,600,1
+Cerveteri,12.1028,42.0048,Caisra,-870,-300,0
+Cerveteri,12.1028,42.0048,Caere,-300,200,0
+Cerveteri,12.1028,42.0048,Caere Vetus,200,1200,0
+Cerveteri,12.1028,42.0048,Cerveteri,1200,,1
+Purugia,12.3899,43.1112,Purusna,-850,-290,0
+Purugia,12.3899,43.1112,Purusia,-290,600,0
+Purugia,12.3899,43.1112,Purugia,600,,1
+Veii,12.3905,42.0213,Veii,-890,500,1
+Orvieto,12.1116,42.7164,Velzna,-850,-264,0
+Orvieto,12.1116,42.7164,Volsinii Veteras,-264,600,0
+Orvieto,12.1116,42.7164,Orvieto,600,,1
+Rome,12.4861,41.8918,Rome,-754,,1
+Cumae,14.0557,40.848,Kyme,-726,-421,0
+Cumae,14.0557,40.848,Cumae,-421,1207,1
+Taranto,17.237146,40.47094,Taras,-706,-272,0
+Taranto,17.237146,40.47094,Tarentum,-272,1170,0
+Taranto,17.237146,40.47094,Taranto,1170,,1
+Siris,16.5414,40.149,Siris,-664,-530,1
+Metapontum,16.8241,40.3839,Metapontum,-660,100,1
+Fidenae,12.5154,41.9821,Fidenae,-730,100,1
+Alba Longa,12.6505,41.7464,Alba Longa,-850,-660,1
+Policastro Bussentino,15.5118,40.0839,Pyxous,-634,-197,0
+Policastro Bussentino,15.5118,40.0839,Buxentum,-197,1050,0
+Policastro Bussentino,15.5118,40.0839,Policastro Bussentino,1050,,1
+Ostia,12.2877,41.7549,Ostia,-630,850,1
+Velletri,12.7772,41.6874,Velester,-725,-494,0
+Velletri,12.7772,41.6874,Velitrae,-494,1000,0
+Velletri,12.7772,41.6874,Velletri,1000,,1
+Pesto,15.0053,40.4206,Poseidonia,-618,-400,0
+Pesto,15.0053,40.4206,Paistos,-400,-274,0
+Pesto,15.0053,40.4206,Paestum,-274,400,0
+Pesto,15.0053,40.4206,Pesto,400,1150,1
+Korcula,17.1356,42.9605,Korkyra Melaina,-598,1150,0
+Korcula,17.1356,42.9605,Curzola,1150,1921,0
+Korcula,17.1356,42.9605,Korcula,1921,,1
+Apiolae,12.375,41.875,Apiolae,-700,-330,1
+Collatia,12.6671,41.9252,Collatia,-780,-30,1
+Corniculum,12.7428,42.0235,Corniculum,-730,540,1
+Ficulea,12.6191,41.9967,Ficulea,-710,540,1
+Crustumerium,12.5501,42.0151,Crustumerium,-770,-330,1
+Mentana,12.6424,42.0324,Nomentum,-760,1200,0
+Mentana,12.6424,42.0324,Mentana,1200,,1
+Velia,15.1562,40.1605,Elea,-540,-273,0
+Velia,15.1562,40.1605,Velia,-273,300,1
+Puzzuoli,14.1217,40.8258,Dikaiarcheia,-532,-194,0
+Puzzuoli,14.1217,40.8258,Puteoli,-194,1000,0
+Puzzuoli,14.1217,40.8258,Puzzuoli,1000,,1
+Tusculum,12.7103,41.7983,Tusculum,-800,500,1
+Gabii,12.7197,41.8874,Gabii,-600,300,1
+Suessa Pometia,12.8264,41.5944,Suessa Pometia,-735,-502,1
+Ardea,12.547,41.6094,Ardea,-760,,1
+Ariccia,12.6733,41.7214,Aricia,-805,1000,0
+Ariccia,12.6733,41.7214,Ariccia,1000,,1
+Lanuvio,12.6976,41.6747,Lanuvium,-820,1100,0
+Lanuvio,12.6976,41.6747,Civita Lavinia,1100,1750,0
+Lanuvio,12.6976,41.6747,Lanuvio,1750,,1
+Pratica di Mare,12.4807,41.6645,Lavinium,-795,1939,0
+Pratica di Mare,12.4807,41.6645,Pratica di Mare,1939,,1
+Cori,12.9157,41.6426,Cora,-785,150,0
+Cori,12.9157,41.6426,Cori,1250,,1
+Tivoli,12.7982,41.9636,Tibur,-870,300,0
+Tivoli,12.7982,41.9636,Tivoli,300,,1
+Capua,14.2502,41.0861,Capeva,-600,-424,0
+Capua,14.2502,41.0861,Capua,-424,840,1
+Signi,13.0222,41.6915,Signia,-520,550,0
+Signi,13.0222,41.6915,Signi,550,,1
+Circeii,13.0349,41.2521,Circeii,-514,-30,1
+Spina,12.1082,44.6976,Spina,-526,589,1
+Palestina,12.8923,41.8395,Praeneste,-750,1000,0
+Palestina,12.8923,41.8395,Palestina,1000,,1
+Labicum,12.7432,41.8204,Labicum,-730,-300,1
+Pedum,12.7953,41.8811,Pedum,-725,-200,1
+Antium,12.629,41.448,Antium,-468,950,1
+Norba,12.9602,41.5916,Norba,-492,-82,1
+Ceglie Messapica,17.5144,40.6463,Kailia,-700,-272,0
+Ceglie Messapica,17.5144,40.6463,Caelia,-272,600,0
+Ceglie Messapica,17.5144,40.6463,Celie de Galdo,600,1870,0
+Ceglie Messapica,17.5144,40.6463,Ceglie Messapica,1870,,1
+Oria,17.6423,40.4978,Uria,-700,-500,0
+Oria,17.6423,40.4978,Hyria,-500,-272,0
+Oria,17.6423,40.4978,Oria,-272,,1
+Manduria,17.6364,40.3977,Manduria,-725,,1
+Manduria,17.6364,40.3977,Amandrinum,-272,530,0
+Manduria,17.6364,40.3977,Casalnuovo,977,1700,0
+Naples,14.2529,40.84,Parthenope,-850,-470,0
+Naples,14.2529,40.84,Neapolis,-470,1000,0
+Naples,14.2529,40.84,Naples,1000,,1
+Brindisi,17.9429,40.6387,Brention,-750,-267,0
+Brindisi,17.9429,40.6387,Brundisium,-267,800,0
+Brindisi,17.9429,40.6387,Brindisi,800,,1
+Heraclea Lucania,16.6704,40.2197,Heraclea Lucania,-438,530,1
+Falerii,12.4217,42.2988,Falerii,-780,-235,1
+Capena,12.5417,42.1427,Capena,-780,-235,1
+Terracina,13.2489,41.2912,Tarchna?,-700,-550,0
+Terracina,13.2489,41.2912,Anxur,-550,-330,0
+Terracina,13.2489,41.2912,Terracina,-330,,1
+Satricum,12.7464,41.5196,Satricum,-520,-346,1
+Nepi,12.3466,42.2441,Nepete,-750,700,0
+Nepi,12.3466,42.2441,Nepi,700,,1
+Sutri,12.2205,42.2428,Sutrium,-700,700,0
+Sutri,12.2205,42.2428,Sutri,700,,1
+Ancona,13.5161,43.619,Ancona,-386,,1
+Stari Grad (Croatia),16.601,43.1843,Pharos,-385,-168,0
+Stari Grad (Croatia),16.601,43.1843,Faria,-160,710,0
+Stari Grad (Croatia),16.601,43.1843,Hvar,710,1300,0
+Stari Grad (Croatia),16.601,43.1843,Stari Grad (Croatia),1300,,1
+Zadar,15.2238,44.1155,Idassa,-850,-59,0
+Zadar,15.2238,44.1155,Iader,-59,1069,0
+Zadar,15.2238,44.1155,Zadar,1069,,1
+Zadar,15.2238,44.1155,Zara,1202,1947,0
+Sezze,13.0589,41.4987,Setia,-450,850,0
+Sezze,13.0589,41.4987,Sezze,850,,1
+Ferentino,13.2534,41.6927,Ferentinum,-500,850,0
+Ferentino,13.2534,41.6927,Ferentino,850,,1
+Privernum,13.1851,41.4908,Privernum,-550,550,1
+Sora,13.6141,41.7157,Sora,-530,,1
+Saticula,14.5013,41.0909,Saticula,-530,-100,1
+Suessula,14.3986,40.9901,Suessula,-530,-100,1
+Avella,14.6004,40.9651,Abella,-530,-200,0
+Avella,14.6004,40.9651,Avella,-200,450,1
+Nola,14.5245,40.9268,Nuvlana,-580,-313,0
+Nola,14.5245,40.9268,Nola,-313,,1
+Caudium,14.6368,41.0626,Caudium,-525,900,1
+Cales,14.1321,41.2,Cales,-575,,1
+Teano,14.0701,41.2503,Teanum Sidicinum,-545,900,0
+Teano,14.0701,41.2503,Teano,900,,1
+Cassino,13.8306,41.4929,Casinum,-650,800,0
+Cassino,13.8306,41.4929,San Germano,800,1871,0
+Cassino,13.8306,41.4929,Cassino,1871,,1
+Alfidena,14.1082,41.7843,Aufidena,-435,800,0
+Alfidena,14.1082,41.7843,Alfidena,800,,1
+Lucera,15.3355,41.5086,Luceria,-790,800,0
+Lucera,15.3355,41.5086,Lucera,800,,1
+Ascoli Satriano,15.5625,41.2071,Ausculum,-750,-280,0
+Ascoli Satriano,15.5625,41.2071,Asculum,-280,1040,0
+Ascoli Satriano,15.5625,41.2071,Ascoli Satriano,1040,,1
+Corfinio,13.9257,42.0468,Corfinium,-600,550,0
+Corfinio,13.9257,42.0468,Italica,-91,-89,0
+Corfinio,13.9257,42.0468,Pentima,550,1100,0
+Corfinio,13.9257,42.0468,Valva,1100,1928,0
+Corfinio,13.9257,42.0468,Corfinio,1928,,1
+Chiete,14.1672,42.3518,Theate,-680,-304,0
+Chiete,14.1672,42.3518,Teate,-304,1000,0
+Chiete,14.1672,42.3518,Chiete,1000,,1
+Fregellae,13.5389,41.5367,Fregellae,-850,-125,1
+Nocera,14.6739,40.7431,Nuvkrinum,-600,-450,0
+Nocera,14.6739,40.7431,Nuvkrinum Alfaternum,-450,-300,0
+Nocera,14.6739,40.7431,Nuceria,-300,1270,0
+Nocera,14.6739,40.7431,Nuceria Constantia,-57,570,0
+Nocera,14.6739,40.7431,Nocera,1270,,1
+Casoli,14.2764,42.1271,Cluviae,-615,878,0
+Casoli,14.2764,42.1271,Casoli,878,,1
+Acerra,14.3712,40.9461,Akeru,-610,-332,0
+Acerra,14.3712,40.9461,Acerrae,-332,-800,0
+Acerra,14.3712,40.9461,Acerra,800,,1
+Fondi,13.4279,41.3574,Fundi,-790,750,0
+Fondi,13.4279,41.3574,Fondi,750,,1
+Ferento,12.1322,42.4886,Ferentium,-450,800,0
+Ferento,12.1322,42.4886,Ferento,800,1172,1
+Canosa,16.0656,41.2214,Canusion,-600,-318,0
+Canosa,16.0656,41.2214,Canusium,-318,600,0
+Canosa,16.0656,41.2214,Canosa,600,,1
+Civitate,15.2613,41.7394,Tiati,-650,-318,0
+Civitate,15.2613,41.7394,Teanum Apulum,-318,100,0
+Civitate,15.2613,41.7394,Civitate,100,550,1
+Arpi,15.5554,41.4757,Argos Hippium,-800,-500,0
+Arpi,15.5554,41.4757,Argyippa,-500,-320,0
+Arpi,15.5554,41.4757,Arpi,-320,-100,1
+Bojano,14.4739,41.4867,Bovianum,-650,75,0
+Bojano,14.4739,41.4867,Bovianum Undecimanoruin,75,662,0
+Bojano,14.4739,41.4867,Bojano,662,1913,1
+Benevento,14.7812,41.1304,Maloeis,-850,-350,0
+Benevento,14.7812,41.1304,Maleventum,-350,-268,0
+Benevento,14.7812,41.1304,Beneventum,-268,576,0
+Benevento,14.7812,41.1304,Benevento,576,,1
+Sessa Aurunca,13.9322,41.2383,Suessa Aurunca,-750,600,0
+Sessa Aurunca,13.9322,41.2383,Sessa Aurunca,600,,1
+Calatia,14.3562,41.0443,Calatia,-600,250,1
+Atina,13.7972,41.6207,Atina,-575,,1
+Interamna Lirenas,13.7539,41.4277,Interamna Lirenas,-312,275,1
+Camerino,13.0688,43.1404,Camerium,-575,600,0
+Camerino,13.0688,43.1404,Camerino,600,,1
+Pompeii,14.4854,40.7494,Pompeii,-590,80,1
+Ocriculum,12.4666,42.4127,Ocriculum,-500,587,1
+Alatri,13.344,41.7248,Aletrium,-306,600,0
+Alatri,13.344,41.7248,Alatri,600,,1
+Veroli,13.4173,41.6905,Verulae,-550,600,0
+Veroli,13.4173,41.6905,Veroli,600,,1
+Anagni,13.159,41.7422,Anagnia,-700,600,0
+Anagni,13.159,41.7422,Anagni,600,,1
+Alba Fucens,13.4112,42.0799,Alba Fucens,-304,950,1
+Narni,12.5157,42.5188,Nequinum,-750,-300,0
+Narni,12.5157,42.5188,Narnia,-300,900,0
+Narni,12.5157,42.5188,Narni,900,,1
+Carsoli,13.0655,42.089,Carseoli,-298,800,0
+Carsoli,13.0655,42.089,Carsoli,800,1250,1
+Potenza,15.8017,40.6376,Potentia,-450,800,0
+Potenza,15.8017,40.6376,Potenza,800,1250,1
+Minturnae,13.7684,41.2422,Minturnae,-530,900,1
+Sinuessa,13.8448,41.1523,Sinuessa,-296,550,1
+Venosa,15.8273,40.9689,Aphrodisia,-800,-292,0
+Venosa,15.8273,40.9689,Venusia,-292,800,0
+Venosa,15.8273,40.9689,Venosa,800,,1
+Atria,13.9811,42.5802,Hadria,-288,-100,0
+Atria,13.9811,42.5802,Hatria,-100,800,0
+Atria,13.9811,42.5802,Atria,800,,1
+Senigallia,13.218,43.715,Sena Gallica,-283,800,0
+Senigallia,13.218,43.715,Senigallia,800,,1
+Rimini,12.5632,44.059,Ariminum,-268,800,0
+Rimini,12.5632,44.059,Rimini,800,,1
+Isernia,14.2324,41.5963,Aesernia,-268,700,0
+Isernia,14.2324,41.5963,Isernia,700,,1
+Fermo,13.7168,43.1611,Firmum,-268,800,0
+Fermo,13.7168,43.1611,Fermo,800,,1
+Veles,21.9482,41.8701,Bylazora,-800,1374,0
+Veles,21.9482,41.8701,Koprulu,1374,1912,0
+Veles,21.9482,41.8701,Veles,1912,,1
+Stobi,21.9744,41.5523,Stobi,-740,1000,1
+Stip,22.1934,41.7307,Astibos,-700,550,0
+Stip,22.1934,41.7307,Stip,550,,1
+Stip,22.1934,41.7307,Istip,1384,1912,0
+Methone (Thrace),22.5836,40.4674,Methone (Thrace),-735,-354,1
+Ouranopolis,23.9348,40.3636,Sane,-656,-316,0
+Ouranopolis,23.9348,40.3636,Ouranopolis,-316,,1
+Ierissos,23.8801,40.3998,Acanthus,-656,1,0
+Ierissos,23.8801,40.3998,Ericius,1,330,0
+Ierissos,23.8801,40.3998,Erissos,330,1430,0
+Ierissos,23.8801,40.3998,Halkidiki,1430,1912,0
+Ierissos,23.8801,40.3998,Ierissos,1912,,1
+Stagira,23.7939,40.5926,Stageira,-656,1,0
+Stagira,23.7939,40.5926,Stagirus,1,330,0
+Stagira,23.7939,40.5926,Siderokafsia,330,1912,0
+Stagira,23.7939,40.5926,Stagira,1912,,1
+Aigai,22.3197,40.483,Aigai,-650,150,1
+Olynthus,23.3484,40.2946,Olynthus,-650,-348,1
+Galepsus,23.986,40.7404,Galepsus,-632,300,1
+Durres,19.4474,41.3163,Epidamnos,-628,-229,0
+Durres,19.4474,41.3163,Dyrrachium,-229,950,0
+Durres,19.4474,41.3163,Durres,950,,1
+Durres,19.4474,41.3163,Durazzo,1292,1945,0
+Durres,19.4474,41.3163,Dirac,1501,1912,0
+Kassandreia,23.34,40.1912,Poteidaia,-604,-356,0
+Kassandreia,23.34,40.1912,Kassandreia,-316,540,1
+Apollonia (Illyria),19.46288,40.73392,Gylakeia,-594,-588,0
+Apollonia (Illyria),19.46288,40.73392,Apollonia (Illyria),-588,600,1
+Chrysopolis?,23.87285,40.78932,Eion,-700,500,0
+Chrysopolis?,23.87285,40.78932,Chrysopolis?,500,1400,1
+Thronion (Illyria),19.4258,40.5117,Thronion (Illyria),-650,-490,1
+Amphipolis,23.84158,40.82581,Amphipolis,-438,800,1
+Aiane,21.82099,40.16516,Aiane,-550,-10,1
+Argos Orestiko,21.24416,40.47374,Argos Orestikon,-550,1400,0
+Argos Orestiko,21.24416,40.47374,Argos Orestiko,1400,,1
+Arnisa,21.70042,40.64582,Arnisa,-600,,1
+Arnisa,21.70042,40.64582,Ostrovon,1400,1926,0
+Stuberra,21.3975,41.24361,Stuberra,-500,550,1
+Sofia,23.34289,42.72283,Sedica,-200,115,0
+Sofia,23.34289,42.72283,Ulpia Serdica,115,535,0
+Sofia,23.34289,42.72283,Triaditsa,535,810,0
+Sofia,23.34289,42.72283,Sredets,810,1376,0
+Sofia,23.34289,42.72283,Sofia,1376,,1
+Pydna,22.61726,40.39757,Pydna,-650,,1
+Therme,22.94402,40.58155,Therme,-610,-100,1
+Spartolos,23.15984,40.31635,Spartolos,-600,-250,1
+Lezhe,19.64392,41.78294,Lissos,-388,-200,0
+Lezhe,19.64392,41.78294,Lissus,-200,1386,0
+Lezhe,19.64392,41.78294,Alisso,1396,1506,0
+Lezhe,19.64392,41.78294,Lesh,1506,1900,0
+Lezhe,19.64392,41.78294,Lezhe,1900,,1
+Pella,22.51822,40.75436,Pella,-400,350,1
+Anthemous,23.28433,40.41772,Anthemous,-550,550,1
+Thessaloniki,22.95289,40.62834,Thessaloniki,-316,,1
+Thessaloniki,22.95289,40.62834,Thessalonica,-168,395,0
+Thessaloniki,22.95289,40.62834,Selanik,1430,1912,0
+Barat,19.94971,40.69978,Antipatreia,-314,-200,0
+Barat,19.94971,40.69978,Antipatreia/Pulcheriopolis,-200,850,0
+Barat,19.94971,40.69978,Belegrada,850,1385,0
+Barat,19.94971,40.69978,Barat,1385,,1
+Astacus,29.9288,40.7146,Astacus,-712,-286,1
+Parium,27.0691,40.4205,Parium,-709,1450,1
+Cyzicus,27.883191,40.385565,Cyzicus,-700,1500,1
+Silivri,28.2477,41.0785,Selymbria,-680,1454,0
+Silivri,28.2477,41.0785,Eudoxiopolis,400,450,0
+Silivri,28.2477,41.0785,Silivri,1454,,1
+Kadikoy,29.0258,40.9834,Chalcedon,-686,1353,0
+Kadikoy,29.0258,40.9834,Kadikoy,1353,,1
+Istanbul,28.9847,41.0153,Byzantium,-668,1454,0
+Istanbul,28.9847,41.0153,Nova Roma,330,338,0
+Istanbul,28.9847,41.0153,Istanbul,1454,,1
+Abydos,26.4091,40.1951,Abydos,-666,1315,1
+Abydos,26.4091,40.1951,Abydos (Hellespont),-330,300,0
+Histria,28.7748,44.5476,Istros,-658,30,0
+Histria,28.7748,44.5476,Histria,30,680,1
+Maroneia,25.5114,40.8738,Maroneia,-656,,1
+Lampsacus,26.6992,40.3467,Pityusa,-654,-575,0
+Lampsacus,26.6992,40.3467,Lampsacus,-575,1400,1
+Abdera,24.9796,40.9395,Abdera,-666,300,1
+Thasos,24.7106,40.7798,Thasos,-652,,1
+Thasos,24.7106,40.7798,Tasoz,1456,1213,0
+Stryme,25.2823,40.9366,Stryme,-646,-348,1
+Kavala,24.414,40.9343,Neapolis (Thrace),-640,800,0
+Kavala,24.414,40.9343,Christoupolis,800,1387,0
+Kavala,24.414,40.9343,Kavala,1387,,1
+Emathia,24.3009,40.8289,Oisyme,-636,-355,0
+Emathia,24.3009,40.8289,Emathia,-355,500,1
+Prusias ad Mare,29.1564,40.4325,Kios,-628,-196,0
+Prusias ad Mare,29.1564,40.4325,Prusias ad Mare,-196,1600,1
+Sozopol,27.6943,42.4204,Antheia,-610,-450,0
+Sozopol,27.6943,42.4204,Apollonia Pontica,-450,300,0
+Sozopol,27.6943,42.4204,Sozopolis,300,1914,0
+Sozopol,27.6943,42.4204,Sozopol,1914,,1
+Eregli,27.953,40.971,Perinthus,-602,300,0
+Eregli,27.953,40.971,Heraclea,300,1453,0
+Eregli,27.953,40.971,Eregli,1453,,1
+Sestos,26.3886,40.2129,Sestos,-900,1500,1
+Lysimacheia,26.7508,40.5482,Kardia,-558,-309,0
+Lysimacheia,26.7508,40.5482,Lysimacheia,-309,330,1
+Samothrace,25.534,40.5048,Samothrace,-542,1457,1
+Samothrace,25.534,40.5048,Semadirek,1457,1913,0
+Doriskos,26.164,40.8736,Doriskos,-513,-300,1
+Nesebar,27.7244,42.6596,Menebria,-1000,-510,0
+Nesebar,27.7244,42.6596,Mesembria,-510,1050,0
+Nesebar,27.7244,42.6596,Nesebar,1050,,1
+Enez,26.0857,40.7249,Ainos,-880,1456,0
+Enez,26.0857,40.7249,Aenus,-185,395,0
+Enez,26.0857,40.7249,Enez,1456,,1
+Dascylium,28.0507,40.1325,Daskyleion,-800,-70,0
+Dascylium,28.0507,40.1325,Dascylium,-70,800,1
+Philippi,24.2846,41.0127,Krenides,-360,-357,0
+Philippi,24.2846,41.0127,Philippi,-357,1390,1
+Plovdiv,24.7495,42.1456,Eumolpias,-1275,-341,0
+Plovdiv,24.7495,42.1456,Philippopolis,-341,1364,0
+Plovdiv,24.7495,42.1456,Trimontium,-46,200,0
+Plovdiv,24.7495,42.1456,Filibe,1364,1878,0
+Plovdiv,24.7495,42.1456,Plovdiv,1878,,1
+Stara Zagora,25.6249,42.4254,Beroe,-500,1000,0
+Stara Zagora,25.6249,42.4254,Ulpia Augusta Traiana,120,330,0
+Stara Zagora,25.6249,42.4254,Vereia,600,784,0
+Stara Zagora,25.6249,42.4254,Irenopolis,784,812,0
+Stara Zagora,25.6249,42.4254,Boruj,1000,1371,0
+Stara Zagora,25.6249,42.4254,Eski Hisar,1371,1650,0
+Stara Zagora,25.6249,42.4254,Eski Zagra,1650,1871,0
+Stara Zagora,25.6249,42.4254,Stara Zagora,1871,,1
+Varna,27.9135,43.2062,Odessus,-570,-60,0
+Varna,27.9135,43.2062,Odessos,-60,650,0
+Varna,27.9135,43.2062,Varna,650,,1
+Edirne,26.5629,41.6765,Uskudama,-550,-341,0
+Edirne,26.5629,41.6765,Orestias,-341,124,0
+Edirne,26.5629,41.6765,Hadrianople,124,1205,0
+Edirne,26.5629,41.6765,Adrianople,1205,1369,0
+Edirne,26.5629,41.6765,Edirne,1369,,1
+Seuthopolis,25.3629,42.6123,Seuthopolis,-325,-280,1
+Mangalia,28.5828,43.8172,Callatis,-550,1250,0
+Mangalia,28.5828,43.8172,Pangalia,1250,1550,0
+Mangalia,28.5828,43.8172,Mangalia,1550,,1
+Tylis,25.5469,42.574,Tylis,-277,-212,1
+Izmit,29.9199,40.7652,Nicomedia,-264,1337,0
+Izmit,29.9199,40.7652,Izmit,1337,,1
+Hattusa,34.61528,40.01972,Hattus,-2000,-1700,0
+Hattusa,34.61528,40.01972,Hattusa,-1670,-800,1
+Arinna,34.69556,40.23444,Arinna,-2000,-1200,1
+Zalpa,35.83275,41.668,Zalpa,-2000,-1500,1
+Tabigga/Tabikka,35.7622,40.1483,Tabigga/Tabikka,-2100,-1225,1
+Sapinuwa,35.25,40.2667,Sapinuwa,-1700,-1210,1
+Nerik,35.42948,41.20772,Nerik,-2100,-1200,1
+Hakpis(sa),35.6362,40.6337,Hakpis(sa),-1700,-1200,1
+Sanahuitta,35.6414,40.359,Sanahuitta,-1750,-1350,1
+Sinop,35.143037,42.025776,Sinope,-764,1214,0
+Sinop,35.143037,42.025776,Sinop,1214,,1
+Karadeniz Eregli,31.414722,41.284722,Heraclea (Pontica),-560,450,0
+Karadeniz Eregli,31.414722,41.284722,Pontoheraclea,450,1450,0
+Karadeniz Eregli,31.414722,41.284722,Karadeniz Eregli,1450,,1
+Amasra,32.38565,41.746969,Sesamus,-540,-301,0
+Amasra,32.38565,41.746969,Amastris,-301,1461,0
+Amasra,32.38565,41.746969,Amasra,1461,,1
+Tios,32.03151,41.571174,Tios,-540,860,1
+Trabzon,39.723312,41.004269,Trapezous,-756,100,0
+Trabzon,39.723312,41.004269,Trapezus,100,800,0
+Trabzon,39.723312,41.004269,Trebezond,800,1462,0
+Trabzon,39.723312,41.004269,Trabzon,1462,,1
+Samson,36.3313,41.292721,Amisos,-564,-71,0
+Samson,36.3313,41.292721,Amisus,-71,1000,0
+Samson,36.3313,41.292721,Samson,1000,,1
+Ordu,37.870358,40.998428,Kotyora,-730,1461,0
+Ordu,37.870358,40.998428,Bayramli,1461,1869,0
+Ordu,37.870358,40.998428,Ordu,1869,,1
+Erevan,44.5381,40.1406,Erebuni,-782,-321,0
+Erevan,44.5381,40.1406,Erevan,-321,,1
+Gavar,45.126667,40.358889,City of Khaldi,-730,-555,0
+Gavar,45.126667,40.358889,Gavar,-555,,1
+Gavar,45.126667,40.358889,Nor Bayezet,1930,1959,0
+Gavar,45.126667,40.358889,Kamo,1959,1996,0
+Teishebaini,44.453366,40.153888,Teishebaini,-660,-590,1
+Istaravshan,69.261977,40.13536,Cyropolis,-536,-30,0
+Istaravshan,69.261977,40.13536,Cyreschata,-30,640,0
+Istaravshan,69.261977,40.13536,Kyra,640,1870,0
+Istaravshan,69.261977,40.13536,Ura-Tayub,1770,2000,0
+Istaravshan,69.261977,40.13536,Istaravshan,2000,,1
+Tabigga/Tabikka,35.76222,40.14833,Tabigga/Tabikka,-2100,-1225,1
+Sapinuwa,35.25,40.26667,Sapinuwa,-1700,-1210,1
+Mantua,10.797602,45.160646,Mantua,-520,,1
+Padua,11.876975,45.409561,Patavium,-300,800,0
+Padua,11.876975,45.409561,Padua,800,,1
+Adria,12.056195,45.0577,Atria,-530,-230,0
+Adria,12.056195,45.0577,Hatria,-230,1600,0
+Adria,12.056195,45.0577,Adria,1600,,1
+Borysthenes/Olbia,31.901597,46.691895,Borysthenes/Olbia,-648,390,1
+Feodosiya,35.378768,45.04609,Theodosia,-546,1290,0
+Feodosiya,35.378768,45.04609,Kaffa,1290,1476,0
+Feodosiya,35.378768,45.04609,Kefe,1476,1784,0
+Feodosiya,35.378768,45.04609,Feodosiya,1784,,1
+Kerch,36.470222,45.353262,Pantikapaion,-604,700,0
+Kerch,36.470222,45.353262,Karcha,700,1016,0
+Kerch,36.470222,45.353262,Korchev,1016,1318,0
+Kerch,36.470222,45.353262,Cerco,1311,1475,0
+Kerch,36.470222,45.353262,Kerch,1475,,1
+Phanagoria,36.960937,45.276617,Phanagoria,-544,1360,1
+Nymphaeum,36.417274,45.236481,Nymphaion,-570,-60,0
+Nymphaeum,36.417274,45.236481,Nymphaeum,-60,375,1
+Matracha,36.712664,45.215263,Hermonassa,-588,700,0
+Matracha,36.712664,45.215263,Tamatarkha,700,1000,0
+Matracha,36.712664,45.215263,Tmutarakan,1000,1125,0
+Matracha,36.712664,45.215263,Matracha,1125,1400,1
+Kimmerikon,36.22459,45.042315,Kimmerikon,-588,700,1
