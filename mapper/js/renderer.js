@@ -100,7 +100,7 @@ class MapRenderer {
         // Second pass: greedy label placement after all dots are drawn.
         // Auto-show names when few enough cities are visible and none are crowded.
         const effectiveCityNames = showCityNames ||
-            (showCities && this._autoCityNames(projection, allCities, year, cityDetail));
+            (showCities && this._autoCityNames(projection, allCities, year, cityDetail, W, H));
         if (showCities && effectiveCityNames) {
             this._placeAndDrawCityLabels(ctx, projection, allCities, year, cityDetail);
         }
@@ -610,7 +610,7 @@ class MapRenderer {
     // Returns true when city names should be shown automatically.
     // Hybrid test: total visible cities <= MAX_COUNT AND fewer than MAX_CROWD
     // cities have a neighbour within CROWD_R pixels.
-    _autoCityNames(projection, allCities, year, cityDetail) {
+    _autoCityNames(projection, allCities, year, cityDetail, W, H) {
         const MAX_COUNT = 20;
         const CROWD_R   = 60;   // px — label-width proxy
         const MAX_CROWD = 3;    // crowded cities tolerated before suppressing
@@ -630,6 +630,7 @@ class MapRenderer {
                     if ((0.05 * Math.abs(sym) * scale) / Math.SQRT2 < 0.5) continue;
                 }
                 const { x, y } = projection.geoToPixel(city.lon, city.lat);
+                if (x < 0 || x > W || y < 0 || y > H) continue;  // off-screen
                 pts.push({ x, y });
                 if (pts.length > MAX_COUNT) return false;  // early exit
             }
