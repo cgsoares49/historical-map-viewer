@@ -2173,9 +2173,9 @@ function vibeAddDisambiguation(originalText, matches) {
             dateStr    = '  ·  ' + (to && to !== from ? `${from} – ${to}` : from);
         }
 
-        // Center coords
-        const cLon = ((bounds[0] + bounds[2]) / 2).toFixed(1);
-        const cLat = ((bounds[1] + bounds[3]) / 2).toFixed(1);
+        // Center coords — use weighted centroid if present (index 6/7), else bbox midpoint
+        const cLon = (bounds.length >= 8 ? bounds[6] : (bounds[0] + bounds[2]) / 2).toFixed(1);
+        const cLat = (bounds.length >= 8 ? bounds[7] : (bounds[1] + bounds[3]) / 2).toFixed(1);
         const ns = cLat >= 0 ? 'N' : 'S', ew = cLon >= 0 ? 'E' : 'W';
         const coordStr = `  ·  ${Math.abs(cLat)}°${ns} ${Math.abs(cLon)}°${ew}`;
 
@@ -2503,8 +2503,12 @@ function executeVibeCommand(text) {
 // Navigate to a geodata entry — called both from command parser and disambiguation clicks.
 function vibeNavigateTo(foundName, bounds, year, label) {
     const [minLon, minLat, maxLon, maxLat] = bounds;
-    const centerLon = Math.round(((minLon + maxLon) / 2) * 10) / 10;
-    const centerLat = Math.round(((minLat + maxLat) / 2) * 10) / 10;
+    const centerLon = bounds.length >= 8
+        ? bounds[6]
+        : Math.round(((minLon + maxLon) / 2) * 10) / 10;
+    const centerLat = bounds.length >= 8
+        ? bounds[7]
+        : Math.round(((minLat + maxLat) / 2) * 10) / 10;
     const zoom      = vibeZoomForBounds(minLon, minLat, maxLon, maxLat);
 
     document.getElementById('centerLon').value = centerLon;

@@ -4,7 +4,7 @@ Scans all PAR tile files and builds a geodata CSV keyed on primaries.txt entries
 Columns: Name, MinLon, MinLat, MaxLon, MaxLat, EarliestDate, LatestDate
 """
 
-import os, csv, re
+import os, csv, re, math
 from collections import defaultdict
 
 MAPPER_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -151,7 +151,8 @@ def main():
     results = {name: {'min_lon': INF, 'max_lon': -INF,
                       'min_lat': INF, 'max_lat': -INF,
                       'min_date': INF, 'max_date': -INF,
-                      'min_date_exact': INF, 'max_date_exact': -INF}
+                      'min_date_exact': INF, 'max_date_exact': -INF,
+                      'sum_w': 0.0, 'sum_wlon': 0.0, 'sum_wlat': 0.0}
                for name in primaries.values()}
 
     par_dir = os.path.join(DATA_DIR, 'polareas')
@@ -201,6 +202,15 @@ def main():
                     r['min_lat'] = min(r['min_lat'], lat_bot)
                     r['max_lat'] = max(r['max_lat'], lat_top)
 
+                    # Weighted centroid — weight each tile by approximate surface area
+                    tile_width   = lon_right - lon_left
+                    lat_center   = (lat_bot + lat_top) / 2.0
+                    lon_center   = (lon_left + lon_right) / 2.0
+                    weight       = tile_width * math.cos(math.radians(lat_center))
+                    r['sum_w']   += weight
+                    r['sum_wlon'] += lon_center * weight
+                    r['sum_wlat'] += lat_center * weight
+
                     # Date range — skip sentinel from values and short-span
                     # transition/revolt entries (< MIN_SPAN years) so they
                     # don't contaminate the earliest/latest dates.
@@ -227,12 +237,14 @@ def main():
     not_found = []
     with open(out_path, 'w', newline='', encoding='utf-8') as f:
         w = csv.writer(f)
-        w.writerow(['Name', 'MinLon', 'MinLat', 'MaxLon', 'MaxLat', 'EarliestDate', 'LatestDate'])
+        w.writerow(['Name', 'MinLon', 'MinLat', 'MaxLon', 'MaxLat', 'EarliestDate', 'LatestDate', 'CentLon', 'CentLat'])
         for display_name in sorted(results.keys()):
             r = results[display_name]
             if r['min_lon'] == INF:
                 not_found.append(display_name)
                 continue
+            cent_lon = round(r['sum_wlon'] / r['sum_w'], 2) if r['sum_w'] > 0 else ''
+            cent_lat = round(r['sum_wlat'] / r['sum_w'], 2) if r['sum_w'] > 0 else ''
             w.writerow([
                 display_name,
                 round(r['min_lon'], 1),
@@ -244,6 +256,8 @@ def main():
                          else r['min_date'] if r['min_date'] != INF else None, False),
                 fmt_date(r['max_date_exact'] if r['max_date_exact'] != -INF
                          else r['max_date'] if r['max_date'] != -INF else None, True),
+                cent_lon,
+                cent_lat,
             ])
             found += 1
 

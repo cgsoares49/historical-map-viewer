@@ -73,8 +73,16 @@ with open(PAR_CSV, encoding='utf-8', newline='') as f:
         latest      = row['LatestDate'].strip()
         earliest_yr = parse_year_str(earliest)
         latest_yr   = parse_year_str(latest)
+        cent_lon_s  = row.get('CentLon', '').strip()
+        cent_lat_s  = row.get('CentLat', '').strip()
+        try:
+            cent_lon = float(cent_lon_s) if cent_lon_s else None
+            cent_lat = float(cent_lat_s) if cent_lat_s else None
+        except ValueError:
+            cent_lon = cent_lat = None
         par_entries.append((name, minLon, minLat, maxLon, maxLat,
-                            earliest, latest, earliest_yr, latest_yr))
+                            earliest, latest, earliest_yr, latest_yr,
+                            cent_lon, cent_lat))
 
 print(f"PAR entries to write: {len(par_entries)}")
 
@@ -94,9 +102,14 @@ lines.append('')
 lines.append('    // ── From primaries / PAR tile data ─────────────────────────────────────────')
 
 for (name, minLon, minLat, maxLon, maxLat,
-     earliest, latest, earliest_yr, latest_yr) in sorted(par_entries, key=lambda x: x[0].lower()):
+     earliest, latest, earliest_yr, latest_yr,
+     cent_lon, cent_lat) in sorted(par_entries, key=lambda x: x[0].lower()):
     key = name.lower().replace("'", "\\'")
-    if earliest_yr is not None and latest_yr is not None:
+    if earliest_yr is not None and latest_yr is not None and cent_lon is not None:
+        coords = (f"[{fmt(minLon):>5},{fmt(minLat):>5},{fmt(maxLon):>6},{fmt(maxLat):>5},"
+                  f" {fmt_year(earliest_yr)}, {fmt_year(latest_yr)},"
+                  f" {cent_lon}, {cent_lat}]")
+    elif earliest_yr is not None and latest_yr is not None:
         coords = (f"[{fmt(minLon):>5},{fmt(minLat):>5},{fmt(maxLon):>6},{fmt(maxLat):>5},"
                   f" {fmt_year(earliest_yr)}, {fmt_year(latest_yr)}]")
     elif earliest_yr is not None:
