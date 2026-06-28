@@ -126,18 +126,12 @@ MIN_SPAN      = 1.0     # date ranges shorter than this (years) are transitions/
                         # ignored for min/max date calculation (but not for bounding box)
 
 def fmt_date(val, is_to):
-    """Format a date float as readable string, preserving fractional years."""
+    """Format a date as a plain integer (negative = BC). Open-ended to-dates → empty."""
     if val is None:
         return ''
     if is_to and val >= 9990:
-        return 'present'
-    if val < 0:
-        y = abs(val)
-        return f'{y:.1f} BCE' if y != int(y) else f'{int(y)} BCE'
-    elif val > 0:
-        return f'{val:.1f} CE' if val != int(val) else f'{int(val)} CE'
-    else:
-        return '1 BCE'
+        return ''
+    return str(int(round(val)))
 
 def main():
     primaries = load_primaries(os.path.join(DATA_DIR, 'primaries.txt'))

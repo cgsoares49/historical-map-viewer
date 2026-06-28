@@ -76,7 +76,7 @@ Copy-Item "$MapperDir\refs.json"     "$DistDir\refs.json"      -Force
 Copy-Item "$MapperDir\sahm-logo.png" "$DistDir\sahm-logo.png"  -Force
 Copy-Item "$MapperDir\map_2000CE.png" "$DistDir\map_2000CE.png" -Force
 Copy-Item "$MapperDir\favicon.ico"   "$DistDir\favicon.ico"    -Force
-Copy-Item "$MapperDir\js"            "$DistDir\js"             -Recurse -Force
+Copy-Item "$MapperDir\js\*"          "$DistDir\js\"            -Recurse -Force
 
 # robocopy: only copies files newer in source (/XO), including subdirs (/E)
 # exit codes 0-7 are success; 8+ are errors

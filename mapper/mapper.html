@@ -2527,7 +2527,7 @@ function vibeNavigateTo(foundName, bounds, year, label) {
     // Use explicit year, else place's start date + 0.1 to cross the exclusive lower bound
     // (PAR date match is year > range.from, so from=-725.5 first shows at -725.4)
     // Modern nations (bounds[4] === 1990.1) use year 2000, the always-loaded modern reference.
-    const isModern = bounds[4] === 1990.1;
+    const isModern = bounds[4] !== undefined && bounds[4] >= 1990 && bounds[4] < 1991;
     let placeYear;
     if (year !== null && year !== undefined) {
         placeYear = year;
