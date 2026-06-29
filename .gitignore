@@ -30,6 +30,9 @@ mapper.NET.deps.json
 mapper.NET.runtimeconfig.json
 mapper.NET.runtimeconfig.dev.json
 
+# ── Python cache ─────────────────────────────────────────────────────────────
+mapper/__pycache__/
+
 # ── Misc data / work files ───────────────────────────────────────────────────
 Work Area/
 NVALUES.DAT
