@@ -95,7 +95,14 @@
       "Bash(python *)",
       "Bash(git checkout *)",
       "Bash(git -C \"C:\\\\my stuff\\\\claudetest\" diff HEAD -- mapper/refs_export.csv)",
-      "Bash(powershell -Command \"Get-Content 'C:\\\\my stuff\\\\claudetest\\\\mapper\\\\js\\\\refs.json' | Select-Object -First 20\")"
+      "Bash(powershell -Command \"Get-Content 'C:\\\\my stuff\\\\claudetest\\\\mapper\\\\js\\\\refs.json' | Select-Object -First 20\")",
+      "PowerShell(head *)",
+      "PowerShell(python \"C:\\\\Users\\\\csoar\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--my-stuff-claudetest\\\\847ff934-a6fa-44df-9955-cb268930b353\\\\scratchpad\\\\check_cities.py\")",
+      "PowerShell(python \"C:\\\\Users\\\\csoar\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--my-stuff-claudetest\\\\847ff934-a6fa-44df-9955-cb268930b353\\\\scratchpad\\\\show_dupes.py\")",
+      "PowerShell(python \"C:\\\\Users\\\\csoar\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--my-stuff-claudetest\\\\847ff934-a6fa-44df-9955-cb268930b353\\\\scratchpad\\\\fix_dupes.py\")",
+      "Bash(gh run *)",
+      "PowerShell(python \"C:\\\\Users\\\\csoar\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--my-stuff-claudetest\\\\847ff934-a6fa-44df-9955-cb268930b353\\\\scratchpad\\\\test_city_refs.py\")",
+      "Bash(git *)"
     ]
   },
   "hooks": {
