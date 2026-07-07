@@ -1026,6 +1026,7 @@
         <button id="infoPopupClose" title="Dismiss">×</button>
     </div>
     <div id="infoPopupBody">
+        <div id="infoPopupWaterHint" style="display:none;font-style:italic;color:#8090a8;font-size:11px;margin-bottom:6px;">Click over a land area to get land area information.</div>
         <div id="infoPopupDates" style="display:none;">
             <div class="info-section-label">Temporal Extent</div>
             <div id="infoPopupDatesVal" class="info-section-value"></div>
@@ -1239,13 +1240,13 @@ document.getElementById('btnStepBack').addEventListener('click', () => {
     const step = parseFloat(document.getElementById('yrPerStep').value) || 0.1;
     const cur  = parseYear(document.getElementById('mapDate').value)   || 0;
     document.getElementById('mapDate').value = skipYear0(cur, Math.round((cur - step) * 10) / 10);
-    scheduleRender();
+    scheduleRenderRespectingSelection();
 });
 document.getElementById('btnStepFwd').addEventListener('click', () => {
     const step = parseFloat(document.getElementById('yrPerStep').value) || 0.1;
     const cur  = parseYear(document.getElementById('mapDate').value)   || 0;
     document.getElementById('mapDate').value = skipYear0(cur, Math.round((cur + step) * 10) / 10);
-    scheduleRender();
+    scheduleRenderRespectingSelection();
 });
 
 // Animation
@@ -1696,7 +1697,7 @@ document.getElementById('showCityNames' ).addEventListener('change', scheduleRen
 document.getElementById('cityDetail'    ).addEventListener('change', scheduleRender);
 document.getElementById('showGrid'      ).addEventListener('change', drawOverlay);
 document.getElementById('showCoordGrid').addEventListener('change', drawOverlay);
-document.getElementById('mapDate'    ).addEventListener('change', scheduleRender);
+document.getElementById('mapDate'    ).addEventListener('change', scheduleRenderRespectingSelection);
 
 // Redraw overlay when zoom or center changes
 document.getElementById('zoom').addEventListener('change', () => {
@@ -1914,7 +1915,7 @@ function tlSetYear(px) {
     document.getElementById('mapDate').value = y;
     timelineYearEl.textContent = fmtYearInt(y);
     clearTimeout(_tlTimer);
-    _tlTimer = setTimeout(() => scheduleRender(), 150);
+    _tlTimer = setTimeout(() => scheduleRenderRespectingSelection(), 150);
     drawTimeline();
 }
 
@@ -2779,6 +2780,13 @@ let _renderInProgress = false;
 let _renderQueued     = false;
 let _cancelToken      = null;
 
+// Before an area has been selected (still in world-context mode), changing the
+// date alone should not jump straight to a detail render — that skips the
+// "select a region" step. Once an area has been rendered, dates render immediately.
+function scheduleRenderRespectingSelection() {
+    if (_mapFullyRendered) scheduleRender(); else renderWorldContext();
+}
+
 function scheduleRender() {
     if (!mapRenderer) {
         document.getElementById('status').textContent = 'Still loading color data…';
@@ -3368,7 +3376,7 @@ function toAsciiName(s) {
     return s.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^\x00-\x7F]/g, '');
 }
 
-function showInfoPopup(rawName, screenX, screenY, cityCoords) {
+function showInfoPopup(rawName, screenX, screenY, cityCoords, showWaterHint = false) {
     // Try exact lowercase key, then strip region qualifiers ( " - ", " (", " – " )
     const norm1 = rawName.toLowerCase().trim();
     const norm2 = norm1.replace(/\s*[-–—(].*$/, '').trim();
@@ -3378,6 +3386,7 @@ function showInfoPopup(rawName, screenX, screenY, cityCoords) {
 
     document.getElementById('infoPopup')._refKey = refKey;
     document.getElementById('infoPopupTitle').textContent = toTitleCase(rawName);
+    document.getElementById('infoPopupWaterHint').style.display = showWaterHint ? '' : 'none';
 
     const datesEl    = document.getElementById('infoPopupDates');
     const datesValEl = document.getElementById('infoPopupDatesVal');
@@ -3493,6 +3502,37 @@ function renderPopupRefs(refKey) {
 }
 
 
+// When a click lands on water, land is often just a few pixels away — a river,
+// a narrow strait, or the near shore of a lake. Search outward (nearest ring
+// first) for the closest pixel that resolves to a land entry, so those clicks
+// still surface the area the user meant. A click well inside open ocean or a
+// large lake finds nothing within the radius and falls back to the water hint.
+const WATER_CLICK_SEARCH_RADIUS = 15;
+
+function _findNearestLandEntry(px, py, maxRadius) {
+    const cx = Math.round(px), cy = Math.round(py);
+    const size = maxRadius * 2 + 1;
+    const x0 = cx - maxRadius, y0 = cy - maxRadius;
+    let box;
+    try {
+        box = backCtx.getImageData(x0, y0, size, size).data;
+    } catch { return null; }
+
+    let best = null, bestDist2 = Infinity;
+    for (let dy = -maxRadius; dy <= maxRadius; dy++) {
+        for (let dx = -maxRadius; dx <= maxRadius; dx++) {
+            const dist2 = dx * dx + dy * dy;
+            if (dist2 > maxRadius * maxRadius || dist2 >= bestDist2) continue;
+            const idx = ((dy + maxRadius) * size + (dx + maxRadius)) * 4;
+            if (box[idx + 3] === 0) continue;
+            const colorKey = box[idx] | (box[idx + 1] << 8) | (box[idx + 2] << 16);
+            const entry = colorNameMap.get(colorKey);
+            if (entry) { best = entry; bestDist2 = dist2; }
+        }
+    }
+    return best;
+}
+
 function showInfoPopupAtPixel(px, py, screenX, screenY) {
     if (!backCtx) { showInfoPopup('(map not ready)', screenX, screenY); return; }
     let name = null, cityCoords = null;
@@ -3511,7 +3551,17 @@ function showInfoPopupAtPixel(px, py, screenX, screenY) {
         showInfoPopup(`(canvas error: ${err.message})`, screenX, screenY);
         return;
     }
-    showInfoPopup(name || '(water / no data)', screenX, screenY, cityCoords);
+
+    if (!name) {
+        const nearest = _findNearestLandEntry(px, py, WATER_CLICK_SEARCH_RADIUS);
+        if (nearest) {
+            name = typeof nearest === 'object' ? nearest.name : nearest;
+            if (typeof nearest === 'object' && nearest.lon != null)
+                cityCoords = { lon: nearest.lon, lat: nearest.lat };
+        }
+    }
+
+    showInfoPopup(name || '(water / no data)', screenX, screenY, cityCoords, !name);
 }
 
 function dismissInfoPopup() {
