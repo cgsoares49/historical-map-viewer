@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Map Un-projector</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    background: #1e1e1e;
+    color: #eee;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
+  #left {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  #canvasWrap {
+    flex: 1 1 auto;
+    position: relative;
+    overflow: hidden;
+    background:
+      repeating-conic-gradient(#2b2b2b 0% 25%, #232323 0% 50%) 50% / 20px 20px;
+  }
+  canvas#view {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: grab;
+  }
+  #status {
+    padding: 6px 12px;
+    font-size: 12px;
+    color: #999;
+    background: #2a2a2a;
+    border-top: 1px solid #444;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  #right {
+    width: 380px;
+    flex: 0 0 auto;
+    background: #252525;
+    border-left: 1px solid #444;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  .section {
+    padding: 10px 12px;
+    border-bottom: 1px solid #3a3a3a;
+  }
+  .section h3 {
+    margin: 0 0 8px 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #999;
+  }
+  label.filebtn {
+    display: inline-block;
+    background: #3a6ea5;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+  label.filebtn:hover { background: #4a7eb5; }
+  input[type=file] { display: none; }
+  .fileInfo { font-size: 12px; color: #aaa; margin-left: 4px; }
+  .row { display: flex; gap: 8px; margin-bottom: 6px; align-items: center; }
+  .row label { flex: 0 0 90px; font-size: 12px; color: #ccc; }
+  .row input[type=number], .row input[type=text] {
+    flex: 1 1 auto;
+    background: #1e1e1e;
+    border: 1px solid #444;
+    color: #eee;
+    padding: 4px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 11px; }
+  th, td { padding: 3px 4px; border-bottom: 1px solid #3a3a3a; text-align: left; white-space: nowrap; }
+  th { background: #2a2a2a; }
+  .num { color: #aaa; font-family: monospace; }
+  button.primary {
+    width: 100%;
+    background: #3a8a5a;
+    color: #fff;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  button.primary:hover { background: #4a9a6a; }
+  button.primary:disabled { background: #555; cursor: default; }
+  button.secondary {
+    width: 100%;
+    background: #3a5a8a;
+    color: #fff;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-top: 6px;
+  }
+  button.secondary:hover { background: #4a6a9a; }
+  button.secondary:disabled { background: #555; cursor: default; }
+  #progressWrap {
+    height: 6px;
+    background: #1e1e1e;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 8px;
+    display: none;
+  }
+  #progressBar {
+    height: 100%;
+    width: 0%;
+    background: #4a9a6a;
+  }
+  .checkboxCell { text-align: center; }
+  #ptsEmpty { color: #777; font-size: 12px; padding: 6px 0; }
+</style>
+</head>
+<body>
+
+<div id="left">
+  <div id="canvasWrap">
+    <canvas id="view"></canvas>
+  </div>
+  <div id="status">Load a source image and a control-points CSV to begin.</div>
+</div>
+
+<div id="right">
+
+  <div class="section">
+    <h3>1. Source Image</h3>
+    <label class="filebtn">Load Image
+      <input type="file" id="imgInput" accept="image/*">
+    </label>
+    <span class="fileInfo" id="imgInfo"></span>
+  </div>
+
+  <div class="section">
+    <h3>2. Control Points CSV</h3>
+    <label class="filebtn">Load CSV
+      <input type="file" id="csvInput" accept=".csv,text/csv">
+    </label>
+    <span class="fileInfo" id="csvInfo"></span>
+    <div id="ptsEmpty">No points loaded yet.</div>
+    <table id="ptsTable" style="display:none;">
+      <thead>
+        <tr><th></th><th>Referent</th><th>px,py</th><th>lat,lon</th></tr>
+      </thead>
+      <tbody id="ptsBody"></tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h3>3. Target Bounding Box (equirectangular)</h3>
+    <div class="row"><label>North lat</label><input type="number" id="bboxN" value="40" step="0.01"></div>
+    <div class="row"><label>South lat</label><input type="number" id="bboxS" value="35.6" step="0.01"></div>
+    <div class="row"><label>West lon</label><input type="number" id="bboxW" value="-9.6" step="0.01"></div>
+    <div class="row"><label>East lon</label><input type="number" id="bboxE" value="-0.3" step="0.01"></div>
+    <div class="row"><label>Output width</label><input type="number" id="outW" value="3000" step="50"></div>
+  </div>
+
+  <div class="section">
+    <h3>4. Warp</h3>
+    <button class="primary" id="warpBtn" disabled>Warp Image</button>
+    <div id="progressWrap"><div id="progressBar"></div></div>
+    <label style="display:flex; align-items:center; gap:6px; margin-top:8px; font-size:12px;">
+      <input type="checkbox" id="graticule"> Show 1&deg; graticule overlay
+    </label>
+    <button class="secondary" id="downloadBtn" disabled>Download PNG</button>
+  </div>
+
+</div>
+
+<script>
+// ─────────────────────────── state ───────────────────────────
+let srcImg = null, srcCtx = null, srcImageData = null;
+let points = []; // {label, px, py, lat, lon, include}
+let resultCanvas = null;   // full-res warped result (no graticule baked in)
+let resultBounds = null;   // {north,south,west,east,pxPerDeg,w,h}
+
+const view = document.getElementById('view');
+const vctx = view.getContext('2d');
+const wrap = document.getElementById('canvasWrap');
+const statusEl = document.getElementById('status');
+
+let viewScale = 1, viewOffX = 0, viewOffY = 0;
+let currentBitmap = null; // ImageBitmap-ish source for the view (source or result)
+
+function resizeView() {
+  view.width = wrap.clientWidth;
+  view.height = wrap.clientHeight;
+  renderView();
+}
+window.addEventListener('resize', resizeView);
+resizeView();
+
+function fitView() {
+  if (!currentBitmap) return;
+  const availW = wrap.clientWidth * 0.94;
+  const availH = wrap.clientHeight * 0.94;
+  viewScale = Math.min(availW / currentBitmap.width, availH / currentBitmap.height, 1);
+  viewOffX = (wrap.clientWidth - currentBitmap.width * viewScale) / 2;
+  viewOffY = (wrap.clientHeight - currentBitmap.height * viewScale) / 2;
+  renderView();
+}
+
+function renderView() {
+  vctx.setTransform(1, 0, 0, 1, 0, 0);
+  vctx.clearRect(0, 0, view.width, view.height);
+  if (!currentBitmap) return;
+  vctx.imageSmoothingEnabled = viewScale < 1;
+  vctx.drawImage(currentBitmap, viewOffX, viewOffY,
+    currentBitmap.width * viewScale, currentBitmap.height * viewScale);
+
+  if (document.getElementById('graticule').checked && resultBounds && currentBitmap === resultCanvas) {
+    drawGraticule();
+  }
+}
+
+function drawGraticule() {
+  const { north, south, west, east, pxPerDeg } = resultBounds;
+  vctx.save();
+  vctx.strokeStyle = 'rgba(255,220,0,0.55)';
+  vctx.lineWidth = 1;
+  vctx.font = '10px monospace';
+  vctx.fillStyle = 'rgba(255,220,0,0.85)';
+
+  const lonStart = Math.ceil(west);
+  for (let lon = lonStart; lon <= east; lon++) {
+    const ix = (lon - west) * pxPerDeg;
+    const sx = ix * viewScale + viewOffX;
+    vctx.beginPath();
+    vctx.moveTo(sx, viewOffY);
+    vctx.lineTo(sx, viewOffY + currentBitmap.height * viewScale);
+    vctx.stroke();
+    vctx.fillText(lon + '°', sx + 2, viewOffY + 12);
+  }
+  const latStart = Math.ceil(south);
+  for (let lat = latStart; lat <= north; lat++) {
+    const iy = (north - lat) * pxPerDeg;
+    const sy = iy * viewScale + viewOffY;
+    vctx.beginPath();
+    vctx.moveTo(viewOffX, sy);
+    vctx.lineTo(viewOffX + currentBitmap.width * viewScale, sy);
+    vctx.stroke();
+    vctx.fillText(lat + '°', viewOffX + 2, sy - 2);
+  }
+  vctx.restore();
+}
+
+// pan / zoom (view only, no point placement)
+let dragging = false;
+view.addEventListener('mousedown', (e) => {
+  dragging = true;
+  view.style.cursor = 'grabbing';
+});
+window.addEventListener('mouseup', () => { dragging = false; view.style.cursor = 'grab'; });
+window.addEventListener('mousemove', (e) => {
+  if (dragging) {
+    viewOffX += e.movementX;
+    viewOffY += e.movementY;
+    renderView();
+  }
+});
+view.addEventListener('wheel', (e) => {
+  if (!currentBitmap) return;
+  e.preventDefault();
+  const rect = view.getBoundingClientRect();
+  const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
+  const ix = (sx - viewOffX) / viewScale, iy = (sy - viewOffY) / viewScale;
+  const factor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
+  viewScale = Math.min(Math.max(viewScale * factor, 0.02), 40);
+  viewOffX = sx - ix * viewScale;
+  viewOffY = sy - iy * viewScale;
+  renderView();
+}, { passive: false });
+wrap.addEventListener('dblclick', fitView);
+
+// ─────────────────────────── load image ───────────────────────────
+document.getElementById('imgInput').addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const url = URL.createObjectURL(file);
+  const image = new Image();
+  image.onload = () => {
+    srcImg = image;
+    const off = document.createElement('canvas');
+    off.width = image.naturalWidth;
+    off.height = image.naturalHeight;
+    srcCtx = off.getContext('2d');
+    srcCtx.drawImage(image, 0, 0);
+    srcImageData = srcCtx.getImageData(0, 0, off.width, off.height);
+    document.getElementById('imgInfo').textContent =
+      `${file.name} (${off.width}x${off.height})`;
+    currentBitmap = off;
+    fitView();
+    updateWarpEnabled();
+  };
+  image.src = url;
+});
+
+// ─────────────────────────── load CSV ───────────────────────────
+document.getElementById('csvInput').addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    points = parseCsv(reader.result);
+    document.getElementById('csvInfo').textContent = `${file.name} — ${points.length} rows`;
+    renderPtsTable();
+    updateWarpEnabled();
+  };
+  reader.readAsText(file);
+});
+
+function parseCsvLine(line) {
+  const out = [];
+  let cur = '', inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    const c = line[i];
+    if (inQuotes) {
+      if (c === '"') {
+        if (line[i + 1] === '"') { cur += '"'; i++; }
+        else inQuotes = false;
+      } else cur += c;
+    } else {
+      if (c === '"') inQuotes = true;
+      else if (c === ',') { out.push(cur); cur = ''; }
+      else cur += c;
+    }
+  }
+  out.push(cur);
+  return out;
+}
+
+function parseCsv(text) {
+  const lines = text.split(/\r?\n/).filter(l => l.trim().length > 0);
+  if (lines.length < 2) return [];
+  const header = parseCsvLine(lines[0]).map(h => h.trim().toLowerCase());
+  const idx = {
+    referent: header.indexOf('referent'),
+    px: header.indexOf('pixel_x'),
+    py: header.indexOf('pixel_y'),
+    lat: header.indexOf('lat'),
+    lon: header.indexOf('lon'),
+  };
+  const rows = [];
+  for (let i = 1; i < lines.length; i++) {
+    const cols = parseCsvLine(lines[i]);
+    const px = parseFloat(cols[idx.px]);
+    const py = parseFloat(cols[idx.py]);
+    const lat = parseFloat(cols[idx.lat]);
+    const lon = parseFloat(cols[idx.lon]);
+    if (isNaN(px) || isNaN(py) || isNaN(lat) || isNaN(lon)) continue;
+    rows.push({
+      label: idx.referent >= 0 ? (cols[idx.referent] || '') : '',
+      px, py, lat, lon, include: true,
+    });
+  }
+  return rows;
+}
+
+function renderPtsTable() {
+  const body = document.getElementById('ptsBody');
+  const table = document.getElementById('ptsTable');
+  const empty = document.getElementById('ptsEmpty');
+  body.innerHTML = '';
+  if (points.length === 0) {
+    table.style.display = 'none';
+    empty.style.display = 'block';
+    return;
+  }
+  table.style.display = 'table';
+  empty.style.display = 'none';
+  points.forEach((p) => {
+    const tr = document.createElement('tr');
+    const tdChk = document.createElement('td');
+    tdChk.className = 'checkboxCell';
+    const chk = document.createElement('input');
+    chk.type = 'checkbox';
+    chk.checked = p.include;
+    chk.addEventListener('change', () => { p.include = chk.checked; updateWarpEnabled(); });
+    tdChk.appendChild(chk);
+    tr.appendChild(tdChk);
+
+    const tdLabel = document.createElement('td');
+    tdLabel.textContent = p.label || '—';
+    tr.appendChild(tdLabel);
+
+    const tdPx = document.createElement('td');
+    tdPx.className = 'num';
+    tdPx.textContent = `${p.px.toFixed(0)}, ${p.py.toFixed(0)}`;
+    tr.appendChild(tdPx);
+
+    const tdLL = document.createElement('td');
+    tdLL.className = 'num';
+    tdLL.textContent = `${p.lat.toFixed(4)}, ${p.lon.toFixed(4)}`;
+    tr.appendChild(tdLL);
+
+    body.appendChild(tr);
+  });
+}
+
+function updateWarpEnabled() {
+  const n = points.filter(p => p.include).length;
+  document.getElementById('warpBtn').disabled = !(srcImg && n >= 4);
+}
+
+// ─────────────────────────── thin plate spline ───────────────────────────
+function tpsBasis(r2) {
+  if (r2 < 1e-12) return 0;
+  return r2 * Math.log(r2) * 0.5; // 0.5*r^2*ln(r^2) == r^2*ln(r)
+}
+
+// Solve (A x = B) via Gaussian elimination with partial pivoting.
+// A: n x n array of arrays. B: n x m array of arrays (multiple RHS columns). Mutates copies.
+function solveLinear(Ain, Bin) {
+  const n = Ain.length;
+  const m = Bin[0].length;
+  const A = Ain.map(row => row.slice());
+  const B = Bin.map(row => row.slice());
+
+  for (let col = 0; col < n; col++) {
+    let piv = col;
+    let maxAbs = Math.abs(A[col][col]);
+    for (let r = col + 1; r < n; r++) {
+      if (Math.abs(A[r][col]) > maxAbs) { maxAbs = Math.abs(A[r][col]); piv = r; }
+    }
+    if (piv !== col) {
+      [A[col], A[piv]] = [A[piv], A[col]];
+      [B[col], B[piv]] = [B[piv], B[col]];
+    }
+    const pivVal = A[col][col] || 1e-12;
+    for (let r = 0; r < n; r++) {
+      if (r === col) continue;
+      const factor = A[r][col] / pivVal;
+      if (factor === 0) continue;
+      for (let c = col; c < n; c++) A[r][c] -= factor * A[col][c];
+      for (let c = 0; c < m; c++) B[r][c] -= factor * B[col][c];
+    }
+  }
+  const X = [];
+  for (let r = 0; r < n; r++) {
+    const row = [];
+    for (let c = 0; c < m; c++) row.push(B[r][c] / (A[r][r] || 1e-12));
+    X.push(row);
+  }
+  return X; // n x m
+}
+
+// Fit TPS mapping domain (lon,lat) -> [px,py] simultaneously.
+// Returns { w: [[wx,wy],...], a: [[a0x,a0y],[a1x,a1y],[a2x,a2y]], pts: [[lon,lat],...] }
+function fitTps(pts) {
+  const n = pts.length;
+  const size = n + 3;
+  const M = Array.from({ length: size }, () => new Array(size).fill(0));
+  const RHS = Array.from({ length: size }, () => [0, 0]);
+
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      const dx = pts[i].lon - pts[j].lon;
+      const dy = pts[i].lat - pts[j].lat;
+      M[i][j] = tpsBasis(dx * dx + dy * dy);
+    }
+    M[i][n] = 1; M[i][n + 1] = pts[i].lon; M[i][n + 2] = pts[i].lat;
+    M[n][i] = 1; M[n + 1][i] = pts[i].lon; M[n + 2][i] = pts[i].lat;
+    RHS[i][0] = pts[i].px;
+    RHS[i][1] = pts[i].py;
+  }
+
+  const X = solveLinear(M, RHS); // (n+3) x 2
+  const w = X.slice(0, n);
+  const a = X.slice(n, n + 3);
+  return { w, a, pts };
+}
+
+function tpsEval(fit, lon, lat) {
+  let px = fit.a[0][0] + fit.a[1][0] * lon + fit.a[2][0] * lat;
+  let py = fit.a[0][1] + fit.a[1][1] * lon + fit.a[2][1] * lat;
+  for (let j = 0; j < fit.pts.length; j++) {
+    const dx = lon - fit.pts[j].lon;
+    const dy = lat - fit.pts[j].lat;
+    const b = tpsBasis(dx * dx + dy * dy);
+    if (b !== 0) {
+      px += fit.w[j][0] * b;
+      py += fit.w[j][1] * b;
+    }
+  }
+  return [px, py];
+}
+
+// ─────────────────────────── warp ───────────────────────────
+document.getElementById('warpBtn').addEventListener('click', () => {
+  const included = points.filter(p => p.include);
+  if (!srcImg || included.length < 4) return;
+
+  const north = parseFloat(document.getElementById('bboxN').value);
+  const south = parseFloat(document.getElementById('bboxS').value);
+  const west  = parseFloat(document.getElementById('bboxW').value);
+  const east  = parseFloat(document.getElementById('bboxE').value);
+  const outW  = Math.round(parseFloat(document.getElementById('outW').value));
+
+  if (!(north > south) || !(east > west) || !(outW > 10)) {
+    statusEl.textContent = 'Check bounding box / output width values.';
+    return;
+  }
+
+  const pxPerDeg = outW / (east - west);
+  const outH = Math.round((north - south) * pxPerDeg);
+
+  const fit = fitTps(included);
+
+  resultCanvas = document.createElement('canvas');
+  resultCanvas.width = outW;
+  resultCanvas.height = outH;
+  const rctx = resultCanvas.getContext('2d');
+  const outData = rctx.createImageData(outW, outH);
+
+  const sw = srcImageData.width, sh = srcImageData.height, sdata = srcImageData.data;
+  const odata = outData.data;
+
+  document.getElementById('warpBtn').disabled = true;
+  document.getElementById('downloadBtn').disabled = true;
+  const progWrap = document.getElementById('progressWrap');
+  const progBar = document.getElementById('progressBar');
+  progWrap.style.display = 'block';
+
+  let y = 0;
+  const rowsPerChunk = 8;
+
+  function processChunk() {
+    const yEnd = Math.min(y + rowsPerChunk, outH);
+    for (; y < yEnd; y++) {
+      const lat = north - (y / pxPerDeg);
+      for (let x = 0; x < outW; x++) {
+        const lon = west + (x / pxPerDeg);
+        const [sx, sy] = tpsEval(fit, lon, lat);
+
+        const oi = (y * outW + x) * 4;
+        if (sx < 0 || sy < 0 || sx > sw - 1 || sy > sh - 1) {
+          odata[oi + 3] = 0;
+          continue;
+        }
+        const x0 = Math.floor(sx), y0 = Math.floor(sy);
+        const x1 = Math.min(x0 + 1, sw - 1), y1 = Math.min(y0 + 1, sh - 1);
+        const fx = sx - x0, fy = sy - y0;
+
+        const i00 = (y0 * sw + x0) * 4;
+        const i10 = (y0 * sw + x1) * 4;
+        const i01 = (y1 * sw + x0) * 4;
+        const i11 = (y1 * sw + x1) * 4;
+
+        for (let ch = 0; ch < 4; ch++) {
+          const top = sdata[i00 + ch] * (1 - fx) + sdata[i10 + ch] * fx;
+          const bot = sdata[i01 + ch] * (1 - fx) + sdata[i11 + ch] * fx;
+          odata[oi + ch] = top * (1 - fy) + bot * fy;
+        }
+      }
+    }
+    progBar.style.width = `${Math.round((y / outH) * 100)}%`;
+    statusEl.textContent = `Warping... ${Math.round((y / outH) * 100)}% (${outW}x${outH})`;
+
+    if (y < outH) {
+      requestAnimationFrame(processChunk);
+    } else {
+      rctx.putImageData(outData, 0, 0);
+      resultBounds = { north, south, west, east, pxPerDeg, w: outW, h: outH };
+      currentBitmap = resultCanvas;
+      fitView();
+      document.getElementById('warpBtn').disabled = false;
+      document.getElementById('downloadBtn').disabled = false;
+      progWrap.style.display = 'none';
+      statusEl.textContent =
+        `Done. ${outW}x${outH}px, ${pxPerDeg.toFixed(1)} px/degree, bbox N${north} S${south} W${west} E${east}. ` +
+        `Fitted with ${included.length} of ${points.length} points.`;
+    }
+  }
+  requestAnimationFrame(processChunk);
+});
+
+document.getElementById('graticule').addEventListener('change', renderView);
+
+document.getElementById('downloadBtn').addEventListener('click', () => {
+  if (!resultCanvas) return;
+  resultCanvas.toBlob((blob) => {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'unprojected.png';
+    a.click();
+  });
+});
+</script>
+</body>
+</html>

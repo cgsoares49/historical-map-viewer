@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Control Point Picker</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    background: #1e1e1e;
+    color: #eee;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
+  #left {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  #toolbar {
+    padding: 8px 12px;
+    background: #2a2a2a;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #444;
+  }
+  #toolbar label.filebtn {
+    background: #3a6ea5;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  #toolbar label.filebtn:hover { background: #4a7eb5; }
+  #toolbar input[type=file] { display: none; }
+  #readout {
+    font-family: monospace;
+    font-size: 13px;
+    color: #9cdcfe;
+    margin-left: auto;
+  }
+  #canvasWrap {
+    flex: 1 1 auto;
+    position: relative;
+    overflow: hidden;
+    background:
+      repeating-conic-gradient(#2b2b2b 0% 25%, #232323 0% 50%) 50% / 20px 20px;
+  }
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: crosshair;
+  }
+  #hint {
+    padding: 4px 12px;
+    font-size: 12px;
+    color: #999;
+    background: #2a2a2a;
+    border-top: 1px solid #444;
+  }
+  #right {
+    width: 340px;
+    flex: 0 0 auto;
+    background: #252525;
+    border-left: 1px solid #444;
+    display: flex;
+    flex-direction: column;
+  }
+  #pointsHeader {
+    padding: 8px 12px;
+    background: #2a2a2a;
+    border-bottom: 1px solid #444;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #pointsHeader button {
+    background: #3a8a5a;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  #pointsHeader button:hover { background: #4a9a6a; }
+  #pointsTableWrap {
+    overflow-y: auto;
+    flex: 1 1 auto;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  th, td { padding: 4px 6px; border-bottom: 1px solid #3a3a3a; text-align: left; }
+  th { background: #2a2a2a; position: sticky; top: 0; }
+  td input {
+    width: 100%;
+    background: #1e1e1e;
+    border: 1px solid #444;
+    color: #eee;
+    padding: 2px 4px;
+    font-size: 12px;
+    border-radius: 2px;
+  }
+  td input:focus { border-color: #3a6ea5; outline: none; }
+  .pxCell { color: #888; white-space: nowrap; }
+  .delBtn {
+    background: none;
+    border: none;
+    color: #d55;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .delBtn:hover { color: #f66; }
+  tr.active { background: #2f3f2f; }
+  #emptyMsg { padding: 16px; color: #777; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<div id="left">
+  <div id="toolbar">
+    <label class="filebtn">Load Image
+      <input type="file" id="fileInput" accept="image/*">
+    </label>
+    <span id="imgInfo" style="color:#aaa; font-size:12px;"></span>
+    <span id="readout">—</span>
+  </div>
+  <div id="canvasWrap">
+    <canvas id="canvas"></canvas>
+  </div>
+  <div id="hint">
+    Click = add point at cursor &nbsp;|&nbsp; Drag = pan &nbsp;|&nbsp; Scroll = zoom &nbsp;|&nbsp;
+    Click a table row's pixel cell to re-highlight the marker
+  </div>
+</div>
+
+<div id="right">
+  <div id="pointsHeader">
+    <strong id="countLabel">0 points</strong>
+    <button id="exportBtn">Export CSV</button>
+  </div>
+  <div id="pointsTableWrap">
+    <table id="pointsTable">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Referent</th>
+          <th>Pixel X</th>
+          <th>Pixel Y</th>
+          <th>Lat</th>
+          <th>Lon</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="pointsBody"></tbody>
+    </table>
+    <div id="emptyMsg">Load an image, then click on it to place control points.</div>
+  </div>
+</div>
+
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const wrap = document.getElementById('canvasWrap');
+const fileInput = document.getElementById('fileInput');
+const imgInfo = document.getElementById('imgInfo');
+const readout = document.getElementById('readout');
+const pointsBody = document.getElementById('pointsBody');
+const countLabel = document.getElementById('countLabel');
+const emptyMsg = document.getElementById('emptyMsg');
+const exportBtn = document.getElementById('exportBtn');
+
+let img = null;
+let scale = 1, offsetX = 0, offsetY = 0;
+let points = []; // {id, px, py, lat, lon}
+let nextId = 1;
+let activeId = null;
+
+function resizeCanvas() {
+  canvas.width = wrap.clientWidth;
+  canvas.height = wrap.clientHeight;
+  render();
+}
+window.addEventListener('resize', resizeCanvas);
+
+fileInput.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const url = URL.createObjectURL(file);
+  const image = new Image();
+  image.onload = () => {
+    img = image;
+    imgInfo.textContent = `${file.name} — ${img.naturalWidth} x ${img.naturalHeight}px`;
+    fitToWindow();
+    URL.revokeObjectURL(url);
+  };
+  image.src = url;
+});
+
+function fitToWindow() {
+  if (!img) return;
+  const availW = wrap.clientWidth * 0.92;
+  const availH = wrap.clientHeight * 0.92;
+  scale = Math.min(availW / img.naturalWidth, availH / img.naturalHeight, 1);
+  offsetX = (wrap.clientWidth - img.naturalWidth * scale) / 2;
+  offsetY = (wrap.clientHeight - img.naturalHeight * scale) / 2;
+  render();
+}
+
+function imgToScreen(px, py) {
+  return [px * scale + offsetX, py * scale + offsetY];
+}
+function screenToImg(sx, sy) {
+  return [(sx - offsetX) / scale, (sy - offsetY) / scale];
+}
+
+function render() {
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  if (!img) return;
+  ctx.imageSmoothingEnabled = scale < 1;
+  ctx.drawImage(img, offsetX, offsetY, img.naturalWidth * scale, img.naturalHeight * scale);
+
+  points.forEach((p, i) => {
+    const [sx, sy] = imgToScreen(p.px, p.py);
+    const isActive = p.id === activeId;
+    ctx.beginPath();
+    ctx.arc(sx, sy, isActive ? 7 : 5, 0, Math.PI * 2);
+    ctx.fillStyle = isActive ? '#ffcc33' : '#ff4444';
+    ctx.fill();
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 12px monospace';
+    ctx.fillText(String(i + 1), sx + 8, sy - 8);
+  });
+}
+
+// --- pan / zoom / click ---
+let dragging = false, dragMoved = false, dragStart = [0, 0];
+
+canvas.addEventListener('mousedown', (e) => {
+  dragging = true;
+  dragMoved = false;
+  dragStart = [e.clientX, e.clientY];
+});
+
+window.addEventListener('mousemove', (e) => {
+  const rect = canvas.getBoundingClientRect();
+  const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
+
+  if (img) {
+    const [ix, iy] = screenToImg(sx, sy);
+    if (ix >= 0 && iy >= 0 && ix <= img.naturalWidth && iy <= img.naturalHeight) {
+      readout.textContent = `px: ${ix.toFixed(1)}, ${iy.toFixed(1)}`;
+    } else {
+      readout.textContent = '—';
+    }
+  }
+
+  if (dragging) {
+    const dx = e.clientX - dragStart[0];
+    const dy = e.clientY - dragStart[1];
+    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) dragMoved = true;
+    if (dragMoved) {
+      offsetX += e.movementX;
+      offsetY += e.movementY;
+      render();
+    }
+  }
+});
+
+window.addEventListener('mouseup', (e) => {
+  if (dragging && !dragMoved && img) {
+    const rect = canvas.getBoundingClientRect();
+    const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
+    if (sx >= 0 && sy >= 0 && sx <= canvas.width && sy <= canvas.height) {
+      const [ix, iy] = screenToImg(sx, sy);
+      if (ix >= 0 && iy >= 0 && ix <= img.naturalWidth && iy <= img.naturalHeight) {
+        addPoint(ix, iy);
+      }
+    }
+  }
+  dragging = false;
+  dragMoved = false;
+});
+
+canvas.addEventListener('wheel', (e) => {
+  if (!img) return;
+  e.preventDefault();
+  const rect = canvas.getBoundingClientRect();
+  const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
+  const [ix, iy] = screenToImg(sx, sy);
+
+  const factor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
+  scale = Math.min(Math.max(scale * factor, 0.02), 40);
+
+  // keep point under cursor stationary
+  offsetX = sx - ix * scale;
+  offsetY = sy - iy * scale;
+  render();
+}, { passive: false });
+
+// double-click to reset view
+wrap.addEventListener('dblclick', fitToWindow);
+
+// --- points table ---
+function addPoint(px, py) {
+  const p = { id: nextId++, px, py, lat: '', lon: '', label: '' };
+  points.push(p);
+  activeId = p.id;
+  redrawTable();
+  render();
+}
+
+function removePoint(id) {
+  points = points.filter(p => p.id !== id);
+  if (activeId === id) activeId = null;
+  redrawTable();
+  render();
+}
+
+function redrawTable() {
+  emptyMsg.style.display = points.length === 0 ? 'block' : 'none';
+  countLabel.textContent = `${points.length} point${points.length === 1 ? '' : 's'}`;
+  pointsBody.innerHTML = '';
+  points.forEach((p, i) => {
+    const tr = document.createElement('tr');
+    if (p.id === activeId) tr.classList.add('active');
+
+    const tdIdx = document.createElement('td');
+    tdIdx.textContent = i + 1;
+    tr.appendChild(tdIdx);
+
+    const tdLabel = document.createElement('td');
+    const labelInput = document.createElement('input');
+    labelInput.type = 'text';
+    labelInput.placeholder = 'e.g. river mouth';
+    labelInput.value = p.label;
+    labelInput.addEventListener('input', () => { p.label = labelInput.value; });
+    tdLabel.appendChild(labelInput);
+    tr.appendChild(tdLabel);
+
+    const tdX = document.createElement('td');
+    tdX.textContent = p.px.toFixed(1);
+    tdX.className = 'pxCell';
+    tdX.title = 'Click to highlight on image';
+    tdX.style.cursor = 'pointer';
+    tdX.addEventListener('click', () => { activeId = p.id; redrawTable(); render(); centerOn(p); });
+    tr.appendChild(tdX);
+
+    const tdY = document.createElement('td');
+    tdY.textContent = p.py.toFixed(1);
+    tdY.className = 'pxCell';
+    tr.appendChild(tdY);
+
+    const tdLat = document.createElement('td');
+    const latInput = document.createElement('input');
+    latInput.type = 'text';
+    latInput.placeholder = 'lat';
+    latInput.value = p.lat;
+    latInput.addEventListener('input', () => { p.lat = latInput.value; });
+    tdLat.appendChild(latInput);
+    tr.appendChild(tdLat);
+
+    const tdLon = document.createElement('td');
+    const lonInput = document.createElement('input');
+    lonInput.type = 'text';
+    lonInput.placeholder = 'lon';
+    lonInput.value = p.lon;
+    lonInput.addEventListener('input', () => { p.lon = lonInput.value; });
+    tdLon.appendChild(lonInput);
+    tr.appendChild(tdLon);
+
+    const tdDel = document.createElement('td');
+    const delBtn = document.createElement('button');
+    delBtn.className = 'delBtn';
+    delBtn.textContent = '✕';
+    delBtn.addEventListener('click', () => removePoint(p.id));
+    tdDel.appendChild(delBtn);
+    tr.appendChild(tdDel);
+
+    pointsBody.appendChild(tr);
+  });
+}
+
+function centerOn(p) {
+  offsetX = canvas.width / 2 - p.px * scale;
+  offsetY = canvas.height / 2 - p.py * scale;
+  render();
+}
+
+exportBtn.addEventListener('click', () => {
+  const rows = ['referent,pixel_x,pixel_y,lat,lon'];
+  points.forEach(p => {
+    const label = `"${(p.label || '').replace(/"/g, '""')}"`;
+    rows.push(`${label},${p.px.toFixed(2)},${p.py.toFixed(2)},${p.lat},${p.lon}`);
+  });
+  const blob = new Blob([rows.join('\n')], { type: 'text/csv' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'control_points.csv';
+  a.click();
+});
+
+resizeCanvas();
+</script>
+</body>
+</html>
