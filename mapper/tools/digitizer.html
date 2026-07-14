@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Digitizer</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    background: #1e1e1e;
+    color: #eee;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
+  #left {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  #toolbar {
+    padding: 8px 12px;
+    background: #2a2a2a;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #444;
+  }
+  #toolbar label.filebtn {
+    background: #3a6ea5;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  #toolbar label.filebtn:hover { background: #4a7eb5; }
+  #toolbar input[type=file] { display: none; }
+  #readout {
+    font-family: monospace;
+    font-size: 13px;
+    color: #9cdcfe;
+    margin-left: auto;
+  }
+  #canvasWrap {
+    flex: 1 1 auto;
+    position: relative;
+    overflow: hidden;
+    background:
+      repeating-conic-gradient(#2b2b2b 0% 25%, #232323 0% 50%) 50% / 20px 20px;
+  }
+  canvas#view {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: crosshair;
+  }
+  #hint {
+    padding: 4px 12px;
+    font-size: 12px;
+    color: #999;
+    background: #2a2a2a;
+    border-top: 1px solid #444;
+  }
+  #right {
+    width: 360px;
+    flex: 0 0 auto;
+    background: #252525;
+    border-left: 1px solid #444;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  .section {
+    padding: 10px 12px;
+    border-bottom: 1px solid #3a3a3a;
+  }
+  .section h3 {
+    margin: 0 0 8px 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #999;
+  }
+  .row { display: flex; gap: 8px; margin-bottom: 6px; align-items: center; }
+  .row label { flex: 0 0 80px; font-size: 12px; color: #ccc; }
+  .row input[type=number], .row input[type=text] {
+    flex: 1 1 auto;
+    background: #1e1e1e;
+    border: 1px solid #444;
+    color: #eee;
+    padding: 4px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+  }
+  #geoInfo { font-size: 11px; color: #888; margin-top: 4px; }
+  #geoWarning {
+    font-size: 11px;
+    color: #e0b040;
+    margin-top: 4px;
+    display: none;
+  }
+  button.secondary {
+    width: 100%;
+    background: #3a5a8a;
+    color: #fff;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-top: 6px;
+  }
+  button.secondary:hover { background: #4a6a9a; }
+  button.primary {
+    width: 100%;
+    background: #3a8a5a;
+    color: #fff;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 6px;
+  }
+  button.primary:hover { background: #4a9a6a; }
+  #pointsHeader {
+    padding: 8px 12px;
+    background: #2a2a2a;
+    border-bottom: 1px solid #444;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #pointsTableWrap { overflow-y: auto; flex: 1 1 auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  th, td { padding: 4px 6px; border-bottom: 1px solid #3a3a3a; text-align: left; }
+  th { background: #2a2a2a; position: sticky; top: 0; }
+  .num { font-family: monospace; color: #ccc; }
+  .delBtn { background: none; border: none; color: #d55; cursor: pointer; font-size: 14px; }
+  .delBtn:hover { color: #f66; }
+  tr.active { background: #2f3f2f; }
+  tr.ptrow { cursor: pointer; }
+  #emptyMsg { padding: 16px; color: #777; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<div id="left">
+  <div id="toolbar">
+    <label class="filebtn">Load Image
+      <input type="file" id="imgInput" accept="image/*">
+    </label>
+    <label class="filebtn">Load Georef JSON
+      <input type="file" id="geoInput" accept=".json,application/json">
+    </label>
+    <span id="imgInfo" style="color:#aaa; font-size:12px;"></span>
+    <span id="readout">—</span>
+  </div>
+  <div id="canvasWrap">
+    <canvas id="view"></canvas>
+  </div>
+  <div id="hint">
+    Click = add point &nbsp;|&nbsp; Drag = pan &nbsp;|&nbsp; Scroll = zoom &nbsp;|&nbsp;
+    Arrow keys = nudge active (yellow) point 1px &nbsp;|&nbsp; Click a table row = select it as active
+  </div>
+</div>
+
+<div id="right">
+  <div class="section">
+    <h3>Georeference</h3>
+    <div class="row"><label>North lat</label><input type="number" id="gN" value="40" step="0.0001"></div>
+    <div class="row"><label>South lat</label><input type="number" id="gS" value="35.6" step="0.0001"></div>
+    <div class="row"><label>West lon</label><input type="number" id="gW" value="-9.6" step="0.0001"></div>
+    <div class="row"><label>East lon</label><input type="number" id="gE" value="-0.3" step="0.0001"></div>
+    <div id="geoInfo">Load an image to compute px/degree.</div>
+    <div id="geoWarning"></div>
+  </div>
+
+  <div id="pointsHeader">
+    <strong id="countLabel">0 points</strong>
+    <span></span>
+  </div>
+  <div id="pointsTableWrap">
+    <table id="pointsTable">
+      <thead><tr><th>#</th><th>Lon</th><th>Lat</th><th></th></tr></thead>
+      <tbody id="pointsBody"></tbody>
+    </table>
+    <div id="emptyMsg">Load an image, then click on it to place points.</div>
+  </div>
+
+  <div class="section" style="border-bottom:none;">
+    <h3>Save / Load Points</h3>
+    <button class="primary" id="saveBtn">Save Points...</button>
+    <label class="filebtn" style="display:block; text-align:center; margin-top:6px;">
+      Load Points CSV
+      <input type="file" id="loadPtsInput" accept=".csv,text/csv">
+    </label>
+  </div>
+</div>
+
+<script>
+const view = document.getElementById('view');
+const vctx = view.getContext('2d');
+const wrap = document.getElementById('canvasWrap');
+const statusReadout = document.getElementById('readout');
+
+let img = null, imgW = 0, imgH = 0;
+let viewScale = 1, viewOffX = 0, viewOffY = 0;
+let points = []; // {id, px, py, lon, lat}
+let nextId = 1;
+let activeId = null;
+
+// ── georeference ──────────────────────────────────────────────────────────
+const gN = document.getElementById('gN');
+const gS = document.getElementById('gS');
+const gW = document.getElementById('gW');
+const gE = document.getElementById('gE');
+const geoInfo = document.getElementById('geoInfo');
+const geoWarning = document.getElementById('geoWarning');
+
+function geoBounds() {
+  return {
+    north: parseFloat(gN.value),
+    south: parseFloat(gS.value),
+    west: parseFloat(gW.value),
+    east: parseFloat(gE.value),
+  };
+}
+
+function pxPerDeg() {
+  const { west, east } = geoBounds();
+  return imgW / (east - west);
+}
+
+function pixelToLonLat(px, py) {
+  const { north, west } = geoBounds();
+  const ppd = pxPerDeg();
+  return { lon: west + px / ppd, lat: north - py / ppd };
+}
+
+function updateGeoInfo() {
+  if (!imgW) { geoInfo.textContent = 'Load an image to compute px/degree.'; return; }
+  const { north, south, west, east } = geoBounds();
+  const ppd = pxPerDeg();
+  geoInfo.textContent = `${imgW}x${imgH}px — ${ppd.toFixed(2)} px/degree`;
+
+  const expectedH = (north - south) * ppd;
+  const diffPct = Math.abs(expectedH - imgH) / imgH * 100;
+  if (diffPct > 1) {
+    geoWarning.style.display = 'block';
+    geoWarning.textContent =
+      `Warning: bbox implies height ${expectedH.toFixed(0)}px but image is ${imgH}px ` +
+      `(${diffPct.toFixed(1)}% off). Double-check North/South/West/East.`;
+  } else {
+    geoWarning.style.display = 'none';
+  }
+  redrawTable(); // lon/lat depend on geo bounds
+  render();
+}
+[gN, gS, gW, gE].forEach(el => el.addEventListener('input', updateGeoInfo));
+
+document.getElementById('geoInput').addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const geo = JSON.parse(reader.result);
+      gN.value = geo.north; gS.value = geo.south; gW.value = geo.west; gE.value = geo.east;
+      updateGeoInfo();
+    } catch (err) {
+      alert('Could not parse georeference JSON: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+});
+
+// ── image loading ───────────────────────────────────────────────────────────
+document.getElementById('imgInput').addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const url = URL.createObjectURL(file);
+  const image = new Image();
+  image.onload = () => {
+    img = image;
+    imgW = image.naturalWidth;
+    imgH = image.naturalHeight;
+    document.getElementById('imgInfo').textContent = `${file.name} — ${imgW}x${imgH}px`;
+    fitView();
+    updateGeoInfo();
+    URL.revokeObjectURL(url);
+  };
+  image.src = url;
+});
+
+// ── view transform (pan/zoom, display-only — never affects px/deg math) ────
+function resizeView() {
+  view.width = wrap.clientWidth;
+  view.height = wrap.clientHeight;
+  render();
+}
+window.addEventListener('resize', resizeView);
+resizeView();
+
+function fitView() {
+  if (!img) return;
+  const availW = wrap.clientWidth * 0.94;
+  const availH = wrap.clientHeight * 0.94;
+  viewScale = Math.min(availW / imgW, availH / imgH, 1);
+  viewOffX = (wrap.clientWidth - imgW * viewScale) / 2;
+  viewOffY = (wrap.clientHeight - imgH * viewScale) / 2;
+  render();
+}
+
+function imgToScreen(px, py) { return [px * viewScale + viewOffX, py * viewScale + viewOffY]; }
+function screenToImg(sx, sy) { return [(sx - viewOffX) / viewScale, (sy - viewOffY) / viewScale]; }
+
+function render() {
+  vctx.setTransform(1, 0, 0, 1, 0, 0);
+  vctx.clearRect(0, 0, view.width, view.height);
+  if (!img) return;
+  vctx.imageSmoothingEnabled = viewScale < 1;
+  vctx.drawImage(img, viewOffX, viewOffY, imgW * viewScale, imgH * viewScale);
+
+  points.forEach((p, i) => {
+    const [sx, sy] = imgToScreen(p.px, p.py);
+    const isActive = p.id === activeId;
+    vctx.beginPath();
+    vctx.arc(sx, sy, isActive ? 6 : 4, 0, Math.PI * 2);
+    vctx.fillStyle = isActive ? '#ffcc33' : '#ff4444';
+    vctx.fill();
+    vctx.strokeStyle = '#fff';
+    vctx.lineWidth = 1.2;
+    vctx.stroke();
+    vctx.fillStyle = '#fff';
+    vctx.font = 'bold 11px monospace';
+    vctx.fillText(String(i + 1), sx + 7, sy - 7);
+  });
+}
+
+// pan / zoom / click-to-add
+let dragging = false, dragMoved = false, dragStart = [0, 0];
+
+view.addEventListener('mousedown', (e) => {
+  dragging = true;
+  dragMoved = false;
+  dragStart = [e.clientX, e.clientY];
+});
+
+window.addEventListener('mousemove', (e) => {
+  const rect = view.getBoundingClientRect();
+  const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
+  if (img) {
+    const [ix, iy] = screenToImg(sx, sy);
+    if (ix >= 0 && iy >= 0 && ix <= imgW && iy <= imgH) {
+      const { lon, lat } = pixelToLonLat(ix, iy);
+      statusReadout.textContent = `px: ${ix.toFixed(1)}, ${iy.toFixed(1)}  |  lon: ${lon.toFixed(5)}, lat: ${lat.toFixed(5)}`;
+    } else {
+      statusReadout.textContent = '—';
+    }
+  }
+  if (dragging) {
+    const dx = e.clientX - dragStart[0];
+    const dy = e.clientY - dragStart[1];
+    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) dragMoved = true;
+    if (dragMoved) {
+      viewOffX += e.movementX;
+      viewOffY += e.movementY;
+      render();
+    }
+  }
+});
+
+window.addEventListener('mouseup', (e) => {
+  if (dragging && !dragMoved && img) {
+    const rect = view.getBoundingClientRect();
+    const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
+    if (sx >= 0 && sy >= 0 && sx <= view.width && sy <= view.height) {
+      const [ix, iy] = screenToImg(sx, sy);
+      if (ix >= 0 && iy >= 0 && ix <= imgW && iy <= imgH) {
+        addPoint(ix, iy);
+      }
+    }
+  }
+  dragging = false;
+  dragMoved = false;
+});
+
+view.addEventListener('wheel', (e) => {
+  if (!img) return;
+  e.preventDefault();
+  const rect = view.getBoundingClientRect();
+  const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
+  const [ix, iy] = screenToImg(sx, sy);
+  const factor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
+  viewScale = Math.min(Math.max(viewScale * factor, 0.02), 40);
+  viewOffX = sx - ix * viewScale;
+  viewOffY = sy - iy * viewScale;
+  render();
+}, { passive: false });
+
+wrap.addEventListener('dblclick', fitView);
+
+// ── arrow-key nudge (1 image pixel, active point only) ──────────────────────
+window.addEventListener('keydown', (e) => {
+  const tag = document.activeElement && document.activeElement.tagName;
+  if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+
+  if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) return;
+  if (activeId === null) return;
+  const p = points.find(pt => pt.id === activeId);
+  if (!p) return;
+
+  e.preventDefault();
+  if (e.key === 'ArrowUp') p.py -= 1;
+  if (e.key === 'ArrowDown') p.py += 1;
+  if (e.key === 'ArrowLeft') p.px -= 1;
+  if (e.key === 'ArrowRight') p.px += 1;
+  p.px = Math.max(0, Math.min(imgW, p.px));
+  p.py = Math.max(0, Math.min(imgH, p.py));
+  Object.assign(p, pixelToLonLat(p.px, p.py));
+  redrawTable();
+  render();
+});
+
+// ── points table ─────────────────────────────────────────────────────────
+function addPoint(px, py) {
+  const { lon, lat } = pixelToLonLat(px, py);
+  const p = { id: nextId++, px, py, lon, lat };
+  points.push(p);
+  activeId = p.id;
+  redrawTable();
+  render();
+}
+
+function removePoint(id) {
+  points = points.filter(p => p.id !== id);
+  if (activeId === id) activeId = null;
+  redrawTable();
+  render();
+}
+
+function redrawTable() {
+  const body = document.getElementById('pointsBody');
+  const table = document.getElementById('pointsTable');
+  const empty = document.getElementById('emptyMsg');
+  document.getElementById('countLabel').textContent = `${points.length} point${points.length === 1 ? '' : 's'}`;
+  empty.style.display = points.length === 0 ? 'block' : 'none';
+  table.style.display = points.length === 0 ? 'none' : 'table';
+  body.innerHTML = '';
+
+  points.forEach((p, i) => {
+    const tr = document.createElement('tr');
+    tr.className = 'ptrow';
+    if (p.id === activeId) tr.classList.add('active');
+    tr.addEventListener('click', (ev) => {
+      if (ev.target.closest('.delBtn')) return;
+      activeId = p.id;
+      redrawTable();
+      centerOn(p);
+    });
+
+    const tdIdx = document.createElement('td');
+    tdIdx.textContent = i + 1;
+    tr.appendChild(tdIdx);
+
+    const tdLon = document.createElement('td');
+    tdLon.className = 'num';
+    tdLon.textContent = p.lon.toFixed(5);
+    tr.appendChild(tdLon);
+
+    const tdLat = document.createElement('td');
+    tdLat.className = 'num';
+    tdLat.textContent = p.lat.toFixed(5);
+    tr.appendChild(tdLat);
+
+    const tdDel = document.createElement('td');
+    const delBtn = document.createElement('button');
+    delBtn.className = 'delBtn';
+    delBtn.textContent = '✕';
+    delBtn.addEventListener('click', () => removePoint(p.id));
+    tdDel.appendChild(delBtn);
+    tr.appendChild(tdDel);
+
+    body.appendChild(tr);
+  });
+}
+
+function centerOn(p) {
+  viewOffX = view.width / 2 - p.px * viewScale;
+  viewOffY = view.height / 2 - p.py * viewScale;
+  render();
+}
+
+// ── save / load points ──────────────────────────────────────────────────────
+async function saveAs(suggestedName, content) {
+  if (window.showSaveFilePicker) {
+    try {
+      const handle = await window.showSaveFilePicker({
+        suggestedName,
+        types: [{ description: 'CSV', accept: { 'text/csv': ['.csv'] } }],
+      });
+      const writable = await handle.createWritable();
+      await writable.write(content);
+      await writable.close();
+      return;
+    } catch (e) {
+      if (e.name === 'AbortError') return;
+      // fall through to download fallback on unexpected errors
+    }
+  }
+  const filename = prompt('Save as (downloads to your browser\'s download folder):', suggestedName) || suggestedName;
+  const blob = new Blob([content], { type: 'text/csv' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  a.click();
+}
+
+document.getElementById('saveBtn').addEventListener('click', () => {
+  const lines = [String(points.length)];
+  points.forEach(p => lines.push(`${p.lon},${p.lat}`));
+  saveAs('digitized_points.csv', lines.join('\n') + '\n');
+});
+
+document.getElementById('loadPtsInput').addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    const lines = reader.result.split(/\r?\n/).filter(l => l.trim().length > 0);
+    if (lines.length < 1) return;
+    const count = parseInt(lines[0], 10);
+    const rows = lines.slice(1, isNaN(count) ? undefined : count + 1);
+    rows.forEach(line => {
+      const [lonStr, latStr] = line.split(',');
+      const lon = parseFloat(lonStr), lat = parseFloat(latStr);
+      if (isNaN(lon) || isNaN(lat)) return;
+      const ppd = pxPerDeg();
+      const { west, north } = geoBounds();
+      const px = (lon - west) * ppd;
+      const py = (north - lat) * ppd;
+      points.push({ id: nextId++, px, py, lon, lat });
+    });
+    redrawTable();
+    render();
+  };
+  reader.readAsText(file);
+  e.target.value = '';
+});
+
+updateGeoInfo();
+</script>
+</body>
+</html>

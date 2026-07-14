@@ -598,13 +598,30 @@ document.getElementById('warpBtn').addEventListener('click', () => {
 document.getElementById('graticule').addEventListener('change', renderView);
 
 document.getElementById('downloadBtn').addEventListener('click', () => {
-  if (!resultCanvas) return;
+  if (!resultCanvas || !resultBounds) return;
   resultCanvas.toBlob((blob) => {
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
     a.download = 'unprojected.png';
     a.click();
   });
+
+  // Sidecar georeference file — lets digitizer.html auto-load the pixel<->degree
+  // conversion instead of requiring manual bbox entry.
+  const geo = {
+    north: resultBounds.north,
+    south: resultBounds.south,
+    west: resultBounds.west,
+    east: resultBounds.east,
+    width: resultBounds.w,
+    height: resultBounds.h,
+    pxPerDeg: resultBounds.pxPerDeg,
+  };
+  const geoBlob = new Blob([JSON.stringify(geo, null, 2)], { type: 'application/json' });
+  const ga = document.createElement('a');
+  ga.href = URL.createObjectURL(geoBlob);
+  ga.download = 'unprojected.geo.json';
+  ga.click();
 });
 </script>
 </body>
