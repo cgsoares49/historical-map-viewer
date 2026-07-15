@@ -131,6 +131,19 @@
   }
   .checkboxCell { text-align: center; }
   #ptsEmpty { color: #777; font-size: 12px; padding: 6px 0; }
+  .cellEdit {
+    width: 48px;
+    background: #1e1e1e;
+    border: 1px solid #444;
+    color: #eee;
+    font-size: 10px;
+    padding: 2px 3px;
+    border-radius: 2px;
+  }
+  .pairCell { display: flex; gap: 3px; }
+  .delBtn { background: none; border: none; color: #d55; cursor: pointer; font-size: 13px; }
+  .delBtn:hover { color: #f66; }
+  #fitReportText { font-size: 11px; color: #ccc; margin-bottom: 6px; line-height: 1.4; }
 </style>
 </head>
 <body>
@@ -161,14 +174,19 @@
     <div id="ptsEmpty">No points loaded yet.</div>
     <table id="ptsTable" style="display:none;">
       <thead>
-        <tr><th></th><th>Referent</th><th>px,py</th><th>lat,lon</th></tr>
+        <tr><th></th><th>Referent</th><th>px, py</th><th>lat, lon</th><th>resid(px)</th><th></th></tr>
       </thead>
       <tbody id="ptsBody"></tbody>
     </table>
   </div>
 
+  <div class="section" id="fitReportSection" style="display:none;">
+    <h3>Linearity Check</h3>
+    <div id="fitReportText"></div>
+  </div>
+
   <div class="section">
-    <h3>3. Target Bounding Box (equirectangular)</h3>
+    <h3>3. Target Bounding Box <span style="color:#888; text-transform:none;">(used only for Force TPS Warp)</span></h3>
     <div class="row"><label>North lat</label><input type="number" id="bboxN" value="40" step="0.01"></div>
     <div class="row"><label>South lat</label><input type="number" id="bboxS" value="35.6" step="0.01"></div>
     <div class="row"><label>West lon</label><input type="number" id="bboxW" value="-9.6" step="0.01"></div>
@@ -177,23 +195,26 @@
   </div>
 
   <div class="section">
-    <h3>4. Warp</h3>
-    <button class="primary" id="warpBtn" disabled>Warp Image</button>
+    <h3>4. Process</h3>
+    <button class="primary" id="useLinearBtn" disabled>Use Linear (no resample)</button>
+    <button class="secondary" id="warpBtn" disabled>Force TPS Warp</button>
     <div id="progressWrap"><div id="progressBar"></div></div>
     <label style="display:flex; align-items:center; gap:6px; margin-top:8px; font-size:12px;">
       <input type="checkbox" id="graticule"> Show 1&deg; graticule overlay
     </label>
-    <button class="secondary" id="downloadBtn" disabled>Download PNG</button>
+    <button class="secondary" id="downloadBtn" disabled>Download</button>
   </div>
 
 </div>
 
 <script>
 // ─────────────────────────── state ───────────────────────────
-let srcImg = null, srcCtx = null, srcImageData = null;
-let points = []; // {label, px, py, lat, lon, include}
-let resultCanvas = null;   // full-res warped result (no graticule baked in)
+let srcImg = null, srcCtx = null, srcImageData = null, srcImgFile = null;
+let points = []; // {label, px, py, lat, lon, include, residPx}
+let resultCanvas = null;   // full-res warped result (no graticule baked in); null when using the linear (unresampled) path
 let resultBounds = null;   // {north,south,west,east,pxPerDeg,w,h}
+let fitReport = null;      // {lonFit:{a,b}, latFit:{a,b}, rmsPx, pctSpan, recommendLinear}
+const LINEAR_THRESHOLD_PCT = 0.5;
 
 const view = document.getElementById('view');
 const vctx = view.getContext('2d');
@@ -229,7 +250,8 @@ function renderView() {
   vctx.drawImage(currentBitmap, viewOffX, viewOffY,
     currentBitmap.width * viewScale, currentBitmap.height * viewScale);
 
-  if (document.getElementById('graticule').checked && resultBounds && currentBitmap === resultCanvas) {
+  if (document.getElementById('graticule').checked && resultBounds &&
+      (currentBitmap === resultCanvas || currentBitmap === (srcCtx && srcCtx.canvas))) {
     drawGraticule();
   }
 }
@@ -285,7 +307,9 @@ view.addEventListener('wheel', (e) => {
   const rect = view.getBoundingClientRect();
   const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
   const ix = (sx - viewOffX) / viewScale, iy = (sy - viewOffY) / viewScale;
-  const factor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
+  // Scale the zoom step by actual wheel/gesture magnitude (not just sign) so a
+  // trackpad's many small-delta events don't compound into runaway zoom.
+  const factor = Math.exp(-e.deltaY * 0.0015);
   viewScale = Math.min(Math.max(viewScale * factor, 0.02), 40);
   viewOffX = sx - ix * viewScale;
   viewOffY = sy - iy * viewScale;
@@ -297,6 +321,7 @@ wrap.addEventListener('dblclick', fitView);
 document.getElementById('imgInput').addEventListener('change', (e) => {
   const file = e.target.files[0];
   if (!file) return;
+  srcImgFile = file;
   const url = URL.createObjectURL(file);
   const image = new Image();
   image.onload = () => {
@@ -310,8 +335,10 @@ document.getElementById('imgInput').addEventListener('change', (e) => {
     document.getElementById('imgInfo').textContent =
       `${file.name} (${off.width}x${off.height})`;
     currentBitmap = off;
+    resultCanvas = null;
+    resultBounds = null;
     fitView();
-    updateWarpEnabled();
+    computeFit();
   };
   image.src = url;
 });
@@ -324,8 +351,7 @@ document.getElementById('csvInput').addEventListener('change', (e) => {
   reader.onload = () => {
     points = parseCsv(reader.result);
     document.getElementById('csvInfo').textContent = `${file.name} — ${points.length} rows`;
-    renderPtsTable();
-    updateWarpEnabled();
+    computeFit();
   };
   reader.readAsText(file);
 });
@@ -377,6 +403,33 @@ function parseCsv(text) {
   return rows;
 }
 
+function onPointsChanged() {
+  computeFit();
+}
+
+function makePairCell(v1, v2, decimals, onCommit1, onCommit2) {
+  const td = document.createElement('td');
+  const wrap = document.createElement('div');
+  wrap.className = 'pairCell';
+  const mk = (val, onCommit) => {
+    const inp = document.createElement('input');
+    inp.type = 'number';
+    inp.step = 'any';
+    inp.value = val.toFixed(decimals);
+    inp.className = 'cellEdit';
+    inp.addEventListener('change', () => {
+      const v = parseFloat(inp.value);
+      if (!isNaN(v)) onCommit(v);
+      onPointsChanged();
+    });
+    return inp;
+  };
+  wrap.appendChild(mk(v1, onCommit1));
+  wrap.appendChild(mk(v2, onCommit2));
+  td.appendChild(wrap);
+  return td;
+}
+
 function renderPtsTable() {
   const body = document.getElementById('ptsBody');
   const table = document.getElementById('ptsTable');
@@ -396,7 +449,7 @@ function renderPtsTable() {
     const chk = document.createElement('input');
     chk.type = 'checkbox';
     chk.checked = p.include;
-    chk.addEventListener('change', () => { p.include = chk.checked; updateWarpEnabled(); });
+    chk.addEventListener('change', () => { p.include = chk.checked; onPointsChanged(); });
     tdChk.appendChild(chk);
     tr.appendChild(tdChk);
 
@@ -404,23 +457,114 @@ function renderPtsTable() {
     tdLabel.textContent = p.label || '—';
     tr.appendChild(tdLabel);
 
-    const tdPx = document.createElement('td');
-    tdPx.className = 'num';
-    tdPx.textContent = `${p.px.toFixed(0)}, ${p.py.toFixed(0)}`;
-    tr.appendChild(tdPx);
+    tr.appendChild(makePairCell(p.px, p.py, 1, v => p.px = v, v => p.py = v));
+    tr.appendChild(makePairCell(p.lat, p.lon, 5, v => p.lat = v, v => p.lon = v));
 
-    const tdLL = document.createElement('td');
-    tdLL.className = 'num';
-    tdLL.textContent = `${p.lat.toFixed(4)}, ${p.lon.toFixed(4)}`;
-    tr.appendChild(tdLL);
+    const tdResid = document.createElement('td');
+    tdResid.className = 'num';
+    if (typeof p.residPx === 'number') {
+      tdResid.textContent = p.residPx.toFixed(1);
+      if (fitReport && p.residPx > Math.max(3 * fitReport.medianResidPx, 8)) {
+        tdResid.style.color = '#e06060';
+        tdResid.title = 'Possible outlier — consider excluding or correcting this point';
+      }
+    } else {
+      tdResid.textContent = '—';
+    }
+    tr.appendChild(tdResid);
+
+    const tdDel = document.createElement('td');
+    const delBtn = document.createElement('button');
+    delBtn.className = 'delBtn';
+    delBtn.title = 'Remove point';
+    delBtn.textContent = '✕';
+    delBtn.addEventListener('click', () => {
+      points = points.filter(pt => pt !== p);
+      onPointsChanged();
+    });
+    tdDel.appendChild(delBtn);
+    tr.appendChild(tdDel);
 
     body.appendChild(tr);
   });
 }
 
+function median(nums) {
+  const s = [...nums].sort((a, b) => a - b);
+  const mid = Math.floor(s.length / 2);
+  return s.length % 2 ? s[mid] : (s[mid - 1] + s[mid]) / 2;
+}
+
+// Simple least-squares fit of y = a + b*x.
+function fitLinearAxis(xs, ys) {
+  const n = xs.length;
+  const meanX = xs.reduce((s, v) => s + v, 0) / n;
+  const meanY = ys.reduce((s, v) => s + v, 0) / n;
+  let num = 0, den = 0;
+  for (let i = 0; i < n; i++) {
+    num += (xs[i] - meanX) * (ys[i] - meanY);
+    den += (xs[i] - meanX) * (xs[i] - meanX);
+  }
+  const b = den < 1e-12 ? 0 : num / den;
+  const a = meanY - b * meanX;
+  return { a, b };
+}
+
+// Fits an axis-aligned linear (equirectangular) model from lon~f(px), lat~f(py)
+// using currently-included points, then scores every point's residual against it.
+// A low residual means the control points are consistent with a simple linear
+// scale (no warp needed); a high residual means real projection distortion.
+function computeFit() {
+  const section = document.getElementById('fitReportSection');
+  const included = points.filter(p => p.include);
+
+  if (!srcImg || included.length < 2) {
+    fitReport = null;
+    points.forEach(p => { delete p.residPx; });
+    section.style.display = 'none';
+    renderPtsTable();
+    updateWarpEnabled();
+    return;
+  }
+
+  const lonFit = fitLinearAxis(included.map(p => p.px), included.map(p => p.lon));
+  const latFit = fitLinearAxis(included.map(p => p.py), included.map(p => p.lat));
+
+  let sumSq = 0;
+  points.forEach(p => {
+    const lonResidPx = lonFit.b ? (p.lon - (lonFit.a + lonFit.b * p.px)) / lonFit.b : 0;
+    const latResidPx = latFit.b ? (p.lat - (latFit.a + latFit.b * p.py)) / latFit.b : 0;
+    p.residPx = Math.hypot(lonResidPx, latResidPx);
+    if (p.include) sumSq += p.residPx * p.residPx;
+  });
+  const rmsPx = Math.sqrt(sumSq / included.length);
+  const medianResidPx = median(included.map(p => p.residPx));
+  const spanPx = srcImageData.width;
+  const pctSpan = (rmsPx / spanPx) * 100;
+  const recommendLinear = pctSpan <= LINEAR_THRESHOLD_PCT;
+
+  fitReport = { lonFit, latFit, rmsPx, medianResidPx, pctSpan, recommendLinear };
+
+  section.style.display = 'block';
+  document.getElementById('fitReportText').textContent =
+    `RMS residual from best-fit linear (equirectangular) mapping: ${rmsPx.toFixed(1)}px ` +
+    `(${pctSpan.toFixed(2)}% of image width, threshold ${LINEAR_THRESHOLD_PCT}%) using ` +
+    `${included.length} of ${points.length} points — ` +
+    (recommendLinear
+      ? 'looks equirectangular. "Use Linear" is recommended.'
+      : 'nonlinear distortion detected. "Force TPS Warp" is recommended.');
+
+  document.getElementById('useLinearBtn').className = recommendLinear ? 'primary' : 'secondary';
+  document.getElementById('warpBtn').className = recommendLinear ? 'secondary' : 'primary';
+
+  renderPtsTable();
+  updateWarpEnabled();
+}
+
 function updateWarpEnabled() {
   const n = points.filter(p => p.include).length;
   document.getElementById('warpBtn').disabled = !(srcImg && n >= 4);
+  document.getElementById('useLinearBtn').disabled = !(srcImg && n >= 3 && fitReport);
 }
 
 // ─────────────────────────── thin plate spline ───────────────────────────
@@ -537,6 +681,7 @@ document.getElementById('warpBtn').addEventListener('click', () => {
   const odata = outData.data;
 
   document.getElementById('warpBtn').disabled = true;
+  document.getElementById('useLinearBtn').disabled = true;
   document.getElementById('downloadBtn').disabled = true;
   const progWrap = document.getElementById('progressWrap');
   const progBar = document.getElementById('progressBar');
@@ -584,7 +729,7 @@ document.getElementById('warpBtn').addEventListener('click', () => {
       resultBounds = { north, south, west, east, pxPerDeg, w: outW, h: outH };
       currentBitmap = resultCanvas;
       fitView();
-      document.getElementById('warpBtn').disabled = false;
+      updateWarpEnabled();
       document.getElementById('downloadBtn').disabled = false;
       progWrap.style.display = 'none';
       statusEl.textContent =
@@ -595,16 +740,52 @@ document.getElementById('warpBtn').addEventListener('click', () => {
   requestAnimationFrame(processChunk);
 });
 
+// ─────────────────────────── linear (unresampled) path ───────────────────────────
+document.getElementById('useLinearBtn').addEventListener('click', () => {
+  if (!fitReport || !srcImg) return;
+  const { lonFit, latFit, rmsPx, pctSpan } = fitReport;
+  const w = srcImageData.width, h = srcImageData.height;
+  const west = lonFit.a;
+  const east = lonFit.a + lonFit.b * w;
+  const north = latFit.a;
+  const south = latFit.a + latFit.b * h;
+
+  if (!(east > west) || !(north > south)) {
+    statusEl.textContent = 'Linear fit produced an invalid bounding box — check control points for sign/order errors.';
+    return;
+  }
+
+  const pxPerDeg = w / (east - west);
+  const included = points.filter(p => p.include).length;
+
+  resultCanvas = null; // no resample — export the source image as-is
+  resultBounds = { north, south, west, east, pxPerDeg, w, h };
+  currentBitmap = srcCtx.canvas;
+  fitView();
+  document.getElementById('downloadBtn').disabled = false;
+  statusEl.textContent =
+    `Using original image unresampled (${w}x${h}px, ${pxPerDeg.toFixed(1)} px/degree). ` +
+    `Linear fit RMS ${rmsPx.toFixed(1)}px (${pctSpan.toFixed(2)}%) from ${included} of ${points.length} points.`;
+});
+
 document.getElementById('graticule').addEventListener('change', renderView);
 
 document.getElementById('downloadBtn').addEventListener('click', () => {
-  if (!resultCanvas || !resultBounds) return;
-  resultCanvas.toBlob((blob) => {
+  if (!resultBounds) return;
+
+  if (resultCanvas) {
+    resultCanvas.toBlob((blob) => {
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'unprojected.png';
+      a.click();
+    });
+  } else if (srcImgFile) {
     const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = 'unprojected.png';
+    a.href = URL.createObjectURL(srcImgFile);
+    a.download = srcImgFile.name;
     a.click();
-  });
+  }
 
   // Sidecar georeference file — lets digitizer.html auto-load the pixel<->degree
   // conversion instead of requiring manual bbox entry.

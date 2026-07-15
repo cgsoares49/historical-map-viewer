@@ -135,11 +135,25 @@
     justify-content: space-between;
     align-items: center;
   }
+  #clearBtn {
+    background: #8a3a3a;
+    color: #fff;
+    border: none;
+    padding: 3px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 11px;
+  }
+  #clearBtn:hover { background: #a94a4a; }
   #pointsTableWrap { overflow-y: auto; flex: 1 1 auto; }
   table { width: 100%; border-collapse: collapse; font-size: 12px; }
   th, td { padding: 4px 6px; border-bottom: 1px solid #3a3a3a; text-align: left; }
   th { background: #2a2a2a; position: sticky; top: 0; }
   .num { font-family: monospace; color: #ccc; }
+  .rowActions { display: flex; gap: 3px; align-items: center; }
+  .moveBtn { background: none; border: none; color: #8ab4d8; cursor: pointer; font-size: 11px; padding: 0 2px; }
+  .moveBtn:hover:not(:disabled) { color: #b6d8f5; }
+  .moveBtn:disabled { color: #555; cursor: default; }
   .delBtn { background: none; border: none; color: #d55; cursor: pointer; font-size: 14px; }
   .delBtn:hover { color: #f66; }
   tr.active { background: #2f3f2f; }
@@ -182,7 +196,7 @@
 
   <div id="pointsHeader">
     <strong id="countLabel">0 points</strong>
-    <span></span>
+    <button id="clearBtn" title="Clear all points">Clear</button>
   </div>
   <div id="pointsTableWrap">
     <table id="pointsTable">
@@ -196,8 +210,8 @@
     <h3>Save / Load Points</h3>
     <button class="primary" id="saveBtn">Save Points...</button>
     <label class="filebtn" style="display:block; text-align:center; margin-top:6px;">
-      Load Points CSV
-      <input type="file" id="loadPtsInput" accept=".csv,text/csv">
+      Load Points File
+      <input type="file" id="loadPtsInput" accept=".txt,.csv,text/plain,text/csv">
     </label>
   </div>
 </div>
@@ -330,11 +344,11 @@ function render() {
     const [sx, sy] = imgToScreen(p.px, p.py);
     const isActive = p.id === activeId;
     vctx.beginPath();
-    vctx.arc(sx, sy, isActive ? 6 : 4, 0, Math.PI * 2);
+    vctx.arc(sx, sy, isActive ? 3 : 2, 0, Math.PI * 2);
     vctx.fillStyle = isActive ? '#ffcc33' : '#ff4444';
     vctx.fill();
     vctx.strokeStyle = '#fff';
-    vctx.lineWidth = 1.2;
+    vctx.lineWidth = 1;
     vctx.stroke();
     vctx.fillStyle = '#fff';
     vctx.font = 'bold 11px monospace';
@@ -396,7 +410,9 @@ view.addEventListener('wheel', (e) => {
   const rect = view.getBoundingClientRect();
   const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
   const [ix, iy] = screenToImg(sx, sy);
-  const factor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
+  // Scale the zoom step by actual wheel/gesture magnitude (not just sign) so a
+  // trackpad's many small-delta events don't compound into runaway zoom.
+  const factor = Math.exp(-e.deltaY * 0.0015);
   viewScale = Math.min(Math.max(viewScale * factor, 0.02), 40);
   viewOffX = sx - ix * viewScale;
   viewOffY = sy - iy * viewScale;
@@ -444,6 +460,26 @@ function removePoint(id) {
   render();
 }
 
+function movePoint(id, delta) {
+  const idx = points.findIndex(p => p.id === id);
+  if (idx === -1) return;
+  const newIdx = idx + delta;
+  if (newIdx < 0 || newIdx >= points.length) return;
+  [points[idx], points[newIdx]] = [points[newIdx], points[idx]];
+  redrawTable();
+  render();
+}
+
+function clearPoints() {
+  if (points.length === 0) return;
+  if (!confirm(`Clear all ${points.length} points?`)) return;
+  points = [];
+  activeId = null;
+  redrawTable();
+  render();
+}
+document.getElementById('clearBtn').addEventListener('click', clearPoints);
+
 function redrawTable() {
   const body = document.getElementById('pointsBody');
   const table = document.getElementById('pointsTable');
@@ -457,8 +493,7 @@ function redrawTable() {
     const tr = document.createElement('tr');
     tr.className = 'ptrow';
     if (p.id === activeId) tr.classList.add('active');
-    tr.addEventListener('click', (ev) => {
-      if (ev.target.closest('.delBtn')) return;
+    tr.addEventListener('click', () => {
       activeId = p.id;
       redrawTable();
       centerOn(p);
@@ -478,13 +513,34 @@ function redrawTable() {
     tdLat.textContent = p.lat.toFixed(5);
     tr.appendChild(tdLat);
 
-    const tdDel = document.createElement('td');
+    const tdActions = document.createElement('td');
+    const actions = document.createElement('div');
+    actions.className = 'rowActions';
+
+    const upBtn = document.createElement('button');
+    upBtn.className = 'moveBtn';
+    upBtn.textContent = '▲';
+    upBtn.title = 'Move up';
+    upBtn.disabled = i === 0;
+    upBtn.addEventListener('click', (ev) => { ev.stopPropagation(); movePoint(p.id, -1); });
+    actions.appendChild(upBtn);
+
+    const downBtn = document.createElement('button');
+    downBtn.className = 'moveBtn';
+    downBtn.textContent = '▼';
+    downBtn.title = 'Move down';
+    downBtn.disabled = i === points.length - 1;
+    downBtn.addEventListener('click', (ev) => { ev.stopPropagation(); movePoint(p.id, 1); });
+    actions.appendChild(downBtn);
+
     const delBtn = document.createElement('button');
     delBtn.className = 'delBtn';
     delBtn.textContent = '✕';
-    delBtn.addEventListener('click', () => removePoint(p.id));
-    tdDel.appendChild(delBtn);
-    tr.appendChild(tdDel);
+    delBtn.addEventListener('click', (ev) => { ev.stopPropagation(); removePoint(p.id); });
+    actions.appendChild(delBtn);
+
+    tdActions.appendChild(actions);
+    tr.appendChild(tdActions);
 
     body.appendChild(tr);
   });
@@ -502,7 +558,7 @@ async function saveAs(suggestedName, content) {
     try {
       const handle = await window.showSaveFilePicker({
         suggestedName,
-        types: [{ description: 'CSV', accept: { 'text/csv': ['.csv'] } }],
+        types: [{ description: 'Text', accept: { 'text/plain': ['.txt'] } }],
       });
       const writable = await handle.createWritable();
       await writable.write(content);
@@ -514,7 +570,7 @@ async function saveAs(suggestedName, content) {
     }
   }
   const filename = prompt('Save as (downloads to your browser\'s download folder):', suggestedName) || suggestedName;
-  const blob = new Blob([content], { type: 'text/csv' });
+  const blob = new Blob([content], { type: 'text/plain' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
   a.download = filename;
@@ -523,8 +579,8 @@ async function saveAs(suggestedName, content) {
 
 document.getElementById('saveBtn').addEventListener('click', () => {
   const lines = [String(points.length)];
-  points.forEach(p => lines.push(`${p.lon},${p.lat}`));
-  saveAs('digitized_points.csv', lines.join('\n') + '\n');
+  points.forEach(p => lines.push(`${p.lon.toFixed(4)} , ${p.lat.toFixed(4)}`));
+  saveAs('digitized_points.txt', lines.join('\n') + '\n');
 });
 
 document.getElementById('loadPtsInput').addEventListener('change', (e) => {
