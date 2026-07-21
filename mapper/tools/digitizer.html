@@ -38,6 +38,20 @@
   }
   #toolbar label.filebtn:hover { background: #4a7eb5; }
   #toolbar input[type=file] { display: none; }
+  #toolbar .zoomBtn {
+    background: #3a3a3a;
+    color: #eee;
+    border: 1px solid #555;
+    width: 26px;
+    height: 26px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 1;
+  }
+  #toolbar .zoomBtn:hover { background: #4a4a4a; }
+  #zoomLabel { font-size: 12px; color: #aaa; min-width: 38px; text-align: center; }
+  #toolbar .chk { font-size: 12px; color: #ccc; display: flex; align-items: center; gap: 4px; }
   #readout {
     font-family: monospace;
     font-size: 13px;
@@ -71,7 +85,7 @@
     border-left: 1px solid #444;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
+    overflow: hidden;
   }
   .section {
     padding: 10px 12px;
@@ -145,7 +159,18 @@
     font-size: 11px;
   }
   #clearBtn:hover { background: #a94a4a; }
-  #pointsTableWrap { overflow-y: auto; flex: 1 1 auto; }
+  #newRunBtn {
+    background: #3a5a8a;
+    color: #fff;
+    border: none;
+    padding: 3px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 11px;
+  }
+  #newRunBtn:hover:not(:disabled) { background: #4a6a9a; }
+  #newRunBtn:disabled { background: #444; color: #888; cursor: default; }
+  #pointsTableWrap { overflow-y: auto; flex: 1 1 auto; min-height: 0; }
   table { width: 100%; border-collapse: collapse; font-size: 12px; }
   th, td { padding: 4px 6px; border-bottom: 1px solid #3a3a3a; text-align: left; }
   th { background: #2a2a2a; position: sticky; top: 0; }
@@ -172,14 +197,19 @@
       <input type="file" id="geoInput" accept=".json,application/json">
     </label>
     <span id="imgInfo" style="color:#aaa; font-size:12px;"></span>
+    <button class="zoomBtn" id="zoomOutBtn" title="Zoom out one step">−</button>
+    <span id="zoomLabel"></span>
+    <button class="zoomBtn" id="zoomInBtn" title="Zoom in one step">+</button>
+    <label class="chk"><input type="checkbox" id="showLabelsChk" checked> Numbers</label>
     <span id="readout">—</span>
   </div>
   <div id="canvasWrap">
     <canvas id="view"></canvas>
   </div>
   <div id="hint">
-    Click = add point &nbsp;|&nbsp; Drag = pan &nbsp;|&nbsp; Scroll = zoom &nbsp;|&nbsp;
-    Arrow keys = nudge active (yellow) point 1px &nbsp;|&nbsp; Click a table row = select it as active
+    Click = add point &nbsp;|&nbsp; Drag = pan &nbsp;|&nbsp; Scroll/+/− = zoom (stepped) &nbsp;|&nbsp;
+    Arrow keys = nudge active (yellow) point 1px &nbsp;|&nbsp; Click a table row = select it as active &nbsp;|&nbsp;
+    Double-click = fit to window
   </div>
 </div>
 
@@ -196,7 +226,10 @@
 
   <div id="pointsHeader">
     <strong id="countLabel">0 points</strong>
-    <button id="clearBtn" title="Clear all points">Clear</button>
+    <div style="display:flex; gap:6px;">
+      <button id="newRunBtn" title="Discard all but the last point, so it becomes the start of a new run" disabled>New Run</button>
+      <button id="clearBtn" title="Clear all points">Clear</button>
+    </div>
   </div>
   <div id="pointsTableWrap">
     <table id="pointsTable">
@@ -209,6 +242,8 @@
   <div class="section" style="border-bottom:none;">
     <h3>Save / Load Points</h3>
     <button class="primary" id="saveBtn">Save Points...</button>
+    <div id="saveLocInfo" style="font-size:11px; color:#888; margin-top:4px;">No save location set yet — first save will ask where.</div>
+    <button class="secondary" id="saveAsBtn">Change Save Location...</button>
     <label class="filebtn" style="display:block; text-align:center; margin-top:6px;">
       Load Points File
       <input type="file" id="loadPtsInput" accept=".txt,.csv,text/plain,text/csv">
@@ -227,6 +262,12 @@ let viewScale = 1, viewOffX = 0, viewOffY = 0;
 let points = []; // {id, px, py, lon, lat}
 let nextId = 1;
 let activeId = null;
+let showLabels = true;
+
+document.getElementById('showLabelsChk').addEventListener('change', (e) => {
+  showLabels = e.target.checked;
+  render();
+});
 
 // ── georeference ──────────────────────────────────────────────────────────
 const gN = document.getElementById('gN');
@@ -333,9 +374,60 @@ function fitView() {
 function imgToScreen(px, py) { return [px * viewScale + viewOffX, py * viewScale + viewOffY]; }
 function screenToImg(sx, sy) { return [(sx - viewOffX) / viewScale, (sy - viewOffY) / viewScale]; }
 
+// ── discrete zoom levels (MAPPER-style step zoom, not continuous) ──────────
+const ZOOM_LEVELS = [0.02, 0.03, 0.05, 0.08, 0.12, 0.18, 0.25, 0.35, 0.5, 0.7,
+                      1, 1.4, 2, 2.8, 4, 5.6, 8, 11, 16, 22, 32, 40];
+
+function nearestZoomIndex(scale) {
+  let best = 0, bestDist = Infinity;
+  ZOOM_LEVELS.forEach((v, i) => {
+    const d = Math.abs(Math.log(v) - Math.log(scale));
+    if (d < bestDist) { bestDist = d; best = i; }
+  });
+  return best;
+}
+
+function setZoomTo(newScale, anchorSx, anchorSy) {
+  if (anchorSx === undefined) { anchorSx = view.width / 2; anchorSy = view.height / 2; }
+  const [ix, iy] = screenToImg(anchorSx, anchorSy);
+  viewScale = newScale;
+  viewOffX = anchorSx - ix * viewScale;
+  viewOffY = anchorSy - iy * viewScale;
+  render();
+}
+
+function zoomStep(delta, anchorSx, anchorSy) {
+  if (!img) return;
+  const idx = nearestZoomIndex(viewScale);
+  const newIdx = Math.max(0, Math.min(ZOOM_LEVELS.length - 1, idx + delta));
+  setZoomTo(ZOOM_LEVELS[newIdx], anchorSx, anchorSy);
+}
+
+function updateZoomLabel() {
+  const lbl = document.getElementById('zoomLabel');
+  lbl.textContent = img ? `${Math.round(viewScale * 100)}%` : '';
+}
+
+document.getElementById('zoomInBtn').addEventListener('click', () => zoomStep(1));
+document.getElementById('zoomOutBtn').addEventListener('click', () => zoomStep(-1));
+
+// Label offset: point away from the direction of travel through this point,
+// so the number sits clear of the path instead of getting buried under it.
+function labelOffset(i) {
+  const p = points[i], prev = points[i - 1], next = points[i + 1];
+  let dx, dy;
+  if (prev) { dx = p.px - prev.px; dy = p.py - prev.py; }
+  else if (next) { dx = next.px - p.px; dy = next.py - p.py; }
+  else { dx = 1; dy = -1; }
+  const len = Math.hypot(dx, dy) || 1;
+  const off = 9;
+  return { ox: -dx / len * off, oy: -dy / len * off };
+}
+
 function render() {
   vctx.setTransform(1, 0, 0, 1, 0, 0);
   vctx.clearRect(0, 0, view.width, view.height);
+  updateZoomLabel();
   if (!img) return;
   vctx.imageSmoothingEnabled = viewScale < 1;
   vctx.drawImage(img, viewOffX, viewOffY, imgW * viewScale, imgH * viewScale);
@@ -350,10 +442,17 @@ function render() {
     vctx.strokeStyle = '#fff';
     vctx.lineWidth = 1;
     vctx.stroke();
-    vctx.fillStyle = '#fff';
-    vctx.font = 'bold 11px monospace';
-    vctx.fillText(String(i + 1), sx + 7, sy - 7);
+    if (showLabels) {
+      const { ox, oy } = labelOffset(i);
+      vctx.fillStyle = '#fff';
+      vctx.font = 'bold 11px monospace';
+      vctx.textAlign = ox >= 0 ? 'left' : 'right';
+      vctx.textBaseline = oy >= 0 ? 'top' : 'bottom';
+      vctx.fillText(String(i + 1), sx + ox, sy + oy);
+    }
   });
+  vctx.textAlign = 'start';
+  vctx.textBaseline = 'alphabetic';
 }
 
 // pan / zoom / click-to-add
@@ -404,19 +503,22 @@ window.addEventListener('mouseup', (e) => {
   dragMoved = false;
 });
 
+// Trackpad pinch-zoom fires many small-delta wheel events in a burst; stepping
+// on every one felt erratic (and could overshoot back to the fit-to-window
+// scale). Accumulate delta and only spend one discrete zoom level per
+// threshold crossed, same idea as MAPPER's stepped zoom.
+let zoomAccum = 0;
 view.addEventListener('wheel', (e) => {
   if (!img) return;
   e.preventDefault();
   const rect = view.getBoundingClientRect();
   const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
-  const [ix, iy] = screenToImg(sx, sy);
-  // Scale the zoom step by actual wheel/gesture magnitude (not just sign) so a
-  // trackpad's many small-delta events don't compound into runaway zoom.
-  const factor = Math.exp(-e.deltaY * 0.0015);
-  viewScale = Math.min(Math.max(viewScale * factor, 0.02), 40);
-  viewOffX = sx - ix * viewScale;
-  viewOffY = sy - iy * viewScale;
-  render();
+  zoomAccum += e.deltaY;
+  const THRESH = 50;
+  while (Math.abs(zoomAccum) >= THRESH) {
+    zoomStep(zoomAccum > 0 ? -1 : 1, sx, sy);
+    zoomAccum -= Math.sign(zoomAccum) * THRESH;
+  }
 }, { passive: false });
 
 wrap.addEventListener('dblclick', fitView);
@@ -480,11 +582,25 @@ function clearPoints() {
 }
 document.getElementById('clearBtn').addEventListener('click', clearPoints);
 
+// Continue a fresh run from wherever the last saved run left off, without
+// having to hand-delete a long list of already-saved points first.
+function startNewRunFromLastPoint() {
+  if (points.length <= 1) return;
+  const last = points[points.length - 1];
+  if (!confirm(`Discard the other ${points.length - 1} point(s) and keep only the last point (#${points.length}) as the start of a new run?`)) return;
+  points = [last];
+  activeId = last.id;
+  redrawTable();
+  render();
+}
+document.getElementById('newRunBtn').addEventListener('click', startNewRunFromLastPoint);
+
 function redrawTable() {
   const body = document.getElementById('pointsBody');
   const table = document.getElementById('pointsTable');
   const empty = document.getElementById('emptyMsg');
   document.getElementById('countLabel').textContent = `${points.length} point${points.length === 1 ? '' : 's'}`;
+  document.getElementById('newRunBtn').disabled = points.length <= 1;
   empty.style.display = points.length === 0 ? 'block' : 'none';
   table.style.display = points.length === 0 ? 'none' : 'table';
   body.innerHTML = '';
@@ -553,23 +669,55 @@ function centerOn(p) {
 }
 
 // ── save / load points ──────────────────────────────────────────────────────
-async function saveAs(suggestedName, content) {
+// Remember the file handle (or, in browsers without the File System Access
+// API, just the filename) from the first save so later saves in the same
+// session go straight back to the same path instead of prompting every time.
+let saveHandle = null;
+let lastSaveName = 'digitized_points.txt';
+
+function updateSaveLocLabel() {
+  const info = document.getElementById('saveLocInfo');
+  info.textContent = saveHandle
+    ? `Will save to: ${saveHandle.name}`
+    : `Next save will ask where (suggested: ${lastSaveName})`;
+}
+
+async function saveAs(content, forceNew) {
   if (window.showSaveFilePicker) {
+    if (saveHandle && !forceNew) {
+      try {
+        if ((await saveHandle.queryPermission({ mode: 'readwrite' })) !== 'granted' &&
+            (await saveHandle.requestPermission({ mode: 'readwrite' })) !== 'granted') {
+          throw new Error('permission denied');
+        }
+        const writable = await saveHandle.createWritable();
+        await writable.write(content);
+        await writable.close();
+        return;
+      } catch (e) {
+        saveHandle = null; // stale/denied handle — fall through and re-pick
+      }
+    }
     try {
       const handle = await window.showSaveFilePicker({
-        suggestedName,
+        suggestedName: lastSaveName,
         types: [{ description: 'Text', accept: { 'text/plain': ['.txt'] } }],
       });
       const writable = await handle.createWritable();
       await writable.write(content);
       await writable.close();
+      saveHandle = handle;
+      lastSaveName = handle.name;
+      updateSaveLocLabel();
       return;
     } catch (e) {
       if (e.name === 'AbortError') return;
       // fall through to download fallback on unexpected errors
     }
   }
-  const filename = prompt('Save as (downloads to your browser\'s download folder):', suggestedName) || suggestedName;
+  const filename = prompt('Save as (downloads to your browser\'s download folder):', lastSaveName) || lastSaveName;
+  lastSaveName = filename;
+  updateSaveLocLabel();
   const blob = new Blob([content], { type: 'text/plain' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
@@ -577,11 +725,14 @@ async function saveAs(suggestedName, content) {
   a.click();
 }
 
-document.getElementById('saveBtn').addEventListener('click', () => {
+function pointsFileContent() {
   const lines = [String(points.length)];
   points.forEach(p => lines.push(`${p.lon.toFixed(4)} , ${p.lat.toFixed(4)}`));
-  saveAs('digitized_points.txt', lines.join('\n') + '\n');
-});
+  return lines.join('\n') + '\n';
+}
+
+document.getElementById('saveBtn').addEventListener('click', () => saveAs(pointsFileContent(), false));
+document.getElementById('saveAsBtn').addEventListener('click', () => saveAs(pointsFileContent(), true));
 
 document.getElementById('loadPtsInput').addEventListener('change', (e) => {
   const file = e.target.files[0];
@@ -590,11 +741,14 @@ document.getElementById('loadPtsInput').addEventListener('change', (e) => {
   reader.onload = () => {
     const lines = reader.result.split(/\r?\n/).filter(l => l.trim().length > 0);
     if (lines.length < 1) return;
-    const count = parseInt(lines[0], 10);
+    const count = parseInt(lines[0].trim(), 10);
     const rows = lines.slice(1, isNaN(count) ? undefined : count + 1);
     rows.forEach(line => {
-      const [lonStr, latStr] = line.split(',');
-      const lon = parseFloat(lonStr), lat = parseFloat(latStr);
+      // Accept comma- or tab-separated (and mixes of either with stray
+      // whitespace) rather than requiring an exact comma format.
+      const parts = line.trim().split(/[,\t]+/).map(s => s.trim()).filter(s => s.length > 0);
+      if (parts.length < 2) return;
+      const lon = parseFloat(parts[0]), lat = parseFloat(parts[1]);
       if (isNaN(lon) || isNaN(lat)) return;
       const ppd = pxPerDeg();
       const { west, north } = geoBounds();
@@ -610,6 +764,7 @@ document.getElementById('loadPtsInput').addEventListener('change', (e) => {
 });
 
 updateGeoInfo();
+updateSaveLocLabel();
 </script>
 </body>
 </html>
