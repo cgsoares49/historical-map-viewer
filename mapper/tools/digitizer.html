@@ -116,75 +116,12 @@
     margin-top: 4px;
     display: none;
   }
-  button.secondary {
-    width: 100%;
-    background: #3a5a8a;
-    color: #fff;
-    border: none;
-    padding: 6px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 12px;
-    margin-top: 6px;
-  }
-  button.secondary:hover { background: #4a6a9a; }
-  button.primary {
-    width: 100%;
-    background: #3a8a5a;
-    color: #fff;
-    border: none;
-    padding: 8px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 600;
-    margin-top: 6px;
-  }
-  button.primary:hover { background: #4a9a6a; }
-  #pointsHeader {
-    padding: 8px 12px;
-    background: #2a2a2a;
-    border-bottom: 1px solid #444;
+  #pointPickerPanel {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
   }
-  #clearBtn {
-    background: #8a3a3a;
-    color: #fff;
-    border: none;
-    padding: 3px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 11px;
-  }
-  #clearBtn:hover { background: #a94a4a; }
-  .newRunBtn {
-    background: #3a5a8a;
-    color: #fff;
-    border: none;
-    padding: 3px 8px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 11px;
-    white-space: nowrap;
-  }
-  .newRunBtn:hover:not(:disabled) { background: #4a6a9a; }
-  .newRunBtn:disabled { background: #444; color: #888; cursor: default; }
-  #pointsTableWrap { overflow-y: auto; flex: 1 1 auto; min-height: 0; }
-  table { width: 100%; border-collapse: collapse; font-size: 12px; }
-  th, td { padding: 4px 6px; border-bottom: 1px solid #3a3a3a; text-align: left; }
-  th { background: #2a2a2a; position: sticky; top: 0; }
-  .num { font-family: monospace; color: #ccc; }
-  .rowActions { display: flex; gap: 3px; align-items: center; }
-  .moveBtn { background: none; border: none; color: #8ab4d8; cursor: pointer; font-size: 11px; padding: 0 2px; }
-  .moveBtn:hover:not(:disabled) { color: #b6d8f5; }
-  .moveBtn:disabled { color: #555; cursor: default; }
-  .delBtn { background: none; border: none; color: #d55; cursor: pointer; font-size: 14px; }
-  .delBtn:hover { color: #f66; }
-  tr.active { background: #2f3f2f; }
-  tr.ptrow { cursor: pointer; }
-  #emptyMsg { padding: 16px; color: #777; font-size: 13px; }
 </style>
 </head>
 <body>
@@ -225,33 +162,10 @@
     <div id="geoWarning"></div>
   </div>
 
-  <div id="pointsHeader">
-    <strong id="countLabel">0 points</strong>
-    <div style="display:flex; gap:5px;">
-      <button class="newRunBtn" id="newRunKeepFirstBtn" title="Discard all but the first point, so it becomes the start of a new run" disabled>Keep 1st</button>
-      <button class="newRunBtn" id="newRunKeepLastBtn" title="Discard all but the last point, so it becomes the start of a new run" disabled>Keep Last</button>
-      <button id="clearBtn" title="Clear all points">Clear</button>
-    </div>
-  </div>
-  <div id="pointsTableWrap">
-    <table id="pointsTable">
-      <thead><tr><th>#</th><th>Lon</th><th>Lat</th><th></th></tr></thead>
-      <tbody id="pointsBody"></tbody>
-    </table>
-    <div id="emptyMsg">Load an image, then click on it to place points.</div>
-  </div>
-
-  <div class="section" style="border-bottom:none;">
-    <h3>Save / Load Points</h3>
-    <button class="primary" id="saveBtn">Save Points...</button>
-    <div id="saveLocInfo" style="font-size:11px; color:#888; margin-top:4px;"></div>
-    <label class="filebtn" style="display:block; text-align:center; margin-top:6px;">
-      Load Points File
-      <input type="file" id="loadPtsInput" accept=".txt,.csv,text/plain,text/csv">
-    </label>
-  </div>
+  <div id="pointPickerPanel"></div>
 </div>
 
+<script src="../js/pointpicker.js"></script>
 <script>
 const view = document.getElementById('view');
 const vctx = view.getContext('2d');
@@ -260,9 +174,6 @@ const statusReadout = document.getElementById('readout');
 
 let img = null, imgW = 0, imgH = 0;
 let viewScale = 1, viewOffX = 0, viewOffY = 0;
-let points = []; // {id, px, py, lon, lat}
-let nextId = 1;
-let activeId = null;
 let showLabels = true;
 
 document.getElementById('showLabelsChk').addEventListener('change', (e) => {
@@ -298,6 +209,25 @@ function pixelToLonLat(px, py) {
   return { lon: west + px / ppd, lat: north - py / ppd };
 }
 
+function lonLatToPixel(lon, lat) {
+  const { north, west } = geoBounds();
+  const ppd = pxPerDeg();
+  return { px: (lon - west) * ppd, py: (north - lat) * ppd };
+}
+
+const pointPicker = new PointPicker({
+  container: document.getElementById('pointPickerPanel'),
+  converter: {
+    pixelToLonLat,
+    lonLatToPixel,
+    // Keep nudges from walking a point off the source image's edge.
+    clampPixel: (px, py) => ({ px: Math.max(0, Math.min(imgW, px)), py: Math.max(0, Math.min(imgH, py)) }),
+  },
+  dbNamespace: 'digitizer',
+  onChange: () => render(),
+  onSelect: (p) => centerOn(p),
+});
+
 function updateGeoInfo() {
   if (!imgW) { geoInfo.textContent = 'Load an image to compute px/degree.'; return; }
   const { north, south, west, east } = geoBounds();
@@ -314,7 +244,6 @@ function updateGeoInfo() {
   } else {
     geoWarning.style.display = 'none';
   }
-  redrawTable(); // lon/lat depend on geo bounds
   render();
 }
 [gN, gS, gW, gE].forEach(el => el.addEventListener('input', updateGeoInfo));
@@ -415,11 +344,16 @@ document.getElementById('zoomOutBtn').addEventListener('click', () => zoomStep(-
 // Label offset: point away from the direction of travel through this point,
 // so the number sits clear of the path instead of getting buried under it.
 function labelOffset(i) {
-  const p = points[i], prev = points[i - 1], next = points[i + 1];
+  const pts = pointPicker.points;
+  const cur = lonLatToPixel(pts[i].lon, pts[i].lat);
   let dx, dy;
-  if (prev) { dx = p.px - prev.px; dy = p.py - prev.py; }
-  else if (next) { dx = next.px - p.px; dy = next.py - p.py; }
-  else { dx = 1; dy = -1; }
+  if (pts[i - 1]) {
+    const prev = lonLatToPixel(pts[i - 1].lon, pts[i - 1].lat);
+    dx = cur.px - prev.px; dy = cur.py - prev.py;
+  } else if (pts[i + 1]) {
+    const next = lonLatToPixel(pts[i + 1].lon, pts[i + 1].lat);
+    dx = next.px - cur.px; dy = next.py - cur.py;
+  } else { dx = 1; dy = -1; }
   const len = Math.hypot(dx, dy) || 1;
   const off = 9;
   return { ox: -dx / len * off, oy: -dy / len * off };
@@ -433,9 +367,10 @@ function render() {
   vctx.imageSmoothingEnabled = viewScale < 1;
   vctx.drawImage(img, viewOffX, viewOffY, imgW * viewScale, imgH * viewScale);
 
-  points.forEach((p, i) => {
-    const [sx, sy] = imgToScreen(p.px, p.py);
-    const isActive = p.id === activeId;
+  pointPicker.points.forEach((p, i) => {
+    const { px, py } = lonLatToPixel(p.lon, p.lat);
+    const [sx, sy] = imgToScreen(px, py);
+    const isActive = p.id === pointPicker.activeId;
     vctx.beginPath();
     vctx.arc(sx, sy, isActive ? 3 : 2, 0, Math.PI * 2);
     vctx.fillStyle = isActive ? '#ffcc33' : '#ff4444';
@@ -496,7 +431,7 @@ window.addEventListener('mouseup', (e) => {
     if (sx >= 0 && sy >= 0 && sx <= view.width && sy <= view.height) {
       const [ix, iy] = screenToImg(sx, sy);
       if (ix >= 0 && iy >= 0 && ix <= imgW && iy <= imgH) {
-        addPoint(ix, iy);
+        pointPicker.addPointFromPixel(ix, iy);
       }
     }
   }
@@ -530,280 +465,22 @@ window.addEventListener('keydown', (e) => {
   if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
 
   if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) return;
-  if (activeId === null) return;
-  const p = points.find(pt => pt.id === activeId);
-  if (!p) return;
+  if (!pointPicker.getActivePoint()) return;
 
   e.preventDefault();
-  if (e.key === 'ArrowUp') p.py -= 1;
-  if (e.key === 'ArrowDown') p.py += 1;
-  if (e.key === 'ArrowLeft') p.px -= 1;
-  if (e.key === 'ArrowRight') p.px += 1;
-  p.px = Math.max(0, Math.min(imgW, p.px));
-  p.py = Math.max(0, Math.min(imgH, p.py));
-  Object.assign(p, pixelToLonLat(p.px, p.py));
-  redrawTable();
-  render();
+  const dx = e.key === 'ArrowLeft' ? -1 : e.key === 'ArrowRight' ? 1 : 0;
+  const dy = e.key === 'ArrowUp' ? -1 : e.key === 'ArrowDown' ? 1 : 0;
+  pointPicker.nudgeActive(dx, dy);
 });
-
-// ── points table ─────────────────────────────────────────────────────────
-function addPoint(px, py) {
-  const { lon, lat } = pixelToLonLat(px, py);
-  const p = { id: nextId++, px, py, lon, lat };
-  points.push(p);
-  activeId = p.id;
-  redrawTable();
-  render();
-}
-
-function removePoint(id) {
-  points = points.filter(p => p.id !== id);
-  if (activeId === id) activeId = null;
-  redrawTable();
-  render();
-}
-
-function movePoint(id, delta) {
-  const idx = points.findIndex(p => p.id === id);
-  if (idx === -1) return;
-  const newIdx = idx + delta;
-  if (newIdx < 0 || newIdx >= points.length) return;
-  [points[idx], points[newIdx]] = [points[newIdx], points[idx]];
-  redrawTable();
-  render();
-}
-
-function clearPoints() {
-  if (points.length === 0) return;
-  if (!confirm(`Clear all ${points.length} points?`)) return;
-  points = [];
-  activeId = null;
-  redrawTable();
-  render();
-}
-document.getElementById('clearBtn').addEventListener('click', clearPoints);
-
-// Continue a fresh run from wherever the last run left off (either end),
-// without having to hand-delete a long list of already-saved points first.
-function startNewRun(which) {
-  if (points.length <= 1) return;
-  const keep = which === 'first' ? points[0] : points[points.length - 1];
-  const label = which === 'first' ? `first point (#1)` : `last point (#${points.length})`;
-  if (!confirm(`Discard the other ${points.length - 1} point(s) and keep only the ${label} as the start of a new run?`)) return;
-  points = [keep];
-  activeId = keep.id;
-  redrawTable();
-  render();
-}
-document.getElementById('newRunKeepFirstBtn').addEventListener('click', () => startNewRun('first'));
-document.getElementById('newRunKeepLastBtn').addEventListener('click', () => startNewRun('last'));
-
-function redrawTable() {
-  const body = document.getElementById('pointsBody');
-  const table = document.getElementById('pointsTable');
-  const empty = document.getElementById('emptyMsg');
-  document.getElementById('countLabel').textContent = `${points.length} point${points.length === 1 ? '' : 's'}`;
-  document.getElementById('newRunKeepFirstBtn').disabled = points.length <= 1;
-  document.getElementById('newRunKeepLastBtn').disabled = points.length <= 1;
-  empty.style.display = points.length === 0 ? 'block' : 'none';
-  table.style.display = points.length === 0 ? 'none' : 'table';
-  body.innerHTML = '';
-
-  points.forEach((p, i) => {
-    const tr = document.createElement('tr');
-    tr.className = 'ptrow';
-    if (p.id === activeId) tr.classList.add('active');
-    tr.addEventListener('click', () => {
-      activeId = p.id;
-      redrawTable();
-      centerOn(p);
-    });
-
-    const tdIdx = document.createElement('td');
-    tdIdx.textContent = i + 1;
-    tr.appendChild(tdIdx);
-
-    const tdLon = document.createElement('td');
-    tdLon.className = 'num';
-    tdLon.textContent = p.lon.toFixed(5);
-    tr.appendChild(tdLon);
-
-    const tdLat = document.createElement('td');
-    tdLat.className = 'num';
-    tdLat.textContent = p.lat.toFixed(5);
-    tr.appendChild(tdLat);
-
-    const tdActions = document.createElement('td');
-    const actions = document.createElement('div');
-    actions.className = 'rowActions';
-
-    const upBtn = document.createElement('button');
-    upBtn.className = 'moveBtn';
-    upBtn.textContent = '▲';
-    upBtn.title = 'Move up';
-    upBtn.disabled = i === 0;
-    upBtn.addEventListener('click', (ev) => { ev.stopPropagation(); movePoint(p.id, -1); });
-    actions.appendChild(upBtn);
-
-    const downBtn = document.createElement('button');
-    downBtn.className = 'moveBtn';
-    downBtn.textContent = '▼';
-    downBtn.title = 'Move down';
-    downBtn.disabled = i === points.length - 1;
-    downBtn.addEventListener('click', (ev) => { ev.stopPropagation(); movePoint(p.id, 1); });
-    actions.appendChild(downBtn);
-
-    const delBtn = document.createElement('button');
-    delBtn.className = 'delBtn';
-    delBtn.textContent = '✕';
-    delBtn.addEventListener('click', (ev) => { ev.stopPropagation(); removePoint(p.id); });
-    actions.appendChild(delBtn);
-
-    tdActions.appendChild(actions);
-    tr.appendChild(tdActions);
-
-    body.appendChild(tr);
-  });
-}
 
 function centerOn(p) {
-  viewOffX = view.width / 2 - p.px * viewScale;
-  viewOffY = view.height / 2 - p.py * viewScale;
+  const { px, py } = lonLatToPixel(p.lon, p.lat);
+  viewOffX = view.width / 2 - px * viewScale;
+  viewOffY = view.height / 2 - py * viewScale;
   render();
 }
 
-// ── save / load points ──────────────────────────────────────────────────────
-// Persist the last-used save handle (Chromium's File System Access API) across
-// browser restarts via IndexedDB, so the native Save dialog keeps reopening in
-// the same folder with the same filename pre-filled — not just for the current
-// tab session. FileSystemFileHandle objects are structured-cloneable, which is
-// exactly what IndexedDB is for; localStorage can't hold them.
-function idbOpen() {
-  return new Promise((resolve, reject) => {
-    const req = indexedDB.open('digitizer-db', 1);
-    req.onupgradeneeded = () => req.result.createObjectStore('handles');
-    req.onsuccess = () => resolve(req.result);
-    req.onerror = () => reject(req.error);
-  });
-}
-async function idbGet(key) {
-  const db = await idbOpen();
-  return new Promise((resolve, reject) => {
-    const req = db.transaction('handles', 'readonly').objectStore('handles').get(key);
-    req.onsuccess = () => resolve(req.result);
-    req.onerror = () => reject(req.error);
-  });
-}
-async function idbSet(key, value) {
-  const db = await idbOpen();
-  return new Promise((resolve, reject) => {
-    const tx = db.transaction('handles', 'readwrite');
-    tx.objectStore('handles').put(value, key);
-    tx.oncomplete = () => resolve();
-    tx.onerror = () => reject(tx.error);
-  });
-}
-
-let lastHandle = null; // FileSystemFileHandle, Chromium only — used purely as a startIn hint
-let lastSaveName = localStorage.getItem('digitizerLastSaveName') || 'digitized_points.txt';
-let saveLabelResetTimer = null;
-
-function updateSaveLocLabel() {
-  const info = document.getElementById('saveLocInfo');
-  clearTimeout(saveLabelResetTimer);
-  info.style.color = '#888';
-  info.textContent = `Next save: ${lastSaveName}`;
-}
-
-function flashSaveSuccess() {
-  const info = document.getElementById('saveLocInfo');
-  clearTimeout(saveLabelResetTimer);
-  info.style.color = '#6a6';
-  info.textContent = `✓ Saved: ${lastSaveName}`;
-  saveLabelResetTimer = setTimeout(updateSaveLocLabel, 2500);
-}
-
-if (window.showSaveFilePicker) {
-  idbGet('lastHandle').then(handle => {
-    if (handle) { lastHandle = handle; lastSaveName = handle.name; updateSaveLocLabel(); }
-  }).catch(() => {}); // ignore — e.g. private browsing without IndexedDB
-}
-
-async function saveAs(content) {
-  if (window.showSaveFilePicker) {
-    let handle;
-    try {
-      handle = await window.showSaveFilePicker({
-        suggestedName: lastSaveName,
-        // Biasing the dialog to reopen in the same folder is just a hint —
-        // no permission is needed to pass a previous handle here.
-        startIn: lastHandle || 'documents',
-        types: [{ description: 'Text', accept: { 'text/plain': ['.txt'] } }],
-      });
-    } catch (e) {
-      return; // user cancelled (AbortError) or picker unsupported mid-flight — no feedback needed
-    }
-    // A handle freshly returned by the picker always has write permission already.
-    const writable = await handle.createWritable();
-    await writable.write(content);
-    await writable.close();
-    lastHandle = handle;
-    lastSaveName = handle.name;
-    localStorage.setItem('digitizerLastSaveName', lastSaveName);
-    idbSet('lastHandle', handle).catch(() => {});
-    flashSaveSuccess();
-    return;
-  }
-  const filename = prompt('Save as (downloads to your browser\'s download folder):', lastSaveName) || lastSaveName;
-  lastSaveName = filename;
-  localStorage.setItem('digitizerLastSaveName', lastSaveName);
-  const blob = new Blob([content], { type: 'text/plain' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = filename;
-  a.click();
-  flashSaveSuccess();
-}
-
-function pointsFileContent() {
-  const lines = [String(points.length)];
-  points.forEach(p => lines.push(`${p.lon.toFixed(4)} , ${p.lat.toFixed(4)}`));
-  return lines.join('\n') + '\n';
-}
-
-document.getElementById('saveBtn').addEventListener('click', () => saveAs(pointsFileContent()));
-
-document.getElementById('loadPtsInput').addEventListener('change', (e) => {
-  const file = e.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = () => {
-    const lines = reader.result.split(/\r?\n/).filter(l => l.trim().length > 0);
-    if (lines.length < 1) return;
-    const count = parseInt(lines[0].trim(), 10);
-    const rows = lines.slice(1, isNaN(count) ? undefined : count + 1);
-    rows.forEach(line => {
-      // Accept comma- or tab-separated (and mixes of either with stray
-      // whitespace) rather than requiring an exact comma format.
-      const parts = line.trim().split(/[,\t]+/).map(s => s.trim()).filter(s => s.length > 0);
-      if (parts.length < 2) return;
-      const lon = parseFloat(parts[0]), lat = parseFloat(parts[1]);
-      if (isNaN(lon) || isNaN(lat)) return;
-      const ppd = pxPerDeg();
-      const { west, north } = geoBounds();
-      const px = (lon - west) * ppd;
-      const py = (north - lat) * ppd;
-      points.push({ id: nextId++, px, py, lon, lat });
-    });
-    redrawTable();
-    render();
-  };
-  reader.readAsText(file);
-  e.target.value = '';
-});
-
 updateGeoInfo();
-updateSaveLocLabel();
 </script>
 </body>
 </html>
