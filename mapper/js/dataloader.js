@@ -99,6 +99,19 @@ class DataLoader {
         return offsets;
     }
 
+    // Drop cached entries for the given file URLs, so the next loadTile() call
+    // re-fetches them from disk instead of serving stale parsed data. Needed
+    // after in-app edits (e.g. the Dev > Replace tool) rewrite a file on disk.
+    invalidateFiles(urls) {
+        for (const url of urls) this._cache.delete(url);
+    }
+
+    // Drop the entire cache — for edits made outside the app (a text editor,
+    // an external script) that this DataLoader has no way to detect on its own.
+    clearCache() {
+        this._cache.clear();
+    }
+
     // ── Private helpers ─────────────────────────────────────────────────────────
 
     async _fetchAndParse(url, parseFn) {
