@@ -96,4 +96,30 @@ class TileManager {
 
         return tiles;
     }
+
+    // Returns the single tile descriptor { latD, lonD, fileLon, latStr, lonStr, tileWidth }
+    // covering one geographic point. Mirrors the band/offset logic in getTiles() above,
+    // applied to a single lon/lat instead of a viewport range.
+    getTileAt(lon, lat) {
+        let latD = 5 * Math.floor((90 + lat) / 5);
+        if (latD > 175) latD = 175;
+        if (latD < 0)   latD = 0;
+
+        const nTiles    = N_VALUES[latD / 5];
+        const tileWidth = 360 / nTiles;
+
+        const shiftedLon = ((lon + 180) % 360 + 360) % 360;
+        let lonD = tileWidth * Math.floor(shiftedLon / tileWidth);
+
+        if (latD === 30 || latD === 35 || latD === 140 || latD === 145) {
+            lonD += 4;
+            if (lonD > shiftedLon) lonD -= 8;
+        }
+
+        const fileLon = lonD >= 180 ? lonD - 180 : lonD + 180;
+        const latStr = fmt3(latD);
+        const lonStr = fmt3(fileLon);
+
+        return { latD, lonD, fileLon, latStr, lonStr, tileWidth };
+    }
 }
