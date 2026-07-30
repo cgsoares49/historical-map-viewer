@@ -12,6 +12,14 @@ Write-Host "  Creator Push" -ForegroundColor Cyan
 Write-Host "══════════════════════════════════════════════" -ForegroundColor Cyan
 Write-Host ""
 
+# ── Step 0: Stamp CREATOR's own app version date (independent of MAPPER's
+#            version.json, which only deploy.ps1 touches) ────────────────────
+$creatorVersionFile = Join-Path $SourceDir "creator-version.json"
+$creatorVersion      = Get-Content $creatorVersionFile -Raw | ConvertFrom-Json
+$creatorVersion.app  = Get-Date -Format 'yyyy-MM-dd'
+$creatorVersion | ConvertTo-Json | Set-Content $creatorVersionFile
+Write-Host "CREATOR app version stamped: $($creatorVersion.app)" -ForegroundColor Cyan
+
 # ── Step 1: Robocopy mapper/ → creator repo (exclude .git and local-only files)
 Write-Host "Syncing files to creator repo..." -ForegroundColor Yellow
 robocopy $SourceDir $CreatorRepo /E /XO /XD ".git" "Work Area" /XF "*.bmp" "*.vbp" "NVALUES.DAT" "offsets.txt" | Out-Null
