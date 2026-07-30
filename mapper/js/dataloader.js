@@ -35,11 +35,6 @@
 //   par:  [ { entryIndex, dateRanges:[{from,to,name,colorIndex}], polyRefs:[{polIndex,flag}] }, … ]
 
 class DataLoader {
-    constructor() {
-        // Cache: url → parsed object (null if file was 404/empty)
-        this._cache = new Map();
-    }
-
     // ── Public API ──────────────────────────────────────────────────────────────
 
     // Fetch and parse all tile files for a tile descriptor from TileManager.
@@ -99,32 +94,19 @@ class DataLoader {
         return offsets;
     }
 
-    // Drop cached entries for the given file URLs, so the next loadTile() call
-    // re-fetches them from disk instead of serving stale parsed data. Needed
-    // after in-app edits (e.g. the Dev > Replace tool) rewrite a file on disk.
-    invalidateFiles(urls) {
-        for (const url of urls) this._cache.delete(url);
-    }
-
-    // Drop the entire cache — for edits made outside the app (a text editor,
-    // an external script) that this DataLoader has no way to detect on its own.
-    clearCache() {
-        this._cache.clear();
-    }
-
     // ── Private helpers ─────────────────────────────────────────────────────────
 
     async _fetchAndParse(url, parseFn) {
-        if (this._cache.has(url)) return this._cache.get(url) ?? [];
         const text = await this._fetchText(url);
-        const result = text ? parseFn(text) : [];
-        this._cache.set(url, result.length ? result : null);
-        return result;
+        return text ? parseFn(text) : [];
     }
 
+    // cache: 'no-store' — data files are actively edited during a CREATOR
+    // session (Dev > Replace, or externally in a text editor), so every load
+    // must hit disk fresh; a cached response here reads back stale content.
     async _fetchText(url) {
         try {
-            const resp = await fetch(url);
+            const resp = await fetch(url, { cache: 'no-store' });
             if (!resp.ok) return null;
             return await resp.text();
         } catch {
