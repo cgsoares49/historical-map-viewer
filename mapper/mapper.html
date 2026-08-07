@@ -2039,8 +2039,13 @@ document.getElementById('helpPopupClose').addEventListener('click', () => {
     });
     document.addEventListener('mousemove', e => {
         if (!dragging) return;
-        popup.style.left = (e.clientX - ox) + 'px';
-        popup.style.top  = (e.clientY - oy) + 'px';
+        let left = e.clientX - ox;
+        let top  = e.clientY - oy;
+        // Clamp to viewport so the header can never be dragged out of reach
+        left = Math.max(0, Math.min(left, window.innerWidth  - popup.offsetWidth));
+        top  = Math.max(0, Math.min(top,  window.innerHeight - popup.offsetHeight));
+        popup.style.left = left + 'px';
+        popup.style.top  = top  + 'px';
     });
     document.addEventListener('mouseup', () => { dragging = false; });
 })();
@@ -2962,8 +2967,13 @@ async function doRender(skipColorMap = false, cancelToken = null) {
         });
         document.addEventListener('mousemove', e => {
             if (!dragging) return;
-            popup.style.left = (e.clientX - ox) + 'px';
-            popup.style.top  = (e.clientY - oy) + 'px';
+            let left = e.clientX - ox;
+            let top  = e.clientY - oy;
+            // Clamp to viewport so the header can never be dragged out of reach
+            left = Math.max(0, Math.min(left, window.innerWidth  - popup.offsetWidth));
+            top  = Math.max(0, Math.min(top,  window.innerHeight - popup.offsetHeight));
+            popup.style.left = left + 'px';
+            popup.style.top  = top  + 'px';
         });
         document.addEventListener('mouseup', () => { dragging = false; });
     }
