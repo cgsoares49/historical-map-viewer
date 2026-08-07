@@ -43,6 +43,13 @@ class ColorLookup {
         this._offsets   = offsets;
     }
 
+    // Swap in freshly-loaded primaries/offsets without needing a new ColorLookup
+    // instance (callers may hold a long-lived reference, e.g. MapRenderer).
+    refresh(primariesMap, offsets) {
+        this._primaries = primariesMap;
+        this._offsets   = offsets;
+    }
+
     // Resolve a PAR date-range entry to {r,g,b}, or null for no fill.
     // Accepts a full PAR dateRange object { name, colorIndex }.
     // Color = primaries[firstName].rgb + offsets[colorIndex], clamped 0–255.

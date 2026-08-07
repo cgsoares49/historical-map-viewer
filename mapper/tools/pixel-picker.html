@@ -37,6 +37,19 @@
   }
   #toolbar label.filebtn:hover { background: #4a7eb5; }
   #toolbar input[type=file] { display: none; }
+  #toolbar .zoomBtn {
+    background: #3a3a3a;
+    color: #eee;
+    border: 1px solid #555;
+    width: 26px;
+    height: 26px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 1;
+  }
+  #toolbar .zoomBtn:hover { background: #4a4a4a; }
+  #zoomLabel { font-size: 12px; color: #aaa; min-width: 38px; text-align: center; }
   #readout {
     font-family: monospace;
     font-size: 13px;
@@ -127,13 +140,16 @@
       <input type="file" id="fileInput" accept="image/*">
     </label>
     <span id="imgInfo" style="color:#aaa; font-size:12px;"></span>
+    <button class="zoomBtn" id="zoomOutBtn" title="Zoom out one step">−</button>
+    <span id="zoomLabel"></span>
+    <button class="zoomBtn" id="zoomInBtn" title="Zoom in one step">+</button>
     <span id="readout">—</span>
   </div>
   <div id="canvasWrap">
     <canvas id="canvas"></canvas>
   </div>
   <div id="hint">
-    Click = add point at cursor &nbsp;|&nbsp; Drag = pan &nbsp;|&nbsp; Scroll = zoom &nbsp;|&nbsp;
+    Click = add point at cursor &nbsp;|&nbsp; Drag = pan &nbsp;|&nbsp; Scroll/+/− = zoom (stepped) &nbsp;|&nbsp;
     Click a table row's pixel cell to re-highlight the marker
   </div>
 </div>
@@ -218,9 +234,47 @@ function screenToImg(sx, sy) {
   return [(sx - offsetX) / scale, (sy - offsetY) / scale];
 }
 
+// ── discrete zoom levels (MAPPER/Digitizer-style step zoom, not continuous) ─
+const ZOOM_LEVELS = [0.02, 0.03, 0.05, 0.08, 0.12, 0.18, 0.25, 0.35, 0.5, 0.7,
+                      1, 1.4, 2, 2.8, 4, 5.6, 8, 11, 16, 22, 32, 40];
+
+function nearestZoomIndex(s) {
+  let best = 0, bestDist = Infinity;
+  ZOOM_LEVELS.forEach((v, i) => {
+    const d = Math.abs(Math.log(v) - Math.log(s));
+    if (d < bestDist) { bestDist = d; best = i; }
+  });
+  return best;
+}
+
+function setZoomTo(newScale, anchorSx, anchorSy) {
+  if (anchorSx === undefined) { anchorSx = canvas.width / 2; anchorSy = canvas.height / 2; }
+  const [ix, iy] = screenToImg(anchorSx, anchorSy);
+  scale = newScale;
+  offsetX = anchorSx - ix * scale;
+  offsetY = anchorSy - iy * scale;
+  render();
+}
+
+function zoomStep(delta, anchorSx, anchorSy) {
+  if (!img) return;
+  const idx = nearestZoomIndex(scale);
+  const newIdx = Math.max(0, Math.min(ZOOM_LEVELS.length - 1, idx + delta));
+  setZoomTo(ZOOM_LEVELS[newIdx], anchorSx, anchorSy);
+}
+
+function updateZoomLabel() {
+  const lbl = document.getElementById('zoomLabel');
+  lbl.textContent = img ? `${Math.round(scale * 100)}%` : '';
+}
+
+document.getElementById('zoomInBtn').addEventListener('click', () => zoomStep(1));
+document.getElementById('zoomOutBtn').addEventListener('click', () => zoomStep(-1));
+
 function render() {
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  updateZoomLabel();
   if (!img) return;
   ctx.imageSmoothingEnabled = scale < 1;
   ctx.drawImage(img, offsetX, offsetY, img.naturalWidth * scale, img.naturalHeight * scale);
@@ -290,20 +344,21 @@ window.addEventListener('mouseup', (e) => {
   dragMoved = false;
 });
 
+// Trackpad pinch-zoom fires many small-delta wheel events in a burst; stepping
+// on every one felt erratic. Accumulate delta and only spend one discrete
+// zoom level per threshold crossed, same idea as MAPPER/Digitizer's stepped zoom.
+let zoomAccum = 0;
 canvas.addEventListener('wheel', (e) => {
   if (!img) return;
   e.preventDefault();
   const rect = canvas.getBoundingClientRect();
   const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
-  const [ix, iy] = screenToImg(sx, sy);
-
-  const factor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
-  scale = Math.min(Math.max(scale * factor, 0.02), 40);
-
-  // keep point under cursor stationary
-  offsetX = sx - ix * scale;
-  offsetY = sy - iy * scale;
-  render();
+  zoomAccum += e.deltaY;
+  const THRESH = 50;
+  while (Math.abs(zoomAccum) >= THRESH) {
+    zoomStep(zoomAccum > 0 ? -1 : 1, sx, sy);
+    zoomAccum -= Math.sign(zoomAccum) * THRESH;
+  }
 }, { passive: false });
 
 // double-click to reset view

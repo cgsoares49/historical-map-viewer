@@ -174,14 +174,17 @@
     <div id="ptsEmpty">No points loaded yet.</div>
     <table id="ptsTable" style="display:none;">
       <thead>
-        <tr><th></th><th>Referent</th><th>px, py</th><th>lat, lon</th><th>resid(px)</th><th></th></tr>
+        <tr><th></th><th>Referent</th><th>px, py</th><th>lat, lon</th>
+          <th title="Residual from the best-fit LINEAR (equirectangular) model — used only to decide Linear vs TPS">lin resid(px)</th>
+          <th title="TPS leave-one-out error: refit TPS without this point, then see how far its own prediction lands. TPS's direct/in-sample residual is always ~0 by construction (it's an exact interpolant), so it can't reveal overfitting — this can.">TPS LOO(px)</th>
+          <th></th></tr>
       </thead>
       <tbody id="ptsBody"></tbody>
     </table>
   </div>
 
   <div class="section" id="fitReportSection" style="display:none;">
-    <h3>Linearity Check</h3>
+    <h3>Fit Quality</h3>
     <div id="fitReportText"></div>
   </div>
 
@@ -473,6 +476,19 @@ function renderPtsTable() {
     }
     tr.appendChild(tdResid);
 
+    const tdLoo = document.createElement('td');
+    tdLoo.className = 'num';
+    if (typeof p.looPx === 'number') {
+      tdLoo.textContent = p.looPx.toFixed(1);
+      if (fitReport && fitReport.tpsLoo && p.looPx > Math.max(3 * fitReport.tpsLoo.medianLoo, 8)) {
+        tdLoo.style.color = '#e06060';
+        tdLoo.title = 'Poorly predicted by the surrounding points when held out — the TPS fit may be bending sharply (overfitting) to pass through this point exactly. Consider double-checking or excluding it.';
+      }
+    } else {
+      tdLoo.textContent = '—';
+    }
+    tr.appendChild(tdLoo);
+
     const tdDel = document.createElement('td');
     const delBtn = document.createElement('button');
     delBtn.className = 'delBtn';
@@ -520,7 +536,7 @@ function computeFit() {
 
   if (!srcImg || included.length < 2) {
     fitReport = null;
-    points.forEach(p => { delete p.residPx; });
+    points.forEach(p => { delete p.residPx; delete p.looPx; });
     section.style.display = 'none';
     renderPtsTable();
     updateWarpEnabled();
@@ -543,16 +559,42 @@ function computeFit() {
   const pctSpan = (rmsPx / spanPx) * 100;
   const recommendLinear = pctSpan <= LINEAR_THRESHOLD_PCT;
 
-  fitReport = { lonFit, latFit, rmsPx, medianResidPx, pctSpan, recommendLinear };
+  // TPS leave-one-out diagnostics — see computeTpsLoo() for why raw TPS
+  // residual (always ~0) can't be used for this instead.
+  points.forEach(p => { delete p.looPx; });
+  let tpsLoo = null;
+  const looVals = computeTpsLoo(included);
+  if (looVals) {
+    included.forEach((p, i) => { p.looPx = looVals[i]; });
+    tpsLoo = {
+      meanLoo: looVals.reduce((s, v) => s + v, 0) / looVals.length,
+      medianLoo: median(looVals),
+      maxLoo: Math.max(...looVals),
+      n: looVals.length,
+    };
+  }
+
+  fitReport = { lonFit, latFit, rmsPx, medianResidPx, pctSpan, recommendLinear, tpsLoo };
 
   section.style.display = 'block';
-  document.getElementById('fitReportText').textContent =
-    `RMS residual from best-fit linear (equirectangular) mapping: ${rmsPx.toFixed(1)}px ` +
+  document.getElementById('fitReportText').innerHTML =
+    `<div><strong>Linear fit</strong> — RMS residual from best-fit linear (equirectangular) mapping: ${rmsPx.toFixed(1)}px ` +
     `(${pctSpan.toFixed(2)}% of image width, threshold ${LINEAR_THRESHOLD_PCT}%) using ` +
     `${included.length} of ${points.length} points — ` +
     (recommendLinear
       ? 'looks equirectangular. "Use Linear" is recommended.'
-      : 'nonlinear distortion detected. "Force TPS Warp" is recommended.');
+      : 'nonlinear distortion detected. "Force TPS Warp" is recommended.') +
+    `</div>` +
+    (tpsLoo
+      ? `<div style="margin-top:6px;"><strong>TPS overfit check</strong> — TPS passes through every included point exactly, ` +
+        `so its own residual is always ≈0 and can't tell you if the surface is wiggling between points to do it. ` +
+        `Leave-one-out cross-validation (refit without each point, then see how far off the surface's own prediction lands) ` +
+        `gives median ${tpsLoo.medianLoo.toFixed(1)}px, max ${tpsLoo.maxLoo.toFixed(1)}px across ${tpsLoo.n} points. ` +
+        `Points flagged red in the "TPS LOO(px)" column are ones the fit can't predict from their neighbors — ` +
+        `likely a noisy/mislabeled point, or one forcing a sharp local bend.</div>`
+      : included.length > TPS_LOO_MAX_POINTS
+        ? `<div style="margin-top:6px; color:#888;">TPS leave-one-out check skipped — too many points (${included.length} > ${TPS_LOO_MAX_POINTS}) to refit per-point live.</div>`
+        : `<div style="margin-top:6px; color:#888;">Need at least 5 included points for the TPS leave-one-out overfit check.</div>`);
 
   document.getElementById('useLinearBtn').className = recommendLinear ? 'primary' : 'secondary';
   document.getElementById('warpBtn').className = recommendLinear ? 'secondary' : 'primary';
@@ -648,6 +690,29 @@ function tpsEval(fit, lon, lat) {
     }
   }
   return [px, py];
+}
+
+// Leave-one-out cross-validation for the TPS fit. TPS interpolates its control
+// points EXACTLY — direct residual is ~0 for every point by construction, so
+// it can never reveal an over-fit/wiggly surface (the spline equivalent of a
+// high-order polynomial threading every data point while whipsawing between
+// them). LOOCV instead refits TPS with each point held out in turn, then
+// checks how far the surface's own *prediction* at that point's (lon,lat)
+// lands from where the point actually is. A point the rest of the surface
+// can't predict is either noisy/mislabeled, or is forcing a sharp local bend
+// to hit it exactly — the real "iffy point" signal.
+const TPS_LOO_MAX_POINTS = 200; // guard against O(n^4) blowup on very large point sets
+function computeTpsLoo(included) {
+  const n = included.length;
+  if (n < 5 || n > TPS_LOO_MAX_POINTS) return null;
+  const results = new Array(n);
+  for (let i = 0; i < n; i++) {
+    const subset = included.slice(0, i).concat(included.slice(i + 1));
+    const fit = fitTps(subset);
+    const [px, py] = tpsEval(fit, included[i].lon, included[i].lat);
+    results[i] = Math.hypot(px - included[i].px, py - included[i].py);
+  }
+  return results;
 }
 
 // ─────────────────────────── warp ───────────────────────────
