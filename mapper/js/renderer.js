@@ -32,6 +32,28 @@ const BORDER_COLOR = '#000000';
 // sentinel entries (e.g. -9997 "show all" mode) and are excluded from display.
 const SENTINEL_FROM = -2500;
 
+// ── "Friendly army" hatch fill ───────────────────────────────────────────────
+// A transient army/path (e.g. an army marching over its own parent country's
+// territory) is filled with only a slight color offset from its background,
+// so it's often nearly invisible. Entries built entirely from transient-marked
+// POL segments (see _isTransientEntry) get a diagonal-stripe pattern fill
+// instead of solid color — mostly the entry's own real color, with sparse
+// neutral stripes so the shape reads clearly regardless of how close its
+// offset color is to whatever's underneath.
+//
+// Click-to-identify (colorNameMap, built from colorLookup.resolve — see
+// mapper.html/mapper-local.html rebuildColorNameMap) only ever registers the
+// solid base color. A click landing on a stripe pixel intentionally does NOT
+// resolve directly; it falls through to the existing nearest-registered-color
+// search (_findNearestLandEntry) already used for water clicks, which finds
+// the base color a pixel or two away. Deliberately NOT registering the stripe
+// color as a second key for the same entry: the stripe color is shared/fixed
+// across every hatched entry for visual consistency, so multiple different
+// armies visible at once would collide on that one key.
+const HATCH_STRIPE_COLOR  = '#808080';
+const HATCH_PERIOD_PX     = 4;   // stripe repeat spacing
+const HATCH_MIN_BBOX_PX   = 8;   // below this on-screen size (narrower dimension), fall back to solid fill
+
 // Log scale: 0 at world zoom (degX=360), grows slowly, never heavy at close zoom.
 // t=0 at degX=360, t=1 at degX=1; lineWidth = base * t.
 function _lineWidth(projection, base) {
@@ -43,6 +65,7 @@ class MapRenderer {
     constructor(dataLoader, tileManager, colorLookup) {
         this._loader  = dataLoader;
         this._tiles   = tileManager;
+        this._hatchPatternCache = new Map();  // base fillColor string -> CanvasPattern
         this._colors  = colorLookup;
     }
 
@@ -229,7 +252,14 @@ class MapRenderer {
 
             const path = this._buildPath(projection, combined);
             if (path) {
-                ctx.fillStyle   = fillColor;
+                let fillStyle = fillColor;
+                if (this._isTransientEntry(entry.polyRefs, polByIndex)) {
+                    const bbox = this._pixelBBox(projection, combined);
+                    if (Math.min(bbox.w, bbox.h) >= HATCH_MIN_BBOX_PX) {
+                        fillStyle = this._getHatchPattern(ctx, fillColor);
+                    }
+                }
+                ctx.fillStyle   = fillStyle;
                 ctx.fill(path, 'evenodd');   // GDI+ FillPolygon default = Alternate = evenodd
                 // Cover the ~0.5px anti-aliasing seam at tile-boundary connector edges.
                 // Canvas 2D AA leaves a thin gap where adjacent tile fills meet exactly;
@@ -240,6 +270,67 @@ class MapRenderer {
                 ctx.stroke(path);
             }
         }
+    }
+
+    // A transient path/army's own POL segments are marked with a single
+    // date range of exactly (-9999.0, -9998.0) — the content-creation
+    // "reusable template" convention (see the transients-index tooling in
+    // mapper/tools/). VB never date-gates POL when assembling combined
+    // polygons, so these entries are present in polByIndex at every year;
+    // only their dateRanges marker identifies them. An entry built purely
+    // from CST refs (polIndex <= 1000, real coastline, never transient)
+    // returns false.
+    _isTransientEntry(polyRefs, polByIndex) {
+        let sawPol = false;
+        for (const { polIndex } of polyRefs) {
+            if (polIndex <= 1000) continue;
+            sawPol = true;
+            const poly = polByIndex.get(polIndex - 1000);
+            if (!poly) return false;
+            const dr = poly.dateRanges;
+            if (!(dr.length === 1 && dr[0].from === -9999.0 && dr[0].to === -9998.0)) return false;
+        }
+        return sawPol;
+    }
+
+    // Pixel-space bounding box of a combined polygon at the current projection —
+    // used to decide whether an entry is large enough on screen for a hatch
+    // pattern to read as a pattern rather than noise (see HATCH_MIN_BBOX_PX).
+    _pixelBBox(projection, geoPoints) {
+        let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+        for (const pt of geoPoints) {
+            const { x, y } = projection.geoToPixel(pt.lon, pt.lat);
+            if (x < minX) minX = x; if (x > maxX) maxX = x;
+            if (y < minY) minY = y; if (y > maxY) maxY = y;
+        }
+        return { w: maxX - minX, h: maxY - minY };
+    }
+
+    // Diagonal-stripe CanvasPattern: mostly baseColor, with a thin neutral
+    // stripe every HATCH_PERIOD_PX so the shape reads even when baseColor is
+    // nearly identical to whatever's underneath. Cached per exact color string
+    // (a pure function of it — no per-render invalidation needed).
+    _getHatchPattern(ctx, baseColor) {
+        let pattern = this._hatchPatternCache.get(baseColor);
+        if (pattern) return pattern;
+
+        const p = HATCH_PERIOD_PX;
+        const tile = document.createElement('canvas');
+        tile.width = p; tile.height = p;
+        const tctx = tile.getContext('2d');
+        tctx.fillStyle = baseColor;
+        tctx.fillRect(0, 0, p, p);
+        tctx.strokeStyle = HATCH_STRIPE_COLOR;
+        tctx.lineWidth   = 1;
+        tctx.beginPath();
+        // A single diagonal touching both corners tiles seamlessly when repeated.
+        tctx.moveTo(0, p);
+        tctx.lineTo(p, 0);
+        tctx.stroke();
+
+        pattern = ctx.createPattern(tile, 'repeat');
+        this._hatchPatternCache.set(baseColor, pattern);
+        return pattern;
     }
 
     // Concatenates all polyRefs for one PAR entry into a single point array.
