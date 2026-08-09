@@ -54,6 +54,13 @@ const HATCH_STRIPE_COLOR  = '#808080';
 const HATCH_PERIOD_PX     = 4;   // stripe repeat spacing
 const HATCH_MIN_BBOX_PX   = 8;   // below this on-screen size (narrower dimension), fall back to solid fill
 
+// KNOWN BUG (2026-08-09): hatching is appearing over water and over territory
+// unrelated to the transient entry — root cause not yet found. Flipped off so
+// MAPPER (public) always gets plain solid fill regardless of this file's other
+// content; flip true only in a build being pushed to CREATOR for debugging,
+// never in a build going to deploy.ps1/MAPPER until this is actually fixed.
+const ENABLE_HATCH_FILL   = false;
+
 // Log scale: 0 at world zoom (degX=360), grows slowly, never heavy at close zoom.
 // t=0 at degX=360, t=1 at degX=1; lineWidth = base * t.
 function _lineWidth(projection, base) {
@@ -253,7 +260,7 @@ class MapRenderer {
             const path = this._buildPath(projection, combined);
             if (path) {
                 let fillStyle = fillColor;
-                if (this._isTransientEntry(entry.polyRefs, polByIndex)) {
+                if (ENABLE_HATCH_FILL && this._isTransientEntry(entry.polyRefs, polByIndex)) {
                     const bbox = this._pixelBBox(projection, combined);
                     if (Math.min(bbox.w, bbox.h) >= HATCH_MIN_BBOX_PX) {
                         fillStyle = this._getHatchPattern(ctx, fillColor);
