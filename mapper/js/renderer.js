@@ -36,10 +36,17 @@ const SENTINEL_FROM = -2500;
 // A transient army/path (e.g. an army marching over its own parent country's
 // territory) is filled with only a slight color offset from its background,
 // so it's often nearly invisible. Entries built entirely from transient-marked
-// POL segments (see _isTransientEntry) get a diagonal-stripe pattern fill
-// instead of solid color — mostly the entry's own real color, with sparse
-// neutral stripes so the shape reads clearly regardless of how close its
-// offset color is to whatever's underneath.
+// POL segments (see _isTransientEntry) get a diagonal-stripe overlay — mostly
+// the entry's own real color, with sparse neutral stripes — but ONLY over the
+// pixels where the color already rendered underneath (sampled right before
+// this entry's own fill, since canvas draws are sequential onto one shared
+// context) is close to this entry's own color. A single polygon can cross
+// from near-identical-colored territory into differently-colored territory
+// (or open water, whose color is never close to a political fill) within
+// itself, so this is decided per pixel against the real render, not once per
+// entry — see _overlayHatchWhereSimilar. First version (no similarity check,
+// hatched unconditionally whenever an entry was transient) hatched water and
+// unrelated territory indiscriminately; fixed 2026-08-09.
 //
 // Click-to-identify (colorNameMap, built from colorLookup.resolve — see
 // mapper.html/mapper-local.html rebuildColorNameMap) only ever registers the
@@ -50,16 +57,16 @@ const SENTINEL_FROM = -2500;
 // color as a second key for the same entry: the stripe color is shared/fixed
 // across every hatched entry for visual consistency, so multiple different
 // armies visible at once would collide on that one key.
-const HATCH_STRIPE_COLOR  = '#808080';
-const HATCH_PERIOD_PX     = 4;   // stripe repeat spacing
-const HATCH_MIN_BBOX_PX   = 8;   // below this on-screen size (narrower dimension), fall back to solid fill
+const HATCH_STRIPE_COLOR        = '#808080';
+const HATCH_PERIOD_PX           = 4;    // stripe repeat spacing
+const HATCH_MIN_BBOX_PX         = 8;    // below this on-screen size (narrower dimension), skip hatching entirely
+const HATCH_COLOR_DIST_THRESHOLD = 40;  // max Euclidean RGB distance still counted as "nearly the same color"
+                                         // (real offset-only pairs measured ~12-15; different entities / water are 100+)
 
-// KNOWN BUG (2026-08-09): hatching is appearing over water and over territory
-// unrelated to the transient entry — root cause not yet found. Flipped off so
-// MAPPER (public) always gets plain solid fill regardless of this file's other
-// content; flip true only in a build being pushed to CREATOR for debugging,
-// never in a build going to deploy.ps1/MAPPER until this is actually fixed.
-const ENABLE_HATCH_FILL   = false;
+// SAFETY SWITCH: keep this false in any build going through deploy.ps1/MAPPER
+// until the fix above has been visually confirmed. Flip true only for builds
+// pushed to CREATOR for testing. See project_friendly_army_problem memory.
+const ENABLE_HATCH_FILL   = true;
 
 // Log scale: 0 at world zoom (degX=360), grows slowly, never heavy at close zoom.
 // t=0 at degX=360, t=1 at degX=1; lineWidth = base * t.
@@ -72,7 +79,7 @@ class MapRenderer {
     constructor(dataLoader, tileManager, colorLookup) {
         this._loader  = dataLoader;
         this._tiles   = tileManager;
-        this._hatchPatternCache = new Map();  // base fillColor string -> CanvasPattern
+        this._hatchStripeTile = null;  // lazily-built repeating stripe tile, see _getHatchStripeTile
         this._colors  = colorLookup;
     }
 
@@ -238,6 +245,10 @@ class MapRenderer {
         const polByIndex = new Map();
         for (const p of pol) polByIndex.set(p.polyIndex, p);
 
+        // Resolve every drawable entry once up front (path, color, transient-ness),
+        // splitting real territory from transients — see the three-pass draw order
+        // below for why this can't just be one loop in PAR-array order.
+        const prepared = [];
         for (const entry of par) {
             // areaType=0 → only shown when ShowDots enabled.
             // Coord-dot entries (dotPoint set) are drawn separately by _drawDots; skip them here.
@@ -250,32 +261,54 @@ class MapRenderer {
             const fillColor = this._colors.toCss(dateMatch, null, null);
             if (!fillColor) continue;   // UNKNOWN area → no fill
 
-            // Build one combined polygon from all refs
-            const { points: combined, hasSegment } = this._buildCombinedPolygon(
-                entry.polyRefs, cstByIndex, polByIndex
-            );
-
+            const { points: combined } = this._buildCombinedPolygon(entry.polyRefs, cstByIndex, polByIndex);
             if (combined.length < 3) continue;
 
             const path = this._buildPath(projection, combined);
-            if (path) {
-                let fillStyle = fillColor;
-                if (ENABLE_HATCH_FILL && this._isTransientEntry(entry.polyRefs, polByIndex)) {
-                    const bbox = this._pixelBBox(projection, combined);
-                    if (Math.min(bbox.w, bbox.h) >= HATCH_MIN_BBOX_PX) {
-                        fillStyle = this._getHatchPattern(ctx, fillColor);
-                    }
-                }
-                ctx.fillStyle   = fillStyle;
-                ctx.fill(path, 'evenodd');   // GDI+ FillPolygon default = Alternate = evenodd
-                // Cover the ~0.5px anti-aliasing seam at tile-boundary connector edges.
-                // Canvas 2D AA leaves a thin gap where adjacent tile fills meet exactly;
-                // stroking with the same fill color closes it. Coast/border strokes drawn
-                // later will cover this thin edge on actual country boundaries.
-                ctx.strokeStyle = fillColor;
-                ctx.lineWidth   = 1;
-                ctx.stroke(path);
-            }
+            if (!path) continue;
+
+            const isTransient = ENABLE_HATCH_FILL && this._isTransientEntry(entry.polyRefs, polByIndex);
+            prepared.push({ dateMatch, fillColor, combined, path, isTransient });
+        }
+
+        const drawSolid = (p) => {
+            ctx.fillStyle   = p.fillColor;
+            ctx.fill(p.path, 'evenodd');   // GDI+ FillPolygon default = Alternate = evenodd
+            // Cover the ~0.5px anti-aliasing seam at tile-boundary connector edges.
+            // Canvas 2D AA leaves a thin gap where adjacent tile fills meet exactly;
+            // stroking with the same fill color closes it. Coast/border strokes drawn
+            // later will cover this thin edge on actual country boundaries.
+            ctx.strokeStyle = p.fillColor;
+            ctx.lineWidth   = 1;
+            ctx.stroke(p.path);
+        };
+
+        // Pass 1: all REAL (non-transient) territory — establishes the true base
+        // that transients get compared against.
+        for (const p of prepared) if (!p.isTransient) drawSolid(p);
+
+        // Pass 2: snapshot every transient's "underneath" BEFORE any transient is
+        // drawn. If two transients overlap (e.g. two armies crossing paths at
+        // Messana), each must be judged against the same real base territory
+        // captured here — not against whichever one happened to paint first,
+        // which is what caused overlapping transients to hatch against EACH
+        // OTHER'S color instead of the actual (often unfriendly / very
+        // different) territory underneath both (reported 2026-08-10).
+        for (const p of prepared) {
+            if (!p.isTransient) continue;
+            const bbox = this._pixelBBox(projection, p.combined);
+            if (Math.min(bbox.w, bbox.h) < HATCH_MIN_BBOX_PX) continue;
+            const rgb = this._colors.resolve(p.dateMatch);
+            const under = rgb && this._readUnderlying(ctx, bbox);
+            if (under) p.hatchCandidate = { bbox, rgb, under };
+        }
+
+        // Pass 3: draw every transient (solid fill always; masked hatch overlay
+        // only where pass 2's frozen snapshot was close enough in color).
+        for (const p of prepared) {
+            if (!p.isTransient) continue;
+            drawSolid(p);
+            if (p.hatchCandidate) this._overlayHatchWhereSimilar(ctx, p.path, p.hatchCandidate);
         }
     }
 
@@ -300,9 +333,10 @@ class MapRenderer {
         return sawPol;
     }
 
-    // Pixel-space bounding box of a combined polygon at the current projection —
-    // used to decide whether an entry is large enough on screen for a hatch
-    // pattern to read as a pattern rather than noise (see HATCH_MIN_BBOX_PX).
+    // Pixel-space bounding box (including top-left corner) of a combined
+    // polygon at the current projection — used both to size-gate hatching
+    // (HATCH_MIN_BBOX_PX) and to know where to read/write the underlying-color
+    // sample.
     _pixelBBox(projection, geoPoints) {
         let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
         for (const pt of geoPoints) {
@@ -310,23 +344,29 @@ class MapRenderer {
             if (x < minX) minX = x; if (x > maxX) maxX = x;
             if (y < minY) minY = y; if (y > maxY) maxY = y;
         }
-        return { w: maxX - minX, h: maxY - minY };
+        const x0 = Math.floor(minX), y0 = Math.floor(minY);
+        return { x0, y0, w: Math.ceil(maxX) - x0, h: Math.ceil(maxY) - y0 };
     }
 
-    // Diagonal-stripe CanvasPattern: mostly baseColor, with a thin neutral
-    // stripe every HATCH_PERIOD_PX so the shape reads even when baseColor is
-    // nearly identical to whatever's underneath. Cached per exact color string
-    // (a pure function of it — no per-render invalidation needed).
-    _getHatchPattern(ctx, baseColor) {
-        let pattern = this._hatchPatternCache.get(baseColor);
-        if (pattern) return pattern;
+    // Snapshot of whatever's already painted on the canvas within bbox, taken
+    // BEFORE this entry's own fill is drawn — this is the real "what's under
+    // this transient polygon right here" the hatch decision compares against.
+    _readUnderlying(ctx, bbox) {
+        try {
+            return ctx.getImageData(bbox.x0, bbox.y0, bbox.w, bbox.h);
+        } catch {
+            return null;   // e.g. bbox partly off-canvas
+        }
+    }
 
+    // A repeating diagonal-stripe tile, HATCH_STRIPE_COLOR on transparent —
+    // used as the overlay source (masked per pixel below), not drawn directly.
+    _getHatchStripeTile() {
+        if (this._hatchStripeTile) return this._hatchStripeTile;
         const p = HATCH_PERIOD_PX;
         const tile = document.createElement('canvas');
         tile.width = p; tile.height = p;
         const tctx = tile.getContext('2d');
-        tctx.fillStyle = baseColor;
-        tctx.fillRect(0, 0, p, p);
         tctx.strokeStyle = HATCH_STRIPE_COLOR;
         tctx.lineWidth   = 1;
         tctx.beginPath();
@@ -334,10 +374,47 @@ class MapRenderer {
         tctx.moveTo(0, p);
         tctx.lineTo(p, 0);
         tctx.stroke();
+        this._hatchStripeTile = tile;
+        return tile;
+    }
 
-        pattern = ctx.createPattern(tile, 'repeat');
-        this._hatchPatternCache.set(baseColor, pattern);
-        return pattern;
+    // Draws the diagonal-stripe overlay on top of an already-solid-filled
+    // transient entry, but ONLY over the pixels where the underlying color
+    // (sampled before the fill, in candidate.under) is close to the entry's
+    // own color (candidate.rgb) — i.e. only where the "friendly army problem"
+    // actually applies right here. Elsewhere within the same polygon (crossing
+    // into differently-colored territory, or — though it's already excluded by
+    // the same color-distance test, since water's color is never close to a
+    // political fill — open water) the solid fill drawn just before this call
+    // is left untouched.
+    _overlayHatchWhereSimilar(ctx, path, candidate) {
+        const { bbox, rgb, under } = candidate;
+        const stripeTile = this._getHatchStripeTile();
+
+        const overlay = document.createElement('canvas');
+        overlay.width = bbox.w; overlay.height = bbox.h;
+        const octx = overlay.getContext('2d');
+        // Pattern phase is local to this entry's own bbox corner (not aligned to
+        // the main canvas's global coordinate space) — a minor cosmetic
+        // simplification; stripes are internally consistent within one polygon,
+        // just not necessarily phase-matched to an adjacent different entry's.
+        octx.fillStyle = ctx.createPattern(stripeTile, 'repeat');
+        octx.fillRect(0, 0, bbox.w, bbox.h);
+
+        const overlayData = octx.getImageData(0, 0, bbox.w, bbox.h);
+        const od = overlayData.data, ud = under.data;
+        const thresh2 = HATCH_COLOR_DIST_THRESHOLD * HATCH_COLOR_DIST_THRESHOLD;
+        for (let i = 0; i < od.length; i += 4) {
+            if (od[i + 3] === 0) continue;   // already-transparent gap between stripes
+            const dr = ud[i] - rgb.r, dg = ud[i + 1] - rgb.g, db = ud[i + 2] - rgb.b;
+            if (dr * dr + dg * dg + db * db > thresh2) od[i + 3] = 0;
+        }
+        octx.putImageData(overlayData, 0, 0);
+
+        ctx.save();
+        ctx.clip(path);
+        ctx.drawImage(overlay, bbox.x0, bbox.y0);
+        ctx.restore();
     }
 
     // Concatenates all polyRefs for one PAR entry into a single point array.
