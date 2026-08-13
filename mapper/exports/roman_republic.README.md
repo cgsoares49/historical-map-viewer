@@ -23,7 +23,7 @@ https://doi.org/10.1038/s41597-025-04516-9):
 | `ColorR/G/B` | The polity's identifying color from `primaries.txt` (240, 240, 160) |
 | `geometry` | Polygon or MultiPolygon, EPSG:4326 (lon, lat) |
 
-97 rows, spanning **-509.5 to -1.0**.
+86 rows, spanning **-509.5 to -1.0**.
 
 ## How this was built
 
@@ -43,12 +43,16 @@ doesn't touch Rome's borders doesn't create a spurious new row).
 
 ## Known caveats
 
-- **Excludes transient entries.** Of 391 raw PAR entries labeled "Roman Republic" in
-  these 2 tiles, only 74 are real territory — the other 317 are army/campaign markers
-  (e.g. "Roman Republic - Army of Furius Camillus") that MAPPER represents the same way
-  as territory but are not meant to be part of the polity's own shape. These are
-  identified structurally (their boundary data carries a special marker date range) and
-  excluded, not filtered by name.
+- **Excludes transient entries.** Of 389 raw PAR entries labeled "Roman Republic" in
+  these 2 tiles, only 70 are real territory — the other 319 are army/campaign markers
+  (e.g. "Roman Republic - Army of Furius Camillus", "Roman Republic - Consular army")
+  that MAPPER represents the same way as territory but are not meant to be part of the
+  polity's own shape. These are identified structurally (their boundary data carries a
+  special marker date range, `-9999.0, -9998.0`, on the referenced POL segment) and
+  excluded, not filtered by name. Three "Consular army" entries (`polareas/130/PAR012.ASC`
+  entries 799-801) were initially missed because their POL segments (`pols/130/POL012.PRN`,
+  indices 806-808) carried a near-miss marker (`-9990.0, -9998.0` — a typo) instead of
+  the exact convention; this has since been corrected at the source.
 - **Truncated at -1 (1 BCE).** One tiny entry ("Roman Republic - Garrison", ~200 km²)
   is labeled "Roman Republic" continuously through 280 CE in the raw data — an artifact
   of this MAPPER dataset never introducing a separate "Roman Empire" entity, not a
