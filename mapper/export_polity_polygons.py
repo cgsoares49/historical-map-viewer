@@ -29,6 +29,7 @@ mapper/js/colormatcher.js (matchDate).
 import os
 import re
 import json
+import csv
 import argparse
 
 from shapely.geometry import Polygon, mapping
@@ -188,6 +189,20 @@ def build_combined_ring(poly_refs, cst_by_index, pol_by_index):
 
 
 # ── Transient-entry filter (ports renderer.js _isTransientEntry) ───────────────
+#
+# NOTE: tried broadening this to catch a couple of confirmed leaks (PAR
+# entries "Roman Republic - Army" / "- Consular army" whose POL segment is
+# *shared* with a real border, so it carries the marker range alongside real
+# dates and fails an exact/exclusive match) by flagging any date range fully
+# inside the sentinel region, not just an exact (-9999.0,-9998.0) singleton.
+# That broke everything: a narrow sentinel-looking OPENING range (e.g.
+# (-9998.0,-9997.0) before the segment's real dates start) turns out to be
+# the ubiquitous convention for real border segments too ("this line isn't
+# drawn before year X"), not something exclusive to transient markers —
+# confirmed on Anxur's own real POL segment. Reverted to the exact,
+# exclusive-match original; the known leaks can't be distinguished
+# structurally from real entries by their POL segment alone and are reported
+# to the user instead of guessed at.
 
 def is_transient(poly_refs, pol_by_index):
     saw_pol = False
@@ -216,6 +231,29 @@ def match_date(date_ranges, year):
 
 def owner_name(name):
     return name.split(' - ')[0].strip()
+
+
+def secondary_name(name):
+    """The part after ' - ', or None if the name has no dash-suffix."""
+    parts = name.split(' - ', 1)
+    return parts[1].strip() if len(parts) > 1 else None
+
+
+# "Convenience" transients: sometimes an existing real polity boundary is
+# reused to depict a transient (army/naval movement) rather than digitizing
+# a dedicated path, so the POL segment carries real dates and the structural
+# is_transient() check can't catch it. Per the user (2026-08-15): in these
+# cases the descriptor after the dash is the only reliable signal. Extend
+# this list as more categories of "convenience" transient turn up.
+TRANSIENT_NAME_KEYWORDS = ('army', 'naval')
+
+
+def is_keyword_transient(name):
+    suffix = secondary_name(name)
+    if not suffix:
+        return False
+    lowered = suffix.lower()
+    return any(kw in lowered for kw in TRANSIENT_NAME_KEYWORDS)
 
 
 # ── Geometry repair helpers ──────────────────────────────────────────────────
@@ -269,31 +307,81 @@ def load_tile(lat_str, lon_str):
     }
 
 
-# ── Primaries color lookup ───────────────────────────────────────────────────
+# ── Color resolution (ports dataloader.js loadPrimaries/loadOffsets + colormatcher.js resolve) ──
 
-def load_primary_color(polity_name):
+def load_primaries_map():
+    """dict[lowercase_name] -> (r,g,b), mirrors dataloader.js::loadPrimaries."""
     path = os.path.join(DATA_DIR, 'primaries.txt')
     with open(path, encoding='latin-1') as f:
         lines = [l.rstrip('\r\n') for l in f if l.strip()]
-    target = polity_name.strip().lower()
+    out = {}
     for line in lines[1:]:
         parts = line.split(',')
-        if len(parts) >= 5 and parts[1].strip().lower() == target:
-            return int(parts[2]), int(parts[3]), int(parts[4])
-    return None
+        if len(parts) >= 5:
+            out[parts[1].strip().lower()] = (int(parts[2]), int(parts[3]), int(parts[4]))
+    return out
+
+
+def load_offsets():
+    """array[4096] of (r,g,b), mirrors dataloader.js::loadOffsets.
+
+    newoffsets.txt lines are 4 tab-separated fields (index, R, G, B), but the
+    live renderer's loadOffsets() only reads the first 3 fields as R/G/B —
+    i.e. it treats the leading index column as R and silently drops the real
+    B column. Replicated here as-is (not "fixed") so exported colors match
+    what MAPPER actually displays, not a corrected palette.
+    """
+    path = os.path.join(DATA_DIR, 'newoffsets.txt')
+    offsets = []
+    with open(path, encoding='latin-1') as f:
+        for line in f:
+            if not line.strip():
+                continue
+            parts = line.split('\t')
+            def to_int(s):
+                try:
+                    return int(s)
+                except (ValueError, IndexError):
+                    return 0
+            offsets.append((to_int(parts[0] if len(parts) > 0 else ''),
+                             to_int(parts[1] if len(parts) > 1 else ''),
+                             to_int(parts[2] if len(parts) > 2 else '')))
+    while len(offsets) < 4096:
+        offsets.append((0, 0, 0))
+    return offsets
+
+
+def resolve_color(lookup_name, color_index, primaries_map, offsets):
+    """Ports colormatcher.js ColorLookup.resolve — base(lookup_name) + offsets[color_index]."""
+    base = primaries_map.get(lookup_name.strip().lower())
+    if base is None:
+        return None
+    off = offsets[color_index] if 0 <= color_index < len(offsets) else (0, 0, 0)
+    r = min(255, base[0] + off[0])
+    g = min(255, base[1] + off[1])
+    b = min(255, base[2] + off[2])
+    if (r, g, b) == (0, 0, 0):
+        return None
+    return (r, g, b)
 
 
 # ── Main pipeline ────────────────────────────────────────────────────────────
+#
+# Both the parent polity and each of its "secondaries" (PAR entries named
+# "Parent - X", e.g. "Roman Republic - Anxur") run through the same
+# find/breakpoints/slice machinery below, parameterized by a name_match
+# predicate: prefix match (owner_name(n) == parent) for the parent itself,
+# exact match (n == "Parent - X") for a given secondary X.
 
-def find_polity_entries(tiles_data, polity_name, repair_log):
-    """Returns list of {tile, entry, ring (shapely Polygon or None)}."""
+def find_entries_by_predicate(tiles_data, name_match, repair_log):
+    """Returns (list of {tile, entry, ring_polygon}, transient_count)."""
     result = []
     transient_count = 0
     for tile in tiles_data:
         for entry in tile['par_entries']:
             if entry['areaType'] != 1:
                 continue
-            if not any(owner_name(dr['name']) == polity_name for dr in entry['dateRanges']):
+            if not any(name_match(dr['name']) for dr in entry['dateRanges']):
                 continue
             if is_transient(entry['polyRefs'], tile['pol_by_index']):
                 transient_count += 1
@@ -308,11 +396,11 @@ def find_polity_entries(tiles_data, polity_name, repair_log):
     return result, transient_count
 
 
-def build_breakpoints(polity_entries, polity_name):
+def build_breakpoints(entries, name_match):
     breakpoints = set()
-    for pe in polity_entries:
+    for pe in entries:
         for dr in pe['entry']['dateRanges']:
-            if owner_name(dr['name']) == polity_name:
+            if name_match(dr['name']):
                 if dr['from'] > -9990:
                     breakpoints.add(dr['from'])
                 if dr['to'] < 9990:
@@ -320,17 +408,22 @@ def build_breakpoints(polity_entries, polity_name):
     return sorted(breakpoints)
 
 
-def slice_into_rows(polity_entries, breakpoints, polity_name, seam_log):
+def slice_into_rows(entries, breakpoints, name_match, seam_log):
+    """Each row also carries color_index (from the first active contributing
+    entry at that interval) and color_conflict (True if active contributors
+    disagree on colorIndex — expected to be rare/never in practice)."""
     rows = []
     prev_geom = None
     for i in range(len(breakpoints) - 1):
         b0, b1 = breakpoints[i], breakpoints[i + 1]
         test_year = (b0 + b1) / 2.0
         active = []
-        for pe in polity_entries:
+        color_indexes = []
+        for pe in entries:
             m = match_date(pe['entry']['dateRanges'], test_year)
-            if m and owner_name(m['name']) == polity_name:
+            if m and name_match(m['name']):
                 active.append(pe['ring_polygon'])
+                color_indexes.append(m['colorIndex'])
         if not active:
             prev_geom = None
             continue
@@ -342,10 +435,13 @@ def slice_into_rows(polity_entries, breakpoints, polity_name, seam_log):
         if geom is None or geom.is_empty:
             prev_geom = None
             continue
+        color_index = color_indexes[0]
+        color_conflict = len(set(color_indexes)) > 1
         if prev_geom is not None and geoms_equal(geom, prev_geom):
             rows[-1]['ToYear'] = b1
         else:
-            rows.append({'FromYear': b0, 'ToYear': b1, 'geometry': geom})
+            rows.append({'FromYear': b0, 'ToYear': b1, 'geometry': geom,
+                         'color_index': color_index, 'color_conflict': color_conflict})
         prev_geom = geom
     return rows
 
@@ -360,11 +456,13 @@ def main():
     ap.add_argument('--polity', default='Roman Republic')
     ap.add_argument('--tiles', nargs='+', default=None,
                      help='lat:lon pairs, e.g. 125:010 130:012 (default: hardcoded Roman Republic tile list)')
-    ap.add_argument('--out', default=None)
+    ap.add_argument('--out', default=None,
+                     help='GeoJSON output path; a sibling .csv is written alongside it')
     ap.add_argument('--end-year', type=float, default=None,
-                     help='Truncate output at this year. Use when a stray entry (e.g. a '
-                          'garrison never relabeled after the dataset\'s tracked period ends) '
-                          'would otherwise stretch the polity\'s recorded lifespan misleadingly.')
+                     help='Truncate output at this year (applied to the parent AND every secondary). '
+                          'Use when a stray entry (e.g. a garrison never relabeled after the dataset\'s '
+                          'tracked period ends) would otherwise stretch an entity\'s recorded lifespan '
+                          'misleadingly.')
     args = ap.parse_args()
 
     if args.tiles:
@@ -373,69 +471,125 @@ def main():
         tile_pairs = DEFAULT_TILES
 
     slug = re.sub(r'[^a-z0-9]+', '_', args.polity.lower()).strip('_')
-    out_path = args.out or os.path.join(MAPPER_DIR, 'exports', f'{slug}.geojson')
+    out_geojson = args.out or os.path.join(MAPPER_DIR, 'exports', f'{slug}.geojson')
+    out_csv = os.path.splitext(out_geojson)[0] + '.csv'
 
     print(f"Loading {len(tile_pairs)} tiles: {tile_pairs}")
     tiles_data = [load_tile(lat, lon) for lat, lon in tile_pairs]
 
-    repair_log = [0]
-    polity_entries, transient_count = find_polity_entries(tiles_data, args.polity, repair_log)
-    print(f"Real territory entries: {len(polity_entries)}  |  transient/army entries excluded: {transient_count}  |  ring repairs: {repair_log[0]}")
+    primaries_map = load_primaries_map()
+    offsets = load_offsets()
+    parent_color = primaries_map.get(args.polity.strip().lower())
 
-    breakpoints = build_breakpoints(polity_entries, args.polity)
-    print(f"Breakpoints: {len(breakpoints)}  range: {breakpoints[0] if breakpoints else None} .. {breakpoints[-1] if breakpoints else None}")
-
-    if args.end_year is not None:
+    def truncate(breakpoints):
+        if args.end_year is None or not breakpoints:
+            return breakpoints
         before = len(breakpoints)
-        breakpoints = [b for b in breakpoints if b < args.end_year]
-        breakpoints.append(args.end_year)
-        breakpoints = sorted(set(breakpoints))
-        print(f"Truncated at --end-year {args.end_year}: {before} -> {len(breakpoints)} breakpoints")
+        bp = sorted(set([b for b in breakpoints if b < args.end_year] + [args.end_year]))
+        print(f"  Truncated at --end-year {args.end_year}: {before} -> {len(bp)} breakpoints")
+        return bp
+
+    # ── Parent ───────────────────────────────────────────────────────────────
+    print(f"\n=== {args.polity} (parent) ===")
+    repair_log = [0]
+    parent_match = lambda n, p=args.polity: owner_name(n) == p and not is_keyword_transient(n)
+    parent_entries, transient_count = find_entries_by_predicate(tiles_data, parent_match, repair_log)
+    print(f"Real territory entries: {len(parent_entries)}  |  transient/army entries excluded: {transient_count}  |  ring repairs: {repair_log[0]}")
+
+    parent_breakpoints = build_breakpoints(parent_entries, parent_match)
+    print(f"Breakpoints: {len(parent_breakpoints)}  range: {parent_breakpoints[0] if parent_breakpoints else None} .. {parent_breakpoints[-1] if parent_breakpoints else None}")
+    parent_breakpoints = truncate(parent_breakpoints)
 
     seam_log = [0]
-    rows = slice_into_rows(polity_entries, breakpoints, args.polity, seam_log)
-    print(f"Output rows: {len(rows)}  |  union geometries needing repair: {seam_log[0]}")
+    parent_rows = slice_into_rows(parent_entries, parent_breakpoints, parent_match, seam_log)
+    print(f"Output rows: {len(parent_rows)}  |  union geometries needing repair: {seam_log[0]}")
 
-    color = load_primary_color(args.polity)
-    color_r, color_g, color_b = color if color else (None, None, None)
+    entities = [{'name': args.polity, 'member_of': '', 'rows': parent_rows, 'is_parent': True}]
 
-    features = []
-    for idx, row in enumerate(rows, start=1):
-        geom = row['geometry']
-        valid = geom.is_valid
-        if not valid:
-            print(f"  WARNING: row {idx} ({row['FromYear']}..{row['ToYear']}) geometry invalid after repair")
-        features.append({
-            'type': 'Feature',
-            'properties': {
-                'Index': idx,
-                'Name': args.polity,
-                'FromYear': row['FromYear'],
-                'ToYear': row['ToYear'],
-                'Area': round(area_km2(geom), 1),
-                'Type': 'POLITY',
-                'References': '',
-                'MemberOf': '',
-                'ColorR': color_r,
-                'ColorG': color_g,
-                'ColorB': color_b,
-            },
-            'geometry': mapping(geom),
-        })
+    # ── Secondaries: PAR entries named "Parent - X" ────────────────────────────
+    secondaries = sorted({
+        secondary_name(dr['name'])
+        for pe in parent_entries
+        for dr in pe['entry']['dateRanges']
+        if owner_name(dr['name']) == args.polity and secondary_name(dr['name'])
+    })
+    print(f"\nDiscovered {len(secondaries)} secondaries: {secondaries}")
 
+    for sec in secondaries:
+        full_name = f"{args.polity} - {sec}"
+        sec_match = lambda n, fn=full_name: n.strip() == fn and not is_keyword_transient(n)
+        sec_repair_log = [0]
+        sec_entries, sec_transient = find_entries_by_predicate(tiles_data, sec_match, sec_repair_log)
+        sec_breakpoints = truncate(build_breakpoints(sec_entries, sec_match))
+        sec_seam_log = [0]
+        sec_rows = slice_into_rows(sec_entries, sec_breakpoints, sec_match, sec_seam_log)
+        print(f"=== {sec} (secondary of {args.polity}) ===  entries={len(sec_entries)}  "
+              f"transient_excluded={sec_transient}  ring_repairs={sec_repair_log[0]}  "
+              f"rows={len(sec_rows)}  seam_repairs={sec_seam_log[0]}")
+        entities.append({'name': sec, 'member_of': f'({args.polity})', 'rows': sec_rows, 'is_parent': False})
+
+    # ── Assemble final rows with resolved color ────────────────────────────────
+    out_rows = []
+    for ent in entities:
+        for row in ent['rows']:
+            geom = row['geometry']
+            if not geom.is_valid:
+                print(f"  WARNING: {ent['name']} row {row['FromYear']}..{row['ToYear']} geometry invalid after repair")
+            if ent['is_parent']:
+                color = parent_color
+            else:
+                color = resolve_color(args.polity, row['color_index'], primaries_map, offsets)
+                if row['color_conflict']:
+                    print(f"  WARNING: {ent['name']} row {row['FromYear']}..{row['ToYear']} has "
+                          f"conflicting colorIndex among contributing entries")
+            color_r, color_g, color_b = color if color else (None, None, None)
+            out_rows.append({
+                'Name': ent['name'], 'FromYear': row['FromYear'], 'ToYear': row['ToYear'],
+                'Area': round(area_km2(geom), 1), 'Type': 'POLITY', 'References': '',
+                'MemberOf': ent['member_of'],
+                'ColorR': color_r, 'ColorG': color_g, 'ColorB': color_b,
+                'geometry': geom,
+            })
+
+    for idx, r in enumerate(out_rows, start=1):
+        r['Index'] = idx
+
+    prop_cols = ['Index', 'Name', 'FromYear', 'ToYear', 'Area', 'Type', 'References', 'MemberOf',
+                 'ColorR', 'ColorG', 'ColorB']
+
+    # ── Write GeoJSON ────────────────────────────────────────────────────────
+    features = [{
+        'type': 'Feature',
+        'properties': {k: r[k] for k in prop_cols},
+        'geometry': mapping(r['geometry']),
+    } for r in out_rows]
     fc = {'type': 'FeatureCollection', 'features': features}
-    os.makedirs(os.path.dirname(out_path), exist_ok=True)
-    with open(out_path, 'w', encoding='utf-8') as f:
+    os.makedirs(os.path.dirname(out_geojson), exist_ok=True)
+    with open(out_geojson, 'w', encoding='utf-8') as f:
         json.dump(fc, f, ensure_ascii=False)
-    print(f"\nWrote {len(features)} features to {out_path}")
+    print(f"\nWrote {len(features)} features to {out_geojson}")
 
-    # Continuity check
-    gaps = 0
-    for i in range(len(rows) - 1):
-        if rows[i]['ToYear'] != rows[i + 1]['FromYear']:
-            gaps += 1
-            print(f"  GAP: row {i} ends {rows[i]['ToYear']}, row {i+1} starts {rows[i+1]['FromYear']}")
-    print(f"Continuity gaps: {gaps}")
+    # ── Write CSV (geometry truncated to a short WKT preview) ─────────────────
+    WKT_TRUNCATE = 60
+    with open(out_csv, 'w', newline='', encoding='utf-8') as f:
+        w = csv.writer(f)
+        w.writerow(prop_cols + ['geometry'])
+        for r in out_rows:
+            wkt = r['geometry'].wkt
+            if len(wkt) > WKT_TRUNCATE:
+                wkt = wkt[:WKT_TRUNCATE] + '…'
+            w.writerow([r[k] for k in prop_cols] + [wkt])
+    print(f"Wrote {len(out_rows)} rows to {out_csv}")
+
+    # ── Continuity check, per entity ────────────────────────────────────────
+    for ent in entities:
+        rows = ent['rows']
+        gaps = 0
+        for i in range(len(rows) - 1):
+            if rows[i]['ToYear'] != rows[i + 1]['FromYear']:
+                gaps += 1
+                print(f"  GAP [{ent['name']}]: row {i} ends {rows[i]['ToYear']}, row {i+1} starts {rows[i+1]['FromYear']}")
+        print(f"Continuity gaps [{ent['name']}]: {gaps}")
 
 
 if __name__ == '__main__':
