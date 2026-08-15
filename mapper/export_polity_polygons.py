@@ -31,6 +31,7 @@ import re
 import json
 import csv
 import argparse
+from datetime import date
 
 from shapely.geometry import Polygon, mapping
 from shapely.validation import make_valid
@@ -457,7 +458,8 @@ def main():
     ap.add_argument('--tiles', nargs='+', default=None,
                      help='lat:lon pairs, e.g. 125:010 130:012 (default: hardcoded Roman Republic tile list)')
     ap.add_argument('--out', default=None,
-                     help='GeoJSON output path; a sibling .csv is written alongside it')
+                     help='GeoJSON output path; a sibling .csv is written alongside it. '
+                          'Default: exports/<slug>_<today\'s date>.geojson')
     ap.add_argument('--end-year', type=float, default=None,
                      help='Truncate output at this year (applied to the parent AND every secondary). '
                           'Use when a stray entry (e.g. a garrison never relabeled after the dataset\'s '
@@ -470,8 +472,9 @@ def main():
     else:
         tile_pairs = DEFAULT_TILES
 
+    generated = date.today().isoformat()
     slug = re.sub(r'[^a-z0-9]+', '_', args.polity.lower()).strip('_')
-    out_geojson = args.out or os.path.join(MAPPER_DIR, 'exports', f'{slug}.geojson')
+    out_geojson = args.out or os.path.join(MAPPER_DIR, 'exports', f'{slug}_{generated}.geojson')
     out_csv = os.path.splitext(out_geojson)[0] + '.csv'
 
     print(f"Loading {len(tile_pairs)} tiles: {tile_pairs}")
@@ -554,8 +557,11 @@ def main():
     for idx, r in enumerate(out_rows, start=1):
         r['Index'] = idx
 
+    for r in out_rows:
+        r['Generated'] = generated
+
     prop_cols = ['Index', 'Name', 'FromYear', 'ToYear', 'Area', 'Type', 'References', 'MemberOf',
-                 'ColorR', 'ColorG', 'ColorB']
+                 'ColorR', 'ColorG', 'ColorB', 'Generated']
 
     # ── Write GeoJSON ────────────────────────────────────────────────────────
     features = [{
@@ -563,7 +569,9 @@ def main():
         'properties': {k: r[k] for k in prop_cols},
         'geometry': mapping(r['geometry']),
     } for r in out_rows]
-    fc = {'type': 'FeatureCollection', 'features': features}
+    # 'generated' is a GeoJSON "foreign member" — ignored by strict parsers,
+    # read by anything that cares (including this script, for provenance).
+    fc = {'type': 'FeatureCollection', 'generated': generated, 'features': features}
     os.makedirs(os.path.dirname(out_geojson), exist_ok=True)
     with open(out_geojson, 'w', encoding='utf-8') as f:
         json.dump(fc, f, ensure_ascii=False)
