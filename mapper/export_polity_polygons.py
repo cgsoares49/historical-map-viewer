@@ -36,7 +36,7 @@ import csv
 import argparse
 from datetime import date
 
-from shapely.geometry import Polygon, mapping
+from shapely.geometry import Polygon, Point, MultiPoint, mapping
 from shapely.validation import make_valid
 from shapely.ops import unary_union, transform
 from pyproj import Transformer
@@ -166,7 +166,11 @@ def parse_cst_pol_full(lines):
 # ── PAR parser (mirrors dataloader.js _parsePar — full version, keeps polyRefs) ──
 
 def parse_par_full(lines):
-    """Returns list of {entryIndex, areaType, dateRanges:[{from,to,name,colorIndex}], polyRefs:[(polIndex,flag)]}"""
+    """Returns list of {entryIndex, areaType, dateRanges:[{from,to,name,colorIndex}],
+    polyRefs:[(polIndex,flag)], dotPoint:(lon,lat)|None}. areaType=0 ("dot") entries
+    have dotPoint set and an empty polyRefs; areaType=1 entries have polyRefs and
+    dotPoint=None. Mirrors dataloader.js's dotPoint/dotDiameter handling (diameter
+    isn't needed for export purposes, so isn't captured here)."""
     if not lines:
         return []
     i = 0
@@ -190,8 +194,15 @@ def parse_par_full(lines):
 
         num_refs = float(lines[i]); i += 1
         poly_refs = []
+        dot_point = None
         if num_refs < 0:
-            i += 1  # dot coordinate line — not a polygon, skip
+            coords = [t for t in re.split(r'[\s,]+', lines[i].strip()) if t]
+            i += 1
+            if len(coords) >= 2:
+                try:
+                    dot_point = (float(coords[0]), float(coords[1]))
+                except ValueError:
+                    dot_point = None
         else:
             for _ in range(int(num_refs)):
                 if i >= len(lines):
@@ -203,7 +214,7 @@ def parse_par_full(lines):
 
         entries.append({
             'entryIndex': entry_index, 'areaType': area_type,
-            'dateRanges': date_ranges, 'polyRefs': poly_refs,
+            'dateRanges': date_ranges, 'polyRefs': poly_refs, 'dotPoint': dot_point,
         })
     return entries
 
@@ -508,6 +519,110 @@ def area_km2(geom):
     return projected.area / 1_000_000.0
 
 
+# ── Tribal dot clusters (Milestone 5) ────────────────────────────────────────
+#
+# Two genuinely different source representations for tribal territory, per the
+# user (2026-08-16): (1) an areaType=1 PAR entry drawn as an ordinary bordered
+# polygon -- already fully handled by the pipeline above with zero new code,
+# just needs Type="TRIBAL_AREA" instead of "POLITY"; (2) an areaType=0 "dot"
+# entry -- one of potentially thousands of individual point markers with no
+# polygon in the source at all. For (2), one output row per (name,
+# date-interval) as a GeoJSON MultiPoint collecting every active dot's
+# coordinate, NOT one row per dot -- ~7,000 raw dots should collapse to
+# dozens-to-low-hundreds of rows, not thousands.
+
+def find_dot_entries_by_predicate(tiles_data, name_match):
+    """Returns (tribal_dots, transient_dots) -- lists of {tile, entry, point}
+    for areaType=0 PAR entries matching name_match. Dots have no polyRefs, so
+    is_transient's structural marker check doesn't apply -- but the same
+    keyword fallback used for polygon entries does: some campaign positions
+    are marked with a single dot instead of a drawn path (confirmed real:
+    "Army"/"Consular army" dot entries exist alongside the polygon-path ones
+    already handled), so those need Type="TRANSIENT" too, not "TRIBAL_AREA"."""
+    tribal = []
+    transient = []
+    for tile in tiles_data:
+        for entry in tile['par_entries']:
+            if entry['areaType'] != 0 or entry['dotPoint'] is None:
+                continue
+            matching_drs = [dr for dr in entry['dateRanges'] if name_match(dr['name'])]
+            if not matching_drs:
+                continue
+            de = {'tile': tile, 'entry': entry, 'point': entry['dotPoint']}
+            if any(is_keyword_transient(dr['name']) for dr in matching_drs):
+                transient.append(de)
+            else:
+                tribal.append(de)
+    return tribal, transient
+
+
+def slice_into_dot_rows(dot_entries, breakpoints, name_match):
+    """Like slice_into_rows, but collects active dot coordinates per interval
+    into a MultiPoint (or Point, if only one) instead of unioning polygon
+    rings -- no geometry repair needed, points can't be topologically
+    invalid. Same color_index/color_conflict and interval-merging convention
+    as slice_into_rows."""
+    rows = []
+    prev_points = None
+    for i in range(len(breakpoints) - 1):
+        b0, b1 = breakpoints[i], breakpoints[i + 1]
+        test_year = (b0 + b1) / 2.0
+        active_points = []
+        color_indexes = []
+        for de in dot_entries:
+            m = match_date(de['entry']['dateRanges'], test_year)
+            if m and name_match(m['name']):
+                active_points.append(de['point'])
+                color_indexes.append(m['colorIndex'])
+        if not active_points:
+            prev_points = None
+            continue
+        points_key = tuple(sorted(active_points))
+        color_index = color_indexes[0]
+        color_conflict = len(set(color_indexes)) > 1
+        if prev_points is not None and points_key == prev_points:
+            rows[-1]['ToYear'] = b1
+        else:
+            geom = MultiPoint(active_points) if len(active_points) > 1 else Point(active_points[0])
+            rows.append({'FromYear': b0, 'ToYear': b1, 'geometry': geom,
+                         'color_index': color_index, 'color_conflict': color_conflict})
+        prev_points = points_key
+    return rows
+
+
+def build_tribal_name_set(tiles_data):
+    """Bare names (path_of(name)[-1]) that appear via at least one non-transient
+    areaType=0 dot entry anywhere in the loaded tiles -- used to reclassify a
+    matching areaType=1 polygon entity as Type="TRIBAL_AREA" instead of
+    "POLITY" (the "classic" hand-drawn case: the same tribal group
+    later/elsewhere drawn as a real bordered polygon). Keyword-transient dot
+    names (e.g. "Army") are excluded so they can't cause an unrelated
+    same-named polygon entity to be misclassified."""
+    names = set()
+    for tile in tiles_data:
+        for entry in tile['par_entries']:
+            if entry['areaType'] != 0:
+                continue
+            for dr in entry['dateRanges']:
+                if is_keyword_transient(dr['name']):
+                    continue
+                names.add(path_of(dr['name'])[-1])
+    return names
+
+
+# Manual override for tribal groups whose "classic" hand-drawn polygon uses a
+# *different* name than their dot-cluster form (per the user: they "had to
+# name them something slightly different" when doing this conversion, so
+# build_tribal_name_set's exact-name matching can't catch it). Empty for now
+# -- extend as specific renamed conversions are identified, same pattern as
+# TRANSIENT_NAME_KEYWORDS.
+TRIBAL_NAME_OVERRIDES = ()
+
+
+def is_tribal_name(name, tribal_names):
+    return name in tribal_names or name in TRIBAL_NAME_OVERRIDES
+
+
 PAR_FILENAME_RE = re.compile(r'^PAR(\d{3})\.ASC$', re.IGNORECASE)
 
 
@@ -587,12 +702,20 @@ def main():
         print(f"  Truncated at --end-year {args.end_year}: {before} -> {len(bp)} breakpoints")
         return bp
 
+    tribal_names = build_tribal_name_set(tiles_data)
+    print(f"Tribal (areaType=0 dot) names found in scope: {sorted(tribal_names)}")
+
+    def real_type(name):
+        return 'TRIBAL_AREA' if is_tribal_name(name, tribal_names) else 'POLITY'
+
     # ── Parent ───────────────────────────────────────────────────────────────
     print(f"\n=== {args.polity} (parent) ===")
     repair_log = [0]
     parent_match = lambda n, p=args.polity: owner_name(n) == p
     parent_real, parent_transient = find_entries_by_predicate(tiles_data, parent_match, repair_log)
-    print(f"Real territory entries: {len(parent_real)}  |  transient/army entries: {len(parent_transient)}  (kept as Type=TRANSIENT)  |  ring repairs: {repair_log[0]}")
+    parent_dots, parent_dots_transient = find_dot_entries_by_predicate(tiles_data, parent_match)
+    print(f"Real territory entries: {len(parent_real)}  |  transient/army entries: {len(parent_transient)}  (kept as Type=TRANSIENT)  |  "
+          f"tribal dot entries: {len(parent_dots)}  |  transient dot entries: {len(parent_dots_transient)}  |  ring repairs: {repair_log[0]}")
 
     parent_breakpoints = build_breakpoints(parent_real, parent_match)
     print(f"Breakpoints: {len(parent_breakpoints)}  range: {parent_breakpoints[0] if parent_breakpoints else None} .. {parent_breakpoints[-1] if parent_breakpoints else None}")
@@ -602,24 +725,53 @@ def main():
     parent_rows = slice_into_rows(parent_real, parent_breakpoints, parent_match, seam_log)
     print(f"Output rows: {len(parent_rows)}  |  union geometries needing repair: {seam_log[0]}")
 
-    entities = [{'name': args.polity, 'member_of': '', 'type': 'POLITY', 'rows': parent_rows, 'is_parent': True}]
+    entities = [{'name': args.polity, 'member_of': '', 'type': real_type(args.polity),
+                 'rows': parent_rows, 'is_parent': True}]
     # Root-level transients (a bare, undashed polity name itself flagged transient)
     # have never occurred in real data seen so far — every transient found has been
     # nested ("Parent - Army of X", "Parent - Consular army"), which the path loop
     # below handles. Not building root-level TRANSIENT rows; parent_transient is
     # still reported above for visibility in case this assumption ever breaks.
 
+    # NOTE: root-level dot rows use an EXACT match on the bare polity name
+    # (root_bare_match), NOT the prefix-matching parent_match used above for
+    # the polygon composite. parent_match/parent_dots fold in every nested
+    # descendant's entries (correct for the polygon case, matching
+    # Cliopatria's composite-duplicates-members convention), but reusing
+    # that same fold-in for a "root-level dot entity" would merge e.g.
+    # Daunians' own dot point into a row mislabeled "Roman Ally" -- Daunians
+    # already gets its own correctly-attributed row from the path loop
+    # below. A root-level dot row should only exist for dot entries whose
+    # name is *exactly* the bare root name, with no further "- X" suffix.
+    # (Found and fixed this exact bug testing Roman Ally, 2026-08-16.)
+    root_bare_match = lambda n, p=args.polity: n.strip() == p
+    root_dots, root_dots_transient = find_dot_entries_by_predicate(tiles_data, root_bare_match)
+
+    root_dot_breakpoints = truncate(build_breakpoints(root_dots, root_bare_match))
+    root_dot_rows = slice_into_dot_rows(root_dots, root_dot_breakpoints, root_bare_match)
+    if root_dot_rows:
+        print(f"  (root-level tribal dot rows: {len(root_dot_rows)})")
+        entities.append({'name': args.polity, 'member_of': '', 'type': 'TRIBAL_AREA',
+                          'rows': root_dot_rows, 'is_parent': True})
+
+    root_dot_trans_breakpoints = truncate(build_breakpoints(root_dots_transient, root_bare_match))
+    root_dot_trans_rows = slice_into_dot_rows(root_dots_transient, root_dot_trans_breakpoints, root_bare_match)
+    if root_dot_trans_rows:
+        print(f"  (root-level transient dot rows: {len(root_dot_trans_rows)})")
+        entities.append({'name': args.polity, 'member_of': '', 'type': 'TRANSIENT',
+                          'rows': root_dot_trans_rows, 'is_parent': True})
+
     # ── Nested members: PAR entries named "Parent - X", "Parent - X - Y", ... ──
     # Every distinct prefix path of length >=2 found among the parent's own
     # candidate entries becomes one output entity, at whatever depth it occurs
     # (Milestone 1: previously this only looked at the first dash, flattening
     # e.g. "Roman Ally - Kingdom of Syracuse - Tauromenion" into one entity
-    # instead of a proper 2-level chain). Paths are discovered from BOTH real
-    # and transient entries, since a transient's own name (e.g. "Parent -
-    # Consular army") needs discovering too — Milestone 2: it now becomes its
-    # own Type="TRANSIENT" entity instead of being silently dropped.
+    # instead of a proper 2-level chain). Paths are discovered from real,
+    # transient, AND dot entries, since a transient's own name (e.g. "Parent -
+    # Consular army" — Milestone 2) or a tribal dot cluster's name (Milestone
+    # 5) both need discovering too, not just real territory.
     prefix_paths = set()
-    for pe in parent_real + parent_transient:
+    for pe in parent_real + parent_transient + parent_dots + parent_dots_transient:
         for dr in pe['entry']['dateRanges']:
             if owner_name(dr['name']) == args.polity:
                 path = path_of(dr['name'])
@@ -635,6 +787,7 @@ def main():
         entity_match = lambda n, path=path, depth=depth: path_of(n)[:depth] == path
         ent_repair_log = [0]
         ent_real, ent_transient = find_entries_by_predicate(tiles_data, entity_match, ent_repair_log)
+        ent_dots, ent_dots_transient = find_dot_entries_by_predicate(tiles_data, entity_match)
 
         ent_real_breakpoints = truncate(build_breakpoints(ent_real, entity_match))
         ent_seam_log = [0]
@@ -644,16 +797,30 @@ def main():
         ent_trans_seam_log = [0]
         ent_trans_rows = slice_into_rows(ent_transient, ent_trans_breakpoints, entity_match, ent_trans_seam_log)
 
-        print(f"=== {' > '.join(path)} ===  real_entries={len(ent_real)} (rows={len(ent_real_rows)})  "
-              f"transient_entries={len(ent_transient)} (rows={len(ent_trans_rows)})  "
+        ent_dot_breakpoints = truncate(build_breakpoints(ent_dots, entity_match))
+        ent_dot_rows = slice_into_dot_rows(ent_dots, ent_dot_breakpoints, entity_match)
+
+        ent_dot_trans_breakpoints = truncate(build_breakpoints(ent_dots_transient, entity_match))
+        ent_dot_trans_rows = slice_into_dot_rows(ent_dots_transient, ent_dot_trans_breakpoints, entity_match)
+
+        print(f"=== {' > '.join(path)} ===  real={len(ent_real)}(rows={len(ent_real_rows)})  "
+              f"transient={len(ent_transient)}(rows={len(ent_trans_rows)})  "
+              f"tribal_dots={len(ent_dots)}(rows={len(ent_dot_rows)})  "
+              f"transient_dots={len(ent_dots_transient)}(rows={len(ent_dot_trans_rows)})  "
               f"ring_repairs={ent_repair_log[0]}  seam_repairs={ent_seam_log[0]}+{ent_trans_seam_log[0]}")
 
         if ent_real_rows:
-            entities.append({'name': path[-1], 'member_of': f'({path[-2]})', 'type': 'POLITY',
+            entities.append({'name': path[-1], 'member_of': f'({path[-2]})', 'type': real_type(path[-1]),
                               'rows': ent_real_rows, 'is_parent': False})
         if ent_trans_rows:
             entities.append({'name': path[-1], 'member_of': f'({path[-2]})', 'type': 'TRANSIENT',
                               'rows': ent_trans_rows, 'is_parent': False})
+        if ent_dot_rows:
+            entities.append({'name': path[-1], 'member_of': f'({path[-2]})', 'type': 'TRIBAL_AREA',
+                              'rows': ent_dot_rows, 'is_parent': False})
+        if ent_dot_trans_rows:
+            entities.append({'name': path[-1], 'member_of': f'({path[-2]})', 'type': 'TRANSIENT',
+                              'rows': ent_dot_trans_rows, 'is_parent': False})
 
     # ── Assemble final rows with resolved color ────────────────────────────────
     out_rows = []

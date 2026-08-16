@@ -16,8 +16,11 @@ Newline-delimited GeoJSON: each line is one complete GeoJSON `Feature` object (s
 Chosen over a single big `FeatureCollection` array specifically so updates stay
 append/stream-friendly at scale — see `merge_into_master.py`'s docstring for why.
 
-Currently 1894 lines across 4 polities (Roman Republic, Roman Ally, Roman Latin Colony,
-Persian Empire). See `exports/processed_polities.txt` for the current exact list with
+Currently 1895 lines across 4 polities (Roman Republic, Roman Ally, Roman Latin Colony,
+Persian Empire) and 3 `Type` values in active use: `POLITY` (1263), `TRANSIENT` (627),
+`TRIBAL_AREA` (5, new as of Milestone 5 — see `roman_ally_2026-08-16.README.md` for what
+that means and a real bug it surfaced/fixed). See `exports/processed_polities.txt` for
+the current exact list with
 row counts — that file *is* committed (see below).
 
 ## Updating (adding or re-running a polity)

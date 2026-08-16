@@ -10,13 +10,41 @@ the same pipeline.
 
 ## Contents
 
-132 rows total: 128 `Type="POLITY"` (53 for Roman Ally itself, plus 57 distinct nested
+133 rows total: 124 `Type="POLITY"`, 4 `Type="TRANSIENT"` (`Apulia`, `Army`,
+`Kingdom of Syracuse`, `Naval expedition` — see the Roman Republic README for what these
+are and why they're kept, not discarded), and 5 `Type="TRIBAL_AREA"` (see below — new in
+this run, Milestone 5). 53 of the POLITY rows are Roman Ally itself, the rest are nested
 member names — tribes/city-states that appear as `"Roman Ally - X"` at some point,
 including some well outside Rome's own territory, e.g. `Massalia`/Marseille and
 `Kingdom of Syracuse`, since "allied" status was recorded broadly across Italy and
-Sicily) and 4 `Type="TRANSIENT"` (`Apulia`, `Army`, `Kingdom of Syracuse`,
-`Naval expedition` — see the Roman Republic README for what these are and why they're
-kept, not discarded). Spans **-486.5 to -1.0**.
+Sicily. Spans **-486.5 to -1.0**.
+
+## Tribal areas (Type="TRIBAL_AREA", Milestone 5)
+
+Two different source representations, both reclassified out of `POLITY`:
+- **`Daunians`** (1 row, `-320.4..-318.5`, `Point` geometry): a genuine `areaType=0`
+  "dot" marker in the raw data — MAPPER represents this tribal group as a single point,
+  not a bordered region, for this period. If a name had multiple simultaneously-active
+  dots, they'd collect into one `MultiPoint` row (one row per name per interval, not one
+  row per dot — this is what keeps ~7,000 raw dots from becoming ~7,000 output rows).
+- **`Lucanians`, `Messapians`, `Peucetians`** (ordinary `Polygon`/`MultiPolygon` rows,
+  unchanged geometry from before this run): these are `areaType=1` entries — real
+  bordered polygons in the source, exactly like any other polity — but their bare name
+  *also* appears as an `areaType=0` dot entry somewhere else in these tiles, so they're
+  classified `TRIBAL_AREA` instead of `POLITY`. This is the "classic hand-drawn" case
+  the user described (a tribal dot-cluster later/elsewhere given a real drawn border) —
+  no new geometry work needed for this case, just the reclassification.
+
+**A bug found and fixed while building this**: the first implementation attempt produced
+a spurious extra row — `Name="Roman Ally"`, `Type="TRIBAL_AREA"`, a `Point` at
+`Daunians`' own coordinates. Root-level dot-entity construction had reused the same
+prefix-matching predicate the polygon composite correctly uses (fold in all descendants'
+territory — that's the intended Cliopatria composite-duplicates-members behavior), but
+applying that same fold-in to dots merged `Daunians`' point into a row mislabeled as if
+it were `Roman Ally`'s own tribal representation, duplicating `Daunians`' already-correct
+row under the wrong name. Fixed by using an *exact* match on the bare root name for
+root-level dot rows specifically, while keeping the prefix match for path discovery and
+for the polygon composite (where it's correct).
 
 ## Notable results
 

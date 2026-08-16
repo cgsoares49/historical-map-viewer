@@ -10,6 +10,6 @@
 #
 # name                rows
 Persian Empire      1239
-Roman Ally           132
+Roman Ally           133
 Roman Latin Colony    55
 Roman Republic       468
