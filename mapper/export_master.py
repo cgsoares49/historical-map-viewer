@@ -8,6 +8,15 @@ etc) or dropped into QGIS/converted to KML -- the .geojsonl master itself is
 never sent externally.
 
 Filters are all optional and combinable (AND'd together):
+  --name "Lucanians"                         (repeatable -- OR'd within this filter; a
+                                               row's own Name, regardless of which
+                                               SourceRun/parent produced it -- use this to
+                                               find every appearance of an entity that
+                                               only ever shows up nested under whichever
+                                               different top-level polities happened to
+                                               touch it, e.g. a tribe that was a Roman
+                                               ally in one period and independent/allied
+                                               with someone else in another)
   --type POLITY|TRANSIENT|TRIBAL_AREA|CITY   (repeatable -- OR'd within this filter)
   --source-run "Roman Republic"              (repeatable -- OR'd within this filter;
                                                the top-level --polity name a row came from)
@@ -26,6 +35,7 @@ Usage:
   python export_master.py --source-run "Roman Republic" --out exports/rr_only.geojson
   python export_master.py --type TRANSIENT --out exports/all_transients.geojson
   python export_master.py --from-year -300 --to-year -250 --out exports/mid_republic.geojson
+  python export_master.py --name "Lucanians" --out exports/lucanians_everywhere.geojson
 """
 
 import os
@@ -43,8 +53,10 @@ PROP_COLS = ['Index', 'Name', 'FromYear', 'ToYear', 'Area', 'Type', 'References'
 WKT_TRUNCATE = 60
 
 
-def passes_filters(feat, type_set, source_set, from_year, to_year, bbox):
+def passes_filters(feat, name_set, type_set, source_set, from_year, to_year, bbox):
     p = feat['properties']
+    if name_set and p.get('Name') not in name_set:
+        return False
     if type_set and p.get('Type') not in type_set:
         return False
     if source_set and p.get('SourceRun') not in source_set:
@@ -65,6 +77,8 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--master', default=DEFAULT_MASTER)
     ap.add_argument('--out', required=True, help='Output .geojson path; a sibling .csv is written alongside it')
+    ap.add_argument('--name', action='append', default=None,
+                     help='Keep only rows with this exact Name, regardless of SourceRun/MemberOf; repeatable')
     ap.add_argument('--type', action='append', default=None, help='Keep only this Type; repeatable')
     ap.add_argument('--source-run', action='append', default=None, dest='source_run',
                      help='Keep only this SourceRun (top-level polity name); repeatable')
@@ -73,6 +87,7 @@ def main():
     ap.add_argument('--bbox', nargs=4, type=float, default=None, metavar=('MINLON', 'MINLAT', 'MAXLON', 'MAXLAT'))
     args = ap.parse_args()
 
+    name_set = set(args.name) if args.name else None
     type_set = set(args.type) if args.type else None
     source_set = set(args.source_run) if args.source_run else None
 
@@ -86,7 +101,7 @@ def main():
                     continue
                 total_lines += 1
                 feat = json.loads(line)
-                if passes_filters(feat, type_set, source_set, args.from_year, args.to_year, args.bbox):
+                if passes_filters(feat, name_set, type_set, source_set, args.from_year, args.to_year, args.bbox):
                     features.append(feat)
     print(f"Scanned {total_lines} master line(s), kept {len(features)} after filters.")
 

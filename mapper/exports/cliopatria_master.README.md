@@ -45,7 +45,16 @@ python export_master.py --out exports/full_dataset.geojson              # everyt
 python export_master.py --source-run "Roman Republic" --out exports/rr.geojson
 python export_master.py --type TRANSIENT --out exports/campaigns.geojson
 python export_master.py --from-year -300 --to-year -250 --out exports/mid_republic.geojson
+python export_master.py --name "Lucanians" --out exports/lucanians_everywhere.geojson
 ```
+
+`--name` is for a specific discoverability problem: a nested member like `Lucanians`
+(its own `primaries.txt` entry, not just a category) only shows up under whichever
+top-level `SourceRun` happened to touch it — e.g. it's currently only reachable via the
+`Roman Ally` run, with `MemberOf="(Roman Ally)"`, even though that's just one period of
+its history. `--source-run "Roman Ally"` wouldn't find it if you didn't already know
+that; `--name "Lucanians"` finds every row with that exact `Name` across the *entire*
+master regardless of which run or parent produced it.
 
 Filters combine (AND across different filter kinds, OR within repeated uses of the same
 one, e.g. `--type POLITY --type TRANSIENT`). `Index` is renumbered sequentially within
