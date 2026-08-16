@@ -6,6 +6,8 @@ this file directly; it exists so adding/updating one polity doesn't require touc
 everything else. Use `export_master.py` to get an actual `.geojson`/`.csv` out of it —
 see below.
 
+**Not committed to git** — see "Local-only / reproducibility" below.
+
 ## Format
 
 Newline-delimited GeoJSON: each line is one complete GeoJSON `Feature` object (same
@@ -14,8 +16,9 @@ Newline-delimited GeoJSON: each line is one complete GeoJSON `Feature` object (s
 Chosen over a single big `FeatureCollection` array specifically so updates stay
 append/stream-friendly at scale — see `merge_into_master.py`'s docstring for why.
 
-Currently 655 lines (Roman Republic, Roman Ally, Roman Latin Colony — the 3 samples so
-far). Will grow substantially as more polities are added (Milestone 4 onward).
+Currently 1894 lines across 4 polities (Roman Republic, Roman Ally, Roman Latin Colony,
+Persian Empire). See `exports/processed_polities.txt` for the current exact list with
+row counts — that file *is* committed (see below).
 
 ## Updating (adding or re-running a polity)
 
@@ -47,6 +50,25 @@ whatever the filters keep, since the master's own per-row `Index` values come fr
 independent per-polity runs and aren't globally unique — they're only meaningful in a
 delivered subset. Always writes a `.geojson` + a sibling `.csv` (same truncated-WKT
 convention as every other export in this project).
+
+## Local-only / reproducibility (added 2026-08-16)
+
+`cliopatria_master.geojsonl` and any `.geojson` export over GitHub's 100MB/file limit
+(currently `full_dataset_*.geojson` and `persian_empire_*.geojson`) are `.gitignore`'d —
+GitHub's Free plan caps total LFS storage at 500MB and per-file at 100MB regardless of
+LFS, and this dataset will only get bigger. This is intentional, not a stopgap: nothing
+in the master is hand-authored, so it's entirely reproducible from the canonical PAR/
+POL/CST source data + the scripts in this repo (which *are* committed). The only thing
+that isn't otherwise recoverable if the local master were ever lost is *which `--polity`
+names have already been run* — that's what `exports/processed_polities.txt` is for.
+`merge_into_master.py` rewrites it automatically after every merge (scanned fresh from
+the master's actual current content, not hand-maintained), and it's small enough to
+commit regardless of how large the master itself gets. To rebuild the master from
+scratch: for each name listed there, re-run the two commands under "Updating" above.
+
+The user's own backup routine (mapper subdirectory mirrored across 2 SD drives + an
+external HD) covers the canonical source data already; the master itself doesn't need
+adding to that routine given the above.
 
 ## Verified 2026-08-16
 
