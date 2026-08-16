@@ -468,10 +468,18 @@ def area_km2(geom):
     return projected.area / 1_000_000.0
 
 
+PAR_FILENAME_RE = re.compile(r'^PAR(\d{3})\.ASC$', re.IGNORECASE)
+
+
 def discover_tiles(polity_name):
     """Scan every polareas/<latD>/PAR<lon>.ASC file for the literal polity_name
     string and return the (lat_str, lon_str) tiles that contain it — automates
-    what was previously done by hand via `grep -rl "<name>" polareas/`."""
+    what was previously done by hand via `grep -rl "<name>" polareas/`.
+
+    Filename match must be exact (PAR###.ASC) -- some tile folders also contain
+    WIP/backup variants like "PAR040 bad partial fix.ASC" alongside the real
+    "PAR040.ASC" (found scanning for Persian Empire, tile 120/040); a loose
+    startswith/endswith match would treat those as extra, garbage tiles."""
     par_dir = os.path.join(DATA_DIR, 'polareas')
     tiles = []
     for lat_dir in sorted(os.listdir(par_dir)):
@@ -479,7 +487,7 @@ def discover_tiles(polity_name):
         if not os.path.isdir(lat_path):
             continue
         for fname in sorted(os.listdir(lat_path)):
-            if not (fname.startswith('PAR') and fname.endswith('.ASC')):
+            if not PAR_FILENAME_RE.match(fname):
                 continue
             fpath = os.path.join(lat_path, fname)
             try:
