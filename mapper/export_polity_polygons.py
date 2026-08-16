@@ -468,11 +468,39 @@ def area_km2(geom):
     return projected.area / 1_000_000.0
 
 
+def discover_tiles(polity_name):
+    """Scan every polareas/<latD>/PAR<lon>.ASC file for the literal polity_name
+    string and return the (lat_str, lon_str) tiles that contain it — automates
+    what was previously done by hand via `grep -rl "<name>" polareas/`."""
+    par_dir = os.path.join(DATA_DIR, 'polareas')
+    tiles = []
+    for lat_dir in sorted(os.listdir(par_dir)):
+        lat_path = os.path.join(par_dir, lat_dir)
+        if not os.path.isdir(lat_path):
+            continue
+        for fname in sorted(os.listdir(lat_path)):
+            if not (fname.startswith('PAR') and fname.endswith('.ASC')):
+                continue
+            fpath = os.path.join(lat_path, fname)
+            try:
+                with open(fpath, encoding='latin-1') as f:
+                    text = f.read()
+            except OSError:
+                continue
+            if polity_name in text:
+                tiles.append((lat_dir, fname[3:6]))
+    return tiles
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--polity', default='Roman Republic')
     ap.add_argument('--tiles', nargs='+', default=None,
-                     help='lat:lon pairs, e.g. 125:010 130:012 (default: hardcoded Roman Republic tile list)')
+                     help='lat:lon pairs, e.g. 125:010 130:012 (default: hardcoded Roman Republic tile list, '
+                          'unless --auto-tiles is given)')
+    ap.add_argument('--auto-tiles', action='store_true',
+                     help='Discover tiles automatically by scanning every PAR file for --polity\'s literal '
+                          'name, instead of using --tiles or the hardcoded default.')
     ap.add_argument('--out', default=None,
                      help='GeoJSON output path; a sibling .csv is written alongside it. '
                           'Default: exports/<slug>_<today\'s date>.geojson')
@@ -485,6 +513,9 @@ def main():
 
     if args.tiles:
         tile_pairs = [tuple(t.split(':')) for t in args.tiles]
+    elif args.auto_tiles:
+        tile_pairs = discover_tiles(args.polity)
+        print(f"Auto-discovered {len(tile_pairs)} tiles for {args.polity!r}: {tile_pairs}")
     else:
         tile_pairs = DEFAULT_TILES
 
@@ -604,9 +635,14 @@ def main():
 
     for r in out_rows:
         r['Generated'] = generated
+        # Bookkeeping column (not part of Cliopatria's own schema, same as
+        # ColorR/G/B): which top-level --polity run produced this row.
+        # Milestone 3's merge_into_master.py upsert keys off this to replace
+        # a run's own rows in the master without touching any other run's.
+        r['SourceRun'] = args.polity
 
     prop_cols = ['Index', 'Name', 'FromYear', 'ToYear', 'Area', 'Type', 'References', 'MemberOf',
-                 'ColorR', 'ColorG', 'ColorB', 'Generated']
+                 'ColorR', 'ColorG', 'ColorB', 'Generated', 'SourceRun']
 
     # ── Write GeoJSON ────────────────────────────────────────────────────────
     features = [{
