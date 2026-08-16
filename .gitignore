@@ -40,3 +40,15 @@ offsets.txt
 mapper.ini
 make_shortcut.vbs
 *.bmp
+
+# ── Polity export master + large geojson dumps (local only — GitHub Free's ──
+# 100MB per-file limit, and the 500MB LFS storage cap, are both too small for
+# these once the dataset covers more than a couple of polities; Persian Empire
+# alone is 104MB. The .geojsonl master was designed as an internal working
+# file anyway (see mapper/exports/cliopatria_master.README.md) — actual
+# deliverables get filtered down with export_master.py and sent directly,
+# not pushed here. The small .csv side of every export (truncated-WKT
+# geometry) stays committed regardless of dataset size.
+mapper/exports/cliopatria_master.geojsonl
+mapper/exports/full_dataset_*.geojson
+mapper/exports/persian_empire_*.geojson

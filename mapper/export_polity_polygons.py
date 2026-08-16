@@ -69,6 +69,28 @@ def parse_date_range(line):
     return frm, to
 
 
+JS_INT_RE = re.compile(r'\s*([+-]?\d+)')
+
+
+def js_parse_int(s, default=0):
+    """Mimics JS parseInt(s, 10): skip leading whitespace, consume a run of
+    decimal digits, stop at the first non-digit character (including '.')
+    and ignore everything after -- unlike Python's strict int(), which
+    raises on trailing garbage. Needed because polyRef "flag" values in the
+    raw data aren't always clean integers, and the live renderer (which
+    also uses parseInt for this field) silently tolerates it rather than
+    crashing. Confirmed real, not hypothetical: polareas/120/PAR035.ASC line
+    1943 has a flag of "32.6" (parseInt -> 32, dropping the decimal — a
+    precision loss in the live app itself, replicated here rather than
+    "fixed", per this project's established Type/color parsing convention),
+    and polareas/125/PAR040.ASC line 283 has a comma-less "1012     0" pair
+    (no second element after split(','), so flag defaults to 0 exactly as
+    the live renderer's own `parts.length > 1 ? parseInt(parts[1]) : 0`
+    would)."""
+    m = JS_INT_RE.match(s)
+    return int(m.group(1)) if m else default
+
+
 # ── CST/POL parser (mirrors dataloader.js _parseCstPol) ────────────────────────
 
 def parse_cst_pol_full(lines):
@@ -157,8 +179,8 @@ def parse_par_full(lines):
                 if i >= len(lines):
                     break
                 parts = lines[i].split(','); i += 1
-                pol_index = int(parts[0])
-                flag = int(parts[1]) if len(parts) > 1 else 0
+                pol_index = js_parse_int(parts[0])
+                flag = js_parse_int(parts[1]) if len(parts) > 1 else 0
                 poly_refs.append((pol_index, flag))
 
         entries.append({
