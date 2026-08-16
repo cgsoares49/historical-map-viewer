@@ -43,17 +43,29 @@ without any special-casing.
 
 ## Parser fix this run required
 
-Two malformed polyRef lines were found across the 54 tiles that crashed the previous
-strict-`int()` parser: a connector-point flag value of `"32.6"` (`polareas/120/PAR035.ASC`
-line 1943) and a comma-less `"1012     0"` pair (`polareas/125/PAR040.ASC` line 283). The
-live JS renderer's own polyRef parsing already uses `parseInt`, which silently tolerates
-both (truncates the decimal, defaults flag to 0 when there's no second comma-separated
-value) rather than crashing — the Python port now replicates that exact leniency
-(`js_parse_int`) instead of failing, consistent with this project's established
-"replicate what MAPPER actually displays, don't silently correct it" approach (see the
-`newoffsets.txt` quirk in the Roman Republic README for precedent). Also fixed
-`discover_tiles` matching WIP/backup files (`"PAR040 bad partial fix.ASC"` etc.) as if
-they were extra real tiles — found in the same tile 120/040 while investigating.
+Two malformed-looking polyRef lines were found across the 54 tiles that crashed the
+previous strict-`int()` parser: a connector-point flag value of `"32.6"`
+(`polareas/120/PAR035.ASC` line 1943) and a comma-less `"1012     0"` pair
+(`polareas/125/PAR040.ASC` line 283, fixed at the source by the user — added the missing
+comma). The two turned out to be different in kind, not the same issue twice:
+
+- **`"32.6"` is legitimate data, not a typo** — per the user (2026-08-16): a synthetic
+  connector point's latitude has no rule requiring it to land on a whole degree. `flag`
+  is now parsed with `js_parse_number` (int or float, whichever the text actually is) and
+  the decimal is preserved exactly, not truncated. An earlier version of this fix used
+  `parseInt`-style truncation here on the reasoning that it should replicate the live
+  renderer's own lossy parsing (matching the precedent for the `newoffsets.txt` quirk) —
+  that reasoning didn't apply to this case: `newoffsets.txt` is about cosmetic *display*
+  fidelity, whereas this is the actual coordinate data the export's geometry is built
+  from, which needs to stay accurate for the export's own purpose.
+- The comma-less pair was a genuine typo, now fixed at the source. `js_parse_number`
+  still defaults a comma-less token's flag to 0 (matching the live renderer's own
+  `parts.length > 1 ? parseInt(parts[1]) : 0`), kept as a safety net in case the same
+  delimiter mistake recurs elsewhere in the ~1015-polity dataset.
+
+Also fixed `discover_tiles` matching WIP/backup files (`"PAR040 bad partial fix.ASC"`
+etc.) as if they were extra real tiles — found in the same tile 120/040 while
+investigating.
 
 ## Color-conflict warnings (cosmetic, expected)
 

@@ -69,26 +69,44 @@ def parse_date_range(line):
     return frm, to
 
 
-JS_INT_RE = re.compile(r'\s*([+-]?\d+)')
+JS_NUMBER_RE = re.compile(r'\s*([+-]?\d+(?:\.\d+)?)')
 
 
-def js_parse_int(s, default=0):
-    """Mimics JS parseInt(s, 10): skip leading whitespace, consume a run of
-    decimal digits, stop at the first non-digit character (including '.')
-    and ignore everything after -- unlike Python's strict int(), which
-    raises on trailing garbage. Needed because polyRef "flag" values in the
-    raw data aren't always clean integers, and the live renderer (which
-    also uses parseInt for this field) silently tolerates it rather than
-    crashing. Confirmed real, not hypothetical: polareas/120/PAR035.ASC line
-    1943 has a flag of "32.6" (parseInt -> 32, dropping the decimal — a
-    precision loss in the live app itself, replicated here rather than
-    "fixed", per this project's established Type/color parsing convention),
-    and polareas/125/PAR040.ASC line 283 has a comma-less "1012     0" pair
-    (no second element after split(','), so flag defaults to 0 exactly as
-    the live renderer's own `parts.length > 1 ? parseInt(parts[1]) : 0`
-    would)."""
-    m = JS_INT_RE.match(s)
-    return int(m.group(1)) if m else default
+def js_parse_number(s, default=0):
+    """Lenient numeric parse for PAR polyRef fields (pol_index, flag): skip
+    leading whitespace, consume a leading number (int or decimal), stop at
+    the first character that isn't part of it, and ignore everything after
+    -- unlike Python's strict int()/float(), which raise on trailing
+    garbage. Returns int when the matched text has no decimal point, float
+    otherwise, so `flag == 0`/`== 1`/`== 1000` sentinel comparisons keep
+    working exactly as before while non-integer values are preserved.
+
+    Two real cases found scanning Persian Empire's 54 tiles:
+    - polareas/120/PAR035.ASC line 1943: polyRef flag "32.6". This is a
+      *synthetic connector point* (build_combined_ring's `else` branch uses
+      the flag value directly as that point's latitude), and there's no
+      rule requiring a connector point to land on a whole degree -- per
+      the user (2026-08-16), this is legitimate data, not a typo, so it
+      must be preserved at full precision, not truncated. (An earlier
+      version of this function used strict parseInt-style truncation here,
+      reasoning it should replicate the live renderer's own lossy parseInt
+      -- that reasoning was wrong for geometry, which needs to stay
+      accurate for the export's own purpose regardless of what the live
+      renderer's rendering happens to do with it. Color/offset truncation,
+      e.g. the newoffsets.txt quirk, is a different, correctly-kept case:
+      cosmetic display fidelity, not scientific coordinate accuracy.)
+    - polareas/125/PAR040.ASC line 283: a comma-less "1012     0" pair --
+      fixed at the source by the user (added the missing comma). Kept the
+      leniency here anyway in case the same delimiter mistake recurs
+      elsewhere in the ~1015-polity dataset; a comma-less single token
+      still parses its leading number and the flag correctly defaults to 0
+      (no second comma-separated element at all), matching the live
+      renderer's own `parts.length > 1 ? parseInt(parts[1]) : 0`."""
+    m = JS_NUMBER_RE.match(s)
+    if not m:
+        return default
+    text = m.group(1)
+    return float(text) if '.' in text else int(text)
 
 
 # ── CST/POL parser (mirrors dataloader.js _parseCstPol) ────────────────────────
@@ -179,8 +197,8 @@ def parse_par_full(lines):
                 if i >= len(lines):
                     break
                 parts = lines[i].split(','); i += 1
-                pol_index = js_parse_int(parts[0])
-                flag = js_parse_int(parts[1]) if len(parts) > 1 else 0
+                pol_index = js_parse_number(parts[0])
+                flag = js_parse_number(parts[1]) if len(parts) > 1 else 0
                 poly_refs.append((pol_index, flag))
 
         entries.append({
