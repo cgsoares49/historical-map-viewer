@@ -234,10 +234,11 @@ def owner_name(name):
     return name.split(' - ')[0].strip()
 
 
-def secondary_name(name):
-    """The part after ' - ', or None if the name has no dash-suffix."""
-    parts = name.split(' - ', 1)
-    return parts[1].strip() if len(parts) > 1 else None
+def path_of(name):
+    """Full dash-chain as a tuple, e.g. 'Roman Ally - Kingdom of Syracuse - Tauromenion'
+    -> ('Roman Ally', 'Kingdom of Syracuse', 'Tauromenion'). Chains can go arbitrarily
+    deep (confirmed 4+ levels for the Persian Empire) — this is not limited to 2 levels."""
+    return tuple(s.strip() for s in name.split(' - '))
 
 
 # "Convenience" transients: sometimes an existing real polity boundary is
@@ -250,11 +251,10 @@ TRANSIENT_NAME_KEYWORDS = ('army', 'naval')
 
 
 def is_keyword_transient(name):
-    suffix = secondary_name(name)
-    if not suffix:
-        return False
-    lowered = suffix.lower()
-    return any(kw in lowered for kw in TRANSIENT_NAME_KEYWORDS)
+    """Checks every segment after the root (path[0]) at any nesting depth, not just
+    the immediate child — a keyword could show up at any level of a deep chain."""
+    segments = path_of(name)[1:]
+    return any(kw in seg.lower() for seg in segments for kw in TRANSIENT_NAME_KEYWORDS)
 
 
 # ── Geometry repair helpers ──────────────────────────────────────────────────
@@ -509,27 +509,36 @@ def main():
 
     entities = [{'name': args.polity, 'member_of': '', 'rows': parent_rows, 'is_parent': True}]
 
-    # ── Secondaries: PAR entries named "Parent - X" ────────────────────────────
-    secondaries = sorted({
-        secondary_name(dr['name'])
-        for pe in parent_entries
-        for dr in pe['entry']['dateRanges']
-        if owner_name(dr['name']) == args.polity and secondary_name(dr['name'])
-    })
-    print(f"\nDiscovered {len(secondaries)} secondaries: {secondaries}")
+    # ── Nested members: PAR entries named "Parent - X", "Parent - X - Y", ... ──
+    # Every distinct prefix path of length >=2 found among the parent's own
+    # candidate entries becomes one output entity, at whatever depth it occurs
+    # (Milestone 1: previously this only looked at the first dash, flattening
+    # e.g. "Roman Ally - Kingdom of Syracuse - Tauromenion" into one entity
+    # instead of a proper 2-level chain).
+    prefix_paths = set()
+    for pe in parent_entries:
+        for dr in pe['entry']['dateRanges']:
+            if owner_name(dr['name']) == args.polity:
+                path = path_of(dr['name'])
+                for k in range(2, len(path) + 1):
+                    prefix_paths.add(path[:k])
+    sorted_paths = sorted(prefix_paths)
+    print(f"\nDiscovered {len(sorted_paths)} nested member paths:")
+    for p in sorted_paths:
+        print(f"  {' > '.join(p)}")
 
-    for sec in secondaries:
-        full_name = f"{args.polity} - {sec}"
-        sec_match = lambda n, fn=full_name: n.strip() == fn and not is_keyword_transient(n)
-        sec_repair_log = [0]
-        sec_entries, sec_transient = find_entries_by_predicate(tiles_data, sec_match, sec_repair_log)
-        sec_breakpoints = truncate(build_breakpoints(sec_entries, sec_match))
-        sec_seam_log = [0]
-        sec_rows = slice_into_rows(sec_entries, sec_breakpoints, sec_match, sec_seam_log)
-        print(f"=== {sec} (secondary of {args.polity}) ===  entries={len(sec_entries)}  "
-              f"transient_excluded={sec_transient}  ring_repairs={sec_repair_log[0]}  "
-              f"rows={len(sec_rows)}  seam_repairs={sec_seam_log[0]}")
-        entities.append({'name': sec, 'member_of': f'({args.polity})', 'rows': sec_rows, 'is_parent': False})
+    for path in sorted_paths:
+        depth = len(path)
+        entity_match = lambda n, path=path, depth=depth: path_of(n)[:depth] == path
+        ent_repair_log = [0]
+        ent_entries, ent_transient = find_entries_by_predicate(tiles_data, entity_match, ent_repair_log)
+        ent_breakpoints = truncate(build_breakpoints(ent_entries, entity_match))
+        ent_seam_log = [0]
+        ent_rows = slice_into_rows(ent_entries, ent_breakpoints, entity_match, ent_seam_log)
+        print(f"=== {' > '.join(path)} ===  entries={len(ent_entries)}  "
+              f"transient_excluded={ent_transient}  ring_repairs={ent_repair_log[0]}  "
+              f"rows={len(ent_rows)}  seam_repairs={ent_seam_log[0]}")
+        entities.append({'name': path[-1], 'member_of': f'({path[-2]})', 'rows': ent_rows, 'is_parent': False})
 
     # ── Assemble final rows with resolved color ────────────────────────────────
     out_rows = []

@@ -25,10 +25,11 @@ was recorded broadly across Italy and Sicily, not just adjacent to Rome. Spans
 - **One secondary produced zero rows**: `Vulci` — its only "Roman Ally" date range has
   `from == to` (a zero-span/instant marker), same pattern as `Latin League` in the Roman
   Republic export; correctly produces no interval, not a bug.
-- **One secondary has a dash in its own name**: `Kingdom of Syracuse - Tauromenion`. The
-  secondary-name split only splits on the *first* `" - "`, so this is captured whole and
-  correctly treated as one distinct entity (not confused with plain `Kingdom of Syracuse`,
-  which is also a separate secondary in its own right).
+- **A real 3-level MemberOf chain**: `Roman Ally > Kingdom of Syracuse > Tauromenion`.
+  `Kingdom of Syracuse` itself has `MemberOf="(Roman Ally)"`; `Tauromenion` has
+  `MemberOf="(Kingdom of Syracuse)"`, not `"(Roman Ally)"` — nested MemberOf chains of
+  arbitrary depth are fully supported (this pipeline goes as deep as the source data
+  does, needed for e.g. the Persian Empire, which nests 4+ levels).
 - 14 ring repairs at the parent level (self-intersecting "keyhole" rings needing
   `shapely.make_valid`) — more than the Roman Republic run's 4, expected given the larger
   entry count, and all resolved cleanly (0 invalid geometries in the final output).
