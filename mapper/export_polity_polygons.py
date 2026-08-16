@@ -10,14 +10,17 @@ entries") each carrying an ownership history: a list of
 hands the boundary never moves — only the owner label swaps. This script:
   1. parses every PAR/POL/CST file for the given tiles (full point geometry,
      not just the bbox/date summary build_geodata.py extracts),
-  2. filters out "dot" markers and transient army/campaign entries,
-  3. for every date-range where an entry's owner matches --polity, builds
+  2. filters out "dot" markers, and splits entries into real territory vs.
+     transient army/campaign entries (kept, not discarded — see Type below),
+  3. for every date-range where an entry's owner matches --polity (at any
+     nesting depth — "Parent", "Parent - X", "Parent - X - Y", ...), builds
      that entry's closed ring (porting renderer.js's _buildCombinedPolygon),
-  4. finds every year where the polity's set of owned entries changes, and
+  4. finds every year where an entity's set of owned entries changes, and
      for each resulting interval unions the active entries into one
      (Multi)Polygon (shapely.unary_union),
   5. writes one GeoJSON Feature per interval whose merged geometry actually
-     differs from the previous interval's.
+     differs from the previous interval's — Type="POLITY" for real
+     territory, Type="TRANSIENT" for army/campaign entries.
 
 Mirrors parsing conventions from build_geodata.py (par_lines, parse_date_range,
 DATA_DIR, latin-1 file encoding) and porting logic from
@@ -368,33 +371,46 @@ def resolve_color(lookup_name, color_index, primaries_map, offsets):
 
 # ── Main pipeline ────────────────────────────────────────────────────────────
 #
-# Both the parent polity and each of its "secondaries" (PAR entries named
-# "Parent - X", e.g. "Roman Republic - Anxur") run through the same
+# The parent polity and each of its nested members (PAR entries named
+# "Parent - X", "Parent - X - Y", ... at any depth) run through the same
 # find/breakpoints/slice machinery below, parameterized by a name_match
-# predicate: prefix match (owner_name(n) == parent) for the parent itself,
-# exact match (n == "Parent - X") for a given secondary X.
+# predicate: prefix match at depth 1 (owner_name(n) == parent) for the
+# parent itself, prefix match at depth L (path_of(n)[:L] == path) for a
+# member at path length L.
 
 def find_entries_by_predicate(tiles_data, name_match, repair_log):
-    """Returns (list of {tile, entry, ring_polygon}, transient_count)."""
-    result = []
-    transient_count = 0
+    """Returns (real_entries, transient_entries) — each a list of
+    {tile, entry, ring_polygon}. A PAR entry with at least one date-range
+    name satisfying name_match is classified as transient (army/campaign,
+    not real territory) if it's structurally transient (is_transient — the
+    referenced POL segment carries the -9999.0/-9998.0 marker) OR any of its
+    matching date-range names are keyword-flagged (is_keyword_transient —
+    the "convenience" case where a real boundary is reused to depict a
+    transient). Otherwise it's real territory. Both are kept (not
+    discarded) — see main() for how each becomes Type="POLITY" vs
+    Type="TRANSIENT" rows."""
+    real = []
+    transient = []
     for tile in tiles_data:
         for entry in tile['par_entries']:
             if entry['areaType'] != 1:
                 continue
-            if not any(name_match(dr['name']) for dr in entry['dateRanges']):
+            matching_drs = [dr for dr in entry['dateRanges'] if name_match(dr['name'])]
+            if not matching_drs:
                 continue
-            if is_transient(entry['polyRefs'], tile['pol_by_index']):
-                transient_count += 1
-                continue
+            entry_is_transient = (
+                is_transient(entry['polyRefs'], tile['pol_by_index'])
+                or any(is_keyword_transient(dr['name']) for dr in matching_drs)
+            )
             ring, has_segment = build_combined_ring(entry['polyRefs'], tile['cst_by_index'], tile['pol_by_index'])
             if not has_segment or len(ring) < 4:
                 continue
             poly = ring_to_polygon(ring, repair_log)
             if poly is None or poly.is_empty:
                 continue
-            result.append({'tile': tile, 'entry': entry, 'ring_polygon': poly})
-    return result, transient_count
+            bucket = transient if entry_is_transient else real
+            bucket.append({'tile': tile, 'entry': entry, 'ring_polygon': poly})
+    return real, transient
 
 
 def build_breakpoints(entries, name_match):
@@ -495,28 +511,36 @@ def main():
     # ── Parent ───────────────────────────────────────────────────────────────
     print(f"\n=== {args.polity} (parent) ===")
     repair_log = [0]
-    parent_match = lambda n, p=args.polity: owner_name(n) == p and not is_keyword_transient(n)
-    parent_entries, transient_count = find_entries_by_predicate(tiles_data, parent_match, repair_log)
-    print(f"Real territory entries: {len(parent_entries)}  |  transient/army entries excluded: {transient_count}  |  ring repairs: {repair_log[0]}")
+    parent_match = lambda n, p=args.polity: owner_name(n) == p
+    parent_real, parent_transient = find_entries_by_predicate(tiles_data, parent_match, repair_log)
+    print(f"Real territory entries: {len(parent_real)}  |  transient/army entries: {len(parent_transient)}  (kept as Type=TRANSIENT)  |  ring repairs: {repair_log[0]}")
 
-    parent_breakpoints = build_breakpoints(parent_entries, parent_match)
+    parent_breakpoints = build_breakpoints(parent_real, parent_match)
     print(f"Breakpoints: {len(parent_breakpoints)}  range: {parent_breakpoints[0] if parent_breakpoints else None} .. {parent_breakpoints[-1] if parent_breakpoints else None}")
     parent_breakpoints = truncate(parent_breakpoints)
 
     seam_log = [0]
-    parent_rows = slice_into_rows(parent_entries, parent_breakpoints, parent_match, seam_log)
+    parent_rows = slice_into_rows(parent_real, parent_breakpoints, parent_match, seam_log)
     print(f"Output rows: {len(parent_rows)}  |  union geometries needing repair: {seam_log[0]}")
 
-    entities = [{'name': args.polity, 'member_of': '', 'rows': parent_rows, 'is_parent': True}]
+    entities = [{'name': args.polity, 'member_of': '', 'type': 'POLITY', 'rows': parent_rows, 'is_parent': True}]
+    # Root-level transients (a bare, undashed polity name itself flagged transient)
+    # have never occurred in real data seen so far — every transient found has been
+    # nested ("Parent - Army of X", "Parent - Consular army"), which the path loop
+    # below handles. Not building root-level TRANSIENT rows; parent_transient is
+    # still reported above for visibility in case this assumption ever breaks.
 
     # ── Nested members: PAR entries named "Parent - X", "Parent - X - Y", ... ──
     # Every distinct prefix path of length >=2 found among the parent's own
     # candidate entries becomes one output entity, at whatever depth it occurs
     # (Milestone 1: previously this only looked at the first dash, flattening
     # e.g. "Roman Ally - Kingdom of Syracuse - Tauromenion" into one entity
-    # instead of a proper 2-level chain).
+    # instead of a proper 2-level chain). Paths are discovered from BOTH real
+    # and transient entries, since a transient's own name (e.g. "Parent -
+    # Consular army") needs discovering too — Milestone 2: it now becomes its
+    # own Type="TRANSIENT" entity instead of being silently dropped.
     prefix_paths = set()
-    for pe in parent_entries:
+    for pe in parent_real + parent_transient:
         for dr in pe['entry']['dateRanges']:
             if owner_name(dr['name']) == args.polity:
                 path = path_of(dr['name'])
@@ -531,14 +555,26 @@ def main():
         depth = len(path)
         entity_match = lambda n, path=path, depth=depth: path_of(n)[:depth] == path
         ent_repair_log = [0]
-        ent_entries, ent_transient = find_entries_by_predicate(tiles_data, entity_match, ent_repair_log)
-        ent_breakpoints = truncate(build_breakpoints(ent_entries, entity_match))
+        ent_real, ent_transient = find_entries_by_predicate(tiles_data, entity_match, ent_repair_log)
+
+        ent_real_breakpoints = truncate(build_breakpoints(ent_real, entity_match))
         ent_seam_log = [0]
-        ent_rows = slice_into_rows(ent_entries, ent_breakpoints, entity_match, ent_seam_log)
-        print(f"=== {' > '.join(path)} ===  entries={len(ent_entries)}  "
-              f"transient_excluded={ent_transient}  ring_repairs={ent_repair_log[0]}  "
-              f"rows={len(ent_rows)}  seam_repairs={ent_seam_log[0]}")
-        entities.append({'name': path[-1], 'member_of': f'({path[-2]})', 'rows': ent_rows, 'is_parent': False})
+        ent_real_rows = slice_into_rows(ent_real, ent_real_breakpoints, entity_match, ent_seam_log)
+
+        ent_trans_breakpoints = truncate(build_breakpoints(ent_transient, entity_match))
+        ent_trans_seam_log = [0]
+        ent_trans_rows = slice_into_rows(ent_transient, ent_trans_breakpoints, entity_match, ent_trans_seam_log)
+
+        print(f"=== {' > '.join(path)} ===  real_entries={len(ent_real)} (rows={len(ent_real_rows)})  "
+              f"transient_entries={len(ent_transient)} (rows={len(ent_trans_rows)})  "
+              f"ring_repairs={ent_repair_log[0]}  seam_repairs={ent_seam_log[0]}+{ent_trans_seam_log[0]}")
+
+        if ent_real_rows:
+            entities.append({'name': path[-1], 'member_of': f'({path[-2]})', 'type': 'POLITY',
+                              'rows': ent_real_rows, 'is_parent': False})
+        if ent_trans_rows:
+            entities.append({'name': path[-1], 'member_of': f'({path[-2]})', 'type': 'TRANSIENT',
+                              'rows': ent_trans_rows, 'is_parent': False})
 
     # ── Assemble final rows with resolved color ────────────────────────────────
     out_rows = []
@@ -557,7 +593,7 @@ def main():
             color_r, color_g, color_b = color if color else (None, None, None)
             out_rows.append({
                 'Name': ent['name'], 'FromYear': row['FromYear'], 'ToYear': row['ToYear'],
-                'Area': round(area_km2(geom), 1), 'Type': 'POLITY', 'References': '',
+                'Area': round(area_km2(geom), 1), 'Type': ent['type'], 'References': '',
                 'MemberOf': ent['member_of'],
                 'ColorR': color_r, 'ColorG': color_g, 'ColorB': color_b,
                 'geometry': geom,

@@ -10,19 +10,25 @@ the same pipeline.
 
 ## Contents
 
-128 rows total: 53 for Roman Ally itself, plus 58 "secondaries" (tribes/city-states that
-appear as `"Roman Ally - X"` at some point) — including some well outside Rome's own
-territory, e.g. `Massalia` (Marseille) and `Kingdom of Syracuse`, since "allied" status
-was recorded broadly across Italy and Sicily, not just adjacent to Rome. Spans
-**-486.5 to -1.0**.
+132 rows total: 128 `Type="POLITY"` (53 for Roman Ally itself, plus 57 distinct nested
+member names — tribes/city-states that appear as `"Roman Ally - X"` at some point,
+including some well outside Rome's own territory, e.g. `Massalia`/Marseille and
+`Kingdom of Syracuse`, since "allied" status was recorded broadly across Italy and
+Sicily) and 4 `Type="TRANSIENT"` (`Apulia`, `Army`, `Kingdom of Syracuse`,
+`Naval expedition` — see the Roman Republic README for what these are and why they're
+kept, not discarded). Spans **-486.5 to -1.0**.
 
 ## Notable results
 
-- **92 real territory entries survived, 0 excluded as transient** — unlike the Roman
-  Republic run, no army/campaign markers turned up under this owner name in this scope
-  (plausible: campaigns tend to be recorded under whichever polity conducted them, not
-  under an ally's own name).
-- **One secondary produced zero rows**: `Vulci` — its only "Roman Ally" date range has
+- **92 real territory entries, plus a handful of transient/army entries newly surfaced**
+  as their own `Type="TRANSIENT"` rows (4 of them) — far fewer than Roman Republic's 354,
+  consistent with the theory that campaigns tend to be recorded under whichever polity
+  conducted them, not under an ally's own name; a few still slipped in here.
+- **Confirms a name can be both**: `Apulia` and `Kingdom of Syracuse` each produce *both*
+  a `POLITY` row-set (their real held territory) *and* a separate `TRANSIENT` row-set
+  (a campaign that happens to share the same name chain) — the pipeline was designed to
+  support this, and this is the first real data confirming it actually occurs.
+- **One member produced zero rows**: `Vulci` — its only "Roman Ally" date range has
   `from == to` (a zero-span/instant marker), same pattern as `Latin League` in the Roman
   Republic export; correctly produces no interval, not a bug.
 - **A real 3-level MemberOf chain**: `Roman Ally > Kingdom of Syracuse > Tauromenion`.

@@ -15,9 +15,9 @@ being founded, lost, and re-founded). Spans **-495.7 to -1.0**.
 
 ## Notable results
 
-- **26 real territory entries, 0 excluded as transient** — clean run, no army/campaign
-  markers under this owner name, no ring repairs needed at all (unlike Roman Republic and
-  Roman Ally, both of which needed several `shapely.make_valid` repairs).
+- **26 real territory entries, 0 classified as transient** — clean run, no army/campaign
+  markers under this owner name (so no `Type="TRANSIENT"` rows in this export, unlike
+  Roman Republic and Roman Ally), no ring repairs needed at all either.
 - Every discovered secondary produced at least one row (no zero-span dummy entries in
   this scope, unlike `Latin League` in Roman Republic or `Vulci` in Roman Ally).
 - Recognizable named colonies throughout: `Ariminum` (Rimini), `Beneventum`, `Luceria`,
