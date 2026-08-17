@@ -16,12 +16,30 @@ Newline-delimited GeoJSON: each line is one complete GeoJSON `Feature` object (s
 Chosen over a single big `FeatureCollection` array specifically so updates stay
 append/stream-friendly at scale — see `merge_into_master.py`'s docstring for why.
 
-Currently 1895 lines across 4 polities (Roman Republic, Roman Ally, Roman Latin Colony,
-Persian Empire) and 3 `Type` values in active use: `POLITY` (1263), `TRANSIENT` (627),
-`TRIBAL_AREA` (5, new as of Milestone 5 — see `roman_ally_2026-08-16.README.md` for what
-that means and a real bug it surfaced/fixed). See `exports/processed_polities.txt` for
+Currently 4480 lines across 5 `SourceRun`s (Roman Republic, Roman Ally, Roman Latin
+Colony, Persian Empire, and — new as of Milestone 6, 2026-08-17 — `Cities`) and 4 `Type`
+values in active use: `POLITY` (1263), `TRANSIENT` (627), `TRIBAL_AREA` (5, Milestone 5 —
+see `roman_ally_2026-08-16.README.md` for what that means and a real bug it
+surfaced/fixed), `CITY` (2585, Milestone 6). See `exports/processed_polities.txt` for
 the current exact list with
 row counts — that file *is* committed (see below).
+
+**`Cities` is not like the other `SourceRun`s** — it isn't a `--polity` name at all, it's
+a single global run (`export_polity_polygons.py --cities`) covering every populated
+`cities/<lat>/CIT<lon>.TXT` tile in one pass (76 of 1,820 tiles have data; 1,031 cities,
+2,585 date-range rows full-fidelity, ~900KB). Each city is one fixed point; its
+date-range entries (sometimes a real rename/refounding history, e.g. Beijing has 11 —
+Youzhou → ... → Beijing) become rows directly, no breakpoint/union step needed the way
+polygons need. `MemberOf` is blank (no point-in-polygon spatial join against the
+master's own polygons yet — not worth building until there's polity coverage that
+extends into the eras city date-ranges actually reach). Color resolves differently too:
+`resolve_city_color()` uses `offsets[colorIndex]` directly with no primaries-base
+addition (mirrors `colormatcher.js::resolveCityRgb`), unlike every other row's
+`resolve_color()`. Re-run with:
+```
+python export_polity_polygons.py --cities --out exports/_tmp.geojson
+python merge_into_master.py --polity "Cities" --geojson exports/_tmp.geojson
+```
 
 ## Updating (adding or re-running a polity)
 

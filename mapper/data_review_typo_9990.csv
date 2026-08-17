@@ -1,0 +1,8 @@
+Kind,FileType,Tile,Line,EntryIndex,Name,FromYear,ToYear,References
+typo_9990_from,PAR,115/PAR045.ASC,433,31,UNKNOWN,-9990.0,-1200.0,CST#42; CST#43; CST#38; CST#37; CST#36; CST#35
+typo_9990_from,PAR,125/PAR025.ASC,187,251,UNKNOWN,-9990.0,-690.5,CST#178
+typo_9990_from,PAR,125/PAR025.ASC,243,252,UNKNOWN,-9990.0,-1475.5,CST#179
+typo_9990_from,CST,125/CST025.PRN,5986,176,,-9990.0,1200.0,"used by PAR: Arzawa, Carians - Melia, Greek Alliance - Ionia, Ionian League, Kingdom of Lysimakhos - Karia, Persian Empire - Lydia - Lydia - Ionia, Ptolemaic Kingdom, Seleucid Kingdom, UNKNOWN"
+typo_9990_from,CST,125/CST025.PRN,5995,177,,-9990.0,1200.0,"used by PAR: Arzawa, Greek Alliance - Ionia, Ionian League, Kingdom of Lysimakhos - Karia, Persian Empire - Lydia - Lydia - Karia, Ptolemaic Kingdom, Seleucid Kingdom, UNKNOWN"
+typo_9990_from,CST,125/CST025.PRN,6022,178,,-9990.0,-300.0,used by PAR: UNKNOWN
+typo_9990_from,CST,125/CST025.PRN,6042,179,,-9990.0,1200.0,used by PAR: UNKNOWN

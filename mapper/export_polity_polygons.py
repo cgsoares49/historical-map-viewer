@@ -36,6 +36,7 @@ import csv
 import argparse
 from datetime import date
 
+import shapely
 from shapely.geometry import Polygon, Point, MultiPoint, mapping
 from shapely.validation import make_valid
 from shapely.ops import unary_union, transform
@@ -217,6 +218,89 @@ def parse_par_full(lines):
             'dateRanges': date_ranges, 'polyRefs': poly_refs, 'dotPoint': dot_point,
         })
     return entries
+
+
+# ── CIT parser (mirrors dataloader.js _parseCities — Milestone 6) ──────────────
+#
+# A city tile has none of PAR's polygon/polyRef machinery: each city is one
+# fixed (lon, lat) point carrying its own list of date-range entries, which
+# can be a real rename/refounding history (e.g. Beijing: Youzhou -> ... ->
+# Beijing (1368.0-9999.0), 11 entries for one point) rather than an
+# ownership history. Two different literal values (9999.0 and, in a handful
+# of entries, 9990.0) are used for the same "still exists today" open-ended
+# ToYear -- normalized to 9999.0 here at parse time only, the same
+# non-destructive precedent as js_parse_number's handling of other stray
+# source typos (canonical data itself is not touched).
+def parse_cit_full(lines):
+    """Returns list of {entryIndex, dateRanges:[{from,to,name,colorIndex,
+    symCode,detCode}], lon, lat}."""
+    if not lines:
+        return []
+    i = 0
+    city_count = int(lines[i]); i += 1
+    cities = []
+    for _ in range(city_count):
+        if i >= len(lines):
+            break
+        entry_index = int(lines[i]); i += 1
+        num_ranges = int(lines[i]); i += 1
+        date_ranges = []
+        for _ in range(num_ranges):
+            if i + 4 >= len(lines):
+                break
+            frm, to = parse_date_range(lines[i]); i += 1
+            if to == 9990.0:
+                to = 9999.0
+            name = lines[i]; i += 1
+            color_index = int(lines[i]); i += 1
+            sym_code = float(lines[i]); i += 1
+            det_code = int(float(lines[i])); i += 1
+            date_ranges.append({'from': frm, 'to': to, 'name': name, 'colorIndex': color_index,
+                                 'symCode': sym_code, 'detCode': det_code})
+        if i >= len(lines):
+            break
+        i += 1  # numCoords, always 1, ignored
+        coords = [t for t in re.split(r'[\s,]+', lines[i].strip()) if t]; i += 1
+        cities.append({'entryIndex': entry_index, 'dateRanges': date_ranges,
+                        'lon': float(coords[0]), 'lat': float(coords[1])})
+    return cities
+
+
+CIT_FILENAME_RE = re.compile(r'^CIT(\d{3})\.TXT$', re.IGNORECASE)
+
+
+def discover_city_tiles():
+    """Every cities/<latD>/CIT<lon>.TXT tile that actually has >=1 city --
+    most of the 1,820-tile grid is empty (population is currently
+    concentrated in the Mediterranean/Near East/China core; empty files are
+    literally ' 0 \r\n')."""
+    cit_dir = os.path.join(DATA_DIR, 'cities')
+    tiles = []
+    for lat_dir in sorted(os.listdir(cit_dir)):
+        lat_path = os.path.join(cit_dir, lat_dir)
+        if not os.path.isdir(lat_path):
+            continue
+        for fname in sorted(os.listdir(lat_path)):
+            if not CIT_FILENAME_RE.match(fname):
+                continue
+            try:
+                with open(os.path.join(lat_path, fname), encoding='latin-1') as f:
+                    count = int(f.readline().strip())
+            except (OSError, ValueError):
+                count = 0
+            if count > 0:
+                tiles.append((lat_dir, fname[3:6]))
+    return tiles
+
+
+def resolve_city_color(color_index, offsets):
+    """Ports colormatcher.js resolveCityRgb -- offsets[color_index] used
+    directly as the full RGB (VB: intC = intRedoffset(intOffset), no
+    primaries-base addition), unlike polity/tribal colors via resolve_color()
+    below."""
+    if 0 <= color_index < len(offsets):
+        return offsets[color_index]
+    return (0, 0, 0)
 
 
 # ── Ring assembly (ports renderer.js _buildCombinedPolygon) ────────────────────
@@ -519,6 +603,36 @@ def area_km2(geom):
     return projected.area / 1_000_000.0
 
 
+# Tribal dot clusters have no polygon at all, so geom.area is always 0 --
+# area_km2() alone can't give them a meaningful Area figure. Per the user
+# (2026-08-17): compute a hull polygon around each row's active dots and use
+# *its* area, but don't store the hull as the row's own displayed geometry --
+# dot-cluster rows stay lightweight Point/MultiPoint in the actual delivered
+# dataset (minimal bytes), the hull only feeds the Area number. concave_hull
+# (ratio=0.3, i.e. moderately tight -- not the full convex sprawl to distant
+# outlier dots, not the maximally-jagged 0.0 extreme either) needs >=3
+# distinct points to form a polygon; fewer than that has no defined area,
+# same as before this feature.
+HULL_RATIO = 0.3
+
+
+def hull_geom(geom, ratio=HULL_RATIO):
+    if geom.geom_type not in ('Point', 'MultiPoint'):
+        return None
+    pts = list(geom.geoms) if geom.geom_type == 'MultiPoint' else [geom]
+    if len(pts) < 3:
+        return None
+    hull = shapely.concave_hull(MultiPoint(pts), ratio=ratio)
+    if hull.is_empty or hull.geom_type not in ('Polygon', 'MultiPolygon'):
+        return None
+    return hull
+
+
+def hull_area_km2(geom, ratio=HULL_RATIO):
+    hull = hull_geom(geom, ratio=ratio)
+    return round(area_km2(hull), 1) if hull is not None else 0.0
+
+
 # ── Tribal dot clusters (Milestone 5) ────────────────────────────────────────
 #
 # Two genuinely different source representations for tribal territory, per the
@@ -623,6 +737,49 @@ def is_tribal_name(name, tribal_names):
     return name in tribal_names or name in TRIBAL_NAME_OVERRIDES
 
 
+# Known cases where a "near-white terry" bordered polygon (drawn later, often
+# just to hold a map label over otherwise-empty space once dots are hidden)
+# geographically/temporally overlaps one or more tribal dot-cluster entities
+# under a *different* PAR name, so build_tribal_name_set's exact-name
+# reclassification can't catch the relationship. Per the user (2026-08-17):
+# dots are the original/authoritative data; these borders are a later
+# addition and should NOT suppress the dot entities -- overlapping rows are
+# kept as-is but flagged (OverlapNote) for a human to curate later. Source:
+# `duplicated tribal areas and dots.xlsx`. Extend as more pairs are found.
+TRIBAL_CONTAINER_OVERLAPS = {
+    'Garamantes': ('Saharan Peoples',),
+    'Libyphoenices': ('Libyans',),
+    'North Arabian Semites': ('Aramaeans', 'Qedarites', 'Arabs'),
+    'Sikeloi': ('Sicels',),
+    'Sikanoi': ('Sicans',),
+    'Bruttii': ('Italics', 'Bruttians'),
+    'Thesprotians': ('Dorians',),
+    'Piceni': ('Picentes',),
+    'Umbrii': ('Umbri',),
+    'Samnium': ('Samnites',),
+    'Iapygii': ('Daunians', 'Peucetians', 'Messapians'),
+    'Lucani': ('Italics', 'Lucanians'),
+    'Messapii': ('Messapians',),
+    'Illyrioi': ('Illyrians',),
+    'Thraikes': ('Thracians',),
+    'Paiones': ('Paeonians',),
+}
+_OVERLAP_CONTAINER_OF = {}
+for _container, _dots in TRIBAL_CONTAINER_OVERLAPS.items():
+    for _dot in _dots:
+        _OVERLAP_CONTAINER_OF.setdefault(_dot, []).append(_container)
+
+
+def overlap_note(name):
+    """Flag string for entities in a known container/dot-cluster overlap
+    (see TRIBAL_CONTAINER_OVERLAPS above), else ''."""
+    if name in TRIBAL_CONTAINER_OVERLAPS:
+        return 'Overlaps dot-tribe(s): ' + ', '.join(TRIBAL_CONTAINER_OVERLAPS[name])
+    if name in _OVERLAP_CONTAINER_OF:
+        return 'Contained in border: ' + ', '.join(_OVERLAP_CONTAINER_OF[name])
+    return ''
+
+
 PAR_FILENAME_RE = re.compile(r'^PAR(\d{3})\.ASC$', re.IGNORECASE)
 
 
@@ -655,6 +812,84 @@ def discover_tiles(polity_name):
     return tiles
 
 
+# ── Cities (Milestone 6) ────────────────────────────────────────────────────
+#
+# Unlike --polity runs, cities aren't scoped to a top-level name -- every
+# populated CIT tile is scanned in one pass and the whole thing is upserted
+# into the master as a single SourceRun="Cities" block (see
+# merge_into_master.py's --polity flag, which is really just "the SourceRun
+# value to upsert" and doesn't care that it isn't a PAR owner name here).
+# No breakpoint/union machinery is needed either -- each city is already one
+# fixed point, so its date-range entries become output rows directly.
+# MemberOf is left blank (per the user, 2026-08-17): correctly attributing a
+# city to whichever polity contains it at each moment would need a
+# point-in-polygon spatial join against the master's own polygons, which
+# isn't worth building yet -- doubly so since no polity coverage in the
+# master currently extends into the medieval/modern eras a city's own
+# date-ranges can reach anyway.
+def export_cities(args, generated):
+    tiles = discover_city_tiles()
+    print(f"Discovered {len(tiles)} populated city tiles (of 1,820 in the full grid)")
+    offsets = load_offsets()
+
+    out_geojson = args.out or os.path.join(MAPPER_DIR, 'exports', f'cities_{generated}.geojson')
+    out_csv = os.path.splitext(out_geojson)[0] + '.csv'
+
+    out_rows = []
+    city_count = 0
+    for lat_dir, lon_code in tiles:
+        fpath = os.path.join(DATA_DIR, 'cities', lat_dir, f'CIT{lon_code}.TXT')
+        with open(fpath, encoding='latin-1') as f:
+            lines = [l.rstrip('\r\n') for l in f.readlines()]
+        cities = parse_cit_full(lines)
+        city_count += len(cities)
+        for c in cities:
+            point = Point(c['lon'], c['lat'])
+            for dr in c['dateRanges']:
+                if args.end_year is not None and dr['from'] >= args.end_year:
+                    continue
+                to_year = min(dr['to'], args.end_year) if args.end_year is not None else dr['to']
+                color_r, color_g, color_b = resolve_city_color(dr['colorIndex'], offsets)
+                out_rows.append({
+                    'Name': dr['name'], 'FromYear': dr['from'], 'ToYear': to_year,
+                    'Area': 0.0, 'Type': 'CITY', 'References': '', 'MemberOf': '',
+                    'ColorR': color_r, 'ColorG': color_g, 'ColorB': color_b,
+                    'OverlapNote': '', 'geometry': point,
+                })
+    print(f"Parsed {city_count} cities -> {len(out_rows)} date-range rows")
+
+    for idx, r in enumerate(out_rows, start=1):
+        r['Index'] = idx
+    for r in out_rows:
+        r['Generated'] = generated
+        r['SourceRun'] = 'Cities'
+
+    prop_cols = ['Index', 'Name', 'FromYear', 'ToYear', 'Area', 'Type', 'References', 'MemberOf',
+                 'ColorR', 'ColorG', 'ColorB', 'Generated', 'SourceRun', 'OverlapNote']
+
+    features = [{
+        'type': 'Feature',
+        'properties': {k: r[k] for k in prop_cols},
+        'geometry': mapping(r['geometry']),
+    } for r in out_rows]
+    fc = {'type': 'FeatureCollection', 'generated': generated, 'features': features}
+    os.makedirs(os.path.dirname(out_geojson), exist_ok=True)
+    with open(out_geojson, 'w', encoding='utf-8') as f:
+        json.dump(fc, f, ensure_ascii=False)
+    print(f"Wrote {len(features)} features to {out_geojson}")
+
+    WKT_TRUNCATE = 60
+    with open(out_csv, 'w', newline='', encoding='utf-8') as f:
+        w = csv.writer(f)
+        w.writerow(prop_cols + ['geometry'])
+        for r in out_rows:
+            wkt = r['geometry'].wkt
+            if len(wkt) > WKT_TRUNCATE:
+                wkt = wkt[:WKT_TRUNCATE] + '…'
+            w.writerow([r[k] for k in prop_cols] + [wkt])
+    print(f"Wrote {len(out_rows)} rows to {out_csv}")
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--polity', default='Roman Republic')
@@ -668,11 +903,18 @@ def main():
                      help='GeoJSON output path; a sibling .csv is written alongside it. '
                           'Default: exports/<slug>_<today\'s date>.geojson')
     ap.add_argument('--end-year', type=float, default=None,
-                     help='Truncate output at this year (applied to the parent AND every secondary). '
-                          'Use when a stray entry (e.g. a garrison never relabeled after the dataset\'s '
-                          'tracked period ends) would otherwise stretch an entity\'s recorded lifespan '
-                          'misleadingly.')
+                     help='Truncate output at this year (applied to the parent AND every secondary, or to '
+                          'every city row if --cities is given). Use when a stray entry (e.g. a garrison '
+                          'never relabeled after the dataset\'s tracked period ends) would otherwise '
+                          'stretch an entity\'s recorded lifespan misleadingly.')
+    ap.add_argument('--cities', action='store_true',
+                     help='Export every city (CIT tile data) instead of a --polity run -- one global '
+                          'SourceRun="Cities" pass, ignores --polity/--tiles/--auto-tiles.')
     args = ap.parse_args()
+
+    if args.cities:
+        export_cities(args, date.today().isoformat())
+        return
 
     if args.tiles:
         tile_pairs = [tuple(t.split(':')) for t in args.tiles]
@@ -727,24 +969,41 @@ def main():
 
     entities = [{'name': args.polity, 'member_of': '', 'type': real_type(args.polity),
                  'rows': parent_rows, 'is_parent': True}]
-    # Root-level transients (a bare, undashed polity name itself flagged transient)
-    # have never occurred in real data seen so far — every transient found has been
-    # nested ("Parent - Army of X", "Parent - Consular army"), which the path loop
-    # below handles. Not building root-level TRANSIENT rows; parent_transient is
-    # still reported above for visibility in case this assumption ever breaks.
 
-    # NOTE: root-level dot rows use an EXACT match on the bare polity name
-    # (root_bare_match), NOT the prefix-matching parent_match used above for
-    # the polygon composite. parent_match/parent_dots fold in every nested
-    # descendant's entries (correct for the polygon case, matching
-    # Cliopatria's composite-duplicates-members convention), but reusing
-    # that same fold-in for a "root-level dot entity" would merge e.g.
+    # NOTE: root-level transient/dot rows below all use an EXACT match on the
+    # bare polity name (root_bare_match), NOT the prefix-matching parent_match
+    # used above for the polygon composite. parent_match/parent_dots fold in
+    # every nested descendant's entries (correct for the polygon case,
+    # matching Cliopatria's composite-duplicates-members convention), but
+    # reusing that same fold-in for a root-level entity would merge e.g.
     # Daunians' own dot point into a row mislabeled "Roman Ally" -- Daunians
-    # already gets its own correctly-attributed row from the path loop
-    # below. A root-level dot row should only exist for dot entries whose
-    # name is *exactly* the bare root name, with no further "- X" suffix.
-    # (Found and fixed this exact bug testing Roman Ally, 2026-08-16.)
+    # already gets its own correctly-attributed row from the path loop below.
+    # A root-level row should only exist for entries whose name is *exactly*
+    # the bare root name, with no further "- X" suffix. (Found and fixed this
+    # exact bug testing Roman Ally, 2026-08-16.)
     root_bare_match = lambda n, p=args.polity: n.strip() == p
+
+    # Root-level transients (a bare, undashed polity name itself flagged
+    # transient -- e.g. a clan-warfare/revolt event with no real territory of
+    # its own) were assumed not to occur based on every sample run through
+    # 2026-08-16 (every transient found had been nested, e.g. "Parent - Army
+    # of X"). Found real counterexamples running the primaries.txt batch
+    # 2026-08-17 ("Fan clan", one of Jin's Six Ministers: 2 real transient
+    # entries, 0 output rows because this path didn't exist). The real-
+    # territory bucket from this call is intentionally discarded -- any
+    # bare-root real entries it would find are already folded into
+    # parent_rows above via parent_match's inclusive prefix matching, so
+    # keeping them here would double-count as a second entity.
+    root_trans_repair_log = [0]
+    _, root_level_transient = find_entries_by_predicate(tiles_data, root_bare_match, root_trans_repair_log)
+    root_trans_breakpoints = truncate(build_breakpoints(root_level_transient, root_bare_match))
+    root_trans_seam_log = [0]
+    root_trans_rows = slice_into_rows(root_level_transient, root_trans_breakpoints, root_bare_match, root_trans_seam_log)
+    if root_trans_rows:
+        print(f"  (root-level transient rows: {len(root_trans_rows)})")
+        entities.append({'name': args.polity, 'member_of': '', 'type': 'TRANSIENT',
+                          'rows': root_trans_rows, 'is_parent': True})
+
     root_dots, root_dots_transient = find_dot_entries_by_predicate(tiles_data, root_bare_match)
 
     root_dot_breakpoints = truncate(build_breakpoints(root_dots, root_bare_match))
@@ -824,11 +1083,23 @@ def main():
 
     # ── Assemble final rows with resolved color ────────────────────────────────
     out_rows = []
+    hull_features = []  # debug-only, see "Write hull-preview GeoJSON" below
     for ent in entities:
         for row in ent['rows']:
             geom = row['geometry']
             if not geom.is_valid:
                 print(f"  WARNING: {ent['name']} row {row['FromYear']}..{row['ToYear']} geometry invalid after repair")
+            if geom.geom_type in ('Point', 'MultiPoint'):
+                area = hull_area_km2(geom)
+                hull = hull_geom(geom)
+                if hull is not None:
+                    hull_features.append({'type': 'Feature',
+                                           'properties': {'Name': ent['name'], 'FromYear': row['FromYear'],
+                                                           'ToYear': row['ToYear'], 'Area': area,
+                                                           'DotCount': len(list(geom.geoms)) if geom.geom_type == 'MultiPoint' else 1},
+                                           'geometry': mapping(hull)})
+            else:
+                area = round(area_km2(geom), 1)
             if ent['is_parent']:
                 color = parent_color
             else:
@@ -839,9 +1110,10 @@ def main():
             color_r, color_g, color_b = color if color else (None, None, None)
             out_rows.append({
                 'Name': ent['name'], 'FromYear': row['FromYear'], 'ToYear': row['ToYear'],
-                'Area': round(area_km2(geom), 1), 'Type': ent['type'], 'References': '',
+                'Area': area, 'Type': ent['type'], 'References': '',
                 'MemberOf': ent['member_of'],
                 'ColorR': color_r, 'ColorG': color_g, 'ColorB': color_b,
+                'OverlapNote': overlap_note(ent['name']),
                 'geometry': geom,
             })
 
@@ -857,7 +1129,7 @@ def main():
         r['SourceRun'] = args.polity
 
     prop_cols = ['Index', 'Name', 'FromYear', 'ToYear', 'Area', 'Type', 'References', 'MemberOf',
-                 'ColorR', 'ColorG', 'ColorB', 'Generated', 'SourceRun']
+                 'ColorR', 'ColorG', 'ColorB', 'Generated', 'SourceRun', 'OverlapNote']
 
     # ── Write GeoJSON ────────────────────────────────────────────────────────
     features = [{
@@ -884,6 +1156,17 @@ def main():
                 wkt = wkt[:WKT_TRUNCATE] + '…'
             w.writerow([r[k] for k in prop_cols] + [wkt])
     print(f"Wrote {len(out_rows)} rows to {out_csv}")
+
+    # ── Write hull-preview GeoJSON (debug only, not part of the delivered
+    # dataset / never merged into the master) ──────────────────────────────
+    # Lets the user visually check the concave-hull shapes computed for Area
+    # against the actual dot points, side by side in QGIS/geojson.io -- the
+    # hull polygon itself is otherwise discarded once Area is read off it.
+    if hull_features:
+        out_hulls = os.path.splitext(out_geojson)[0] + '_hulls.geojson'
+        with open(out_hulls, 'w', encoding='utf-8') as f:
+            json.dump({'type': 'FeatureCollection', 'features': hull_features}, f, ensure_ascii=False)
+        print(f"Wrote {len(hull_features)} hull-preview feature(s) to {out_hulls}")
 
     # ── Continuity check, per entity ────────────────────────────────────────
     for ent in entities:
