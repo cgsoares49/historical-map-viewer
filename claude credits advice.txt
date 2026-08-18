@@ -1,0 +1,11 @@
+ The biggest cost driver is conversation length — every turn re-sends the entire history. A few high-impact habits:
+
+  - /clear between tasks — you already did this. Make it a habit at every topic switch, not just when you run out.
+  - Stay on plain Sonnet — you've already done this. The 1M context model costs noticeably more per token; only use it
+  if you actually need very long context.
+  - Switch to Haiku for simple tasks — /model haiku for things like "read this file and tell me what it does," quick
+  edits, or explaining snippets. Switch back to Sonnet for planning and multi-file work.
+  - Don't have me read files speculatively — if you're browsing/exploring, read files yourself and paste the relevant
+  snippet. Each large file I read adds tokens.
+  - Avoid multi-step exploratory sessions — the sessions that ran long were ones where we were figuring things out
+  interactively. If you know what you want done, give me a tight brief and I'll do it in fewer turns.

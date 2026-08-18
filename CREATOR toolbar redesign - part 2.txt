@@ -1,0 +1,292 @@
+CREATOR toolbar redesign — part 2
+================================================================
+Written 2026-07-30. Follows on from "Redesign the CREATOR tool bar.txt"
+(part 1, implemented same day — shorter toolbar, 2:1 letterboxed map,
+merged Move/Zoom/Display column, Run+Map Center moved right, always-
+visible lon/lat/color/tile status strip).
+
+STATUS: sections A/B/C/D below are all DONE and pushed, except the
+digitize side-panel half of section D, which is TABLED per the user
+(high priority, not forgotten — see section D). Section F is an
+unrelated bug fix (stale data-file cache) found and fixed in the same
+session — DONE and real-data verified.
+
+User feedback after part 1: toolbar is STILL too tall. Four asks:
+  1. Move the Display button to the left, under the "content limit" box.
+  2. Move the Zoom area to before the Save dialog.
+  3. Move "zoom factor" (the pan-step Factor field) somewhere so no
+     toolbar column is taller than the Date box.
+  4. Maximize the drawn map; map starts at the left edge; use the
+     freed space on the right for the digitizer point list.
+
+All file references are to mapper/mapper-local.html (CREATOR only —
+this file is gitignored in claudetest and pushed separately via
+mapper/push-creator.ps1 to the creator-repo).
+
+----------------------------------------------------------------
+A. HEIGHT BUDGET — measured against the file as it stood post part-1
+----------------------------------------------------------------
+Row unit ≈ 17px (input/button), label ≈ 9px, gap ≈ 1px, pan-grid is a
+fixed 56px block (3×18px + 2×1px gap) regardless of label.
+
+Date group is the reference ceiling:
+    label(9) + row×3(17 each) + gap×2(1 each) = 62px content
+
+Groups vs that 62px ceiling, before this round's fixes:
+  - "Move / Zoom" combined group: label + pan-grid + Factor row +
+    zoom select row + zoom in/out row + Display row ≈ 160px+. Way
+    over — this was the main offender the user was reacting to.
+  - Save/Projection: ≈ 59px — 3px slack, tight.
+  - Map Center: ≈ 45px — 17px slack.
+  - Run: ≈ 67px — 5px OVER.
+  - Nav: ≈ 67px — 5px OVER.
+  - Vibe Map: ≈ 79px already (header + search input + history
+    dropdown), before adding Display — see section C.
+
+----------------------------------------------------------------
+B. PLANNED STRUCTURE (left to right) — DONE
+----------------------------------------------------------------
+Original plan called for: Vibe Map, Date, Move(pan-grid only), Zoom
+(select+custom+inout+Factor), Save/Projection, Map Center, Run
+(compressed), Nav (compressed, label dropped). Factor was planned to
+live in Zoom since Move/pan-grid had no slack for it.
+
+That plan was superseded by a later round of user feedback (see
+section C's "DECIDED + IMPLEMENTED" and the follow-up round below) —
+Display ended up in its own group next to Pan instead of under Vibe
+Map, and Factor ended up under Display instead of in Zoom. Final
+implemented order is documented at the end of section C.
+
+Run and Nav were compressed as originally planned: Run's "Skip"
+checkbox now shares the transport-buttons row instead of its own row,
+with `movieStatus` demoted to a small line below; Nav dropped its
+redundant "Nav" label. Both fit comfortably under the Date box's
+height.
+
+----------------------------------------------------------------
+C. DISPLAY BUTTON PLACEMENT — resolved through two rounds of feedback
+----------------------------------------------------------------
+Round 1 — the Vibe Map height conflict: Vibe Map is already ~79px
+tall (logo/title header + search input row + vibeHistory dropdown),
+already over the 62px ceiling before touching it. Ask #1 wanted
+Display added there too ("under the content limit box"), which would
+add another ~20-24px row, pushing it to ~100-103px — directly
+conflicting with ask #3's "no column taller than the Date box" if
+that rule was meant to apply to Vibe Map too. Flagged as an open
+question with two options (accept Vibe Map as an exception, or trim
+vibeHistory/tagline further to compensate).
+
+Round 2 — user asked "why can't Display just be made smaller to hit
+62px?" Answer given: shrinking Display alone can't get there — Vibe
+Map's OTHER content is already ~17-19px over the ceiling before
+Display exists at all; even a minimal Display row would land the
+group at ~95-97px regardless of the button's own font/width.
+
+DECIDED + IMPLEMENTED (final): Display lives in its own small group
+immediately next to Pan (matching the VB6 desktop tool's layout — see
+section D's VB6 reference note), NOT inside Vibe Map. Vibe Map group
+was left completely untouched (search input + history dropdown both
+kept exactly as-is, per explicit user request — "I still want vibe
+command and history stuff").
+
+Then a THIRD round of feedback further refined this:
+  - Display made smaller again (32px tall × 54px wide, font-size
+    11px) — it no longer needs to visually match Pan's full height
+    now that Factor moved back under it into the same group.
+  - Factor (panFactor) moved OUT of Zoom and into the Display group,
+    directly under the DISPLAY button — "closer to Pan" per the user.
+    Zoom group now holds only: select, hidden zoomCustom input,
+    in/out buttons.
+  - A NEW unlabeled "Tools" group was added holding just Options +
+    Digitize stacked vertically (one per row, full-width buttons),
+    inserted between the Display+Factor group and the Zoom group —
+    i.e. before the Save/Projection group, per the user's "before the
+    save area" ask, since these two are used frequently. Both were
+    REMOVED from the Nav group (rightmost), which now ends with just
+    Status + Dev in its last row.
+
+FINAL implemented left-to-right order: Vibe Map, Date, Pan,
+Display+Factor, Tools(Options+Digitize), Zoom, Save/Projection, Map
+Center, Run, Nav(Home/World/Abort/Status+Dev).
+
+Verified in a browser via CDP (console-error check) + screenshots at
+each round — no runtime errors, world map renders correctly, all
+groups present and correctly ordered.
+
+----------------------------------------------------------------
+D. MAP MAXIMIZATION + LEFT-FLUSH + DIGITIZER SIDE PANEL (ask #4)
+----------------------------------------------------------------
+STATUS: the "maximize map size" half is DONE. The digitize side-panel
+half remains TABLED per the user — see below.
+
+The map-maximization half went through its own revision: part 1 had
+forced the map-stage into an exact 2:1 (lon:lat) box, centered, with
+leftover space split as black letterbox bars. The user then said
+"2x1 degree is probably too restrictive for the map size goal" —
+reserving a digitize panel on the right already claims the leftover
+width on purpose, so forcing the map into a strict 2:1 box on top of
+that just adds pointless letterboxing inside the space that isn't
+reserved for the panel.
+
+DONE: the 2:1 letterbox lock was fully reverted. #map-container and
+#map-stage (the part-1 wrapper) are gone; canvas/overlay/backCanvas
+are direct children of #map-container again, and resizeCanvases()
+just fills container.clientWidth × container.clientHeight — same as
+the file looked before any of this day's changes. Map is flush to all
+edges, no forced ratio, no letterboxing. This does NOT reintroduce
+pixel distortion: projection.js already keeps xScale === yScale (1°
+lon == 1° lat in pixels) regardless of canvas aspect — the 2:1 lock
+was only ever about how much of the globe's lat/lon extent is visible
+at once, not about distortion. Confirmed in a browser screenshot: map
+spans the full window width with the toolbar shrunk well above it.
+
+STILL TABLED: turning the floating `#digitizePopup` into a permanent
+right-side point-list panel. User explicitly deferred this ("we table
+the digitize changes for now") — do NOT implement without the user
+picking this back up. BUT they explicitly flagged it as high
+priority: "this functionality is central to the creation workflow and
+I want it easily available" — so when this IS picked back up, don't
+let it slip in scope/priority, and don't make the existing "📍
+Digitize" popup any harder to reach than it already is in the
+meantime.
+
+Reference: `claudetest\mapper 4.1.8 screen.png` (repo root) is a
+screenshot of Mapper 4.1.8, the VB6 desktop tool the user is still
+actively using for creation work, alongside CREATOR. It shows the
+ORIGINAL design this whole redesign is (loosely) modeled on:
+  - A permanent point-list panel on the right edge of the map area
+    with columns "#", "Long", "Lat" — exactly the digitize point list
+    this section plans to build, confirming the column layout and
+    that a fixed-width always-visible side panel (not a popup) is the
+    right shape, matching what VB6 already does.
+  - The whole VB6 toolbar (Date/Coordinates/Zoom/Mouse coords/Mode/
+    Status/checkboxes/Tile ID/Detail/Color/paint-country toggles/
+    Delete-Save-Clear) fits in ~190px total across ONE unified control
+    strip — notably more controls than CREATOR's toolbar, in less
+    height. It achieves this via labels-above-single-row grouping (not
+    3-4 stacked rows per group), checkboxes packed in tight flat
+    columns, and a big DISPLAY button placed horizontally next to Pan
+    rather than stacked under something else — which is exactly the
+    shape section C ended up converging on independently. Worth
+    revisiting this screenshot again when back on this section, and
+    for any further toolbar squeezing.
+
+Concrete steps for the digitize panel (still tabled — not done):
+  1. Reserve the digitize panel's width FIRST, map gets the remainder:
+     give `#digitizeSidePanel` a concrete width (e.g. `width: 260px`
+     fixed, or `flex: 0 0 260px`) — so it has a predictable footprint
+     and the map takes everything else. A resizable drag-handle is a
+     nice-to-have, not required for v1.
+  2. Small-window fallback: if `container.clientWidth − 260 < some
+     minimum useful map width` (e.g. 300px), collapse the panel
+     (display:none) so the map keeps the space instead.
+  3. Move the digitize instructional text + `#digitizePanelBody`
+     (currently inside the floating `#digitizePopup`) into this new
+     permanent panel. Retire `#digitizePopup`'s draggable-popup chrome
+     (header bar, close button, drag handling) — it's no longer a
+     popup, so its `makeDraggable(...)` registration and the popup-
+     toggle CSS treatment go away.
+  4. JS: `PointPicker` is currently instantiated lazily the first time
+     the digitize popup is opened, in the `btnDigitize` click handler
+     (`togglePopup('digitizePopup', 'btnDigitize'); if (_digitizeMode
+     && !digitizePicker) { new PointPicker({ container:
+     digitizePanelBody, ... }) }`). Since the panel is now always
+     present, construct it once at page load instead (or keep the
+     lazy-construct pattern, just drop the popup show/hide around it).
+  5. Repurpose the `btnDigitize` ("📍 Digitize") button: instead of
+     `togglePopup(...)`, it should just flip `_digitizeMode` (whether
+     clicking the map adds a point) and toggle its own `.active` class
+     — the point-list panel itself stays visible either way.
+  6. Other code that reads `_digitizeMode` (overlay mousemove/mouseup/
+     mouseleave: click-to-add; document keydown: Escape to deselect,
+     arrow-key nudge) is unaffected — it already gates on
+     `_digitizeMode`, which keeps working once step 5's button change
+     is made.
+  (Re-check exact line numbers in the current file before starting —
+  they've shifted with every round of edits and will shift again.)
+
+----------------------------------------------------------------
+E. TESTING CHECKLIST (toolbar work, B/C/D — all done)
+----------------------------------------------------------------
+  - Run mapper/serve-creator.ps1, open http://localhost:8081/mapper-local.html
+  - Confirm no toolbar group's rendered height exceeds the Date box's.
+  - Confirm final group order: Vibe Map, Date, Pan, Display+Factor,
+    Tools(Options+Digitize), Zoom, Save/Projection, Map Center, Run, Nav.
+  - Confirm map is flush-left/full-width, no centered letterboxing.
+  - When the digitize side panel is eventually built: confirm the
+    point list is visible without opening any popup, and that
+    clicking "📍 Digitize" still toggles click-to-add point mode, and
+    confirm narrow-window behavior (panel collapses gracefully).
+  - Push via mapper/push-creator.ps1 when done (CREATOR-only file).
+
+----------------------------------------------------------------
+F. BUG FIX (unrelated to toolbar, found + fixed same session):
+   stale data after editing a data file
+----------------------------------------------------------------
+User report: "when I change a data file, the change was not picked up
+until I did a refresh" — specifically a HARD refresh (Ctrl+Shift+R),
+not just F5. Called this "fix number 6 on our original list" — that
+list was never found (searched this repo's txt files and all memory
+files; the only numbered list on record is the 5-item toolbar list
+above, no #6). Treated as a fresh bug report.
+
+FIRST ATTEMPT (same day, INCOMPLETE — user said "didn't fix"): added
+`DataLoader.invalidateFiles()`/`clearCache()`, hooked invalidation
+into the Dev > Replace tool's Apply path, added a manual "🔄 Reload
+Data" dev button. Root-cause diagnosis (the `_cache` Map, below) was
+correct, but the fix only covered edits made through the in-app
+Replace tool or a manually-clicked button — NOT the user's actual
+workflow (editing a file some other way, then just pressing Display
+normally). That's why it didn't fix anything for them.
+
+ROOT CAUSE (confirmed both times): `DataLoader` (mapper/js/
+dataloader.js) kept a permanent in-memory cache — `this._cache = new
+Map()` — keyed by file URL (e.g. `polareas/045/PAR005.ASC`).
+`_fetchAndParse()` returned the cached parsed result forever once a
+URL had been fetched once in the page's lifetime, with no path to
+invalidation except a full page reload (fresh `DataLoader`, empty
+cache).
+
+REAL FIX (second pass, DONE):
+  1. Removed the `_cache` Map entirely — `_fetchAndParse()` now always
+     fetches + parses fresh on every call. Also removed
+     `invalidateFiles`/`clearCache` and the "🔄 Reload Data" button
+     (no longer meaningful — every Display press is now always fresh,
+     nothing to invalidate and nothing for the user to remember to
+     click).
+  2. Added `{ cache: 'no-store' }` to the `fetch()` in `_fetchText()`
+     as defense-in-depth against browser HTTP caching — testing below
+     shows this wasn't actually the culprit here, but it's a free
+     safeguard.
+  3. Kept `runReplace(false)`'s auto-`scheduleRender()` after a
+     successful Apply (still nice UX, no cache to invalidate now).
+
+VERIFIED FOR REAL, against production code and real data (via Chrome
+DevTools Protocol, headless Edge, no manual browser interaction):
+  - Proved the HTTP layer was never the actual culprit: made a
+    throwaway test file, fetched it once, edited it externally,
+    re-fetched via plain `fetch()` in the SAME page (no reload) — got
+    the new content immediately even WITHOUT `no-store`. So it was
+    100% the JS-level Map cache, not browser HTTP caching.
+  - Proved the real fix works end-to-end on real data: backed up
+    `C:\My stuff\mapper\polareas\090\PAR005.ASC` (md5
+    088e9e4a2d50c89886a78a6e45e3a055), loaded the actual CREATOR app,
+    called the real `loader.loadTile()` on that file, confirmed entry
+    name = "Gabon". Edited the LIVE file on disk (Gabon → "Gabon
+    TESTMARK") while the app stayed open (no reload), called
+    `loader.loadTile()` again — got "Gabon TESTMARK" immediately.
+    Restored the file from backup; md5 confirmed byte-identical to
+    the original afterward.
+
+LESSON: the first attempt's code was technically correct but solved
+the wrong trigger path. When a user says a fix "didn't work," re-
+derive whether the fix covers their ACTUAL workflow rather than just
+checking the code for bugs — removing the cache entirely (once local-
+file re-fetch performance was confirmed to be a non-issue) was more
+robust than trying to invalidate it correctly across every possible
+edit path.
+
+Files touched: mapper/js/dataloader.js (tracked in main claudetest
+repo, shared with MAPPER — committed+pushed there separately from
+mapper-local.html), mapper/mapper-local.html (CREATOR-only, pushed
+via push-creator.ps1).

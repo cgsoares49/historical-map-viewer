@@ -1,0 +1,7 @@
+Redesign the tool bar:
+the goal is to have all the things I need visible without having to scroll
+1. reduce height of toolbar by half
+2. make the map display ratio 1 latitude x 2 longitude
+3. shrink tool sizes: pan & zoom, display button in single column
+4. move run dialog to the right, and also move map center to the right; I rarely use either one
+5. break up status tab: display lon, lat, pixel color, current tile id always
