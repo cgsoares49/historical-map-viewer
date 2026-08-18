@@ -1,0 +1,1091 @@
+Kingdom of Ur	OK	tiles=8; rows=160; 38 continuity gap(s)	2026-08-17T11:22:47
+Kingdom of Larsa	OK	tiles=2; rows=57; 20 continuity gap(s)	2026-08-17T11:22:52
+Kingdom of Uruk	OK	tiles=5; rows=37; 12 continuity gap(s)	2026-08-17T11:22:57
+Lagash	OK	tiles=3; rows=7	2026-08-17T11:23:02
+Umma	OK	tiles=4; rows=13; 6 continuity gap(s)	2026-08-17T11:23:07
+Larak	OK	tiles=3; rows=3; 1 continuity gap(s)	2026-08-17T11:25:48
+Kingdom of Akshak	OK	tiles=5; rows=11; 5 continuity gap(s)	2026-08-17T11:25:53
+Kingdom of Kish	OK	tiles=5; rows=28; 8 continuity gap(s)	2026-08-17T11:25:57
+Kingdom of Eshnunna	OK	tiles=4; rows=48; 11 continuity gap(s)	2026-08-17T11:26:02
+Dilmun	OK	tiles=4; rows=1	2026-08-17T11:26:07
+Pashime	OK	tiles=3; rows=7; 6 continuity gap(s)	2026-08-17T11:26:12
+Magan	OK	tiles=4; rows=1	2026-08-17T11:26:17
+(Marhashi)	OK	tiles=5; rows=31; 7 continuity gap(s)	2026-08-17T11:26:23
+Anshan	OK	tiles=3; rows=11; 9 continuity gap(s)	2026-08-17T11:26:27
+Zahara	OK	tiles=5; rows=6	2026-08-17T11:26:32
+Elam	OK	tiles=9; rows=163; 1 warning(s): WARNING: Allied army row -691.6..-691.4 has conflicting colorIndex among contributing entries; 59 continuity gap(s)	2026-08-17T11:26:38
+Kingdom of Irqata	OK	tiles=2; rows=2; 1 continuity gap(s)	2026-08-17T11:26:43
+Kingdom of Awan	OK	tiles=3; rows=33; 9 continuity gap(s)	2026-08-17T11:26:47
+Kingdom of Mari	OK	tiles=5; rows=21; 4 continuity gap(s)	2026-08-17T11:26:52
+Guti	OK	tiles=6; rows=55; 26 continuity gap(s)	2026-08-17T11:26:57
+Assyrian Kingdoms	OK	tiles=4; rows=15; 8 continuity gap(s)	2026-08-17T11:27:02
+Hurrian Kingdoms	OK	tiles=3; rows=4	2026-08-17T11:27:08
+Kingdom of Tuttul	OK	tiles=2; rows=5; 4 continuity gap(s)	2026-08-17T11:27:13
+Kingdom of Ebla	OK	tiles=4; rows=17; 4 continuity gap(s)	2026-08-17T11:27:18
+Kingdom of Ugarit	OK	tiles=1; rows=4; 3 continuity gap(s)	2026-08-17T11:27:23
+Amorites	OK	tiles=5; rows=4	2026-08-17T11:27:28
+Hurrians	OK	tiles=5; rows=12; 4 continuity gap(s)	2026-08-17T11:27:33
+Shimashki	OK	tiles=6; rows=44; 10 continuity gap(s)	2026-08-17T11:27:38
+Semitic Nomads	OK	tiles=17; rows=2	2026-08-17T11:27:44
+Kassites	OK	tiles=8; rows=75; 14 continuity gap(s)	2026-08-17T11:27:49
+Kingdom of Adab	OK	tiles=8; rows=30; 2 continuity gap(s)	2026-08-17T11:27:55
+Kingdom of Lagash	OK	tiles=2; rows=18; 7 continuity gap(s)	2026-08-17T11:28:00
+Akkadian Empire	OK	tiles=10; rows=216; 71 continuity gap(s)	2026-08-17T11:28:06
+Akkadian Tributary	OK	tiles=5; rows=47; 20 continuity gap(s)	2026-08-17T11:28:11
+Egypt: Old Kdm	OK	tiles=5; rows=83; 9 continuity gap(s)	2026-08-17T11:28:17
+Berbers	OK	tiles=12; rows=5	2026-08-17T11:28:22
+Nubians	OK	tiles=7; rows=16; 6 continuity gap(s)	2026-08-17T11:28:27
+Bedouins	OK	tiles=4; rows=3	2026-08-17T11:28:32
+Proto-Canaanites	SKIP_NO_FEATURES	tiles=2	2026-08-17T11:28:32
+Lullubi	SKIP_NO_FEATURES	tiles=2	2026-08-17T11:28:33
+Hattians	SKIP_NO_FEATURES	tiles=3	2026-08-17T11:28:33
+Hittites	OK	tiles=6; rows=5; 2 continuity gap(s)	2026-08-17T11:28:39
+Caucasians	SKIP_NO_FEATURES	tiles=6	2026-08-17T11:28:39
+Kingdom of Alakhtum	OK	tiles=1; rows=1	2026-08-17T11:28:45
+Guti Tributary	OK	tiles=3; rows=29	2026-08-17T11:28:50
+Egypt: Heracleopolitans	OK	tiles=4; rows=71; 3 continuity gap(s)	2026-08-17T11:28:56
+Egypt: Thebans	OK	tiles=5; rows=160; 65 continuity gap(s)	2026-08-17T11:29:03
+Kingdom of Kisurra	OK	tiles=1; rows=1	2026-08-17T11:29:08
+Ur III Tributary	OK	tiles=6; rows=62; 1 warning(s): WARNING: Harshi row -2068.4..-2048.6 has conflicting colorIndex among contributing entries; 15 continuity gap(s)	2026-08-17T11:29:14
+Amorite Mari	OK	tiles=4; rows=20; 2 continuity gap(s)	2026-08-17T11:29:19
+Kingdom of Der	OK	tiles=2; rows=14; 4 continuity gap(s)	2026-08-17T11:29:24
+Karakhar	OK	tiles=1; rows=6; 5 continuity gap(s)	2026-08-17T11:29:29
+Simurrum	OK	tiles=2; rows=4; 3 continuity gap(s)	2026-08-17T11:29:34
+Lullubum	OK	tiles=2; rows=2; 1 continuity gap(s)	2026-08-17T11:29:39
+Egypt: Middle Kingdom	OK	tiles=6; rows=247; 88 continuity gap(s)	2026-08-17T11:29:45
+Finns	OK	tiles=24; rows=4	2026-08-17T11:29:50
+Luwians	SKIP_NO_FEATURES	tiles=5	2026-08-17T11:29:51
+Kingdom of Kazallu	OK	tiles=2; rows=15; 1 continuity gap(s)	2026-08-17T11:29:56
+Kingdom of Isin	OK	tiles=6; rows=58; 11 continuity gap(s)	2026-08-17T11:30:02
+Yamkhad	OK	tiles=4; rows=19; 4 continuity gap(s)	2026-08-17T11:30:07
+Egypt: Areas of Unrest	OK	tiles=4; rows=103; 46 continuity gap(s)	2026-08-17T11:30:13
+Harshi	OK	tiles=4; rows=2; 1 continuity gap(s)	2026-08-17T11:30:18
+Iranians	OK	tiles=33; rows=47	2026-08-17T11:30:23
+Thraco Cimmerians	SKIP_NO_FEATURES	tiles=11	2026-08-17T11:30:24
+Proto-Greeks	SKIP_NO_FEATURES	tiles=2	2026-08-17T11:30:25
+Pelasgians	SKIP_NO_FEATURES	tiles=2	2026-08-17T11:30:25
+Illyrians	OK	tiles=3; rows=5	2026-08-17T11:30:31
+Kingdom of Qatna	OK	tiles=2; rows=3; 1 continuity gap(s)	2026-08-17T11:30:36
+Kingdom of Assyria	OK	tiles=7; rows=90; 35 continuity gap(s)	2026-08-17T11:30:41
+Kingdom of Malgium	OK	tiles=2; rows=1	2026-08-17T11:30:46
+Amorite Ebla	OK	tiles=2; rows=1	2026-08-17T11:30:51
+Amorite Tuttul	OK	tiles=2; rows=1	2026-08-17T11:30:56
+Kingdom of Babylon	OK	tiles=6; rows=120; 45 continuity gap(s)	2026-08-17T11:31:01
+Minoans	OK	tiles=4; rows=20	2026-08-17T11:31:07
+Canaanites	OK	tiles=2; rows=10; 6 continuity gap(s)	2026-08-17T11:31:11
+Kingdom of Andarig	OK	tiles=1; rows=3; 2 continuity gap(s)	2026-08-17T11:31:16
+Itabalhum	OK	tiles=2; rows=3; 2 continuity gap(s)	2026-08-17T11:31:21
+Zalmaqum	OK	tiles=2; rows=1	2026-08-17T11:31:26
+Kingdom of Kush	OK	tiles=10; rows=84; 4 continuity gap(s)	2026-08-17T11:31:32
+Kingdom of Adanaya	OK	tiles=2; rows=3; 2 continuity gap(s)	2026-08-17T11:31:37
+Kingdom of Kussara	OK	tiles=3; rows=5	2026-08-17T11:31:42
+Arzawa	OK	tiles=6; rows=89; 33 continuity gap(s)	2026-08-17T11:31:48
+Yaminites	SKIP_NO_FEATURES	tiles=1	2026-08-17T11:31:49
+Elamite Tributary	OK	tiles=4; rows=34; 4 continuity gap(s)	2026-08-17T11:31:54
+Babylonian Tributary	OK	tiles=7; rows=24; 4 continuity gap(s)	2026-08-17T11:31:59
+Old Hittite Kingdom	OK	tiles=7; rows=127; 41 continuity gap(s)	2026-08-17T11:32:06
+Idamaraz	OK	tiles=2; rows=6	2026-08-17T11:32:11
+Subartum	OK	tiles=1; rows=1	2026-08-17T11:32:16
+Kimash	OK	tiles=1; rows=1	2026-08-17T11:32:21
+Sealand	OK	tiles=2; rows=7; 1 continuity gap(s)	2026-08-17T11:32:26
+Amurru	OK	tiles=3; rows=19; 7 continuity gap(s)	2026-08-17T11:32:31
+Kingdom of Arrapha	OK	tiles=2; rows=3; 2 continuity gap(s)	2026-08-17T11:32:36
+Kingdom of Terqa	OK	tiles=4; rows=2; 1 continuity gap(s)	2026-08-17T11:32:41
+Egypt: Hyksos	OK	tiles=6; rows=88	2026-08-17T11:32:49
+Rebel Irridu	OK	tiles=2; rows=1	2026-08-17T11:32:54
+Rebel Aranzik	OK	tiles=1; rows=1	2026-08-17T11:32:59
+Kingdom of Kanesh	OK	tiles=3; rows=9; 3 continuity gap(s)	2026-08-17T11:33:05
+Wahsusana	OK	tiles=1; rows=1	2026-08-17T11:33:10
+Kingdom of Purushanda	OK	tiles=2; rows=6	2026-08-17T11:33:16
+Kingdom of Zalpa	OK	tiles=4; rows=8; 3 continuity gap(s)	2026-08-17T11:33:21
+Mama	OK	tiles=5; rows=2; 1 continuity gap(s)	2026-08-17T11:33:27
+Hurrian Kingdom	OK	tiles=3; rows=5; 1 continuity gap(s)	2026-08-17T11:33:32
+Kingdom of Mitanni	OK	tiles=6; rows=103; 23 continuity gap(s)	2026-08-17T11:33:38
+Kaskas	OK	tiles=4; rows=15; 7 continuity gap(s)	2026-08-17T11:33:45
+Egypt: New Kingdom	OK	tiles=14; rows=270; 59 continuity gap(s)	2026-08-17T11:33:57
+Kizzuwatna	OK	tiles=2; rows=3; 2 continuity gap(s)	2026-08-17T11:34:03
+Pitassa	OK	tiles=1; rows=2; 1 continuity gap(s)	2026-08-17T11:34:08
+Tarhuntassa	OK	tiles=1; rows=3; 2 continuity gap(s)	2026-08-17T11:34:14
+Lukka	OK	tiles=2; rows=9	2026-08-17T11:34:20
+Wilusa	OK	tiles=2; rows=12; 4 continuity gap(s)	2026-08-17T11:34:26
+Masa	OK	tiles=18; rows=2; 1 continuity gap(s)	2026-08-17T11:34:32
+Tummanna	OK	tiles=2; rows=5; 4 continuity gap(s)	2026-08-17T11:34:37
+Pala	OK	tiles=13; rows=2; 1 continuity gap(s)	2026-08-17T11:34:43
+Isuwa	OK	tiles=2; rows=2; 1 continuity gap(s)	2026-08-17T11:34:49
+Azzi-Hayasa	OK	tiles=3; rows=3; 2 continuity gap(s)	2026-08-17T11:34:55
+Mycenaeans	OK	tiles=5; rows=116; 2 warning(s): WARNING: (Paxoi Inss.) row -1505.5..-1223.5 has conflicting colorIndex among contributing entries | WARNING: (Taphie Inss.) row -1505.5..-1223.5 has conflicting colorIndex among contributing entries	2026-08-17T11:35:04
+Punt	OK	tiles=16; rows=1	2026-08-17T11:35:10
+Alasiya	OK	tiles=2; rows=5; 4 continuity gap(s)	2026-08-17T11:35:16
+New Hittite Kingdom	OK	tiles=10; rows=477; 2 warning(s): WARNING: Expeditionary force row -1337.6..-1337.5 has conflicting colorIndex among contributing entries | WARNING: Mira row -1248.5..-1235.5 has conflicting colorIndex among contributing entries; 165 continuity gap(s)	2026-08-17T11:35:33
+Zippasla	OK	tiles=3; rows=21; 5 continuity gap(s)	2026-08-17T11:35:39
+Ahhiya	OK	tiles=3; rows=38; 4 continuity gap(s)	2026-08-17T11:35:45
+Hapalla	OK	tiles=1; rows=1	2026-08-17T11:35:52
+Alshe	OK	tiles=1; rows=1	2026-08-17T11:35:59
+Kingdom of Qadesh	OK	tiles=2; rows=3; 2 continuity gap(s)	2026-08-17T11:36:05
+Nuhashshi	OK	tiles=1; rows=3; 2 continuity gap(s)	2026-08-17T11:36:12
+Middle Assyrian Empire	OK	tiles=7; rows=180; 63 continuity gap(s)	2026-08-17T11:36:20
+Kalasma	OK	tiles=1; rows=1	2026-08-17T11:36:27
+Sea Peoples	OK	tiles=8; rows=16; 2 continuity gap(s)	2026-08-17T11:36:34
+Aramaeans	OK	tiles=5; rows=5	2026-08-17T11:36:40
+Ammonites	OK	tiles=1; rows=5; 4 continuity gap(s)	2026-08-17T11:36:47
+Moabites	OK	tiles=1; rows=10; 3 continuity gap(s)	2026-08-17T11:36:53
+Edomites	OK	tiles=4; rows=11; 7 continuity gap(s)	2026-08-17T11:36:59
+Mycenaean Kingdoms	OK	tiles=2; rows=17; 1 continuity gap(s)	2026-08-17T11:37:06
+Israelites	OK	tiles=3; rows=20; 4 continuity gap(s)	2026-08-17T11:37:13
+Dorians	OK	tiles=8; rows=155; 2 warning(s): WARNING: Rhodos row -697.5..-660.5 has conflicting colorIndex among contributing entries | WARNING: Rhodos row -660.5..-527.5 has conflicting colorIndex among contributing entries; 52 continuity gap(s)	2026-08-17T11:37:21
+Phrygians	OK	tiles=9; rows=19; 4 continuity gap(s)	2026-08-17T11:37:28
+Aeolians	OK	tiles=8; rows=28; 4 continuity gap(s)	2026-08-17T11:37:34
+Thracians	OK	tiles=4; rows=1	2026-08-17T11:37:41
+Cimmerians	OK	tiles=16; rows=8; 1 continuity gap(s)	2026-08-17T11:37:48
+Ionians	OK	tiles=14; rows=487; 18 warning(s): WARNING: Miletus row -657.5..-647.5 has conflicting colorIndex among contributing entries | WARNING: Miletus row -647.5..-627.5 has conflicting colorIndex among contributing entries | WARNING: Miletus row -627.5..-610.5 has conflicting colorIndex among contributing entries; 133 continuity gap(s)	2026-08-17T11:38:03
+Assyrian revolt	OK	tiles=4; rows=5	2026-08-17T11:38:10
+Kingdom of Melid	OK	tiles=1; rows=11; 7 continuity gap(s)	2026-08-17T11:38:16
+Kingdom of Kummuh	OK	tiles=1; rows=5; 4 continuity gap(s)	2026-08-17T11:38:23
+Gurgum	OK	tiles=1; rows=5; 3 continuity gap(s)	2026-08-17T11:38:29
+Patin (Unqi)	OK	tiles=1; rows=6; 4 continuity gap(s)	2026-08-17T11:38:36
+Tabal	OK	tiles=3; rows=18; 4 continuity gap(s)	2026-08-17T11:38:43
+Kingdom of Hamath	OK	tiles=2; rows=11; 7 continuity gap(s)	2026-08-17T11:38:49
+Kingdom of Carchemish	OK	tiles=1; rows=16; 12 continuity gap(s)	2026-08-17T11:38:55
+Que	OK	tiles=50; rows=4; 3 continuity gap(s)	2026-08-17T11:39:03
+Phoenicians	OK	tiles=14; rows=134; 28 continuity gap(s)	2026-08-17T11:39:11
+Cypriot Kingdoms	OK	tiles=2; rows=64; 49 continuity gap(s)	2026-08-17T11:39:18
+Philistines	OK	tiles=2; rows=11	2026-08-17T11:39:25
+Babylonia (Isin Dynasty)	OK	tiles=5; rows=19; 4 continuity gap(s)	2026-08-17T11:39:32
+Gilead	OK	tiles=1; rows=2; 1 continuity gap(s)	2026-08-17T11:39:39
+Geshur	OK	tiles=1; rows=1	2026-08-17T11:39:46
+Aram-Zobah	OK	tiles=1; rows=5; 4 continuity gap(s)	2026-08-17T11:39:52
+Aram Damascus	OK	tiles=4; rows=45; 19 continuity gap(s)	2026-08-17T11:39:59
+Aram-Naharim	OK	tiles=1; rows=1	2026-08-17T11:40:06
+Kadmuhu	OK	tiles=2; rows=1	2026-08-17T11:40:13
+Libyans	OK	tiles=7; rows=12	2026-08-17T11:40:20
+Suhu	OK	tiles=1; rows=5; 4 continuity gap(s)	2026-08-17T11:40:27
+Hindanu	OK	tiles=4; rows=5; 3 continuity gap(s)	2026-08-17T11:40:34
+Achaeans	OK	tiles=2; rows=4; 2 continuity gap(s)	2026-08-17T11:40:41
+Rebel Israelites	OK	tiles=1; rows=1	2026-08-17T11:40:48
+Laqe	OK	tiles=4; rows=3; 2 continuity gap(s)	2026-08-17T11:40:54
+Bit-Adini	OK	tiles=1; rows=4; 3 continuity gap(s)	2026-08-17T11:41:01
+Bit-Halupe	OK	tiles=2; rows=1	2026-08-17T11:41:08
+Bit-Bahiani	OK	tiles=2; rows=1	2026-08-17T11:41:15
+Nubia	OK	tiles=9; rows=1	2026-08-17T11:41:21
+Egypt: Tanites	OK	tiles=2; rows=19	2026-08-17T11:41:29
+Kingdom of Israel	OK	tiles=4; rows=32; 1 warning(s): WARNING: Judah row -993.5..-931.6 has conflicting colorIndex among contributing entries; 6 continuity gap(s)	2026-08-17T11:41:36
+Bit-Zamani	OK	tiles=2; rows=2; 1 continuity gap(s)	2026-08-17T11:41:43
+Philistia	OK	tiles=2; rows=17; 8 continuity gap(s)	2026-08-17T11:41:50
+Kingdom of Judah	OK	tiles=2; rows=3; 1 continuity gap(s)	2026-08-17T11:41:56
+Babylonia	OK	tiles=15; rows=17; 3 continuity gap(s)	2026-08-17T11:42:03
+Saharan Peoples	OK	tiles=35; rows=7	2026-08-17T11:42:10
+West African Peoples	OK	tiles=18; rows=4	2026-08-17T11:42:16
+Proto-Ethiopians	OK	tiles=6; rows=2	2026-08-17T11:42:23
+Khoisan Peoples	OK	tiles=34; rows=1	2026-08-17T11:42:29
+Central African Peoples	OK	tiles=25; rows=39	2026-08-17T11:42:37
+East African Peoples	OK	tiles=9; rows=3	2026-08-17T11:42:44
+Western Mediterraneans	OK	tiles=18; rows=18	2026-08-17T11:42:50
+Bell Beaker Peoples	OK	tiles=13; rows=1	2026-08-17T11:42:57
+Indus Valley Civilization	OK	tiles=8; rows=1	2026-08-17T11:43:04
+Helmand and Jiroft Cultures	OK	tiles=6; rows=25	2026-08-17T11:43:11
+Dravidians	OK	tiles=17; rows=30	2026-08-17T11:43:18
+Proto-Tibetans	OK	tiles=13; rows=6	2026-08-17T11:43:25
+Aboriginal Peoples	OK	tiles=78; rows=29	2026-08-17T11:43:34
+Austro-Asiatic Peoples	OK	tiles=14; rows=2	2026-08-17T11:43:40
+Austronesians	OK	tiles=40; rows=30	2026-08-17T11:43:47
+Proto-Burmese	OK	tiles=3; rows=1	2026-08-17T11:43:55
+Thai Peoples	OK	tiles=4; rows=4	2026-08-17T11:44:01
+South China Peoples	OK	tiles=8; rows=32	2026-08-17T11:44:08
+Longshan Culture	OK	tiles=7; rows=2	2026-08-17T11:44:15
+Koreans	OK	tiles=2; rows=1	2026-08-17T11:44:21
+Jomon Culture	OK	tiles=5; rows=1	2026-08-17T11:44:28
+Paleosiberians	OK	tiles=35; rows=1	2026-08-17T11:44:34
+Arctic Marine Mammal Hunters	OK	tiles=11; rows=1	2026-08-17T11:44:41
+Proto-Mongol Peoples	OK	tiles=7; rows=1	2026-08-17T11:44:47
+Manchurian Peoples	OK	tiles=12; rows=6	2026-08-17T11:44:54
+Ainu	OK	tiles=5; rows=1	2026-08-17T11:45:01
+Proto-Turkic Peoples	OK	tiles=15; rows=2	2026-08-17T11:45:08
+Patagonian Peoples	OK	tiles=4; rows=1	2026-08-17T11:45:14
+Pampas Cultures	OK	tiles=11; rows=1	2026-08-17T11:45:21
+Andean Peoples	OK	tiles=13; rows=7	2026-08-17T11:45:29
+Savanna Peoples	OK	tiles=23; rows=1	2026-08-17T11:45:36
+Chinchorro Culture	OK	tiles=3; rows=1	2026-08-17T11:45:43
+Amazonian Peoples	OK	tiles=32; rows=1	2026-08-17T11:45:50
+Norte Chico Civilization	OK	tiles=2; rows=1	2026-08-17T11:45:56
+Valdivia Culture	OK	tiles=1; rows=1	2026-08-17T11:46:03
+Mesoamerican Peoples	OK	tiles=14; rows=5	2026-08-17T11:46:09
+Caribbean Peoples	OK	tiles=11; rows=1	2026-08-17T11:46:16
+Desert Cultures	OK	tiles=17; rows=1	2026-08-17T11:46:23
+Plains Peoples	OK	tiles=18; rows=1	2026-08-17T11:46:30
+Eastern Woodland Peoples	OK	tiles=24; rows=3	2026-08-17T11:46:37
+California Peoples	OK	tiles=4; rows=1	2026-08-17T11:46:44
+Northwest Coast Peoples	OK	tiles=8; rows=1	2026-08-17T11:46:51
+Plateau Peoples	OK	tiles=8; rows=1	2026-08-17T11:46:59
+Subarctic Peoples	OK	tiles=32; rows=1	2026-08-17T11:47:06
+Aleuts	OK	tiles=4; rows=1	2026-08-17T11:47:13
+Arctic Peoples	OK	tiles=23; rows=1	2026-08-17T11:47:20
+Kotosh Culture	OK	tiles=2; rows=1	2026-08-17T11:47:27
+Chadian People	OK	tiles=6; rows=1	2026-08-17T11:47:34
+Poverty Point Culture	OK	tiles=2; rows=1	2026-08-17T11:47:40
+Aryan People	OK	tiles=9; rows=34	2026-08-17T11:47:47
+Xia Dynasty	OK	tiles=6; rows=1	2026-08-17T11:47:54
+Bantu Peoples	OK	tiles=19; rows=37	2026-08-17T11:48:02
+El Paraiso Culture	OK	tiles=3; rows=2	2026-08-17T11:48:09
+Indus Valley Peoples	OK	tiles=5; rows=14	2026-08-17T11:48:16
+Bactrians	OK	tiles=5; rows=2	2026-08-17T11:48:23
+Sogdians	SKIP_NO_FEATURES	tiles=3	2026-08-17T11:48:24
+Papuans	OK	tiles=7; rows=1	2026-08-17T11:48:31
+Shang	OK	tiles=16; rows=27; 7 continuity gap(s)	2026-08-17T11:48:38
+Xue	OK	tiles=3; rows=5; 3 continuity gap(s)	2026-08-17T11:48:45
+Ge	OK	tiles=103; rows=1	2026-08-17T11:48:54
+Wei	OK	tiles=9; rows=67; 9 continuity gap(s)	2026-08-17T11:49:02
+Gu	OK	tiles=115; rows=1	2026-08-17T11:49:11
+Kunwu	SKIP_NO_FEATURES	tiles=1	2026-08-17T11:49:11
+Wen	SKIP_NO_FEATURES	tiles=8	2026-08-17T11:49:12
+Sanxingdui Culture	OK	tiles=4; rows=2	2026-08-17T11:49:19
+Shang Dynasty	OK	tiles=14; rows=59; 18 continuity gap(s)	2026-08-17T11:49:26
+Terramare Culture	OK	tiles=2; rows=1	2026-08-17T11:49:33
+Mixtecs	OK	tiles=1; rows=2	2026-08-17T11:49:40
+Indo-Aryans	OK	tiles=15; rows=34	2026-08-17T11:49:47
+Guifang	OK	tiles=8; rows=7	2026-08-17T11:49:54
+Zapotecs	OK	tiles=1; rows=1	2026-08-17T11:50:00
+Teutons	OK	tiles=8; rows=4	2026-08-17T11:50:07
+Volga Battle Axe Culture	OK	tiles=13; rows=1	2026-08-17T11:50:15
+Balts	OK	tiles=7; rows=2	2026-08-17T11:50:21
+Slavs	OK	tiles=4; rows=1	2026-08-17T11:50:28
+Celto-Ligurians	OK	tiles=17; rows=23	2026-08-17T11:50:35
+Italics	OK	tiles=5; rows=7	2026-08-17T11:50:42
+Iberians	OK	tiles=8; rows=5	2026-08-17T11:50:49
+Etruscans	OK	tiles=3; rows=12	2026-08-17T11:50:56
+Yueshi Culture	OK	tiles=3; rows=2	2026-08-17T11:51:02
+Erlitou Culture	OK	tiles=4; rows=2	2026-08-17T11:51:10
+Erligang Culture	OK	tiles=4; rows=1	2026-08-17T11:51:16
+Northern Zone Peoples	OK	tiles=4; rows=17; 1 continuity gap(s)	2026-08-17T11:51:24
+Dongyi Peoples	OK	tiles=2; rows=2; 1 continuity gap(s)	2026-08-17T11:51:30
+Huaiyi Peoples	OK	tiles=3; rows=6; 2 continuity gap(s)	2026-08-17T11:51:37
+Wucheng Culture	OK	tiles=8; rows=23	2026-08-17T11:51:44
+Xian Peoples	OK	tiles=1; rows=1	2026-08-17T11:51:51
+Celts	OK	tiles=15; rows=103; 7 continuity gap(s)	2026-08-17T11:51:59
+Sicans	OK	tiles=2; rows=7	2026-08-17T11:52:06
+Olmecs	OK	tiles=2; rows=1	2026-08-17T11:52:13
+Yuezhi	OK	tiles=3; rows=1	2026-08-17T11:52:20
+Dapeng	OK	tiles=2; rows=1	2026-08-17T11:52:27
+Wu	OK	tiles=23; rows=54; 16 continuity gap(s)	2026-08-17T11:52:35
+Yue Peoples	OK	tiles=3; rows=5	2026-08-17T11:52:42
+Colchis	OK	tiles=2; rows=5; 2 continuity gap(s)	2026-08-17T11:52:49
+Scythians	OK	tiles=29; rows=8; 1 continuity gap(s)	2026-08-17T11:52:56
+Chorrera Culture	OK	tiles=2; rows=1	2026-08-17T11:53:03
+Elymians	OK	tiles=1; rows=1	2026-08-17T11:53:10
+Zhou	OK	tiles=18; rows=10; 3 continuity gap(s)	2026-08-17T11:53:18
+Zhou Dynasty	OK	tiles=15; rows=209; 38 continuity gap(s)	2026-08-17T11:53:29
+Shu	OK	tiles=28; rows=14	2026-08-17T11:53:37
+Ba	OK	tiles=277; rows=16	2026-08-17T11:53:48
+Chu	OK	tiles=27; rows=185; 44 continuity gap(s)	2026-08-17T11:54:01
+Nok People	OK	tiles=5; rows=1	2026-08-17T11:54:08
+Three Guards Rebellion	OK	tiles=5; rows=16	2026-08-17T11:54:15
+Lai	OK	tiles=9; rows=3	2026-08-17T11:54:22
+Pugu	OK	tiles=1; rows=1	2026-08-17T11:54:29
+Sicels	OK	tiles=2; rows=5; 1 continuity gap(s)	2026-08-17T11:54:36
+Arabs	OK	tiles=19; rows=9	2026-08-17T11:54:43
+Saba	OK	tiles=15; rows=1	2026-08-17T11:54:50
+Nilotic Peoples	OK	tiles=6; rows=1	2026-08-17T11:54:57
+Cushitic People	OK	tiles=8; rows=1	2026-08-17T11:55:03
+Maya	OK	tiles=10; rows=2	2026-08-17T11:55:11
+Tartessos	OK	tiles=2; rows=4	2026-08-17T11:55:18
+Chao	OK	tiles=7; rows=4; 1 continuity gap(s)	2026-08-17T11:55:25
+D'mt	OK	tiles=4; rows=1	2026-08-17T11:55:32
+Ellipi	OK	tiles=1; rows=8; 5 continuity gap(s)	2026-08-17T11:55:39
+Harhar	OK	tiles=2; rows=3; 1 continuity gap(s)	2026-08-17T11:55:46
+Utica	OK	tiles=2; rows=1	2026-08-17T11:55:54
+Egypt: Twenty Second Dynasty	OK	tiles=5; rows=73; 15 continuity gap(s)	2026-08-17T11:56:02
+Xu	OK	tiles=12; rows=21; 2 continuity gap(s)	2026-08-17T11:56:11
+Quanrong	OK	tiles=8; rows=22	2026-08-17T11:56:18
+Urartu	OK	tiles=5; rows=177; 61 continuity gap(s)	2026-08-17T11:56:27
+Israel/Samaria	OK	tiles=2; rows=32; 10 continuity gap(s)	2026-08-17T11:56:34
+Judah	OK	tiles=4; rows=36; 5 continuity gap(s)	2026-08-17T11:56:42
+Kingdom of Sam'al	OK	tiles=1; rows=3; 2 continuity gap(s)	2026-08-17T11:56:49
+Neo-Assyrian Empire	OK	tiles=6; rows=32	2026-08-17T11:56:57
+Neo Assyrian Empire	OK	tiles=16; rows=740; 229 continuity gap(s)	2026-08-17T11:57:11
+Chavin Culture	OK	tiles=3; rows=1	2026-08-17T11:57:18
+Athens	OK	tiles=4; rows=76; 29 continuity gap(s)	2026-08-17T11:57:27
+Neo Assyrian Tributary	OK	tiles=17; rows=386; 3 warning(s): WARNING: Cypriot Kingdoms row -709.4..-703.8 has conflicting colorIndex among contributing entries | WARNING: Cypriot Kingdoms row -670.5..-612.3 has conflicting colorIndex among contributing entries | WARNING: Egypt: Twenty Sixth Dynasty row -656.5..-651.5 has conflicting colorIndex among contributing entries; 105 continuity gap(s)	2026-08-17T11:57:40
+Zamua	OK	tiles=2; rows=1	2026-08-17T11:57:48
+Bit Agusi	OK	tiles=1; rows=12; 9 continuity gap(s)	2026-08-17T11:57:56
+Musri	OK	tiles=1; rows=4; 3 continuity gap(s)	2026-08-17T11:58:03
+E	OK	tiles=323; rows=6; 2 continuity gap(s)	2026-08-17T11:58:16
+Hubushkia	OK	tiles=1; rows=6; 4 continuity gap(s)	2026-08-17T11:58:23
+Gilzanu	OK	tiles=1; rows=3; 2 continuity gap(s)	2026-08-17T11:58:31
+Nairi	OK	tiles=1; rows=1	2026-08-17T11:58:39
+Babylonian revolt	OK	tiles=3; rows=12; 3 continuity gap(s)	2026-08-17T11:58:46
+Namri	OK	tiles=3; rows=5; 3 continuity gap(s)	2026-08-17T11:58:54
+Suhne	OK	tiles=1; rows=1	2026-08-17T11:59:02
+Alzi	OK	tiles=1; rows=2; 1 continuity gap(s)	2026-08-17T11:59:09
+Enzite	OK	tiles=2; rows=1	2026-08-17T11:59:17
+Diauekhi	OK	tiles=3; rows=4; 3 continuity gap(s)	2026-08-17T11:59:25
+Parsua	OK	tiles=4; rows=3; 2 continuity gap(s)	2026-08-17T11:59:32
+Mannaea	OK	tiles=2; rows=19; 2 continuity gap(s)	2026-08-17T11:59:40
+Nabataeans	OK	tiles=2; rows=2; 1 continuity gap(s)	2026-08-17T11:59:48
+Qedarites	OK	tiles=3; rows=3; 1 continuity gap(s)	2026-08-17T11:59:56
+Egypt: Twenty Third Dynasty	OK	tiles=2; rows=61; 27 continuity gap(s)	2026-08-17T12:00:04
+Egypt: Rebellion of Pedubast	OK	tiles=2; rows=13; 1 continuity gap(s)	2026-08-17T12:00:12
+Neo Assyrian revolt	OK	tiles=4; rows=5	2026-08-17T12:00:20
+Ishtu(a)nda	OK	tiles=1; rows=3; 1 continuity gap(s)	2026-08-17T12:00:28
+Tuwana	OK	tiles=2; rows=2; 1 continuity gap(s)	2026-08-17T12:00:36
+Shinuhtu	OK	tiles=2; rows=2; 1 continuity gap(s)	2026-08-17T12:00:43
+Atuna	OK	tiles=2; rows=2; 1 continuity gap(s)	2026-08-17T12:00:51
+Hupis(h)na	OK	tiles=1; rows=1	2026-08-17T12:00:58
+Hilakku	OK	tiles=1; rows=3; 2 continuity gap(s)	2026-08-17T12:01:06
+Succession struggle	OK	tiles=13; rows=3; 1 continuity gap(s)	2026-08-17T12:01:15
+Hamaranu	OK	tiles=2; rows=1	2026-08-17T12:01:22
+Guzanu	OK	tiles=2; rows=2; 1 continuity gap(s)	2026-08-17T12:01:30
+Lu	OK	tiles=82; rows=58; 5 continuity gap(s)	2026-08-17T12:01:40
+Urartu Tributary	OK	tiles=5; rows=17; 4 continuity gap(s)	2026-08-17T12:01:48
+Adena Culture	OK	tiles=5; rows=1	2026-08-17T12:01:55
+Latins	OK	tiles=1; rows=7; 2 continuity gap(s)	2026-08-17T12:02:03
+Umbri	OK	tiles=2; rows=1	2026-08-17T12:02:10
+Samnites	OK	tiles=1; rows=3	2026-08-17T12:02:18
+Messapians	OK	tiles=3; rows=6; 2 continuity gap(s)	2026-08-17T12:02:26
+Picentes	OK	tiles=1; rows=2	2026-08-17T12:02:34
+Veneti	OK	tiles=2; rows=1	2026-08-17T12:02:42
+Ligurians	OK	tiles=17; rows=2	2026-08-17T12:02:49
+Chaldaea	OK	tiles=5; rows=1	2026-08-17T12:02:58
+Medes	OK	tiles=4; rows=2	2026-08-17T12:03:06
+Etiukhi	OK	tiles=2; rows=3; 2 continuity gap(s)	2026-08-17T12:03:14
+Erikuakhi	OK	tiles=2; rows=3; 2 continuity gap(s)	2026-08-17T12:03:22
+Etiuni	OK	tiles=1; rows=5; 2 continuity gap(s)	2026-08-17T12:03:29
+Abilianikhi	OK	tiles=1; rows=2; 1 continuity gap(s)	2026-08-17T12:03:37
+Zabakhi	OK	tiles=1; rows=1	2026-08-17T12:03:45
+Eriakhi	OK	tiles=1; rows=3; 2 continuity gap(s)	2026-08-17T12:03:53
+Uelikukhi	OK	tiles=3; rows=9; 3 continuity gap(s)	2026-08-17T12:04:00
+Babylonia (Chaldaeans)	OK	tiles=5; rows=34; 16 continuity gap(s)	2026-08-17T12:04:09
+Kingdom of Argos	OK	tiles=1; rows=21; 3 continuity gap(s)	2026-08-17T12:04:17
+Kingdom of Sparta	OK	tiles=10; rows=103; 38 continuity gap(s)	2026-08-17T12:04:26
+Shen	OK	tiles=5; rows=6	2026-08-17T12:04:34
+Zeng	OK	tiles=3; rows=2	2026-08-17T12:04:42
+Western Guo	OK	tiles=3; rows=5	2026-08-17T12:04:51
+Eastern Guo	OK	tiles=1; rows=3	2026-08-17T12:04:59
+Deng	OK	tiles=2; rows=3	2026-08-17T12:05:06
+Loufan	OK	tiles=2; rows=3	2026-08-17T12:05:14
+Di	OK	tiles=83; rows=11	2026-08-17T12:06:27
+Xianyu	OK	tiles=2; rows=5	2026-08-17T12:06:35
+Ju	OK	tiles=55; rows=13	2026-08-17T12:06:44
+Tan	OK	tiles=57; rows=2	2026-08-17T12:06:53
+Ji(5)	OK	tiles=2; rows=2	2026-08-17T12:07:00
+Yan	OK	tiles=18; rows=15	2026-08-17T12:07:09
+Qi	OK	tiles=39; rows=69; 18 continuity gap(s)	2026-08-17T12:07:18
+Peng	OK	tiles=9; rows=2	2026-08-17T12:07:26
+Sui	OK	tiles=4; rows=5; 1 continuity gap(s)	2026-08-17T12:07:34
+Xi	OK	tiles=39; rows=3	2026-08-17T12:07:43
+Xing	OK	tiles=3; rows=4	2026-08-17T12:07:51
+Cheng	OK	tiles=6; rows=2	2026-08-17T12:08:00
+Zhu	OK	tiles=14; rows=7; 1 continuity gap(s)	2026-08-17T12:08:10
+Teng	OK	tiles=8; rows=3	2026-08-17T12:08:18
+Tang	OK	tiles=14; rows=3; 1 continuity gap(s)	2026-08-17T12:08:27
+Cai	OK	tiles=14; rows=10; 4 continuity gap(s)	2026-08-17T12:08:36
+Chen	OK	tiles=11; rows=10; 5 continuity gap(s)	2026-08-17T12:08:45
+Song	OK	tiles=8; rows=29; 7 continuity gap(s)	2026-08-17T12:08:53
+Cao	OK	tiles=6; rows=7	2026-08-17T12:09:02
+Wey	OK	tiles=5; rows=25; 8 continuity gap(s)	2026-08-17T12:09:10
+Huo	OK	tiles=1; rows=1	2026-08-17T12:09:21
+Jin	OK	tiles=19; rows=5	2026-08-17T12:09:34
+Ying	OK	tiles=2; rows=2	2026-08-17T12:09:42
+Zheng	OK	tiles=6; rows=40; 7 continuity gap(s)	2026-08-17T12:09:52
+Qin	OK	tiles=22; rows=114; 34 continuity gap(s)	2026-08-17T12:10:02
+Judah Tributary	OK	tiles=4; rows=4	2026-08-17T12:10:10
+Egypt: (Hermopolis)	OK	tiles=1; rows=2	2026-08-17T12:10:18
+Egypt: (Herakleopolis)	OK	tiles=1; rows=9	2026-08-17T12:10:25
+Land of Tartanu Shamshi-ilu	OK	tiles=1; rows=1	2026-08-17T12:10:33
+Land of Bel-harran-beli-user	OK	tiles=2; rows=1	2026-08-17T12:10:41
+Land of Shamash-resha-user	OK	tiles=4; rows=1	2026-08-17T12:10:51
+Kuru	OK	tiles=12; rows=13	2026-08-17T12:11:01
+Panchala	OK	tiles=3; rows=8; 1 continuity gap(s)	2026-08-17T12:11:11
+Gandhara	OK	tiles=3; rows=8; 1 continuity gap(s)	2026-08-17T12:11:21
+Kosala	OK	tiles=2; rows=10	2026-08-17T12:11:29
+Matsya	OK	tiles=2; rows=3	2026-08-17T12:11:39
+Surasena	OK	tiles=1; rows=3	2026-08-17T12:11:48
+Vatsa	OK	tiles=3; rows=4	2026-08-17T12:11:59
+Kasi	OK	tiles=4; rows=2	2026-08-17T12:12:10
+Avanti	OK	tiles=6; rows=9	2026-08-17T12:12:20
+Cedi	OK	tiles=4; rows=2	2026-08-17T12:12:29
+Videha	OK	tiles=2; rows=1	2026-08-17T12:12:37
+Anga	OK	tiles=6; rows=4	2026-08-17T12:12:45
+Magadha	OK	tiles=8; rows=26; 3 continuity gap(s)	2026-08-17T12:12:54
+Malla	OK	tiles=4; rows=5; 1 continuity gap(s)	2026-08-17T12:13:02
+Vriji	OK	tiles=2; rows=1	2026-08-17T12:13:10
+Assaka	OK	tiles=2; rows=2	2026-08-17T12:13:18
+Kamboja	OK	tiles=4; rows=2	2026-08-17T12:13:26
+Paeonians	SKIP_NO_FEATURES	tiles=1	2026-08-17T12:13:26
+Egypt: Twenty Fourth Dynasty	OK	tiles=3; rows=42; 13 continuity gap(s)	2026-08-17T12:13:35
+Great Chiefs of the Meshwesh	OK	tiles=1; rows=12	2026-08-17T12:13:43
+Messenia	OK	tiles=2; rows=13; 3 continuity gap(s)	2026-08-17T12:13:51
+Corinthia	OK	tiles=5; rows=69; 15 continuity gap(s)	2026-08-17T12:13:59
+Megaris	OK	tiles=6; rows=64; 1 warning(s): WARNING: Selinus row -550.5..-510.3 has conflicting colorIndex among contributing entries; 14 continuity gap(s)	2026-08-17T12:14:08
+Arcadia	OK	tiles=1; rows=3; 1 continuity gap(s)	2026-08-17T12:14:16
+Mysians	OK	tiles=2; rows=1	2026-08-17T12:14:24
+Lydians	SKIP_NO_FEATURES	tiles=1	2026-08-17T12:14:24
+Lycians	OK	tiles=2; rows=2; 1 continuity gap(s)	2026-08-17T12:14:32
+Pamphylians	SKIP_NO_FEATURES	tiles=1	2026-08-17T12:14:33
+Lydia	OK	tiles=11; rows=35; 14 continuity gap(s)	2026-08-17T12:14:42
+Quwo	OK	tiles=2; rows=7; 2 continuity gap(s)	2026-08-17T12:14:50
+Dayenu	OK	tiles=1; rows=1	2026-08-17T12:14:57
+Kirruru	OK	tiles=2; rows=2; 1 continuity gap(s)	2026-08-17T12:15:06
+Musasir	OK	tiles=2; rows=1	2026-08-17T12:15:14
+Phrygian Kingdom	OK	tiles=4; rows=14; 1 continuity gap(s)	2026-08-17T12:15:22
+Boeotia	OK	tiles=1; rows=15; 6 continuity gap(s)	2026-08-17T12:15:30
+Kush Tributary	OK	tiles=3; rows=54; 4 warning(s): WARNING: (Herakleopolis) row -726.5..-714.5 has conflicting colorIndex among contributing entries | WARNING: Great Chiefs of the Meshwesh row -726.5..-715.5 has conflicting colorIndex among contributing entries | WARNING: Twenty Fourth Dynasty row -726.5..-715.5 has conflicting colorIndex among contributing entries; 2 continuity gap(s)	2026-08-17T12:15:38
+Zhoulai	OK	tiles=1; rows=1	2026-08-17T12:15:46
+Zhongwu	OK	tiles=1; rows=1	2026-08-17T12:15:54
+Zhongli	OK	tiles=1; rows=1	2026-08-17T12:16:03
+Shu long	OK	tiles=1; rows=1	2026-08-17T12:16:11
+Elis	OK	tiles=3; rows=38; 13 continuity gap(s)	2026-08-17T12:16:18
+Achaea	OK	tiles=4; rows=55; 1 warning(s): WARNING: Croton row -615.5..-550.0 has conflicting colorIndex among contributing entries; 12 continuity gap(s)	2026-08-17T12:16:26
+Syracuse	OK	tiles=11; rows=188; 62 continuity gap(s)	2026-08-17T12:16:36
+Karalla	OK	tiles=1; rows=3; 2 continuity gap(s)	2026-08-17T12:16:44
+Allabria	OK	tiles=1; rows=3; 2 continuity gap(s)	2026-08-17T12:16:52
+Media	OK	tiles=23; rows=42; 12 continuity gap(s)	2026-08-17T12:17:01
+Eretria	OK	tiles=4; rows=9; 3 continuity gap(s)	2026-08-17T12:17:11
+Chalcis	OK	tiles=1; rows=5; 2 continuity gap(s)	2026-08-17T12:17:22
+Liang	OK	tiles=7; rows=2	2026-08-17T12:17:34
+Rui	OK	tiles=6; rows=3; 1 continuity gap(s)	2026-08-17T12:17:46
+Shanrong	OK	tiles=2; rows=4	2026-08-17T12:17:58
+Jiang	OK	tiles=9; rows=1	2026-08-17T12:18:09
+Huang	OK	tiles=6; rows=2	2026-08-17T12:18:21
+Jiao	OK	tiles=2; rows=1	2026-08-17T12:18:37
+Sardinians	OK	tiles=2; rows=2	2026-08-17T12:18:54
+Luo	OK	tiles=3; rows=2	2026-08-17T12:19:12
+Bithynians	SKIP_NO_FEATURES	tiles=2	2026-08-17T12:19:12
+Ji(2)	OK	tiles=1; rows=1	2026-08-17T12:19:22
+Qedarite Confederation	OK	tiles=7; rows=12; 6 continuity gap(s)	2026-08-17T12:19:49
+Carians	OK	tiles=1; rows=3; 1 continuity gap(s)	2026-08-17T12:20:14
+Aeolian League	OK	tiles=1; rows=8	2026-08-17T12:20:26
+Ionian League	OK	tiles=6; rows=79; 16 continuity gap(s)	2026-08-17T12:20:40
+Triphylia	OK	tiles=1; rows=5; 3 continuity gap(s)	2026-08-17T12:20:51
+Pisatis	OK	tiles=1; rows=2	2026-08-17T12:21:03
+Opuntian Locris	OK	tiles=1; rows=8; 6 continuity gap(s)	2026-08-17T12:21:14
+Epicnemidian Locris	OK	tiles=2; rows=7; 3 continuity gap(s)	2026-08-17T12:21:26
+Ozolian Locris	OK	tiles=2; rows=42; 4 warning(s): WARNING: Epizephyrian Locris row -424.3..-406.8 has conflicting colorIndex among contributing entries | WARNING: Epizephyrian Locris row -405.1..-397.6 has conflicting colorIndex among contributing entries | WARNING: Epizephyrian Locris row -395.8..-392.4 has conflicting colorIndex among contributing entries; 5 continuity gap(s)	2026-08-17T12:21:38
+Phocis	OK	tiles=2; rows=39; 6 continuity gap(s)	2026-08-17T12:21:49
+Doris	OK	tiles=3; rows=2; 1 continuity gap(s)	2026-08-17T12:22:00
+Malis	OK	tiles=1; rows=4; 2 continuity gap(s)	2026-08-17T12:22:12
+Aetolia	OK	tiles=1; rows=3; 1 continuity gap(s)	2026-08-17T12:22:23
+Acarnania	OK	tiles=1; rows=3; 2 continuity gap(s)	2026-08-17T12:22:34
+Dolopia	OK	tiles=1; rows=2; 1 continuity gap(s)	2026-08-17T12:22:46
+Oetaea	OK	tiles=1; rows=4; 2 continuity gap(s)	2026-08-17T12:22:57
+Aeniania	OK	tiles=1; rows=3; 2 continuity gap(s)	2026-08-17T12:23:09
+Shubria	OK	tiles=1; rows=1	2026-08-17T12:23:20
+Egypt: Twenty Sixth Dynasty	OK	tiles=10; rows=107; 1 warning(s): WARNING: Cypriot Kingdoms row -560.5..-527.5 has conflicting colorIndex among contributing entries; 8 continuity gap(s)	2026-08-17T12:23:33
+Scythia	OK	tiles=34; rows=32; 3 warning(s): WARNING: Scythians row -626.6..-626.5 has conflicting colorIndex among contributing entries | WARNING: Scythians row -626.5..-626.4 has conflicting colorIndex among contributing entries | WARNING: Scythians row -626.4..-626.3 has conflicting colorIndex among contributing entries; 3 continuity gap(s)	2026-08-17T12:23:47
+Corcyra	OK	tiles=4; rows=36; 11 continuity gap(s)	2026-08-17T12:23:59
+Persia	OK	tiles=54; rows=6; 1 continuity gap(s)	2026-08-17T12:24:12
+Cimmerian Kingdom	OK	tiles=5; rows=6; 2 continuity gap(s)	2026-08-17T12:24:23
+Kingdom of Macedon	OK	tiles=45; rows=808; 37 warning(s): WARNING: Cypriot Kingdoms row -332.5..-321.9 has conflicting colorIndex among contributing entries | WARNING: Cypriot Kingdoms row -321.9..-319.5 has conflicting colorIndex among contributing entries | WARNING: Egypt row -331.6..-322.4 has conflicting colorIndex among contributing entries; 189 continuity gap(s)	2026-08-17T12:25:32
+Bottiaeans	OK	tiles=1; rows=4; 2 continuity gap(s)	2026-08-17T12:25:41
+Etruria	OK	tiles=5; rows=151; 9 warning(s): WARNING: Padanian Etruria row -515.5..-400.1 has conflicting colorIndex among contributing entries | WARNING: Padanian Etruria row -400.1..-288.5 has conflicting colorIndex among contributing entries | WARNING: Padanian Etruria row -288.5..-1.0 has conflicting colorIndex among contributing entries; 43 continuity gap(s)	2026-08-17T12:25:58
+Kingdom of Rome	OK	tiles=1; rows=50; 16 continuity gap(s)	2026-08-17T12:26:17
+Sabines	SKIP_NO_FEATURES	tiles=1	2026-08-17T12:26:17
+Volsci	OK	tiles=1; rows=46; 15 continuity gap(s)	2026-08-17T12:26:36
+Stasis	OK	tiles=10; rows=27; 24 continuity gap(s)	2026-08-17T12:26:50
+Kingdom of Cyrene	OK	tiles=7; rows=16; 4 continuity gap(s)	2026-08-17T12:27:10
+Greeks	OK	tiles=13; rows=17	2026-08-17T12:27:29
+Hermionis	OK	tiles=1; rows=7	2026-08-17T12:27:48
+Asinia	OK	tiles=1; rows=1	2026-08-17T12:28:07
+Epidauria	OK	tiles=1; rows=1	2026-08-17T12:28:26
+Kalaurian Amphictiony	OK	tiles=1; rows=18	2026-08-17T12:28:44
+Neo-Babylonian Empire	OK	tiles=14; rows=22	2026-08-17T12:29:05
+Neo Babylonian Empire	OK	tiles=10; rows=40; 20 continuity gap(s)	2026-08-17T12:29:24
+Albanians	OK	tiles=3; rows=1	2026-08-17T12:29:43
+Pontians	SKIP_NO_FEATURES	tiles=1	2026-08-17T12:29:43
+Egypt: Twenty Sixth Dynasty Tributary	OK	tiles=2; rows=2	2026-08-17T12:30:02
+Neo Babylonian Empire Tributary	OK	tiles=4; rows=22; 3 continuity gap(s)	2026-08-17T12:30:21
+Carthage	OK	tiles=13; rows=242; 1 warning(s): WARNING: Army of Mago row -394.6..-394.4 has conflicting colorIndex among contributing entries; 49 continuity gap(s)	2026-08-17T12:30:51
+Thessaly	OK	tiles=2; rows=23; 9 continuity gap(s)	2026-08-17T12:31:11
+Magnesia	OK	tiles=1; rows=1	2026-08-17T12:31:30
+Sicyon	OK	tiles=1; rows=4; 1 continuity gap(s)	2026-08-17T12:31:53
+Cilicia	OK	tiles=2; rows=3	2026-08-17T12:32:14
+Median Vassal	OK	tiles=6; rows=9; 1 warning(s): WARNING: Persia row -555.5..-553.5 has conflicting colorIndex among contributing entries	2026-08-17T12:32:37
+Egypt: Revolt of Amasis	SKIP_NO_FEATURES	tiles=1	2026-08-17T12:32:38
+Pisidians	OK	tiles=1; rows=1	2026-08-17T12:33:00
+Revolt	OK	tiles=48; rows=122; 47 continuity gap(s)	2026-08-17T12:33:27
+Revolt of Luan	SKIP_NO_FEATURES	tiles=1	2026-08-17T12:33:28
+Civil war	OK	tiles=3; rows=1	2026-08-17T12:33:51
+Clan warfare	SKIP_NO_FEATURES	tiles=1	2026-08-17T12:33:52
+Sakas	OK	tiles=21; rows=6	2026-08-17T12:34:14
+Ugrians	OK	tiles=10; rows=1	2026-08-17T12:34:36
+Sarmatians	SKIP_NO_TILES		2026-08-17T12:34:37
+Kekaya	OK	tiles=1; rows=4; 2 continuity gap(s)	2026-08-17T12:34:59
+Madra	OK	tiles=2; rows=6; 2 continuity gap(s)	2026-08-17T12:35:21
+Trigarta	OK	tiles=2; rows=5; 1 continuity gap(s)	2026-08-17T12:35:42
+Argaric Culture	OK	tiles=1; rows=1	2026-08-17T12:36:01
+Kalinga	OK	tiles=4; rows=6; 1 continuity gap(s)	2026-08-17T12:36:22
+Vidarbha	OK	tiles=3; rows=3; 1 continuity gap(s)	2026-08-17T12:36:41
+Vanga	OK	tiles=2; rows=3	2026-08-17T12:37:02
+Sakya	OK	tiles=1; rows=2	2026-08-17T12:37:23
+Latin League	OK	tiles=1; rows=35; 6 continuity gap(s)	2026-08-17T12:37:43
+Aurunci	OK	tiles=1; rows=2; 1 continuity gap(s)	2026-08-17T12:38:03
+Samian Thalassocracy	OK	tiles=2; rows=21; 1 continuity gap(s)	2026-08-17T12:38:22
+Persian Revolt	OK	tiles=7; rows=5	2026-08-17T12:38:42
+Parthia	OK	tiles=6; rows=3	2026-08-17T12:39:01
+Margiana	OK	tiles=4; rows=2; 1 continuity gap(s)	2026-08-17T12:39:21
+Aegina	OK	tiles=1; rows=10; 4 continuity gap(s)	2026-08-17T12:39:42
+Croton	OK	tiles=1; rows=14; 2 continuity gap(s)	2026-08-17T12:40:06
+Yue	OK	tiles=10; rows=19; 3 continuity gap(s)	2026-08-17T12:40:31
+Zhao clan	OK	tiles=1; rows=2	2026-08-17T12:40:52
+Fan clan	SKIP_NO_FEATURES	tiles=1	2026-08-17T12:40:53
+Hann clan	SKIP_NO_FEATURES	tiles=2	2026-08-17T12:40:54
+Wei clan	SKIP_NO_FEATURES	tiles=1	2026-08-17T12:40:55
+Zhi clan	SKIP_NO_FEATURES	tiles=1	2026-08-17T12:40:55
+Zhonghang clan	OK	tiles=2; rows=1	2026-08-17T12:41:18
+Gela	OK	tiles=4; rows=20; 8 continuity gap(s)	2026-08-17T12:41:40
+Troezen	OK	tiles=1; rows=50; 34 continuity gap(s)	2026-08-17T12:42:03
+Aequi	OK	tiles=1; rows=19; 8 continuity gap(s)	2026-08-17T12:42:24
+Plebian secession	SKIP_NO_FEATURES	tiles=1	2026-08-17T12:42:25
+Persian Vassal	OK	tiles=3; rows=29; 4 continuity gap(s)	2026-08-17T12:42:46
+Apollonia	OK	tiles=4; rows=3; 2 continuity gap(s)	2026-08-17T12:43:06
+Zhongshan	OK	tiles=2; rows=4; 1 continuity gap(s)	2026-08-17T12:43:26
+Rhegion	OK	tiles=2; rows=17; 6 continuity gap(s)	2026-08-17T12:43:46
+Guo clan	SKIP_NO_FEATURES	tiles=1	2026-08-17T12:43:47
+Gao clan	SKIP_NO_FEATURES	tiles=1	2026-08-17T12:43:47
+Bao clan	SKIP_NO_FEATURES	tiles=1	2026-08-17T12:43:48
+Tian clan	SKIP_NO_FEATURES	tiles=1	2026-08-17T12:43:49
+Hernici	OK	tiles=1; rows=3; 1 continuity gap(s)	2026-08-17T12:44:10
+Carthaginian Ally	OK	tiles=8; rows=23; 5 continuity gap(s)	2026-08-17T12:44:30
+Akragas	OK	tiles=2; rows=24; 6 continuity gap(s)	2026-08-17T12:44:50
+Jiang Qi	OK	tiles=1; rows=1	2026-08-17T12:45:11
+Tian Qi	OK	tiles=6; rows=29; 5 continuity gap(s)	2026-08-17T12:45:33
+Greek Alliance	OK	tiles=6; rows=101; 2 warning(s): WARNING: Athens row -480.9..-478.3 has conflicting colorIndex among contributing entries | WARNING: Epidauria row -480.9..-478.3 has conflicting colorIndex among contributing entries; 1 continuity gap(s)	2026-08-17T12:45:57
+Bosporan Kingdom	OK	tiles=4; rows=16; 5 continuity gap(s)	2026-08-17T12:46:18
+Tyranny of Syracuse	OK	tiles=8; rows=85; 27 continuity gap(s)	2026-08-17T12:46:40
+Delian League	OK	tiles=14; rows=491; 4 warning(s): WARNING: Athens row -478.3..-427.5 has conflicting colorIndex among contributing entries | WARNING: Athens row -427.5..-404.7 has conflicting colorIndex among contributing entries | WARNING: Naval expedition of Pericles row -447.6..-447.3 has conflicting colorIndex among contributing entries; 73 continuity gap(s)	2026-08-17T12:48:06
+Odrysian Kingdom	OK	tiles=4; rows=48; 10 continuity gap(s)	2026-08-17T12:48:28
+Taras	OK	tiles=5; rows=7; 2 continuity gap(s)	2026-08-17T12:48:50
+Himera	OK	tiles=2; rows=4; 2 continuity gap(s)	2026-08-17T12:49:12
+Kyme	OK	tiles=1; rows=5	2026-08-17T12:49:34
+Getae	OK	tiles=2; rows=7; 3 continuity gap(s)	2026-08-17T12:49:49
+Thyni	OK	tiles=1; rows=2; 1 continuity gap(s)	2026-08-17T12:50:09
+Bessaei	OK	tiles=2; rows=1	2026-08-17T12:50:32
+Kamarina	OK	tiles=1; rows=1	2026-08-17T12:50:54
+Leontini	OK	tiles=2; rows=4; 3 continuity gap(s)	2026-08-17T12:51:16
+Aitna	OK	tiles=2; rows=1	2026-08-17T12:51:38
+Naxos	OK	tiles=2; rows=2; 1 continuity gap(s)	2026-08-17T12:52:00
+Helot Revolt	SKIP_NO_FEATURES	tiles=1	2026-08-17T12:52:01
+Revolt of Inaros	OK	tiles=3; rows=3	2026-08-17T12:52:22
+Catane	OK	tiles=2; rows=4; 2 continuity gap(s)	2026-08-17T12:52:44
+Dali	OK	tiles=4; rows=1	2026-08-17T12:53:06
+Garamantes	OK	tiles=4; rows=1	2026-08-17T12:53:27
+Libyphoenices	OK	tiles=3; rows=1	2026-08-17T12:53:49
+North Arabian Semites	OK	tiles=6; rows=1	2026-08-17T12:54:11
+Sikeloi	OK	tiles=2; rows=2	2026-08-17T12:54:32
+Sikanoi	OK	tiles=1; rows=2; 1 continuity gap(s)	2026-08-17T12:54:55
+Sicelia	OK	tiles=2; rows=5; 2 continuity gap(s)	2026-08-17T12:55:20
+Bruttii	OK	tiles=1; rows=1	2026-08-17T12:55:44
+Thesprotians	OK	tiles=1; rows=1	2026-08-17T12:56:09
+Molossians	SKIP_NO_FEATURES	tiles=1	2026-08-17T12:56:10
+Chaonians	OK	tiles=1; rows=1	2026-08-17T12:56:34
+Cretan City States	OK	tiles=4; rows=146; 16 warning(s): WARNING: Gortyna row -500.1..-332.4 has conflicting colorIndex among contributing entries | WARNING: Gortyna row -331.5..-268.2 has conflicting colorIndex among contributing entries | WARNING: Gortyna row -261.5..-1.0 has conflicting colorIndex among contributing entries; 74 continuity gap(s)	2026-08-17T12:57:01
+Piceni	OK	tiles=1; rows=1	2026-08-17T12:57:25
+Umbrii	OK	tiles=1; rows=1	2026-08-17T12:57:50
+Samnium	OK	tiles=1; rows=1	2026-08-17T12:58:14
+Ausoni/Aurunci	SKIP_NO_TILES		2026-08-17T12:58:15
+Iapygii	OK	tiles=1; rows=1	2026-08-17T12:58:40
+Lucani	OK	tiles=2; rows=1	2026-08-17T12:59:04
+Messapii	OK	tiles=3; rows=1	2026-08-17T12:59:30
+Illyrioi	OK	tiles=2; rows=1	2026-08-17T12:59:54
+Thraikes	OK	tiles=2; rows=2	2026-08-17T13:00:19
+Paiones	OK	tiles=1; rows=1	2026-08-17T13:00:43
+Yu	OK	tiles=43; rows=1	2026-08-17T13:01:09
+Ji	OK	tiles=46; rows=1	2026-08-17T13:01:36
+Geng	OK	tiles=1; rows=1	2026-08-17T13:02:00
+Han(2)	OK	tiles=1; rows=1	2026-08-17T13:02:24
+Qu	OK	tiles=100; rows=1	2026-08-17T13:02:52
+Xun	OK	tiles=2; rows=1	2026-08-17T13:03:17
+Pu	OK	tiles=117; rows=1	2026-08-17T13:03:46
+Jia	OK	tiles=11; rows=1	2026-08-17T13:04:11
+Yang	OK	tiles=9; rows=1	2026-08-17T13:04:36
+Shao	OK	tiles=2; rows=1	2026-08-17T13:05:00
+Mao	OK	tiles=8; rows=1	2026-08-17T13:05:25
+Little Guo	OK	tiles=1; rows=1	2026-08-17T13:05:50
+Bao	OK	tiles=3; rows=1	2026-08-17T13:06:14
+Ju(2)	OK	tiles=1; rows=1	2026-08-17T13:06:39
+Ping Zhou	OK	tiles=2; rows=1	2026-08-17T13:07:03
+Feng	OK	tiles=3; rows=1	2026-08-17T13:07:28
+Hua	OK	tiles=14; rows=1	2026-08-17T13:07:53
+Ji(4)	OK	tiles=1; rows=1	2026-08-17T13:08:17
+Kuai	OK	tiles=1; rows=1	2026-08-17T13:08:40
+Zuo	OK	tiles=2; rows=1	2026-08-17T13:09:05
+Yan(2)	OK	tiles=1; rows=1	2026-08-17T13:10:31
+Xu(2)	OK	tiles=2; rows=4; 2 continuity gap(s)	2026-08-17T13:10:45
+Dai(2)	OK	tiles=2; rows=1	2026-08-17T13:10:59
+Hu(2)	OK	tiles=1; rows=1	2026-08-17T13:11:14
+Bu geng	OK	tiles=1; rows=1	2026-08-17T13:11:37
+Hu(3)	OK	tiles=1; rows=1	2026-08-17T13:12:01
+Bo	OK	tiles=172; rows=1	2026-08-17T13:12:30
+Fang	OK	tiles=3; rows=1	2026-08-17T13:12:44
+Dun	OK	tiles=18; rows=1	2026-08-17T13:12:59
+Shen(2)	OK	tiles=2; rows=1	2026-08-17T13:13:13
+Dao	OK	tiles=21; rows=1	2026-08-17T13:13:28
+Lu(2)	OK	tiles=2; rows=1	2026-08-17T13:13:42
+Ruo	OK	tiles=3; rows=1	2026-08-17T13:13:57
+Liao(2)	OK	tiles=1; rows=1	2026-08-17T13:14:12
+Lu(3)	OK	tiles=1; rows=1	2026-08-17T13:14:27
+Xirong	OK	tiles=1; rows=1	2026-08-17T13:14:41
+Lai(2)	OK	tiles=1; rows=1	2026-08-17T13:14:56
+Er	OK	tiles=44; rows=1	2026-08-17T13:15:16
+Yun	OK	tiles=10; rows=1	2026-08-17T13:15:39
+Zhen	OK	tiles=6; rows=1	2026-08-17T13:16:03
+Quan	OK	tiles=11; rows=1	2026-08-17T13:16:27
+Xian	OK	tiles=7; rows=1	2026-08-17T13:16:42
+Guang	OK	tiles=9; rows=1	2026-08-17T13:16:57
+Jun	OK	tiles=9; rows=2	2026-08-17T13:17:12
+Yong	OK	tiles=8; rows=1	2026-08-17T13:17:26
+Zhou(2)	ERROR	erge failed: Traceback (most recent call last):
+  File "C:\my stuff\claudetest\mapper\merge_into_master.py", line 141, in <module>
+    main()
+    ~~~~^^
+  File "C:\my stuff\claudetest\mapper\merge_into_master.py", line 127, in main
+    os.replace(tmp_path, args.master)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] Access is denied: 'C:\\my stuff\\claudetest\\mapper\\exports\\tmphrqv_mot.geojsonl.tmp' -> 'C:\\my stuff\\claudetest\\mapper\\exports\\cliopatria_master.geojsonl'	2026-08-17T13:17:34
+Kui	ERROR	erge failed: Traceback (most recent call last):
+  File "C:\my stuff\claudetest\mapper\merge_into_master.py", line 141, in <module>
+    main()
+    ~~~~^^
+  File "C:\my stuff\claudetest\mapper\merge_into_master.py", line 127, in main
+    os.replace(tmp_path, args.master)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] Access is denied: 'C:\\my stuff\\claudetest\\mapper\\exports\\tmp150zhkw1.geojsonl.tmp' -> 'C:\\my stuff\\claudetest\\mapper\\exports\\cliopatria_master.geojsonl'	2026-08-17T13:17:42
+Yu(2)	OK	tiles=2; rows=1	2026-08-17T13:17:56
+Jiang(2)	ERROR	erge failed: Traceback (most recent call last):
+  File "C:\my stuff\claudetest\mapper\merge_into_master.py", line 141, in <module>
+    main()
+    ~~~~^^
+  File "C:\my stuff\claudetest\mapper\merge_into_master.py", line 127, in main
+    os.replace(tmp_path, args.master)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] Access is denied: 'C:\\my stuff\\claudetest\\mapper\\exports\\tmpi1knego8.geojsonl.tmp' -> 'C:\\my stuff\\claudetest\\mapper\\exports\\cliopatria_master.geojsonl'	2026-08-17T13:18:05
+Yingshi	ERROR	erge failed: Traceback (most recent call last):
+  File "C:\my stuff\claudetest\mapper\merge_into_master.py", line 141, in <module>
+    main()
+    ~~~~^^
+  File "C:\my stuff\claudetest\mapper\merge_into_master.py", line 127, in main
+    os.replace(tmp_path, args.master)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] Access is denied: 'C:\\my stuff\\claudetest\\mapper\\exports\\tmpxe86x6go.geojsonl.tmp' -> 'C:\\my stuff\\claudetest\\mapper\\exports\\cliopatria_master.geojsonl'	2026-08-17T13:18:13
+Shu jiu	ERROR	erge failed: Traceback (most recent call last):
+  File "C:\my stuff\claudetest\mapper\merge_into_master.py", line 141, in <module>
+    main()
+    ~~~~^^
+  File "C:\my stuff\claudetest\mapper\merge_into_master.py", line 127, in main
+    os.replace(tmp_path, args.master)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] Access is denied: 'C:\\my stuff\\claudetest\\mapper\\exports\\tmpzvocz47l.geojsonl.tmp' -> 'C:\\my stuff\\claudetest\\mapper\\exports\\cliopatria_master.geojsonl'	2026-08-17T13:18:21
+Shu Yong	ERROR	erge failed: Traceback (most recent call last):
+  File "C:\my stuff\claudetest\mapper\merge_into_master.py", line 141, in <module>
+    main()
+    ~~~~^^
+  File "C:\my stuff\claudetest\mapper\merge_into_master.py", line 127, in main
+    os.replace(tmp_path, args.master)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] Access is denied: 'C:\\my stuff\\claudetest\\mapper\\exports\\tmp3wbfyyb9.geojsonl.tmp' -> 'C:\\my stuff\\claudetest\\mapper\\exports\\cliopatria_master.geojsonl'	2026-08-17T13:18:29
+Shu Bao	ERROR	erge failed: Traceback (most recent call last):
+  File "C:\my stuff\claudetest\mapper\merge_into_master.py", line 141, in <module>
+    main()
+    ~~~~^^
+  File "C:\my stuff\claudetest\mapper\merge_into_master.py", line 127, in main
+    os.replace(tmp_path, args.master)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] Access is denied: 'C:\\my stuff\\claudetest\\mapper\\exports\\tmpi3w2i2qd.geojsonl.tmp' -> 'C:\\my stuff\\claudetest\\mapper\\exports\\cliopatria_master.geojsonl'	2026-08-17T13:18:37
+Shu(2)	ERROR	erge failed: Traceback (most recent call last):
+  File "C:\my stuff\claudetest\mapper\merge_into_master.py", line 141, in <module>
+    main()
+    ~~~~^^
+  File "C:\my stuff\claudetest\mapper\merge_into_master.py", line 127, in main
+    os.replace(tmp_path, args.master)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] Access is denied: 'C:\\my stuff\\claudetest\\mapper\\exports\\tmp2t7h4qdi.geojsonl.tmp' -> 'C:\\my stuff\\claudetest\\mapper\\exports\\cliopatria_master.geojsonl'	2026-08-17T13:18:45
+Zong	ERROR	erge failed: Traceback (most recent call last):
+  File "C:\my stuff\claudetest\mapper\merge_into_master.py", line 141, in <module>
+    main()
+    ~~~~^^
+  File "C:\my stuff\claudetest\mapper\merge_into_master.py", line 127, in main
+    os.replace(tmp_path, args.master)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] Access is denied: 'C:\\my stuff\\claudetest\\mapper\\exports\\tmpf63d5ai0.geojsonl.tmp' -> 'C:\\my stuff\\claudetest\\mapper\\exports\\cliopatria_master.geojsonl'	2026-08-17T13:18:53
+Tong	ERROR	erge failed: Traceback (most recent call last):
+  File "C:\my stuff\claudetest\mapper\merge_into_master.py", line 141, in <module>
+    main()
+    ~~~~^^
+  File "C:\my stuff\claudetest\mapper\merge_into_master.py", line 127, in main
+    os.replace(tmp_path, args.master)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] Access is denied: 'C:\\my stuff\\claudetest\\mapper\\exports\\tmpm0t790gd.geojsonl.tmp' -> 'C:\\my stuff\\claudetest\\mapper\\exports\\cliopatria_master.geojsonl'	2026-08-17T13:19:01
+Liu	OK	tiles=9; rows=1	2026-08-17T13:19:15
+Fan	OK	tiles=16; rows=1	2026-08-17T13:19:29
+Liao	OK	tiles=6; rows=1	2026-08-17T13:19:46
+Hu	OK	tiles=87; rows=1	2026-08-17T13:20:03
+Xiang(2)	OK	tiles=1; rows=1	2026-08-17T13:20:19
+Yan(3)	OK	tiles=2; rows=1	2026-08-17T13:20:36
+Han	OK	tiles=34; rows=1	2026-08-17T13:20:51
+Gao	OK	tiles=7; rows=2; 1 continuity gap(s)	2026-08-17T13:21:05
+Li	OK	tiles=196; rows=1	2026-08-17T13:21:24
+Pi	OK	tiles=121; rows=1	2026-08-17T13:21:41
+Zhuan	OK	tiles=12; rows=1	2026-08-17T13:21:56
+Yuqui	OK	tiles=1; rows=1	2026-08-17T13:22:11
+Biyang	OK	tiles=1; rows=1	2026-08-17T13:22:24
+Zeng(2)	OK	tiles=2; rows=1	2026-08-17T13:22:38
+Ni	OK	tiles=118; rows=1	2026-08-17T13:22:55
+Shi	OK	tiles=42; rows=1	2026-08-17T13:23:10
+Ji(3)	OK	tiles=2; rows=1	2026-08-17T13:23:24
+Mao(2)	OK	tiles=2; rows=1	2026-08-17T13:23:37
+Rong	OK	tiles=12; rows=4; 1 continuity gap(s)	2026-08-17T13:23:52
+Ren	OK	tiles=20; rows=1	2026-08-17T13:24:06
+Yu(3)	OK	tiles=1; rows=1	2026-08-17T13:24:21
+Genmou	OK	tiles=1; rows=1	2026-08-17T13:24:36
+Xiang	OK	tiles=5; rows=1	2026-08-17T13:24:50
+Yang(2)	OK	tiles=1; rows=1	2026-08-17T13:25:04
+Mou	OK	tiles=16; rows=1	2026-08-17T13:25:18
+Zhuanyu	OK	tiles=1; rows=1	2026-08-17T13:25:32
+Xuqu	OK	tiles=1; rows=1	2026-08-17T13:25:46
+Su	OK	tiles=191; rows=1	2026-08-17T13:26:09
+Zhang	OK	tiles=8; rows=1	2026-08-17T13:26:26
+Zhu(2)	OK	tiles=1; rows=1	2026-08-17T13:26:46
+Sui(2)	OK	tiles=1; rows=1	2026-08-17T13:27:08
+Zhu(3)	OK	tiles=1; rows=1	2026-08-17T13:27:30
+Tan(2)	OK	tiles=1; rows=1	2026-08-17T13:27:52
+Guo	OK	tiles=4; rows=1	2026-08-17T13:28:14
+Qi(3)	OK	tiles=1; rows=1	2026-08-17T13:28:36
+Qi(2)	OK	tiles=1; rows=3	2026-08-17T13:28:58
+Zhou(3)	OK	tiles=1; rows=1	2026-08-17T13:29:21
+Jie	OK	tiles=1; rows=1	2026-08-17T13:29:43
+Gu(2)	OK	tiles=1; rows=1	2026-08-17T13:30:04
+Yi	OK	tiles=14; rows=1	2026-08-17T13:30:27
+Guzhu	OK	tiles=2; rows=1	2026-08-17T13:30:50
+Li(2)	OK	tiles=1; rows=1	2026-08-17T13:31:15
+Nanyan	OK	tiles=1; rows=1	2026-08-17T13:31:39
+Fan(2)	OK	tiles=1; rows=1	2026-08-17T13:32:04
+Gong	OK	tiles=5; rows=2; 1 continuity gap(s)	2026-08-17T13:32:29
+Gaoluo	OK	tiles=1; rows=1	2026-08-17T13:32:54
+Li Rong	OK	tiles=1; rows=1	2026-08-17T13:33:18
+Red Di	OK	tiles=1; rows=12	2026-08-17T13:33:43
+Fei	OK	tiles=3; rows=1	2026-08-17T13:34:08
+Changdi	OK	tiles=1; rows=1	2026-08-17T13:34:32
+Qiuyou	OK	tiles=1; rows=1	2026-08-17T13:34:57
+Dai	OK	tiles=12; rows=1	2026-08-17T13:35:22
+White Di	OK	tiles=2; rows=1	2026-08-17T13:35:47
+Lingzhi	OK	tiles=2; rows=1	2026-08-17T13:36:11
+Wuzhong	OK	tiles=3; rows=3	2026-08-17T13:36:36
+Gojoseon	OK	tiles=2; rows=1	2026-08-17T13:37:01
+Tuhe	OK	tiles=2; rows=3	2026-08-17T13:37:25
+Western Rong	OK	tiles=4; rows=2	2026-08-17T13:37:50
+Ji(6)	OK	tiles=1; rows=1	2026-08-17T13:38:15
+Gui	OK	tiles=39; rows=1	2026-08-17T13:38:41
+Mianzhu	OK	tiles=1; rows=1	2026-08-17T13:39:05
+Wushi Rong	OK	tiles=1; rows=1	2026-08-17T13:39:30
+Yiqu	OK	tiles=2; rows=2	2026-08-17T13:39:55
+Luhun Rong	OK	tiles=2; rows=4; 1 continuity gap(s)	2026-08-17T13:40:20
+Du	OK	tiles=79; rows=1	2026-08-17T13:40:48
+Pengzhi	OK	tiles=2; rows=1	2026-08-17T13:41:12
+Yi-Luo Rong	OK	tiles=1; rows=1	2026-08-17T13:41:36
+Manshi	OK	tiles=1; rows=1	2026-08-17T13:42:00
+Yihu	OK	tiles=1; rows=1	2026-08-17T13:42:24
+Huaiyi	OK	tiles=6; rows=2	2026-08-17T13:42:49
+Di(2)	OK	tiles=2; rows=1	2026-08-17T13:43:13
+Cong	OK	tiles=6; rows=1	2026-08-17T13:43:38
+Nu	OK	tiles=126; rows=1	2026-08-17T13:44:07
+Rang	OK	tiles=11; rows=1	2026-08-17T13:44:32
+Dan	OK	tiles=23; rows=1	2026-08-17T13:44:57
+Gong(2)	OK	tiles=1; rows=1	2026-08-17T13:45:22
+Baipu	OK	tiles=3; rows=1	2026-08-17T13:45:47
+Laiyi	OK	tiles=2; rows=1	2026-08-17T13:46:11
+Quaman	OK	tiles=2; rows=2	2026-08-17T13:46:36
+Yangyue	OK	tiles=2; rows=2	2026-08-17T13:47:01
+Three Yi Tribes	OK	tiles=2; rows=2	2026-08-17T13:47:25
+Donghu	OK	tiles=4; rows=1	2026-08-17T13:47:52
+Linhu	OK	tiles=4; rows=2	2026-08-17T13:48:11
+Qiang	OK	tiles=3; rows=1	2026-08-17T13:48:25
+Duan	OK	tiles=2; rows=2	2026-08-17T13:48:38
+Li(3)	OK	tiles=1; rows=1	2026-08-17T13:48:52
+Duchy of Jin	OK	tiles=8; rows=93; 1 warning(s): WARNING: Army row -607.6..-607.5 has conflicting colorIndex among contributing entries; 31 continuity gap(s)	2026-08-17T13:49:06
+Revolt of Wangzi Tui	OK	tiles=2; rows=3	2026-08-17T13:49:20
+Ruo'ao revolt	OK	tiles=1; rows=1	2026-08-17T13:49:33
+Revolt of Hua Clan	OK	tiles=1; rows=1	2026-08-17T13:49:47
+Revolt of Wangzi Zhao	OK	tiles=2; rows=4	2026-08-17T13:50:01
+Xiao	OK	tiles=8; rows=1	2026-08-17T13:50:15
+Zhao	OK	tiles=9; rows=45; 5 continuity gap(s)	2026-08-17T13:50:29
+Hann	OK	tiles=11; rows=28; 2 continuity gap(s)	2026-08-17T13:50:43
+Delphi	SKIP_NO_FEATURES	tiles=1	2026-08-17T13:50:44
+Euboea	OK	tiles=3; rows=9; 3 continuity gap(s)	2026-08-17T13:50:57
+Peloponnesian League	OK	tiles=13; rows=571; 7 warning(s): WARNING: Corinthia row -431.2..-429.2 has conflicting colorIndex among contributing entries | WARNING: Corinthia row -429.2..-424.7 has conflicting colorIndex among contributing entries | WARNING: Naval expedition of Pollis row -376.5..-376.2 has conflicting colorIndex among contributing entries; 116 continuity gap(s)	2026-08-17T13:51:26
+Lucanians	OK	tiles=2; rows=12; 6 continuity gap(s)	2026-08-17T13:51:40
+Bruttians	OK	tiles=1; rows=2	2026-08-17T13:51:54
+Triballi	OK	tiles=2; rows=5; 3 continuity gap(s)	2026-08-17T13:52:07
+Samnite Confederation	OK	tiles=1; rows=69; 23 continuity gap(s)	2026-08-17T13:52:30
+Sidicini	OK	tiles=1; rows=3; 1 continuity gap(s)	2026-08-17T13:52:55
+Campania	OK	tiles=3; rows=5	2026-08-17T13:53:20
+Daunians	OK	tiles=1; rows=1	2026-08-17T13:53:45
+Peucetians	OK	tiles=1; rows=4; 2 continuity gap(s)	2026-08-17T13:54:10
+Dardani	SKIP_NO_FEATURES	tiles=1	2026-08-17T13:54:11
+Taulanti	OK	tiles=3; rows=22; 9 continuity gap(s)	2026-08-17T13:54:36
+Lower Macedon	OK	tiles=1; rows=1	2026-08-17T13:55:01
+Elimiotis	OK	tiles=1; rows=2; 1 continuity gap(s)	2026-08-17T13:55:26
+Eordaia	OK	tiles=1; rows=1	2026-08-17T13:55:51
+Orestis	OK	tiles=1; rows=1	2026-08-17T13:56:15
+Lynkestis	OK	tiles=1; rows=2; 1 continuity gap(s)	2026-08-17T13:56:40
+Pelagonia	OK	tiles=1; rows=1	2026-08-17T13:57:05
+Athamania	OK	tiles=1; rows=3; 2 continuity gap(s)	2026-08-17T13:57:30
+Chaonia	OK	tiles=3; rows=5; 2 continuity gap(s)	2026-08-17T13:57:55
+Molossis	OK	tiles=4; rows=9; 2 continuity gap(s)	2026-08-17T13:58:21
+Tymphaea	OK	tiles=2; rows=1	2026-08-17T13:58:46
+Parauaea	OK	tiles=1; rows=2; 1 continuity gap(s)	2026-08-17T13:59:11
+Mantineia	OK	tiles=1; rows=8; 5 continuity gap(s)	2026-08-17T13:59:37
+Tegea	OK	tiles=1; rows=5; 3 continuity gap(s)	2026-08-17T14:00:02
+Chalcidian League	OK	tiles=3; rows=11; 3 continuity gap(s)	2026-08-17T14:00:27
+League of Argos	OK	tiles=3; rows=16; 2 continuity gap(s)	2026-08-17T14:00:52
+Argos	OK	tiles=3; rows=11; 8 continuity gap(s)	2026-08-17T14:01:17
+Italiote League	OK	tiles=5; rows=44; 14 continuity gap(s)	2026-08-17T14:01:43
+Revolt of Pissuthnes	OK	tiles=2; rows=4	2026-08-17T14:02:08
+Salamis	OK	tiles=4; rows=27; 5 continuity gap(s)	2026-08-17T14:02:34
+Antandros	OK	tiles=1; rows=2; 1 continuity gap(s)	2026-08-17T14:02:59
+Carthaginian Tributary	OK	tiles=1; rows=13; 6 continuity gap(s)	2026-08-17T14:03:23
+Sauromatians	OK	tiles=8; rows=1	2026-08-17T14:03:48
+Pherae	OK	tiles=3; rows=14; 6 continuity gap(s)	2026-08-17T14:04:14
+Pharsalos	OK	tiles=1; rows=2; 1 continuity gap(s)	2026-08-17T14:04:39
+Larissa	OK	tiles=1; rows=3; 2 continuity gap(s)	2026-08-17T14:05:04
+Egypt: Twenty Eighth Dynasty	OK	tiles=5; rows=47	2026-08-17T14:05:30
+Revolt of Cyrus the Younger	OK	tiles=5; rows=8	2026-08-17T14:05:55
+Egypt: Twenty Ninth Dynasty	OK	tiles=5; rows=44	2026-08-17T14:06:21
+Enchele	OK	tiles=1; rows=1	2026-08-17T14:06:46
+Dassaretis	OK	tiles=1; rows=3	2026-08-17T14:07:10
+Kingdom of Illyria	OK	tiles=3; rows=39; 11 continuity gap(s)	2026-08-17T14:07:36
+Thesprotia	OK	tiles=1; rows=1	2026-08-17T14:08:02
+Anti Spartan Alliance	OK	tiles=7; rows=123; 1 warning(s): WARNING: Opuntian Locris row -395.3..-386.5 has conflicting colorIndex among contributing entries; 7 continuity gap(s)	2026-08-17T14:08:35
+Kingdom of Sindica	OK	tiles=2; rows=3; 1 continuity gap(s)	2026-08-17T14:08:59
+Antium	SKIP_NO_FEATURES	tiles=1	2026-08-17T14:09:00
+Carystus	OK	tiles=1; rows=2; 1 continuity gap(s)	2026-08-17T14:09:26
+Lesbos	OK	tiles=1; rows=2; 1 continuity gap(s)	2026-08-17T14:09:51
+Chios	OK	tiles=1; rows=5; 3 continuity gap(s)	2026-08-17T14:10:17
+Samos	OK	tiles=3; rows=4; 1 continuity gap(s)	2026-08-17T14:10:42
+Carduchii	OK	tiles=1; rows=1	2026-08-17T14:11:07
+Liburnians	OK	tiles=2; rows=3; 1 continuity gap(s)	2026-08-17T14:11:32
+Athenian ally	OK	tiles=1; rows=2	2026-08-17T14:11:58
+Phlius	OK	tiles=1; rows=4; 3 continuity gap(s)	2026-08-17T14:12:23
+Maeotians	SKIP_NO_FEATURES	tiles=2	2026-08-17T14:12:24
+Egypt: Thirtieth Dynasty	OK	tiles=6; rows=51; 3 continuity gap(s)	2026-08-17T14:12:50
+Thebes	OK	tiles=5; rows=66; 1 warning(s): WARNING: Opuntian Locris row -272.5..-267.7 has conflicting colorIndex among contributing entries; 24 continuity gap(s)	2026-08-17T14:13:16
+Tanagra	OK	tiles=1; rows=1	2026-08-17T14:13:42
+Thespiae	OK	tiles=1; rows=1	2026-08-17T14:14:08
+Haliartos	OK	tiles=1; rows=1	2026-08-17T14:14:33
+Coronea	OK	tiles=1; rows=1	2026-08-17T14:14:58
+Lebadeia	OK	tiles=1; rows=1	2026-08-17T14:15:24
+Orchomenus	SKIP_NO_FEATURES	tiles=1	2026-08-17T14:15:25
+Kopai	OK	tiles=2; rows=1	2026-08-17T14:15:51
+Akraephia	OK	tiles=1; rows=1	2026-08-17T14:16:16
+Second Athenian League	OK	tiles=6; rows=237; 5 warning(s): WARNING: Thasos row -359.5..-356.6 has conflicting colorIndex among contributing entries | WARNING: Thebes row -373.7..-373.6 has conflicting colorIndex among contributing entries | WARNING: Thebes row -373.6..-373.5 has conflicting colorIndex among contributing entries; 43 continuity gap(s)	2026-08-17T14:16:54
+Illyrian Tributary	OK	tiles=1; rows=5; 1 warning(s): WARNING: Kingdom of Macedon row -372.5..-370.5 has conflicting colorIndex among contributing entries	2026-08-17T14:17:20
+Revolt of Datames	OK	tiles=4; rows=5; 1 continuity gap(s)	2026-08-17T14:17:46
+Theban Ally	OK	tiles=3; rows=107; 3 warning(s): WARNING: Kingdom of Macedon row -369.3..-359.8 has conflicting colorIndex among contributing entries | WARNING: Kingdom of Macedon row -359.8..-359.5 has conflicting colorIndex among contributing entries | WARNING: Opuntian Locris row -370.7..-338.2 has conflicting colorIndex among contributing entries; 12 continuity gap(s)	2026-08-17T14:18:16
+Arcadian League	OK	tiles=1; rows=8; 5 continuity gap(s)	2026-08-17T14:18:42
+Vajjika League	OK	tiles=2; rows=6	2026-08-17T14:19:08
+Alavi	OK	tiles=1; rows=1	2026-08-17T14:19:34
+Allakappa	OK	tiles=1; rows=1	2026-08-17T14:19:59
+Brahmana	OK	tiles=1; rows=1	2026-08-17T14:20:25
+Moriya	OK	tiles=1; rows=1	2026-08-17T14:20:51
+Koliya	OK	tiles=1; rows=1	2026-08-17T14:21:16
+Kalama	OK	tiles=3; rows=1	2026-08-17T14:21:42
+Bhagga	OK	tiles=1; rows=1	2026-08-17T14:22:08
+Salva	OK	tiles=8; rows=1	2026-08-17T14:22:33
+Usinara	OK	tiles=2; rows=2	2026-08-17T14:22:59
+Kunti	OK	tiles=1; rows=1	2026-08-17T14:23:25
+Salwa	OK	tiles=1; rows=1	2026-08-17T14:23:51
+Sindhu	OK	tiles=2; rows=1	2026-08-17T14:24:16
+Ksudrakas	OK	tiles=1; rows=1	2026-08-17T14:24:42
+Malavas	OK	tiles=1; rows=2	2026-08-17T14:25:08
+Aparytae	OK	tiles=1; rows=1	2026-08-17T14:25:33
+Ambashthas	OK	tiles=1; rows=1	2026-08-17T14:25:59
+Assakenoi	OK	tiles=2; rows=1	2026-08-17T14:26:25
+Asvaka	OK	tiles=2; rows=1	2026-08-17T14:26:50
+Sattagydia	OK	tiles=6; rows=1	2026-08-17T14:27:16
+Daradas	OK	tiles=1; rows=1	2026-08-17T14:27:42
+Sivi	OK	tiles=1; rows=1	2026-08-17T14:28:08
+Sauvira	OK	tiles=1; rows=1	2026-08-17T14:28:33
+Abhiras	OK	tiles=1; rows=1	2026-08-17T14:28:59
+Pundra	OK	tiles=2; rows=1	2026-08-17T14:29:25
+Lauhitya	OK	tiles=1; rows=1	2026-08-17T14:29:51
+Pulinda	OK	tiles=2; rows=1	2026-08-17T14:30:16
+Karusha	OK	tiles=1; rows=1	2026-08-17T14:30:42
+Odra	OK	tiles=2; rows=1	2026-08-17T14:31:08
+Utkala	OK	tiles=2; rows=1	2026-08-17T14:31:35
+Suhma	OK	tiles=1; rows=1	2026-08-17T14:32:00
+Dasarnas	OK	tiles=1; rows=1	2026-08-17T14:32:26
+Haihayas	OK	tiles=2; rows=1	2026-08-17T14:32:52
+Anupa	OK	tiles=1; rows=1	2026-08-17T14:33:17
+Anarta	OK	tiles=2; rows=1	2026-08-17T14:33:43
+Saurashtra	OK	tiles=2; rows=1	2026-08-17T14:34:09
+Dvaraka	OK	tiles=2; rows=1	2026-08-17T14:34:35
+Shurparaka	OK	tiles=2; rows=1	2026-08-17T14:35:00
+Kaccha	OK	tiles=2; rows=1	2026-08-17T14:35:26
+Konkana	OK	tiles=1; rows=2	2026-08-17T14:35:52
+Mulaka	OK	tiles=2; rows=1	2026-08-17T14:36:18
+Savaras	OK	tiles=1; rows=1	2026-08-17T14:36:43
+Andhra	OK	tiles=1; rows=1	2026-08-17T14:37:09
+Mutibas	OK	tiles=2; rows=1	2026-08-17T14:37:35
+Audumbaras	OK	tiles=2; rows=2	2026-08-17T14:38:00
+Kuntala	OK	tiles=1; rows=1	2026-08-17T14:38:26
+Yaudheya	OK	tiles=4; rows=2	2026-08-17T14:38:52
+Kirati	OK	tiles=2; rows=1	2026-08-17T14:39:18
+Kasmira	OK	tiles=4; rows=1	2026-08-17T14:39:43
+Zhangzhung	OK	tiles=6; rows=1	2026-08-17T14:40:10
+Kuninda	OK	tiles=1; rows=2	2026-08-17T14:40:35
+Vemaka	OK	tiles=1; rows=1	2026-08-17T14:41:01
+Vitihotras	OK	tiles=2; rows=1	2026-08-17T14:41:27
+Revolt of Ariobarzanes	OK	tiles=4; rows=3	2026-08-17T14:41:53
+Ambracia	OK	tiles=1; rows=3; 2 continuity gap(s)	2026-08-17T14:42:18
+Ikshvakus	OK	tiles=1; rows=1	2026-08-17T14:42:44
+Mithila	OK	tiles=2; rows=1	2026-08-17T14:43:08
+Kasheyas	OK	tiles=2; rows=1	2026-08-17T14:43:33
+Revolt of Orontes	OK	tiles=5; rows=5	2026-08-17T14:43:57
+Revolt of Mausolus	OK	tiles=1; rows=2	2026-08-17T14:44:21
+Revolt of Autophradates	OK	tiles=2; rows=8; 1 warning(s): WARNING: Ionia row -363.5..-360.5 has conflicting colorIndex among contributing entries	2026-08-17T14:44:45
+Tibur	OK	tiles=2; rows=2	2026-08-17T14:45:09
+Praeneste	OK	tiles=1; rows=2	2026-08-17T14:45:35
+Western Odrysia	OK	tiles=2; rows=1	2026-08-17T14:46:01
+Odrysia	OK	tiles=4; rows=5; 2 continuity gap(s)	2026-08-17T14:46:25
+Zhou(2)	OK	tiles=2; rows=1	2026-08-17T14:53:06
+Kui	OK	tiles=4; rows=1	2026-08-17T14:53:21
+Jiang(2)	OK	tiles=1; rows=1	2026-08-17T14:53:37
+Yingshi	OK	tiles=1; rows=1	2026-08-17T14:53:52
+Shu jiu	OK	tiles=1; rows=1	2026-08-17T14:54:07
+Shu Yong	OK	tiles=1; rows=1	2026-08-17T14:54:21
+Shu Bao	OK	tiles=1; rows=1	2026-08-17T14:54:42
+Shu(2)	OK	tiles=1; rows=1	2026-08-17T14:55:07
+Zong	OK	tiles=1; rows=1	2026-08-17T14:55:25
+Tong	OK	tiles=16; rows=1	2026-08-17T14:55:40
+Kingdom of the Grabaei	OK	tiles=1; rows=6; 3 continuity gap(s)	2026-08-17T14:55:54
+Bruttian League	OK	tiles=2; rows=9; 6 continuity gap(s)	2026-08-17T14:56:09
+Macedonian Ally	OK	tiles=16; rows=242; 12 warning(s): WARNING: Athens row -338.2..-336.2 has conflicting colorIndex among contributing entries | WARNING: Athens row -336.2..-335.2 has conflicting colorIndex among contributing entries | WARNING: Athens row -335.2..-323.3 has conflicting colorIndex among contributing entries; 14 continuity gap(s)	2026-08-17T14:56:35
+Revolt of Artabazus	OK	tiles=4; rows=5	2026-08-17T14:56:50
+Byzantium	OK	tiles=1; rows=10; 1 continuity gap(s)	2026-08-17T14:57:05
+Nanda Empire	OK	tiles=12; rows=7	2026-08-17T14:57:26
+Paeonia	OK	tiles=1; rows=3; 2 continuity gap(s)	2026-08-17T14:57:51
+Locri	OK	tiles=3; rows=2; 1 continuity gap(s)	2026-08-17T14:58:07
+Ardiaei	OK	tiles=1; rows=3; 2 continuity gap(s)	2026-08-17T14:58:22
+Campanians	SKIP_NO_FEATURES	tiles=1	2026-08-17T14:58:22
+Alfaterni	OK	tiles=1; rows=3; 1 continuity gap(s)	2026-08-17T14:58:37
+Marsi	OK	tiles=1; rows=2	2026-08-17T14:58:52
+Vestini	OK	tiles=1; rows=2; 1 continuity gap(s)	2026-08-17T14:59:07
+Marrucini	OK	tiles=1; rows=1	2026-08-17T14:59:24
+Paeligni	OK	tiles=1; rows=1	2026-08-17T14:59:40
+Pirates	OK	tiles=3; rows=2	2026-08-17T14:59:55
+Mercenaries under Phalaecus	OK	tiles=2; rows=3	2026-08-17T15:00:10
+Mutinous troops	OK	tiles=1; rows=1	2026-08-17T15:00:25
+Revolt of Hermias	OK	tiles=1; rows=1	2026-08-17T15:00:41
+Anti Roman Alliance	OK	tiles=1; rows=23; 1 continuity gap(s)	2026-08-17T15:00:56
+Istros	OK	tiles=3; rows=2	2026-08-17T15:01:11
+Anti Macedon Alliance	OK	tiles=5; rows=62; 10 warning(s): WARNING: Achaean League row -268.2..-264.8 has conflicting colorIndex among contributing entries | WARNING: Athens row -268.2..-266.6 has conflicting colorIndex among contributing entries | WARNING: Athens row -266.6..-265.5 has conflicting colorIndex among contributing entries; 6 continuity gap(s)	2026-08-17T15:01:27
+Pardabathra	OK	tiles=2; rows=1	2026-08-17T15:01:42
+Musicanus	OK	tiles=1; rows=1	2026-08-17T15:01:56
+Taxila	OK	tiles=3; rows=3	2026-08-17T15:02:11
+Abisara	OK	tiles=2; rows=1	2026-08-17T15:02:26
+Paurava	OK	tiles=3; rows=1	2026-08-17T15:02:41
+Oxycanus	OK	tiles=2; rows=1	2026-08-17T15:02:56
+Revolt of Khababash	OK	tiles=1; rows=3	2026-08-17T15:03:11
+Mercenaries under Amyntas	OK	tiles=3; rows=2	2026-08-17T15:03:30
+Greek mercenaries	OK	tiles=5; rows=6	2026-08-17T15:03:58
+Nabataean Kingdom	OK	tiles=6; rows=4; 1 continuity gap(s)	2026-08-17T15:04:24
+Kingdom of Epirus	OK	tiles=6; rows=80; 3 warning(s): WARNING: Sicily row -277.4..-276.6 has conflicting colorIndex among contributing entries | WARNING: Sicily row -276.6..-276.5 has conflicting colorIndex among contributing entries | WARNING: Sicily row -276.5..-276.3 has conflicting colorIndex among contributing entries; 28 continuity gap(s)	2026-08-17T15:04:53
+Sambus	OK	tiles=5; rows=1	2026-08-17T15:05:20
+Oreitai	OK	tiles=2; rows=1	2026-08-17T15:05:46
+Gedrosia	OK	tiles=8; rows=1	2026-08-17T15:06:13
+Karmania	OK	tiles=6; rows=1	2026-08-17T15:06:40
+Massagetai	OK	tiles=5; rows=1	2026-08-17T15:07:07
+Khorasmia	OK	tiles=4; rows=2; 1 continuity gap(s)	2026-08-17T15:07:33
+Daoi	OK	tiles=6; rows=1	2026-08-17T15:08:00
+Kappadokia	OK	tiles=4; rows=3; 1 continuity gap(s)	2026-08-17T15:08:27
+Samnite Ally	OK	tiles=2; rows=9	2026-08-17T15:08:53
+Mercenaries under Agathocles	OK	tiles=2; rows=7; 3 continuity gap(s)	2026-08-17T15:09:20
+Cossaeans	OK	tiles=1; rows=1	2026-08-17T15:09:47
+Maurya	OK	tiles=26; rows=3	2026-08-17T15:10:14
+Hellenic League	OK	tiles=3; rows=54; 4 warning(s): WARNING: Athens row -323.3..-323.2 has conflicting colorIndex among contributing entries | WARNING: Athens row -323.2..-322.1 has conflicting colorIndex among contributing entries | WARNING: Opuntian Locris row -323.2..-322.1 has conflicting colorIndex among contributing entries	2026-08-17T15:10:42
+Mercenaries under Harpalus	OK	tiles=3; rows=3	2026-08-17T15:11:09
+Mercenaries under Leosthenes	OK	tiles=1; rows=1	2026-08-17T15:11:35
+Bithynia	OK	tiles=2; rows=6; 3 continuity gap(s)	2026-08-17T15:12:01
+Paphlagonia	OK	tiles=2; rows=3; 2 continuity gap(s)	2026-08-17T15:12:27
+Sinope	OK	tiles=1; rows=1	2026-08-17T15:12:54
+Kingdom of Armenia	OK	tiles=5; rows=2	2026-08-17T15:13:21
+Mercenaries under Thibron	OK	tiles=2; rows=1	2026-08-17T15:13:47
+Revolt of Antipater	OK	tiles=4; rows=2	2026-08-17T15:14:14
+Revolt of Lysimachus	OK	tiles=2; rows=1	2026-08-17T15:14:41
+Revolt of Antigonus	OK	tiles=2; rows=1	2026-08-17T15:15:08
+Revolt of Ptolemy	OK	tiles=7; rows=44; 3 warning(s): WARNING: Cypriot Kingdoms row -321.9..-321.0 has conflicting colorIndex among contributing entries | WARNING: Egypt row -321.9..-321.0 has conflicting colorIndex among contributing entries | WARNING: Diospolites row -321.9..-321.0 has conflicting colorIndex among contributing entries	2026-08-17T15:15:36
+Revolt of Eumenes	OK	tiles=9; rows=20; 1 continuity gap(s)	2026-08-17T15:16:04
+Maurya Empire	OK	tiles=26; rows=13	2026-08-17T15:16:40
+Bhojas	OK	tiles=1; rows=1	2026-08-17T15:17:07
+Rathikas	OK	tiles=2; rows=1	2026-08-17T15:17:34
+Domain of Antigonus	OK	tiles=27; rows=134; 1 warning(s): WARNING: Kilikia row -318.8..-306.3 has conflicting colorIndex among contributing entries; 15 continuity gap(s)	2026-08-17T15:18:17
+Domain of Lysimakhos	OK	tiles=3; rows=8	2026-08-17T15:18:44
+Domain of Ptolemy	OK	tiles=12; rows=141; 22 warning(s): WARNING: Army of Menelaus and Seleucus row -313.6..-313.5 has conflicting colorIndex among contributing entries | WARNING: Cypriot Kingdoms row -319.5..-315.3 has conflicting colorIndex among contributing entries | WARNING: Cypriot Kingdoms row -315.3..-314.2 has conflicting colorIndex among contributing entries; 13 continuity gap(s)	2026-08-17T15:19:22
+Domain of Cassander	OK	tiles=6; rows=226; 5 warning(s): WARNING: Opuntian Locris row -317.5..-313.2 has conflicting colorIndex among contributing entries | WARNING: Opuntian Locris row -310.5..-305.5 has conflicting colorIndex among contributing entries | WARNING: Troezen row -316.1..-314.5 has conflicting colorIndex among contributing entries; 78 continuity gap(s)	2026-08-17T15:20:02
+Domain of Eudemus	OK	tiles=3; rows=1	2026-08-17T15:20:30
+Domain of Oxyartes	OK	tiles=4; rows=1	2026-08-17T15:20:58
+Domain of Peithon (son of Agenor)	OK	tiles=5; rows=1	2026-08-17T15:21:26
+Domain of Sibyrtios	OK	tiles=6; rows=2; 1 continuity gap(s)	2026-08-17T15:21:54
+Domain of Stasandros	OK	tiles=6; rows=2	2026-08-17T15:22:22
+Domain of Stasanor	OK	tiles=9; rows=2	2026-08-17T15:22:50
+Domain of Philip	OK	tiles=6; rows=1	2026-08-17T15:23:19
+Domain of Tlepolemos	OK	tiles=5; rows=2	2026-08-17T15:23:46
+Domain of Peukestas	OK	tiles=5; rows=2	2026-08-17T15:23:59
+Atropatene	OK	tiles=5; rows=1	2026-08-17T15:24:11
+Domain of Peithon	OK	tiles=14; rows=6	2026-08-17T15:24:23
+Domain of Seleucus	OK	tiles=19; rows=20; 3 continuity gap(s)	2026-08-17T15:24:36
+Domain of Antigenes	OK	tiles=3; rows=1	2026-08-17T15:24:48
+Domain of Amphimakhos	OK	tiles=6; rows=1	2026-08-17T15:25:00
+Domain of Philoxenos	OK	tiles=2; rows=2	2026-08-17T15:25:12
+Rhodos	OK	tiles=2; rows=15; 4 continuity gap(s)	2026-08-17T15:25:24
+Domain of Asandros	OK	tiles=2; rows=23	2026-08-17T15:25:36
+Cyzicus	OK	tiles=1; rows=1	2026-08-17T15:25:48
+Domain of Eumenes	OK	tiles=10; rows=6	2026-08-17T15:26:00
+Allied armies of the Eastern Satraps	OK	tiles=6; rows=1	2026-08-17T15:26:12
+Domain of Polyperchon	OK	tiles=2; rows=40; 1 warning(s): WARNING: Troezen row -316.6..-316.1 has conflicting colorIndex among contributing entries; 3 continuity gap(s)	2026-08-17T15:26:24
+Syracuse exiles	OK	tiles=2; rows=14; 4 continuity gap(s)	2026-08-17T15:26:36
+Antigonid Ally	OK	tiles=6; rows=207; 13 warning(s): WARNING: Confederacy of the Cycladic Islands row -314.0..-308.5 has conflicting colorIndex among contributing entries | WARNING: Confederacy of the Cycladic Islands row -308.5..-303.5 has conflicting colorIndex among contributing entries | WARNING: Confederacy of the Cycladic Islands row -303.5..-289.5 has conflicting colorIndex among contributing entries; 81 continuity gap(s)	2026-08-17T15:26:52
+Ptolemaic Ally	OK	tiles=3; rows=34; 1 warning(s): WARNING: Rhodos row -309.5..-306.7 has conflicting colorIndex among contributing entries; 2 continuity gap(s)	2026-08-17T15:27:05
+Callatis	OK	tiles=1; rows=1	2026-08-17T15:27:17
+Antipatrid Ally	OK	tiles=6; rows=9	2026-08-17T15:27:29
+Numidians	OK	tiles=5; rows=2; 1 continuity gap(s)	2026-08-17T15:27:41
+Aetolian League	OK	tiles=1; rows=19; 2 continuity gap(s)	2026-08-17T15:27:54
+Agathoclid Ally	OK	tiles=3; rows=11; 1 continuity gap(s)	2026-08-17T15:28:06
+Antigonid Kingdom	OK	tiles=15; rows=214; 6 warning(s): WARNING: Cypriot Kingdoms row -306.3..-295.3 has conflicting colorIndex among contributing entries | WARNING: Cypriot Kingdoms row -295.3..-294.5 has conflicting colorIndex among contributing entries | WARNING: Kilikia row -306.3..-301.4 has conflicting colorIndex among contributing entries; 30 continuity gap(s)	2026-08-17T15:28:25
+Ptolemaic Kingdom	OK	tiles=13; rows=169; 7 warning(s): WARNING: Confederacy of the Cycladic Islands row -289.5..-1.0 has conflicting colorIndex among contributing entries | WARNING: Cypriot Kingdoms row -294.5..-1.0 has conflicting colorIndex among contributing entries | WARNING: Egypt row -305.5..-275.5 has conflicting colorIndex among contributing entries; 5 continuity gap(s)	2026-08-17T15:28:44
+Kingdom of Lysimakhos	OK	tiles=7; rows=67; 2 warning(s): WARNING: Allied army row -301.7..-301.6 has conflicting colorIndex among contributing entries | WARNING: Allied army row -301.6..-301.4 has conflicting colorIndex among contributing entries; 9 continuity gap(s)	2026-08-17T15:29:00
+Seleucid Kingdom	OK	tiles=27; rows=70; 2 warning(s): WARNING: Kilikia row -291.5..-273.5 has conflicting colorIndex among contributing entries | WARNING: Kilikia row -273.5..-1.0 has conflicting colorIndex among contributing entries; 9 continuity gap(s)	2026-08-17T15:29:16
+Kingdom of Syracuse	OK	tiles=4; rows=25; 7 continuity gap(s)	2026-08-17T15:29:30
+Mercenaries under Cleonymus	OK	tiles=6; rows=13; 2 continuity gap(s)	2026-08-17T15:29:43
+Pontus	OK	tiles=3; rows=4	2026-08-17T15:29:55
+Megalopolis	OK	tiles=1; rows=2; 1 continuity gap(s)	2026-08-17T15:31:06
+Chola	OK	tiles=2; rows=1	2026-08-17T15:31:19
+Chera	OK	tiles=2; rows=1	2026-08-17T15:31:31
+Pandya	OK	tiles=2; rows=1	2026-08-17T15:31:44
+Sattyaputas	OK	tiles=2; rows=1	2026-08-17T15:31:57
+Anuradhapura	OK	tiles=2; rows=1	2026-08-17T15:32:09
+Umbria	OK	tiles=2; rows=4; 1 continuity gap(s)	2026-08-17T15:32:22
+Picenum	OK	tiles=1; rows=2; 1 continuity gap(s)	2026-08-17T15:32:35
+Sabini	OK	tiles=1; rows=1	2026-08-17T15:32:48
+Epirote Ally	OK	tiles=4; rows=37; 4 warning(s): WARNING: Illyria row -292.5..-284.3 has conflicting colorIndex among contributing entries | WARNING: Italiote League row -280.4..-277.5 has conflicting colorIndex among contributing entries | WARNING: Italiote League row -277.5..-275.7 has conflicting colorIndex among contributing entries; 2 continuity gap(s)	2026-08-17T15:33:01
+Mamertine Mercenaries	OK	tiles=1; rows=2	2026-08-17T15:33:13
+Tauromenion	OK	tiles=1; rows=2; 1 continuity gap(s)	2026-08-17T15:33:26
+Mamertines	OK	tiles=2; rows=9; 1 continuity gap(s)	2026-08-17T15:33:38
+Domain of Mithridates	OK	tiles=2; rows=3	2026-08-17T15:33:51
+Seleucid Ally	OK	tiles=3; rows=13; 2 warning(s): WARNING: Ionia row -281.6..-272.5 has conflicting colorIndex among contributing entries | WARNING: Ionia row -272.5..-1.0 has conflicting colorIndex among contributing entries	2026-08-17T15:34:03
+Lemnos	SKIP_NO_FEATURES	tiles=2	2026-08-17T15:34:04
+Imbros	OK	tiles=1; rows=1	2026-08-17T15:34:16
+Heraklea Pontica	OK	tiles=1; rows=2	2026-08-17T15:34:29
+Macedon	OK	tiles=47; rows=19; 2 continuity gap(s)	2026-08-17T15:34:43
+Achaean League	OK	tiles=1; rows=4; 2 continuity gap(s)	2026-08-17T15:34:55
+Illyrian Kingdom	OK	tiles=2; rows=5	2026-08-17T15:35:08
+Northern League	OK	tiles=2; rows=6	2026-08-17T15:35:20
+Mercenaries of Bithynia	OK	tiles=2; rows=2	2026-08-17T15:35:33
+Kingdom of Tylis	OK	tiles=1; rows=1	2026-08-17T15:35:46
+Kingdom of Macedonia	OK	tiles=5; rows=53; 7 continuity gap(s)	2026-08-17T15:36:00
+Celtic Mercenaries	OK	tiles=2; rows=3; 1 continuity gap(s)	2026-08-17T15:36:13
+Pirate Mercenaries	OK	tiles=3; rows=2; 1 continuity gap(s)	2026-08-17T15:36:25
+Kios	OK	tiles=1; rows=2	2026-08-17T15:36:38
+Pergamon	OK	tiles=1; rows=3	2026-08-17T15:36:51
+Thrace	OK	tiles=5; rows=1	2026-08-17T15:37:04
+Massylii	OK	tiles=2; rows=2; 1 continuity gap(s)	2026-08-17T15:37:17
+Masaesyli	OK	tiles=6; rows=2; 1 continuity gap(s)	2026-08-17T15:37:30
+Greco-Bactrian Kingdom	OK	tiles=8; rows=1	2026-08-17T15:37:42
+Mercenaries under Xanthippus	OK	tiles=3; rows=1	2026-08-17T15:37:55
