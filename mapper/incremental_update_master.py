@@ -52,8 +52,17 @@ import export_polity_polygons as epp
 MAPPER_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = epp.DATA_DIR
 STATE_PATH = os.path.join(MAPPER_DIR, 'exports', 'incremental_state.json')
-TMP_GEOJSON = os.path.join(MAPPER_DIR, 'exports', '_incremental_tmp.geojson')
 PRIMARIES_PATH = os.path.join(DATA_DIR, 'primaries.txt')
+MASTER_PATH = os.path.join(MAPPER_DIR, 'exports', 'cliopatria_master.geojsonl')
+MANIFEST_PATH = os.path.join(MAPPER_DIR, 'exports', 'processed_polities.txt')
+
+# "UNKNOWN" is a leftover placeholder name from the -9990.0 sentinel-typo data
+# (3 PAR entries near Priene, see project memory 2026-08-17) -- exporting it
+# hangs indefinitely (confirmed 2026-08-18, 60s timeout with zero output),
+# unlike every other touched name which finishes in seconds. Not a real
+# polity worth a standalone export; skip it so one bad name can't block an
+# otherwise-fast incremental run.
+SKIP_NAMES = {'UNKNOWN'}
 
 SCAN_DIRS = {
     'PAR': (os.path.join(DATA_DIR, 'polareas'), r'^PAR(\d{3})\.ASC$'),
@@ -145,20 +154,64 @@ def run(cmd):
     return subprocess.run(cmd, cwd=MAPPER_DIR, capture_output=True, text=True)
 
 
-def process_name(name):
+def export_name(name, out_path):
+    """Export one polity's features to out_path. Returns (status_str, features_or_None).
+    Does NOT touch the master -- merging is batched separately so a run touching
+    many names only rewrites the (potentially huge) master file once, not once per name."""
     r = run([sys.executable, 'export_polity_polygons.py', '--polity', name,
-             '--auto-tiles', '--out', TMP_GEOJSON])
+             '--auto-tiles', '--out', out_path])
     out = r.stdout + r.stderr
     if 'Auto-discovered 0 tiles' in out:
-        return 'no tiles found (may be a nested-only secondary, or removed)'
+        return 'no tiles found (may be a nested-only secondary, or removed)', None
     if r.returncode != 0 or 'Wrote 0 features' in out:
         if 'Wrote 0 features' in out:
-            return 'no output rows (root-only secondary, will be captured under its real parent)'
-        return f'ERROR: {out.strip()[-300:]}'
-    r2 = run([sys.executable, 'merge_into_master.py', '--polity', name, '--geojson', TMP_GEOJSON])
-    if r2.returncode != 0:
-        return f'ERROR merging: {(r2.stdout + r2.stderr).strip()[-300:]}'
-    return 'OK'
+            return 'no output rows (root-only secondary, will be captured under its real parent)', None
+        return f'ERROR: {out.strip()[-300:]}', None
+    with open(out_path, encoding='utf-8') as f:
+        feats = json.load(f)['features']
+    return 'OK', feats
+
+
+def batch_merge(master_path, manifest_path, source_runs, features_by_run):
+    """Single-pass upsert of multiple SourceRuns at once: one streamed read of
+    the (potentially huge) master, one temp file, one os.replace -- instead of
+    merge_into_master.py's one-rewrite-per-polity, which is O(len(source_runs))
+    full-master rewrites and dominates runtime once more than a couple of
+    names are touched in one run."""
+    master_dir = os.path.dirname(master_path) or '.'
+    os.makedirs(master_dir, exist_ok=True)
+    removed = 0
+    tmp_fd, tmp_path = __import__('tempfile').mkstemp(dir=master_dir, suffix='.geojsonl.tmp')
+    try:
+        with os.fdopen(tmp_fd, 'w', encoding='utf-8') as tmp_f:
+            if os.path.exists(master_path):
+                with open(master_path, encoding='utf-8') as f:
+                    for line in f:
+                        stripped = line.strip()
+                        if not stripped:
+                            continue
+                        obj = json.loads(stripped)
+                        if obj.get('properties', {}).get('SourceRun') in source_runs:
+                            removed += 1
+                            continue
+                        tmp_f.write(stripped + '\n')
+            added = 0
+            for run_name in sorted(features_by_run):
+                for feat in features_by_run[run_name]:
+                    tmp_f.write(json.dumps(feat, ensure_ascii=False) + '\n')
+                    added += 1
+        os.replace(tmp_path, master_path)
+    except BaseException:
+        if os.path.exists(tmp_path):
+            os.remove(tmp_path)
+        raise
+    print(f"Master: removed {removed} old line(s), added {added} new line(s) "
+          f"across {len(features_by_run)} SourceRun(s).")
+
+    import merge_into_master as mim
+    total = mim.write_manifest(master_path, manifest_path)
+    print(f"Master now has {total} total line(s) at {master_path}")
+    print(f"Manifest rewritten at {manifest_path}")
 
 
 def main():
@@ -181,6 +234,8 @@ def main():
     touched, cities_touched, changed = detect_touched_names(since)
     primaries_changed, current_primaries_text = diff_primaries(old_primaries)
     touched |= primaries_changed
+    skipped = touched & SKIP_NAMES
+    touched -= SKIP_NAMES
 
     print(f"Since {time.ctime(since)}:")
     print(f"  Changed files: PAR={len(changed['PAR'])} POL={len(changed['POL'])} "
@@ -192,6 +247,8 @@ def main():
         print(f"    - {n}")
     if cities_touched:
         print("    - (Cities -- global re-run)")
+    if skipped:
+        print(f"  Skipped (known-bad, see SKIP_NAMES): {sorted(skipped)}")
 
     if args.dry_run:
         print("\n--dry-run: nothing was exported/merged, state not updated.")
@@ -203,20 +260,34 @@ def main():
         return
 
     print()
-    for name in sorted(touched):
-        result = process_name(name)
-        print(f"{name}: {result}")
+    features_by_run = {}
+    tmp_files = []
+    for i, name in enumerate(sorted(touched)):
+        tmp_path = os.path.join(MAPPER_DIR, 'exports', f'_incremental_tmp_{i}.geojson')
+        tmp_files.append(tmp_path)
+        status, feats = export_name(name, tmp_path)
+        print(f"{name}: {status}")
+        if feats is not None:
+            features_by_run[name] = feats
 
     if cities_touched:
-        r = run([sys.executable, 'export_polity_polygons.py', '--cities', '--out', TMP_GEOJSON])
+        cities_tmp = os.path.join(MAPPER_DIR, 'exports', '_incremental_tmp_cities.geojson')
+        tmp_files.append(cities_tmp)
+        r = run([sys.executable, 'export_polity_polygons.py', '--cities', '--out', cities_tmp])
         if r.returncode == 0:
-            r2 = run([sys.executable, 'merge_into_master.py', '--polity', 'Cities', '--geojson', TMP_GEOJSON])
-            print(f"Cities: {'OK' if r2.returncode == 0 else 'ERROR merging'}")
+            with open(cities_tmp, encoding='utf-8') as f:
+                features_by_run['Cities'] = json.load(f)['features']
+            print("Cities: OK")
         else:
             print(f"Cities: ERROR exporting: {(r.stdout + r.stderr).strip()[-300:]}")
 
-    if os.path.exists(TMP_GEOJSON):
-        os.remove(TMP_GEOJSON)
+    if features_by_run:
+        batch_merge(MASTER_PATH, MANIFEST_PATH, set(features_by_run), features_by_run)
+
+    for p in tmp_files:
+        for sidecar in (p, os.path.splitext(p)[0] + '.csv', os.path.splitext(p)[0] + '_hulls.geojson'):
+            if os.path.exists(sidecar):
+                os.remove(sidecar)
 
     save_state(now, current_primaries_text)
     print("\nDone. State saved -- next run only picks up changes after this point.")

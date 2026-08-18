@@ -23,7 +23,7 @@ Aegina                                   10
 Aeniania                                  3
 Aeolian League                            8
 Aeolians                                 28
-Aequi                                    19
+Aequi                                    40
 Aetolia                                   3
 Aetolian League                          19
 Agathoclid Ally                          11
@@ -95,7 +95,7 @@ Athens                                   76
 Atropatene                                1
 Atuna                                     2
 Audumbaras                                2
-Aurunci                                   2
+Aurunci                                   5
 Austro-Asiatic Peoples                    2
 Austronesians                            30
 Avanti                                    9
@@ -152,7 +152,7 @@ Catane                                    4
 Cedi                                      2
 Celtic Mercenaries                        3
 Celto-Ligurians                          23
-Celts                                   103
+Celts                                   104
 Central African Peoples                  39
 Chadian People                            1
 Chalcidian League                        11
@@ -200,7 +200,7 @@ Dasarnas                                  1
 Dassaretis                                3
 Daunians                                  1
 Dayenu                                    1
-Delian League                           491
+Delian League                           492
 Deng                                      3
 Desert Cultures                           1
 Di                                       11
@@ -271,7 +271,7 @@ Elamite Tributary                        34
 Elimiotis                                 2
 Elis                                     38
 Ellipi                                    8
-Elymians                                  1
+Elymians                                  3
 Enchele                                   1
 Enzite                                    1
 Eordaia                                   1
@@ -287,7 +287,7 @@ Erlitou Culture                           2
 Etiukhi                                   3
 Etiuni                                    5
 Etruria                                 151
-Etruscans                                12
+Etruscans                                14
 Euboea                                    9
 Fan                                       1
 Fan clan                                  2
@@ -344,7 +344,7 @@ Helmand and Jiroft Cultures              25
 Helot Revolt                              1
 Heraklea Pontica                          2
 Hermionis                                 7
-Hernici                                   3
+Hernici                                   5
 Hilakku                                   3
 Himera                                    4
 Hindanu                                   5
@@ -368,14 +368,14 @@ Idamaraz                                  6
 Ikshvakus                                 1
 Illyrian Kingdom                          5
 Illyrian Tributary                        5
-Illyrians                                 5
+Illyrians                                 6
 Illyrioi                                  1
 Imbros                                    1
 Indo-Aryans                              34
 Indus Valley Civilization                 1
 Indus Valley Peoples                     14
 Ionian League                            79
-Ionians                                 487
+Ionians                                 491
 Iranians                                 47
 Ishtu(a)nda                               3
 Israel/Samaria                           32
@@ -471,7 +471,7 @@ Kingdom of Qatna                          3
 Kingdom of Rome                          50
 Kingdom of Sam'al                         3
 Kingdom of Sindica                        3
-Kingdom of Sparta                       103
+Kingdom of Sparta                       106
 Kingdom of Syracuse                      25
 Kingdom of Terqa                          2
 Kingdom of Tuttul                         5
@@ -525,7 +525,7 @@ Liang                                     2
 Liao                                      1
 Liao(2)                                   1
 Liburnians                                3
-Libyans                                  12
+Libyans                                  40
 Libyphoenices                             1
 Ligurians                                 2
 Lingzhi                                   1
@@ -592,7 +592,7 @@ Mercenaries under Phalaecus               3
 Mercenaries under Thibron                 1
 Mercenaries under Xanthippus              1
 Mesoamerican Peoples                      5
-Messapians                                6
+Messapians                               11
 Messapii                                  1
 Messenia                                 13
 Mianzhu                                   1
@@ -687,7 +687,7 @@ Philistia                                17
 Philistines                              11
 Phlius                                    4
 Phocis                                   39
-Phoenicians                             134
+Phoenicians                             137
 Phrygian Kingdom                         14
 Phrygians                                19
 Pi                                        1
@@ -738,7 +738,7 @@ Rebel Irridu                              1
 Rebel Israelites                          1
 Red Di                                   12
 Ren                                       1
-Revolt                                  122
+Revolt                                  160
 Revolt of Antigonus                       1
 Revolt of Antipater                       2
 Revolt of Ariobarzanes                    3
@@ -763,7 +763,7 @@ Rhegion                                  17
 Rhodos                                   15
 Roman Ally                              133
 Roman Latin Colony                       55
-Roman Republic                          468
+Roman Republic                          472
 Rong                                      4
 Rui                                       3
 Ruo                                       1
@@ -818,7 +818,7 @@ Shu long                                  1
 Shu(2)                                    1
 Shubria                                   1
 Shurparaka                                1
-Sicans                                    7
+Sicans                                    8
 Sicelia                                   5
 Sicels                                    5
 Sicyon                                    4
@@ -832,11 +832,11 @@ Sivi                                      1
 Slavs                                     1
 Song                                     29
 South China Peoples                      32
-Stasis                                   27
+Stasis                                   33
 Su                                        1
 Subarctic Peoples                         1
 Subartum                                  1
-Succession struggle                       3
+Succession struggle                       5
 Suhma                                     1
 Suhne                                     1
 Suhu                                      5
@@ -888,7 +888,7 @@ Tymphaea                                  1
 Tyranny of Syracuse                      85
 Uelikukhi                                 9
 Ugrians                                   1
-Umbri                                     1
+Umbri                                     2
 Umbria                                    4
 Umbrii                                    1
 Umma                                     13
@@ -909,7 +909,7 @@ Vidarbha                                  3
 Videha                                    1
 Vitihotras                                1
 Volga Battle Axe Culture                  1
-Volsci                                   46
+Volsci                                   57
 Vriji                                     1
 Wahsusana                                 1
 Wei                                      67
