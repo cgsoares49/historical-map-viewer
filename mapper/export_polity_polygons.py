@@ -42,6 +42,8 @@ from shapely.validation import make_valid
 from shapely.ops import unary_union, transform
 from pyproj import Transformer
 
+from geo_region import classify_region
+
 MAPPER_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR   = r'C:\My stuff\mapper'  # canonical data — read-only
 
@@ -850,9 +852,11 @@ def export_cities(args, generated):
                     continue
                 to_year = min(dr['to'], args.end_year) if args.end_year is not None else dr['to']
                 color_r, color_g, color_b = resolve_city_color(dr['colorIndex'], offsets)
+                region, subregion = classify_region(point)
                 out_rows.append({
                     'Name': dr['name'], 'FromYear': dr['from'], 'ToYear': to_year,
                     'Area': 0.0, 'Type': 'CITY', 'References': '', 'MemberOf': '',
+                    'FullPath': dr['name'], 'Region': region, 'Subregion': subregion,
                     'ColorR': color_r, 'ColorG': color_g, 'ColorB': color_b,
                     'OverlapNote': '', 'geometry': point,
                 })
@@ -865,7 +869,8 @@ def export_cities(args, generated):
         r['SourceRun'] = 'Cities'
 
     prop_cols = ['Index', 'Name', 'FromYear', 'ToYear', 'Area', 'Type', 'References', 'MemberOf',
-                 'ColorR', 'ColorG', 'ColorB', 'Generated', 'SourceRun', 'OverlapNote']
+                 'FullPath', 'Region', 'Subregion', 'ColorR', 'ColorG', 'ColorB', 'Generated',
+                 'SourceRun', 'OverlapNote']
 
     features = [{
         'type': 'Feature',
@@ -968,7 +973,7 @@ def main():
     print(f"Output rows: {len(parent_rows)}  |  union geometries needing repair: {seam_log[0]}")
 
     entities = [{'name': args.polity, 'member_of': '', 'type': real_type(args.polity),
-                 'rows': parent_rows, 'is_parent': True}]
+                 'rows': parent_rows, 'is_parent': True, 'path': (args.polity,)}]
 
     # NOTE: root-level transient/dot rows below all use an EXACT match on the
     # bare polity name (root_bare_match), NOT the prefix-matching parent_match
@@ -1002,7 +1007,7 @@ def main():
     if root_trans_rows:
         print(f"  (root-level transient rows: {len(root_trans_rows)})")
         entities.append({'name': args.polity, 'member_of': '', 'type': 'TRANSIENT',
-                          'rows': root_trans_rows, 'is_parent': True})
+                          'rows': root_trans_rows, 'is_parent': True, 'path': (args.polity,)})
 
     root_dots, root_dots_transient = find_dot_entries_by_predicate(tiles_data, root_bare_match)
 
@@ -1011,14 +1016,14 @@ def main():
     if root_dot_rows:
         print(f"  (root-level tribal dot rows: {len(root_dot_rows)})")
         entities.append({'name': args.polity, 'member_of': '', 'type': 'TRIBAL_AREA',
-                          'rows': root_dot_rows, 'is_parent': True})
+                          'rows': root_dot_rows, 'is_parent': True, 'path': (args.polity,)})
 
     root_dot_trans_breakpoints = truncate(build_breakpoints(root_dots_transient, root_bare_match))
     root_dot_trans_rows = slice_into_dot_rows(root_dots_transient, root_dot_trans_breakpoints, root_bare_match)
     if root_dot_trans_rows:
         print(f"  (root-level transient dot rows: {len(root_dot_trans_rows)})")
         entities.append({'name': args.polity, 'member_of': '', 'type': 'TRANSIENT',
-                          'rows': root_dot_trans_rows, 'is_parent': True})
+                          'rows': root_dot_trans_rows, 'is_parent': True, 'path': (args.polity,)})
 
     # ── Nested members: PAR entries named "Parent - X", "Parent - X - Y", ... ──
     # Every distinct prefix path of length >=2 found among the parent's own
@@ -1070,16 +1075,16 @@ def main():
 
         if ent_real_rows:
             entities.append({'name': path[-1], 'member_of': f'({path[-2]})', 'type': real_type(path[-1]),
-                              'rows': ent_real_rows, 'is_parent': False})
+                              'rows': ent_real_rows, 'is_parent': False, 'path': path})
         if ent_trans_rows:
             entities.append({'name': path[-1], 'member_of': f'({path[-2]})', 'type': 'TRANSIENT',
-                              'rows': ent_trans_rows, 'is_parent': False})
+                              'rows': ent_trans_rows, 'is_parent': False, 'path': path})
         if ent_dot_rows:
             entities.append({'name': path[-1], 'member_of': f'({path[-2]})', 'type': 'TRIBAL_AREA',
-                              'rows': ent_dot_rows, 'is_parent': False})
+                              'rows': ent_dot_rows, 'is_parent': False, 'path': path})
         if ent_dot_trans_rows:
             entities.append({'name': path[-1], 'member_of': f'({path[-2]})', 'type': 'TRANSIENT',
-                              'rows': ent_dot_trans_rows, 'is_parent': False})
+                              'rows': ent_dot_trans_rows, 'is_parent': False, 'path': path})
 
     # ── Assemble final rows with resolved color ────────────────────────────────
     out_rows = []
@@ -1108,10 +1113,12 @@ def main():
                     print(f"  WARNING: {ent['name']} row {row['FromYear']}..{row['ToYear']} has "
                           f"conflicting colorIndex among contributing entries")
             color_r, color_g, color_b = color if color else (None, None, None)
+            region, subregion = classify_region(geom)
             out_rows.append({
                 'Name': ent['name'], 'FromYear': row['FromYear'], 'ToYear': row['ToYear'],
                 'Area': area, 'Type': ent['type'], 'References': '',
-                'MemberOf': ent['member_of'],
+                'MemberOf': ent['member_of'], 'FullPath': ' - '.join(ent['path']),
+                'Region': region, 'Subregion': subregion,
                 'ColorR': color_r, 'ColorG': color_g, 'ColorB': color_b,
                 'OverlapNote': overlap_note(ent['name']),
                 'geometry': geom,
@@ -1129,7 +1136,8 @@ def main():
         r['SourceRun'] = args.polity
 
     prop_cols = ['Index', 'Name', 'FromYear', 'ToYear', 'Area', 'Type', 'References', 'MemberOf',
-                 'ColorR', 'ColorG', 'ColorB', 'Generated', 'SourceRun', 'OverlapNote']
+                 'FullPath', 'Region', 'Subregion', 'ColorR', 'ColorG', 'ColorB', 'Generated',
+                 'SourceRun', 'OverlapNote']
 
     # ── Write GeoJSON ────────────────────────────────────────────────────────
     features = [{

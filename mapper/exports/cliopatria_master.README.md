@@ -16,13 +16,40 @@ Newline-delimited GeoJSON: each line is one complete GeoJSON `Feature` object (s
 Chosen over a single big `FeatureCollection` array specifically so updates stay
 append/stream-friendly at scale — see `merge_into_master.py`'s docstring for why.
 
-Currently 4480 lines across 5 `SourceRun`s (Roman Republic, Roman Ally, Roman Latin
-Colony, Persian Empire, and — new as of Milestone 6, 2026-08-17 — `Cities`) and 4 `Type`
-values in active use: `POLITY` (1263), `TRANSIENT` (627), `TRIBAL_AREA` (5, Milestone 5 —
-see `roman_ally_2026-08-16.README.md` for what that means and a real bug it
-surfaced/fixed), `CITY` (2585, Milestone 6). See `exports/processed_polities.txt` for
-the current exact list with
-row counts — that file *is* committed (see below).
+Currently 23,145 lines across 988 `SourceRun`s (essentially the whole primaries.txt
+dataset, from the 2026-08-17 full batch run, plus `Cities`) and 4 `Type` values in active
+use: `POLITY`, `TRANSIENT`, `TRIBAL_AREA` (Milestone 5 — see
+`roman_ally_2026-08-16.README.md` for what that means and a real bug it surfaced/fixed),
+`CITY` (Milestone 6). See `exports/processed_polities.txt` for the current exact list
+with row counts — that file *is* committed (see below).
+
+## Schema additions, 2026-08-21: `FullPath`, `Region`, `Subregion`
+
+**`FullPath`** is the complete dash-chain from the top-level `--polity` down to this row
+(e.g. `"Persian Empire - Egypt - Egypt - Egypt - Lower Egypt Nome 6 Khaset/Kaset"`).
+Added because `MemberOf` alone (just the immediate parent's bare name) is ambiguous
+wherever the same name repeats at adjacent nesting depths — a real, non-typo pattern in
+the source data (the Persian Empire's Egyptian administrative chain reuses "Egypt" three
+times in a row before reaching an actual nome name). Two rows can legitimately have
+identical `Name`+`MemberOf` and only be distinguishable via `FullPath`. `python
+build_area_checksum_csv.py` (see below) depends on `FullPath` to build parent/child edges
+unambiguously.
+
+**`Region`/`Subregion`** classify each row into Seshat's own filtering taxonomy
+(seshat-db.com/core/polities-light/ — 10 regions, ~40 subregions), via `geo_region.py`:
+each row's geometry centroid is reverse-geocoded against modern country boundaries
+(Natural Earth 110m, `mapper/data/ne_110m_countries.geojson`), then mapped to
+`(Region, Subregion)` via a hand-built `COUNTRY_TO_SESHAT_REGION` table. This is a coarse,
+*modern*-political approximation of a historical/cultural geographic scheme — the same
+simplification Seshat's own regions are built on. A handful of very large countries
+(Russia, China, India, USA, Canada, Brazil, Kazakhstan) genuinely span multiple Seshat
+subregions and are pinned to one default subregion each; see `geo_region.py`'s docstring.
+
+Both columns are additive to every row — when a *new* schema column needs backfilling
+onto the whole master (as opposed to picking up real canonical-data edits, which is what
+`incremental_update_master.py` is for), use `regenerate_full_master.py`: it unconditionally
+re-runs every name already in `processed_polities.txt` and re-merges, chunked and
+resumable the same way `batch_run_polities.py` is.
 
 **`Cities` is not like the other `SourceRun`s** — it isn't a `--polity` name at all, it's
 a single global run (`export_polity_polygons.py --cities`) covering every populated
