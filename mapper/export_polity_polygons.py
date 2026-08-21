@@ -562,10 +562,32 @@ def build_breakpoints(entries, name_match):
     return sorted(breakpoints)
 
 
-def slice_into_rows(entries, breakpoints, name_match, seam_log):
-    """Each row also carries color_index (from the first active contributing
-    entry at that interval) and color_conflict (True if active contributors
-    disagree on colorIndex — expected to be rare/never in practice)."""
+def slice_into_rows(entries, breakpoints, name_match, seam_log, own_path=None):
+    """Each row also carries color_index and color_conflict (used by the
+    caller to decide whether to show a real RGB or "various component
+    colors").
+
+    own_path (optional): this entity's own exact path tuple, e.g.
+    ('Persian Empire', 'Egypt', 'Egypt', 'Egypt'). `entries` is gathered via
+    name_match, a PREFIX match that intentionally sweeps in every nested
+    descendant too (needed so a composite's geometry includes its children's
+    territory, per Cliopatria's composite-duplicates-members convention) --
+    but color must NOT be resolved the same inclusive way, or a composite
+    can silently show a child's own color as if it were its own (found
+    2026-08-21: a Persian Empire > Egypt > Egypt > Egypt row picked up its
+    nested Nome 1 child's color this way, with no conflict even flagged,
+    because Nome 1 was the *only* active contributor in that narrow window --
+    the "own" undivided-Egypt territory had nothing active there at all).
+    When own_path is given, color_index is resolved from entries whose own
+    path_of(name) exactly equals own_path -- NOT from descendants swept in
+    by the prefix match. If *any* descendant is active in a window (whether
+    or not an "own" entry is also active alongside it), color_conflict is
+    set True, since the row's territory is only correct for its full
+    (nomes-included) extent, not a single color -- the caller shows "various
+    component colors" for these. If own_path is None (dot/root-level
+    TRANSIENT/TRIBAL_AREA callers, where is_parent rows never consult
+    color_index at all), falls back to the old any-contributor-disagreement
+    check."""
     rows = []
     prev_geom = None
     for i in range(len(breakpoints) - 1):
@@ -573,11 +595,18 @@ def slice_into_rows(entries, breakpoints, name_match, seam_log):
         test_year = (b0 + b1) / 2.0
         active = []
         color_indexes = []
+        own_color_indexes = []
+        has_descendant = False
         for pe in entries:
             m = match_date(pe['entry']['dateRanges'], test_year)
             if m and name_match(m['name']):
                 active.append(pe['ring_polygon'])
                 color_indexes.append(m['colorIndex'])
+                if own_path is not None:
+                    if path_of(m['name']) == own_path:
+                        own_color_indexes.append(m['colorIndex'])
+                    else:
+                        has_descendant = True
         if not active:
             prev_geom = None
             continue
@@ -589,8 +618,12 @@ def slice_into_rows(entries, breakpoints, name_match, seam_log):
         if geom is None or geom.is_empty:
             prev_geom = None
             continue
-        color_index = color_indexes[0]
-        color_conflict = len(set(color_indexes)) > 1
+        if own_path is not None:
+            color_conflict = has_descendant or len(set(own_color_indexes)) > 1
+            color_index = own_color_indexes[0] if own_color_indexes else (color_indexes[0] if color_indexes else None)
+        else:
+            color_index = color_indexes[0]
+            color_conflict = len(set(color_indexes)) > 1
         if prev_geom is not None and geoms_equal(geom, prev_geom):
             rows[-1]['ToYear'] = b1
         else:
@@ -672,12 +705,12 @@ def find_dot_entries_by_predicate(tiles_data, name_match):
     return tribal, transient
 
 
-def slice_into_dot_rows(dot_entries, breakpoints, name_match):
+def slice_into_dot_rows(dot_entries, breakpoints, name_match, own_path=None):
     """Like slice_into_rows, but collects active dot coordinates per interval
     into a MultiPoint (or Point, if only one) instead of unioning polygon
     rings -- no geometry repair needed, points can't be topologically
-    invalid. Same color_index/color_conflict and interval-merging convention
-    as slice_into_rows."""
+    invalid. Same color_index/color_conflict/own_path convention as
+    slice_into_rows -- see its docstring for the full reasoning."""
     rows = []
     prev_points = None
     for i in range(len(breakpoints) - 1):
@@ -685,17 +718,28 @@ def slice_into_dot_rows(dot_entries, breakpoints, name_match):
         test_year = (b0 + b1) / 2.0
         active_points = []
         color_indexes = []
+        own_color_indexes = []
+        has_descendant = False
         for de in dot_entries:
             m = match_date(de['entry']['dateRanges'], test_year)
             if m and name_match(m['name']):
                 active_points.append(de['point'])
                 color_indexes.append(m['colorIndex'])
+                if own_path is not None:
+                    if path_of(m['name']) == own_path:
+                        own_color_indexes.append(m['colorIndex'])
+                    else:
+                        has_descendant = True
         if not active_points:
             prev_points = None
             continue
         points_key = tuple(sorted(active_points))
-        color_index = color_indexes[0]
-        color_conflict = len(set(color_indexes)) > 1
+        if own_path is not None:
+            color_conflict = has_descendant or len(set(own_color_indexes)) > 1
+            color_index = own_color_indexes[0] if own_color_indexes else (color_indexes[0] if color_indexes else None)
+        else:
+            color_index = color_indexes[0]
+            color_conflict = len(set(color_indexes)) > 1
         if prev_points is not None and points_key == prev_points:
             rows[-1]['ToYear'] = b1
         else:
@@ -1055,17 +1099,17 @@ def main():
 
         ent_real_breakpoints = truncate(build_breakpoints(ent_real, entity_match))
         ent_seam_log = [0]
-        ent_real_rows = slice_into_rows(ent_real, ent_real_breakpoints, entity_match, ent_seam_log)
+        ent_real_rows = slice_into_rows(ent_real, ent_real_breakpoints, entity_match, ent_seam_log, own_path=path)
 
         ent_trans_breakpoints = truncate(build_breakpoints(ent_transient, entity_match))
         ent_trans_seam_log = [0]
-        ent_trans_rows = slice_into_rows(ent_transient, ent_trans_breakpoints, entity_match, ent_trans_seam_log)
+        ent_trans_rows = slice_into_rows(ent_transient, ent_trans_breakpoints, entity_match, ent_trans_seam_log, own_path=path)
 
         ent_dot_breakpoints = truncate(build_breakpoints(ent_dots, entity_match))
-        ent_dot_rows = slice_into_dot_rows(ent_dots, ent_dot_breakpoints, entity_match)
+        ent_dot_rows = slice_into_dot_rows(ent_dots, ent_dot_breakpoints, entity_match, own_path=path)
 
         ent_dot_trans_breakpoints = truncate(build_breakpoints(ent_dots_transient, entity_match))
-        ent_dot_trans_rows = slice_into_dot_rows(ent_dots_transient, ent_dot_trans_breakpoints, entity_match)
+        ent_dot_trans_rows = slice_into_dot_rows(ent_dots_transient, ent_dot_trans_breakpoints, entity_match, own_path=path)
 
         print(f"=== {' > '.join(path)} ===  real={len(ent_real)}(rows={len(ent_real_rows)})  "
               f"transient={len(ent_transient)}(rows={len(ent_trans_rows)})  "
@@ -1107,12 +1151,28 @@ def main():
                 area = round(area_km2(geom), 1)
             if ent['is_parent']:
                 color = parent_color
+                color_r, color_g, color_b = color if color else (None, None, None)
+            elif row['color_conflict']:
+                # slice_into_rows/slice_into_dot_rows set this when a nested
+                # descendant (e.g. a Nome inside "Egypt") is active alongside
+                # -- or, in the narrowest case, IS the only active
+                # contributor for -- this row's window. Either way the row's
+                # own territory (excluding nomes) doesn't have one single
+                # true color here: it's genuinely "own color + various nome
+                # colors" or, when nothing of its own is active at all,
+                # purely nome colors. Confirmed real 2026-08-21: a Persian
+                # Empire > Egypt > Egypt > Egypt row had ONLY its Nome 1
+                # child active in a 2-year window and silently inherited
+                # Nome 1's own color with no conflict even flagged under the
+                # old any-contributor-disagreement check -- own_path-based
+                # detection catches this too, not just multi-contributor
+                # disagreement.
+                print(f"  NOTE: {ent['name']} row {row['FromYear']}..{row['ToYear']} includes nested "
+                      f"descendant territory -- various component colors, not resolving to one RGB")
+                color_r, color_g, color_b = 'various component colors', '', ''
             else:
                 color = resolve_color(args.polity, row['color_index'], primaries_map, offsets)
-                if row['color_conflict']:
-                    print(f"  WARNING: {ent['name']} row {row['FromYear']}..{row['ToYear']} has "
-                          f"conflicting colorIndex among contributing entries")
-            color_r, color_g, color_b = color if color else (None, None, None)
+                color_r, color_g, color_b = color if color else (None, None, None)
             region, subregion = classify_region(geom)
             out_rows.append({
                 'Name': ent['name'], 'FromYear': row['FromYear'], 'ToYear': row['ToYear'],

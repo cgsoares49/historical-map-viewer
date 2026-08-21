@@ -51,6 +51,25 @@ onto the whole master (as opposed to picking up real canonical-data edits, which
 re-runs every name already in `processed_polities.txt` and re-merges, chunked and
 resumable the same way `batch_run_polities.py` is.
 
+## `ColorR`/`ColorG`/`ColorB` can read `"various component colors"`
+
+A composite/parent entity's territory is a prefix-inclusive union of its own direct area
+plus every nested descendant's area (needed for geometry — a composite's polygon must
+include its children's, per Cliopatria's composite-duplicates-members convention). Colors
+don't work the same way: whenever a nested descendant (e.g. a Nome inside "Egypt") is
+active during a row's date range — whether alongside the entity's own territory or, in the
+narrowest case, as the *only* thing active — that row genuinely has no single true color of
+its own, so `ColorR` is the literal string `"various component colors"` and `ColorG`/
+`ColorB` are blank, instead of an arbitrary/misleading single RGB. When nothing but the
+entity's own (non-descendant) territory is active, the real resolved RGB is used as normal.
+Found 2026-08-21: a Persian Empire → Egypt → Egypt → Egypt row had ONLY its Nome 1 child
+active in one narrow 2-year window and silently inherited Nome 1's own color with no
+conflict even detectable under a naive "do all active contributors agree" check — the fix
+(`slice_into_rows`/`slice_into_dot_rows`'s `own_path` parameter) separates "this entity's
+own exact-path entries" from "descendant entries swept in by the prefix match" specifically
+for color resolution, geometry/Area are unaffected. ~764 of 23,145 master rows (~3.3%) are
+affected as of the 2026-08-21 regeneration.
+
 **`Cities` is not like the other `SourceRun`s** — it isn't a `--polity` name at all, it's
 a single global run (`export_polity_polygons.py --cities`) covering every populated
 `cities/<lat>/CIT<lon>.TXT` tile in one pass (76 of 1,820 tiles have data; 1,031 cities,
