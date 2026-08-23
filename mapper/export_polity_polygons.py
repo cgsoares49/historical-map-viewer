@@ -170,10 +170,25 @@ def parse_cst_pol_full(lines):
 
 def parse_par_full(lines):
     """Returns list of {entryIndex, areaType, dateRanges:[{from,to,name,colorIndex}],
-    polyRefs:[(polIndex,flag)], dotPoint:(lon,lat)|None}. areaType=0 ("dot") entries
-    have dotPoint set and an empty polyRefs; areaType=1 entries have polyRefs and
-    dotPoint=None. Mirrors dataloader.js's dotPoint/dotDiameter handling (diameter
-    isn't needed for export purposes, so isn't captured here)."""
+    polyRefs:[(polIndex,flag)], dotPoint:(lon,lat)|None}. Mirrors dataloader.js's
+    dotPoint/dotDiameter handling (diameter isn't needed for export purposes, so
+    isn't captured here).
+
+    areaType is NOT a clean real-vs-dot switch -- the actual mechanism (matching
+    dataloader.js._parsePar) is the sign of numRefs: negative -> dotPoint set,
+    polyRefs empty (a literal coordinate + radius, "dot cluster" marker); zero or
+    positive -> polyRefs populated, dotPoint stays None (an ordinary polygon
+    reference). areaType=1 entries always take the polyRefs branch (real
+    territory). areaType=0 entries can take EITHER branch: most are coordinate
+    dots, but some (confirmed real, e.g. PAR 125/040 entry #190 "Hurrians") have
+    non-negative numRefs and reference an ordinary POL polygon -- typically a
+    small procedurally-uniform circle template, drawing a "classic filled circle"
+    tribal marker instead of a hand-digitized boundary. See
+    find_circle_entries_by_predicate() below, which exists specifically to catch
+    this third case (areaType=0, dotPoint=None, polyRefs non-empty) -- it matches
+    neither find_entries_by_predicate (requires areaType==1) nor
+    find_dot_entries_by_predicate (requires dotPoint is not None), and was
+    silently dropped by the export before that function existed."""
     if not lines:
         return []
     i = 0
@@ -550,14 +565,38 @@ def find_entries_by_predicate(tiles_data, name_match, repair_log):
     return real, transient
 
 
+# Same sentinel/floor convention already established in build_city_geodata.py
+# (SENTINEL_FROM/CONTENT_START/OPEN_END there) -- kept as separate constants
+# here rather than importing, since this module has its own independent
+# PAR/POL/CST parsing pipeline.
+SENTINEL_FROM = -9990.0   # from-dates at/below this mean "since the content floor"
+CONTENT_START = -2400.0   # the dataset's actual earliest real content
+OPEN_END = 9990.0         # to-dates at/above this mean "still ongoing" (open-ended)
+
+
 def build_breakpoints(entries, name_match):
+    """Found 2026-08-22: this used to just DROP a date-range's 'from' whenever
+    it was <=-9990 (the "since forever"/content-floor sentinel -- e.g. Elam's
+    earliest raw entry is `{'from': -9999.0, 'to': -2349.6, ...}`), instead of
+    substituting the real floor. With no breakpoint anywhere near -2400,
+    slice_into_rows had nothing to anchor the entity's actual earliest interval
+    to, so that whole initial span (often the entity's very first appearance in
+    the dataset) silently vanished from the export -- this is why entities were
+    missing specifically from early-date views like -2400, and affected all
+    three entry kinds (real/transient territory, dot clusters, and the
+    circle-template tribal entries) uniformly, since they all funnel through
+    this one function. Floor-and-always-add instead of skip, mirroring the
+    working precedent in build_city_geodata.py's floor_from(). The 'to' side
+    doesn't have the equivalent bug -- an open-ended (>=9990) 'to' correctly
+    contributes no upper-bound breakpoint of its own; the entity's row just
+    extends to whatever the next real breakpoint from another date-range is,
+    or stays open if there isn't one, which is already correct."""
     breakpoints = set()
     for pe in entries:
         for dr in pe['entry']['dateRanges']:
             if name_match(dr['name']):
-                if dr['from'] > -9990:
-                    breakpoints.add(dr['from'])
-                if dr['to'] < 9990:
+                breakpoints.add(CONTENT_START if dr['from'] <= SENTINEL_FROM else dr['from'])
+                if dr['to'] < OPEN_END:
                     breakpoints.add(dr['to'])
     return sorted(breakpoints)
 
@@ -702,6 +741,50 @@ def find_dot_entries_by_predicate(tiles_data, name_match):
                 transient.append(de)
             else:
                 tribal.append(de)
+    return tribal, transient
+
+
+def find_circle_entries_by_predicate(tiles_data, name_match, repair_log):
+    """Third PAR representation (found 2026-08-22), distinct from both real
+    territory (areaType=1) and coordinate dots (areaType=0 with dotPoint set):
+    an areaType=0 entry whose numRefs was >=0 (dotPoint is None) references an
+    ordinary polyRefs chain, same mechanism as a real polygon entry -- but the
+    referenced POL segment is typically a small procedurally-uniform circle
+    template (a fixed-radius ring of points around a center), reused across
+    many entries to draw a "classic filled circle" tribal marker instead of a
+    hand-digitized boundary. Structurally these are true polygons, built via
+    build_combined_ring exactly like real territory -- callers should slice
+    the result with slice_into_rows, NOT slice_into_dot_rows.
+
+    IMPORTANT: is_transient()'s structural check (POL segment carries the
+    exact -9999.0/-9998.0 sentinel date range) does NOT apply here -- these
+    circle templates legitimately carry that same sentinel for an unrelated
+    reason (they're reusable, undated geometry templates gated only by the
+    referencing PAR entry's own dates, same convention already established
+    for real border segments reused across entries). Reusing is_transient()
+    verbatim would misclassify every circle-dot entry as a transient army
+    marker. Only the keyword fallback (is_keyword_transient) applies, same as
+    find_dot_entries_by_predicate uses for coordinate dots."""
+    tribal = []
+    transient = []
+    for tile in tiles_data:
+        for entry in tile['par_entries']:
+            if entry['areaType'] != 0 or entry['dotPoint'] is not None or not entry['polyRefs']:
+                continue
+            matching_drs = [dr for dr in entry['dateRanges'] if name_match(dr['name'])]
+            if not matching_drs:
+                continue
+            ring, has_segment = build_combined_ring(entry['polyRefs'], tile['cst_by_index'], tile['pol_by_index'])
+            if not has_segment or len(ring) < 4:
+                continue
+            poly = ring_to_polygon(ring, repair_log)
+            if poly is None or poly.is_empty:
+                continue
+            item = {'tile': tile, 'entry': entry, 'ring_polygon': poly}
+            if any(is_keyword_transient(dr['name']) for dr in matching_drs):
+                transient.append(item)
+            else:
+                tribal.append(item)
     return tribal, transient
 
 
@@ -1005,8 +1088,11 @@ def main():
     parent_match = lambda n, p=args.polity: owner_name(n) == p
     parent_real, parent_transient = find_entries_by_predicate(tiles_data, parent_match, repair_log)
     parent_dots, parent_dots_transient = find_dot_entries_by_predicate(tiles_data, parent_match)
+    parent_circles, parent_circles_transient = find_circle_entries_by_predicate(tiles_data, parent_match, repair_log)
     print(f"Real territory entries: {len(parent_real)}  |  transient/army entries: {len(parent_transient)}  (kept as Type=TRANSIENT)  |  "
-          f"tribal dot entries: {len(parent_dots)}  |  transient dot entries: {len(parent_dots_transient)}  |  ring repairs: {repair_log[0]}")
+          f"tribal dot entries: {len(parent_dots)}  |  transient dot entries: {len(parent_dots_transient)}  |  "
+          f"circle-template tribal entries: {len(parent_circles)}  |  transient circle entries: {len(parent_circles_transient)}  |  "
+          f"ring repairs: {repair_log[0]}")
 
     parent_breakpoints = build_breakpoints(parent_real, parent_match)
     print(f"Breakpoints: {len(parent_breakpoints)}  range: {parent_breakpoints[0] if parent_breakpoints else None} .. {parent_breakpoints[-1] if parent_breakpoints else None}")
@@ -1069,6 +1155,29 @@ def main():
         entities.append({'name': args.polity, 'member_of': '', 'type': 'TRANSIENT',
                           'rows': root_dot_trans_rows, 'is_parent': True, 'path': (args.polity,)})
 
+    # Root-level "classic filled circle" tribal markers (areaType=0, real
+    # polyRefs referencing a circle-template POL segment -- see
+    # find_circle_entries_by_predicate's docstring). Genuine polygon geometry,
+    # so sliced with slice_into_rows like real territory, not slice_into_dot_rows.
+    root_circle_repair_log = [0]
+    root_circles, root_circles_transient = find_circle_entries_by_predicate(tiles_data, root_bare_match, root_circle_repair_log)
+
+    root_circle_breakpoints = truncate(build_breakpoints(root_circles, root_bare_match))
+    root_circle_seam_log = [0]
+    root_circle_rows = slice_into_rows(root_circles, root_circle_breakpoints, root_bare_match, root_circle_seam_log)
+    if root_circle_rows:
+        print(f"  (root-level circle-template tribal rows: {len(root_circle_rows)})")
+        entities.append({'name': args.polity, 'member_of': '', 'type': 'TRIBAL_AREA',
+                          'rows': root_circle_rows, 'is_parent': True, 'path': (args.polity,)})
+
+    root_circle_trans_breakpoints = truncate(build_breakpoints(root_circles_transient, root_bare_match))
+    root_circle_trans_seam_log = [0]
+    root_circle_trans_rows = slice_into_rows(root_circles_transient, root_circle_trans_breakpoints, root_bare_match, root_circle_trans_seam_log)
+    if root_circle_trans_rows:
+        print(f"  (root-level transient circle rows: {len(root_circle_trans_rows)})")
+        entities.append({'name': args.polity, 'member_of': '', 'type': 'TRANSIENT',
+                          'rows': root_circle_trans_rows, 'is_parent': True, 'path': (args.polity,)})
+
     # ── Nested members: PAR entries named "Parent - X", "Parent - X - Y", ... ──
     # Every distinct prefix path of length >=2 found among the parent's own
     # candidate entries becomes one output entity, at whatever depth it occurs
@@ -1079,7 +1188,8 @@ def main():
     # Consular army" — Milestone 2) or a tribal dot cluster's name (Milestone
     # 5) both need discovering too, not just real territory.
     prefix_paths = set()
-    for pe in parent_real + parent_transient + parent_dots + parent_dots_transient:
+    for pe in (parent_real + parent_transient + parent_dots + parent_dots_transient
+               + parent_circles + parent_circles_transient):
         for dr in pe['entry']['dateRanges']:
             if owner_name(dr['name']) == args.polity:
                 path = path_of(dr['name'])
@@ -1111,11 +1221,26 @@ def main():
         ent_dot_trans_breakpoints = truncate(build_breakpoints(ent_dots_transient, entity_match))
         ent_dot_trans_rows = slice_into_dot_rows(ent_dots_transient, ent_dot_trans_breakpoints, entity_match, own_path=path)
 
+        # "Classic filled circle" tribal markers (see find_circle_entries_by_predicate)
+        # -- genuine polygon geometry, sliced with slice_into_rows like real territory.
+        ent_circle_repair_log = [0]
+        ent_circles, ent_circles_transient = find_circle_entries_by_predicate(tiles_data, entity_match, ent_circle_repair_log)
+
+        ent_circle_breakpoints = truncate(build_breakpoints(ent_circles, entity_match))
+        ent_circle_seam_log = [0]
+        ent_circle_rows = slice_into_rows(ent_circles, ent_circle_breakpoints, entity_match, ent_circle_seam_log, own_path=path)
+
+        ent_circle_trans_breakpoints = truncate(build_breakpoints(ent_circles_transient, entity_match))
+        ent_circle_trans_seam_log = [0]
+        ent_circle_trans_rows = slice_into_rows(ent_circles_transient, ent_circle_trans_breakpoints, entity_match, ent_circle_trans_seam_log, own_path=path)
+
         print(f"=== {' > '.join(path)} ===  real={len(ent_real)}(rows={len(ent_real_rows)})  "
               f"transient={len(ent_transient)}(rows={len(ent_trans_rows)})  "
               f"tribal_dots={len(ent_dots)}(rows={len(ent_dot_rows)})  "
               f"transient_dots={len(ent_dots_transient)}(rows={len(ent_dot_trans_rows)})  "
-              f"ring_repairs={ent_repair_log[0]}  seam_repairs={ent_seam_log[0]}+{ent_trans_seam_log[0]}")
+              f"circle_tribal={len(ent_circles)}(rows={len(ent_circle_rows)})  "
+              f"transient_circles={len(ent_circles_transient)}(rows={len(ent_circle_trans_rows)})  "
+              f"ring_repairs={ent_repair_log[0]}+{ent_circle_repair_log[0]}  seam_repairs={ent_seam_log[0]}+{ent_trans_seam_log[0]}+{ent_circle_seam_log[0]}+{ent_circle_trans_seam_log[0]}")
 
         if ent_real_rows:
             entities.append({'name': path[-1], 'member_of': f'({path[-2]})', 'type': real_type(path[-1]),
@@ -1129,6 +1254,12 @@ def main():
         if ent_dot_trans_rows:
             entities.append({'name': path[-1], 'member_of': f'({path[-2]})', 'type': 'TRANSIENT',
                               'rows': ent_dot_trans_rows, 'is_parent': False, 'path': path})
+        if ent_circle_rows:
+            entities.append({'name': path[-1], 'member_of': f'({path[-2]})', 'type': 'TRIBAL_AREA',
+                              'rows': ent_circle_rows, 'is_parent': False, 'path': path})
+        if ent_circle_trans_rows:
+            entities.append({'name': path[-1], 'member_of': f'({path[-2]})', 'type': 'TRANSIENT',
+                              'rows': ent_circle_trans_rows, 'is_parent': False, 'path': path})
 
     # ── Assemble final rows with resolved color ────────────────────────────────
     out_rows = []
