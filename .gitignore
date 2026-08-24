@@ -52,3 +52,12 @@ make_shortcut.vbs
 mapper/exports/cliopatria_master.geojsonl
 mapper/exports/full_dataset_*.geojson
 mapper/exports/persian_empire_*.geojson
+
+# ── Cliopatria pipeline scratch/debug output (local only — same reasoning ────
+# as above; raw geojson dumps exceed the 100MB GitHub file limit, and the
+# quicklook/log/zip files are throwaway debugging artifacts, not deliverables.
+mapper/exports/cliopatria_raw_*.geojson
+mapper/exports/jim_bennett_*.zip
+mapper/exports/jim_bennett_*/
+mapper/exports/*_quicklook_*.html
+mapper/exports/regen_run_log*.tsv
