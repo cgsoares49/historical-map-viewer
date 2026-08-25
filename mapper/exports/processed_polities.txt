@@ -16,7 +16,7 @@ Abisara                                   1
 Aboriginal Peoples                       29
 Acarnania                                 3
 Achaea                                   55
-Achaean League                            4
+Achaean League                            6
 Achaeans                                  5
 Adena Culture                             1
 Aegina                                   10
@@ -145,7 +145,7 @@ Cao                                       7
 Carduchii                                 1
 Carians                                   5
 Caribbean Peoples                         1
-Carthage                                243
+Carthage                                247
 Carthaginian Ally                        23
 Carthaginian Tributary                   13
 Carystus                                  2
@@ -235,7 +235,7 @@ Domain of Stasanor                        2
 Domain of Tlepolemos                      2
 Donghu                                    1
 Dongyi Peoples                            2
-Dorians                                 177
+Dorians                                 178
 Doris                                     2
 Dravidians                               30
 Du                                        1
@@ -463,7 +463,7 @@ Kingdom of Lagash                        18
 Kingdom of Larsa                         57
 Kingdom of Lysimakhos                    67
 Kingdom of Macedon                      808
-Kingdom of Macedonia                     53
+Kingdom of Macedonia                     54
 Kingdom of Malgium                        1
 Kingdom of Mari                          26
 Kingdom of Melid                         11
@@ -775,7 +775,7 @@ Rhegion                                  17
 Rhodos                                   15
 Roman Ally                              133
 Roman Latin Colony                       55
-Roman Republic                          473
+Roman Republic                          489
 Rong                                      4
 Rui                                       3
 Ruo                                       1
@@ -957,7 +957,7 @@ Xun                                       1
 Xuqu                                      1
 Yaminites                                 2
 Yamkhad                                  19
-Yan                                      15
+Yan                                      16
 Yan(2)                                    1
 Yan(3)                                    1
 Yang                                      1
@@ -989,7 +989,7 @@ Zeng                                      2
 Zeng(2)                                   1
 Zhang                                     1
 Zhangzhung                                1
-Zhao                                     45
+Zhao                                     46
 Zhao clan                                 5
 Zhen                                      1
 Zheng                                    40
