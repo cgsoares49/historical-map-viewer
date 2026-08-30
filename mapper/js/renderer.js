@@ -23,8 +23,13 @@
 // VB draws coastlines as individual DrawLine(k-1, k) calls — an open polyline.
 // It does NOT fill CST polygons separately; the PAR political fills cover all land.
 
-const WATER_COLOR  = '#5ba3d9';
-const RIVER_COLOR  = '#4a90d9';
+// Water/rivers share one reserved palette block (R 0-15, G 192-207, B 240-255)
+// so individual water features can get distinguishing IDs from within this
+// block later without leaving the "water" color family. See [[project-friendly-army-problem]]
+// color-governance discussion (2026-08-30) — the user controls the full 16M-color
+// palette and reserves specific blocks for code-drawn (non-data) canvas colors.
+const WATER_COLOR  = '#00c0f0';
+const RIVER_COLOR  = '#00c0f0';
 const COAST_COLOR  = '#000000';
 const BORDER_COLOR = '#000000';
 
@@ -57,7 +62,11 @@ const SENTINEL_FROM = -2500;
 // color as a second key for the same entry: the stripe color is shared/fixed
 // across every hatched entry for visual consistency, so multiple different
 // armies visible at once would collide on that one key.
-const HATCH_STRIPE_COLOR        = '#808080';
+// Snapped from #808080 (128,128,128) to the nearest color whose every channel
+// is ≡15 (mod 16) — the "last color in its 4096-block" convention the user
+// reserves for code-drawn (non-palette-data) canvas colors, so this can never
+// collide with a user-assigned polity color. 128 → 127 is the nearest such value.
+const HATCH_STRIPE_COLOR        = '#7f7f7f';
 const HATCH_PERIOD_PX           = 4;    // stripe repeat spacing
 const HATCH_MIN_BBOX_PX         = 8;    // below this on-screen size (narrower dimension), skip hatching entirely
 const HATCH_COLOR_DIST_THRESHOLD = 40;  // max Euclidean RGB distance still counted as "nearly the same color"
@@ -66,7 +75,7 @@ const HATCH_COLOR_DIST_THRESHOLD = 40;  // max Euclidean RGB distance still coun
 // SAFETY SWITCH: keep this false in any build going through deploy.ps1/MAPPER
 // until the fix above has been visually confirmed. Flip true only for builds
 // pushed to CREATOR for testing. See project_friendly_army_problem memory.
-const ENABLE_HATCH_FILL   = true;
+const ENABLE_HATCH_FILL   = false;
 
 // Log scale: 0 at world zoom (degX=360), grows slowly, never heavy at close zoom.
 // t=0 at degX=360, t=1 at degX=1; lineWidth = base * t.
@@ -931,7 +940,7 @@ class MapRenderer {
                 if (!overlaps(rect)) {
                     placed.push(rect);
                     ctx.lineWidth   = 2.5;
-                    ctx.strokeStyle = 'rgba(255,255,255,0.75)';
+                    ctx.strokeStyle = '#ffffff';
                     ctx.strokeText(name, lx, ly);
                     ctx.fillStyle   = '#000000';
                     ctx.fillText(name, lx, ly);
@@ -1104,7 +1113,7 @@ class MapRenderer {
                 if (!overlaps(rect)) {
                     placed.push(rect);
                     ctx.lineWidth   = 3;
-                    ctx.strokeStyle = 'rgba(0,0,0,0.75)';
+                    ctx.strokeStyle = '#000000';
                     ctx.strokeText(text, lx, ly);
                     ctx.fillStyle   = '#ffffff';
                     ctx.fillText(text, lx, ly);
