@@ -4,6 +4,10 @@ dist/
 .wrangler/
 .claude/worktrees/
 
+# ── User's personal 2017 PAR backup (recovery source for name-corruption fixes, ──
+# not code — huge tile-directory tree, shouldn't ever be committed) ────────────
+old polareas/
+
 # ── CREATOR private files (local only) ───────────────────────────────────────
 mapper/mapper-local.html
 
