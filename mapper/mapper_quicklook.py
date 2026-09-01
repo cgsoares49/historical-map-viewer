@@ -90,8 +90,8 @@ def build_map(source, year, types, show_all, container=None):
     target = container
     if target is None:
         target = folium.Map(location=[20, 10], zoom_start=3,
-                             tiles='https://a.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}.png',
-                             attr='CartoDB')
+                             tiles='https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}',
+                             attr='Esri')
     type_set = set(types)
     kept = 0
     scanned = 0

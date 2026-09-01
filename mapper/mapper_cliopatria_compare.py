@@ -119,8 +119,8 @@ def main():
     mapper_types = args.mapper_type or mapper_quicklook.DEFAULT_TYPES
 
     m = folium.Map(location=[20, 10], zoom_start=3,
-                    tiles='https://a.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}.png',
-                    attr='CartoDB')
+                    tiles='https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}',
+                    attr='Esri')
 
     clio_fg = folium.FeatureGroup(name='Cliopatria', show=True)
     mapper_fg = folium.FeatureGroup(name='MAPPER', show=True)
