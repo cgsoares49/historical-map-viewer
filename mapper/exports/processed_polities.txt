@@ -62,7 +62,7 @@ Antandros                                 2
 Anti Macedon Alliance                    62
 Anti Roman Alliance                      23
 Anti Spartan Alliance                   123
-Antigonid Ally                          208
+Antigonid Ally                          210
 Antigonid Kingdom                       214
 Antipatrid Ally                           9
 Anupa                                     1
@@ -145,7 +145,7 @@ Cao                                       7
 Carduchii                                 1
 Carians                                   5
 Caribbean Peoples                         1
-Carthage                                254
+Carthage                                255
 Carthaginian Ally                        23
 Carthaginian Tributary                   13
 Carystus                                  2
@@ -176,7 +176,7 @@ Chu                                     186
 Cilicia                                   3
 Cimmerian Kingdom                         6
 Cimmerians                               55
-Cities                                 2585
+Cities                                 2586
 Civil war                                 1
 Colchis                                   5
 Cong                                      1
@@ -735,7 +735,7 @@ Qi                                       69
 Qi(2)                                     3
 Qi(3)                                     1
 Qiang                                     1
-Qin                                     116
+Qin                                     117
 Qiuyou                                    1
 Qu                                        1
 Quaman                                    2
@@ -773,9 +773,9 @@ Revolt of Wangzi Tui                      3
 Revolt of Wangzi Zhao                     4
 Rhegion                                  17
 Rhodos                                   15
-Roman Ally                              133
+Roman Ally                              135
 Roman Latin Colony                       55
-Roman Republic                          499
+Roman Republic                          500
 Rong                                      4
 Rui                                       3
 Ruo                                       1
@@ -989,7 +989,7 @@ Zeng                                      2
 Zeng(2)                                   1
 Zhang                                     1
 Zhangzhung                                1
-Zhao                                     46
+Zhao                                     47
 Zhao clan                                 5
 Zhen                                      1
 Zheng                                    40
