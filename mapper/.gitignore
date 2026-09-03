@@ -1,5 +1,6 @@
 # ── Tile data excluded from this build ───────────────────────────────────────
 rivers/
+terrain/
 counties/
 
 # ── VB.NET build artifacts ───────────────────────────────────────────────────
@@ -18,3 +19,7 @@ offsets.txt
 mapper.ini
 make_shortcut.vbs
 *.bmp
+
+# ── Exclude from creator repo sync (huge, not part of the app) ───────────────
+__pycache__/
+exports/

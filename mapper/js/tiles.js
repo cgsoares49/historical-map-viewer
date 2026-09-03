@@ -90,6 +90,7 @@ class TileManager {
                     inwaterFile:   `inwaters/${latStr}/IWA${lonStr}.PRN`,
                     niwFile:       `niw/${latStr}/NIW${lonStr}.ASC`,
                     riversFile:    `rivers/${latStr}/RIV${lonStr}.PRN`,
+                    terrainFile:   `terrain/${latStr}/CTR${lonStr}.PRN`,
                 });
             }
         }

@@ -33,6 +33,13 @@ const RIVER_COLOR  = '#00c0f0';
 const COAST_COLOR  = '#000000';
 const BORDER_COLOR = '#000000';
 
+// Terrain (contour line) overlay — sepia, matching the approved prototype.
+// Base alphas are scaled by the user's terrainOpacity slider (0–1) at draw time.
+const TERRAIN_COLOR_REGULAR_RGB = '110,66,30';
+const TERRAIN_COLOR_INDEX_RGB   = '94,51,18';
+const TERRAIN_ALPHA_REGULAR     = 0.55;
+const TERRAIN_ALPHA_INDEX       = 0.78;
+
 // Polygons whose matched date range starts before this year are content-creation
 // sentinel entries (e.g. -9997 "show all" mode) and are excluded from display.
 const SENTINEL_FROM = -2500;
@@ -84,6 +91,23 @@ function _lineWidth(projection, base) {
     return base * Math.max(0, t);
 }
 
+// Standard ray-casting point-in-polygon test, done directly in lon/lat space
+// (valid regardless of map projection since it only depends on the ring's own
+// topology). The ring is treated as implicitly closed even if points doesn't
+// repeat its first point — contour rings clipped at a coastline are open arcs,
+// and closing them with a straight chord is the least-bad approximation.
+function _pointInRing(lon, lat, points) {
+    let inside = false;
+    for (let i = 0, j = points.length - 1; i < points.length; j = i++) {
+        const xi = points[i].lon, yi = points[i].lat;
+        const xj = points[j].lon, yj = points[j].lat;
+        const intersects = ((yi > lat) !== (yj > lat)) &&
+            (lon < (xj - xi) * (lat - yi) / (yj - yi) + xi);
+        if (intersects) inside = !inside;
+    }
+    return inside;
+}
+
 class MapRenderer {
     constructor(dataLoader, tileManager, colorLookup) {
         this._loader  = dataLoader;
@@ -96,7 +120,7 @@ class MapRenderer {
     // showCoasts: draw coastline strokes (disable for overview renders)
     // onTileDrawn(done, total): progress callback (optional)
     // Tiles are loaded and painted in batches so the map fills in progressively.
-    async render(ctx, projection, year, showBorders, showDots, onTileDrawn, showCoasts = true, showCities = false, showCityNames = false, cityDetail = 10, showInlandWaters = false, showRivers = false, showCountryLabels = false, minPixels = 5000, cancelToken = null) {
+    async render(ctx, projection, year, showBorders, showDots, onTileDrawn, showCoasts = true, showCities = false, showCityNames = false, cityDetail = 10, showInlandWaters = false, showRivers = false, showCountryLabels = false, minPixels = 5000, showTerrain = false, terrainOpacity = 0.6, cancelToken = null, terrainMaskCtx = null) {
         const { width: W, height: H } = ctx.canvas;
 
         // Water background
@@ -105,6 +129,12 @@ class MapRenderer {
 
         const tileDescs = this._tiles.getTiles(projection);
         const total = tileDescs.length;
+
+        // Terrain contour data for the tiles in THIS render, keyed by terrainFile
+        // path — reused by getElevationAt() for the CREATOR mouseover elevation
+        // readout so hovering doesn't re-fetch from disk. Reset every render so
+        // the readout only ever reflects what's actually currently drawn.
+        this._terrainCache = new Map();
 
         // Load and render in batches of 24 so the map paints progressively.
         // allCities / allRivPolys / allCountryEntries accumulate cross-tile data.
@@ -117,9 +147,11 @@ class MapRenderer {
             const batch = tileDescs.slice(start, start + BATCH);
             const loaded = await Promise.all(batch.map(t => this._loader.loadTile(t)));
             for (let j = 0; j < batch.length; j++) {
-                const { cst, pol, par, cities, iwa, niw, riv } = loaded[j];
+                const { cst, pol, par, cities, iwa, niw, riv, ctr } = loaded[j];
+                this._terrainCache.set(batch[j].terrainFile, ctr);
                 this._drawPoliticalFill(ctx, projection, cst, pol, par, year, showDots);
                 if (showInlandWaters)   this._drawInlandWaters(ctx, projection, iwa, niw, year);
+                if (showTerrain)        this._drawTerrain(ctx, projection, ctr, terrainOpacity, terrainMaskCtx);
                 if (showCoasts)         this._drawCoastOutlines(ctx, projection, cst, year);
                 if (showBorders)        this._drawBorders(ctx, projection, pol, year);
                 if (showRivers)         for (const p of riv) allRivPolys.push(p);
@@ -502,6 +534,79 @@ class MapRenderer {
             const path = this._buildPath(projection, poly.points, false);  // open — no tile-edge closing line
             if (path) ctx.stroke(path);
         }
+    }
+
+    // ── Terrain (contour lines) ──────────────────────────────────────────────
+
+    // Draws raw VMAP0 contour-line geometry as thin strokes — no DEM/hillshade
+    // interpolation (a baked-raster prototype was tried and rejected; interpolating
+    // a surface from sparse contour data always shows seams somewhere). Index
+    // contours (5000ft/~1524m multiples, poly_type 2) draw bolder/more opaque than
+    // regular contours (poly_type 1), matching the approved prototype's look.
+    // Drawn before coasts/borders so those always render crisp on top of terrain.
+    //
+    // maskCtx (optional): if provided, the same stroke geometry is also drawn
+    // opaque (never blended) onto this separate, never-displayed canvas — a
+    // click-identify oracle. Terrain uses genuine alpha blending (unlike hatch
+    // fill's reserved-color trick), so a terrain-covered backCtx pixel could
+    // coincidentally exact-match some unrelated polity's color; the mask lets
+    // the click handler detect "terrain is drawn here" and route straight to
+    // the nearest-land fallback instead of trusting a possibly-wrong exact
+    // match. Mask line width is padded +1px over the visual line so AA fringe
+    // pixels of the real stroke are covered too. See project_mapper_color_governance memory.
+    _drawTerrain(ctx, projection, ctr, opacity, maskCtx = null) {
+        if (!ctr || !ctr.length || opacity <= 0) return;
+        // Round caps: adjacent tile files each stroke their own fragment of a
+        // ring independently (see build_terrain_geodata.py's split_by_tile),
+        // sharing an exact endpoint at the cut but never a single path. Under
+        // the canvas default (butt) caps that leaves a visible notch wherever
+        // the ring bends right at the shared point — normally subtle, but
+        // some peaks (e.g. Etna) sit almost exactly astride our own 5° tile
+        // grid, so every summit ring gets bisected there. A round cap draws a
+        // small disc at each fragment's endpoint; since both fragments' discs
+        // are centered on the identical shared coordinate, they fully cover
+        // the wedge and the join reads as continuous.
+        ctx.lineCap = 'round';
+        if (maskCtx) maskCtx.lineCap = 'round';
+        for (const poly of ctr) {
+            const isIndex = poly.polyType === 2;
+            const baseWidth = isIndex ? 0.5 : 0.3;
+            ctx.strokeStyle = `rgba(${isIndex ? TERRAIN_COLOR_INDEX_RGB : TERRAIN_COLOR_REGULAR_RGB},${(isIndex ? TERRAIN_ALPHA_INDEX : TERRAIN_ALPHA_REGULAR) * opacity})`;
+            ctx.lineWidth   = _lineWidth(projection, baseWidth);
+            const path = this._buildPath(projection, poly.points, false);  // open — no tile-edge closing line
+            if (path) ctx.stroke(path);
+
+            if (maskCtx) {
+                maskCtx.strokeStyle = '#000000';
+                maskCtx.lineWidth   = _lineWidth(projection, baseWidth) + 1;
+                if (path) maskCtx.stroke(path);
+            }
+        }
+        // Coasts/borders draw right after terrain on this same ctx and need
+        // their default flat (butt) caps for correct open-polyline endpoints.
+        ctx.lineCap = 'butt';
+        if (maskCtx) maskCtx.lineCap = 'butt';
+    }
+
+    // Approximate ground elevation at a lon/lat, for the CREATOR mouseover
+    // readout — NOT a real interpolated surface (see _drawTerrain's comment on
+    // why a baked DEM was rejected). Contour lines nest around peaks, so the
+    // highest-elevation contour ring that encloses the point is a lower-bound
+    // reading, same as visually reading a paper contour map. Returns elevation
+    // in meters, or null if the point falls outside every cached contour ring
+    // (e.g. below the lowest contour, or terrain data not loaded for this tile).
+    getElevationAt(lon, lat) {
+        if (!this._terrainCache) return null;
+        let best = null;
+        for (const ctr of this._terrainCache.values()) {
+            for (const poly of ctr) {
+                if (poly.points.length < 3) continue;
+                if (_pointInRing(lon, lat, poly.points)) {
+                    if (best === null || poly.elevation > best) best = poly.elevation;
+                }
+            }
+        }
+        return best;
     }
 
     // ── Dots ───────────────────────────────────────────────────────────────────
