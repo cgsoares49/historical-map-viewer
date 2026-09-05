@@ -22,7 +22,7 @@ Write-Host "CREATOR app version stamped: $($creatorVersion.app)" -ForegroundColo
 
 # ── Step 1: Robocopy mapper/ → creator repo (exclude .git and local-only files)
 Write-Host "Syncing files to creator repo..." -ForegroundColor Yellow
-robocopy $SourceDir $CreatorRepo /E /XO /XD ".git" "Work Area" /XF "*.bmp" "*.vbp" "NVALUES.DAT" "offsets.txt" | Out-Null
+robocopy $SourceDir $CreatorRepo /E /XO /XD ".git" "Work Area" "terrain" /XF "*.bmp" "*.vbp" "NVALUES.DAT" "offsets.txt" | Out-Null
 if ($LASTEXITCODE -ge 8) { Write-Host "ERROR: robocopy failed (exit $LASTEXITCODE)" -ForegroundColor Red; exit 1 }
 Write-Host "Sync complete." -ForegroundColor Green
 
