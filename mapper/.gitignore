@@ -20,6 +20,5 @@ mapper.ini
 make_shortcut.vbs
 *.bmp
 
-# ── Exclude from creator repo sync (huge, not part of the app) ───────────────
+# ── Build/scratch artifacts ───────────────────────────────────────────────────
 __pycache__/
-exports/

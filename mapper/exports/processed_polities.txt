@@ -145,7 +145,7 @@ Cao                                       7
 Carduchii                                 1
 Carians                                   5
 Caribbean Peoples                         1
-Carthage                                255
+Carthage                                260
 Carthaginian Ally                        23
 Carthaginian Tributary                   13
 Carystus                                  2
@@ -176,7 +176,7 @@ Chu                                     186
 Cilicia                                   3
 Cimmerian Kingdom                         6
 Cimmerians                               55
-Cities                                 2586
+Cities                                 2587
 Civil war                                 1
 Colchis                                   5
 Cong                                      1
@@ -336,7 +336,7 @@ Haliartos                                 1
 Hamaranu                                  1
 Han                                       1
 Han(2)                                    1
-Hann                                     29
+Hann                                     30
 Hann clan                                 5
 Hapalla                                   1
 Harhar                                    3
@@ -735,7 +735,7 @@ Qi                                       69
 Qi(2)                                     3
 Qi(3)                                     1
 Qiang                                     1
-Qin                                     117
+Qin                                     118
 Qiuyou                                    1
 Qu                                        1
 Quaman                                    2
@@ -775,7 +775,7 @@ Rhegion                                  17
 Rhodos                                   15
 Roman Ally                              135
 Roman Latin Colony                       55
-Roman Republic                          500
+Roman Republic                          501
 Rong                                      4
 Rui                                       3
 Ruo                                       1
@@ -926,7 +926,7 @@ Volga Battle Axe Culture                  2
 Volsci                                   57
 Vriji                                     1
 Wahsusana                                 1
-Wei                                      67
+Wei                                      68
 Wei clan                                  5
 West African Peoples                      4
 Western Guo                               5
