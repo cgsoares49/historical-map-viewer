@@ -149,20 +149,23 @@ class MapRenderer {
             for (let j = 0; j < batch.length; j++) {
                 const { cst, pol, par, cities, iwa, niw, riv, ctr } = loaded[j];
                 this._terrainCache.set(batch[j].terrainFile, ctr);
+                // Per-tile draw order (user-specified, 2026-09-07): polities → terrain →
+                // tribal/other colored dots → transients → water features → city dots →
+                // boundaries (coasts+borders). Each layer paints over everything before
+                // it — transients must cover dots but must NOT obliterate water features
+                // or city dots, and boundaries must stay visible on top of all of it.
                 const preparedTransients = this._drawPoliticalFill(ctx, projection, cst, pol, par, year, showDots);
-                if (showInlandWaters)   this._drawInlandWaters(ctx, projection, iwa, niw, year);
                 if (showTerrain)        this._drawTerrain(ctx, projection, ctr, terrainOpacity, terrainMaskCtx);
-                if (showCoasts)         this._drawCoastOutlines(ctx, projection, cst, year);
-                if (showBorders)        this._drawBorders(ctx, projection, pol, year);
-                if (showRivers)         for (const p of riv) allRivPolys.push(p);
                 if (showDots && year >= -2400) { this._drawDots(ctx, projection, par, year); allDotPars.push({ par, cst, pol }); }
+                this._drawTransients(ctx, preparedTransients);
+                if (showInlandWaters)   this._drawInlandWaters(ctx, projection, iwa, niw, year);
                 if (showCities) {
                     this._drawCities(ctx, projection, cities, year, cityDetail);
                     allCities.push(cities);
                 }
-                // Transients (army paths etc.) paint last, on top of dots/cities/borders/coasts —
-                // see _drawPoliticalFill's comment for why this is deferred this far.
-                this._drawTransients(ctx, preparedTransients);
+                if (showCoasts)         this._drawCoastOutlines(ctx, projection, cst, year);
+                if (showBorders)        this._drawBorders(ctx, projection, pol, year);
+                if (showRivers)         for (const p of riv) allRivPolys.push(p);
                 if (showCountryLabels) {
                     const ld = this._collectTileLabelData(par, cst, pol, year);
                     for (const d of ld) allCountryEntries.push(d);
@@ -282,10 +285,13 @@ class MapRenderer {
 
     // Draws pass 1 (solid real territory) and pass 2 (transient "underneath"
     // snapshot) only. Returns the prepared transient entries (with
-    // hatchCandidate attached) so the caller can run pass 3 — the actual
-    // transient fill — later, after dots/borders/coasts have painted. That
-    // ordering is what keeps transients (army paths etc.) always on top of
-    // tribal/event dots instead of getting buried under them; see _drawTransients.
+    // hatchCandidate attached) so the caller (render()) can run pass 3 — the
+    // actual transient fill — later, at its place in the layer order: polities
+    // → terrain → tribal/event dots → transients → water features → city dots
+    // → boundaries. That ordering keeps transients on top of dots (so an army
+    // isn't buried under an event dot) while still sitting UNDER water features
+    // and city dots (so a transient can't obliterate a lake or a city marker
+    // it happens to cross); see _drawTransients.
     _drawPoliticalFill(ctx, projection, cst, pol, par, year, showDots) {
         if (!par.length) return [];
 
@@ -346,8 +352,8 @@ class MapRenderer {
 
     // Pass 3: draw every transient (solid fill always; masked hatch overlay
     // only where pass 2's frozen snapshot was close enough in color). Called
-    // by render() after dots/coasts/borders for the same tile have painted,
-    // so transients always end up on top of them instead of underneath.
+    // by render() right after dots for the same tile, and before water
+    // features/city dots/boundaries — see the layer-order comment above.
     _drawTransients(ctx, preparedTransients) {
         for (const p of preparedTransients) {
             this._drawSolidPath(ctx, p);
