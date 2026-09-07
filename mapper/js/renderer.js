@@ -82,7 +82,7 @@ const HATCH_COLOR_DIST_THRESHOLD = 40;  // max Euclidean RGB distance still coun
 // SAFETY SWITCH: keep this false in any build going through deploy.ps1/MAPPER
 // until the fix above has been visually confirmed. Flip true only for builds
 // pushed to CREATOR for testing. See project_friendly_army_problem memory.
-const ENABLE_HATCH_FILL   = false;
+const ENABLE_HATCH_FILL   = true;
 
 // Log scale: 0 at world zoom (degX=360), grows slowly, never heavy at close zoom.
 // t=0 at degX=360, t=1 at degX=1; lineWidth = base * t.
@@ -149,7 +149,7 @@ class MapRenderer {
             for (let j = 0; j < batch.length; j++) {
                 const { cst, pol, par, cities, iwa, niw, riv, ctr } = loaded[j];
                 this._terrainCache.set(batch[j].terrainFile, ctr);
-                this._drawPoliticalFill(ctx, projection, cst, pol, par, year, showDots);
+                const preparedTransients = this._drawPoliticalFill(ctx, projection, cst, pol, par, year, showDots);
                 if (showInlandWaters)   this._drawInlandWaters(ctx, projection, iwa, niw, year);
                 if (showTerrain)        this._drawTerrain(ctx, projection, ctr, terrainOpacity, terrainMaskCtx);
                 if (showCoasts)         this._drawCoastOutlines(ctx, projection, cst, year);
@@ -160,6 +160,9 @@ class MapRenderer {
                     this._drawCities(ctx, projection, cities, year, cityDetail);
                     allCities.push(cities);
                 }
+                // Transients (army paths etc.) paint last, on top of dots/cities/borders/coasts —
+                // see _drawPoliticalFill's comment for why this is deferred this far.
+                this._drawTransients(ctx, preparedTransients);
                 if (showCountryLabels) {
                     const ld = this._collectTileLabelData(par, cst, pol, year);
                     for (const d of ld) allCountryEntries.push(d);
@@ -277,8 +280,14 @@ class MapRenderer {
 
     // ── Political fill ─────────────────────────────────────────────────────────
 
+    // Draws pass 1 (solid real territory) and pass 2 (transient "underneath"
+    // snapshot) only. Returns the prepared transient entries (with
+    // hatchCandidate attached) so the caller can run pass 3 — the actual
+    // transient fill — later, after dots/borders/coasts have painted. That
+    // ordering is what keeps transients (army paths etc.) always on top of
+    // tribal/event dots instead of getting buried under them; see _drawTransients.
     _drawPoliticalFill(ctx, projection, cst, pol, par, year, showDots) {
-        if (!par.length) return;
+        if (!par.length) return [];
 
         // Index polygons by polyIndex for O(1) lookup
         const cstByIndex = new Map();
@@ -312,21 +321,9 @@ class MapRenderer {
             prepared.push({ dateMatch, fillColor, combined, path, isTransient });
         }
 
-        const drawSolid = (p) => {
-            ctx.fillStyle   = p.fillColor;
-            ctx.fill(p.path, 'evenodd');   // GDI+ FillPolygon default = Alternate = evenodd
-            // Cover the ~0.5px anti-aliasing seam at tile-boundary connector edges.
-            // Canvas 2D AA leaves a thin gap where adjacent tile fills meet exactly;
-            // stroking with the same fill color closes it. Coast/border strokes drawn
-            // later will cover this thin edge on actual country boundaries.
-            ctx.strokeStyle = p.fillColor;
-            ctx.lineWidth   = 1;
-            ctx.stroke(p.path);
-        };
-
         // Pass 1: all REAL (non-transient) territory — establishes the true base
         // that transients get compared against.
-        for (const p of prepared) if (!p.isTransient) drawSolid(p);
+        for (const p of prepared) if (!p.isTransient) this._drawSolidPath(ctx, p);
 
         // Pass 2: snapshot every transient's "underneath" BEFORE any transient is
         // drawn. If two transients overlap (e.g. two armies crossing paths at
@@ -344,13 +341,32 @@ class MapRenderer {
             if (under) p.hatchCandidate = { bbox, rgb, under };
         }
 
-        // Pass 3: draw every transient (solid fill always; masked hatch overlay
-        // only where pass 2's frozen snapshot was close enough in color).
-        for (const p of prepared) {
-            if (!p.isTransient) continue;
-            drawSolid(p);
+        return prepared.filter(p => p.isTransient);
+    }
+
+    // Pass 3: draw every transient (solid fill always; masked hatch overlay
+    // only where pass 2's frozen snapshot was close enough in color). Called
+    // by render() after dots/coasts/borders for the same tile have painted,
+    // so transients always end up on top of them instead of underneath.
+    _drawTransients(ctx, preparedTransients) {
+        for (const p of preparedTransients) {
+            this._drawSolidPath(ctx, p);
             if (p.hatchCandidate) this._overlayHatchWhereSimilar(ctx, p.path, p.hatchCandidate);
         }
+    }
+
+    // Shared by drawSolid (pass 1/3) — draws a prepared entry's fill plus the
+    // tile-seam-covering stroke described below.
+    _drawSolidPath(ctx, p) {
+        ctx.fillStyle   = p.fillColor;
+        ctx.fill(p.path, 'evenodd');   // GDI+ FillPolygon default = Alternate = evenodd
+        // Cover the ~0.5px anti-aliasing seam at tile-boundary connector edges.
+        // Canvas 2D AA leaves a thin gap where adjacent tile fills meet exactly;
+        // stroking with the same fill color closes it. Coast/border strokes drawn
+        // later will cover this thin edge on actual country boundaries.
+        ctx.strokeStyle = p.fillColor;
+        ctx.lineWidth   = 1;
+        ctx.stroke(p.path);
     }
 
     // A transient path/army's own POL segments are marked with a single
