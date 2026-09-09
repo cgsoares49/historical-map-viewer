@@ -256,6 +256,7 @@ croatia,1990,,45.0,18.0
 croton,-550,-430,37.5,17.5
 cuba,1990,,20.0,-77.5
 cushitic people,-1000,-1,6.0,43.9
+cycladic islands,-246,-1,37.5,26.1
 cypriot kingdoms,-1180,-1050,34.9,32.5
 cyprus,1990,,35.0,32.5
 cyzicus,-323,-280,42.5,27.0
@@ -290,7 +291,7 @@ domain of amphimakhos,-320,-317,35.5,41.3
 domain of antigenes,-320,-317,30.8,49.1
 domain of antigonus,-319,-306,36.5,34.7
 domain of asandros,-320,-315,37.5,27.6
-domain of cassander,-320,-306,38.5,23.1
+domain of cassander,-320,-306,38.5,23.0
 domain of eudemus,-320,-316,31.4,73.2
 domain of eumenes,-317,-316,33.8,52.8
 domain of lysimakhos,-314,-306,42.9,26.5
@@ -557,7 +558,7 @@ kingdom of assyria,-1920,-906,36.4,42.4
 kingdom of awan,-2400,-1170,31.1,50.6
 kingdom of babylon,-1898,-482,32.8,44.8
 kingdom of carchemish,-1190,-606,37.5,37.5
-kingdom of cyrene,-632,-1,33.1,20.7
+kingdom of cyrene,-632,-247,33.1,20.7
 kingdom of der,-2075,-1228,32.5,46.1
 kingdom of ebla,-2400,-2000,35.6,38.6
 kingdom of epirus,-330,-1,39.4,19.5
@@ -579,7 +580,7 @@ kingdom of lagash,-2340,-1920,32.5,48.2
 kingdom of larsa,-2270,-1736,32.5,46.4
 kingdom of lysimakhos,-306,-281,40.0,26.3
 kingdom of macedon,-650,-301,36.1,34.5
-kingdom of macedonia,-277,-1,39.5,22.7
+kingdom of macedonia,-277,-1,39.5,22.8
 kingdom of malgium,-1936,-1846,32.5,45.0
 kingdom of mari,-2400,-2190,34.3,41.7
 kingdom of melid,-1190,-626,37.5,37.5
@@ -902,7 +903,7 @@ qi,-770,-1,36.7,117.0
 qi(2),-770,-446,37.5,117.5
 qi(3),-770,-706,37.5,117.5
 qiang,-771,-1,37.5,100.0
-qin,-772,-1,34.0,110.3
+qin,-772,-1,34.2,110.3
 qiuyou,-770,-458,37.5,112.5
 qu,-770,-678,37.5,112.5
 quaman,-770,-612,32.5,110.8
@@ -984,7 +985,7 @@ sea peoples,-1233,-1180,35.4,31.4
 sealand,-1734,-1438,32.5,45.6
 second athenian league,-376,-338,39.1,24.4
 seleucid ally,-282,-1,38.5,27.8
-seleucid kingdom,-306,-1,35.7,41.9
+seleucid kingdom,-306,-1,35.8,41.5
 semitic nomads,-2400,-1000,24.2,47.1
 senegal,1990,,15.0,-15.0
 seychelles,1990,,-7.5,52.5
@@ -1038,7 +1039,7 @@ stasis,-637,264,37.7,22.2
 su,-770,-684,37.5,117.5
 subarctic peoples,-2400,-1,59.2,-110.3
 subartum,-1742,-1616,37.5,42.5
-succession struggle,-817,-254,36.6,85.4
+succession struggle,-817,-1,36.4,83.1
 sudan,1990,,12.5,30.0
 suhma,-610,-346,22.5,87.5
 suhne,-931,-864,37.5,42.5
@@ -1212,7 +1213,7 @@ zeng,-772,-678,32.5,112.5
 zeng(2),-770,-568,34.9,117.5
 zhang,-770,-664,37.5,117.5
 zhangzhung,-500,-1,33.2,81.7
-zhao,-453,-1,38.2,113.9
+zhao,-453,-1,38.2,113.8
 zhao clan,-500,-453,37.5,112.5
 zhen,-770,-700,32.5,112.5
 zheng,-770,-376,33.0,113.0
