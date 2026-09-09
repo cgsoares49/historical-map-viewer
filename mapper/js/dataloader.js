@@ -308,12 +308,13 @@ class DataLoader {
     //   For each poly:
     //     <poly_type>  ,  <poly_index>
     //     <num_date_ranges>
-    //     <date_from>  ,  <date_to>      ← always -9999..9990
+    //     <date_from>  ,  <date_to>      ← usually -9999..9990, but a segment may
+    //                                      be time-bounded (e.g. a relocated channel)
     //     7                              ← constant field, ignored
     //     <point_count>
     //     <lon>  <lat>  (repeated)
     //
-    // Returns: [ { polyType, polyIndex, points:[{lon,lat}] } ]
+    // Returns: [ { polyType, polyIndex, points:[{lon,lat}], dateRanges:[{from,to}] } ]
     _parseRivers(text) {
         const lines = this._lines(text);
         if (!lines.length) return [];
@@ -331,8 +332,9 @@ class DataLoader {
             const polyIndex = header.length > 1 ? parseInt(header[1]) : p + 1;
 
             const numDates = parseInt(lines[i++]);
+            const dateRanges = [];
             for (let d = 0; d < numDates; d++) {
-                if (i < lines.length) i++;   // skip date range lines (always -9999..9990)
+                if (i < lines.length) dateRanges.push(this._parseDateRange(lines[i++]));
             }
             i++;  // skip constant "7" field
 
@@ -363,7 +365,7 @@ class DataLoader {
                     logicalPt++;
                 }
             }
-            polys.push({ polyType, polyIndex, points });
+            polys.push({ polyType, polyIndex, points, dateRanges });
         }
         return polys;
     }

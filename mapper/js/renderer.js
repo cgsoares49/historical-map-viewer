@@ -191,7 +191,7 @@ class MapRenderer {
 
         // River pass: draw after all tiles loaded so cross-tile segments can be chained
         if (showRivers) {
-            this._drawRiversConnected(ctx, projection, allRivPolys);
+            this._drawRiversConnected(ctx, projection, allRivPolys, year);
         }
 
         // Country label pass: drawn last so labels appear on top of everything
@@ -760,7 +760,15 @@ class MapRenderer {
     // identify "chain heads" — polys whose start point is not the end point of
     // any other loaded poly — and only begin chains from those.  Polys that
     // have a predecessor are reached later when their predecessor is processed.
-    _drawRiversConnected(ctx, projection, allPolys) {
+    _drawRiversConnected(ctx, projection, allPolys, year) {
+        if (!allPolys.length) return;
+
+        // Honor per-segment date ranges: a RIV segment may be time-bounded (e.g. a
+        // relocated channel). Segments with no date block, or the usual
+        // -9999..9990 range, always pass. Filtering here (before the chaining
+        // logic) means excluded segments simply aren't chain candidates.
+        allPolys = allPolys.filter(p =>
+            !p.dateRanges || !p.dateRanges.length || matchDate(p.dateRanges, year));
         if (!allPolys.length) return;
 
         // startMap: first-point key → list of poly indices
