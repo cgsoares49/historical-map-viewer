@@ -449,13 +449,15 @@ class DataLoader {
     //     For each ring:
     //       <ring_type>  <ring_index>
     //       <num_date_ranges>
-    //       <date_from>  ,  <date_to>       ← always -9999..9990 in practice
+    //       <date_from>  ,  <date_to>       ← usually -9999..9990, but a ring may
+    //                                         be time-bounded (e.g. Lake Nasser
+    //                                         from 1970, pre-dam Nile before it)
     //       7                               ← constant field, ignored
     //       <point_count>
     //       <lon>  <lat>  (repeated)
     //
     // Ring 1 = outer water boundary; rings 2+ = island inner rings.
-    // Returns: [ { rings: [ { ringType, ringIndex, points:[{lon,lat}] } ] } ]
+    // Returns: [ { rings: [ { ringType, ringIndex, points:[{lon,lat}], dateRanges:[{from,to}] } ] } ]
     _parseIwa(text) {
         const lines = this._lines(text);
         if (!lines.length) return [];
@@ -481,8 +483,9 @@ class DataLoader {
                 const ringIndex = header.length > 2 ? parseInt(header[2]) : 1;
 
                 const numDates = parseInt(lines[i++]);
+                const dateRanges = [];
                 for (let d = 0; d < numDates; d++) {
-                    if (i < lines.length) i++;   // skip date range lines
+                    if (i < lines.length) dateRanges.push(this._parseDateRange(lines[i++]));
                 }
                 i++;  // skip constant "7" field
 
@@ -513,7 +516,7 @@ class DataLoader {
                         logicalPt++;
                     }
                 }
-                rings.push({ ringType, ringIndex, points });
+                rings.push({ ringType, ringIndex, points, dateRanges });
             }
             groups.push({ rings });
         }

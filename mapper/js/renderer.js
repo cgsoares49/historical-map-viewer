@@ -858,6 +858,11 @@ class MapRenderer {
     // Step 1: fill the entire group as a single evenodd path with WATER_COLOR.
     //         The outer area gets water-blue; island rings become transparent
     //         holes that show the PAR political fills painted beneath them.
+    //         Rings carry their own date ranges: a time-bounded water body
+    //         (e.g. Lake Nasser exists only from 1970 CE, the pre-dam Nile
+    //         course only before it) is skipped when its outer ring's date
+    //         range excludes the current year, and individual islands that
+    //         appear/vanish over time are filtered the same way.
     //
     // Step 2: for each NIW entry whose date range matches the current year, fill
     //         the referenced island ring with the country color.  This re-colors
@@ -871,9 +876,14 @@ class MapRenderer {
         ctx.fillStyle = WATER_COLOR;
         for (const group of iwa) {
             if (!group.rings.length) continue;
+            // Outer ring (index 1) gates the whole body: if its date range
+            // excludes this year, the water body doesn't exist yet / any more.
+            const outer = group.rings.find(r => r.ringIndex === 1) || group.rings[0];
+            if (outer.dateRanges && outer.dateRanges.length && !matchDate(outer.dateRanges, year)) continue;
             const path = new Path2D();
             for (const ring of group.rings) {
                 if (ring.points.length < 3) continue;
+                if (ring.dateRanges && ring.dateRanges.length && !matchDate(ring.dateRanges, year)) continue;
                 let first = true;
                 for (const pt of ring.points) {
                     const { x, y } = projection.geoToPixel(pt.lon, pt.lat);
