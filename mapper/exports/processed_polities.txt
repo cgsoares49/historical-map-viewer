@@ -9,6 +9,7 @@
 #   python merge_into_master.py --polity "<name>" --geojson exports/_tmp.geojson
 #
 # name                                   rows
+"Elamite Tributary                        3
 (Marhashi)                               32
 Abhiras                                   1
 Abilianikhi                               2
@@ -16,7 +17,7 @@ Abisara                                   1
 Aboriginal Peoples                       29
 Acarnania                                 3
 Achaea                                   55
-Achaean League                            7
+Achaean League                            8
 Achaeans                                  5
 Adena Culture                             1
 Aegina                                   10
@@ -25,7 +26,7 @@ Aeolian League                            8
 Aeolians                                 42
 Aequi                                    40
 Aetolia                                   3
-Aetolian League                          19
+Aetolian League                          23
 Agathoclid Ally                          11
 Ahhiya                                   38
 Ainu                                      1
@@ -62,7 +63,7 @@ Antandros                                 2
 Anti Macedon Alliance                    62
 Anti Roman Alliance                      23
 Anti Spartan Alliance                   123
-Antigonid Ally                          210
+Antigonid Ally                          214
 Antigonid Kingdom                       215
 Antipatrid Ally                           9
 Anupa                                     1
@@ -145,7 +146,7 @@ Cao                                       7
 Carduchii                                 1
 Carians                                   5
 Caribbean Peoples                         1
-Carthage                                262
+Carthage                                264
 Carthaginian Ally                        23
 Carthaginian Tributary                   13
 Carystus                                  2
@@ -176,7 +177,7 @@ Chu                                     186
 Cilicia                                   3
 Cimmerian Kingdom                         6
 Cimmerians                               55
-Cities                                 2588
+Cities                                 2589
 Civil war                                 1
 Colchis                                   5
 Cong                                      1
@@ -229,7 +230,7 @@ Domain of Philip                          1
 Domain of Philoxenos                      2
 Domain of Polyperchon                    40
 Domain of Ptolemy                       141
-Domain of Seleucus                       20
+Domain of Seleucus                       19
 Domain of Sibyrtios                       2
 Domain of Stasandros                      2
 Domain of Stasanor                        2
@@ -330,6 +331,7 @@ Guo                                       1
 Gurgum                                    5
 Guti                                     66
 Guti Tributary                           29
+Gutian Tributary                          2
 Guzanu                                    2
 Guzhu                                     1
 Haihayas                                  1
@@ -464,7 +466,7 @@ Kingdom of Lagash                        18
 Kingdom of Larsa                         57
 Kingdom of Lysimakhos                    67
 Kingdom of Macedon                      808
-Kingdom of Macedonia                     66
+Kingdom of Macedonia                     69
 Kingdom of Malgium                        1
 Kingdom of Mari                          26
 Kingdom of Melid                         11
@@ -724,7 +726,7 @@ Proto-Mongol Peoples                      1
 Proto-Tibetans                            6
 Proto-Turkic Peoples                      2
 Ptolemaic Ally                           34
-Ptolemaic Kingdom                       178
+Ptolemaic Kingdom                       181
 Pu                                        1
 Pugu                                      1
 Pulinda                                   1
@@ -736,7 +738,7 @@ Qi                                       69
 Qi(2)                                     3
 Qi(3)                                     1
 Qiang                                     1
-Qin                                     119
+Qin                                     120
 Qiuyou                                    1
 Qu                                        1
 Quaman                                    2
@@ -751,7 +753,7 @@ Rebel Irridu                              1
 Rebel Israelites                          2
 Red Di                                   12
 Ren                                       1
-Revolt                                  163
+Revolt                                  165
 Revolt of Antigonus                       1
 Revolt of Antipater                       2
 Revolt of Ariobarzanes                    3
@@ -812,7 +814,7 @@ Sea Peoples                              46
 Sealand                                   7
 Second Athenian League                  237
 Seleucid Ally                            13
-Seleucid Kingdom                         70
+Seleucid Kingdom                         79
 Semitic Nomads                            3
 Shang                                    28
 Shang Dynasty                            59
@@ -927,7 +929,7 @@ Volga Battle Axe Culture                  2
 Volsci                                   57
 Vriji                                     1
 Wahsusana                                 1
-Wei                                      68
+Wei                                      69
 Wei clan                                  5
 West African Peoples                      4
 Western Guo                               5

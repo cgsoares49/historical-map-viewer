@@ -106,6 +106,8 @@ def main():
                     features.append(feat)
     print(f"Scanned {total_lines} master line(s), kept {len(features)} after filters.")
 
+    features.sort(key=lambda f: f['properties']['FromYear'])
+
     for idx, feat in enumerate(features, start=1):
         feat['properties']['Index'] = idx
 

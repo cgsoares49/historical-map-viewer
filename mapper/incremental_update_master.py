@@ -151,7 +151,13 @@ def diff_primaries(old_text):
 
 
 def run(cmd):
-    return subprocess.run(cmd, cwd=MAPPER_DIR, capture_output=True, text=True)
+    # Force UTF-8 stdout/stderr in the child: without it, Windows' default
+    # cp1252 console codec crashes on a print() containing a non-cp1252
+    # character (e.g. accented place names like "Kiçik Tava Adasi"), which
+    # otherwise surfaces here as a spurious ERROR status instead of that
+    # name's real (often benign) result.
+    env = dict(os.environ, PYTHONIOENCODING='utf-8')
+    return subprocess.run(cmd, cwd=MAPPER_DIR, capture_output=True, text=True, env=env)
 
 
 def export_name(name, out_path):
