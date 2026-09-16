@@ -933,6 +933,7 @@ class MapRenderer {
     //   symCode = 0  → trefoil: 3 small dots (r=0.01°) arranged in triangle, offset 0.02° from centre
     //   symCode > 0  → single dot, r = (symCode+1)*0.01°
     // symCode < 0: X mark, arm length = 0.05*|symCode| degrees
+    //   symCode = -1 → battle site: crossed swords instead of a plain X (same footprint)
     //
     // Color = offsets[colorIndex] directly (VB uses offset RGB as city color, no primaries base).
     // Minimum radius of 2px applied so cities are always visible at world zoom.
@@ -1009,12 +1010,60 @@ class MapRenderer {
             } else {
                 const arm = (0.05 * Math.abs(symCode) * scale) / Math.SQRT2;
                 if (arm < 0.5) continue;
-                ctx.strokeStyle = color;
-                ctx.lineWidth   = 1;
-                ctx.beginPath(); ctx.moveTo(cx - arm, cy - arm); ctx.lineTo(cx + arm, cy + arm); ctx.stroke();
-                ctx.beginPath(); ctx.moveTo(cx + arm, cy - arm); ctx.lineTo(cx - arm, cy + arm); ctx.stroke();
+                if (symCode === -1) {
+                    this._drawBattleSymbol(ctx, cx, cy, arm, color);
+                } else {
+                    ctx.strokeStyle = color;
+                    ctx.lineWidth   = 1;
+                    ctx.beginPath(); ctx.moveTo(cx - arm, cy - arm); ctx.lineTo(cx + arm, cy + arm); ctx.stroke();
+                    ctx.beginPath(); ctx.moveTo(cx + arm, cy - arm); ctx.lineTo(cx - arm, cy + arm); ctx.stroke();
+                }
             }
         }
+    }
+
+    // Battle-site marker: crossed swords, tips at the top corners, hilts converging
+    // at the bottom corners. Shares the X-mark's footprint (arm = half-diagonal from
+    // centre) so it drops into the same sizing/label-placement logic as other symbols.
+    _drawBattleSymbol(ctx, cx, cy, arm, color) {
+        ctx.save();
+        ctx.strokeStyle = color;
+        ctx.fillStyle   = color;
+        ctx.lineCap     = 'round';
+        ctx.lineWidth   = Math.max(1, arm * 0.35);
+
+        const guard  = arm * 0.32;  // crossguard half-width, perpendicular to the blade
+        const pommel = arm * 0.14;  // grip-end knob radius
+
+        const swords = [
+            { tip: { x: cx - arm, y: cy - arm }, hilt: { x: cx + arm, y: cy + arm } },
+            { tip: { x: cx + arm, y: cy - arm }, hilt: { x: cx - arm, y: cy + arm } },
+        ];
+
+        for (const { tip, hilt } of swords) {
+            ctx.beginPath();
+            ctx.moveTo(tip.x, tip.y);
+            ctx.lineTo(hilt.x, hilt.y);
+            ctx.stroke();
+
+            // Crossguard, placed a short way up the blade from the hilt end.
+            const gx = hilt.x + (tip.x - hilt.x) * 0.28;
+            const gy = hilt.y + (tip.y - hilt.y) * 0.28;
+            const perpX = -(hilt.y - tip.y);
+            const perpY =  (hilt.x - tip.x);
+            const perpLen = Math.hypot(perpX, perpY) || 1;
+            const ux = perpX / perpLen, uy = perpY / perpLen;
+            ctx.beginPath();
+            ctx.moveTo(gx - ux * guard, gy - uy * guard);
+            ctx.lineTo(gx + ux * guard, gy + uy * guard);
+            ctx.stroke();
+
+            // Pommel knob at the grip end.
+            ctx.beginPath();
+            ctx.arc(hilt.x, hilt.y, pommel, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        ctx.restore();
     }
 
     // Greedy label placement: collect all visible cities, sort larger symbols first,
