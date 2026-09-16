@@ -82,7 +82,7 @@ const HATCH_COLOR_DIST_THRESHOLD = 40;  // max Euclidean RGB distance still coun
 // SAFETY SWITCH: keep this false in any build going through deploy.ps1/MAPPER
 // until the fix above has been visually confirmed. Flip true only for builds
 // pushed to CREATOR for testing. See project_friendly_army_problem memory.
-const ENABLE_HATCH_FILL   = false;
+const ENABLE_HATCH_FILL   = true;
 
 // Log scale: 0 at world zoom (degX=360), grows slowly, never heavy at close zoom.
 // t=0 at degX=360, t=1 at degX=1; lineWidth = base * t.
