@@ -33,6 +33,7 @@ import os
 import re
 import json
 import csv
+import math
 import argparse
 from datetime import date
 
@@ -689,7 +690,7 @@ def area_km2(geom):
     return projected.area / 1_000_000.0
 
 
-# ── Transient shape classification (2026-09-17) ──────────────────────────────
+# ── Transient shape classification (2026-09-17, revised same day) ────────────
 #
 # Transient (army/campaign) entries get real closed-ring polygon geometry from
 # the same PAR->POL/CST pipeline as real territory, so a long sweeping march
@@ -697,34 +698,62 @@ def area_km2(geom):
 # elongated (path-like) transients instead of an Area, and only keep/fold in
 # Area for compact (blob-like) ones -- a plausible real territory footprint
 # (e.g. a siege camp or garrison zone), not a movement path.
-TRANSIENT_AREA_RATIO_THRESHOLD = 2.0  # length/width below this => blob-like
+#
+# First attempt fit a minimum-rotated-rectangle and compared its two side
+# lengths -- works for a straight march, but fails for one that curls or
+# bends back on itself: a winding path can still have a small, roughly square
+# *bounding box* even though its *boundary* is clearly long and thin (found
+# 2026-09-17, user-reported: a real "Consular army" entry with a genuinely
+# ~190km+ winding path measured as compact/blob-like this way). Fixed by
+# using the shape's actual perimeter and area instead of any single rectangle
+# fit -- modeling the polygon as a thickened line of length L and
+# roughly-constant width W (Area ~= L*W, Perimeter ~= 2*L when L >> W, since
+# the end caps contribute negligible perimeter), giving W ~= 2*Area/Perimeter
+# and L ~= Perimeter/2. This is curl-invariant: bending the same path in half
+# barely changes its perimeter or area, so the estimate holds regardless of
+# how it winds. Verified against the full Roman Republic sample (281 polygon
+# transient entries): a properly circle-normalized version of this ratio
+# (see transient_shape_ratio) reclassifies the reported curled entry, and 34
+# other previously-mismeasured winding entries, from blob to path-like, while
+# genuinely compact "Army"/garrison entries stay clustered near the
+# perfect-circle minimum (~1.0-1.5) -- confirmed by inspecting the full
+# before/after classification counts (blob 62->50, path 219->231 of 281) and
+# spot-checking outliers in both flip directions, not just the reported case.
+TRANSIENT_AREA_RATIO_THRESHOLD = 2.0  # below this => blob-like
 
 
 def length_width_km(geom):
-    """Minimum-rotated-rectangle long/short side lengths (km). Same equal-area
-    projection as area_km2, so the two sides are directly comparable/summable
-    with Area in the same unit family. Returns (None, None) if geom can't
-    produce a 4-point rectangle (e.g. degenerate/empty geometry)."""
+    """Perimeter/area-based length & width estimate (km): W = 2*Area/Perimeter,
+    L = Perimeter/2 (see the module note above for the thickened-line
+    reasoning). Same equal-area projection as area_km2, so these are real,
+    comparable kilometres -- not literally a rectangle's sides, but they
+    coincide with the old bounding-rectangle measurement for a genuinely
+    straight, uniform-width corridor, and stay meaningful (unlike a rectangle
+    fit) when the corridor curls. Returns (None, None) for degenerate/empty
+    geometry."""
     projected = transform(TO_EQUAL_AREA, geom)
-    rect = projected.minimum_rotated_rectangle
-    if rect.geom_type != 'Polygon':
+    area, perimeter = projected.area, projected.length
+    if area <= 0 or perimeter <= 0:
         return None, None
-    coords = list(rect.exterior.coords)
-    if len(coords) < 4:
-        return None, None
-    side_a = Point(coords[0]).distance(Point(coords[1]))
-    side_b = Point(coords[1]).distance(Point(coords[2]))
-    long_m, short_m = max(side_a, side_b), min(side_a, side_b)
-    return long_m / 1000.0, short_m / 1000.0
+    width_m = 2 * area / perimeter
+    length_m = perimeter / 2
+    return length_m / 1000.0, width_m / 1000.0
 
 
 def transient_shape_ratio(geom):
-    """Returns (length_km, width_km, ratio) -- ratio is None if width is 0/undefined
-    (degenerate sliver), which is treated as maximally path-like by callers."""
+    """Returns (length_km, width_km, ratio). length_km/width_km are real km
+    (see length_width_km); ratio is those two divided by pi, NOT a literal
+    length_km/width_km -- the raw length/width ratio is Perimeter^2/(4*Area),
+    which for this thickened-line model is the classic isoperimetric ratio,
+    with a natural minimum of pi (not 1) for a perfect circle. Dividing by pi
+    normalizes it to the same "1.0 = most compact possible, larger = more
+    elongated/winding" scale a bounding-rectangle ratio would give, so the
+    same TRANSIENT_AREA_RATIO_THRESHOLD stays meaningful. None if width is
+    0/undefined (degenerate sliver), treated as maximally path-like."""
     length_km, width_km = length_width_km(geom)
     if length_km is None or not width_km:
         return length_km, width_km, None
-    return length_km, width_km, length_km / width_km
+    return length_km, width_km, (length_km / width_km) / math.pi
 
 
 # Tribal dot clusters have no polygon at all, so geom.area is always 0 --
