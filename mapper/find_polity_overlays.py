@@ -41,13 +41,24 @@ from collections import Counter
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from export_polity_polygons import (
     load_tile, build_combined_ring, ring_to_polygon, is_transient,
-    is_keyword_transient, owner_name, TO_EQUAL_AREA,
+    is_keyword_transient, owner_name, path_of, TO_EQUAL_AREA,
 )
 from shapely.ops import transform
 
 MAPPER_DIR = os.path.dirname(os.path.abspath(__file__))
 DEFAULT_TILES = ['120:030', '120:035']
-DEFAULT_MIN_OVERLAP_RATIO = 0.6
+
+# Started at 0.6 (near-total containment only). Revised 2026-09-17 after the
+# user spotted a real miss by checking the map directly: the "Revolt of
+# Inaros" entry (120/030 #281) visibly overlays PORTIONS of Nomes 4 and 6 too,
+# not just the three (Nomes 3/5/7) that hit 0.6. Checked directly: Nome 4
+# overlaps at ratio 0.083, one of the two Nome 6 pieces at 0.345 -- both real,
+# both missed by 0.6. Lowered to 0.05, which pulls both in while still
+# correctly excluding the OTHER Nome 6 piece (genuinely 0.0 overlap, not
+# just below-threshold) and the known true-negative border-stitch case
+# (PAR035 #86/#87, confirmed exactly 0.0 -- a shared boundary LINE has no
+# area, so it can never appear above 0 regardless of how low this goes).
+DEFAULT_MIN_OVERLAP_RATIO = 0.05
 
 # "UNKNOWN" is a known data-artifact name, not a real polity (same class
 # incremental_update_master.py's own SKIP_NAMES already excludes, for a
@@ -136,24 +147,49 @@ def entry_names(entry):
     return sorted(set(owner_name(dr['name']) for dr in entry['dateRanges']))
 
 
-def active_owners_during(date_ranges, windows):
-    """Which of this entry's OWN date-ranges actually overlap the given
-    windows -- i.e. what it was really doing during the flagged overlap,
-    not its whole history. `Names` (entry_names) lists every owner an entry
-    has EVER had, which for a long-lived entry (30+ date-ranges over
-    centuries) buries the one relevant to a specific flagged window; this is
-    the targeted answer. Returns '(no active entry -- data gap here)' if
-    none of the entry's date-ranges cover any of the windows at all (a real,
-    informative case: found 2026-09-17, a nome entry can have a genuine gap
-    in its own recorded history that happens to coincide with the window)."""
-    owners = []
+def _active_segments_during(date_ranges, windows, picker):
+    """Shared machinery for active_owners_during/active_last_segment_during
+    below: which of this entry's OWN date-ranges actually overlap the given
+    windows -- i.e. what it was really doing during the flagged overlap, not
+    its whole history -- with `picker` choosing which dash-segment of the
+    matching date-range name(s) to report. Returns '(no active entry -- data
+    gap here)' if none of the entry's date-ranges cover any of the windows
+    at all (a real, informative case: found 2026-09-17, a nome entry can
+    have a genuine gap in its own recorded history that happens to coincide
+    with the window)."""
+    segs = []
     for lo, hi in windows:
         for dr in date_ranges:
             if max(dr['from'], lo) < min(dr['to'], hi):
-                owners.append(owner_name(dr['name']))
-    if not owners:
+                segs.append(picker(dr['name']))
+    if not segs:
         return '(no active entry -- data gap here)'
-    return '; '.join(sorted(set(owners)))
+    return '; '.join(sorted(set(segs)))
+
+
+def active_owners_during(date_ranges, windows):
+    """The top-level owner (first dash-segment) actually active during the
+    flagged windows -- see _active_segments_during. `AllOwnersEver` lists
+    every owner an entry has EVER had, which for a long-lived entry (30+
+    date-ranges over centuries) buries the one relevant to a specific
+    flagged window; this is the targeted answer."""
+    return _active_segments_during(date_ranges, windows, owner_name)
+
+
+def active_last_segment_during(date_ranges, windows):
+    """The entry's own place/nome name (LAST dash-segment) during the
+    flagged windows -- e.g. 'Lower Egypt Nome 3 Ahment/Ament', regardless of
+    which empire currently governs it. Added per user request, to let the
+    entry be matched against nome numbers/names on the map or a POL #
+    reference. NOT perfectly stable across an entry's whole history --
+    checked #113: its own last segment reads 'Lower Egypt Nome 3
+    Ahment/Ament' for most of its ~3000-year history but 'Prospithes' in the
+    Ptolemaic-Greek-naming era and 'Libu and Meshwesh' during a Libyan
+    interregnum -- so this is deliberately scoped to the flagged window via
+    the same _active_segments_during machinery as active_owners_during,
+    not just "the first name found", to report the name actually in use at
+    the relevant moment."""
+    return _active_segments_during(date_ranges, windows, lambda n: path_of(n)[-1])
 
 
 class UnionFind:
@@ -319,8 +355,9 @@ def main():
     os.makedirs(os.path.dirname(args.out), exist_ok=True)
     with open(args.out, 'w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
-        writer.writerow(['GroupID', 'GroupSize', 'Tile', 'EntryIndex', 'ActiveDuringOverlap', 'AllOwnersEver',
-                          'AreaKm2', 'OverlapFromYear', 'OverlapToYear', 'DistinctWindows', 'MaxIntersectionRatio'])
+        writer.writerow(['GroupID', 'GroupSize', 'Tile', 'EntryIndex', 'LastNameSegment', 'ActiveDuringOverlap',
+                          'AllOwnersEver', 'AreaKm2', 'OverlapFromYear', 'OverlapToYear', 'DistinctWindows',
+                          'MaxIntersectionRatio'])
         for gi, (entities, ids) in enumerate(groups, start=1):
             members = sorted(entities, key=lambda k: (k[0], k[1], k[2]))
             windows = sorted({(all_events[i]['lo'], all_events[i]['hi']) for i in ids})
@@ -330,8 +367,9 @@ def main():
             for lat, lon, entry_idx in members:
                 info = all_entry_info[(lat, lon, entry_idx)]
                 active = active_owners_during(info['dateRanges'], windows)
+                last_seg = active_last_segment_during(info['dateRanges'], windows)
                 writer.writerow([gi, len(entities), f'{lat}/{lon}', entry_idx,
-                                  active, '; '.join(info['names']), info['area_km2'],
+                                  last_seg, active, '; '.join(info['names']), info['area_km2'],
                                   round(overlap_from, 1), round(overlap_to, 1), len(windows),
                                   round(max_ratio, 3)])
     total_entities = len(set().union(*[e for e, _ in groups])) if groups else 0
