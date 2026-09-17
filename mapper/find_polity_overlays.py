@@ -48,6 +48,63 @@ from shapely.ops import transform
 MAPPER_DIR = os.path.dirname(os.path.abspath(__file__))
 DEFAULT_TILES = ['120:030', '120:035']
 
+# The user's own authoring log, going back to 2017 -- entries they
+# deliberately flagged "(overlay)"/"(temp overlay)" in the description while
+# creating them (28 such rows found 2026-09-17). Real ground truth, not a
+# guess: used as a cross-reference, never a requirement -- this whole script
+# still works, just without the ConfirmedByLog column, if the file is
+# missing/unreadable/moved (a personal file outside this repo, not something
+# to depend on hard-failing over).
+ANIMATION_LOG_PATH = r'C:\My stuff\VID\animation actions.xlsx'
+
+
+def load_logged_overlays(path=ANIMATION_LOG_PATH):
+    """Returns {tile ('120/030' form): [(start_year, end_year_or_None,
+    description), ...]} for every row in the log whose description mentions
+    "overlay" -- these are entries the user explicitly remembers authoring
+    as an overlay, independent of anything this script detects geometrically.
+    Silently returns {} if the file or openpyxl isn't available."""
+    try:
+        import openpyxl
+    except ImportError:
+        return {}
+    if not os.path.exists(path):
+        return {}
+    try:
+        wb = openpyxl.load_workbook(path, read_only=True, data_only=True)
+        ws = wb['data']
+        rows = ws.iter_rows(values_only=True, max_col=25)
+        next(rows)  # header
+        by_tile = {}
+        for row in rows:
+            desc = row[4] if len(row) > 4 else None
+            if not isinstance(desc, str) or 'overlay' not in desc.lower():
+                continue
+            start_year, end_year = row[2], row[5]
+            for cell in row[6:10]:
+                if not isinstance(cell, str) or '/' not in cell:
+                    continue
+                lat_str, lon_str = cell.split('/', 1)
+                norm_tile = f"{lat_str}/{lon_str.zfill(3)}"
+                by_tile.setdefault(norm_tile, []).append((start_year, end_year, desc))
+        return by_tile
+    except Exception:
+        return {}
+
+
+def match_logged_overlays(logged_by_tile, tile, group_from, group_to, tolerance=2.0):
+    """Logged descriptions whose start year falls within [group_from -
+    tolerance, group_to + tolerance] -- a loose match, since the log's dates
+    are the user's own manually-typed record, not necessarily byte-identical
+    to the eventually-digitized PAR date-range boundaries (confirmed exact
+    in every case checked 2026-09-17, but a small tolerance costs nothing
+    and guards against the cases that aren't)."""
+    hits = []
+    for start_year, end_year, desc in logged_by_tile.get(tile, []):
+        if isinstance(start_year, (int, float)) and group_from - tolerance <= start_year <= group_to + tolerance:
+            hits.append(desc)
+    return hits
+
 # Started at 0.6 (near-total containment only). Revised 2026-09-17 after the
 # user spotted a real miss by checking the map directly: the "Revolt of
 # Inaros" entry (120/030 #281) visibly overlays PORTIONS of Nomes 4 and 6 too,
@@ -118,12 +175,19 @@ def load_candidates(tile):
 
 
 def date_overlap_windows(entry_a, entry_b):
-    """Every (from, to) window where entry_a and entry_b are BOTH active with
-    DIFFERENT top-level owner names -- the temporal+ownership half of the
-    overlay signal. Cheap: no geometry involved, checked before any
-    intersection test. A window where either side's owner is UNKNOWN is
-    skipped -- an "unclear who ruled this" gap in one entry's own history
-    isn't evidence the other entry is a different real owner."""
+    """Every window where entry_a and entry_b are BOTH active with DIFFERENT
+    top-level owner names -- the temporal+ownership half of the overlay
+    signal. Cheap: no geometry involved, checked before any intersection
+    test. A window where either side's owner is UNKNOWN is skipped -- an
+    "unclear who ruled this" gap in one entry's own history isn't evidence
+    the other entry is a different real owner.
+
+    Returns (lo, hi, dur_a, dur_b) tuples -- dur_a/dur_b are the FULL span of
+    the specific contributing date-range on each side (not just the window,
+    which is their intersection), used by the stack-depth heuristic below:
+    in every manually-confirmed real case so far, the shorter-lived side of
+    a conflicting pair turned out to be the overlay (a brief event) and the
+    longer-lived side the base territory it was drawn over."""
     windows = []
     for dr_a in entry_a['dateRanges']:
         owner_a = owner_name(dr_a['name'])
@@ -135,7 +199,7 @@ def date_overlap_windows(entry_a, entry_b):
                 continue
             lo, hi = max(dr_a['from'], dr_b['from']), min(dr_a['to'], dr_b['to'])
             if lo < hi and owner_a != owner_b:
-                windows.append((lo, hi))
+                windows.append((lo, hi, dr_a['to'] - dr_a['from'], dr_b['to'] - dr_b['from']))
     return windows
 
 
@@ -194,46 +258,93 @@ def format_window(windows):
     return f"{min(w[0] for w in windows):.1f}..{max(w[1] for w in windows):.1f}"
 
 
-def analyze_group(entities, ids, all_events):
-    """Builds the per-entity relationship data a group's CSV rows need:
-    neighbors[entity] = {other_entity: {'windows': [...], 'pct_self_covered': max %}}
-    -- `pct_self_covered` is what fraction of THIS entity's own area the
-    OTHER entity's polygon covers (asymmetric: pct_self_covered for (X,Y) is
-    generally different from (Y,X)).
+def compute_stack(entities, ids, all_events):
+    """Assigns each entity in a group a STACK DEPTH (1 = base/bottom, higher
+    = drawn later/on top) via a directed "shorter-lived side is above"
+    graph, built PER EVENT (not per aggregated entity-pair, since the same
+    two entities can be on either side of that relationship at different
+    points in their shared history): for every event, whichever side's OWN
+    specific date-range (dur_a/dur_b) is shorter is treated as drawn on top
+    of the longer-lived side. Confirmed against three real, manually
+    cross-checked cases (Revolt of Inaros over 5 nomes: 8 years vs.
+    centuries; a brief "Israelites" entry over 4 Levantine polities: 5 years
+    vs. centuries; a brief "Rebel Israelites" entry nested inside a longer
+    Israelites/Philistines border dispute: 2 years vs. decades) and against
+    the user's own authoring log (animation actions.xlsx) confirming these
+    as deliberately-created overlays -- every one had the overlay (child)
+    side measured in single-digit-to-low-double-digit years, its base
+    (parent) side in decades to centuries. Generalizes past the old
+    single-hub heuristic: a genuine 3+-layer stack (grandparent -> parent ->
+    child) resolves to depths 1/2/3 automatically, since depth(e) = 1 for a
+    pure base (never the shorter side of anything in this group) and
+    1 + max(depth of everything e is above) otherwise -- standard DAG
+    longest-path layering.
 
-    Also identifies an "overlayer" by a structural heuristic confirmed
-    against two real, manually-verified cases (Revolt of Inaros over 5
-    Egyptian nomes; a brief "Israelites" entry over 5 Levantine polities):
-    in both, one entity had a flagged event with EVERY other group member,
-    while none of those other members overlapped each other at all -- a
-    short-lived event entry drawn over several longer-lived, mutually
-    non-overlapping neighbors. Only asserts a single entity when EXACTLY one
-    has that full degree (connects to all other members); otherwise returns
-    None and leaves it to the caller to report the group as ambiguous rather
-    than guess. A plain pair (GroupSize 2) always has both sides trivially
-    "connected to all other members" (there's only one other member) --
-    deliberately NOT treated as identifying an overlayer, since there's no
-    structural signal to prefer one side; the caller handles pairs as their
-    own case using the same coverage data.
+    Returns (depth, above, overlaid_by, cyclic):
+      depth: {entity: int}, empty if the group contains a genuine cycle
+        (e above f above ... above e -- a real contradiction, not just "this
+        needs multiple levels") -- the caller falls back to a flat
+        AMBIGUOUS report for a cyclic group rather than trust a broken order.
+      above[e] = {f: {'pct': max %, 'windows': [...]}}: what e sits on top of.
+      overlaid_by[e] = {g: {...}}: the reverse -- what sits on top of e.
+      cyclic: bool.
     """
-    neighbors = {e: {} for e in entities}
+    above = {e: {} for e in entities}
     for i in ids:
         ev = all_events[i]
         a, b = ev['a'], ev['b']
         if a not in entities or b not in entities:
             continue
-        for x, y, pct in ((a, b, ev['pct_a']), (b, a, ev['pct_b'])):
-            rec = neighbors[x].setdefault(y, {'windows': [], 'pct_self_covered': 0.0})
-            rec['windows'].append((ev['lo'], ev['hi']))
-            rec['pct_self_covered'] = max(rec['pct_self_covered'], pct)
+        if ev['dur_a'] < ev['dur_b'] or (ev['dur_a'] == ev['dur_b'] and a < b):
+            hi_e, lo_e, pct_hi = a, b, ev['pct_a']
+        else:
+            hi_e, lo_e, pct_hi = b, a, ev['pct_b']
+        rec = above[hi_e].setdefault(lo_e, {'pct': 0.0, 'windows': []})
+        rec['pct'] = max(rec['pct'], pct_hi)
+        rec['windows'].append((ev['lo'], ev['hi']))
 
-    overlayer = None
-    if len(entities) >= 3:
-        full_degree = len(entities) - 1
-        hubs = [e for e in entities if len(neighbors[e]) == full_degree]
-        if len(hubs) == 1:
-            overlayer = hubs[0]
-    return overlayer, neighbors
+    overlaid_by = {e: {} for e in entities}
+    for e in entities:
+        for f in above[e]:
+            overlaid_by[f][e] = above[e][f]
+
+    # Cycle detection (plain DFS, recursion-stack based) before trusting any
+    # depth -- a real contradiction (inconsistent duration ordering across
+    # different windows) must not silently produce a wrong/meaningless order.
+    state = {}  # 0=unvisited, 1=on stack, 2=done
+    cyclic = False
+
+    def has_cycle(e):
+        nonlocal cyclic
+        state[e] = 1
+        for f in above[e]:
+            if state.get(f, 0) == 1:
+                cyclic = True
+                return
+            if state.get(f, 0) == 0:
+                has_cycle(f)
+                if cyclic:
+                    return
+        state[e] = 2
+
+    for e in entities:
+        if state.get(e, 0) == 0:
+            has_cycle(e)
+        if cyclic:
+            return {}, above, overlaid_by, True
+
+    depth = {}
+
+    def compute_depth(e):
+        if e in depth:
+            return depth[e]
+        best = max((compute_depth(f) for f in above[e]), default=0)
+        depth[e] = 1 + best
+        return depth[e]
+
+    for e in entities:
+        compute_depth(e)
+    return depth, above, overlaid_by, False
 
 
 def scan_tile(lat, lon, min_ratio):
@@ -289,15 +400,14 @@ def scan_tile(lat, lon, min_ratio):
             key_b = (lat, lon, cb['entry']['entryIndex'])
             # pct_a/pct_b: what fraction of EACH side's own area the overlap
             # covers -- asymmetric and both kept (unlike `ratio`, which only
-            # keeps the smaller-side fraction) because the identify_overlayer
-            # heuristic below needs to know, for a given ordered (X,Y) pair,
-            # specifically "how much of X does Y cover", not just the generic
-            # strength of the match.
+            # keeps the smaller-side fraction) because compute_stack() below
+            # needs to know, for a given ordered (X,Y) pair, specifically
+            # "how much of X does Y cover", not just the generic match strength.
             pct_a = inter_area_km2 / ca['area_km2'] * 100 if ca['area_km2'] > 0 else 0.0
             pct_b = inter_area_km2 / cb['area_km2'] * 100 if cb['area_km2'] > 0 else 0.0
-            for lo, hi in windows:
+            for lo, hi, dur_a, dur_b in windows:
                 events.append({'a': key_a, 'b': key_b, 'lo': lo, 'hi': hi, 'ratio': ratio,
-                                'pct_a': pct_a, 'pct_b': pct_b})
+                                'pct_a': pct_a, 'pct_b': pct_b, 'dur_a': dur_a, 'dur_b': dur_b})
     print(f"    {checked} bbox-overlapping pair(s), {geom_checked} passed temporal+ownership, "
           f"{pairs_flagged} pair(s) passed the {min_ratio:.2f} overlap-ratio threshold "
           f"({len(events)} distinct overlap event(s) from those pairs)")
@@ -388,70 +498,71 @@ def main():
     if not groups:
         print("  (nothing flagged at this threshold)")
 
+    logged_by_tile = load_logged_overlays()
+    if logged_by_tile:
+        n_logged = sum(len(v) for v in logged_by_tile.values())
+        print(f"\nLoaded {n_logged} logged overlay action(s) from {ANIMATION_LOG_PATH} for cross-reference.")
+    else:
+        print(f"\n(No cross-reference: {ANIMATION_LOG_PATH} not found/readable -- ConfirmedByLog will be blank.)")
+
     os.makedirs(os.path.dirname(args.out), exist_ok=True)
-    ambiguous_groups = 0
+    cyclic_groups = 0
+    max_depth_seen = 1
     with open(args.out, 'w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
-        writer.writerow(['GroupID', 'GroupSize', 'Tile', 'EntryIndex', 'LastNameSegment', 'Role',
-                          'OverlaidByOrOverlays', 'PctOfThisEntityCovered', 'ExactOverlapWindow',
-                          'AreaKm2', 'GroupWindowFrom', 'GroupWindowTo', 'DistinctWindows',
-                          'MaxIntersectionRatio', 'AllOwnersEver'])
+        writer.writerow(['GroupID', 'GroupSize', 'Tile', 'EntryIndex', 'LastNameSegment', 'StackDepth', 'Role',
+                          'Overlays', 'OverlaidBy', 'AreaKm2', 'GroupWindowFrom', 'GroupWindowTo',
+                          'DistinctWindows', 'MaxIntersectionRatio', 'ConfirmedByLog', 'AllOwnersEver'])
         for gi, (entities, ids) in enumerate(groups, start=1):
             members = sorted(entities, key=lambda k: (k[0], k[1], k[2]))
             group_windows = sorted({(all_events[i]['lo'], all_events[i]['hi']) for i in ids})
             group_from = min(w[0] for w in group_windows)
             group_to = max(w[1] for w in group_windows)
             max_ratio = max(all_events[i]['ratio'] for i in ids)
-            overlayer, neighbors = analyze_group(entities, ids, all_events)
-            if len(entities) >= 3 and overlayer is None:
-                ambiguous_groups += 1
+            depth, above, overlaid_by, cyclic = compute_stack(entities, ids, all_events)
+            if cyclic:
+                cyclic_groups += 1
+            else:
+                max_depth_seen = max(max_depth_seen, max(depth.values()))
+
+            group_tile = f"{members[0][0]}/{members[0][1]}"
+            logged_hits = match_logged_overlays(logged_by_tile, group_tile, group_from, group_to)
+            confirmed_by_log = '; '.join(logged_hits)
 
             def display_name(key):
                 info = all_entry_info[key]
-                own_windows = sorted({w for other in neighbors[key].values() for w in other['windows']}) or group_windows
+                own_windows = sorted({w for rec in list(above.get(key, {}).values()) + list(overlaid_by.get(key, {}).values())
+                                       for w in rec['windows']}) or group_windows
                 return active_last_segment_during(info['dateRanges'], own_windows)
 
             names = {k: display_name(k) for k in members}
 
+            def format_relations(rec_dict, label):
+                return '; '.join(f"{names[o]} ({rec_dict[o]['pct']:.0f}% {label}) [{format_window(rec_dict[o]['windows'])}]"
+                                  for o in sorted(rec_dict, key=lambda k: -rec_dict[k]['pct']))
+
             for key in members:
                 lat, lon, entry_idx = key
                 info = all_entry_info[key]
-                nbrs = neighbors[key]
 
-                if len(entities) == 2:
-                    role = 'PAIR'
-                elif overlayer is not None and key == overlayer:
-                    role = 'OVERLAYER'
-                elif overlayer is not None:
-                    role = 'OVERLAID'
+                if cyclic:
+                    stack_depth, role, overlays_str, overlaid_by_str = '', 'AMBIGUOUS (cyclic evidence)', '', ''
                 else:
-                    role = 'AMBIGUOUS'
+                    stack_depth = depth[key]
+                    role = 'BASE' if stack_depth == 1 else 'OVERLAY'
+                    overlays_str = format_relations(above[key], 'of its own area') if above[key] else ''
+                    overlaid_by_str = format_relations(overlaid_by[key], 'of THIS entity covered') if overlaid_by[key] else ''
 
-                if role == 'OVERLAYER':
-                    related = '; '.join(f"{names[o]} ({nbrs[o]['pct_self_covered']:.0f}% of ITS area)"
-                                         for o in sorted(nbrs, key=lambda k: -nbrs[k]['pct_self_covered']))
-                    pct_covered = ''
-                    window_str = format_window([w for o in nbrs.values() for w in o['windows']])
-                elif role in ('OVERLAID', 'PAIR'):
-                    other = next(iter(nbrs))  # exactly one neighbor in both cases
-                    related = names[other]
-                    pct_covered = round(nbrs[other]['pct_self_covered'], 1)
-                    window_str = format_window(nbrs[other]['windows'])
-                else:  # AMBIGUOUS: no single hub -- list every relationship this entity has
-                    related = '; '.join(f"{names[o]} ({nbrs[o]['pct_self_covered']:.0f}% of THIS entity's area)"
-                                         for o in sorted(nbrs, key=lambda k: -nbrs[k]['pct_self_covered']))
-                    pct_covered = ''
-                    window_str = format_window([w for o in nbrs.values() for w in o['windows']])
-
-                writer.writerow([gi, len(entities), f'{lat}/{lon}', entry_idx, names[key], role,
-                                  related, pct_covered, window_str, info['area_km2'],
+                writer.writerow([gi, len(entities), f'{lat}/{lon}', entry_idx, names[key], stack_depth, role,
+                                  overlays_str, overlaid_by_str, info['area_km2'],
                                   round(group_from, 1), round(group_to, 1), len(group_windows),
-                                  round(max_ratio, 3), '; '.join(info['names'])])
+                                  round(max_ratio, 3), confirmed_by_log, '; '.join(info['names'])])
     total_entities = len(set().union(*[e for e, _ in groups])) if groups else 0
     print(f"\nWrote {total_entities} entity row(s) across {len(groups)} relationship group(s) to {args.out}")
-    if ambiguous_groups:
-        print(f"  ({ambiguous_groups} group(s) of size 3+ had no single clear overlayer -- marked AMBIGUOUS, "
-              f"review the OverlaidByOrOverlays column manually)")
+    print(f"  Stack depths found: up to {max_depth_seen} layer(s).")
+    if cyclic_groups:
+        print(f"  ({cyclic_groups} group(s) had a genuine cyclic contradiction in the duration ordering -- "
+              f"marked AMBIGUOUS, review manually)")
 
 
 if __name__ == '__main__':
