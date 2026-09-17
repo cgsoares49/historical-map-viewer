@@ -147,49 +147,30 @@ def entry_names(entry):
     return sorted(set(owner_name(dr['name']) for dr in entry['dateRanges']))
 
 
-def _active_segments_during(date_ranges, windows, picker):
-    """Shared machinery for active_owners_during/active_last_segment_during
-    below: which of this entry's OWN date-ranges actually overlap the given
-    windows -- i.e. what it was really doing during the flagged overlap, not
-    its whole history -- with `picker` choosing which dash-segment of the
-    matching date-range name(s) to report. Returns '(no active entry -- data
-    gap here)' if none of the entry's date-ranges cover any of the windows
-    at all (a real, informative case: found 2026-09-17, a nome entry can
-    have a genuine gap in its own recorded history that happens to coincide
-    with the window)."""
+def active_last_segment_during(date_ranges, windows):
+    """The entry's own place/nome name (LAST dash-segment) actually active
+    during the given windows -- e.g. 'Lower Egypt Nome 3 Ahment/Ament',
+    regardless of which empire currently governs it -- not its whole
+    history. Added per user request, to let the entry be matched against
+    nome numbers/names on the map or a POL # reference. NOT perfectly
+    stable across an entry's whole history -- checked #113: its own last
+    segment reads 'Lower Egypt Nome 3 Ahment/Ament' for most of its
+    ~3000-year history but 'Prospithes' in the Ptolemaic-Greek-naming era
+    and 'Libu and Meshwesh' during a Libyan interregnum -- so this is
+    deliberately scoped to the given windows, not just "the first name
+    found", to report the name actually in use at the relevant moment.
+    Returns '(no active entry -- data gap here)' if none of the entry's
+    date-ranges cover any of the windows at all (a real, informative case:
+    found 2026-09-17, a nome entry can have a genuine gap in its own
+    recorded history that happens to coincide with the window)."""
     segs = []
     for lo, hi in windows:
         for dr in date_ranges:
             if max(dr['from'], lo) < min(dr['to'], hi):
-                segs.append(picker(dr['name']))
+                segs.append(path_of(dr['name'])[-1])
     if not segs:
         return '(no active entry -- data gap here)'
     return '; '.join(sorted(set(segs)))
-
-
-def active_owners_during(date_ranges, windows):
-    """The top-level owner (first dash-segment) actually active during the
-    flagged windows -- see _active_segments_during. `AllOwnersEver` lists
-    every owner an entry has EVER had, which for a long-lived entry (30+
-    date-ranges over centuries) buries the one relevant to a specific
-    flagged window; this is the targeted answer."""
-    return _active_segments_during(date_ranges, windows, owner_name)
-
-
-def active_last_segment_during(date_ranges, windows):
-    """The entry's own place/nome name (LAST dash-segment) during the
-    flagged windows -- e.g. 'Lower Egypt Nome 3 Ahment/Ament', regardless of
-    which empire currently governs it. Added per user request, to let the
-    entry be matched against nome numbers/names on the map or a POL #
-    reference. NOT perfectly stable across an entry's whole history --
-    checked #113: its own last segment reads 'Lower Egypt Nome 3
-    Ahment/Ament' for most of its ~3000-year history but 'Prospithes' in the
-    Ptolemaic-Greek-naming era and 'Libu and Meshwesh' during a Libyan
-    interregnum -- so this is deliberately scoped to the flagged window via
-    the same _active_segments_during machinery as active_owners_during,
-    not just "the first name found", to report the name actually in use at
-    the relevant moment."""
-    return _active_segments_during(date_ranges, windows, lambda n: path_of(n)[-1])
 
 
 class UnionFind:
@@ -207,6 +188,52 @@ class UnionFind:
         ra, rb = self.find(a), self.find(b)
         if ra != rb:
             self.parent[ra] = rb
+
+
+def format_window(windows):
+    return f"{min(w[0] for w in windows):.1f}..{max(w[1] for w in windows):.1f}"
+
+
+def analyze_group(entities, ids, all_events):
+    """Builds the per-entity relationship data a group's CSV rows need:
+    neighbors[entity] = {other_entity: {'windows': [...], 'pct_self_covered': max %}}
+    -- `pct_self_covered` is what fraction of THIS entity's own area the
+    OTHER entity's polygon covers (asymmetric: pct_self_covered for (X,Y) is
+    generally different from (Y,X)).
+
+    Also identifies an "overlayer" by a structural heuristic confirmed
+    against two real, manually-verified cases (Revolt of Inaros over 5
+    Egyptian nomes; a brief "Israelites" entry over 5 Levantine polities):
+    in both, one entity had a flagged event with EVERY other group member,
+    while none of those other members overlapped each other at all -- a
+    short-lived event entry drawn over several longer-lived, mutually
+    non-overlapping neighbors. Only asserts a single entity when EXACTLY one
+    has that full degree (connects to all other members); otherwise returns
+    None and leaves it to the caller to report the group as ambiguous rather
+    than guess. A plain pair (GroupSize 2) always has both sides trivially
+    "connected to all other members" (there's only one other member) --
+    deliberately NOT treated as identifying an overlayer, since there's no
+    structural signal to prefer one side; the caller handles pairs as their
+    own case using the same coverage data.
+    """
+    neighbors = {e: {} for e in entities}
+    for i in ids:
+        ev = all_events[i]
+        a, b = ev['a'], ev['b']
+        if a not in entities or b not in entities:
+            continue
+        for x, y, pct in ((a, b, ev['pct_a']), (b, a, ev['pct_b'])):
+            rec = neighbors[x].setdefault(y, {'windows': [], 'pct_self_covered': 0.0})
+            rec['windows'].append((ev['lo'], ev['hi']))
+            rec['pct_self_covered'] = max(rec['pct_self_covered'], pct)
+
+    overlayer = None
+    if len(entities) >= 3:
+        full_degree = len(entities) - 1
+        hubs = [e for e in entities if len(neighbors[e]) == full_degree]
+        if len(hubs) == 1:
+            overlayer = hubs[0]
+    return overlayer, neighbors
 
 
 def scan_tile(lat, lon, min_ratio):
@@ -260,8 +287,17 @@ def scan_tile(lat, lon, min_ratio):
             pairs_flagged += 1
             key_a = (lat, lon, ca['entry']['entryIndex'])
             key_b = (lat, lon, cb['entry']['entryIndex'])
+            # pct_a/pct_b: what fraction of EACH side's own area the overlap
+            # covers -- asymmetric and both kept (unlike `ratio`, which only
+            # keeps the smaller-side fraction) because the identify_overlayer
+            # heuristic below needs to know, for a given ordered (X,Y) pair,
+            # specifically "how much of X does Y cover", not just the generic
+            # strength of the match.
+            pct_a = inter_area_km2 / ca['area_km2'] * 100 if ca['area_km2'] > 0 else 0.0
+            pct_b = inter_area_km2 / cb['area_km2'] * 100 if cb['area_km2'] > 0 else 0.0
             for lo, hi in windows:
-                events.append({'a': key_a, 'b': key_b, 'lo': lo, 'hi': hi, 'ratio': ratio})
+                events.append({'a': key_a, 'b': key_b, 'lo': lo, 'hi': hi, 'ratio': ratio,
+                                'pct_a': pct_a, 'pct_b': pct_b})
     print(f"    {checked} bbox-overlapping pair(s), {geom_checked} passed temporal+ownership, "
           f"{pairs_flagged} pair(s) passed the {min_ratio:.2f} overlap-ratio threshold "
           f"({len(events)} distinct overlap event(s) from those pairs)")
@@ -353,27 +389,69 @@ def main():
         print("  (nothing flagged at this threshold)")
 
     os.makedirs(os.path.dirname(args.out), exist_ok=True)
+    ambiguous_groups = 0
     with open(args.out, 'w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
-        writer.writerow(['GroupID', 'GroupSize', 'Tile', 'EntryIndex', 'LastNameSegment', 'ActiveDuringOverlap',
-                          'AllOwnersEver', 'AreaKm2', 'OverlapFromYear', 'OverlapToYear', 'DistinctWindows',
-                          'MaxIntersectionRatio'])
+        writer.writerow(['GroupID', 'GroupSize', 'Tile', 'EntryIndex', 'LastNameSegment', 'Role',
+                          'OverlaidByOrOverlays', 'PctOfThisEntityCovered', 'ExactOverlapWindow',
+                          'AreaKm2', 'GroupWindowFrom', 'GroupWindowTo', 'DistinctWindows',
+                          'MaxIntersectionRatio', 'AllOwnersEver'])
         for gi, (entities, ids) in enumerate(groups, start=1):
             members = sorted(entities, key=lambda k: (k[0], k[1], k[2]))
-            windows = sorted({(all_events[i]['lo'], all_events[i]['hi']) for i in ids})
-            overlap_from = min(w[0] for w in windows)
-            overlap_to = max(w[1] for w in windows)
+            group_windows = sorted({(all_events[i]['lo'], all_events[i]['hi']) for i in ids})
+            group_from = min(w[0] for w in group_windows)
+            group_to = max(w[1] for w in group_windows)
             max_ratio = max(all_events[i]['ratio'] for i in ids)
-            for lat, lon, entry_idx in members:
-                info = all_entry_info[(lat, lon, entry_idx)]
-                active = active_owners_during(info['dateRanges'], windows)
-                last_seg = active_last_segment_during(info['dateRanges'], windows)
-                writer.writerow([gi, len(entities), f'{lat}/{lon}', entry_idx,
-                                  last_seg, active, '; '.join(info['names']), info['area_km2'],
-                                  round(overlap_from, 1), round(overlap_to, 1), len(windows),
-                                  round(max_ratio, 3)])
+            overlayer, neighbors = analyze_group(entities, ids, all_events)
+            if len(entities) >= 3 and overlayer is None:
+                ambiguous_groups += 1
+
+            def display_name(key):
+                info = all_entry_info[key]
+                own_windows = sorted({w for other in neighbors[key].values() for w in other['windows']}) or group_windows
+                return active_last_segment_during(info['dateRanges'], own_windows)
+
+            names = {k: display_name(k) for k in members}
+
+            for key in members:
+                lat, lon, entry_idx = key
+                info = all_entry_info[key]
+                nbrs = neighbors[key]
+
+                if len(entities) == 2:
+                    role = 'PAIR'
+                elif overlayer is not None and key == overlayer:
+                    role = 'OVERLAYER'
+                elif overlayer is not None:
+                    role = 'OVERLAID'
+                else:
+                    role = 'AMBIGUOUS'
+
+                if role == 'OVERLAYER':
+                    related = '; '.join(f"{names[o]} ({nbrs[o]['pct_self_covered']:.0f}% of ITS area)"
+                                         for o in sorted(nbrs, key=lambda k: -nbrs[k]['pct_self_covered']))
+                    pct_covered = ''
+                    window_str = format_window([w for o in nbrs.values() for w in o['windows']])
+                elif role in ('OVERLAID', 'PAIR'):
+                    other = next(iter(nbrs))  # exactly one neighbor in both cases
+                    related = names[other]
+                    pct_covered = round(nbrs[other]['pct_self_covered'], 1)
+                    window_str = format_window(nbrs[other]['windows'])
+                else:  # AMBIGUOUS: no single hub -- list every relationship this entity has
+                    related = '; '.join(f"{names[o]} ({nbrs[o]['pct_self_covered']:.0f}% of THIS entity's area)"
+                                         for o in sorted(nbrs, key=lambda k: -nbrs[k]['pct_self_covered']))
+                    pct_covered = ''
+                    window_str = format_window([w for o in nbrs.values() for w in o['windows']])
+
+                writer.writerow([gi, len(entities), f'{lat}/{lon}', entry_idx, names[key], role,
+                                  related, pct_covered, window_str, info['area_km2'],
+                                  round(group_from, 1), round(group_to, 1), len(group_windows),
+                                  round(max_ratio, 3), '; '.join(info['names'])])
     total_entities = len(set().union(*[e for e, _ in groups])) if groups else 0
     print(f"\nWrote {total_entities} entity row(s) across {len(groups)} relationship group(s) to {args.out}")
+    if ambiguous_groups:
+        print(f"  ({ambiguous_groups} group(s) of size 3+ had no single clear overlayer -- marked AMBIGUOUS, "
+              f"review the OverlaidByOrOverlays column manually)")
 
 
 if __name__ == '__main__':
