@@ -48,7 +48,7 @@ from shapely.geometry import shape
 MAPPER_DIR = os.path.dirname(os.path.abspath(__file__))
 DEFAULT_MASTER = os.path.join(MAPPER_DIR, 'exports', 'cliopatria_master.geojsonl')
 
-PROP_COLS = ['Index', 'Name', 'FromYear', 'ToYear', 'Area', 'Type', 'References', 'MemberOf',
+PROP_COLS = ['Index', 'Name', 'FromYear', 'ToYear', 'Area', 'Length', 'Type', 'References', 'MemberOf',
              'FullPath', 'Region', 'Subregion', 'ColorR', 'ColorG', 'ColorB', 'Generated',
              'SourceRun', 'OverlapNote']
 WKT_TRUNCATE = 60

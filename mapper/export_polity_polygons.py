@@ -560,8 +560,20 @@ def find_entries_by_predicate(tiles_data, name_match, repair_log):
             poly = ring_to_polygon(ring, repair_log)
             if poly is None or poly.is_empty:
                 continue
-            bucket = transient if entry_is_transient else real
-            bucket.append({'tile': tile, 'entry': entry, 'ring_polygon': poly})
+            pe = {'tile': tile, 'entry': entry, 'ring_polygon': poly}
+            if entry_is_transient:
+                # Shape classification (2026-09-17): a transient's geometry is fixed
+                # per-entry regardless of which date-range is active, so this only
+                # needs computing once here, not per sliced output row. Blob-like
+                # entries (compact, e.g. a siege camp) are plausibly real territory
+                # and get folded into the parent/member's own composite Area in
+                # main() (see *_real_and_area_transients below); path-like entries
+                # (elongated, e.g. a campaign march) are not — see length_width_km.
+                _, _, ratio = transient_shape_ratio(poly)
+                pe['is_area_transient'] = ratio is not None and ratio < TRANSIENT_AREA_RATIO_THRESHOLD
+                transient.append(pe)
+            else:
+                real.append(pe)
     return real, transient
 
 
@@ -675,6 +687,44 @@ def slice_into_rows(entries, breakpoints, name_match, seam_log, own_path=None):
 def area_km2(geom):
     projected = transform(TO_EQUAL_AREA, geom)
     return projected.area / 1_000_000.0
+
+
+# ── Transient shape classification (2026-09-17) ──────────────────────────────
+#
+# Transient (army/campaign) entries get real closed-ring polygon geometry from
+# the same PAR->POL/CST pipeline as real territory, so a long sweeping march
+# can carry a large but meaningless "Area". Per the user: report a Length for
+# elongated (path-like) transients instead of an Area, and only keep/fold in
+# Area for compact (blob-like) ones -- a plausible real territory footprint
+# (e.g. a siege camp or garrison zone), not a movement path.
+TRANSIENT_AREA_RATIO_THRESHOLD = 2.0  # length/width below this => blob-like
+
+
+def length_width_km(geom):
+    """Minimum-rotated-rectangle long/short side lengths (km). Same equal-area
+    projection as area_km2, so the two sides are directly comparable/summable
+    with Area in the same unit family. Returns (None, None) if geom can't
+    produce a 4-point rectangle (e.g. degenerate/empty geometry)."""
+    projected = transform(TO_EQUAL_AREA, geom)
+    rect = projected.minimum_rotated_rectangle
+    if rect.geom_type != 'Polygon':
+        return None, None
+    coords = list(rect.exterior.coords)
+    if len(coords) < 4:
+        return None, None
+    side_a = Point(coords[0]).distance(Point(coords[1]))
+    side_b = Point(coords[1]).distance(Point(coords[2]))
+    long_m, short_m = max(side_a, side_b), min(side_a, side_b)
+    return long_m / 1000.0, short_m / 1000.0
+
+
+def transient_shape_ratio(geom):
+    """Returns (length_km, width_km, ratio) -- ratio is None if width is 0/undefined
+    (degenerate sliver), which is treated as maximally path-like by callers."""
+    length_km, width_km = length_width_km(geom)
+    if length_km is None or not width_km:
+        return length_km, width_km, None
+    return length_km, width_km, length_km / width_km
 
 
 # Tribal dot clusters have no polygon at all, so geom.area is always 0 --
@@ -982,7 +1032,7 @@ def export_cities(args, generated):
                 region, subregion = classify_region(point)
                 out_rows.append({
                     'Name': dr['name'], 'FromYear': dr['from'], 'ToYear': to_year,
-                    'Area': 0.0, 'Type': 'CITY', 'References': '', 'MemberOf': '',
+                    'Area': 0.0, 'Length': '', 'Type': 'CITY', 'References': '', 'MemberOf': '',
                     'FullPath': dr['name'], 'Region': region, 'Subregion': subregion,
                     'ColorR': color_r, 'ColorG': color_g, 'ColorB': color_b,
                     'OverlapNote': '', 'geometry': point,
@@ -995,7 +1045,7 @@ def export_cities(args, generated):
         r['Generated'] = generated
         r['SourceRun'] = 'Cities'
 
-    prop_cols = ['Index', 'Name', 'FromYear', 'ToYear', 'Area', 'Type', 'References', 'MemberOf',
+    prop_cols = ['Index', 'Name', 'FromYear', 'ToYear', 'Area', 'Length', 'Type', 'References', 'MemberOf',
                  'FullPath', 'Region', 'Subregion', 'ColorR', 'ColorG', 'ColorB', 'Generated',
                  'SourceRun', 'OverlapNote']
 
@@ -1094,12 +1144,24 @@ def main():
           f"circle-template tribal entries: {len(parent_circles)}  |  transient circle entries: {len(parent_circles_transient)}  |  "
           f"ring repairs: {repair_log[0]}")
 
-    parent_breakpoints = build_breakpoints(parent_real, parent_match)
+    # Blob-like ("area-bearing") transients fold into the parent's own composite
+    # Area, same as real territory -- parent_transient is already the same
+    # owner_name-prefix-inclusive set as parent_real (matches bare "p" AND every
+    # nested "p - X..." descendant), so this automatically covers qualifying
+    # transients at any nesting depth, exactly mirroring how nested real
+    # territory already folds into the parent composite today. Path-like
+    # transients are excluded, unchanged from prior behavior.
+    parent_area_transients = [pe for pe in parent_transient if pe.get('is_area_transient')]
+    parent_real_plus = parent_real + parent_area_transients
+    if parent_area_transients:
+        print(f"Folding {len(parent_area_transients)} blob-like transient entries into the parent composite Area")
+
+    parent_breakpoints = build_breakpoints(parent_real_plus, parent_match)
     print(f"Breakpoints: {len(parent_breakpoints)}  range: {parent_breakpoints[0] if parent_breakpoints else None} .. {parent_breakpoints[-1] if parent_breakpoints else None}")
     parent_breakpoints = truncate(parent_breakpoints)
 
     seam_log = [0]
-    parent_rows = slice_into_rows(parent_real, parent_breakpoints, parent_match, seam_log)
+    parent_rows = slice_into_rows(parent_real_plus, parent_breakpoints, parent_match, seam_log)
     print(f"Output rows: {len(parent_rows)}  |  union geometries needing repair: {seam_log[0]}")
 
     entities = [{'name': args.polity, 'member_of': '', 'type': real_type(args.polity),
@@ -1207,9 +1269,15 @@ def main():
         ent_real, ent_transient = find_entries_by_predicate(tiles_data, entity_match, ent_repair_log)
         ent_dots, ent_dots_transient = find_dot_entries_by_predicate(tiles_data, entity_match)
 
-        ent_real_breakpoints = truncate(build_breakpoints(ent_real, entity_match))
+        # Same fold-in as the parent composite above, scoped to this member's own
+        # (prefix-inclusive) entries -- a blob-like transient owned by this member
+        # or one of its own descendants counts toward this member's Area too.
+        ent_area_transients = [pe for pe in ent_transient if pe.get('is_area_transient')]
+        ent_real_plus = ent_real + ent_area_transients
+
+        ent_real_breakpoints = truncate(build_breakpoints(ent_real_plus, entity_match))
         ent_seam_log = [0]
-        ent_real_rows = slice_into_rows(ent_real, ent_real_breakpoints, entity_match, ent_seam_log, own_path=path)
+        ent_real_rows = slice_into_rows(ent_real_plus, ent_real_breakpoints, entity_match, ent_seam_log, own_path=path)
 
         ent_trans_breakpoints = truncate(build_breakpoints(ent_transient, entity_match))
         ent_trans_seam_log = [0]
@@ -1235,7 +1303,8 @@ def main():
         ent_circle_trans_rows = slice_into_rows(ent_circles_transient, ent_circle_trans_breakpoints, entity_match, ent_circle_trans_seam_log, own_path=path)
 
         print(f"=== {' > '.join(path)} ===  real={len(ent_real)}(rows={len(ent_real_rows)})  "
-              f"transient={len(ent_transient)}(rows={len(ent_trans_rows)})  "
+              f"transient={len(ent_transient)}(rows={len(ent_trans_rows)}, "
+              f"{len(ent_area_transients)} blob-like folded into Area)  "
               f"tribal_dots={len(ent_dots)}(rows={len(ent_dot_rows)})  "
               f"transient_dots={len(ent_dots_transient)}(rows={len(ent_dot_trans_rows)})  "
               f"circle_tribal={len(ent_circles)}(rows={len(ent_circle_rows)})  "
@@ -1267,6 +1336,7 @@ def main():
     for ent in entities:
         for row in ent['rows']:
             geom = row['geometry']
+            length = ''
             if not geom.is_valid:
                 print(f"  WARNING: {ent['name']} row {row['FromYear']}..{row['ToYear']} geometry invalid after repair")
             if geom.geom_type in ('Point', 'MultiPoint'):
@@ -1278,6 +1348,17 @@ def main():
                                                            'ToYear': row['ToYear'], 'Area': area,
                                                            'DotCount': len(list(geom.geoms)) if geom.geom_type == 'MultiPoint' else 1},
                                            'geometry': mapping(hull)})
+            elif ent['type'] == 'TRANSIENT':
+                # Re-classify on the row's own final (possibly unioned) geometry,
+                # independent of any entry-level classification used above for
+                # parent/member Area fold-in -- this is what's actually displayed
+                # for this row, so it should reflect this row's own shape.
+                length_km, _, ratio = transient_shape_ratio(geom)
+                length = round(length_km, 1) if length_km is not None else ''
+                if ratio is not None and ratio < TRANSIENT_AREA_RATIO_THRESHOLD:
+                    area = round(area_km2(geom), 1)
+                else:
+                    area = ''
             else:
                 area = round(area_km2(geom), 1)
             if ent['is_parent']:
@@ -1307,7 +1388,7 @@ def main():
             region, subregion = classify_region(geom)
             out_rows.append({
                 'Name': ent['name'], 'FromYear': row['FromYear'], 'ToYear': row['ToYear'],
-                'Area': area, 'Type': ent['type'], 'References': '',
+                'Area': area, 'Length': length, 'Type': ent['type'], 'References': '',
                 'MemberOf': ent['member_of'], 'FullPath': ' - '.join(ent['path']),
                 'Region': region, 'Subregion': subregion,
                 'ColorR': color_r, 'ColorG': color_g, 'ColorB': color_b,
@@ -1326,7 +1407,7 @@ def main():
         # a run's own rows in the master without touching any other run's.
         r['SourceRun'] = args.polity
 
-    prop_cols = ['Index', 'Name', 'FromYear', 'ToYear', 'Area', 'Type', 'References', 'MemberOf',
+    prop_cols = ['Index', 'Name', 'FromYear', 'ToYear', 'Area', 'Length', 'Type', 'References', 'MemberOf',
                  'FullPath', 'Region', 'Subregion', 'ColorR', 'ColorG', 'ColorB', 'Generated',
                  'SourceRun', 'OverlapNote']
 
