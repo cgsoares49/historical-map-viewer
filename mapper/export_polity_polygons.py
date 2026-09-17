@@ -33,7 +33,6 @@ import os
 import re
 import json
 import csv
-import math
 import argparse
 from datetime import date
 
@@ -563,15 +562,6 @@ def find_entries_by_predicate(tiles_data, name_match, repair_log):
                 continue
             pe = {'tile': tile, 'entry': entry, 'ring_polygon': poly}
             if entry_is_transient:
-                # Shape classification (2026-09-17): a transient's geometry is fixed
-                # per-entry regardless of which date-range is active, so this only
-                # needs computing once here, not per sliced output row. Blob-like
-                # entries (compact, e.g. a siege camp) are plausibly real territory
-                # and get folded into the parent/member's own composite Area in
-                # main() (see *_real_and_area_transients below); path-like entries
-                # (elongated, e.g. a campaign march) are not — see length_width_km.
-                _, _, ratio = transient_shape_ratio(poly)
-                pe['is_area_transient'] = ratio is not None and ratio < TRANSIENT_AREA_RATIO_THRESHOLD
                 transient.append(pe)
             else:
                 real.append(pe)
@@ -690,70 +680,29 @@ def area_km2(geom):
     return projected.area / 1_000_000.0
 
 
-# ── Transient shape classification (2026-09-17, revised same day) ────────────
+# ── Transient length (2026-09-17, simplified same day) ───────────────────────
 #
 # Transient (army/campaign) entries get real closed-ring polygon geometry from
 # the same PAR->POL/CST pipeline as real territory, so a long sweeping march
-# can carry a large but meaningless "Area". Per the user: report a Length for
-# elongated (path-like) transients instead of an Area, and only keep/fold in
-# Area for compact (blob-like) ones -- a plausible real territory footprint
-# (e.g. a siege camp or garrison zone), not a movement path.
-#
-# First attempt fit a minimum-rotated-rectangle and compared its two side
-# lengths -- works for a straight march, but fails for one that curls or
-# bends back on itself: a winding path can still have a small, roughly square
-# *bounding box* even though its *boundary* is clearly long and thin (found
-# 2026-09-17, user-reported: a real "Consular army" entry with a genuinely
-# ~190km+ winding path measured as compact/blob-like this way). Fixed by
-# using the shape's actual perimeter and area instead of any single rectangle
-# fit -- modeling the polygon as a thickened line of length L and
-# roughly-constant width W (Area ~= L*W, Perimeter ~= 2*L when L >> W, since
-# the end caps contribute negligible perimeter), giving W ~= 2*Area/Perimeter
-# and L ~= Perimeter/2. This is curl-invariant: bending the same path in half
-# barely changes its perimeter or area, so the estimate holds regardless of
-# how it winds. Verified against the full Roman Republic sample (281 polygon
-# transient entries): a properly circle-normalized version of this ratio
-# (see transient_shape_ratio) reclassifies the reported curled entry, and 34
-# other previously-mismeasured winding entries, from blob to path-like, while
-# genuinely compact "Army"/garrison entries stay clustered near the
-# perfect-circle minimum (~1.0-1.5) -- confirmed by inspecting the full
-# before/after classification counts (blob 62->50, path 219->231 of 281) and
-# spot-checking outliers in both flip directions, not just the reported case.
-TRANSIENT_AREA_RATIO_THRESHOLD = 2.0  # below this => blob-like
-
-
-def length_width_km(geom):
-    """Perimeter/area-based length & width estimate (km): W = 2*Area/Perimeter,
-    L = Perimeter/2 (see the module note above for the thickened-line
-    reasoning). Same equal-area projection as area_km2, so these are real,
-    comparable kilometres -- not literally a rectangle's sides, but they
-    coincide with the old bounding-rectangle measurement for a genuinely
-    straight, uniform-width corridor, and stay meaningful (unlike a rectangle
-    fit) when the corridor curls. Returns (None, None) for degenerate/empty
+# can carry a large but meaningless "Area". Earlier versions tried to
+# classify each transient as blob-like (keep Area, fold into the parent's
+# composite) vs path-like (Length only) via shape heuristics -- first a
+# bounding-rectangle fit (missed curled paths that double back on themselves),
+# then a perimeter/area compactness ratio (missed "fat" wide-but-still-linear
+# paths, confirmed on real data, e.g. tile 120/045 #48/#54: ratio 1.30/1.87,
+# read as compact, but a real army-path). Per the user (2026-09-17): drop the
+# classification entirely -- every transient is treated as a path. Always
+# report Length, never Area, and never fold any transient into a parent's
+# composite Area.
+def transient_length_km(geom):
+    """Perimeter/2 (km) -- modeling the polygon as a thickened line of
+    length L: Perimeter ~= 2*L when the path is long relative to its width,
+    since the two short end-caps contribute negligible perimeter. Same
+    equal-area projection as area_km2. Returns None for degenerate/empty
     geometry."""
     projected = transform(TO_EQUAL_AREA, geom)
-    area, perimeter = projected.area, projected.length
-    if area <= 0 or perimeter <= 0:
-        return None, None
-    width_m = 2 * area / perimeter
-    length_m = perimeter / 2
-    return length_m / 1000.0, width_m / 1000.0
-
-
-def transient_shape_ratio(geom):
-    """Returns (length_km, width_km, ratio). length_km/width_km are real km
-    (see length_width_km); ratio is those two divided by pi, NOT a literal
-    length_km/width_km -- the raw length/width ratio is Perimeter^2/(4*Area),
-    which for this thickened-line model is the classic isoperimetric ratio,
-    with a natural minimum of pi (not 1) for a perfect circle. Dividing by pi
-    normalizes it to the same "1.0 = most compact possible, larger = more
-    elongated/winding" scale a bounding-rectangle ratio would give, so the
-    same TRANSIENT_AREA_RATIO_THRESHOLD stays meaningful. None if width is
-    0/undefined (degenerate sliver), treated as maximally path-like."""
-    length_km, width_km = length_width_km(geom)
-    if length_km is None or not width_km:
-        return length_km, width_km, None
-    return length_km, width_km, (length_km / width_km) / math.pi
+    perimeter = projected.length
+    return (perimeter / 2 / 1000.0) if perimeter > 0 else None
 
 
 # Tribal dot clusters have no polygon at all, so geom.area is always 0 --
@@ -1173,24 +1122,12 @@ def main():
           f"circle-template tribal entries: {len(parent_circles)}  |  transient circle entries: {len(parent_circles_transient)}  |  "
           f"ring repairs: {repair_log[0]}")
 
-    # Blob-like ("area-bearing") transients fold into the parent's own composite
-    # Area, same as real territory -- parent_transient is already the same
-    # owner_name-prefix-inclusive set as parent_real (matches bare "p" AND every
-    # nested "p - X..." descendant), so this automatically covers qualifying
-    # transients at any nesting depth, exactly mirroring how nested real
-    # territory already folds into the parent composite today. Path-like
-    # transients are excluded, unchanged from prior behavior.
-    parent_area_transients = [pe for pe in parent_transient if pe.get('is_area_transient')]
-    parent_real_plus = parent_real + parent_area_transients
-    if parent_area_transients:
-        print(f"Folding {len(parent_area_transients)} blob-like transient entries into the parent composite Area")
-
-    parent_breakpoints = build_breakpoints(parent_real_plus, parent_match)
+    parent_breakpoints = build_breakpoints(parent_real, parent_match)
     print(f"Breakpoints: {len(parent_breakpoints)}  range: {parent_breakpoints[0] if parent_breakpoints else None} .. {parent_breakpoints[-1] if parent_breakpoints else None}")
     parent_breakpoints = truncate(parent_breakpoints)
 
     seam_log = [0]
-    parent_rows = slice_into_rows(parent_real_plus, parent_breakpoints, parent_match, seam_log)
+    parent_rows = slice_into_rows(parent_real, parent_breakpoints, parent_match, seam_log)
     print(f"Output rows: {len(parent_rows)}  |  union geometries needing repair: {seam_log[0]}")
 
     entities = [{'name': args.polity, 'member_of': '', 'type': real_type(args.polity),
@@ -1298,15 +1235,9 @@ def main():
         ent_real, ent_transient = find_entries_by_predicate(tiles_data, entity_match, ent_repair_log)
         ent_dots, ent_dots_transient = find_dot_entries_by_predicate(tiles_data, entity_match)
 
-        # Same fold-in as the parent composite above, scoped to this member's own
-        # (prefix-inclusive) entries -- a blob-like transient owned by this member
-        # or one of its own descendants counts toward this member's Area too.
-        ent_area_transients = [pe for pe in ent_transient if pe.get('is_area_transient')]
-        ent_real_plus = ent_real + ent_area_transients
-
-        ent_real_breakpoints = truncate(build_breakpoints(ent_real_plus, entity_match))
+        ent_real_breakpoints = truncate(build_breakpoints(ent_real, entity_match))
         ent_seam_log = [0]
-        ent_real_rows = slice_into_rows(ent_real_plus, ent_real_breakpoints, entity_match, ent_seam_log, own_path=path)
+        ent_real_rows = slice_into_rows(ent_real, ent_real_breakpoints, entity_match, ent_seam_log, own_path=path)
 
         ent_trans_breakpoints = truncate(build_breakpoints(ent_transient, entity_match))
         ent_trans_seam_log = [0]
@@ -1332,8 +1263,7 @@ def main():
         ent_circle_trans_rows = slice_into_rows(ent_circles_transient, ent_circle_trans_breakpoints, entity_match, ent_circle_trans_seam_log, own_path=path)
 
         print(f"=== {' > '.join(path)} ===  real={len(ent_real)}(rows={len(ent_real_rows)})  "
-              f"transient={len(ent_transient)}(rows={len(ent_trans_rows)}, "
-              f"{len(ent_area_transients)} blob-like folded into Area)  "
+              f"transient={len(ent_transient)}(rows={len(ent_trans_rows)})  "
               f"tribal_dots={len(ent_dots)}(rows={len(ent_dot_rows)})  "
               f"transient_dots={len(ent_dots_transient)}(rows={len(ent_dot_trans_rows)})  "
               f"circle_tribal={len(ent_circles)}(rows={len(ent_circle_rows)})  "
@@ -1378,16 +1308,12 @@ def main():
                                                            'DotCount': len(list(geom.geoms)) if geom.geom_type == 'MultiPoint' else 1},
                                            'geometry': mapping(hull)})
             elif ent['type'] == 'TRANSIENT':
-                # Re-classify on the row's own final (possibly unioned) geometry,
-                # independent of any entry-level classification used above for
-                # parent/member Area fold-in -- this is what's actually displayed
-                # for this row, so it should reflect this row's own shape.
-                length_km, _, ratio = transient_shape_ratio(geom)
+                # Every transient is treated as a path, regardless of shape
+                # (2026-09-17, per the user -- see the module note above
+                # transient_length_km): Length always, Area never.
+                length_km = transient_length_km(geom)
                 length = round(length_km, 1) if length_km is not None else ''
-                if ratio is not None and ratio < TRANSIENT_AREA_RATIO_THRESHOLD:
-                    area = round(area_km2(geom), 1)
-                else:
-                    area = ''
+                area = ''
             else:
                 area = round(area_km2(geom), 1)
             if ent['is_parent']:
