@@ -1,75 +1,75 @@
-GroupID,GroupSize,Tile,EntryIndex,Names,AreaKm2,OverlapFromYear,OverlapToYear,DistinctWindows,MaxIntersectionRatio
-1,4,120/030,113,Domain of Ptolemy; Egypt: Areas of Unrest; Egypt: Heracleopolitans; Egypt: Hyksos; Egypt: Middle Kingdom; Egypt: New Kingdom; Egypt: Old Kdm; Egypt: Thebans; Egypt: Thirtieth Dynasty; Egypt: Twenty Eighth Dynasty; Egypt: Twenty Fourth Dynasty; Egypt: Twenty Ninth Dynasty; Egypt: Twenty Second Dynasty; Egypt: Twenty Sixth Dynasty; Kingdom of Kush; Kingdom of Macedon; Kush Tributary; Libyans; Neo Assyrian Empire; Neo Assyrian Tributary; Persian Empire; Ptolemaic Kingdom; Revolt of Ptolemy,3085.7,-462.3,-454.4,1,1.0
-1,4,120/030,115,Domain of Ptolemy; Egypt: Areas of Unrest; Egypt: Heracleopolitans; Egypt: Hyksos; Egypt: Middle Kingdom; Egypt: New Kingdom; Egypt: Old Kdm; Egypt: Tanites; Egypt: Thebans; Egypt: Thirtieth Dynasty; Egypt: Twenty Eighth Dynasty; Egypt: Twenty Fourth Dynasty; Egypt: Twenty Ninth Dynasty; Egypt: Twenty Second Dynasty; Egypt: Twenty Sixth Dynasty; Kingdom of Kush; Kingdom of Macedon; Kush Tributary; Neo Assyrian Empire; Neo Assyrian Tributary; Persian Empire; Ptolemaic Kingdom; Revolt of Khababash; Revolt of Ptolemy,2241.9,-462.3,-454.4,1,1.0
-1,4,120/030,118,Domain of Ptolemy; Egypt: Areas of Unrest; Egypt: Heracleopolitans; Egypt: Hyksos; Egypt: Middle Kingdom; Egypt: New Kingdom; Egypt: Old Kdm; Egypt: Thebans; Egypt: Thirtieth Dynasty; Egypt: Twenty Eighth Dynasty; Egypt: Twenty Fourth Dynasty; Egypt: Twenty Ninth Dynasty; Egypt: Twenty Second Dynasty; Egypt: Twenty Sixth Dynasty; Kingdom of Kush; Kingdom of Macedon; Kush Tributary; Libyans; Neo Assyrian Empire; Neo Assyrian Tributary; Persian Empire; Ptolemaic Kingdom; Revolt of Khababash; Revolt of Ptolemy,1501.3,-462.3,-454.4,1,1.0
-1,4,120/030,281,Revolt of Inaros,6907.0,-462.3,-454.4,1,1.0
-2,4,120/030,193,Judah; Kingdom of Israel; Neo Assyrian Tributary; Philistia; Philistines,5294.9,-843.1,-732.5,4,1.0
-2,4,120/030,200,Egypt: Twenty Sixth Dynasty Tributary; Judah; Kingdom of Israel; Kingdom of Judah; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire; Philistia,1706.2,-843.1,-732.5,4,1.0
-2,4,120/030,201,Egypt: Twenty Sixth Dynasty Tributary; Judah; Kingdom of Israel; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire,109.4,-843.1,-732.5,4,1.0
-2,4,120/030,226,Judah,1200.8,-843.1,-732.5,4,1.0
-3,4,120/035,50,Amurru; Canaanites; Middle Assyrian Empire; Neo Assyrian Tributary; Phoenicians; Proto-Canaanites,134.4,-840.6,-826.8,2,1.0
-3,4,120/035,91,Amurru; Egypt: New Kingdom; Middle Assyrian Empire; Neo Assyrian Tributary; New Hittite Kingdom; Phoenicians; Sea Peoples,4411.8,-840.6,-826.8,2,1.0
-3,4,120/035,187,Amurru; Middle Assyrian Empire; Neo Assyrian Tributary; Phoenicians,170.9,-840.6,-826.8,2,1.0
-3,4,120/035,255,Neo Assyrian Tributary; Phoenicians,4581.9,-840.6,-826.8,2,1.0
-4,4,120/035,192,Israelites; Kingdom of Israel; Philistines,9408.8,-1150.5,-1110.5,4,1.0
-4,4,120/035,201,Philistia; Philistines,634.9,-1150.5,-1110.5,4,1.0
-4,4,120/035,202,Bedouins; Moabites; Philistines,2749.3,-1150.5,-1110.5,4,1.0
-4,4,120/035,205,Aram Damascus; Canaanites; Israelites; Kingdom of Israel; Philistines,4116.0,-1150.5,-1110.5,4,1.0
-5,3,120/030,193,Judah; Kingdom of Israel; Neo Assyrian Tributary; Philistia; Philistines,5294.9,-1003.5,-976.5,2,1.0
-5,3,120/030,200,Egypt: Twenty Sixth Dynasty Tributary; Judah; Kingdom of Israel; Kingdom of Judah; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire; Philistia,1706.2,-1003.5,-976.5,2,1.0
-5,3,120/030,201,Egypt: Twenty Sixth Dynasty Tributary; Judah; Kingdom of Israel; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire,109.4,-1003.5,-976.5,2,1.0
-6,3,120/035,91,Amurru; Egypt: New Kingdom; Middle Assyrian Empire; Neo Assyrian Tributary; New Hittite Kingdom; Phoenicians; Sea Peoples,4411.8,-1372.5,-1370.5,2,1.0
-6,3,120/035,133,Amurru,2726.6,-1372.5,-1370.5,2,1.0
-6,3,120/035,134,Amurru,1780.7,-1372.5,-1370.5,2,1.0
-7,3,120/035,192,Israelites; Kingdom of Israel; Philistines,9408.8,-1088.5,-1020.5,4,1.0
-7,3,120/035,201,Philistia; Philistines,634.9,-1088.5,-1020.5,4,1.0
-7,3,120/035,202,Bedouins; Moabites; Philistines,2749.3,-1088.5,-1020.5,4,1.0
-8,3,120/035,192,Israelites; Kingdom of Israel; Philistines,9408.8,-1110.5,-1088.5,2,1.0
-8,3,120/035,205,Aram Damascus; Canaanites; Israelites; Kingdom of Israel; Philistines,4116.0,-1110.5,-1088.5,2,1.0
-8,3,120/035,224,Rebel Israelites,1736.1,-1110.5,-1088.5,2,1.0
-9,3,120/035,192,Israelites; Kingdom of Israel; Philistines,9408.8,-1050.5,-1035.5,1,1.0
-9,3,120/035,205,Aram Damascus; Canaanites; Israelites; Kingdom of Israel; Philistines,4116.0,-1050.5,-1035.5,1,1.0
-9,3,120/035,235,Israelites,3201.6,-1050.5,-1035.5,1,1.0
-10,3,120/035,196,Edomites; Egypt: Twenty Sixth Dynasty Tributary; Judah; Kingdom of Israel; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire,8805.3,-587.4,-553.2,3,1.0
-10,3,120/035,257,Edomites; Judah; Judah Tributary; Kingdom of Israel; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire,7181.3,-587.4,-553.2,3,1.0
-10,3,120/035,371,Edomites; Neo Babylonian Empire Tributary; Neo-Babylonian Empire,1624.0,-587.4,-553.2,3,1.0
-11,2,120/030,113,Domain of Ptolemy; Egypt: Areas of Unrest; Egypt: Heracleopolitans; Egypt: Hyksos; Egypt: Middle Kingdom; Egypt: New Kingdom; Egypt: Old Kdm; Egypt: Thebans; Egypt: Thirtieth Dynasty; Egypt: Twenty Eighth Dynasty; Egypt: Twenty Fourth Dynasty; Egypt: Twenty Ninth Dynasty; Egypt: Twenty Second Dynasty; Egypt: Twenty Sixth Dynasty; Kingdom of Kush; Kingdom of Macedon; Kush Tributary; Libyans; Neo Assyrian Empire; Neo Assyrian Tributary; Persian Empire; Ptolemaic Kingdom; Revolt of Ptolemy,3085.7,-630.5,-525.5,1,0.837
-11,2,120/030,253,Greeks,332.1,-630.5,-525.5,1,0.837
-12,2,120/030,132,Domain of Ptolemy; Egypt: Areas of Unrest; Egypt: Heracleopolitans; Egypt: Hyksos; Egypt: Middle Kingdom; Egypt: New Kingdom; Egypt: Old Kdm; Egypt: Tanites; Egypt: Thirtieth Dynasty; Egypt: Twenty Eighth Dynasty; Egypt: Twenty Fourth Dynasty; Egypt: Twenty Ninth Dynasty; Egypt: Twenty Second Dynasty; Egypt: Twenty Sixth Dynasty; Kingdom of Kush; Kingdom of Macedon; Kush Tributary; Neo Assyrian Empire; Neo Assyrian Tributary; Persian Empire; Ptolemaic Kingdom; Revolt of Ptolemy,1351.2,-745.5,-726.5,1,1.0
-12,2,120/030,227,Great Chiefs of the Meshwesh; Kush Tributary,697.5,-745.5,-726.5,1,1.0
-13,2,120/030,149,Domain of Ptolemy; Egypt: Hyksos; Egypt: Middle Kingdom; Egypt: New Kingdom; Egypt: Thebans; Egypt: Thirtieth Dynasty; Egypt: Twenty Eighth Dynasty; Egypt: Twenty Ninth Dynasty; Egypt: Twenty Sixth Dynasty; Kingdom of Kush; Kingdom of Macedon; Neo Assyrian Empire; Neo Assyrian Tributary; Persian Empire; Ptolemaic Kingdom; Revolt of Ptolemy,7448.8,-1720.5,-1567.5,2,1.0
-13,2,120/030,154,Egypt: Hyksos,1299.1,-1720.5,-1567.5,2,1.0
-14,2,120/030,193,Judah; Kingdom of Israel; Neo Assyrian Tributary; Philistia; Philistines,5294.9,-1004.5,-1003.5,1,1.0
-14,2,120/030,200,Egypt: Twenty Sixth Dynasty Tributary; Judah; Kingdom of Israel; Kingdom of Judah; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire; Philistia,1706.2,-1004.5,-1003.5,1,1.0
-15,2,120/030,195,Edomites; Egypt: Twenty Sixth Dynasty Tributary; Judah; Kingdom of Israel; Nabataean Kingdom; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire; Persian Empire,8859.5,-794.5,-582.5,9,1.0
-15,2,120/030,210,Edomites; Judah; Judah Tributary; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire,4986.6,-794.5,-582.5,9,1.0
-16,2,120/030,235,Egypt: Twenty Sixth Dynasty; Neo Assyrian Empire; Neo Assyrian Tributary; Neo-Babylonian Empire; Philistia,2278.5,-684.5,-679.6,1,1.0
-16,2,120/030,247,Kush Tributary,936.6,-684.5,-679.6,1,1.0
-17,2,120/035,91,Amurru; Egypt: New Kingdom; Middle Assyrian Empire; Neo Assyrian Tributary; New Hittite Kingdom; Phoenicians; Sea Peoples,4411.8,-1368.8,-1368.3,1,1.0
-17,2,120/035,133,Amurru,2726.6,-1368.8,-1368.3,1,1.0
-18,2,120/035,91,Amurru; Egypt: New Kingdom; Middle Assyrian Empire; Neo Assyrian Tributary; New Hittite Kingdom; Phoenicians; Sea Peoples,4411.8,-1095.5,-968.5,1,1.0
-18,2,120/035,187,Amurru; Middle Assyrian Empire; Neo Assyrian Tributary; Phoenicians,170.9,-1095.5,-968.5,1,1.0
-19,2,120/035,192,Israelites; Kingdom of Israel; Philistines,9408.8,-1020.5,-1015.5,1,1.0
-19,2,120/035,201,Philistia; Philistines,634.9,-1020.5,-1015.5,1,1.0
-20,2,120/035,192,Israelites; Kingdom of Israel; Philistines,9408.8,-1015.5,-1005.5,1,0.855
-20,2,120/035,241,Egypt: Twenty Sixth Dynasty Tributary; Judah; Kingdom of Israel; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire; Philistia,390.1,-1015.5,-1005.5,1,0.855
-21,2,120/035,239,Israel/Samaria; Kingdom of Israel; Neo Assyrian Tributary; Philistia,4636.0,-912.5,-897.5,1,1.0
-21,2,120/035,270,Judah,171.4,-912.5,-897.5,1,1.0
-22,2,120/035,196,Edomites; Egypt: Twenty Sixth Dynasty Tributary; Judah; Kingdom of Israel; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire,8805.3,-794.5,-587.4,8,1.0
-22,2,120/035,257,Edomites; Judah; Judah Tributary; Kingdom of Israel; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire,7181.3,-794.5,-587.4,8,1.0
-23,2,120/035,198,Ammonites; Kingdom of Israel,10464.5,-931.6,-931.5,1,1.0
-23,2,120/035,261,Ammonites; Israel/Samaria; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire,1668.5,-931.6,-931.5,1,1.0
-24,2,120/035,261,Ammonites; Israel/Samaria; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire,1668.5,-848.5,-732.5,5,1.0
-24,2,120/035,293,Ammonites; Moabites; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire,452.7,-848.5,-732.5,5,1.0
-25,2,120/035,203,Aram-Zobah; Kingdom of Israel,9508.1,-1135.5,-968.5,4,1.0
-25,2,120/035,216,Amurru; Middle Assyrian Empire,6872.0,-1135.5,-968.5,4,1.0
-26,2,120/035,51,Amurru; Canaanites; Domain of Ptolemy; Middle Assyrian Empire; Neo Assyrian Tributary; Phoenicians; Proto-Canaanites,107.0,-734.1,-733.5,1,1.0
-26,2,120/035,255,Neo Assyrian Tributary; Phoenicians,4581.9,-734.1,-733.5,1,1.0
-27,2,120/035,349,Neo Assyrian Tributary; Neo-Babylonian Empire; Qedarite Confederation,71620.7,-599.5,-550.5,1,0.997
-27,2,120/035,365,Neo-Babylonian Empire,76453.8,-599.5,-550.5,1,0.997
-28,2,120/035,374,Domain of Ptolemy; Kingdom of Macedon; Persian Empire; Revolt,66345.5,-385.6,-382.5,1,1.0
-28,2,120/035,382,Salamis,268.9,-385.6,-382.5,1,1.0
-29,2,120/035,374,Domain of Ptolemy; Kingdom of Macedon; Persian Empire; Revolt,66345.5,-346.6,-344.3,1,1.0
-29,2,120/035,385,Phoenicians,1690.8,-346.6,-344.3,1,1.0
-30,2,120/035,51,Amurru; Canaanites; Domain of Ptolemy; Middle Assyrian Empire; Neo Assyrian Tributary; Phoenicians; Proto-Canaanites,107.0,-315.7,-314.3,1,1.0
-30,2,120/035,397,Antigonid Kingdom; Domain of Antigonus,34299.9,-315.7,-314.3,1,1.0
+GroupID,GroupSize,Tile,EntryIndex,ActiveDuringOverlap,AllOwnersEver,AreaKm2,OverlapFromYear,OverlapToYear,DistinctWindows,MaxIntersectionRatio
+1,4,120/030,113,Persian Empire,Domain of Ptolemy; Egypt: Areas of Unrest; Egypt: Heracleopolitans; Egypt: Hyksos; Egypt: Middle Kingdom; Egypt: New Kingdom; Egypt: Old Kdm; Egypt: Thebans; Egypt: Thirtieth Dynasty; Egypt: Twenty Eighth Dynasty; Egypt: Twenty Fourth Dynasty; Egypt: Twenty Ninth Dynasty; Egypt: Twenty Second Dynasty; Egypt: Twenty Sixth Dynasty; Kingdom of Kush; Kingdom of Macedon; Kush Tributary; Libyans; Neo Assyrian Empire; Neo Assyrian Tributary; Persian Empire; Ptolemaic Kingdom; Revolt of Ptolemy,3085.7,-462.3,-454.4,1,1.0
+1,4,120/030,115,Persian Empire,Domain of Ptolemy; Egypt: Areas of Unrest; Egypt: Heracleopolitans; Egypt: Hyksos; Egypt: Middle Kingdom; Egypt: New Kingdom; Egypt: Old Kdm; Egypt: Tanites; Egypt: Thebans; Egypt: Thirtieth Dynasty; Egypt: Twenty Eighth Dynasty; Egypt: Twenty Fourth Dynasty; Egypt: Twenty Ninth Dynasty; Egypt: Twenty Second Dynasty; Egypt: Twenty Sixth Dynasty; Kingdom of Kush; Kingdom of Macedon; Kush Tributary; Neo Assyrian Empire; Neo Assyrian Tributary; Persian Empire; Ptolemaic Kingdom; Revolt of Khababash; Revolt of Ptolemy,2241.9,-462.3,-454.4,1,1.0
+1,4,120/030,118,Persian Empire,Domain of Ptolemy; Egypt: Areas of Unrest; Egypt: Heracleopolitans; Egypt: Hyksos; Egypt: Middle Kingdom; Egypt: New Kingdom; Egypt: Old Kdm; Egypt: Thebans; Egypt: Thirtieth Dynasty; Egypt: Twenty Eighth Dynasty; Egypt: Twenty Fourth Dynasty; Egypt: Twenty Ninth Dynasty; Egypt: Twenty Second Dynasty; Egypt: Twenty Sixth Dynasty; Kingdom of Kush; Kingdom of Macedon; Kush Tributary; Libyans; Neo Assyrian Empire; Neo Assyrian Tributary; Persian Empire; Ptolemaic Kingdom; Revolt of Khababash; Revolt of Ptolemy,1501.3,-462.3,-454.4,1,1.0
+1,4,120/030,281,Revolt of Inaros,Revolt of Inaros,6907.0,-462.3,-454.4,1,1.0
+2,4,120/030,193,Neo Assyrian Tributary; Philistia,Judah; Kingdom of Israel; Neo Assyrian Tributary; Philistia; Philistines,5294.9,-843.1,-732.5,4,1.0
+2,4,120/030,200,Judah,Egypt: Twenty Sixth Dynasty Tributary; Judah; Kingdom of Israel; Kingdom of Judah; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire; Philistia,1706.2,-843.1,-732.5,4,1.0
+2,4,120/030,201,Judah,Egypt: Twenty Sixth Dynasty Tributary; Judah; Kingdom of Israel; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire,109.4,-843.1,-732.5,4,1.0
+2,4,120/030,226,Judah,Judah,1200.8,-843.1,-732.5,4,1.0
+3,4,120/035,50,Phoenicians,Amurru; Canaanites; Middle Assyrian Empire; Neo Assyrian Tributary; Phoenicians; Proto-Canaanites,134.4,-840.6,-826.8,2,1.0
+3,4,120/035,91,Neo Assyrian Tributary,Amurru; Egypt: New Kingdom; Middle Assyrian Empire; Neo Assyrian Tributary; New Hittite Kingdom; Phoenicians; Sea Peoples,4411.8,-840.6,-826.8,2,1.0
+3,4,120/035,187,Neo Assyrian Tributary; Phoenicians,Amurru; Middle Assyrian Empire; Neo Assyrian Tributary; Phoenicians,170.9,-840.6,-826.8,2,1.0
+3,4,120/035,255,Neo Assyrian Tributary,Neo Assyrian Tributary; Phoenicians,4581.9,-840.6,-826.8,2,1.0
+4,4,120/035,192,Israelites,Israelites; Kingdom of Israel; Philistines,9408.8,-1150.5,-1110.5,4,1.0
+4,4,120/035,201,Philistines,Philistia; Philistines,634.9,-1150.5,-1110.5,4,1.0
+4,4,120/035,202,Moabites,Bedouins; Moabites; Philistines,2749.3,-1150.5,-1110.5,4,1.0
+4,4,120/035,205,Aram Damascus; Canaanites,Aram Damascus; Canaanites; Israelites; Kingdom of Israel; Philistines,4116.0,-1150.5,-1110.5,4,1.0
+5,3,120/030,193,Philistia,Judah; Kingdom of Israel; Neo Assyrian Tributary; Philistia; Philistines,5294.9,-1003.5,-976.5,2,1.0
+5,3,120/030,200,Kingdom of Israel,Egypt: Twenty Sixth Dynasty Tributary; Judah; Kingdom of Israel; Kingdom of Judah; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire; Philistia,1706.2,-1003.5,-976.5,2,1.0
+5,3,120/030,201,Kingdom of Israel,Egypt: Twenty Sixth Dynasty Tributary; Judah; Kingdom of Israel; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire,109.4,-1003.5,-976.5,2,1.0
+6,3,120/035,91,Egypt: New Kingdom,Amurru; Egypt: New Kingdom; Middle Assyrian Empire; Neo Assyrian Tributary; New Hittite Kingdom; Phoenicians; Sea Peoples,4411.8,-1372.5,-1370.5,2,1.0
+6,3,120/035,133,Amurru,Amurru,2726.6,-1372.5,-1370.5,2,1.0
+6,3,120/035,134,Amurru,Amurru,1780.7,-1372.5,-1370.5,2,1.0
+7,3,120/035,192,Israelites; Kingdom of Israel,Israelites; Kingdom of Israel; Philistines,9408.8,-1088.5,-1020.5,4,1.0
+7,3,120/035,201,Philistines,Philistia; Philistines,634.9,-1088.5,-1020.5,4,1.0
+7,3,120/035,202,Bedouins; Philistines,Bedouins; Moabites; Philistines,2749.3,-1088.5,-1020.5,4,1.0
+8,3,120/035,192,Philistines,Israelites; Kingdom of Israel; Philistines,9408.8,-1110.5,-1088.5,2,1.0
+8,3,120/035,205,Israelites,Aram Damascus; Canaanites; Israelites; Kingdom of Israel; Philistines,4116.0,-1110.5,-1088.5,2,1.0
+8,3,120/035,224,Rebel Israelites,Rebel Israelites,1736.1,-1110.5,-1088.5,2,1.0
+9,3,120/035,192,Philistines,Israelites; Kingdom of Israel; Philistines,9408.8,-1050.5,-1035.5,1,1.0
+9,3,120/035,205,Philistines,Aram Damascus; Canaanites; Israelites; Kingdom of Israel; Philistines,4116.0,-1050.5,-1035.5,1,1.0
+9,3,120/035,235,Israelites,Israelites,3201.6,-1050.5,-1035.5,1,1.0
+10,3,120/035,196,Neo-Babylonian Empire,Edomites; Egypt: Twenty Sixth Dynasty Tributary; Judah; Kingdom of Israel; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire,8805.3,-587.4,-553.2,3,1.0
+10,3,120/035,257,Edomites; Neo Babylonian Empire Tributary,Edomites; Judah; Judah Tributary; Kingdom of Israel; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire,7181.3,-587.4,-553.2,3,1.0
+10,3,120/035,371,Edomites; Neo Babylonian Empire Tributary,Edomites; Neo Babylonian Empire Tributary; Neo-Babylonian Empire,1624.0,-587.4,-553.2,3,1.0
+11,2,120/030,113,Egypt: Twenty Sixth Dynasty,Domain of Ptolemy; Egypt: Areas of Unrest; Egypt: Heracleopolitans; Egypt: Hyksos; Egypt: Middle Kingdom; Egypt: New Kingdom; Egypt: Old Kdm; Egypt: Thebans; Egypt: Thirtieth Dynasty; Egypt: Twenty Eighth Dynasty; Egypt: Twenty Fourth Dynasty; Egypt: Twenty Ninth Dynasty; Egypt: Twenty Second Dynasty; Egypt: Twenty Sixth Dynasty; Kingdom of Kush; Kingdom of Macedon; Kush Tributary; Libyans; Neo Assyrian Empire; Neo Assyrian Tributary; Persian Empire; Ptolemaic Kingdom; Revolt of Ptolemy,3085.7,-630.5,-525.5,1,0.837
+11,2,120/030,253,Greeks,Greeks,332.1,-630.5,-525.5,1,0.837
+12,2,120/030,132,Egypt: Twenty Second Dynasty,Domain of Ptolemy; Egypt: Areas of Unrest; Egypt: Heracleopolitans; Egypt: Hyksos; Egypt: Middle Kingdom; Egypt: New Kingdom; Egypt: Old Kdm; Egypt: Tanites; Egypt: Thirtieth Dynasty; Egypt: Twenty Eighth Dynasty; Egypt: Twenty Fourth Dynasty; Egypt: Twenty Ninth Dynasty; Egypt: Twenty Second Dynasty; Egypt: Twenty Sixth Dynasty; Kingdom of Kush; Kingdom of Macedon; Kush Tributary; Neo Assyrian Empire; Neo Assyrian Tributary; Persian Empire; Ptolemaic Kingdom; Revolt of Ptolemy,1351.2,-745.5,-726.5,1,1.0
+12,2,120/030,227,Great Chiefs of the Meshwesh,Great Chiefs of the Meshwesh; Kush Tributary,697.5,-745.5,-726.5,1,1.0
+13,2,120/030,149,Egypt: Middle Kingdom; Egypt: Thebans,Domain of Ptolemy; Egypt: Hyksos; Egypt: Middle Kingdom; Egypt: New Kingdom; Egypt: Thebans; Egypt: Thirtieth Dynasty; Egypt: Twenty Eighth Dynasty; Egypt: Twenty Ninth Dynasty; Egypt: Twenty Sixth Dynasty; Kingdom of Kush; Kingdom of Macedon; Neo Assyrian Empire; Neo Assyrian Tributary; Persian Empire; Ptolemaic Kingdom; Revolt of Ptolemy,7448.8,-1720.5,-1567.5,2,1.0
+13,2,120/030,154,Egypt: Hyksos,Egypt: Hyksos,1299.1,-1720.5,-1567.5,2,1.0
+14,2,120/030,193,Philistia,Judah; Kingdom of Israel; Neo Assyrian Tributary; Philistia; Philistines,5294.9,-1004.5,-1003.5,1,1.0
+14,2,120/030,200,Kingdom of Judah,Egypt: Twenty Sixth Dynasty Tributary; Judah; Kingdom of Israel; Kingdom of Judah; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire; Philistia,1706.2,-1004.5,-1003.5,1,1.0
+15,2,120/030,195,Egypt: Twenty Sixth Dynasty Tributary; Judah; Neo Babylonian Empire Tributary; Neo-Babylonian Empire,Edomites; Egypt: Twenty Sixth Dynasty Tributary; Judah; Kingdom of Israel; Nabataean Kingdom; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire; Persian Empire,8859.5,-794.5,-582.5,9,1.0
+15,2,120/030,210,Edomites; Judah Tributary; Neo Assyrian Tributary; Neo Babylonian Empire Tributary,Edomites; Judah; Judah Tributary; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire,4986.6,-794.5,-582.5,9,1.0
+16,2,120/030,235,Neo Assyrian Empire,Egypt: Twenty Sixth Dynasty; Neo Assyrian Empire; Neo Assyrian Tributary; Neo-Babylonian Empire; Philistia,2278.5,-684.5,-679.6,1,1.0
+16,2,120/030,247,Kush Tributary,Kush Tributary,936.6,-684.5,-679.6,1,1.0
+17,2,120/035,91,Egypt: New Kingdom,Amurru; Egypt: New Kingdom; Middle Assyrian Empire; Neo Assyrian Tributary; New Hittite Kingdom; Phoenicians; Sea Peoples,4411.8,-1368.8,-1368.3,1,1.0
+17,2,120/035,133,Amurru,Amurru,2726.6,-1368.8,-1368.3,1,1.0
+18,2,120/035,91,Amurru,Amurru; Egypt: New Kingdom; Middle Assyrian Empire; Neo Assyrian Tributary; New Hittite Kingdom; Phoenicians; Sea Peoples,4411.8,-1095.5,-968.5,1,1.0
+18,2,120/035,187,Phoenicians,Amurru; Middle Assyrian Empire; Neo Assyrian Tributary; Phoenicians,170.9,-1095.5,-968.5,1,1.0
+19,2,120/035,192,Kingdom of Israel,Israelites; Kingdom of Israel; Philistines,9408.8,-1020.5,-1015.5,1,1.0
+19,2,120/035,201,Philistia,Philistia; Philistines,634.9,-1020.5,-1015.5,1,1.0
+20,2,120/035,192,Kingdom of Israel,Israelites; Kingdom of Israel; Philistines,9408.8,-1015.5,-1005.5,1,0.855
+20,2,120/035,241,Philistia,Egypt: Twenty Sixth Dynasty Tributary; Judah; Kingdom of Israel; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire; Philistia,390.1,-1015.5,-1005.5,1,0.855
+21,2,120/035,239,Israel/Samaria,Israel/Samaria; Kingdom of Israel; Neo Assyrian Tributary; Philistia,4636.0,-912.5,-897.5,1,1.0
+21,2,120/035,270,Judah,Judah,171.4,-912.5,-897.5,1,1.0
+22,2,120/035,196,Egypt: Twenty Sixth Dynasty Tributary; Judah; Neo Babylonian Empire Tributary,Edomites; Egypt: Twenty Sixth Dynasty Tributary; Judah; Kingdom of Israel; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire,8805.3,-794.5,-587.4,8,1.0
+22,2,120/035,257,Edomites; Judah Tributary; Neo Assyrian Tributary; Neo Babylonian Empire Tributary,Edomites; Judah; Judah Tributary; Kingdom of Israel; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire,7181.3,-794.5,-587.4,8,1.0
+23,2,120/035,198,Kingdom of Israel,Ammonites; Kingdom of Israel,10464.5,-931.6,-931.5,1,1.0
+23,2,120/035,261,Israel/Samaria,Ammonites; Israel/Samaria; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire,1668.5,-931.6,-931.5,1,1.0
+24,2,120/035,261,Israel/Samaria; Neo Assyrian Tributary,Ammonites; Israel/Samaria; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire,1668.5,-848.5,-732.5,5,1.0
+24,2,120/035,293,Moabites,Ammonites; Moabites; Neo Assyrian Tributary; Neo Babylonian Empire Tributary; Neo-Babylonian Empire,452.7,-848.5,-732.5,5,1.0
+25,2,120/035,203,Aram-Zobah; Kingdom of Israel,Aram-Zobah; Kingdom of Israel,9508.1,-1135.5,-968.5,4,1.0
+25,2,120/035,216,Amurru; Middle Assyrian Empire,Amurru; Middle Assyrian Empire,6872.0,-1135.5,-968.5,4,1.0
+26,2,120/035,51,Phoenicians,Amurru; Canaanites; Domain of Ptolemy; Middle Assyrian Empire; Neo Assyrian Tributary; Phoenicians; Proto-Canaanites,107.0,-734.1,-733.5,1,1.0
+26,2,120/035,255,Neo Assyrian Tributary,Neo Assyrian Tributary; Phoenicians,4581.9,-734.1,-733.5,1,1.0
+27,2,120/035,349,Qedarite Confederation,Neo Assyrian Tributary; Neo-Babylonian Empire; Qedarite Confederation,71620.7,-599.5,-550.5,1,0.997
+27,2,120/035,365,Neo-Babylonian Empire,Neo-Babylonian Empire,76453.8,-599.5,-550.5,1,0.997
+28,2,120/035,374,Persian Empire,Domain of Ptolemy; Kingdom of Macedon; Persian Empire; Revolt,66345.5,-385.6,-382.5,1,1.0
+28,2,120/035,382,Salamis,Salamis,268.9,-385.6,-382.5,1,1.0
+29,2,120/035,374,Persian Empire,Domain of Ptolemy; Kingdom of Macedon; Persian Empire; Revolt,66345.5,-346.6,-344.3,1,1.0
+29,2,120/035,385,Phoenicians,Phoenicians,1690.8,-346.6,-344.3,1,1.0
+30,2,120/035,51,Domain of Ptolemy,Amurru; Canaanites; Domain of Ptolemy; Middle Assyrian Empire; Neo Assyrian Tributary; Phoenicians; Proto-Canaanites,107.0,-315.7,-314.3,1,1.0
+30,2,120/035,397,Domain of Antigonus,Antigonid Kingdom; Domain of Antigonus,34299.9,-315.7,-314.3,1,1.0

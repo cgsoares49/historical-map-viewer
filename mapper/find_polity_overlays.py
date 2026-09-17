@@ -136,6 +136,26 @@ def entry_names(entry):
     return sorted(set(owner_name(dr['name']) for dr in entry['dateRanges']))
 
 
+def active_owners_during(date_ranges, windows):
+    """Which of this entry's OWN date-ranges actually overlap the given
+    windows -- i.e. what it was really doing during the flagged overlap,
+    not its whole history. `Names` (entry_names) lists every owner an entry
+    has EVER had, which for a long-lived entry (30+ date-ranges over
+    centuries) buries the one relevant to a specific flagged window; this is
+    the targeted answer. Returns '(no active entry -- data gap here)' if
+    none of the entry's date-ranges cover any of the windows at all (a real,
+    informative case: found 2026-09-17, a nome entry can have a genuine gap
+    in its own recorded history that happens to coincide with the window)."""
+    owners = []
+    for lo, hi in windows:
+        for dr in date_ranges:
+            if max(dr['from'], lo) < min(dr['to'], hi):
+                owners.append(owner_name(dr['name']))
+    if not owners:
+        return '(no active entry -- data gap here)'
+    return '; '.join(sorted(set(owners)))
+
+
 class UnionFind:
     def __init__(self):
         self.parent = {}
@@ -177,7 +197,8 @@ def scan_tile(lat, lon, min_ratio):
     entry_info = {}
     for c in candidates:
         key = (lat, lon, c['entry']['entryIndex'])
-        entry_info[key] = {'names': entry_names(c['entry']), 'area_km2': round(c['area_km2'], 1)}
+        entry_info[key] = {'names': entry_names(c['entry']), 'area_km2': round(c['area_km2'], 1),
+                            'dateRanges': c['entry']['dateRanges']}
 
     events = []
     n = len(candidates)
@@ -298,8 +319,8 @@ def main():
     os.makedirs(os.path.dirname(args.out), exist_ok=True)
     with open(args.out, 'w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
-        writer.writerow(['GroupID', 'GroupSize', 'Tile', 'EntryIndex', 'Names', 'AreaKm2',
-                          'OverlapFromYear', 'OverlapToYear', 'DistinctWindows', 'MaxIntersectionRatio'])
+        writer.writerow(['GroupID', 'GroupSize', 'Tile', 'EntryIndex', 'ActiveDuringOverlap', 'AllOwnersEver',
+                          'AreaKm2', 'OverlapFromYear', 'OverlapToYear', 'DistinctWindows', 'MaxIntersectionRatio'])
         for gi, (entities, ids) in enumerate(groups, start=1):
             members = sorted(entities, key=lambda k: (k[0], k[1], k[2]))
             windows = sorted({(all_events[i]['lo'], all_events[i]['hi']) for i in ids})
@@ -308,8 +329,9 @@ def main():
             max_ratio = max(all_events[i]['ratio'] for i in ids)
             for lat, lon, entry_idx in members:
                 info = all_entry_info[(lat, lon, entry_idx)]
+                active = active_owners_during(info['dateRanges'], windows)
                 writer.writerow([gi, len(entities), f'{lat}/{lon}', entry_idx,
-                                  '; '.join(info['names']), info['area_km2'],
+                                  active, '; '.join(info['names']), info['area_km2'],
                                   round(overlap_from, 1), round(overlap_to, 1), len(windows),
                                   round(max_ratio, 3)])
     total_entities = len(set().union(*[e for e, _ in groups])) if groups else 0
