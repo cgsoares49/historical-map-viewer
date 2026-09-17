@@ -35,14 +35,17 @@ Usage:
 import os
 import sys
 import csv
+import math
 import argparse
 from collections import Counter
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from export_polity_polygons import (
     load_tile, build_combined_ring, ring_to_polygon, is_transient,
-    is_keyword_transient, owner_name, path_of, TO_EQUAL_AREA,
+    is_keyword_transient, owner_name, path_of, TO_EQUAL_AREA, DATA_DIR,
 )
+import glob
+import re
 from shapely.ops import transform
 
 MAPPER_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -150,6 +153,7 @@ def load_candidates(tile):
     resolved ring polygon, projected geometry, and cached area/bounds --
     everything the pairwise scan needs, computed once per entry."""
     repair_log = [0]
+    load_errors = 0
     out = []
     for entry in tile['par_entries']:
         if entry['areaType'] != 1:
@@ -162,16 +166,34 @@ def load_candidates(tile):
         ring, has_segment = build_combined_ring(entry['polyRefs'], tile['cst_by_index'], tile['pol_by_index'])
         if not has_segment or len(ring) < 4:
             continue
-        poly = ring_to_polygon(ring, repair_log)
-        if poly is None or poly.is_empty or not poly.is_valid:
+        try:
+            poly = ring_to_polygon(ring, repair_log)
+            if poly is None or poly.is_empty or not poly.is_valid:
+                continue
+            proj = transform(TO_EQUAL_AREA, poly)
+            area_km2 = proj.area / 1_000_000.0
+            if not math.isfinite(area_km2) or area_km2 <= 0:
+                # Found scanning the full tile grid, 2026-09-17: a handful of
+                # rings pass is_valid but still produce a NaN/non-finite area
+                # (a different, quieter failure mode than the GEOSException
+                # caught above -- same underlying degenerate-ring cause,
+                # just surfaces as a bad number instead of a raised error).
+                # A NaN area breaks every downstream ratio/comparison
+                # silently, so treat it the same as a hard geometry error.
+                load_errors += 1
+                continue
+        except Exception:
+            # Same class of rare GEOS failure on a degenerate ring as the
+            # pairwise intersection guard below -- skip this one entry
+            # rather than crash the whole tile.
+            load_errors += 1
             continue
-        proj = transform(TO_EQUAL_AREA, poly)
         out.append({
             'entry': entry, 'proj': proj,
-            'area_km2': proj.area / 1_000_000.0,
+            'area_km2': area_km2,
             'bounds': poly.bounds,
         })
-    return out, repair_log[0]
+    return out, repair_log[0], load_errors
 
 
 def date_overlap_windows(entry_a, entry_b):
@@ -252,6 +274,21 @@ class UnionFind:
         ra, rb = self.find(a), self.find(b)
         if ra != rb:
             self.parent[ra] = rb
+
+
+def discover_all_tiles():
+    """Every PAR<lon>.ASC file under DATA_DIR/polareas/<lat>/ -- the full
+    populated tile grid (1822 tiles as of 2026-09-17), not just the two
+    pilot tiles. Mirrors export_polity_polygons.py's own --auto-tiles
+    discovery pattern, scoped globally instead of by polity name."""
+    pattern = os.path.join(DATA_DIR, 'polareas', '*', 'PAR*.ASC')
+    tiles = []
+    for path in glob.glob(pattern):
+        lat = os.path.basename(os.path.dirname(path))
+        m = re.match(r'PAR(\d+)\.ASC$', os.path.basename(path), re.IGNORECASE)
+        if m:
+            tiles.append((lat, m.group(1)))
+    return sorted(tiles)
 
 
 def format_window(windows):
@@ -365,8 +402,9 @@ def scan_tile(lat, lon, min_ratio):
       naive per-pair envelope reported as one continuous -9999..-1 "overlap").
     """
     tile = load_tile(lat, lon)
-    candidates, repairs = load_candidates(tile)
-    print(f"  {lat}/{lon}: {len(candidates)} candidate entries (dots/transients excluded, {repairs} ring repairs)")
+    candidates, repairs, load_errors = load_candidates(tile)
+    print(f"  {lat}/{lon}: {len(candidates)} candidate entries (dots/transients excluded, {repairs} ring repairs)"
+          + (f"  [{load_errors} geometry error(s) skipped]" if load_errors else ""))
 
     entry_info = {}
     for c in candidates:
@@ -376,7 +414,7 @@ def scan_tile(lat, lon, min_ratio):
 
     events = []
     n = len(candidates)
-    checked, geom_checked, pairs_flagged = 0, 0, 0
+    checked, geom_checked, pairs_flagged, geos_errors = 0, 0, 0, 0
     for i in range(n):
         for j in range(i + 1, n):
             ca, cb = candidates[i], candidates[j]
@@ -387,7 +425,18 @@ def scan_tile(lat, lon, min_ratio):
             if not windows:
                 continue
             geom_checked += 1
-            inter = ca['proj'].intersection(cb['proj'])
+            try:
+                inter = ca['proj'].intersection(cb['proj'])
+            except Exception:
+                # GEOS can throw on a degenerate ring (e.g. "Edge direction
+                # cannot be determined because endpoints are equal") even
+                # when shapely's own .is_valid reported the polygon fine --
+                # found scanning tile 125/025 during the full-tile sweep,
+                # 2026-09-17. Skip this one pair rather than crash the whole
+                # run; geos_errors is reported per-tile so real data quality
+                # issues stay visible instead of silently vanishing.
+                geos_errors += 1
+                continue
             inter_area_km2 = (inter.area / 1_000_000.0) if not inter.is_empty else 0.0
             smaller = min(ca['area_km2'], cb['area_km2'])
             if smaller <= 0:
@@ -410,7 +459,8 @@ def scan_tile(lat, lon, min_ratio):
                                 'pct_a': pct_a, 'pct_b': pct_b, 'dur_a': dur_a, 'dur_b': dur_b})
     print(f"    {checked} bbox-overlapping pair(s), {geom_checked} passed temporal+ownership, "
           f"{pairs_flagged} pair(s) passed the {min_ratio:.2f} overlap-ratio threshold "
-          f"({len(events)} distinct overlap event(s) from those pairs)")
+          f"({len(events)} distinct overlap event(s) from those pairs)"
+          + (f"  [{geos_errors} GEOS error(s) skipped]" if geos_errors else ""))
     return entry_info, events
 
 
@@ -418,15 +468,22 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--tiles', nargs='+', default=DEFAULT_TILES,
                      help='lat:lon pairs to scan (default: the two pilot tiles)')
+    ap.add_argument('--all-tiles', action='store_true',
+                     help='Scan every populated PAR tile (discovered from disk) instead of --tiles')
     ap.add_argument('--min-overlap-ratio', type=float, default=DEFAULT_MIN_OVERLAP_RATIO,
                      help='Flag a pair when intersection_area / smaller_entry_area >= this (default 0.6)')
     ap.add_argument('--out', default=os.path.join(MAPPER_DIR, 'exports', 'polity_overlay_candidates.csv'))
     args = ap.parse_args()
 
+    if args.all_tiles:
+        tile_pairs = discover_all_tiles()
+        print(f"Discovered {len(tile_pairs)} populated tiles.")
+    else:
+        tile_pairs = [tuple(t.split(':')) for t in args.tiles]
+
     all_entry_info = {}
     all_events = []
-    for tile_spec in args.tiles:
-        lat, lon = tile_spec.split(':')
+    for lat, lon in tile_pairs:
         print(f"Scanning {lat}/{lon} ...")
         entry_info, events = scan_tile(lat, lon, args.min_overlap_ratio)
         all_entry_info.update(entry_info)
