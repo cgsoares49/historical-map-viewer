@@ -108,6 +108,109 @@ def match_logged_overlays(logged_by_tile, tile, group_from, group_to, tolerance=
             hits.append(desc)
     return hits
 
+
+# A second, more direct personal reference: the user's own "Ancient Index"
+# workbook has a 'transients' sheet (6075 rows, 2012-2019) explicitly built
+# for exactly this purpose -- one row per transient the user ever authored,
+# citing which tile+POL#(+PAR# at the time) it used. Real ground truth for
+# PAR entries like tile 120/045 #48/#54/#124 that this script's own
+# is_transient()/is_keyword_transient() checks miss entirely (confirmed
+# 2026-09-17: neither trips on any of the three, despite the user's own
+# authoritative "Gutians into Akshak"/"...N Awan" log entries for that exact
+# tile and date window).
+ANCIENT_INDEX_PATH = r'C:\My stuff\VID\ancient index.xlsx'
+
+
+def load_transient_registry(path=ANCIENT_INDEX_PATH):
+    """Returns (pol_registry, date_registry):
+      pol_registry: {tile ('120/045' zero-padded form): set(POL#)} -- every
+        POL segment the log cites as used to author a transient.
+      date_registry: {tile: [(start_year, end_year, description)]} --
+        fallback for when the POL# has since drifted (PAR/POL numbers are
+        NOT stable across edits -- confirmed real: entry #124 "Guti" in
+        tile 120/045 matches the log's "Gutians into Akshak"/"...N Awan"
+        rows exactly by tile+date, but its CURRENT polyRefs no longer
+        include the POL#106/107 those 2013 rows cite).
+    Silently returns ({}, {}) if the file/openpyxl isn't available -- a
+    personal reference file outside this repo, never a hard dependency."""
+    try:
+        import openpyxl
+    except ImportError:
+        return {}, {}
+    if not os.path.exists(path):
+        return {}, {}
+    try:
+        wb = openpyxl.load_workbook(path, read_only=True, data_only=True)
+        ws = wb['transients']
+        rows = ws.iter_rows(values_only=True, max_col=24)
+        next(rows)  # header
+        pol_registry, date_registry = {}, {}
+        for row in rows:
+            desc = row[5] if len(row) > 5 else None
+            start_year, end_year = row[3], row[4]
+            has_dates = isinstance(start_year, (int, float)) and isinstance(end_year, (int, float))
+            for slot in range(6):
+                tile_col, pol_col = 6 + slot * 3, 7 + slot * 3
+                if tile_col >= len(row):
+                    break
+                cell = row[tile_col]
+                if not isinstance(cell, str) or '/' not in cell:
+                    continue
+                lat_str, lon_str = cell.split('/', 1)
+                norm_tile = f"{lat_str}/{lon_str.zfill(3)}"
+                pol = row[pol_col] if pol_col < len(row) else None
+                if isinstance(pol, (int, float)):
+                    pol_registry.setdefault(norm_tile, set()).add(int(pol))
+                if has_dates:
+                    date_registry.setdefault(norm_tile, []).append((start_year, end_year, desc))
+        return pol_registry, date_registry
+    except Exception:
+        return {}, {}
+
+
+MAX_DATE_RANGES_FOR_FALLBACK = 3
+
+
+def is_known_transient(tile_key, entry, pol_registry, date_registry, tolerance=1.0):
+    """True if the Ancient Index registry independently confirms this entry
+    is a transient -- either it references a POL# the user logged as used
+    for a transient in this tile, or (fallback, for POL-number drift) one of
+    its OWN date-ranges fits within a logged transient's [start,end] window
+    (expanded by `tolerance`) for this tile.
+
+    Direction matters here: this checks the ENTRY's span sits inside the
+    (expanded) LOGGED window, not the reverse. Found 2026-09-17 testing
+    entry #124 "Guti" (tile 120/045): its date-range is -2212.5..-2211.5, a
+    full year past the logged "Gutians into Akshak" action's -2212.6..-2212.5
+    -- likely extended/consolidated sometime after the 2013 log entry, so an
+    exact/symmetric match missed it; checking containment the other way
+    (does -2212.5..-2211.5 fit within -2212.6..-2212.5 expanded by 1 year)
+    catches it.
+
+    The fallback is gated to entries with a SHORT overall history
+    (<= MAX_DATE_RANGES_FOR_FALLBACK date-ranges total), never applied to a
+    richly-historied real entry. Found and fixed the same day: without this
+    gate, entries #48 "Akshak" (38 date-ranges) and #54 "Kingdom of Awan"
+    (21) were ALSO wrongly excluded -- both have several brief few-year
+    sub-episodes in their own long real history that coincidentally overlap
+    some unrelated nearby logged transient action in this densely-logged
+    tile. A single-date-range entry like "Guti - Guti" is a much stronger
+    signal of actually BEING a transient; a 38-entry ownership history is
+    the opposite signal, regardless of any one sub-episode's date."""
+    pol_hits = pol_registry.get(tile_key)
+    if pol_hits:
+        for pol_index, flag in entry['polyRefs']:
+            if pol_index > 1000 and (pol_index - 1000) in pol_hits:
+                return True
+    if len(entry['dateRanges']) > MAX_DATE_RANGES_FOR_FALLBACK:
+        return False
+    for start_year, end_year, _desc in date_registry.get(tile_key, []):
+        lo, hi = start_year - tolerance, end_year + tolerance
+        for dr in entry['dateRanges']:
+            if lo <= dr['from'] and dr['to'] <= hi:
+                return True
+    return False
+
 # Started at 0.6 (near-total containment only). Revised 2026-09-17 after the
 # user spotted a real miss by checking the map directly: the "Revolt of
 # Inaros" entry (120/030 #281) visibly overlays PORTIONS of Nomes 4 and 6 too,
@@ -148,12 +251,13 @@ def is_placeholder_entry(entry):
     return len(entry['dateRanges']) == 1 and owner_name(entry['dateRanges'][0]['name']) in SKIP_NAMES
 
 
-def load_candidates(tile):
+def load_candidates(tile, tile_key, pol_registry, date_registry):
     """Real-territory (non-dot, non-transient) areaType=1 entries with a
     resolved ring polygon, projected geometry, and cached area/bounds --
     everything the pairwise scan needs, computed once per entry."""
     repair_log = [0]
     load_errors = 0
+    registry_excluded = 0
     out = []
     for entry in tile['par_entries']:
         if entry['areaType'] != 1:
@@ -162,6 +266,9 @@ def load_candidates(tile):
                 any(is_keyword_transient(dr['name']) for dr in entry['dateRanges']):
             continue
         if is_placeholder_entry(entry):
+            continue
+        if is_known_transient(tile_key, entry, pol_registry, date_registry):
+            registry_excluded += 1
             continue
         ring, has_segment = build_combined_ring(entry['polyRefs'], tile['cst_by_index'], tile['pol_by_index'])
         if not has_segment or len(ring) < 4:
@@ -193,7 +300,7 @@ def load_candidates(tile):
             'area_km2': area_km2,
             'bounds': poly.bounds,
         })
-    return out, repair_log[0], load_errors
+    return out, repair_log[0], load_errors, registry_excluded
 
 
 def date_overlap_windows(entry_a, entry_b):
@@ -384,7 +491,7 @@ def compute_stack(entities, ids, all_events):
     return depth, above, overlaid_by, False
 
 
-def scan_tile(lat, lon, min_ratio):
+def scan_tile(lat, lon, min_ratio, pol_registry, date_registry):
     """Returns (entry_info, events) for this tile:
     entry_info: {(lat,lon,entryIndex): {'names', 'area_km2'}} for every
       candidate entry (not just flagged ones -- cheap, and useful context).
@@ -402,9 +509,11 @@ def scan_tile(lat, lon, min_ratio):
       naive per-pair envelope reported as one continuous -9999..-1 "overlap").
     """
     tile = load_tile(lat, lon)
-    candidates, repairs, load_errors = load_candidates(tile)
+    tile_key = f"{lat}/{lon}"
+    candidates, repairs, load_errors, registry_excluded = load_candidates(tile, tile_key, pol_registry, date_registry)
     print(f"  {lat}/{lon}: {len(candidates)} candidate entries (dots/transients excluded, {repairs} ring repairs)"
-          + (f"  [{load_errors} geometry error(s) skipped]" if load_errors else ""))
+          + (f"  [{load_errors} geometry error(s) skipped]" if load_errors else "")
+          + (f"  [{registry_excluded} known transient(s) from Ancient Index excluded]" if registry_excluded else ""))
 
     entry_info = {}
     for c in candidates:
@@ -481,11 +590,18 @@ def main():
     else:
         tile_pairs = [tuple(t.split(':')) for t in args.tiles]
 
+    pol_registry, date_registry = load_transient_registry()
+    if pol_registry:
+        print(f"Loaded Ancient Index transient registry: {sum(len(v) for v in pol_registry.values())} POL# "
+              f"across {len(pol_registry)} tile(s), for cross-referencing candidate entries.")
+    else:
+        print(f"(No Ancient Index cross-reference: {ANCIENT_INDEX_PATH} not found/readable.)")
+
     all_entry_info = {}
     all_events = []
     for lat, lon in tile_pairs:
         print(f"Scanning {lat}/{lon} ...")
-        entry_info, events = scan_tile(lat, lon, args.min_overlap_ratio)
+        entry_info, events = scan_tile(lat, lon, args.min_overlap_ratio, pol_registry, date_registry)
         all_entry_info.update(entry_info)
         all_events.extend(events)
 
