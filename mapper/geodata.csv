@@ -94,7 +94,7 @@ anti macedon alliance,-339,-262,37.5,23.3
 anti roman alliance,-341,-338,42.5,15.0
 anti spartan alliance,-395,-386,38.5,25.3
 antigonid ally,-313,-290,37.6,23.5
-antigonid kingdom,-306,-1,38.1,26.7
+antigonid kingdom,-306,-278,38.1,26.7
 antigua and barbuda,1990,,17.5,-62.5
 antipatrid ally,-310,-306,41.0,27.2
 anupa,-610,-348,22.5,77.5
@@ -138,9 +138,9 @@ avanti,-850,-400,24.4,75.5
 azerbaijan,1990,,40.0,47.0
 azzi-hayasa,-1506,-1200,38.9,39.1
 ba,-1075,-316,30.8,108.4
-babylonia,-978,-732,32.4,45.3
+babylonia,-978,-732,32.4,45.4
 babylonia (chaldaeans),-780,-616,32.3,45.4
-babylonia (isin dynasty),-1158,-978,32.6,45.9
+babylonia (isin dynasty),-1158,-978,32.6,46.0
 babylonian revolt,-852,-549,32.2,44.9
 babylonian tributary,-1764,-1702,34.8,43.1
 bactrians,-1700,-546,36.8,65.0
@@ -350,7 +350,7 @@ egypt: twenty sixth dynasty tributary,-610,-606,32.5,35.6
 egypt: twenty third dynasty,-880,-756,26.9,32.5
 el paraiso culture,-2000,-900,-10.6,-76.3
 el salvador,1990,,12.5,-90.0
-elam,-2400,-520,31.4,48.7
+elam,-2400,-520,31.5,48.7
 elamite tributary,-1770,-694,34.2,44.6
 elimiotis,-540,-358,42.5,21.0
 elis,-726,-1,37.5,22.5
@@ -890,7 +890,7 @@ proto-mongol peoples,-2400,-1,50.3,107.9
 proto-tibetans,-2400,-1,32.4,85.1
 proto-turkic peoples,-2400,-1,40.9,97.5
 ptolemaic ally,-315,-313,37.5,27.2
-ptolemaic kingdom,-290,-1,34.5,29.8
+ptolemaic kingdom,-290,-1,34.6,29.7
 pu,-770,-678,37.5,112.5
 pugu,-1036,-1026,37.5,117.5
 pulinda,-610,-320,22.5,80.0
@@ -1099,7 +1099,7 @@ triballi,-446,-1,42.5,25.3
 trigarta,-950,-323,32.5,75.3
 trinidad and tobago,1990,,12.5,-62.5
 triphylia,-726,-244,37.5,22.5
-troezen,-494,-1,37.5,22.5
+troezen,-278,-243,37.5,22.5
 tuhe,-770,-308,42.5,119.0
 tummanna,-1536,-1326,40.3,32.8
 tunisia,1990,,35.0,10.0
@@ -1177,7 +1177,7 @@ xun,-770,-684,37.5,112.5
 xuqu,-770,-620,37.5,117.5
 yaminites,-1770,-1768,37.5,42.5
 yamkhad,-2004,-1544,37.0,39.0
-yan,-770,-1,38.5,120.7
+yan,-770,-1,38.5,120.6
 yan(2),-770,-764,32.5,112.5
 yan(3),-770,-680,32.5,120.0
 yang,-770,-678,37.5,112.5
@@ -1213,7 +1213,7 @@ zeng,-772,-678,32.5,112.5
 zeng(2),-770,-568,34.9,117.5
 zhang,-770,-664,37.5,117.5
 zhangzhung,-500,-1,33.2,81.7
-zhao,-453,-1,38.2,113.8
+zhao,-453,-1,38.2,113.9
 zhao clan,-500,-453,37.5,112.5
 zhen,-770,-700,32.5,112.5
 zheng,-770,-376,33.0,113.0
