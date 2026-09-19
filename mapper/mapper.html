@@ -1154,7 +1154,7 @@ async function rebuildColorNameMap(proj, year) {
         const { par, cities } = await loader.loadTile(tileDesc);
         for (const entry of par) {
             const dateMatch = matchDate(entry.dateRanges, year);
-            if (!dateMatch || !dateMatch.name) continue;
+            if (!dateMatch || !dateMatch.name || dateMatch.name === 'UNKNOWN') continue;
             const rgb = colorLookup.resolve(dateMatch);
             if (!rgb) continue;
             const key = rgb.r | (rgb.g << 8) | (rgb.b << 16);
