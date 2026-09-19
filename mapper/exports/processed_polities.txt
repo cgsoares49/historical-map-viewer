@@ -10,6 +10,7 @@
 #
 # name                                   rows
 "Elamite Tributary                        3
+"Shimashki                                1
 (Marhashi)                               32
 Abhiras                                   1
 Abilianikhi                               2
@@ -17,7 +18,7 @@ Abisara                                   1
 Aboriginal Peoples                       29
 Acarnania                                 3
 Achaea                                   55
-Achaean League                            8
+Achaean League                           29
 Achaeans                                  5
 Adena Culture                             1
 Aegina                                   10
@@ -63,7 +64,7 @@ Antandros                                 2
 Anti Macedon Alliance                    62
 Anti Roman Alliance                      23
 Anti Spartan Alliance                   123
-Antigonid Ally                          214
+Antigonid Ally                          216
 Antigonid Kingdom                       215
 Antipatrid Ally                           9
 Anupa                                     1
@@ -271,7 +272,7 @@ Egypt: Twenty Sixth Dynasty             107
 Egypt: Twenty Sixth Dynasty Tributary     2
 Egypt: Twenty Third Dynasty              61
 El Paraiso Culture                        2
-Elam                                    166
+Elam                                    169
 Elamite Tributary                        34
 Elimiotis                                 2
 Elis                                     40
@@ -441,7 +442,7 @@ Kingdom of Argos                         21
 Kingdom of Armenia                        2
 Kingdom of Arrapha                        3
 Kingdom of Assyria                       91
-Kingdom of Awan                          34
+Kingdom of Awan                          35
 Kingdom of Babylon                      120
 Kingdom of Carchemish                    16
 Kingdom of Cyrene                        16
@@ -466,7 +467,7 @@ Kingdom of Lagash                        18
 Kingdom of Larsa                         57
 Kingdom of Lysimakhos                    67
 Kingdom of Macedon                      808
-Kingdom of Macedonia                     69
+Kingdom of Macedonia                     71
 Kingdom of Malgium                        1
 Kingdom of Mari                          26
 Kingdom of Melid                         11
@@ -726,7 +727,7 @@ Proto-Mongol Peoples                      1
 Proto-Tibetans                            6
 Proto-Turkic Peoples                      2
 Ptolemaic Ally                           34
-Ptolemaic Kingdom                       182
+Ptolemaic Kingdom                       188
 Pu                                        1
 Pugu                                      1
 Pulinda                                   1
@@ -813,8 +814,8 @@ Scythians                                42
 Sea Peoples                              46
 Sealand                                   7
 Second Athenian League                  237
-Seleucid Ally                            13
-Seleucid Kingdom                         85
+Seleucid Ally                            14
+Seleucid Kingdom                         87
 Semitic Nomads                            3
 Shang                                    28
 Shang Dynasty                            59
@@ -823,7 +824,7 @@ Shao                                      1
 Shen                                      6
 Shen(2)                                   1
 Shi                                       1
-Shimashki                                46
+Shimashki                                48
 Shinuhtu                                  2
 Shu                                      14
 Shu Bao                                   1
@@ -888,7 +889,7 @@ Thracians                                38
 Thraco Cimmerians                         2
 Thraikes                                  2
 Three Guards Rebellion                   16
-Three Yi Tribes                           2
+Three Yi Tribes                           1
 Thyni                                     2
 Tian Qi                                  30
 Tian clan                                 4
@@ -897,7 +898,7 @@ Tong                                      1
 Triballi                                  5
 Trigarta                                  5
 Triphylia                                 5
-Troezen                                  50
+Troezen                                  49
 Tuhe                                      3
 Tummanna                                  7
 Tuwana                                    2
@@ -909,7 +910,7 @@ Umbri                                     2
 Umbria                                    4
 Umbrii                                    1
 Umma                                     13
-Ur III Tributary                         62
+Ur III Tributary                         70
 Urartu                                  177
 Urartu Tributary                         17
 Usinara                                   2
@@ -960,7 +961,7 @@ Xun                                       1
 Xuqu                                      1
 Yaminites                                 2
 Yamkhad                                  19
-Yan                                      17
+Yan                                      18
 Yan(2)                                    1
 Yan(3)                                    1
 Yang                                      1
@@ -992,7 +993,7 @@ Zeng                                      2
 Zeng(2)                                   1
 Zhang                                     1
 Zhangzhung                                1
-Zhao                                     48
+Zhao                                     49
 Zhao clan                                 5
 Zhen                                      1
 Zheng                                    40
