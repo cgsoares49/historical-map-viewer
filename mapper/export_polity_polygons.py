@@ -360,6 +360,60 @@ def build_combined_ring(poly_refs, cst_by_index, pol_by_index):
 # structurally from real entries by their POL segment alone and are reported
 # to the user instead of guessed at.
 
+# ── Semi-transient marker (2026-09-21) ──────────────────────────────────────
+#
+# areaType is "the code below the item number" in a PAR entry -- previously
+# a binary 0/1 switch (0 = coordinate dot, only shown when ShowDots is on;
+# anything else displayed normally, per renderer.js's `entry.areaType === 0`
+# checks, which never distinguish values above 1). Per the user: legacy
+# MAPPER's own display logic treats any value above 1 as transparent too
+# (same as 1), so areaType=2 is repurposed here as an explicit, deliberate
+# marker: "this fragment is a CONFIRMED overlay -- subtract its footprint
+# from whatever real territory it covers, for the window(s) it's active,
+# instead of requiring the overlaid entry's own date range to be manually
+# terminated." This replaces needing to guess/detect the authoring-shortcut
+# pattern (see find_polity_overlays.py) for any case the user marks this way
+# going forward.
+#
+# First real example: tile 130/024 entry #311, a "Kingdom of Macedon"
+# incursion fragment briefly overlaying the still-Persian-owned
+# "Hellespontine Phrygia" entry (-336.6..-335.5, ahead of that entry's own
+# -334.5 ownership change to Macedon) -- confirmed via find_polity_overlays.py
+# once it was taught to include areaType=2 in its scan (100% of
+# Hellespontine Phrygia's own area covered in that window).
+SEMITRANSIENT_AREA_TYPE = 2
+
+
+def is_semitransient_entry(entry):
+    return entry['areaType'] == SEMITRANSIENT_AREA_TYPE
+
+
+def find_semitransients(tiles_data, repair_log):
+    """Every areaType=2 PAR entry across the given tiles, regardless of its
+    own name/owner -- a semi-transient's whole purpose is overlaying a
+    DIFFERENT polity's untouched territory, so it must be visible to EVERY
+    --polity export run scoped to these same tiles, not just a run for its
+    own owner. Returns a list of {tile, entry, ring_polygon, key} -- 'key'
+    is (lat_str, lon_str, entryIndex), a stable identity used by
+    apply_semitransient_subtraction to avoid subtracting a semi-transient
+    from its own entry (e.g. exporting "Kingdom of Macedon" itself must
+    never have entry #311 subtracted from entry #311)."""
+    out = []
+    for tile in tiles_data:
+        for entry in tile['par_entries']:
+            if not is_semitransient_entry(entry):
+                continue
+            ring, has_segment = build_combined_ring(entry['polyRefs'], tile['cst_by_index'], tile['pol_by_index'])
+            if not has_segment or len(ring) < 4:
+                continue
+            poly = ring_to_polygon(ring, repair_log)
+            if poly is None or poly.is_empty:
+                continue
+            out.append({'tile': tile, 'entry': entry, 'ring_polygon': poly,
+                         'key': (tile['lat_str'], tile['lon_str'], entry['entryIndex'])})
+    return out
+
+
 def is_transient(poly_refs, pol_by_index):
     saw_pol = False
     for pol_index, _flag in poly_refs:
@@ -604,10 +658,56 @@ def build_breakpoints(entries, name_match):
     return sorted(breakpoints)
 
 
-def slice_into_rows(entries, breakpoints, name_match, seam_log, own_path=None):
+def semitransient_breakpoints(semitransients):
+    """Breakpoints from every semi-transient's own date-range boundaries
+    (same floor/open-end convention as build_breakpoints) -- needed so a
+    caller's own breakpoint grid gets sliced precisely at a semi-transient's
+    from/to years too. Without this, a semi-transient active for only part
+    of an otherwise-wider polity breakpoint interval would have its
+    subtraction applied to the WHOLE interval (if the interval's midpoint
+    happens to fall inside its window) or not at all (if the midpoint falls
+    outside) -- both wrong at the boundary. Reuses build_breakpoints with an
+    always-true name_match since it only needs pe['entry']['dateRanges']."""
+    return set(build_breakpoints(semitransients, lambda n: True))
+
+
+def apply_semitransient_subtraction(geom, test_year, active_keys, semitransients, seam_log):
+    """Subtracts every applicable semi-transient's footprint from geom for
+    this specific test_year, skipping any semi-transient whose OWN entry is
+    already one of the entries contributing to geom (active_keys) -- that
+    guards against a semi-transient being subtracted from itself when
+    exporting its own owner (e.g. exporting "Kingdom of Macedon" must not
+    subtract entry #311 from entry #311's own territory). Returns the
+    (possibly unchanged) geometry, or None if the subtraction consumes it
+    entirely."""
+    if not semitransients:
+        return geom
+    for sem in semitransients:
+        if sem['key'] in active_keys:
+            continue
+        if not match_date(sem['entry']['dateRanges'], test_year):
+            continue
+        if not geom.intersects(sem['ring_polygon']):
+            continue
+        geom = to_polygonal(geom.difference(sem['ring_polygon']))
+        if geom is not None and not geom.is_valid:
+            seam_log[0] += 1
+            geom = to_polygonal(make_valid(geom))
+        if geom is None or geom.is_empty:
+            return None
+    return geom
+
+
+def slice_into_rows(entries, breakpoints, name_match, seam_log, own_path=None, semitransients=None):
     """Each row also carries color_index and color_conflict (used by the
     caller to decide whether to show a real RGB or "various component
     colors").
+
+    semitransients (optional): output of find_semitransients() -- when
+    given, each interval's unioned geometry has any applicable areaType=2
+    fragment's footprint subtracted out (see apply_semitransient_subtraction)
+    before the row is recorded. Only meaningful for real-territory callers;
+    pass None (default) for TRANSIENT rows, where "Area" isn't reported.
 
     own_path (optional): this entity's own exact path tuple, e.g.
     ('Persian Empire', 'Egypt', 'Egypt', 'Egypt'). `entries` is gathered via
@@ -636,6 +736,7 @@ def slice_into_rows(entries, breakpoints, name_match, seam_log, own_path=None):
         b0, b1 = breakpoints[i], breakpoints[i + 1]
         test_year = (b0 + b1) / 2.0
         active = []
+        active_keys = set()
         color_indexes = []
         own_color_indexes = []
         has_descendant = False
@@ -643,6 +744,7 @@ def slice_into_rows(entries, breakpoints, name_match, seam_log, own_path=None):
             m = match_date(pe['entry']['dateRanges'], test_year)
             if m and name_match(m['name']):
                 active.append(pe['ring_polygon'])
+                active_keys.add((pe['tile']['lat_str'], pe['tile']['lon_str'], pe['entry']['entryIndex']))
                 color_indexes.append(m['colorIndex'])
                 if own_path is not None:
                     if path_of(m['name']) == own_path:
@@ -657,6 +759,10 @@ def slice_into_rows(entries, breakpoints, name_match, seam_log, own_path=None):
         if geom is not None and not geom.is_valid:
             seam_log[0] += 1
             geom = to_polygonal(make_valid(geom))
+        if geom is None or geom.is_empty:
+            prev_geom = None
+            continue
+        geom = apply_semitransient_subtraction(geom, test_year, active_keys, semitransients, seam_log)
         if geom is None or geom.is_empty:
             prev_geom = None
             continue
@@ -1092,6 +1198,15 @@ def main():
     print(f"Loading {len(tile_pairs)} tiles: {tile_pairs}")
     tiles_data = [load_tile(lat, lon) for lat, lon in tile_pairs]
 
+    semitransient_repair_log = [0]
+    semitransients = find_semitransients(tiles_data, semitransient_repair_log)
+    semi_bp = semitransient_breakpoints(semitransients) if semitransients else set()
+    if semitransients:
+        print(f"Found {len(semitransients)} semi-transient (areaType=2) entr{'y' if len(semitransients) == 1 else 'ies'} "
+              f"in scope -- their footprint will be subtracted from whatever real territory they overlap "
+              f"during their own active window(s): "
+              + ', '.join(f"#{s['entry']['entryIndex']} ({s['tile']['lat_str']}/{s['tile']['lon_str']})" for s in semitransients))
+
     primaries_map = load_primaries_map()
     offsets = load_offsets()
     parent_color = primaries_map.get(args.polity.strip().lower())
@@ -1122,12 +1237,12 @@ def main():
           f"circle-template tribal entries: {len(parent_circles)}  |  transient circle entries: {len(parent_circles_transient)}  |  "
           f"ring repairs: {repair_log[0]}")
 
-    parent_breakpoints = build_breakpoints(parent_real, parent_match)
+    parent_breakpoints = sorted(set(build_breakpoints(parent_real, parent_match)) | semi_bp)
     print(f"Breakpoints: {len(parent_breakpoints)}  range: {parent_breakpoints[0] if parent_breakpoints else None} .. {parent_breakpoints[-1] if parent_breakpoints else None}")
     parent_breakpoints = truncate(parent_breakpoints)
 
     seam_log = [0]
-    parent_rows = slice_into_rows(parent_real, parent_breakpoints, parent_match, seam_log)
+    parent_rows = slice_into_rows(parent_real, parent_breakpoints, parent_match, seam_log, semitransients=semitransients)
     print(f"Output rows: {len(parent_rows)}  |  union geometries needing repair: {seam_log[0]}")
 
     entities = [{'name': args.polity, 'member_of': '', 'type': real_type(args.polity),
@@ -1190,9 +1305,10 @@ def main():
     root_circle_repair_log = [0]
     root_circles, root_circles_transient = find_circle_entries_by_predicate(tiles_data, root_bare_match, root_circle_repair_log)
 
-    root_circle_breakpoints = truncate(build_breakpoints(root_circles, root_bare_match))
+    root_circle_breakpoints = truncate(sorted(set(build_breakpoints(root_circles, root_bare_match)) | semi_bp))
     root_circle_seam_log = [0]
-    root_circle_rows = slice_into_rows(root_circles, root_circle_breakpoints, root_bare_match, root_circle_seam_log)
+    root_circle_rows = slice_into_rows(root_circles, root_circle_breakpoints, root_bare_match, root_circle_seam_log,
+                                        semitransients=semitransients)
     if root_circle_rows:
         print(f"  (root-level circle-template tribal rows: {len(root_circle_rows)})")
         entities.append({'name': args.polity, 'member_of': '', 'type': 'TRIBAL_AREA',
@@ -1235,9 +1351,10 @@ def main():
         ent_real, ent_transient = find_entries_by_predicate(tiles_data, entity_match, ent_repair_log)
         ent_dots, ent_dots_transient = find_dot_entries_by_predicate(tiles_data, entity_match)
 
-        ent_real_breakpoints = truncate(build_breakpoints(ent_real, entity_match))
+        ent_real_breakpoints = truncate(sorted(set(build_breakpoints(ent_real, entity_match)) | semi_bp))
         ent_seam_log = [0]
-        ent_real_rows = slice_into_rows(ent_real, ent_real_breakpoints, entity_match, ent_seam_log, own_path=path)
+        ent_real_rows = slice_into_rows(ent_real, ent_real_breakpoints, entity_match, ent_seam_log, own_path=path,
+                                         semitransients=semitransients)
 
         ent_trans_breakpoints = truncate(build_breakpoints(ent_transient, entity_match))
         ent_trans_seam_log = [0]
@@ -1254,9 +1371,10 @@ def main():
         ent_circle_repair_log = [0]
         ent_circles, ent_circles_transient = find_circle_entries_by_predicate(tiles_data, entity_match, ent_circle_repair_log)
 
-        ent_circle_breakpoints = truncate(build_breakpoints(ent_circles, entity_match))
+        ent_circle_breakpoints = truncate(sorted(set(build_breakpoints(ent_circles, entity_match)) | semi_bp))
         ent_circle_seam_log = [0]
-        ent_circle_rows = slice_into_rows(ent_circles, ent_circle_breakpoints, entity_match, ent_circle_seam_log, own_path=path)
+        ent_circle_rows = slice_into_rows(ent_circles, ent_circle_breakpoints, entity_match, ent_circle_seam_log,
+                                           own_path=path, semitransients=semitransients)
 
         ent_circle_trans_breakpoints = truncate(build_breakpoints(ent_circles_transient, entity_match))
         ent_circle_trans_seam_log = [0]

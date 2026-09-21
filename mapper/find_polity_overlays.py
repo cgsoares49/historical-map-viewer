@@ -43,6 +43,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from export_polity_polygons import (
     load_tile, build_combined_ring, ring_to_polygon, is_transient,
     is_keyword_transient, owner_name, path_of, TO_EQUAL_AREA, DATA_DIR,
+    SEMITRANSIENT_AREA_TYPE, is_semitransient_entry,
 )
 import glob
 import re
@@ -252,24 +253,43 @@ def is_placeholder_entry(entry):
 
 
 def load_candidates(tile, tile_key, pol_registry, date_registry):
-    """Real-territory (non-dot, non-transient) areaType=1 entries with a
-    resolved ring polygon, projected geometry, and cached area/bounds --
-    everything the pairwise scan needs, computed once per entry."""
+    """Real-territory (non-dot, non-transient) areaType=1 OR areaType=2
+    (semi-transient, see is_semitransient_entry) entries with a resolved
+    ring polygon, projected geometry, and cached area/bounds -- everything
+    the pairwise scan needs, computed once per entry. areaType=2 entries
+    are included in the geometric scan (so their overlap can still be
+    detected and reported) but every group containing one is routed to a
+    separate "confirmed" output file instead of the main manual-review
+    candidates list -- see main()."""
     repair_log = [0]
     load_errors = 0
     registry_excluded = 0
     out = []
     for entry in tile['par_entries']:
-        if entry['areaType'] != 1:
+        if entry['areaType'] not in (1, SEMITRANSIENT_AREA_TYPE):
             continue
-        if is_transient(entry['polyRefs'], tile['pol_by_index']) or \
-                any(is_keyword_transient(dr['name']) for dr in entry['dateRanges']):
-            continue
-        if is_placeholder_entry(entry):
-            continue
-        if is_known_transient(tile_key, entry, pol_registry, date_registry):
-            registry_excluded += 1
-            continue
+        # A semi-transient is an explicit, definitive category (the user
+        # marked it directly in the canonical data) -- it must NOT go
+        # through the heuristic transient-detection filters below, which
+        # exist only to catch the OTHER, ambiguous "is this actually an
+        # army/naval marker misclassified as territory" cases. Found
+        # 2026-09-21: entry #311 (130/024) was being silently excluded by
+        # is_known_transient's Ancient Index cross-reference -- its own
+        # short "Kingdom of Macedon" date window happened to fall inside
+        # some unrelated logged transient action in that densely-logged
+        # tile, a false-positive collision of exactly the kind already
+        # seen with #48/#54 (see is_known_transient's docstring), but
+        # here masking a real, already-confirmed overlay instead of a
+        # true miss.
+        if not is_semitransient_entry(entry):
+            if is_transient(entry['polyRefs'], tile['pol_by_index']) or \
+                    any(is_keyword_transient(dr['name']) for dr in entry['dateRanges']):
+                continue
+            if is_placeholder_entry(entry):
+                continue
+            if is_known_transient(tile_key, entry, pol_registry, date_registry):
+                registry_excluded += 1
+                continue
         ring, has_segment = build_combined_ring(entry['polyRefs'], tile['cst_by_index'], tile['pol_by_index'])
         if not has_segment or len(ring) < 4:
             continue
@@ -299,6 +319,7 @@ def load_candidates(tile, tile_key, pol_registry, date_registry):
             'entry': entry, 'proj': proj,
             'area_km2': area_km2,
             'bounds': poly.bounds,
+            'is_semitransient': is_semitransient_entry(entry),
         })
     return out, repair_log[0], load_errors, registry_excluded
 
@@ -519,7 +540,7 @@ def scan_tile(lat, lon, min_ratio, pol_registry, date_registry):
     for c in candidates:
         key = (lat, lon, c['entry']['entryIndex'])
         entry_info[key] = {'names': entry_names(c['entry']), 'area_km2': round(c['area_km2'], 1),
-                            'dateRanges': c['entry']['dateRanges']}
+                            'dateRanges': c['entry']['dateRanges'], 'is_semitransient': c['is_semitransient']}
 
     events = []
     n = len(candidates)
@@ -678,17 +699,26 @@ def main():
     else:
         print(f"\n(No cross-reference: {ANIMATION_LOG_PATH} not found/readable -- ConfirmedByLog will be blank.)")
 
+    confirmed_out = os.path.join(os.path.dirname(args.out), 'polity_overlay_confirmed.csv')
     os.makedirs(os.path.dirname(args.out), exist_ok=True)
     cyclic_groups = 0
     max_depth_seen = 1
-    with open(args.out, 'w', newline='', encoding='utf-8') as f:
+    header = ['GroupID', 'GroupSize', 'Tile', 'EntryIndex', 'LastNameSegment', 'StackDepth', 'Role',
+               'Overlays', 'OverlaidBy', 'AreaKm2', 'FirstOverlapFrom', 'FirstOverlapTo',
+               'DistinctWindows', 'MaxIntersectionRatio', 'Semitransient', 'ConfirmedByLog', 'AllOwnersEver']
+    confirmed_rows_written = 0
+    with open(args.out, 'w', newline='', encoding='utf-8') as f, \
+            open(confirmed_out, 'w', newline='', encoding='utf-8') as fc:
         writer = csv.writer(f)
-        writer.writerow(['GroupID', 'GroupSize', 'Tile', 'EntryIndex', 'LastNameSegment', 'StackDepth', 'Role',
-                          'Overlays', 'OverlaidBy', 'AreaKm2', 'GroupWindowFrom', 'GroupWindowTo',
-                          'DistinctWindows', 'MaxIntersectionRatio', 'ConfirmedByLog', 'AllOwnersEver'])
+        writer.writerow(header)
+        confirmed_writer = csv.writer(fc)
+        confirmed_writer.writerow(header)
         for gi, (entities, ids) in enumerate(groups, start=1):
             members = sorted(entities, key=lambda k: (k[0], k[1], k[2]))
             group_windows = sorted({(all_events[i]['lo'], all_events[i]['hi']) for i in ids})
+            # Whole-group envelope -- kept only as a fallback for the log
+            # cross-reference and for a member with no own_windows at all
+            # (shouldn't happen for a real event member, but cheap to guard).
             group_from = min(w[0] for w in group_windows)
             group_to = max(w[1] for w in group_windows)
             max_ratio = max(all_events[i]['ratio'] for i in ids)
@@ -702,11 +732,34 @@ def main():
             logged_hits = match_logged_overlays(logged_by_tile, group_tile, group_from, group_to)
             confirmed_by_log = '; '.join(logged_hits)
 
+            # A group is CONFIRMED (not a candidate needing manual review)
+            # if any member is an areaType=2 semi-transient -- the user has
+            # already deliberately marked this specific overlay as intentional
+            # and handled (area subtraction), so it shouldn't keep surfacing
+            # as an authoring-bug candidate. Routed to a separate file rather
+            # than silently dropped, so it stays visible for audit -- the
+            # original bug report was exactly "I can't tell if this was found
+            # or not."
+            is_confirmed_group = any(all_entry_info[k]['is_semitransient'] for k in members)
+
+            # Per-entity own overlap window(s) -- NOT the whole group's
+            # min/max envelope. Found 2026-09-21: the group envelope can span
+            # far wider than when a SPECIFIC entity's own overlap relationship
+            # actually started (e.g. one long-lived entity's several separate
+            # overlap episodes centuries apart, or a multi-entity group where
+            # one member's own relationship is much narrower than another's).
+            # This is what the user meant by "should be the date the overlay
+            # first occurs" -- FirstOverlapFrom/To below now reports THIS
+            # entity's own earliest/latest involved window, not the group's.
+            own_windows_by_key = {}
+            for key in members:
+                ww = sorted({w for rec in list(above.get(key, {}).values()) + list(overlaid_by.get(key, {}).values())
+                             for w in rec['windows']})
+                own_windows_by_key[key] = ww or group_windows
+
             def display_name(key):
                 info = all_entry_info[key]
-                own_windows = sorted({w for rec in list(above.get(key, {}).values()) + list(overlaid_by.get(key, {}).values())
-                                       for w in rec['windows']}) or group_windows
-                return active_last_segment_during(info['dateRanges'], own_windows)
+                return active_last_segment_during(info['dateRanges'], own_windows_by_key[key])
 
             names = {k: display_name(k) for k in members}
 
@@ -714,9 +767,14 @@ def main():
                 return '; '.join(f"{names[o]} ({rec_dict[o]['pct']:.0f}% {label}) [{format_window(rec_dict[o]['windows'])}]"
                                   for o in sorted(rec_dict, key=lambda k: -rec_dict[k]['pct']))
 
+            out_writer = confirmed_writer if is_confirmed_group else writer
+
             for key in members:
                 lat, lon, entry_idx = key
                 info = all_entry_info[key]
+                own_windows = own_windows_by_key[key]
+                own_from = min(w[0] for w in own_windows)
+                own_to = max(w[1] for w in own_windows)
 
                 if cyclic:
                     stack_depth, role, overlays_str, overlaid_by_str = '', 'AMBIGUOUS (cyclic evidence)', '', ''
@@ -726,12 +784,17 @@ def main():
                     overlays_str = format_relations(above[key], 'of its own area') if above[key] else ''
                     overlaid_by_str = format_relations(overlaid_by[key], 'of THIS entity covered') if overlaid_by[key] else ''
 
-                writer.writerow([gi, len(entities), f'{lat}/{lon}', entry_idx, names[key], stack_depth, role,
-                                  overlays_str, overlaid_by_str, info['area_km2'],
-                                  round(group_from, 1), round(group_to, 1), len(group_windows),
-                                  round(max_ratio, 3), confirmed_by_log, '; '.join(info['names'])])
+                out_writer.writerow([gi, len(entities), f'{lat}/{lon}', entry_idx, names[key], stack_depth, role,
+                                      overlays_str, overlaid_by_str, info['area_km2'],
+                                      round(own_from, 1), round(own_to, 1), len(own_windows),
+                                      round(max_ratio, 3), 'Y' if info['is_semitransient'] else '',
+                                      confirmed_by_log, '; '.join(info['names'])])
+                if is_confirmed_group:
+                    confirmed_rows_written += 1
     total_entities = len(set().union(*[e for e, _ in groups])) if groups else 0
-    print(f"\nWrote {total_entities} entity row(s) across {len(groups)} relationship group(s) to {args.out}")
+    print(f"\nWrote {total_entities - confirmed_rows_written} entity row(s) needing manual review to {args.out}")
+    print(f"Wrote {confirmed_rows_written} entity row(s) from CONFIRMED (areaType=2 semi-transient) "
+          f"overlays to {confirmed_out} -- excluded from manual review, listed here for audit only.")
     print(f"  Stack depths found: up to {max_depth_seen} layer(s).")
     if cyclic_groups:
         print(f"  ({cyclic_groups} group(s) had a genuine cyclic contradiction in the duration ordering -- "
