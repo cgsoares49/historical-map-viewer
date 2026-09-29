@@ -153,7 +153,6 @@ Dumat al-Jandal,39.8822,29.8032,Dumat,-950,-690,0
 Dumat al-Jandal,39.8822,29.8032,Adammatu,-690,106,0
 Dumat al-Jandal,39.8822,29.8032,Dumatha,106,633,0
 Dumat al-Jandal,39.8822,29.8032,Dumat al-Jandal,633,,1
-Test Battle,42.5,27.5,Test Battle,-2400,-2000,1
 Persepolis,52.889437,29.93534,Parsa,-516,-330,0
 Persepolis,52.889437,29.93534,Persepolis,-330,-100,1
 Taoke,51.187805,29.275641,Temukan,-450,-330,0
@@ -718,6 +717,10 @@ Constantine,6.6133,36.368115,Cirta,-400,313,0
 Constantine,6.6133,36.368115,Constantina,313,708,0
 Constantine,6.6133,36.368115,Qacentina,708,1837,0
 Constantine,6.6133,36.368115,Constantine,1837,,1
+El Kef,8.7122,36.18057,Sicca,-530,-146,0
+El Kef,8.7122,36.18057,Sicca Veneria,-146,698,0
+El Kef,8.7122,36.18057,Shaqbanariya,698,1550,0
+El Kef,8.7122,36.18057,El Kef,1550,,1
 Utica,10.061305,37.055611,Utica,-1102,700,1
 Carthage,10.3233,36.8528,Carthage,-814,,1
 Carthage,10.3233,36.8528,Colonia Iunonia,-122,-90,0
@@ -799,6 +802,7 @@ Tunis,10.17165,36.79923,Tunis,690,,1
 Marsala,12.42966,37.80273,Lilybaeum,-241,750,0
 Marsala,12.42966,37.80273,Marsala,750,,1
 Herbessos,14.30061,37.42658,Herbessos,-550,1000,1
+the Aegates,12.19391,37.95087,the Aegates,-242,-222,1
 Corfu,19.9156,39.6063,Corcyra,-740,900,0
 Corfu,19.9156,39.6063,Corfu,900,,1
 Naxos,15.2678,37.8225,Naxos,-734,-404,1
@@ -1326,7 +1330,7 @@ G r n,37.2775,38.7225,Gauraina,-330,700,0
 G r n,37.2775,38.7225,G r n,700,,1
 Kussara,36.02585,38.5203,Kussara,-2050,-1150,1
 Lawazantiya,35.75,37.0,Lawazantiya,-1900,-1200,1
-Irradu,38.5279,36.891,Irradu,-1900,-1250,1
+Irridu,38.5279,36.891,Irridu,-1900,-1250,1
 Zalpa/Zalbar,36.70417,37.03,Zalpa/Zalbar,-2000,-1500,1
 Hassuwa,37.8241,37.2892,Hassuwa,-2400,-1500,1
 Samuha,37.4465,39.8794,Samuha,-1700,-1180,1
