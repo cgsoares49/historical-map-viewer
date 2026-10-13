@@ -358,6 +358,9 @@ def analyse_tile(lat, lon, events, args, tribal_log):
                 other_names.append(f"#{o[2]} {active_last_segment_during(oe['dateRanges'], ow)}")
         rows.append({
             'Tile': tile_key, 'EntryIndex': entry['entryIndex'],
+            'CenterLon': round((c['bounds'][0] + c['bounds'][2]) / 2, 3),
+            'CenterLat': round((c['bounds'][1] + c['bounds'][3]) / 2, 3),
+            'SizeDeg': round(max(c['bounds'][2] - c['bounds'][0], c['bounds'][3] - c['bounds'][1]), 3),
             'Name': active_last_segment_during(entry['dateRanges'], merged),
             'OwnersDuringOverlay': owners_during(entry['dateRanges'], merged),
             'LifeFrom': round(min(all_from), 1) if all_from else '',
@@ -407,7 +410,7 @@ def main():
 
     os.makedirs(EXPORTS, exist_ok=True)
     cols = [k for k in all_rows[0] if not k.startswith('_')] if all_rows else []
-    tier_order = lambda r: (0 if r['Tier'] == 'AUTO' else 1 if r['Tier'].startswith('NEAR') else 2, r['Tile'], r['EntryIndex'])
+    tier_order = lambda r: (0 if r['Tier'] == 'AUTO' else 1 if r['Tier'].startswith('NEAR') else 2, -float(r['AreaKm2']), r['Tile'], r['EntryIndex'])
     with open(args.out, 'w', newline='', encoding='utf-8') as f:
         w = csv.DictWriter(f, fieldnames=cols, extrasaction='ignore')
         w.writeheader()

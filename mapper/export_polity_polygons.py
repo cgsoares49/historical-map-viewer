@@ -37,9 +37,9 @@ import argparse
 from datetime import date
 
 import shapely
-from shapely.geometry import Polygon, Point, MultiPoint, mapping
+from shapely.geometry import Polygon, Point, MultiPoint, LineString, mapping
 from shapely.validation import make_valid
-from shapely.ops import unary_union, transform
+from shapely.ops import unary_union, transform, polygonize
 from pyproj import Transformer
 
 from geo_region import classify_region
@@ -481,13 +481,48 @@ def to_polygonal(geom):
     return None
 
 
+def _evenodd_polygon(ring_points):
+    """Fill a self-touching/self-crossing ring the way the live renderer does:
+    renderer.js fills polities with ctx.fill('evenodd') (GDI+ FillPolygon
+    default = Alternate), i.e. a point is inside iff a ray from it crosses the
+    ring an ODD number of times. shapely's make_valid() does not follow that
+    rule for rings that trace an edge twice -- found 2026-10-13 on tile
+    085/290 entry #1 "Brazil - Amazonas": the ring runs two border segments and
+    then closes via the tile corners, tracing the x=-70 tile edge twice, so
+    even-odd leaves the Colombia+Peru wedge out (289,717 km2) while make_valid
+    returned the whole box (307,347 km2), double-counting 17,630 km2 and
+    producing false overlay detections. Returns None if the ring yields no
+    faces (caller falls back to make_valid)."""
+    try:
+        faces = list(polygonize(unary_union(LineString(ring_points))))
+    except Exception:
+        return None
+    if not faces:
+        return None
+    x1 = [p[0] for p in ring_points[:-1]]; y1 = [p[1] for p in ring_points[:-1]]
+    x2 = [p[0] for p in ring_points[1:]];  y2 = [p[1] for p in ring_points[1:]]
+    odd = []
+    for f in faces:
+        x, y = f.representative_point().coords[0]
+        crossings = 0
+        for ax, ay, bx, by in zip(x1, y1, x2, y2):
+            if (ay > y) != (by > y) and ax + (y - ay) * (bx - ax) / (by - ay) > x:
+                crossings += 1
+        if crossings % 2 == 1:
+            odd.append(f)
+    if not odd:
+        return None
+    return to_polygonal(unary_union(odd))
+
+
 def ring_to_polygon(ring_points, repair_log):
     if len(ring_points) < 4:
         return None
     poly = Polygon(ring_points)
     if not poly.is_valid:
         repair_log[0] += 1
-        poly = to_polygonal(make_valid(poly))
+        eo = _evenodd_polygon(ring_points)
+        poly = eo if eo is not None else to_polygonal(make_valid(poly))
     return poly
 
 
