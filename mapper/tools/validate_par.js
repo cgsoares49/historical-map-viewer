@@ -166,7 +166,7 @@ function validatePar(text, label) {
 
         if (i >= ls.length) return fail(i, `entry ${e} (entryIndex ${entryIndex}): ran out of lines before areaType`);
         const areaType = parseInt(ls[i]);
-        if (areaType !== 0 && areaType !== 1) return fail(i, `entry ${e} (entryIndex ${entryIndex}): bad areaType "${ls[i]}" (expected 0 or 1)`);
+        if (areaType !== 0 && areaType !== 1 && areaType !== 2) return fail(i, `entry ${e} (entryIndex ${entryIndex}): bad areaType "${ls[i]}" (expected 0, 1 or 2 -- 2 = semi-transient overlay)`);
         i++;
 
         if (i >= ls.length) return fail(i, `entry ${e} (entryIndex ${entryIndex}): ran out of lines before date-range count`);
