@@ -1139,6 +1139,10 @@ const loader      = new DataLoader();
 let   colorLookup  = null;
 let   mapRenderer  = null;
 let   colorNameMap = new Map();  // packed RGB integer → full area name
+// Packed RGBs painted by UNKNOWN territory (primaries.txt gives UNKNOWN a real gray). Kept OUT of
+// colorNameMap so the nearest-land fallback never latches onto UNKNOWN slivers near terrain lines
+// (the 2026-09-19 bug), but an EXACT click on one reports "UNKNOWN" instead of "(water / no data)".
+let   unknownColorKeys = new Set();
 let   lastHoveredCountry = null; // { name, x, y } — updated on mousemove
 let   distPt1 = null, distPt2 = null, distPreviewGeo = null; // distance measurer
 
@@ -1147,6 +1151,8 @@ let   distPt1 = null, distPt2 = null, distPreviewGeo = null; // distance measure
 // Full area names (e.g. "France - Corsica") come from PAR dateRange.name as-is.
 async function rebuildColorNameMap(proj, year) {
     colorNameMap = new Map();
+    unknownColorKeys = new Set();
+    const unknownCandidates = new Set();
     const showCities = document.getElementById('showCities').checked;
     const cityDetail = parseInt(document.getElementById('cityDetail').value) || 10;
     const tiles = tileManager.getTiles(proj);
@@ -1154,10 +1160,11 @@ async function rebuildColorNameMap(proj, year) {
         const { par, cities } = await loader.loadTile(tileDesc);
         for (const entry of par) {
             const dateMatch = matchDate(entry.dateRanges, year);
-            if (!dateMatch || !dateMatch.name || dateMatch.name === 'UNKNOWN') continue;
+            if (!dateMatch || !dateMatch.name) continue;
             const rgb = colorLookup.resolve(dateMatch);
             if (!rgb) continue;
             const key = rgb.r | (rgb.g << 8) | (rgb.b << 16);
+            if (dateMatch.name === 'UNKNOWN') { unknownCandidates.add(key); continue; }
             if (!colorNameMap.has(key)) colorNameMap.set(key, dateMatch.name);
         }
         // Cities are drawn on top, so their entries overwrite country entries for the same key.
@@ -1171,6 +1178,8 @@ async function rebuildColorNameMap(proj, year) {
             }
         }
     }));
+    // A real entry always wins a colour collision; UNKNOWN only claims colours nothing else uses.
+    for (const k of unknownCandidates) if (!colorNameMap.has(k)) unknownColorKeys.add(k);
 }
 
 Promise.all([
@@ -2762,6 +2771,7 @@ async function renderWorldContext() {
     _selectionMode    = false;
     contextProjection = new MapProjection(0, 0, 0, canvas.width, canvas.height);
     colorNameMap = new Map();  // BMP pixel colors don't match computed colors
+    unknownColorKeys = new Set();
     const statusEl = document.getElementById('status');
     const [img, logoImg] = await Promise.all([
         new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej;           i.src = 'map_2000CE.png';  }),
@@ -3555,6 +3565,9 @@ function showInfoPopupAtPixel(px, py, screenX, screenY) {
                 name = typeof entry === 'object' ? entry.name : entry;
                 if (typeof entry === 'object' && entry.lon != null)
                     cityCoords = { lon: entry.lon, lat: entry.lat };
+            }
+            else if (unknownColorKeys.has(colorKey)) {
+                name = 'UNKNOWN';
             }
         }
     } catch (err) {
