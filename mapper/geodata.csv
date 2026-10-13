@@ -115,6 +115,7 @@ argaric culture,-2200,-1500,37.5,-2.5
 argentina,1990,,-40.0,-65.0
 argos,-494,-272,37.5,22.5
 armenia,1990,,40.0,45.0
+armenia minor,-240,-1,39.3,39.6
 aryan people,-2400,-532,31.8,70.3
 arzawa,-1776,-1202,37.7,29.3
 asinia,-780,-758,37.5,22.5
@@ -169,7 +170,7 @@ bit-adini,-1076,-857,37.5,37.5
 bit-bahiani,-1076,-896,37.5,40.0
 bit-halupe,-1076,-894,37.5,40.0
 bit-zamani,-1026,-882,37.5,40.0
-bithynia,-323,-1,42.5,30.3
+bithynia,-323,-1,41.9,30.0
 bithynians,-696,-552,42.5,29.6
 biyang,-770,-564,32.5,117.5
 bo,-770,-640,32.5,112.5
@@ -204,7 +205,7 @@ cape verde,1990,,15.0,-25.0
 carduchii,-386,-384,37.5,42.5
 carians,-1202,-544,37.5,27.5
 caribbean peoples,-2400,-1,16.4,-72.5
-carthage,-602,-1,37.2,11.6
+carthage,-602,-1,37.2,11.2
 carthaginian ally,-500,-256,35.5,5.5
 carthaginian tributary,-405,-376,37.5,12.5
 carystus,-386,-294,37.5,22.5
@@ -212,7 +213,7 @@ catane,-462,-270,37.5,14.6
 caucasians,-2400,-690,39.9,42.1
 cedi,-825,-320,25.2,80.3
 celtic mercenaries,-277,-273,41.4,23.6
-celto-ligurians,-2050,-1,49.1,5.2
+celto-ligurians,-2050,-1,49.0,5.2
 celts,-1250,-1,44.4,17.1
 central african peoples,-2400,-1,2.7,22.2
 central african republic,1990,,7.5,20.0
@@ -259,7 +260,7 @@ cushitic people,-1000,-1,6.0,43.9
 cycladic islands,-246,-1,37.5,26.1
 cypriot kingdoms,-1180,-1050,34.9,32.5
 cyprus,1990,,35.0,32.5
-cyzicus,-323,-280,42.5,27.0
+cyzicus,-323,-1,42.5,27.0
 czech republic,1990,,50.0,16.0
 côte d'ivoire,1990,,7.5,-5.0
 d'mt,-980,-1,17.3,40.9
@@ -388,6 +389,7 @@ finland,1990,,65.0,25.0
 finns,-2400,-1,58.1,43.9
 france,1990,,0.0,15.0
 gabon,1990,,0.0,10.0
+galatians,-240,-1,39.5,33.3
 gambia,1990,,12.5,-15.0
 gandhara,-975,-518,33.1,73.1
 gao,-770,-722,32.5,117.5
@@ -485,7 +487,7 @@ indonesia,1990,,-2.5,120.0
 indus valley civilization,-2400,-1750,23.4,69.0
 indus valley peoples,-2400,-775,25.2,69.7
 ionian league,-690,-478,38.3,27.5
-ionians,-1202,-1,39.6,24.9
+ionians,-1202,-1,39.5,24.8
 iran,1990,,32.5,52.5
 iranians,-2400,-532,39.7,62.6
 iraq,1990,,32.5,42.5
@@ -530,7 +532,7 @@ kalaurian amphictiony,-670,-494,37.5,22.5
 kalinga,-700,262,19.5,83.8
 kamarina,-466,-405,37.5,12.5
 kamboja,-700,-536,34.6,70.3
-kappadokia,-330,-1,38.9,35.9
+kappadokia,-330,-1,38.7,35.8
 karakhar,-2072,-1168,32.5,47.5
 karalla,-718,-706,37.5,47.5
 karmania,-330,-325,30.4,56.5
@@ -552,7 +554,7 @@ kingdom of akshak,-2372,-2284,33.3,43.0
 kingdom of alakhtum,-2400,-2200,37.5,37.5
 kingdom of andarig,-1826,-1726,37.5,42.5
 kingdom of argos,-780,-494,37.5,22.5
-kingdom of armenia,-323,-1,38.9,41.1
+kingdom of armenia,-323,-1,39.0,40.7
 kingdom of arrapha,-1726,-760,37.5,44.5
 kingdom of assyria,-1920,-906,36.4,42.4
 kingdom of awan,-2400,-1170,31.1,50.6
@@ -612,6 +614,7 @@ kopai,-386,-379,37.5,22.5
 koreans,-2400,-1,37.1,127.5
 kosala,-950,-466,27.1,82.5
 kotosh culture,-2300,-1199,-9.5,-77.5
+kotyora,-301,-1,42.5,39.0
 ksudrakas,-610,-326,32.5,72.5
 kuai,-770,-770,32.5,112.5
 kui,-770,-634,32.5,112.5
@@ -829,7 +832,7 @@ pamphylians,-1000,-558,37.5,32.5
 panama,1990,,7.5,-80.0
 panchala,-826,-610,27.9,79.2
 pandya,-326,-1,10.0,77.5
-paphlagonia,-323,-1,40.6,32.8
+paphlagonia,-323,-1,41.0,32.9
 papua new guinea,1990,,-7.5,150.0
 papuans,-1600,-1,-4.9,140.6
 paraguay,1990,,-22.5,-57.5
@@ -878,7 +881,7 @@ plateau peoples,-2400,-1,47.3,-117.0
 plebian secession,-494,-287,42.5,15.0
 poland,1990,,50.0,20.0
 pontians,-612,-514,42.5,39.0
-pontus,-281,-1,41.6,35.0
+pontus,-281,-1,41.0,35.3
 portugal,1990,,37.5,-20.0
 poverty point culture,-2200,-1,32.5,-90.4
 praeneste,-360,-341,42.5,15.0
@@ -890,7 +893,7 @@ proto-mongol peoples,-2400,-1,50.3,107.9
 proto-tibetans,-2400,-1,32.4,85.1
 proto-turkic peoples,-2400,-1,40.9,97.5
 ptolemaic ally,-315,-313,37.5,27.2
-ptolemaic kingdom,-290,-1,34.7,29.7
+ptolemaic kingdom,-290,-1,34.8,29.6
 pu,-770,-678,37.5,112.5
 pugu,-1036,-1026,37.5,117.5
 pulinda,-610,-320,22.5,80.0
@@ -918,8 +921,9 @@ rebel irridu,-1718,-1710,37.5,40.0
 rebel israelites,-1098,-1096,32.5,37.5
 red di,-770,-594,37.5,112.5
 ren,-770,-336,37.5,117.5
-revolt,-553,-1,37.2,33.8
+revolt,-553,-1,37.1,32.5
 revolt of antigonus,-322,-321,37.5,30.0
+revolt of antiochus hierax,-240,-1,38.4,28.4
 revolt of antipater,-322,-321,41.3,22.8
 revolt of ariobarzanes,-367,-362,40.7,27.5
 revolt of artabazus,-356,-353,40.5,27.5
@@ -970,7 +974,7 @@ samoa,1990,,-12.5,-172.5
 samos,-386,-338,37.5,27.5
 san marino,1990,,42.5,15.0
 sanxingdui culture,-1700,-1000,31.3,103.6
-sardinians,-1250,-510,40.1,8.3
+sardinians,-1250,-1,40.1,8.3
 sattagydia,-610,-516,32.5,70.0
 sattyaputas,-326,-1,12.5,75.0
 saudi arabia,1990,,25.0,45.0
@@ -984,7 +988,7 @@ scythians,-1201,-1,46.6,58.0
 sea peoples,-1233,-1180,35.4,31.4
 sealand,-1734,-1438,32.5,45.6
 second athenian league,-376,-338,39.1,24.4
-seleucid ally,-282,-1,38.5,27.8
+seleucid ally,-282,-240,38.5,27.8
 seleucid kingdom,-306,-1,35.7,41.0
 semitic nomads,-2400,-1000,24.2,47.1
 senegal,1990,,15.0,-15.0
@@ -1095,6 +1099,7 @@ tibur,-388,-341,42.5,15.0
 togo,1990,,10.0,0.0
 tong,-770,-616,32.5,117.5
 tonga,1990,,-20.0,5.0
+trapezous,-301,-1,42.5,39.0
 triballi,-446,-1,42.5,25.3
 trigarta,-950,-323,32.5,75.3
 trinidad and tobago,1990,,12.5,-62.5
