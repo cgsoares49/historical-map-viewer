@@ -462,8 +462,16 @@ def plan(args):
     P("")
     P("RESULT")
     for tag, poly, a, refs in (('A', pA, aA, refsA), ('B', pB, aB, refsB)):
-        extra = f"   == existing entry #{matches[tag]} (same footprint)" if tag in matches else ''
-        P(f"    child {tag}: {a:,.1f} km2   valid={poly.is_valid}{extra}")
+        if tag in matches:
+            me = entries[matches[tag]]
+            drs = me['dateRanges']
+            span = f"{min(d['from'] for d in drs):g}..{max(d['to'] for d in drs):g}"
+            extra = (f"   == existing entry #{matches[tag]} '{drs[0]['name'][:34]}' alive {span} "
+                     f"(same footprint -- check it is the RIGHT entity, not just the same shape)")
+        else:
+            extra = ''
+        c = poly.centroid
+        P(f"    child {tag}: {a:,.1f} km2   valid={poly.is_valid}   centre ({c.x:.2f} E, {c.y:.2f} N){extra}")
     ok_area = abs(aA + aB - aP) / aP < 0.005 if aP else False
     P(f"    parent  : {aP:,.1f} km2   A+B = {aA + aB:,.1f} km2   overlap A&B = {inter:,.2f} km2   "
       f"(A+B) vs parent mismatch = {union_diff:,.2f} km2   -> {'OK' if ok_area and union_diff < 0.005 * aP else 'CHECK'}")
