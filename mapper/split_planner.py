@@ -135,7 +135,10 @@ def cut_at(pieces, p, tol, label):
         return _split_piece(pieces, i, v, None), q, d
     if kind == 'edge':
         return _split_piece(pieces, i, v, q), q, d
-    # joint: insert a connector point between piece i and i+1
+    # joint: insert a connector point between piece i and i+1 -- unless one is already there
+    # (the re-locate call after Y was cut would otherwise insert the same connector twice)
+    if dist(q, pts[-1]) < EPS or dist(q, oriented(pieces[(i + 1) % n])[0]) < EPS:
+        return (i + 1) % n, q, d
     newpc = {'kind': 'pt', 'pt': q, 'src': None, 'flag': None, 'dup': True}
     pieces.insert(i + 1, newpc)
     return i + 1, q, d
@@ -494,7 +497,8 @@ def plan(args):
         if tag in matches:
             P(f"   child {tag}: already exists as #{matches[tag]} -- no new entry. Check that its date ranges start at "
               f"{args.date:g} and its polyRefs are:")
-            P("       " + ' '.join(f"{int(r):d},{int(f)}" if float(r).is_integer() else f"{r:g},{f}" for r, f in refs))
+            P("       " + ' '.join(f"{int(r):d},{int(f)}" if float(f) in (0.0, 1.0) and float(r).is_integer()
+                                   else f"{r:g},{f:g}" for r, f in refs))
             continue
         blk = par_block(idx, 1, rngs, [(r, f) for r, f in refs])
         blocks.append(blk)
