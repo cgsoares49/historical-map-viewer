@@ -157,6 +157,20 @@ def pol_ids(entry):
 
 
 def build(args):
+    if args.force_include:
+        import find_polity_overlays as _fpo
+        forced = set()
+        for tok in args.force_include:
+            tk, ent = tok.split(':')
+            forced.add((tk.replace(':', '/'), int(ent)))
+        _orig_known = _fpo.is_known_transient
+
+        def _known(tile_key, entry, *a, **kw):
+            if (tile_key, entry['entryIndex']) in forced:
+                return False
+            return _orig_known(tile_key, entry, *a, **kw)
+        _fpo.is_known_transient = _known
+        print(f"  force-include (registry transient test bypassed): {sorted(forced)}")
     tiles = [tuple(t.split(':')) for t in args.tiles]
     registry = load_transient_registry()
     logged = load_logged_overlays()
@@ -384,6 +398,9 @@ def main():
     ap.add_argument('--label', default='palestine')
     ap.add_argument('--include-blobs', action='store_true',
                     help='keep blob-tier (AUTO) entries in the report instead of excluding them')
+    ap.add_argument('--force-include', nargs='*', default=[], metavar='LAT/LON:ENTRY',
+                    help="entries the Ancient Index registry wrongly drops as 'known transient' (e.g. 120/035:192); "
+                         "they are kept as real polities for this report only")
     ap.add_argument('--max-area', type=float, default=DEFAULT_MAX_AREA,
                     help='blob-tier area limit passed to mark_blob_overlays (default 5000 km2)')
     args = ap.parse_args()
