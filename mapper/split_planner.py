@@ -483,6 +483,19 @@ def plan(args):
     P(f"    parent  : {aP:,.1f} km2   A+B = {aA + aB:,.1f} km2   overlap A&B = {inter:,.2f} km2   "
       f"(A+B) vs parent mismatch = {union_diff:,.2f} km2   -> {'OK' if ok_area and union_diff < 0.005 * aP else 'CHECK'}")
 
+    # ── up-front warning: the expensive edits ──
+    if replacements or args.cut:
+        P("")
+        P("!! POL FILE EDITS REQUIRED -- read section 4 before starting:")
+        if args.cut:
+            P(f"   - NEW separator POL{sep_new_pol} (the cut, {len(sep_pts)} points)")
+        for src, assigned in replacements.items():
+            users = sorted({e['entryIndex'] for e in tile['par_entries']
+                            for pi, fl in e['polyRefs'] if pi == src and fl in (0, 1)})
+            nums = ' + '.join(f"{r - 1000}" for r, _ in assigned)
+            P(f"   - POL{src - 1000} must be SPLIT:  {src - 1000} => {nums};  every entry using it needs "
+              f"its ref updated: " + ', '.join(f"#{u}" for u in users))
+
     # ── parent edit ──
     P("")
     P("1) PARENT #%d  ->  keep only the part before the split:" % args.parent)
