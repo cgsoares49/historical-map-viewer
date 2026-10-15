@@ -359,6 +359,10 @@ def plan(args):
         refs = []
         for pc in arc_pieces:
             if pc['kind'] == 'pt':
+                # a connector that coincides with the separator's own end vertex adds nothing: refs are
+                # joined by straight lines, so the separator already starts/ends exactly there
+                if pc['dup'] and (dist(pc['pt'], sep_pts[0]) < 1e-6 or dist(pc['pt'], sep_pts[-1]) < 1e-6):
+                    continue
                 refs.append((pc['pt'][0], 1000 if pc['pt'][1] == 0 else pc['pt'][1]))
             else:
                 # dup'ed copies are shallow dicts: look up by object or by content
