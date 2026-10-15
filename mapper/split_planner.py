@@ -502,8 +502,9 @@ def plan(args):
         idx += 1
     for blk in blocks:
         P("")
-        for line in blk.split('\n'):
-            P("       | " + line)
+        P("   ---- paste from next line (exact PAR text) ----")
+        P(blk)
+        P("   ---- end ----")
 
     # ── separator draw windows ──
     P("")
@@ -532,8 +533,7 @@ def plan(args):
         for k, info in new_pols.items():
             if info.get('virtual_cut'):
                 P(f"   NEW POL{k} (the separator you cut):")
-                P('\n'.join('       | ' + l for l in pol_block(
-                    k, 1, [(-9998.0, -9997.0)] + [(lo, hi) for lo, hi in life], info['points']).split('\n')))
+                P(pol_block(k, 1, [(-9998.0, -9997.0)] + [(lo, hi) for lo, hi in life], info['points']))
         for src, assigned in replacements.items():
             base = src - 1000
             old = tile['pol_by_index'][base]
@@ -541,11 +541,10 @@ def plan(args):
             for ref, pts in assigned:
                 if ref == src:
                     P(f"     keep POL{base}, now only these {len(pts)} points (was {len(old['points'])}):")
-                    P('\n'.join('       | ' + fmt_pt(p) for p in pts))
+                    P('\n'.join(fmt_pt(p) for p in pts))
                 else:
                     P(f"     NEW POL{ref - 1000}, same date ranges as POL{base}:")
-                    P('\n'.join('       | ' + l for l in pol_block(
-                        ref - 1000, old.get('polyType', 1), old['dateRanges'], pts).split('\n')))
+                    P(pol_block(ref - 1000, old.get('polyType', 1), old['dateRanges'], pts))
             P(f"   Every entry that references POL{base} must be updated -- replace the ref as shown:")
             order = [r for r, _ in assigned]
             for e in tile['par_entries']:
