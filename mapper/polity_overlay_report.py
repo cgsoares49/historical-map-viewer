@@ -156,11 +156,17 @@ def pol_ids(entry):
             for pi, fl in entry['polyRefs'] if fl in (0, 1)}
 
 
+# Big real entries the Ancient Index registry wrongly drops as 'known transient' (POL# drift).
+# Applied by every tool that calls build() (report, steplist, diff) so they all see the same polities.
+DEFAULT_FORCE_INCLUDE = ['120/035:192', '120/035:423']   # Israelites (tribal dots -> polity); shares POL233/234 with logged transients
+
+
 def build(args):
-    if args.force_include:
+    force_tokens = list(DEFAULT_FORCE_INCLUDE) + list(getattr(args, 'force_include', None) or [])
+    if force_tokens:
         import find_polity_overlays as _fpo
         forced = set()
-        for tok in args.force_include:
+        for tok in force_tokens:
             tk, ent = tok.split(':')
             forced.add((tk.replace(':', '/'), int(ent)))
         _orig_known = _fpo.is_known_transient
