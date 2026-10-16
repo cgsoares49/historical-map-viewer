@@ -466,6 +466,31 @@ def plan(args):
             except Exception:
                 pass
 
+    # a child lying wholly inside another live entry is usually redundant (that entry already covers it)
+    inside = {}
+    for tag, poly in (('A', pA), ('B', pB)):
+        if tag in matches:
+            continue
+        for idx2, e in entries.items():
+            if idx2 == args.parent or not e['polyRefs'] or e['areaType'] != 1:
+                continue
+            if all(owner_name(d['name']) == 'UNKNOWN' for d in e['dateRanges']):
+                continue
+            if not any(d['from'] < args.date + 0.1 and d['to'] > args.date for d in e['dateRanges']):
+                continue
+            try:
+                ring, hs = build_combined_ring(e['polyRefs'], tile['cst_by_index'], tile['pol_by_index'])
+                if not hs or len(ring) < 4:
+                    continue
+                pe = ring_to_polygon(ring, [0])
+                if pe is None or pe.is_empty or not pe.is_valid or area_km2(pe) <= area_km2(poly) * 0.99:
+                    continue
+                if area_km2(poly.difference(pe)) / max(area_km2(poly), 1e-9) < 0.01:
+                    inside[tag] = idx2
+                    break
+            except Exception:
+                pass
+
     P("")
     P("RESULT")
     for tag, poly, a, refs in (('A', pA, aA, refsA), ('B', pB, aB, refsB)):
@@ -506,11 +531,18 @@ def plan(args):
         P("       (nothing remains before the split date -- the parent entry can be retired/reused)")
 
     # ── children ──
-    idx = next_entry
+    idx = args.first_entry if args.first_entry else next_entry
+    if idx in entries:
+        raise SystemExit(f"--first-entry {idx}: entry #{idx} already exists in tile {args.tile}")
     P("")
-    P("2) NEW ENTRIES (paste into the PAR file; indices are the next free numbers)")
+    P("2) NEW ENTRIES (paste into the PAR file; numbering starts at #%d%s)" %
+      (idx, '' if args.first_entry else ' = next free; if another plan is applied first, use --first-entry'))
     blocks = []
     for tag, refs, rngs in (('A', refsA, rangesA), ('B', refsB, rangesB)):
+        if tag in inside and tag not in matches and not args.emit_all:
+            P(f"   child {tag}: NOT NEEDED -- lies inside existing entry #{inside[tag]} "
+              f"('{entries[inside[tag]]['dateRanges'][0]['name'][:30]}'); no entry created (use --emit-all to force)")
+            continue
         if tag in matches:
             P(f"   child {tag}: already exists as #{matches[tag]} -- no new entry. Check that its date ranges start at "
               f"{args.date:g} and its polyRefs are:")
@@ -521,6 +553,7 @@ def plan(args):
         blocks.append(blk)
         P(f"   child {tag}  ->  new entry #{idx}  ({len(refs)} refs)")
         idx += 1
+    P(f"   next free entry number after this plan: #{idx}  (pass --first-entry {idx} to the next plan in this tile)")
     for blk in blocks:
         P("")
         P("   ---- paste from next line (exact PAR text) ----")
@@ -594,6 +627,10 @@ def main():
     g.add_argument('--cut', help='coordinate cut: "lon,lat lon,lat ..." (a NEW separator POL is generated)')
     ap.add_argument('--a-name'); ap.add_argument('--b-name')
     ap.add_argument('--tol', type=float, default=0.001)
+    ap.add_argument('--first-entry', type=int, help='number the new entries from here (default: next free number in the '
+                    'tile). Use it to chain several plans so their new entries do not collide.')
+    ap.add_argument('--emit-all', action='store_true',
+                    help='also emit children that lie inside another existing entry (normally reported as NOT NEEDED)')
     args = ap.parse_args()
     text, info = plan(args)
     print(text)
