@@ -54,7 +54,7 @@ Amorite Ebla                              1
 Amorite Mari                             20
 Amorite Tuttul                            1
 Amorites                                188
-Amurru                                   22
+Amurru                                   18
 Anarta                                    1
 Andean Peoples                            7
 Andhra                                    1
@@ -74,7 +74,7 @@ Apollonia                                 4
 Arabs                                    17
 Aram Damascus                            46
 Aram-Naharim                              2
-Aram-Zobah                                5
+Aram-Zobah                                6
 Aramaeans                                39
 Arcadia                                   3
 Arcadian League                           8
@@ -142,7 +142,7 @@ Cai                                      10
 California Peoples                        1
 Callatis                                  1
 Campania                                  5
-Canaanites                               19
+Canaanites                               18
 Cao                                       7
 Carduchii                                 1
 Carians                                   5
@@ -216,7 +216,7 @@ Dilmun                                    1
 Dolopia                                   2
 Domain of Amphimakhos                     1
 Domain of Antigenes                       1
-Domain of Antigonus                     134
+Domain of Antigonus                     137
 Domain of Asandros                       23
 Domain of Cassander                     225
 Domain of Eudemus                         1
@@ -230,7 +230,7 @@ Domain of Peukestas                       2
 Domain of Philip                          1
 Domain of Philoxenos                      2
 Domain of Polyperchon                    40
-Domain of Ptolemy                       141
+Domain of Ptolemy                       138
 Domain of Seleucus                       19
 Domain of Sibyrtios                       2
 Domain of Stasandros                      2
@@ -385,8 +385,8 @@ Ionian League                            78
 Ionians                                 485
 Iranians                                129
 Ishtu(a)nda                               3
-Israel/Samaria                           32
-Israelites                               27
+Israel/Samaria                           35
+Israelites                               37
 Istros                                    2
 Isuwa                                     2
 Itabalhum                                 3
@@ -408,7 +408,7 @@ Jin                                       5
 Jomon Culture                             1
 Ju                                       13
 Ju(2)                                     1
-Judah                                    37
+Judah                                    36
 Judah Tributary                           4
 Jun                                       2
 Kaccha                                    1
@@ -454,7 +454,7 @@ Kingdom of Hamath                        11
 Kingdom of Illyria                       39
 Kingdom of Irqata                         3
 Kingdom of Isin                          58
-Kingdom of Israel                        32
+Kingdom of Israel                        35
 Kingdom of Judah                          3
 Kingdom of Kanesh                        10
 Kingdom of Kazallu                       15
@@ -505,7 +505,7 @@ Kuninda                                   2
 Kuntala                                   1
 Kunti                                     1
 Kuru                                     13
-Kush Tributary                           54
+Kush Tributary                           52
 Kyme                                      5
 Lagash                                   13
 Lai                                       3
@@ -607,7 +607,7 @@ Messapians                               11
 Messapii                                  1
 Messenia                                 13
 Mianzhu                                   1
-Middle Assyrian Empire                  186
+Middle Assyrian Empire                  182
 Minoans                                  20
 Mithila                                   1
 Mixtecs                                   2
@@ -631,13 +631,13 @@ Namri                                     5
 Nanda Empire                              7
 Nanyan                                    1
 Naxos                                     2
-Neo Assyrian Empire                     742
-Neo Assyrian Tributary                  386
+Neo Assyrian Empire                     746
+Neo Assyrian Tributary                  378
 Neo Assyrian revolt                       5
 Neo Babylonian Empire                    40
 Neo Babylonian Empire Tributary          22
 Neo-Assyrian Empire                      33
-Neo-Babylonian Empire                    22
+Neo-Babylonian Empire                    23
 New Hittite Kingdom                     482
 Ni                                        1
 Nilotic Peoples                           1
@@ -690,17 +690,17 @@ Peng                                      2
 Pengzhi                                   1
 Pergamon                                  4
 Persia                                    6
-Persian Empire                         1273
+Persian Empire                         1289
 Persian Revolt                            5
 Persian Vassal                           29
 Peucetians                                4
 Pharsalos                                 2
 Pherae                                   14
-Philistia                                20
+Philistia                                21
 Philistines                              19
 Phlius                                    4
 Phocis                                   39
-Phoenicians                             127
+Phoenicians                             109
 Phrygian Kingdom                         14
 Phrygians                                51
 Pi                                        1
@@ -720,7 +720,7 @@ Pontus                                    5
 Poverty Point Culture                     1
 Praeneste                                 2
 Proto-Burmese                             1
-Proto-Canaanites                          8
+Proto-Canaanites                          7
 Proto-Ethiopians                          2
 Proto-Greeks                             10
 Proto-Mongol Peoples                      1
@@ -751,7 +751,7 @@ Rang                                      1
 Rathikas                                  1
 Rebel Aranzik                             1
 Rebel Irridu                              1
-Rebel Israelites                          2
+Rebel Israelites                          1
 Red Di                                   12
 Ren                                       1
 Revolt                                  178
@@ -790,7 +790,7 @@ Sabini                                    1
 Saharan Peoples                           7
 Sakas                                    15
 Sakya                                     2
-Salamis                                  27
+Salamis                                  24
 Salva                                     1
 Salwa                                     1
 Sambus                                    1
