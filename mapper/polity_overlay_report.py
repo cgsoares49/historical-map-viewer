@@ -158,7 +158,7 @@ def pol_ids(entry):
 
 # Big real entries the Ancient Index registry wrongly drops as 'known transient' (POL# drift).
 # Applied by every tool that calls build() (report, steplist, diff) so they all see the same polities.
-DEFAULT_FORCE_INCLUDE = ['120/035:192', '120/035:423', '120/035:205', '120/035:224', '120/035:235', '120/035:427', '120/035:428', '120/035:429']   # Israelites (tribal dots -> polity); shares POL233/234 with logged transients
+DEFAULT_FORCE_INCLUDE = ['120/035:192', '120/035:423', '120/035:205', '120/035:224', '120/035:235', '120/035:427', '120/035:428', '120/035:430']   # Israelites (tribal dots -> polity); shares POL233/234 with logged transients
 
 
 def build(args):
