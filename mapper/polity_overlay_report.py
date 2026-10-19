@@ -8,7 +8,9 @@ the non-blob counterpart to mark_blob_overlays.py. Same detector underneath
     -1200..-800),
   * blob-tier entries (mark_blob_overlays AUTO) and already-areaType-2
     entries are REMOVED before clustering, so what is left is genuine
-    polity-vs-polity overlap, re-clustered without the blobs,
+    polity-vs-polity overlap, re-clustered without the blobs. AUTO entries
+    on the veto list (exports/blob_veto.csv, see apply_blob_marks.py) are
+    real polities and are KEPT; --no-veto ignores that file,
   * much richer per-entity information for working out the repair by hand
     (terminate/split the base's date range, re-author clean children), and
   * a separate pair table and a date-range timeline table.
@@ -43,6 +45,7 @@ from find_polity_overlays import (
     DEFAULT_MIN_OVERLAP_RATIO, SKIP_NAMES, ANIMATION_LOG_PATH,
 )
 from mark_blob_overlays import analyse_tile, direction_scan_entry, DEFAULT_MAX_AREA
+from apply_blob_marks import load_veto, DEFAULT_VETO
 from shapely.geometry import Polygon
 from shapely.ops import unary_union
 
@@ -183,6 +186,9 @@ def build(args):
     all_log = load_all_log_rows()
     date_registry = registry[1]
     ns = SimpleNamespace(registry=registry, logged=logged, max_area=args.max_area)
+    vetoed = {} if args.no_veto else load_veto(args.veto)
+    if vetoed:
+        print(f"  veto list: {len(vetoed)} vetoed blob candidate(s) kept as real polities ({args.veto})")
     sink = io.StringIO()
 
     entity_rows, pair_rows, range_rows = [], [], []
@@ -203,10 +209,14 @@ def build(args):
             rows, _, _ = analyse_tile(lat, lon, events, ns, {})
         tier = {r['_key']: r['Tier'] for r in rows}
         rowby = {r['_key']: r for r in rows}
+        # An AUTO entry the user VETOED (exports/blob_veto.csv) is a real polity the shape
+        # rules mistook for a blob, and it stays areaType 1 -- so it must be reported, not hidden.
+        is_vetoed = lambda k: (tile_key, k[2]) in vetoed
         if args.include_blobs:
             handled = {k for k, t in tier.items() if t.startswith('ALREADY')}
         else:
-            handled = {k for k, t in tier.items() if t == 'AUTO' or t.startswith('ALREADY')}
+            handled = {k for k, t in tier.items()
+                       if (t == 'AUTO' and not is_vetoed(k)) or t.startswith('ALREADY')}
         for k in handled:
             r = rowby[k]
             if tier[k] == 'AUTO' and float(r['OverlayTo']) > args.from_year and float(r['OverlayFrom']) < args.to_year:
@@ -409,6 +419,9 @@ def main():
                          "they are kept as real polities for this report only")
     ap.add_argument('--max-area', type=float, default=DEFAULT_MAX_AREA,
                     help='blob-tier area limit passed to mark_blob_overlays (default 5000 km2)')
+    ap.add_argument('--veto', default=DEFAULT_VETO,
+                    help='blob veto file (Tile,EntryIndex,Reason); vetoed AUTO entries stay in the report as real polities')
+    ap.add_argument('--no-veto', action='store_true', help='ignore the veto file (treat every AUTO entry as a blob)')
     ap.add_argument('--ignore-same-owner', action='store_true',
                     help='old behavior: skip overlaps whose two entries share a top-level owner name')
     args = ap.parse_args()
