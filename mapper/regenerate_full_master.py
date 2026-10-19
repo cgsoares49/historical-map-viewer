@@ -105,9 +105,21 @@ def export_one(name, out_path):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--limit', type=int, default=None, help='Stop after processing this many more names')
+    ap.add_argument('--names-file', help='regenerate ONLY the SourceRuns listed (one per line) instead of every one; '
+                    'use together with --log so the full-run log is left alone')
+    ap.add_argument('--log', help='resume log to use (default exports/regen_run_log.tsv)')
     args = ap.parse_args()
 
+    global LOG_PATH
+    if args.log:
+        LOG_PATH = args.log
     names = load_all_names()
+    if args.names_file:
+        wanted = [l.strip() for l in open(args.names_file, encoding='utf-8') if l.strip()]
+        known = set(names)
+        extra = [n for n in wanted if n not in known]   # e.g. names that only exist as areaType=2 entries so far
+        names = [n for n in names if n in set(wanted)] + extra
+        print(f"--names-file: {len(names)} SourceRun(s) selected ({len(extra)} not previously in the master).")
     done = load_done_names()
     todo = [n for n in names if n not in done]
     print(f"{len(names)} SourceRuns total, {len(done)} already regenerated, {len(todo)} to go.")

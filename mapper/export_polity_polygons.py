@@ -634,7 +634,11 @@ def find_entries_by_predicate(tiles_data, name_match, repair_log):
     transient = []
     for tile in tiles_data:
         for entry in tile['par_entries']:
-            if entry['areaType'] != 1:
+            # areaType=2 (semi-transient overlay) entries are REAL territory too: their
+            # own area is reported (rows) AND, separately, subtracted from whatever they
+            # overlay (see slice_into_rows / subtract_semitransients). Until 2026-10-19
+            # they were skipped here, so an overlay vanished from the export entirely.
+            if entry['areaType'] not in (1, SEMITRANSIENT_AREA_TYPE):
                 continue
             matching_drs = [dr for dr in entry['dateRanges'] if name_match(dr['name'])]
             if not matching_drs:
@@ -733,6 +737,26 @@ def apply_semitransient_subtraction(geom, test_year, active_keys, semitransients
     return geom
 
 
+def subtract_semitransients(poly, test_year, semitransients, seam_log):
+    """Subtract every semi-transient (areaType=2) footprint active at test_year from
+    ONE entry's polygon. Applied per entry (not to the unioned row) so that a
+    semi-transient's own footprint, added back whole afterwards, is never eroded by
+    another semi-transient and never subtracted from itself. Returns the polygon, or
+    None if it is consumed entirely."""
+    for sem in semitransients:
+        if not match_date(sem['entry']['dateRanges'], test_year):
+            continue
+        if not poly.intersects(sem['ring_polygon']):
+            continue
+        poly = to_polygonal(poly.difference(sem['ring_polygon']))
+        if poly is not None and not poly.is_valid:
+            seam_log[0] += 1
+            poly = to_polygonal(make_valid(poly))
+        if poly is None or poly.is_empty:
+            return None
+    return poly
+
+
 def slice_into_rows(entries, breakpoints, name_match, seam_log, own_path=None, semitransients=None):
     """Each row also carries color_index and color_conflict (used by the
     caller to decide whether to show a real RGB or "various component
@@ -778,7 +802,12 @@ def slice_into_rows(entries, breakpoints, name_match, seam_log, own_path=None, s
         for pe in entries:
             m = match_date(pe['entry']['dateRanges'], test_year)
             if m and name_match(m['name']):
-                active.append(pe['ring_polygon'])
+                poly_i = pe['ring_polygon']
+                if semitransients and pe['entry']['areaType'] != SEMITRANSIENT_AREA_TYPE:
+                    poly_i = subtract_semitransients(poly_i, test_year, semitransients, seam_log)
+                    if poly_i is None:
+                        continue      # wholly covered by an overlay this interval
+                active.append(poly_i)
                 active_keys.add((pe['tile']['lat_str'], pe['tile']['lon_str'], pe['entry']['entryIndex']))
                 color_indexes.append(m['colorIndex'])
                 if own_path is not None:
@@ -797,10 +826,7 @@ def slice_into_rows(entries, breakpoints, name_match, seam_log, own_path=None, s
         if geom is None or geom.is_empty:
             prev_geom = None
             continue
-        geom = apply_semitransient_subtraction(geom, test_year, active_keys, semitransients, seam_log)
-        if geom is None or geom.is_empty:
-            prev_geom = None
-            continue
+        # (semi-transient subtraction now happens per entry above, before the union)
         if own_path is not None:
             color_conflict = has_descendant or len(set(own_color_indexes)) > 1
             color_index = own_color_indexes[0] if own_color_indexes else (color_indexes[0] if color_indexes else None)
