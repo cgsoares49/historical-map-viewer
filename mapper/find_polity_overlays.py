@@ -247,6 +247,14 @@ DEFAULT_MIN_OVERLAP_RATIO = 0.05
 # treated as evidence of a different, real owner).
 SKIP_NAMES = {'UNKNOWN'}
 
+# Added 2026-10-19: same-top-level-owner overlaps (e.g. two entries both named
+# 'Edomites' covering the same ground at the same time) are now flagged too.
+# They used to be skipped on the assumption that one owner can't conflict with
+# itself, which hid a real duplicate in 120/035 (#196 contains #257, -1151.5..-931.5
+# and -843.1..-794.5) that CREATOR's overlay hatch then exposed. Set False (or pass
+# --ignore-same-owner) to restore the old behavior.
+SAME_OWNER_OVERLAPS = True
+
 
 def is_placeholder_entry(entry):
     return len(entry['dateRanges']) == 1 and owner_name(entry['dateRanges'][0]['name']) in SKIP_NAMES
@@ -348,7 +356,7 @@ def date_overlap_windows(entry_a, entry_b):
             if owner_b in SKIP_NAMES:
                 continue
             lo, hi = max(dr_a['from'], dr_b['from']), min(dr_a['to'], dr_b['to'])
-            if lo < hi and owner_a != owner_b:
+            if lo < hi and (owner_a != owner_b or SAME_OWNER_OVERLAPS):
                 windows.append((lo, hi, dr_a['to'] - dr_a['from'], dr_b['to'] - dr_b['from']))
     return windows
 
@@ -603,7 +611,12 @@ def main():
     ap.add_argument('--min-overlap-ratio', type=float, default=DEFAULT_MIN_OVERLAP_RATIO,
                      help='Flag a pair when intersection_area / smaller_entry_area >= this (default 0.6)')
     ap.add_argument('--out', default=os.path.join(MAPPER_DIR, 'exports', 'polity_overlay_candidates.csv'))
+    ap.add_argument('--ignore-same-owner', action='store_true',
+                     help='Old behavior: skip overlaps where both sides have the same top-level owner name')
     args = ap.parse_args()
+    global SAME_OWNER_OVERLAPS
+    if args.ignore_same_owner:
+        SAME_OWNER_OVERLAPS = False
 
     if args.all_tiles:
         tile_pairs = discover_all_tiles()

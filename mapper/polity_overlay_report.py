@@ -409,7 +409,12 @@ def main():
                          "they are kept as real polities for this report only")
     ap.add_argument('--max-area', type=float, default=DEFAULT_MAX_AREA,
                     help='blob-tier area limit passed to mark_blob_overlays (default 5000 km2)')
+    ap.add_argument('--ignore-same-owner', action='store_true',
+                    help='old behavior: skip overlaps whose two entries share a top-level owner name')
     args = ap.parse_args()
+    if args.ignore_same_owner:
+        import find_polity_overlays as _fpo_cfg
+        _fpo_cfg.SAME_OWNER_OVERLAPS = False
 
     ent, pairs, rngs, stats, excluded = build(args)
     base = os.path.join(EXPORTS, f'polity_overlays_{args.label}')
