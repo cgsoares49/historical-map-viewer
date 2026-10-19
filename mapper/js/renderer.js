@@ -82,7 +82,7 @@ const HATCH_COLOR_DIST_THRESHOLD = 40;  // max Euclidean RGB distance still coun
 // SAFETY SWITCH: keep this false in any build going through deploy.ps1/MAPPER
 // until the fix above has been visually confirmed. Flip true only for builds
 // pushed to CREATOR for testing. See project_friendly_army_problem memory.
-const ENABLE_HATCH_FILL   = false;
+const ENABLE_HATCH_FILL   = true;
 
 // Log scale: 0 at world zoom (degX=360), grows slowly, never heavy at close zoom.
 // t=0 at degX=360, t=1 at degX=1; lineWidth = base * t.
@@ -114,6 +114,7 @@ class MapRenderer {
         this._tiles   = tileManager;
         this._hatchStripeTile = null;  // lazily-built repeating stripe tile, see _getHatchStripeTile
         this._colors  = colorLookup;
+        this.showOverlayHatch = false; // overlay-pair hatching; CREATOR-only, set from its "Overlay hatch" checkbox (MAPPER leaves it off)
     }
 
     // Renders onto ctx for the given MapProjection and year.
@@ -331,6 +332,10 @@ class MapRenderer {
         // that transients get compared against.
         for (const p of prepared) if (!p.isTransient) this._drawSolidPath(ctx, p);
 
+        // Pass 1b: overlay hatching — wherever two real polities overlap, show
+        // both colors in stripes (CREATOR option; see _drawOverlayHatch).
+        if (this.showOverlayHatch) this._drawOverlayHatch(ctx, projection, prepared.filter(p => !p.isTransient));
+
         // Pass 2: snapshot every transient's "underneath" BEFORE any transient is
         // drawn. If two transients overlap (e.g. two armies crossing paths at
         // Messana), each must be judged against the same real base territory
@@ -348,6 +353,78 @@ class MapRenderer {
         }
 
         return prepared.filter(p => p.isTransient);
+    }
+
+    // Overlay-pair hatching. For every pair of real (non-transient) entries
+    // active this year whose filled areas genuinely overlap, paints the
+    // overlap region with alternating diagonal stripes of both polity colors.
+    // If both share a parent (name root before " - ") the pattern is instead a
+    // cross-hatch: same two-color diagonal stripes plus a thin neutral
+    // anti-diagonal line, since the two colors alone would be near-identical.
+    // Overlap is measured on rasterized masks (alpha product), so shared-edge
+    // antialiasing slivers don't count. Covers every overlapping pair, whether
+    // or not it has been marked areaType=2.
+    _drawOverlayHatch(ctx, projection, items) {
+        const W = ctx.canvas.width, H = ctx.canvas.height;
+        const info = [];
+        for (const p of items) {
+            const rgb = this._colors.resolve(p.dateMatch);
+            if (!rgb) continue;
+            const b = this._pixelBBox(projection, p.combined);
+            const x0 = Math.max(0, b.x0), y0 = Math.max(0, b.y0);
+            const x1 = Math.min(W, b.x0 + b.w), y1 = Math.min(H, b.y0 + b.h);
+            if (x1 - x0 < 2 || y1 - y0 < 2) continue;
+            const root = (p.dateMatch.name ?? '').split(' - ')[0].trim().toLowerCase();
+            // UNKNOWN is the per-tile placeholder underlay (primaries color 240,240,240)
+            // that every real polity sits on top of — never a true overlay partner.
+            if (root === 'unknown') continue;
+            info.push({ p, rgb, root, x0, y0, x1, y1 });
+        }
+        if (info.length < 2) return;
+
+        const PERIOD = 6;
+        const stripe = { r: 0x7f, g: 0x7f, b: 0x7f };   // same reserved neutral as HATCH_STRIPE_COLOR
+        for (let i = 0; i < info.length; i++) {
+            for (let j = i + 1; j < info.length; j++) {
+                const A = info[i], B = info[j];
+                const x0 = Math.max(A.x0, B.x0), y0 = Math.max(A.y0, B.y0);
+                const x1 = Math.min(A.x1, B.x1), y1 = Math.min(A.y1, B.y1);
+                const w = x1 - x0, h = y1 - y0;
+                if (w < 2 || h < 2) continue;
+
+                const mask = document.createElement('canvas');
+                mask.width = w; mask.height = h;
+                const mctx = mask.getContext('2d');
+                mctx.setTransform(1, 0, 0, 1, -x0, -y0);
+                mctx.fillStyle = '#000';
+                mctx.fill(A.p.path, 'evenodd');
+                mctx.globalCompositeOperation = 'destination-in';
+                mctx.fill(B.p.path, 'evenodd');
+                mctx.setTransform(1, 0, 0, 1, 0, 0);
+                const md = mctx.getImageData(0, 0, w, h);
+
+                const sameParent = A.root === B.root;
+                const out = mctx.createImageData(w, h);
+                const od = out.data, sd = md.data;
+                let any = false;
+                for (let y = 0; y < h; y++) {
+                    for (let x = 0; x < w; x++) {
+                        const k = (y * w + x) * 4;
+                        if (sd[k + 3] < 200) continue;
+                        const gx = x0 + x, gy = y0 + y;
+                        let c;
+                        if (sameParent && ((gx - gy) % PERIOD + PERIOD) % PERIOD === 0) c = stripe;
+                        else c = ((gx + gy) % PERIOD) < PERIOD / 2 ? A.rgb : B.rgb;
+                        od[k] = c.r; od[k + 1] = c.g; od[k + 2] = c.b; od[k + 3] = 255;
+                        any = true;
+                    }
+                }
+                if (!any) continue;
+                mctx.clearRect(0, 0, w, h);
+                mctx.putImageData(out, 0, 0);
+                ctx.drawImage(mask, x0, y0);
+            }
+        }
     }
 
     // Pass 3: draw every transient (solid fill always; masked hatch overlay
