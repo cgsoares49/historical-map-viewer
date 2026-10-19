@@ -140,7 +140,7 @@ def verify(orig_text, new_text, changes):
     a, b = split_keepends(orig_text), split_keepends(new_text)
     assert len(a) == len(b), 'line count changed'
     diff = [n for n in range(len(a)) if a[n] != b[n]]
-    assert diff == [c[1] - 1 for c in changes], f'differing lines {diff} != planned'
+    assert diff == sorted(c[1] - 1 for c in changes), f'differing lines {diff} != planned'
     import tempfile
     def parse(t):
         with tempfile.NamedTemporaryFile('wb', suffix='.ASC', delete=False) as tf:
