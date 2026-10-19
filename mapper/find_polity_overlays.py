@@ -654,6 +654,14 @@ def main():
     # clustering keeps genuinely simultaneous overlaps (the real "one parent,
     # several children at once" pattern this pilot is looking for) together
     # while keeping centuries-apart coincidental matches separate.
+    # Routing (changed 2026-10-19): an event is "confirmed" if EITHER of its two entries
+    # is an areaType=2 semi-transient. Confirmed and unconfirmed events are clustered
+    # SEPARATELY, so a group is routed by its own events, not by whether one member
+    # happens to be marked -- the old any-member rule hid still-unmarked overlaps that
+    # shared a group with a marked blob (after bulk-marking ~250 blobs it hid nearly
+    # everything). Confirmed events still go to polity_overlay_confirmed.csv for audit.
+    for ev in all_events:
+        ev['conf'] = bool(all_entry_info[ev['a']]['is_semitransient'] or all_entry_info[ev['b']]['is_semitransient'])
     uf = UnionFind()
     n_events = len(all_events)
     for idx in range(n_events):
@@ -662,6 +670,8 @@ def main():
         ei = all_events[i]
         for j in range(i + 1, n_events):
             ej = all_events[j]
+            if ei['conf'] != ej['conf']:
+                continue
             if ei['a'] not in (ej['a'], ej['b']) and ei['b'] not in (ej['a'], ej['b']):
                 continue
             if ei['lo'] < ej['hi'] and ej['lo'] < ei['hi']:
@@ -692,13 +702,16 @@ def main():
     # party via a shared-but-unrelated entity.
     groups_by_entities = {}
     for entities, ids in cluster_entities:
-        key = frozenset(entities)
+        key = (frozenset(entities), all_events[ids[0]]['conf'])
         groups_by_entities.setdefault(key, []).extend(ids)
-    groups = sorted(groups_by_entities.items(), key=lambda kv: -len(kv[0]))
+    groups = sorted(((k[0], ids) for k, ids in groups_by_entities.items()),
+                    key=lambda kv: (all_events[kv[1][0]]['conf'], -len(kv[0])))
 
-    size_counts = Counter(len(entities) for entities, _ in groups)
-    print(f"\n{n_events} overlap event(s) -> {len(cluster_entities)} temporally-coherent cluster(s) "
-          f"-> {len(groups)} distinct relationship(s) after merging same-entity-set clusters:")
+    size_counts = Counter(len(entities) for entities, ids in groups if not all_events[ids[0]]['conf'])
+    n_conf_groups = sum(1 for _, ids in groups if all_events[ids[0]]['conf'])
+    print(f"\n{n_events} overlap event(s) ({sum(1 for e in all_events if e['conf'])} involve an areaType=2 entry) -> "
+          f"{len(cluster_entities)} temporally-coherent cluster(s) -> {len(groups) - n_conf_groups} relationship(s) needing review "
+          f"+ {n_conf_groups} confirmed (areaType=2) after merging same-entity-set clusters; review list by size:")
     for size in sorted(size_counts):
         label = 'pair' if size == 2 else f'{size}-way group'
         print(f"  {size_counts[size]} relationship(s) of size {size} ({label})")
@@ -720,6 +733,7 @@ def main():
                'Overlays', 'OverlaidBy', 'AreaKm2', 'FirstOverlapFrom', 'FirstOverlapTo',
                'DistinctWindows', 'MaxIntersectionRatio', 'Semitransient', 'ConfirmedByLog', 'AllOwnersEver']
     confirmed_rows_written = 0
+    review_rows_written = 0
     with open(args.out, 'w', newline='', encoding='utf-8') as f, \
             open(confirmed_out, 'w', newline='', encoding='utf-8') as fc:
         writer = csv.writer(f)
@@ -753,7 +767,7 @@ def main():
             # than silently dropped, so it stays visible for audit -- the
             # original bug report was exactly "I can't tell if this was found
             # or not."
-            is_confirmed_group = any(all_entry_info[k]['is_semitransient'] for k in members)
+            is_confirmed_group = all_events[ids[0]]['conf']
 
             # Per-entity own overlap window(s) -- NOT the whole group's
             # min/max envelope. Found 2026-09-21: the group envelope can span
@@ -804,8 +818,9 @@ def main():
                                       confirmed_by_log, '; '.join(info['names'])])
                 if is_confirmed_group:
                     confirmed_rows_written += 1
-    total_entities = len(set().union(*[e for e, _ in groups])) if groups else 0
-    print(f"\nWrote {total_entities - confirmed_rows_written} entity row(s) needing manual review to {args.out}")
+                else:
+                    review_rows_written += 1
+    print(f"\nWrote {review_rows_written} entity row(s) needing manual review to {args.out}")
     print(f"Wrote {confirmed_rows_written} entity row(s) from CONFIRMED (areaType=2 semi-transient) "
           f"overlays to {confirmed_out} -- excluded from manual review, listed here for audit only.")
     print(f"  Stack depths found: up to {max_depth_seen} layer(s).")
