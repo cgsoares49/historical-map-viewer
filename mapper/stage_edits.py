@@ -21,8 +21,9 @@ Edit list (JSON array), operations applied in order:
         replace the whole date-range section of an entry (range count updated).
   {"op":"par_trim","entry":452,"keep":5,"last_to":null}
         keep the first N ranges of an entry (optionally set the new last range's end).
-  {"op":"par_add_entry","index":532,"areaType":1,"ranges":[...],"refs":[[1469,1],[1505,1],{"lit":[40,40]}]}
-        append a new entry (before the ^Z).
+  {"op":"par_add_entry","index":532,"after":452,"areaType":1,"ranges":[...],"refs":[[1469,1],[1505,1],{"lit":[40,40]}]}
+        insert a new entry in the file RIGHT AFTER entry `after` (required; normally the parent).  File order is draw order and the
+        transients / tribal dots live at the end of the file, so polities must never be appended at the end.
 """
 import argparse
 import json
@@ -248,10 +249,18 @@ class Tile:
         self.touched.add(idx)
         self.log.append(f'par_trim #{idx}: {e["nr"]} -> {keep} ranges')
 
-    def par_add_entry(self, idx, area, ranges, refs):
+    def par_add_entry(self, idx, area, ranges, refs, after=None):
         ents, term = parse_par(self.par)
         if any(e['index'] == idx for e in ents):
             raise SystemExit(f'PAR entry #{idx} already exists')
+        # File order is DRAW ORDER: later entries paint over earlier ones, and the transients / tribal dots sit at the end of the
+        # file.  A polity entry must therefore go right after its parent (`after`), never at the end.
+        if after is None:
+            raise SystemExit(f'par_add_entry #{idx}: "after" (the entry it goes under, normally its parent) is required')
+        par = [e for e in ents if e['index'] == after]
+        if not par:
+            raise SystemExit(f'par_add_entry #{idx}: entry #{after} not found')
+        term = par[0]['end']
         blk = [f' {idx} ', f'   {area}', f' {len(ranges)} '] + self.range_lines(ranges) + [f' {len(refs)} ']
         for r in refs:
             if isinstance(r, dict):
@@ -260,7 +269,7 @@ class Tile:
                 blk.append(f'   {int(r[0])}  ,  {int(r[1])}')
         self.par[term:term] = blk
         self.touched.add(idx)
-        self.log.append(f'par_add_entry #{idx}: {len(ranges)} ranges, {len(refs)} refs')
+        self.log.append(f'par_add_entry #{idx}: {len(ranges)} ranges, {len(refs)} refs, placed right after #{after}')
 
     def finish(self):
         ents, _ = parse_par(self.par)
@@ -319,7 +328,7 @@ def main():
         elif o == 'par_trim':
             T.par_trim(op['entry'], op['keep'], op.get('last_to'))
         elif o == 'par_add_entry':
-            T.par_add_entry(op['index'], op.get('areaType', 1), op['ranges'], op['refs'])
+            T.par_add_entry(op['index'], op.get('areaType', 1), op['ranges'], op['refs'], op.get('after'))
         else:
             raise SystemExit(f'unknown op {o}')
     n_ent, n_pol = T.finish()
