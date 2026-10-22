@@ -213,15 +213,19 @@ def main():
             row[pos] = txt
         mod[i] = row
     block_rows = sorted(mod)
-    block = []
-    if block_rows:
-        for i in range(block_rows[0], block_rows[-1] + 1):
-            block.append((i + 1, mod.get(i, rows[i])))
+    split_rows = [i for i in block_rows if children.get(next(n for n, (ii, _) in sheet.items() if ii == i))]
+    hand_rows = [i for i in block_rows if i not in split_rows]
+    block = [(i + 1, mod[i]) for i in split_rows]
+    hand = [(i + 1, mod[i]) for i in hand_rows]
     base = f'borders_sheet_sync_{a.tile.replace("/", "-")}'
     if block:
-        with open(os.path.join(HERE, 'exports', base + '_parents_block.tsv'), 'w', encoding='utf-8', newline='') as f:
+        with open(os.path.join(HERE, 'exports', base + '_parents.tsv'), 'w', encoding='utf-8', newline='') as f:
             for xl, r in block:
-                f.write('\t'.join(fmt(v) for v in r[:NCOL]) + '\n')
+                f.write(chr(9).join(fmt(v) for v in r[:NCOL]) + chr(10))
+    if hand:
+        with open(os.path.join(HERE, 'exports', base + '_other_changed_rows.tsv'), 'w', encoding='utf-8', newline='') as f:
+            for xl, r in hand:
+                f.write(chr(9).join(fmt(v) for v in r[:NCOL]) + chr(10))
     os.makedirs(os.path.join(HERE, 'exports'), exist_ok=True)
     with open(os.path.join(HERE, 'exports', base + '.tsv'), 'w', encoding='utf-8', newline='') as f:
         for r in out_rows:
@@ -237,11 +241,16 @@ def main():
     if notes:
         L += ['', 'NOTES:'] + ['   ' + x for x in notes]
     if block:
-        L += ['', f'2b) PARENT ROWS TO PASTE: exports/{base}_parents_block.tsv = Excel rows {block[0][0]}..{block[-1][0]} ({len(block)} rows, columns A..AK).',
-              f'    Select A{block[0][0]} and paste: it overwrites those rows with the same content except the {len(mod)} split parents '
-              f'(rows {", ".join(str(i + 1) for i in block_rows)}), whose vertex count, stop point and split note are updated.']
+        L += ['', f'2b) SPLIT PARENT ROWS TO PASTE: exports/{base}_parents.tsv = {len(block)} lines (columns A..AK), one per split parent, in Excel-row order.',
+              '    Paste each line over the existing row (select A<row>):']
+        for k, (xl, r) in enumerate(block, 1):
+            L.append(f'      line {k:>2} -> A{xl}   (POL {int(r[4])}: F={r[5]}, stop {fmt(r[8])}, {fmt(r[9])})')
         if shifted:
             L += [f'    NOTE: POL(s) {shifted} had Q..S full: the note went to T and the date cells moved right by 2 columns.']
+    if hand:
+        L += ['', f'2c) OTHER ROWS WHOSE COUNT/STOP DIFFER FROM THE POL FILE (no split child found; your own edits): exports/{base}_other_changed_rows.tsv']
+        for k, (xl, r) in enumerate(hand, 1):
+            L.append(f'      line {k} -> A{xl}   (POL {int(r[4])}: F={r[5]})')
     L += ['', '4) NEW ROW PREVIEW (A..P):']
     for r in out_rows:
         flat = [fmt(r[c]) for c in WINDOW_COLS if r[c] is not None]
