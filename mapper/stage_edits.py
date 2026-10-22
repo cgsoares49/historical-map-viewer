@@ -19,6 +19,8 @@ Edit list (JSON array), operations applied in order:
         its ref count is bumped.  A point that equals an existing vertex splits there without inserting a point.
   {"op":"par_set_ranges","entry":452,"ranges":[{"from":-550.5,"to":-522.1,"name":"...","color":10}, ...]}
         replace the whole date-range section of an entry (range count updated).
+  {"op":"par_set_refs","entry":231,"refs":[[1017,0],[1018,0],{"lit":[40,35]}]}
+        replace the whole ref list of an entry (keeps its number: a "ref swap" to a remainder ring).
   {"op":"par_trim","entry":452,"keep":5,"last_to":null}
         keep the first N ranges of an entry (optionally set the new last range's end).
   {"op":"par_add_entry","index":532,"after":452,"areaType":1,"ranges":[...],"refs":[[1469,1],[1505,1],{"lit":[40,40]}]}
@@ -141,7 +143,7 @@ class Tile:
         # locate each split point: at an existing vertex, or inside a segment
         cuts = []
         for p in points:
-            vi = next((v for v, q in enumerate(pts) if Point(q).distance(Point(p)) < 1e-9), None)
+            vi = next((v for v, q in enumerate(pts) if Point(q).distance(Point(p)) < 1e-5), None)   # snap to a vertex within ~1 m (5-decimal rounding)
             if vi is not None:
                 cuts.append((float(vi), 'v', vi, tuple(p)))
                 continue
@@ -249,6 +251,19 @@ class Tile:
         self.touched.add(idx)
         self.log.append(f'par_trim #{idx}: {e["nr"]} -> {keep} ranges')
 
+    def par_set_refs(self, idx, refs):
+        e = self._entry(idx)
+        lines = []
+        for r in refs:
+            if isinstance(r, dict):
+                lines.append(f'     {int(r["lit"][0]):>2}  ,  {int(r["lit"][1])}')
+            else:
+                lines.append(f'   {int(r[0])}  ,  {int(r[1])}')
+        self.par[e['refs_start']:e['end']] = lines
+        self.par[e['nref_line']] = f' {len(lines)} '
+        self.touched.add(idx)
+        self.log.append(f'par_set_refs #{idx}: {e["nref"]} -> {len(lines)} refs')
+
     def par_add_entry(self, idx, area, ranges, refs, after=None):
         ents, term = parse_par(self.par)
         if any(e['index'] == idx for e in ents):
@@ -325,6 +340,8 @@ def main():
             T.pol_split(op['pol'], [tuple(p) for p in op['points']])
         elif o == 'par_set_ranges':
             T.par_set_ranges(op['entry'], op['ranges'])
+        elif o == 'par_set_refs':
+            T.par_set_refs(op['entry'], op['refs'])
         elif o == 'par_trim':
             T.par_trim(op['entry'], op['keep'], op.get('last_to'))
         elif o == 'par_add_entry':
