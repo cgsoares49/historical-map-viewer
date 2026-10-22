@@ -38,6 +38,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 EXPORTS = os.path.join(HERE, 'exports')
 MIN_YEARS = 0.05
 MIN_KM2 = 0.5
+SLIVER = 0.001            # a leftover smaller than 0.1% of the entry counts as covered (dropped)
+MIN_RATIO = 0.05          # an overlap counts when it is >= 5% of the smaller entry (the detector's threshold)
 
 
 def area(g):
@@ -66,7 +68,7 @@ class Session:
             if os.path.exists(src):
                 shutil.copyfile(src, os.path.join(self.root, r))
         self.T = SE.Tile(os.path.join(self.root, self.rel['par']), os.path.join(self.root, self.rel['pol']))
-        self.ops, self.manual, self.fixes, self.log, self.notation = [], [], [], [], []
+        self.ops, self.manual, self.fixes, self.log, self.notation, self.warn = [], [], [], [], [], []
         self.sync()
         self.t0 = self.t
         self.E0 = self.E
@@ -167,6 +169,14 @@ class Session:
         self.ops.append({'op': 'par_add_entry', 'index': idx, 'after': after, 'areaType': 1, 'ranges': rr, 'refs': j})
         self.sync()
 
+    def move_entry(self, idx, after):
+        self.T.par_move(idx, after)
+        self.ops.append({'op': 'par_move', 'entry': idx, 'after': after})
+        self.sync()
+
+    def pos(self, i):
+        return [e['entryIndex'] for e in self.t['par_entries']].index(i)
+
     def next_no(self):
         return max(self.E) + 1
 
@@ -197,20 +207,26 @@ def nodes_between(sess, e, subs):
                 continue
             stack = list(inter.geoms) if hasattr(inter, 'geoms') else [inter]
             for g in stack:
+                if g.is_empty:
+                    continue
                 if g.geom_type == 'Point':
                     nodes.add((g.x, g.y))
                 elif g.geom_type == 'LineString':
                     c = list(g.coords)
-                    nodes.add(c[0])
-                    nodes.add(c[-1])
+                    if c:
+                        nodes.add(c[0])
+                        nodes.add(c[-1])
                 elif hasattr(g, 'geoms'):
                     for h in g.geoms:
+                        if h.is_empty:
+                            continue
                         if h.geom_type == 'Point':
                             nodes.add((h.x, h.y))
                         elif h.geom_type == 'LineString':
                             c = list(h.coords)
-                            nodes.add(c[0])
-                            nodes.add(c[-1])
+                            if c:
+                                nodes.add(c[0])
+                                nodes.add(c[-1])
     return nodes
 
 
@@ -295,47 +311,80 @@ def trace_ring(sess, e, subs, V):
     return refs, cuts
 
 
-def build_remainder_ring(sess, e, subs):
+def build_remainder_rings(sess, e, subs):
+    """Generator: yields (refs, V_part) for each connected part of V = E - union(subs), or (None, reason).  The caller must write each
+    ring into the PAR file BEFORE asking for the next one (later POL splits rewrite the refs of every entry, written ones included)."""
     nodes = nodes_between(sess, e, subs)
     split_at_nodes(sess, [e] + list(subs), nodes)
-    V = sess.geom(e).difference(unary_union([sess.geom(f) for f in subs]))
-    for attempt in range(4):
-        if V.geom_type != 'Polygon':
-            parts = [g for g in getattr(V, 'geoms', []) if g.geom_type == 'Polygon' and area(g) > MIN_KM2]
-            if len(parts) != 1:
-                return None, f'remainder is not one polygon ({V.geom_type}, {len(parts)} parts)'
-            V = parts[0]
-        if len(V.interiors):
-            return None, f'remainder has {len(V.interiors)} hole(s)'
-        refs, cuts = trace_ring(sess, e, subs, V)
-        if refs is None:
-            return None, cuts
-        if not cuts:
-            g = sess.geom_of_refs(refs)
-            if area(g.symmetric_difference(V)) > max(1.0, area(V) * 0.002):
-                return None, f'traced ring does not reproduce the remainder ({area(g):.1f} vs {area(V):.1f} km2)'
-            return refs, V
-        did = False
-        for pi, vs in cuts.items():
-            tab = sess.t['pol_by_index'].get(pi - 1000)
-            if not tab:
-                return None, f'cannot split coastline CST{pi}'
-            ends = {key(tab['points'][0]), key(tab['points'][-1])}
-            pts = sorted({key(p) for p in vs} - ends)
-            if pts:
-                sess.pol_split(pi - 1000, pts)
-                did = True
-        if not did:
-            return None, 'a run uses part of a POL but no interior vertex to split at'
-        V = sess.geom(e).difference(unary_union([sess.geom(f) for f in subs]))
-    return None, 'ring tracing did not converge'
+
+    def parts_of(V):
+        gs = [g for g in (V.geoms if hasattr(V, 'geoms') else [V]) if g.geom_type == 'Polygon']
+        return sorted([g for g in gs if area(g) >= 5.0], key=lambda g: (-area(g), g.centroid.x))      # parts of >= 5 km2 get a ring
+
+    def remainder():
+        return sess.geom(e).difference(unary_union([sess.geom(f) for f in subs]))
+
+    nparts = len(parts_of(remainder()))
+    for k in range(nparts):
+        parts = parts_of(remainder())
+        if k >= len(parts):
+            yield None, 'remainder part vanished after a POL split'
+            return
+        P = parts[k]
+        done = False
+        for attempt in range(5):
+            if len(P.interiors):
+                yield None, f'a remainder part has {len(P.interiors)} hole(s)'
+                return
+            refs, cuts = trace_ring(sess, e, subs, P)
+            if refs is None:
+                yield None, cuts
+                return
+            if not cuts:
+                g = sess.geom_of_refs(refs)
+                if area(g.symmetric_difference(P)) > max(1.0, area(P) * 0.002):
+                    yield None, f'traced ring does not reproduce the remainder ({area(g):.1f} vs {area(P):.1f} km2)'
+                    return
+                yield refs, P
+                done = True
+                break
+            did = False
+            for pi, vs in cuts.items():
+                tab = sess.t['pol_by_index'].get(pi - 1000)
+                if not tab:
+                    yield None, f'cannot split coastline CST{pi}'
+                    return
+                ends = {key(tab['points'][0]), key(tab['points'][-1])}
+                pts = sorted({key(q) for q in vs} - ends)
+                if pts:
+                    sess.pol_split(pi - 1000, pts)
+                    did = True
+            if not did:
+                yield None, 'a run uses part of a POL but no interior vertex to split at'
+                return
+            parts = parts_of(remainder())
+            if k >= len(parts):
+                yield None, 'remainder part vanished after a POL split'
+                return
+            P = parts[k]
+        if not done:
+            yield None, 'ring tracing did not converge'
+            return
 
 
 # ── planning ────────────────────────────────────────────────────────────────
+def significant(sess, i, j):
+    gi, gj = sess.geom(i), sess.geom(j)
+    if gi is None or gj is None or not gi.intersects(gj):
+        return False
+    o = area(gi.intersection(gj))
+    return o > MIN_KM2 and o >= MIN_RATIO * min(area(gi), area(gj))
+
+
 def plan_entry(sess, e, cand):
     """Pieces of E's real ranges with the signature (tuple) of newer overlapping entries alive in each."""
     ge = sess.geom(e)
-    near = [f for f in cand if f != e and area(sess.geom(f).intersection(ge)) > MIN_KM2]
+    near = [f for f in cand if f != e and significant(sess, e, f)]
     if not near:
         return None
     pieces = []
@@ -377,7 +426,7 @@ def process_entry(sess, e, cand, new_entries):
             keep.append(p)
             continue
         V = ge.difference(unary_union([sess.geom(f) for f in p['sig']]))
-        if area(V) < MIN_KM2:
+        if area(V) < max(MIN_KM2, SLIVER * area(ge)):
             drop.append(p)
         elif area(ge) - area(V) < MIN_KM2:
             keep.append(p)
@@ -388,46 +437,74 @@ def process_entry(sess, e, cand, new_entries):
     nonreal = [r for r in sess.ranges(e) if not sess.real(r)]
     kept_ranges = sorted(as_ranges(keep) + nonreal, key=lambda r: r['frm'])
     gl = sorted(groups.items(), key=lambda kv: min(p['frm'] for p in kv[1]))
-    built = []
-    for sig, ps in gl:
-        refs, V = build_remainder_ring(sess, e, list(sig))
-        if refs is None:
-            sess.manual.append(f'#{e} minus {["#%d" % f for f in sig]} ({min(p["frm"] for p in ps):g}..{max(p["to"] for p in ps):g}): {V}')
-            return
-        built.append((sig, ps, refs, V))
-    ge = sess.geom(e)
     has_full = any(sess.real(r) for r in kept_ranges)
-    if not has_full and not built:
-        sess.manual.append(f'#{e} is entirely covered by newer entries for its whole life -> delete #{e} (not done automatically)')
-        sess.fixes.append(dict(e=e, sig=(), windows=[(p['frm'], p['to']) for p in drop], new=None, kind='cover',
-                               pt=ge.representative_point(), by=sorted({f for p in drop for f in p['sig']})))
-        return
-    swap_first = (not has_full) and bool(built)
+    swap_first = (not has_full) and bool(gl)
     first = True
-    for sig, ps, refs, V in built:
+    n_built = 0
+    for sig, ps in gl:
         rr = as_ranges(ps)
-        win = [(p['frm'], p['to']) for p in ps]
-        cutpt = ge.intersection(unary_union([sess.geom(f) for f in sig])).representative_point()
-        if swap_first and first:
-            sess.set_ranges(e, sorted(rr + nonreal, key=lambda r: r['frm']))
-            sess.set_refs(e, refs)
-            sess.log.append(f'#{e}: ref swap -> ring of #{e} minus ' + ' & '.join(f'#{f}' for f in sig) + f' ({area(V):.1f} km2), ranges '
-                            + ', '.join(f'{a:g}..{b:g}' for a, b in win))
-            sess.fixes.append(dict(e=e, sig=sig, windows=win, new=e, kind='swap', pt=cutpt))
-        else:
-            no = sess.next_no()
-            sess.add_entry(no, e, rr, refs)
-            new_entries.append(no)
-            sess.log.append(f'new #{no} = #{e} minus ' + ' & '.join(f'#{f}' for f in sig) + f' ({area(V):.1f} km2), ranges '
-                            + ', '.join(f'{a:g}..{b:g}' for a, b in win))
-            sess.fixes.append(dict(e=e, sig=sig, windows=win, new=no, kind='carve', pt=cutpt))
-        first = False
+        win = [(q['frm'], q['to']) for q in ps]
+        got = False
+        for refs, V in build_remainder_rings(sess, e, list(sig)):
+            if refs is None:
+                sess.manual.append(f'#{e} minus {["#%d" % f for f in sig]} ({min(q["frm"] for q in ps):g}..{max(q["to"] for q in ps):g}): {V}')
+                return
+            got = True
+            ge = sess.geom(e)
+            cutpt = ge.intersection(unary_union([sess.geom(f) for f in sig])).representative_point()
+            if swap_first and first:
+                sess.set_ranges(e, sorted(rr + nonreal, key=lambda r: r['frm']))
+                sess.set_refs(e, refs)
+                sess.log.append(f'#{e}: ref swap -> ring of #{e} minus ' + ' & '.join(f'#{f}' for f in sig) + f' ({area(V):.1f} km2), ranges '
+                                + ', '.join(f'{x:g}..{y:g}' for x, y in win))
+                sess.fixes.append(dict(e=e, sig=sig, windows=win, new=e, kind='swap', pt=cutpt))
+            else:
+                no = sess.next_no()
+                sess.add_entry(no, e, rr, refs)
+                new_entries.append(no)
+                sess.log.append(f'new #{no} = #{e} minus ' + ' & '.join(f'#{f}' for f in sig) + f' ({area(V):.1f} km2), ranges '
+                                + ', '.join(f'{x:g}..{y:g}' for x, y in win))
+                sess.fixes.append(dict(e=e, sig=sig, windows=win, new=no, kind='carve', pt=cutpt))
+            first = False
+            n_built += 1
+        if not got:
+            drop += ps
+    ge = sess.geom(e)
+    if not has_full and n_built == 0:
+        sess.manual.append(f'#{e} is entirely covered by newer entries for its whole life -> delete #{e} (not done automatically)')
+        sess.fixes.append(dict(e=e, sig=(), windows=[(q['frm'], q['to']) for q in drop], new=None, kind='cover',
+                               pt=ge.representative_point(), by=sorted({f for q in drop for f in q['sig']})))
+        return
     if not swap_first:
         sess.set_ranges(e, kept_ranges)
     if drop:
         sess.log.append(f'#{e}: ' + ', '.join(f'{p["frm"]:g}..{p["to"]:g} dropped (covered by ' + ' & '.join('#%d' % f for f in p['sig']) + ')' for p in drop))
         sess.fixes.append(dict(e=e, sig=(), windows=[(p['frm'], p['to']) for p in drop], new=None, kind='cover',
                                pt=ge.representative_point(), by=sorted({f for p in drop for f in p['sig']})))
+
+
+def draw_order_fixes(sess, cand, moves):
+    """UNKNOWN placeholders are meant to be painted UNDER real polities.  An entry that overlaps a placeholder (in space and while the
+    placeholder is UNKNOWN) but sits BEFORE it in the file is blanked by it.  Only the moves you ask for (--move ENTRY:AFTER) are applied;
+    every other case is reported as a warning (a short UNKNOWN over a polity may be deliberate)."""
+    for e, after in moves:
+        sess.move_entry(e, after)
+        sess.log.append(f'draw order: #{e} moved to right after #{after} (requested)')
+        sess.fixes.append(dict(e=e, sig=(after,), windows=[(r['frm'], r['to']) for r in sess.real_ranges(e)], new=None, kind='order',
+                               pt=sess.geom(e).intersection(sess.geom(after)).representative_point()))
+    ph = [i for i, e in sess.E.items() if e.get('areaType') == 1 and any(d['name'].strip().upper() == 'UNKNOWN' and d['to'] - d['from'] > MIN_YEARS for d in e['dateRanges'])
+          and e.get('polyRefs') and e.get('dotPoint') is None]
+    for e in cand:
+        if e not in sess.E:
+            continue
+        for u in ph:
+            if u == e or sess.pos(u) < sess.pos(e):
+                continue
+            unk = [d for d in sess.E[u]['dateRanges'] if d['name'].strip().upper() == 'UNKNOWN' and d['to'] - d['from'] > MIN_YEARS]
+            ov = [(max(r['frm'], d['from']), min(r['to'], d['to'])) for r in sess.real_ranges(e) for d in unk if min(r['to'], d['to']) - max(r['frm'], d['from']) > MIN_YEARS]
+            if ov and significant(sess, e, u):
+                sess.warn.append(f'#{e} is drawn BEFORE UNKNOWN placeholder #{u} and overlaps it ({area(sess.geom(e).intersection(sess.geom(u))):.0f} km2, '
+                                 f'{min(o[0] for o in ov):g}..{max(o[1] for o in ov):g}): the placeholder paints over it (blank). Fix: --move {e}:{u}')
 
 
 def overlaps(sess, cand):
@@ -439,7 +516,7 @@ def overlaps(sess, cand):
         act = [i for i in cand if sess.alive(i, a, b)]
         for k, i in enumerate(act):
             for j in act[k + 1:]:
-                if area(sess.geom(i).intersection(sess.geom(j))) > MIN_KM2:
+                if significant(sess, i, j):
                     out.append((a, b, i, j))
     return out
 
@@ -449,20 +526,50 @@ def main():
     ap.add_argument('--tile', required=True)
     ap.add_argument('--label', default=None)
     ap.add_argument('--stage', default=os.path.join(HERE, 'staging'))
+    ap.add_argument('--move', action='append', default=[], help='ENTRY:AFTER = move that entry right below another in the file (draw order); repeatable')
+    ap.add_argument('--entries', default=None, help='explicit candidate entries (comma list): no auto seeds and no neighbour hop')
+    ap.add_argument('--audit-levels', default='HIGH,MED', help='registry-dropped entries rated at these levels count as real polities')
     a = ap.parse_args()
     lat, lon = a.tile.split(':')
     label = a.label or f't{lat}{lon}'
+    sess = None
+    # candidates: every areaType-1 entry with a real date range, MINUS the ones the registry rules dropped as transients unless the
+    # audit (exports/registry_exclusion_audit.csv) rates them HIGH/MED (big or long-lived = real polities the detector wrongly drops)
+    audit = {}
+    ap_csv = os.path.join(EXPORTS, 'registry_exclusion_audit.csv')
+    if os.path.exists(ap_csv):
+        for r in csv.DictReader(open(ap_csv, encoding='utf-8-sig')):
+            if r['Tile'].replace('/', ':') == a.tile:
+                audit[int(r['EntryIndex'])] = r['Suspicion'].split(':')[0]
+    levels = set(x.strip().upper() for x in a.audit_levels.split(','))
+    sess = Session(lat, lon, a.stage)
+    # seeds: the detector's entries (overlap groups on the CURRENT data) + the registry-dropped entries the audit rates HIGH/MED;
+    # one hop outward: every other polity entry that overlaps a seed (in space and time) joins, so each cluster is planned whole.
     subprocess.run([sys.executable, os.path.join(HERE, 'polity_overlay_report.py'), '--tiles', a.tile, '--from', '-9999', '--to', '9999',
                     '--label', label], capture_output=True, text=True, cwd=HERE)
-    cand0 = sorted({int(r['EntryIndex']) for r in csv.DictReader(open(os.path.join(EXPORTS, f'polity_overlays_{label}.csv'), encoding='utf-8-sig'))})
-    print('candidate entries (detector):', cand0)
-    sess = Session(lat, lon, a.stage)
+    det = {int(r['EntryIndex']) for r in csv.DictReader(open(os.path.join(EXPORTS, f'polity_overlays_{label}.csv'), encoding='utf-8-sig'))}
+    seeds = sorted(det | {i for i, lv in audit.items() if lv in levels and i in sess.E})
+    if a.entries:
+        seeds = sorted({int(x) for x in a.entries.split(',')})
+    polity = [i for i, e in sess.E.items() if e.get('areaType') == 1 and e.get('dotPoint') is None and e['polyRefs'] and sess.real_ranges(i)]
+    def time_overlap(i, j):
+        return any(min(r['to'], q['to']) - max(r['frm'], q['frm']) > MIN_YEARS for r in sess.real_ranges(i) for q in sess.real_ranges(j))
+    cand0 = set(seeds)
+    for i in ([] if a.entries else polity):
+        if i in cand0 or (i in audit and audit[i] not in levels):
+            continue
+        if any(time_overlap(i, f) and significant(sess, i, f) for f in seeds if f in sess.E):
+            cand0.add(i)
+    cand0 = sorted(cand0)
+    print(f'seeds {seeds}')
+    print(f'candidates (seeds + overlapping neighbours): {len(cand0)}')
     before = overlaps(sess, cand0)
     new_entries = []
     for e in sorted(cand0, key=lambda i: (min((r['frm'] for r in sess.real_ranges(i)), default=9e9), i)):
         process_entry(sess, e, cand0, new_entries)
     cand = sorted(set(cand0) | set(new_entries))
     left = overlaps(sess, cand)
+    draw_order_fixes(sess, cand, [tuple(int(x) for x in m.split(':')) for m in a.move])
 
     orig = Session.__new__(Session)
     orig.t, orig.E, orig._g = sess.t0, sess.E0, {}
@@ -498,10 +605,14 @@ def main():
             L.append(f"  #{op['entry']}: ranges = " + '; '.join(f"{r['from']:g}..{r['to']:g} {r['name']}" for r in op['ranges']))
         elif op['op'] == 'par_set_refs':
             L.append(f"  #{op['entry']}: refs = {op['refs']}")
+        elif op['op'] == 'par_move':
+            L.append(f"  MOVE #{op['entry']} to right after #{op['after']} (draw order)")
         elif op['op'] == 'par_add_entry':
             L.append(f"  NEW #{op['index']} right after #{op['after']}: " + '; '.join(f"{r['from']:g}..{r['to']:g} {r['name']}" for r in op['ranges']) + f" | refs {op['refs']}")
     if sess.manual:
         L += ['', 'NEEDS A HUMAN DECISION:'] + ['  ! ' + m for m in sess.manual]
+    if sess.warn:
+        L += ['', 'DRAW-ORDER WARNINGS (not changed):'] + ['  ? ' + m for m in sess.warn]
     L += ['', f'Overlaps left: {len(left)}', 'Coverage (union of polity polygons before vs after, every year): ' + ('identical' if not cov_bad else f'DIFFERENCES {cov_bad[:12]}')]
     open(os.path.join(out_dir, 'plan.txt'), 'w', encoding='utf-8').write('\n'.join(L) + '\n')
 
@@ -517,7 +628,9 @@ def main():
     for f in sess.fixes:
         pt = f.get('pt')
         ll = (round(pt.x, 3), round(pt.y, 3)) if pt is not None and not pt.is_empty else ('', '')
-        if f['kind'] == 'cover':
+        if f['kind'] == 'order':
+            what = f"#{f['e']} now drawn above UNKNOWN placeholder #{f['sig'][0]} (must show its colour, not blank)"
+        elif f['kind'] == 'cover':
             what = f"#{f['e']} removed where covered by " + ', '.join('#%d' % x for x in f.get('by', []))
         else:
             what = f"#{f['e']} minus " + ' & '.join('#%d' % x for x in f['sig']) + (f" -> new #{f['new']}" if f['kind'] == 'carve' else ' (ref swap)')
@@ -533,7 +646,19 @@ def main():
     for yr in sorted(by_year):
         items = by_year[yr]
         rows.append((yr, ' / '.join(sorted({t for t, _, _ in items})), ' | '.join(sorted({w for _, w, _ in items})), items[0][2][0], items[0][2][1]))
-    with open(os.path.join(out_dir, 'salient_years.csv'), 'w', encoding='utf-8-sig', newline='') as fh:
+    sy = os.path.join(out_dir, 'salient_years.csv')
+    try:
+        fh = open(sy, 'w', encoding='utf-8-sig', newline='')
+    except PermissionError:                           # (e.g. open in Excel) -> write a numbered copy instead
+        n = 2
+        while True:
+            sy = os.path.join(out_dir, f'salient_years_v{n}.csv')
+            try:
+                fh = open(sy, 'w', encoding='utf-8-sig', newline='')
+                break
+            except PermissionError:
+                n += 1
+    with fh:
         w = csv.writer(fh)
         w.writerow(['ViewYear', 'what to look for', 'fix(es) involved', 'centre lon', 'centre lat'])
         w.writerows(rows)
