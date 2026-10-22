@@ -590,9 +590,13 @@ def main():
     ap.add_argument('--pre-edits', default=None, help='JSON edit list applied (and recorded) before planning, e.g. an undo of an earlier plan')
     ap.add_argument('--move', action='append', default=[], help='ENTRY:AFTER = move that entry right below another in the file (draw order); repeatable')
     ap.add_argument('--all', action='store_true', help='candidates = every polity entry of the tile (pairs overlapping < 3 years or involving entries > 50,000 km2 are not touched, only reported)')
+    ap.add_argument('--big-km2', type=float, default=None, help='raise the giant-entry limit (default 50000 km2) to let a pair of big entries be carved')
     ap.add_argument('--entries', default=None, help='explicit candidate entries (comma list): no auto seeds and no neighbour hop')
     ap.add_argument('--audit-levels', default='HIGH,MED', help='registry-dropped entries rated at these levels count as real polities')
     a = ap.parse_args()
+    global BIG_KM2
+    if a.big_km2:
+        BIG_KM2 = a.big_km2
     lat, lon = a.tile.split(':')
     label = a.label or f't{lat}{lon}'
     sess = None
