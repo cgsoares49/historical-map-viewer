@@ -39,6 +39,8 @@ EXPORTS = os.path.join(HERE, 'exports')
 MIN_YEARS = 0.05
 MIN_KM2 = 0.5
 SLIVER = 0.001            # a leftover smaller than 0.1% of the entry counts as covered (dropped)
+MIN_PAIR_YEARS = 10.0     # an overlap counts when it lasts >= 10 years without a break (shorter = transient-like overlay; reported, not touched)
+BIG_KM2 = 50000.0         # entries larger than this (tribal / background layers) are never carved automatically; such pairs are only reported
 MIN_RATIO = 0.05          # an overlap counts when it is >= 5% of the smaller entry (the detector's threshold)
 
 
@@ -391,6 +393,19 @@ def build_remainder_rings(sess, e, subs):
 
 
 # ── planning ────────────────────────────────────────────────────────────────
+def pair_years(sess, i, j):
+    """longest unbroken stretch in which both entries are alive"""
+    iv = sorted((max(r['frm'], q['frm']), min(r['to'], q['to'])) for r in sess.real_ranges(i) for q in sess.real_ranges(j) if min(r['to'], q['to']) > max(r['frm'], q['frm']))
+    best, cur = 0.0, None
+    for lo, hi in iv:
+        if cur is not None and lo <= cur[1] + 1e-6:
+            cur[1] = max(cur[1], hi)
+        else:
+            cur = [lo, hi]
+        best = max(best, cur[1] - cur[0])
+    return best
+
+
 def significant(sess, i, j):
     gi, gj = sess.geom(i), sess.geom(j)
     if gi is None or gj is None or not gi.intersects(gj):
@@ -399,10 +414,38 @@ def significant(sess, i, j):
     return o > MIN_KM2 and o >= MIN_RATIO * min(area(gi), area(gj))
 
 
+def counts(sess, i, j):
+    """a pair counts as an overlay to fix: significant in space, >= MIN_PAIR_YEARS in time, neither entry a giant."""
+    if pair_years(sess, i, j) < MIN_PAIR_YEARS:
+        return False
+    if not significant(sess, i, j):
+        return False
+    return area(sess.geom(i)) <= BIG_KM2 and area(sess.geom(j)) <= BIG_KM2
+
+
+def short_pairs(sess, cand):
+    out = []
+    for k, i in enumerate(cand):
+        for j in cand[k + 1:]:
+            y = pair_years(sess, i, j)
+            if 0.5 <= y < MIN_PAIR_YEARS and significant(sess, i, j) and area(sess.geom(i)) <= BIG_KM2 and area(sess.geom(j)) <= BIG_KM2:
+                out.append((i, j, y))
+    return out
+
+
+def skipped_pairs(sess, cand):
+    out = []
+    for k, i in enumerate(cand):
+        for j in cand[k + 1:]:
+            if pair_years(sess, i, j) >= MIN_PAIR_YEARS and significant(sess, i, j) and (area(sess.geom(i)) > BIG_KM2 or area(sess.geom(j)) > BIG_KM2):
+                out.append((i, j))
+    return out
+
+
 def plan_entry(sess, e, cand):
     """Pieces of E's real ranges with the signature (tuple) of newer overlapping entries alive in each."""
     ge = sess.geom(e)
-    near = [f for f in cand if f != e and significant(sess, e, f)]
+    near = [f for f in cand if f != e and counts(sess, e, f)]
     if not near:
         return None
     pieces = []
@@ -534,7 +577,7 @@ def overlaps(sess, cand):
         act = [i for i in cand if sess.alive(i, a, b)]
         for k, i in enumerate(act):
             for j in act[k + 1:]:
-                if significant(sess, i, j):
+                if counts(sess, i, j):
                     out.append((a, b, i, j))
     return out
 
@@ -546,6 +589,7 @@ def main():
     ap.add_argument('--stage', default=os.path.join(HERE, 'staging'))
     ap.add_argument('--pre-edits', default=None, help='JSON edit list applied (and recorded) before planning, e.g. an undo of an earlier plan')
     ap.add_argument('--move', action='append', default=[], help='ENTRY:AFTER = move that entry right below another in the file (draw order); repeatable')
+    ap.add_argument('--all', action='store_true', help='candidates = every polity entry of the tile (pairs overlapping < 3 years or involving entries > 50,000 km2 are not touched, only reported)')
     ap.add_argument('--entries', default=None, help='explicit candidate entries (comma list): no auto seeds and no neighbour hop')
     ap.add_argument('--audit-levels', default='HIGH,MED', help='registry-dropped entries rated at these levels count as real polities')
     a = ap.parse_args()
@@ -582,8 +626,10 @@ def main():
     polity = [i for i, e in sess.E.items() if e.get('areaType') == 1 and e.get('dotPoint') is None and e['polyRefs'] and sess.real_ranges(i)]
     def time_overlap(i, j):
         return any(min(r['to'], q['to']) - max(r['frm'], q['frm']) > MIN_YEARS for r in sess.real_ranges(i) for q in sess.real_ranges(j))
+    if a.all:
+        seeds = sorted(polity)
     cand0 = set(seeds)
-    for i in ([] if a.entries else polity):
+    for i in ([] if (a.entries or a.all) else polity):
         if i in cand0 or (i in audit and audit[i] not in levels):
             continue
         if any(time_overlap(i, f) and significant(sess, i, f) for f in seeds if f in sess.E):
@@ -641,6 +687,12 @@ def main():
         L += ['', 'NEEDS A HUMAN DECISION:'] + ['  ! ' + m for m in sess.manual]
     if sess.warn:
         L += ['', 'DRAW-ORDER WARNINGS (not changed):'] + ['  ? ' + m for m in sess.warn]
+    sh = short_pairs(sess, cand)
+    if sh:
+        L += ['', f'SHORT OVERLAPS (< {MIN_PAIR_YEARS:g} yrs without a break; treated as transient-like overlays, NOT touched):'] +              [f"  #{i} x #{j}: {y:.1f} yrs, {area(sess.geom(i).intersection(sess.geom(j))):.0f} km2" for i, j, y in sh]
+    sk = skipped_pairs(sess, cand)
+    if sk:
+        L += ['', f'NOT TOUCHED (overlap >= {MIN_PAIR_YEARS:g} yrs but one entry is a giant > {BIG_KM2:.0f} km2 -- probably intended background/tribal layers):'] +              [f"  #{i} ({area(sess.geom(i)):.0f} km2) x #{j} ({area(sess.geom(j)):.0f} km2)" for i, j in sk]
     L += ['', f'Overlaps left: {len(left)}', 'Coverage (union of polity polygons before vs after, every year): ' + ('identical' if not cov_bad else f'DIFFERENCES {cov_bad[:12]}')]
     open(os.path.join(out_dir, 'plan.txt'), 'w', encoding='utf-8').write('\n'.join(L) + '\n')
 
