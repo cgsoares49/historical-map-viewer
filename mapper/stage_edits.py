@@ -19,6 +19,8 @@ Edit list (JSON array), operations applied in order:
         its ref count is bumped.  A point that equals an existing vertex splits there without inserting a point.
   {"op":"par_set_ranges","entry":452,"ranges":[{"from":-550.5,"to":-522.1,"name":"...","color":10}, ...]}
         replace the whole date-range section of an entry (range count updated).
+  {"op":"par_delete_entry","entry":348}
+        remove an entry (its number is not reused unless you add one explicitly).
   {"op":"par_move","entry":136,"after":219}
         move an entry's block to right after another entry (file order = draw order; e.g. so an UNKNOWN placeholder never paints over it).
   {"op":"par_set_refs","entry":231,"refs":[[1017,0],[1018,0],{"lit":[40,35]}]}
@@ -253,6 +255,15 @@ class Tile:
         self.touched.add(idx)
         self.log.append(f'par_trim #{idx}: {e["nr"]} -> {keep} ranges')
 
+    def par_delete_entry(self, idx):
+        ents, _ = parse_par(self.par)
+        src = [e for e in ents if e['index'] == idx]
+        if not src:
+            raise SystemExit(f'par_delete_entry #{idx}: entry not found')
+        del self.par[src[0]['start']:src[0]['end']]
+        self.touched.add(idx)
+        self.log.append(f'par_delete_entry #{idx}')
+
     def par_move(self, idx, after):
         """Move the whole block of entry idx to right after entry `after` (file order = draw order)."""
         ents, _ = parse_par(self.par)
@@ -363,6 +374,8 @@ def main():
             T.pol_split(op['pol'], [tuple(p) for p in op['points']])
         elif o == 'par_set_ranges':
             T.par_set_ranges(op['entry'], op['ranges'])
+        elif o == 'par_delete_entry':
+            T.par_delete_entry(op['entry'])
         elif o == 'par_move':
             T.par_move(op['entry'], op['after'])
         elif o == 'par_set_refs':

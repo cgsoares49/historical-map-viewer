@@ -68,7 +68,7 @@ class Session:
             if os.path.exists(src):
                 shutil.copyfile(src, os.path.join(self.root, r))
         self.T = SE.Tile(os.path.join(self.root, self.rel['par']), os.path.join(self.root, self.rel['pol']))
-        self.ops, self.manual, self.fixes, self.log, self.notation, self.warn = [], [], [], [], [], []
+        self.ops, self.manual, self.fixes, self.log, self.notation, self.warn, self.moved = [], [], [], [], [], [], []
         self.sync()
         self.t0 = self.t
         self.E0 = self.E
@@ -108,8 +108,9 @@ class Session:
         return [r for r in self.ranges(i) if self.real(r)]
 
     def run_start(self, i, t):
-        """start of the continuous era of entry i that contains time t (consecutive real ranges, gaps < 1 yr, joined)."""
-        rs = sorted(self.real_ranges(i), key=lambda r: r['frm'])
+        """start of the continuous ERA of entry i that contains time t: consecutive date ranges with gaps < 1 yr, UNKNOWN placeholder
+        ranges included (an entry that was an UNKNOWN placeholder before becoming a province is old, not new)."""
+        rs = sorted((r for r in self.ranges(i) if r['to'] - r['frm'] > MIN_YEARS), key=lambda r: r['frm'])
         cur = None
         for r in rs:
             if cur is None or r['frm'] - cur[1] > 1.0:
@@ -168,6 +169,23 @@ class Session:
         self.T.par_add_entry(idx, 1, rr, j, after)
         self.ops.append({'op': 'par_add_entry', 'index': idx, 'after': after, 'areaType': 1, 'ranges': rr, 'refs': j})
         self.sync()
+
+    def apply_op(self, op):
+        o = op['op']
+        if o == 'pol_split':
+            self.pol_split(op['pol'], [tuple(q) for q in op['points']])
+        elif o == 'par_set_ranges':
+            self.set_ranges(op['entry'], [dict(frm=r['from'], to=r['to'], name=r['name'], color=r['color']) for r in op['ranges']])
+        elif o == 'par_set_refs':
+            self.T.par_set_refs(op['entry'], op['refs']); self.ops.append(op); self.sync()
+        elif o == 'par_delete_entry':
+            self.T.par_delete_entry(op['entry']); self.ops.append(op); self.sync()
+        elif o == 'par_move':
+            self.move_entry(op['entry'], op['after'])
+        elif o == 'par_add_entry':
+            self.T.par_add_entry(op['index'], op.get('areaType', 1), op['ranges'], op['refs'], op.get('after')); self.ops.append(op); self.sync()
+        else:
+            raise SystemExit(f'unknown pre-edit op {o}')
 
     def move_entry(self, idx, after):
         self.T.par_move(idx, after)
@@ -488,8 +506,6 @@ def draw_order_fixes(sess, cand, moves):
     placeholder is UNKNOWN) but sits BEFORE it in the file is blanked by it.  Only the moves you ask for (--move ENTRY:AFTER) are applied;
     every other case is reported as a warning (a short UNKNOWN over a polity may be deliberate)."""
     for e, after in moves:
-        sess.move_entry(e, after)
-        sess.log.append(f'draw order: #{e} moved to right after #{after} (requested)')
         unk = [d for d in sess.E[after]['dateRanges'] if d['name'].strip().upper() == 'UNKNOWN']
         wins = [(max(r['frm'], d['from']), min(r['to'], d['to'])) for r in sess.real_ranges(e) for d in unk if min(r['to'], d['to']) - max(r['frm'], d['from']) > MIN_YEARS]
         sess.fixes.append(dict(e=e, sig=(after,), windows=wins or [(r['frm'], r['to']) for r in sess.real_ranges(e)], new=None, kind='order',
@@ -528,6 +544,7 @@ def main():
     ap.add_argument('--tile', required=True)
     ap.add_argument('--label', default=None)
     ap.add_argument('--stage', default=os.path.join(HERE, 'staging'))
+    ap.add_argument('--pre-edits', default=None, help='JSON edit list applied (and recorded) before planning, e.g. an undo of an earlier plan')
     ap.add_argument('--move', action='append', default=[], help='ENTRY:AFTER = move that entry right below another in the file (draw order); repeatable')
     ap.add_argument('--entries', default=None, help='explicit candidate entries (comma list): no auto seeds and no neighbour hop')
     ap.add_argument('--audit-levels', default='HIGH,MED', help='registry-dropped entries rated at these levels count as real polities')
@@ -545,6 +562,15 @@ def main():
                 audit[int(r['EntryIndex'])] = r['Suspicion'].split(':')[0]
     levels = set(x.strip().upper() for x in a.audit_levels.split(','))
     sess = Session(lat, lon, a.stage)
+    if a.pre_edits:
+        for op in json.load(open(a.pre_edits, encoding='utf-8')):
+            sess.apply_op(op)
+        print(f'applied {len(sess.ops)} pre-edit operations from {a.pre_edits}')
+    for m in a.move:                                      # draw-order moves go FIRST so remainders are inserted under the moved parent
+        e_, after_ = (int(x) for x in m.split(':'))
+        sess.move_entry(e_, after_)
+        sess.log.append(f'draw order: #{e_} moved to right after #{after_} (requested)')
+        sess.moved.append((e_, after_))
     # seeds: the detector's entries (overlap groups on the CURRENT data) + the registry-dropped entries the audit rates HIGH/MED;
     # one hop outward: every other polity entry that overlaps a seed (in space and time) joins, so each cluster is planned whole.
     subprocess.run([sys.executable, os.path.join(HERE, 'polity_overlay_report.py'), '--tiles', a.tile, '--from', '-9999', '--to', '9999',
@@ -571,7 +597,7 @@ def main():
         process_entry(sess, e, cand0, new_entries)
     cand = sorted(set(cand0) | set(new_entries))
     left = overlaps(sess, cand)
-    draw_order_fixes(sess, cand, [tuple(int(x) for x in m.split(':')) for m in a.move])
+    draw_order_fixes(sess, cand, sess.moved)
 
     orig = Session.__new__(Session)
     orig.t, orig.E, orig._g = sess.t0, sess.E0, {}
