@@ -57,7 +57,11 @@ def main():
     md = f'{d.month}/{d.day}/{d.year % 100}'
 
     t = X.load_tile(lat, lon)
-    pol = t['pol_by_index']
+    # POLs whose first date range is the sentinel (-9999, -9998) are TRANSIENT / blob borders: they are logged on the 'transients' and
+    # 'tribal dots' sheets, never on 'borders' (whose POLs start with the sentinel (-9998, -9997)).  Only real borders are synced.
+    all_pol = t['pol_by_index']
+    pol = {n: p for n, p in all_pol.items() if not (p['dateRanges'] and tuple(p['dateRanges'][0]) == (-9999.0, -9998.0))}
+    n_trans = len(all_pol) - len(pol)
     wb = openpyxl.load_workbook(a.workbook, read_only=True, data_only=True)
     rows = [list(r) + [None] * (NCOL - len(r)) for r in wb['borders'].iter_rows(values_only=True)]
     counter = int(rows[0][0])
@@ -67,7 +71,7 @@ def main():
             sheet[int(r[4])] = (i, r)
     last_no = max(sheet)
     last_row = sheet[last_no][0] + 1
-    print(f'sheet: {len(sheet)} rows for {a.tile}, last POL {last_no} (Excel row {last_row}); POL file: {len(pol)} POLs, last {max(pol)}; A1 = {counter}')
+    print(f'sheet: {len(sheet)} rows for {a.tile}, last POL {last_no} (Excel row {last_row}); POL file: {len(all_pol)} POLs = {len(pol)} borders + {n_trans} transient/blob (ignored); A1 = {counter}')
 
     def ranges_of(n):
         return [(round(x, 1), round(y, 1)) for x, y in pol[n]['dateRanges']]
@@ -83,17 +87,31 @@ def main():
         if pts:
             by_start.setdefault((round(pts[0][0], 4), round(pts[0][1], 4)), []).append(n)
 
+    changed = set()                                  # border POLs whose sheet row no longer matches the POL file (truncated parents)
+    for n, (i, r) in sheet.items():
+        if n in pol:
+            pts = pol[n]['points']
+            if r[5] != len(pts) or not (close(r[8], pts[-1][0]) and close(r[9], pts[-1][1])):
+                changed.add(n)
+
+    def span(n):
+        return {v for w in windows(n) for v in w}
+
     def parent_of(n):
+        """The POL this one was split from: it ENDS where this one STARTS and is either a truncated parent (sheet row differs) or itself a
+        new piece (chain of a multi-point split).  Date ranges are only used to choose between several candidates (they may have been
+        adjusted by hand after the split)."""
         pts = pol[n]['points']
-        # a POL p whose LAST point is this POL's FIRST point and which has identical date ranges
         cands = []
         for p in pol:
             if p == n or not pol[p]['points']:
                 continue
             e = pol[p]['points'][-1]
-            if close(e[0], pts[0][0], 1e-5) and close(e[1], pts[0][1], 1e-5) and ranges_of(p) == ranges_of(n) and p < n:
+            if close(e[0], pts[0][0], 1e-5) and close(e[1], pts[0][1], 1e-5) and (p in changed or p in new):
                 cands.append(p)
-        return max(cands) if cands else None            # the nearest older piece (chain: c2's parent is c1)
+        if not cands:
+            return None
+        return max(cands, key=lambda p: (len(span(p) & span(n)), p))
 
     def root_of(n):
         seen = set()
@@ -107,11 +125,21 @@ def main():
 
     children = {}
     for n in new:
-        p = parent_of(n)
-        if p is not None:
+        if parent_of(n) is not None:
             children.setdefault(root_of(n), []).append(n)
-    for k in children:
-        children[k].sort()
+    for r0 in list(children):
+        pending, seq, cur = set(children[r0]), [], r0
+        while pending:
+            end = pol[cur]['points'][-1]
+            nxt = [c for c in pending if close(pol[c]['points'][0][0], end[0], 1e-5) and close(pol[c]['points'][0][1], end[1], 1e-5)]
+            if not nxt:
+                seq += sorted(pending)
+                break
+            c = min(nxt)
+            seq.append(c)
+            pending.discard(c)
+            cur = c
+        children[r0] = seq          # path order along the original POL: head, then each piece in turn
 
     out_rows, edits, notes = [], [], []
     for n in new:
@@ -164,7 +192,7 @@ def main():
     for n, row, diffs, note in edits:
         L.append(f'   POL {n:>4} (row {row}): ' + '; '.join(diffs) + (f';  {note}' if note else '   [no new child POL found: changed by hand?]'))
     if unlogged:
-        L += ['', f'3) POLs in the file but not in the sheet, numbered BELOW its last row (old, unlogged; left out): {unlogged[:40]}']
+        L += ['', f'3) BORDER POLs (not transient/blob) in the file but missing from the sheet, numbered below its last row: {unlogged[:60]}']
     if notes:
         L += ['', 'NOTES:'] + ['   ' + x for x in notes]
     L += ['', '4) NEW ROW PREVIEW (A..P):']
