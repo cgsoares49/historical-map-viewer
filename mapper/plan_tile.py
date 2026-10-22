@@ -490,7 +490,9 @@ def draw_order_fixes(sess, cand, moves):
     for e, after in moves:
         sess.move_entry(e, after)
         sess.log.append(f'draw order: #{e} moved to right after #{after} (requested)')
-        sess.fixes.append(dict(e=e, sig=(after,), windows=[(r['frm'], r['to']) for r in sess.real_ranges(e)], new=None, kind='order',
+        unk = [d for d in sess.E[after]['dateRanges'] if d['name'].strip().upper() == 'UNKNOWN']
+        wins = [(max(r['frm'], d['from']), min(r['to'], d['to'])) for r in sess.real_ranges(e) for d in unk if min(r['to'], d['to']) - max(r['frm'], d['from']) > MIN_YEARS]
+        sess.fixes.append(dict(e=e, sig=(after,), windows=wins or [(r['frm'], r['to']) for r in sess.real_ranges(e)], new=None, kind='order',
                                pt=sess.geom(e).intersection(sess.geom(after)).representative_point()))
     ph = [i for i, e in sess.E.items() if e.get('areaType') == 1 and any(d['name'].strip().upper() == 'UNKNOWN' and d['to'] - d['from'] > MIN_YEARS for d in e['dateRanges'])
           and e.get('polyRefs') and e.get('dotPoint') is None]
