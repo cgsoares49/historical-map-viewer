@@ -62,6 +62,13 @@ def main():
     all_pol = t['pol_by_index']
     pol = {n: p for n, p in all_pol.items() if not (p['dateRanges'] and tuple(p['dateRanges'][0]) == (-9999.0, -9998.0))}
     n_trans = len(all_pol) - len(pol)
+    import json
+    ign_path = os.path.join(HERE, 'borders_sheet_ignore.json')
+    ignore = {int(k) for k in json.load(open(ign_path, encoding='utf-8')).get(a.tile, {})} if os.path.exists(ign_path) else set()
+    def modern(p):
+        rs = [r for r in p['dateRanges'] if tuple(r) != (-9998.0, -9997.0)]
+        return bool(rs) and all(r[0] >= 1900 for r in rs)
+    pol = {n: p for n, p in pol.items() if n not in ignore and not modern(p)}
     wb = openpyxl.load_workbook(a.workbook, read_only=True, data_only=True)
     rows = [list(r) + [None] * (NCOL - len(r)) for r in wb['borders'].iter_rows(values_only=True)]
     counter = int(rows[0][0])
@@ -162,7 +169,8 @@ def main():
     # parent rows whose stored count / stop differ from the POL file
     for n, (i, r) in sorted(sheet.items()):
         if n not in pol:
-            notes.append(f'POL {n}: in the sheet but NOT in the POL file')
+            if n not in ignore:
+                notes.append(f'POL {n}: in the sheet but NOT in the POL file')
             continue
         pts = pol[n]['points']
         diffs = []
@@ -180,14 +188,47 @@ def main():
             note = (f'{COL(pos + 1)}{i + 1} = "{txt}"' if pos is not None else f'NOTE "{txt}" -> Q..S taken, decide where it goes')
         edits.append((n, i + 1, diffs, note))
 
+    # ---- full parent rows, ready to paste over the existing ones (one contiguous block, untouched rows repeated verbatim) ----
+    mod = {}
+    shifted = []
+    for n, (i, r) in sorted(sheet.items()):
+        if n not in pol:
+            continue
+        pts = pol[n]['points']
+        if not (r[5] != len(pts) or not (close(r[8], pts[-1][0]) and close(r[9], pts[-1][1]))):
+            continue
+        row = list(r)
+        row[5] = len(pts)
+        row[8], row[9] = pts[-1][0], pts[-1][1]
+        kids = children.get(n)
+        if kids:
+            txt = f'split {md} for {a.reason}: #{n} => {n}, ' + ', '.join(str(k) for k in kids)
+            pos = next((k for k in range(16, 19) if row[k] is None), None)
+            if pos is None:                                 # Q..S taken: the note goes to T and the date cells move right by 2
+                for k in range(NCOL - 3, 18, -1):
+                    row[k + 2] = row[k]
+                row[19], row[20] = None, None
+                pos = 19
+                shifted.append(n)
+            row[pos] = txt
+        mod[i] = row
+    block_rows = sorted(mod)
+    block = []
+    if block_rows:
+        for i in range(block_rows[0], block_rows[-1] + 1):
+            block.append((i + 1, mod.get(i, rows[i])))
     base = f'borders_sheet_sync_{a.tile.replace("/", "-")}'
+    if block:
+        with open(os.path.join(HERE, 'exports', base + '_parents_block.tsv'), 'w', encoding='utf-8', newline='') as f:
+            for xl, r in block:
+                f.write('\t'.join(fmt(v) for v in r[:NCOL]) + '\n')
     os.makedirs(os.path.join(HERE, 'exports'), exist_ok=True)
     with open(os.path.join(HERE, 'exports', base + '.tsv'), 'w', encoding='utf-8', newline='') as f:
         for r in out_rows:
             f.write('\t'.join(fmt(v) for v in r) + '\n')
     L = [f'BORDERS SHEET sync for tile {a.tile}, {a.date}   (POL file wins; workbook only read: {a.workbook})', '',
          f'1) NEW ROWS: {len(out_rows)} lines in exports/{base}.tsv (columns A..AK), POL {new[0] if new else "-"}..{new[-1] if new else "-"}. '
-         f'Insert after Excel row {last_row} (POL {last_no}), in order. A1: {int(rows[0][0])} -> {counter}', '',
+         f'Insert after Excel row {last_row} (POL {last_no}), in order. (A1 is =MAX(A2:A14168), so it updates itself: {int(rows[0][0])} -> {counter})', '',
          f'2) PARENT ROW EDITS ({len(edits)}): Excel row, cell: old -> new, then the split note']
     for n, row, diffs, note in edits:
         L.append(f'   POL {n:>4} (row {row}): ' + '; '.join(diffs) + (f';  {note}' if note else '   [no new child POL found: changed by hand?]'))
@@ -195,6 +236,12 @@ def main():
         L += ['', f'3) BORDER POLs (not transient/blob) in the file but missing from the sheet, numbered below its last row: {unlogged[:60]}']
     if notes:
         L += ['', 'NOTES:'] + ['   ' + x for x in notes]
+    if block:
+        L += ['', f'2b) PARENT ROWS TO PASTE: exports/{base}_parents_block.tsv = Excel rows {block[0][0]}..{block[-1][0]} ({len(block)} rows, columns A..AK).',
+              f'    Select A{block[0][0]} and paste: it overwrites those rows with the same content except the {len(mod)} split parents '
+              f'(rows {", ".join(str(i + 1) for i in block_rows)}), whose vertex count, stop point and split note are updated.']
+        if shifted:
+            L += [f'    NOTE: POL(s) {shifted} had Q..S full: the note went to T and the date cells moved right by 2 columns.']
     L += ['', '4) NEW ROW PREVIEW (A..P):']
     for r in out_rows:
         flat = [fmt(r[c]) for c in WINDOW_COLS if r[c] is not None]

@@ -1,0 +1,5 @@
+{
+  "_why": "POLs that are deliberately NOT (or no longer) on the 'borders' sheet; the sync tool never reports them. Rule also built in: POLs whose date ranges are all modern (>=1900) are ignored.",
+  "120/040": {"44": "scrapped border kept in case it is wanted", "1": "modern border", "2": "modern border", "119": "modern border",
+              "279": "old friendly-army black border: belongs to transients", "280": "same", "281": "same"}
+}
