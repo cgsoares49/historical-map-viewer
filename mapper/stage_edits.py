@@ -283,6 +283,13 @@ class Tile:
         self.touched.add(new)
         self.log.append(f'par_renumber #{idx} (occurrence {occurrence}) -> #{new}')
 
+    def par_set_areatype(self, idx, areatype):
+        """change an entry's areaType (0 dot, 1 polity, 2 semi-transient overlay)"""
+        e = self._entry(idx)
+        self.par[e['start'] + 1] = f' {areatype} '
+        self.touched.add(idx)
+        self.log.append(f'par_set_areatype #{idx} -> {areatype}')
+
     def par_delete_entry(self, idx):
         ents, _ = parse_par(self.par)
         src = [e for e in ents if e['index'] == idx]
@@ -406,6 +413,8 @@ def main():
             T.par_set_ranges(op['entry'], op['ranges'])
         elif o == 'par_renumber':
             T.par_renumber(op['entry'], op['occurrence'], op['new'])
+        elif o == 'par_set_areatype':
+            T.par_set_areatype(op['entry'], op['areatype'])
         elif o == 'par_delete_entry':
             T.par_delete_entry(op['entry'])
         elif o == 'par_move':
