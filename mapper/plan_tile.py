@@ -556,9 +556,11 @@ def process_entry(sess, e, cand, new_entries):
     gl = sorted(groups.items(), key=lambda kv: min(p['frm'] for p in kv[1]))
     has_full = any(sess.real(r) for r in kept_ranges)
     swap_first = (not has_full) and bool(gl)
-    first = True
+    if swap_first and len(gl) > 1:
+        gl = gl[1:] + gl[:1]            # the group that reuses #e (ref swap) must be built LAST: the other groups are carved from the ORIGINAL geometry
+    swapped = False
     n_built = 0
-    for sig, ps in gl:
+    for gi, (sig, ps) in enumerate(gl):
         rr = as_ranges(ps)
         win = [(q['frm'], q['to']) for q in ps]
         got = False
@@ -569,12 +571,13 @@ def process_entry(sess, e, cand, new_entries):
             got = True
             ge = sess.geom(e)
             cutpt = ge.intersection(unary_union([sess.geom(f) for f in sig])).representative_point()
-            if swap_first and first:
+            if swap_first and gi == len(gl) - 1 and not swapped:
                 sess.set_ranges(e, sorted(rr + nonreal, key=lambda r: r['frm']))
                 sess.set_refs(e, refs)
                 sess.log.append(f'#{e}: ref swap -> ring of #{e} minus ' + ' & '.join(f'#{f}' for f in sig) + f' ({area(V):.1f} km2), ranges '
                                 + ', '.join(f'{x:g}..{y:g}' for x, y in win))
                 sess.fixes.append(dict(e=e, sig=sig, windows=win, new=e, kind='swap', pt=cutpt))
+                swapped = True
             else:
                 no = sess.next_no()
                 sess.add_entry(no, e, rr, refs)
@@ -582,7 +585,6 @@ def process_entry(sess, e, cand, new_entries):
                 sess.log.append(f'new #{no} = #{e} minus ' + ' & '.join(f'#{f}' for f in sig) + f' ({area(V):.1f} km2), ranges '
                                 + ', '.join(f'{x:g}..{y:g}' for x, y in win))
                 sess.fixes.append(dict(e=e, sig=sig, windows=win, new=no, kind='carve', pt=cutpt))
-            first = False
             n_built += 1
         if not got:
             drop += ps
@@ -691,7 +693,8 @@ def main():
     # one hop outward: every other polity entry that overlaps a seed (in space and time) joins, so each cluster is planned whole.
     subprocess.run([sys.executable, os.path.join(HERE, 'polity_overlay_report.py'), '--tiles', a.tile, '--from', '-9999', '--to', '9999',
                     '--label', label], capture_output=True, text=True, cwd=HERE)
-    det = {int(r['EntryIndex']) for r in csv.DictReader(open(os.path.join(EXPORTS, f'polity_overlays_{label}.csv'), encoding='utf-8-sig'))}
+    det_csv = os.path.join(EXPORTS, f'polity_overlays_{label}.csv')       # the detector writes no file when it finds nothing
+    det = {int(r['EntryIndex']) for r in csv.DictReader(open(det_csv, encoding='utf-8-sig'))} if os.path.exists(det_csv) else set()
     seeds = sorted(det | {i for i, lv in audit.items() if lv in levels and i in sess.E})
     if a.entries:
         seeds = sorted({int(x) for x in a.entries.split(',')})
