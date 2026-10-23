@@ -93,6 +93,7 @@ class Session:
             X.DATA_DIR = old
         self.E = {e['entryIndex']: e for e in self.t['par_entries']}
         self._g = {}
+        self._cc = {}
 
     def ring(self, refs):
         r = X.build_combined_ring(refs, self.t['cst_by_index'], self.t['pol_by_index'])
@@ -470,6 +471,15 @@ def significant(sess, i, j):
 
 
 def counts(sess, i, j):
+    """memoised per pair (the answer does not depend on the time window); sess.sync() clears the cache whenever the files change"""
+    k = (i, j) if i < j else (j, i)
+    c = sess._cc
+    if k not in c:
+        c[k] = _counts(sess, i, j)
+    return c[k]
+
+
+def _counts(sess, i, j):
     """a pair counts as an overlay to fix: significant in space, >= MIN_PAIR_YEARS in time, neither entry a giant."""
     forced = (min(i, j), max(i, j)) in FORCE_PAIRS or i in FORCE_ENTRIES or j in FORCE_ENTRIES
     if pair_years(sess, i, j) < MIN_PAIR_YEARS and not forced:
