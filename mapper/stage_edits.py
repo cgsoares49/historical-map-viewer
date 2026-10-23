@@ -125,9 +125,10 @@ def fmt_pt(p, style='space'):
 
 # ── operations ──────────────────────────────────────────────────────────────
 class Tile:
-    def __init__(self, par_path, pol_path):
+    def __init__(self, par_path, pol_path, cst_path=None):
         self.par = read_lines(par_path)
         self.pol = read_lines(pol_path)
+        self.cst = read_lines(cst_path) if cst_path and os.path.exists(cst_path) else None
         self.touched = set()        # PAR entries named by par_* ops
         self.rewritten = set()      # PAR entries whose refs were rewritten by a pol_split
         self.log = []
@@ -135,11 +136,25 @@ class Tile:
     def pol_blocks(self):
         return parse_pol(self.pol)[0]
 
-    def pol_split(self, pol, points):
+    def cst_split(self, cst, points):
+        """split a coast segment (same file layout as POL; PAR refs are the bare index, no +1000; no bookkeeping beyond the PAR refs)"""
+        return self.pol_split(cst, points, coast=True)
+
+    def pol_split(self, pol, points, coast=False):
+        lines_attr, base = ('cst', 0) if coast else ('pol', 1000)
+        if coast:
+            self.pol, self.cst = self.cst, self.pol          # operate on the coast lines with the POL code, swap back at the end
+        try:
+            return self._split(pol, points, base, coast)
+        finally:
+            if coast:
+                self.pol, self.cst = self.cst, self.pol
+
+    def _split(self, pol, points, base, coast):
         blocks, term = parse_pol(self.pol)
         by = {b['index']: b for b in blocks}
         if pol not in by:
-            raise SystemExit(f'POL {pol} not found')
+            raise SystemExit(f'{"CST" if coast else "POL"} {pol} not found')
         b = by[pol]
         plines = self.pol[b['pts_start']:b['end']]
         style = 'comma' if ',' in plines[0] else ('tab' if '	' in plines[0] else 'space')
@@ -192,24 +207,25 @@ class Tile:
         # append new blocks before the terminator
         blocks2, term2 = parse_pol(self.pol)
         self.pol[term2:term2] = new_blocks_text
+        self.pol[0] = f' {len(parse_pol(self.pol)[0])} '
         # ref updates in the PAR file
         ents, _ = parse_par(self.par)
         changed = []
         for e in reversed(ents):                                     # bottom-up keeps line numbers valid
             refs = par_refs(self.par, e)
-            hit = [(a, f, k) for (a, f, k) in refs if a == 1000 + pol and f in (0, 1)]
+            hit = [(a, f, k) for (a, f, k) in refs if a == base + pol and f in (0, 1)]
             if not hit:
                 continue
             for (a, f, k) in reversed(hit):
                 if f == 0:
-                    rep = [self.par[k]] + [f'   {1000 + n}  ,  0' for n in newnums]
+                    rep = [self.par[k]] + [f'   {base + n}  ,  0' for n in newnums]
                 else:
-                    rep = [f'   {1000 + n}  ,  1' for n in reversed(newnums)] + [self.par[k]]
+                    rep = [f'   {base + n}  ,  1' for n in reversed(newnums)] + [self.par[k]]
                 self.par[k:k + 1] = rep
             self.par[e['nref_line']] = f' {e["nref"] + len(hit) * len(newnums)} '
             changed.append(e['index'])
             self.rewritten.add(e['index'])
-        self.log.append(f'pol_split POL{pol} at {len(points)} point(s): kept {len(head_lines)} pts, new POL {newnums} '
+        self.log.append(f'{"cst" if coast else "pol"}_split {"CST" if coast else "POL"}{pol} at {len(points)} point(s): kept {len(head_lines)} pts, new POL {newnums} '
                         f'({", ".join(str(len(p)) for p in out_pieces[1:])} pts); refs rewritten in {len(changed)} entries '
                         f'({", ".join("#%d" % i for i in sorted(changed))})')
         return newnums
@@ -366,12 +382,14 @@ def main():
         src = os.path.join(a.data_dir, r)
         if os.path.exists(src):
             shutil.copyfile(src, os.path.join(stage, r))
-    T = Tile(os.path.join(stage, rel['par']), os.path.join(stage, rel['pol']))
+    T = Tile(os.path.join(stage, rel['par']), os.path.join(stage, rel['pol']), os.path.join(stage, rel['cst']))
     ops = json.load(open(a.edits, encoding='utf-8'))
     for op in ops:
         o = op['op']
         if o == 'pol_split':
             T.pol_split(op['pol'], [tuple(p) for p in op['points']])
+        elif o == 'cst_split':
+            T.cst_split(op['cst'], [tuple(p) for p in op['points']])
         elif o == 'par_set_ranges':
             T.par_set_ranges(op['entry'], op['ranges'])
         elif o == 'par_delete_entry':
@@ -389,6 +407,8 @@ def main():
     n_ent, n_pol = T.finish()
     write_lines(os.path.join(stage, rel['par']), T.par)
     write_lines(os.path.join(stage, rel['pol']), T.pol)
+    if T.cst is not None:
+        write_lines(os.path.join(stage, rel['cst']), T.cst)
     print('STAGED in', stage)
     for l in T.log:
         print('  ', l)

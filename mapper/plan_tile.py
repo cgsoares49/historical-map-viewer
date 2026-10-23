@@ -40,6 +40,8 @@ MIN_YEARS = 0.05
 MIN_KM2 = 0.5
 SLIVER = 0.001            # a leftover smaller than 0.1% of the entry counts as covered (dropped)
 MIN_PAIR_YEARS = 10.0     # an overlap counts when it lasts >= 10 years without a break (shorter = transient-like overlay; reported, not touched)
+ERA_RULE = False
+FORCE_PAIRS = set()       # (i, j) pairs treated as real overlays whatever their duration
 BIG_KM2 = 50000.0         # entries larger than this (tribal / background layers) are never carved automatically; such pairs are only reported
 MIN_RATIO = 0.05          # an overlap counts when it is >= 5% of the smaller entry (the detector's threshold)
 
@@ -69,7 +71,8 @@ class Session:
             src = os.path.join(X.DATA_DIR, r)
             if os.path.exists(src):
                 shutil.copyfile(src, os.path.join(self.root, r))
-        self.T = SE.Tile(os.path.join(self.root, self.rel['par']), os.path.join(self.root, self.rel['pol']))
+        self.T = SE.Tile(os.path.join(self.root, self.rel['par']), os.path.join(self.root, self.rel['pol']), os.path.join(self.root, self.rel['cst']))
+        self.disagree = {}
         self.ops, self.manual, self.fixes, self.log, self.notation, self.warn, self.moved = [], [], [], [], [], [], []
         self.sync()
         self.t0 = self.t
@@ -79,6 +82,8 @@ class Session:
         self.T.finish()
         SE.write_lines(os.path.join(self.root, self.rel['par']), self.T.par)
         SE.write_lines(os.path.join(self.root, self.rel['pol']), self.T.pol)
+        if self.T.cst is not None:
+            SE.write_lines(os.path.join(self.root, self.rel['cst']), self.T.cst)
         old = X.DATA_DIR
         X.DATA_DIR = self.root
         try:
@@ -124,7 +129,16 @@ class Session:
         return None
 
     def newer(self, f, e, t):
-        """is f newer than e at time t? (later start of the current era; equal: the smaller polygon is the newer)"""
+        """is f the winner over e at time t?  Default = MAPPER paint order (the entry later in the PAR file is drawn on top, so it keeps the
+        area); the old era rule (later start of the current era; equal: the smaller polygon) is used with --era-rule, and the pairs where
+        the two rules disagree are listed in the plan."""
+        pf, pe = self.pos(f), self.pos(e)
+        era = self.newer_era(f, e, t)
+        if era != (pf > pe) and (min(f, e), max(f, e)) not in self.disagree:
+            self.disagree[(min(f, e), max(f, e))] = (f, e, t)
+        return era if ERA_RULE else pf > pe
+
+    def newer_era(self, f, e, t):
         of, oe = self.run_start(f, t), self.run_start(e, t)
         if of is None or oe is None:
             return False
@@ -147,6 +161,15 @@ class Session:
         self.sync()
         counts = [len(self.t['pol_by_index'][pol]['points'])] + [len(self.t['pol_by_index'][n]['points']) for n in nums]
         self.notation.append((pol, nums, points, oldn, counts))
+        return nums
+
+    def cst_split(self, cst, points):
+        oldn = len(self.t['cst_by_index'][cst]['points'])
+        nums = self.T.cst_split(cst, [tuple(p) for p in points])
+        self.ops.append({'op': 'cst_split', 'cst': cst, 'points': [[round(c, 5) for c in p] for p in points]})
+        self.sync()
+        counts = [len(self.t['cst_by_index'][cst]['points'])] + [len(self.t['cst_by_index'][n]['points']) for n in nums]
+        self.notation.append((f'CST{cst}', nums, points, oldn, counts))
         return nums
 
     def set_ranges(self, idx, rs):
@@ -176,6 +199,8 @@ class Session:
         o = op['op']
         if o == 'pol_split':
             self.pol_split(op['pol'], [tuple(q) for q in op['points']])
+        elif o == 'cst_split':
+            self.cst_split(op['cst'], [tuple(q) for q in op['points']])
         elif o == 'par_set_ranges':
             self.set_ranges(op['entry'], [dict(frm=r['from'], to=r['to'], name=r['name'], color=r['color']) for r in op['ranges']])
         elif o == 'par_set_refs':
@@ -254,15 +279,17 @@ def split_at_nodes(sess, entries, nodes, tol=1e-5):
     out = []
     for node in sorted(nodes):
         for pi, pts in source_polylines(sess, entries):
-            if pi <= 1000:
-                continue                                   # coastlines are never split
             line = LineString(pts)
             if line.distance(Point(node)) > tol:
                 continue
             if any(Point(q).distance(Point(node)) < tol for q in pts):
                 continue
-            nums = sess.pol_split(pi - 1000, [node])
-            out.append((pi - 1000, nums[0]))
+            if pi <= 1000:
+                nums = sess.cst_split(pi, [node])
+                out.append((pi, nums[0]))
+            else:
+                nums = sess.pol_split(pi - 1000, [node])
+                out.append((pi - 1000, nums[0]))
     return out
 
 
@@ -370,14 +397,17 @@ def build_remainder_rings(sess, e, subs):
                 break
             did = False
             for pi, vs in cuts.items():
-                tab = sess.t['pol_by_index'].get(pi - 1000)
+                tab = sess.t['pol_by_index'].get(pi - 1000) if pi > 1000 else sess.t['cst_by_index'].get(pi)
                 if not tab:
-                    yield None, f'cannot split coastline CST{pi}'
+                    yield None, f'cannot find {"POL" if pi > 1000 else "CST"} {pi}'
                     return
                 ends = {key(tab['points'][0]), key(tab['points'][-1])}
                 pts = sorted({key(q) for q in vs} - ends)
                 if pts:
-                    sess.pol_split(pi - 1000, pts)
+                    if pi > 1000:
+                        sess.pol_split(pi - 1000, pts)
+                    else:
+                        sess.cst_split(pi, pts)
                     did = True
             if not did:
                 yield None, 'a run uses part of a POL but no interior vertex to split at'
@@ -416,7 +446,8 @@ def significant(sess, i, j):
 
 def counts(sess, i, j):
     """a pair counts as an overlay to fix: significant in space, >= MIN_PAIR_YEARS in time, neither entry a giant."""
-    if pair_years(sess, i, j) < MIN_PAIR_YEARS:
+    forced = (min(i, j), max(i, j)) in FORCE_PAIRS
+    if pair_years(sess, i, j) < MIN_PAIR_YEARS and not forced:
         return False
     if not significant(sess, i, j):
         return False
@@ -428,7 +459,7 @@ def short_pairs(sess, cand):
     for k, i in enumerate(cand):
         for j in cand[k + 1:]:
             y = pair_years(sess, i, j)
-            if 0.5 <= y < MIN_PAIR_YEARS and significant(sess, i, j) and area(sess.geom(i)) <= BIG_KM2 and area(sess.geom(j)) <= BIG_KM2:
+            if 0.5 <= y < MIN_PAIR_YEARS and (min(i, j), max(i, j)) not in FORCE_PAIRS and significant(sess, i, j) and area(sess.geom(i)) <= BIG_KM2 and area(sess.geom(j)) <= BIG_KM2:
                 out.append((i, j, y))
     return out
 
@@ -591,10 +622,16 @@ def main():
     ap.add_argument('--move', action='append', default=[], help='ENTRY:AFTER = move that entry right below another in the file (draw order); repeatable')
     ap.add_argument('--all', action='store_true', help='candidates = every polity entry of the tile (pairs overlapping < 3 years or involving entries > 50,000 km2 are not touched, only reported)')
     ap.add_argument('--big-km2', type=float, default=None, help='raise the giant-entry limit (default 50000 km2) to let a pair of big entries be carved')
+    ap.add_argument('--era-rule', action='store_true', help='decide who keeps an overlap by era start (old rule) instead of MAPPER paint order')
+    ap.add_argument('--force-pair', action='append', default=[], help='A:B = treat that pair as a real overlay even if it lasts < 10 years (e.g. a 6-year Kassite overlay); repeatable')
     ap.add_argument('--entries', default=None, help='explicit candidate entries (comma list): no auto seeds and no neighbour hop')
     ap.add_argument('--audit-levels', default='HIGH,MED', help='registry-dropped entries rated at these levels count as real polities')
     a = ap.parse_args()
-    global BIG_KM2
+    global BIG_KM2, ERA_RULE
+    ERA_RULE = a.era_rule
+    for fp in a.force_pair:
+        x, y = (int(v) for v in fp.split(':'))
+        FORCE_PAIRS.add((min(x, y), max(x, y)))
     if a.big_km2:
         BIG_KM2 = a.big_km2
     lat, lon = a.tile.split(':')
@@ -627,7 +664,7 @@ def main():
     seeds = sorted(det | {i for i, lv in audit.items() if lv in levels and i in sess.E})
     if a.entries:
         seeds = sorted({int(x) for x in a.entries.split(',')})
-    polity = [i for i, e in sess.E.items() if e.get('areaType') == 1 and e.get('dotPoint') is None and e['polyRefs'] and sess.real_ranges(i)]
+    polity = [i for i, e in sess.E.items() if e.get('areaType') in (1, 2) and e.get('dotPoint') is None and e['polyRefs'] and sess.real_ranges(i)]
     def time_overlap(i, j):
         return any(min(r['to'], q['to']) - max(r['frm'], q['frm']) > MIN_YEARS for r in sess.real_ranges(i) for q in sess.real_ranges(j))
     if a.all:
@@ -669,10 +706,13 @@ def main():
     json.dump(sess.ops, open(os.path.join(out_dir, 'edits.json'), 'w', encoding='utf-8'), indent=1)
     L = [f'WHOLE-TILE PLAN {a.tile}   (newer entry takes its area; older entry carved)', '',
          f'{len(sess.ops)} edit operations; candidates {cand0}; overlap windows before: {len(before)}, after: {len(left)}',
-         f'POL file header count: {len(sess.t0["pol_by_index"])} -> {len(sess.t["pol_by_index"])};  PAR file header count: {len(sess.t0["par_entries"])} -> {len(sess.t["par_entries"])}',
+         f'POL file header count: {len(sess.t0["pol_by_index"])} -> {len(sess.t["pol_by_index"])};  PAR file header count: {len(sess.t0["par_entries"])} -> {len(sess.t["par_entries"])};  CST file header count: {len(sess.t0["cst_by_index"])} -> {len(sess.t["cst_by_index"])}',
          '', 'POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):']
     for pol, nums, pts, oldn, counts in sess.notation:
-        L.append(f"#{pol} => {pol}, " + ', '.join(str(n) for n in nums))
+        if isinstance(pol, str):
+            L.append(f"{pol} => {pol[3:]}, " + ', '.join(str(n) for n in nums) + "   (COAST: CST file)")
+        else:
+            L.append(f"#{pol} => {pol}, " + ', '.join(str(n) for n in nums))
         for p in pts:
             L.append(f" {p[0]:.5f}    {p[1]:.5f}")
         L.append(f"{oldn} > " + ' & '.join(str(c) for c in counts))
@@ -689,6 +729,8 @@ def main():
             L.append(f"  NEW #{op['index']} right after #{op['after']}: " + '; '.join(f"{r['from']:g}..{r['to']:g} {r['name']}" for r in op['ranges']) + f" | refs {op['refs']}")
     if sess.manual:
         L += ['', 'NEEDS A HUMAN DECISION:'] + ['  ! ' + m for m in sess.manual]
+    if sess.disagree and not ERA_RULE:
+        L += ['', 'PAINT ORDER vs OLD ERA RULE disagree for these pairs (paint order = what MAPPER shows was used):'] + [f"  #{f} vs #{e} (first noticed at {t:.1f})" for (_, _), (f, e, t) in sorted(sess.disagree.items())]
     if sess.warn:
         L += ['', 'DRAW-ORDER WARNINGS (not changed):'] + ['  ? ' + m for m in sess.warn]
     sh = short_pairs(sess, cand)
