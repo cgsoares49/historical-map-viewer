@@ -108,7 +108,7 @@ class Session:
         return self._g[i]
 
     def ranges(self, i):
-        return [dict(frm=d['from'], to=d['to'], name=d['name'], color=d['colorIndex']) for d in self.E[i]['dateRanges']]
+        return [dict(frm=d['from'], to=d['to'], name=d['name'], color=d['colorIndex'], pos=k) for k, d in enumerate(self.E[i]['dateRanges'])]
 
     def real(self, r):
         return r['name'].strip().upper() != 'UNKNOWN' and r['to'] - r['frm'] > MIN_YEARS
@@ -530,7 +530,7 @@ def plan_entry(sess, e, cand):
                 continue
             mid = (a + b) / 2
             sig = tuple(sorted(f for f in near if sess.alive(f, a, b) and sess.newer(f, e, mid)))
-            p = {'frm': a, 'to': b, 'sig': sig, 'name': r['name'], 'color': r['color'], 'rid': id(r)}
+            p = {'frm': a, 'to': b, 'sig': sig, 'name': r['name'], 'color': r['color'], 'rid': id(r), 'pos': r['pos']}
             if pieces and pieces[-1]['sig'] == sig and pieces[-1]['rid'] == p['rid'] and abs(pieces[-1]['to'] - a) < 1e-9:
                 pieces[-1]['to'] = b
             else:
@@ -539,7 +539,7 @@ def plan_entry(sess, e, cand):
 
 
 def as_ranges(ps):
-    return [dict(frm=p['frm'], to=p['to'], name=p['name'], color=p['color']) for p in ps]
+    return [dict(frm=p['frm'], to=p['to'], name=p['name'], color=p['color'], pos=p.get('pos', 0)) for p in ps]
 
 
 def process_entry(sess, e, cand, new_entries):
@@ -561,8 +561,8 @@ def process_entry(sess, e, cand, new_entries):
             groups.setdefault(p['sig'], []).append(p)
     if not drop and not groups:
         return
-    nonreal = [r for r in sess.ranges(e) if not sess.real(r)]
-    kept_ranges = sorted(as_ranges(keep) + nonreal, key=lambda r: r['frm'])
+    nonreal = [r for r in sess.ranges(e) if not sess.real(r)]       # ranges keep their original order ('pos'): MAPPER reads overlapping ranges in file order
+    kept_ranges = sorted(as_ranges(keep) + nonreal, key=lambda r: (r['pos'], r['frm']))
     gl = sorted(groups.items(), key=lambda kv: min(p['frm'] for p in kv[1]))
     has_full = any(sess.real(r) for r in kept_ranges)
     swap_first = (not has_full) and bool(gl)
@@ -582,7 +582,7 @@ def process_entry(sess, e, cand, new_entries):
             ge = sess.geom(e)
             cutpt = ge.intersection(unary_union([sess.geom(f) for f in sig])).representative_point()
             if swap_first and gi == len(gl) - 1 and not swapped:
-                sess.set_ranges(e, sorted(rr + nonreal, key=lambda r: r['frm']))
+                sess.set_ranges(e, sorted(rr + nonreal, key=lambda r: (r['pos'], r['frm'])))
                 sess.set_refs(e, refs)
                 sess.log.append(f'#{e}: ref swap -> ring of #{e} minus ' + ' & '.join(f'#{f}' for f in sig) + f' ({area(V):.1f} km2), ranges '
                                 + ', '.join(f'{x:g}..{y:g}' for x, y in win))
