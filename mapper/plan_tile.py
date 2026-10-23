@@ -233,12 +233,19 @@ class Session:
             seen[e['index']] = seen.get(e['index'], 0) + 1
             if seen[e['index']] > 1:
                 dups.append((e['index'], seen[e['index']]))
+        gaps = sorted(set(range(1, max(seen) + 1)) - set(seen))
         nxt = max(seen) + 1
+        if dups or gaps:
+            self.log.append(f'PAR NUMBER CHECK: {len(dups)} duplicate index(es) {[d[0] for d in dups]}; missing numbers {gaps}')
         for idx, occ in dups:
-            op = {'op': 'par_renumber', 'entry': idx, 'occurrence': occ, 'new': nxt}
+            if gaps:                                      # fill a gap first (the nearest missing number), else max+1
+                new = min(gaps, key=lambda g: abs(g - idx))
+                gaps.remove(new)
+            else:
+                new, nxt = nxt, nxt + 1
+            op = {'op': 'par_renumber', 'entry': idx, 'occurrence': occ, 'new': new}
             self.apply_op(op)
-            self.log.append(f'DUPLICATE INDEX: PAR entry #{idx} (occurrence {occ}, later in the file) renumbered to #{nxt}')
-            nxt += 1
+            self.log.append(f'DUPLICATE INDEX: PAR entry #{idx} (occurrence {occ}, later in the file) renumbered to #{new}')
 
     def next_no(self):
         return max(self.E) + 1
