@@ -271,6 +271,18 @@ class Tile:
         self.touched.add(idx)
         self.log.append(f'par_trim #{idx}: {e["nr"]} -> {keep} ranges')
 
+    def par_renumber(self, idx, occurrence, new):
+        """give the occurrence-th (1-based) PAR entry that carries index idx a new, unique index (duplicate-index repair)"""
+        ents, _ = parse_par(self.par)
+        src = [e for e in ents if e['index'] == idx]
+        if len(src) < occurrence:
+            raise SystemExit(f'par_renumber #{idx}: occurrence {occurrence} not found')
+        if any(e['index'] == new for e in ents):
+            raise SystemExit(f'par_renumber: #{new} already in use')
+        self.par[src[occurrence - 1]['start']] = f' {new} '
+        self.touched.add(new)
+        self.log.append(f'par_renumber #{idx} (occurrence {occurrence}) -> #{new}')
+
     def par_delete_entry(self, idx):
         ents, _ = parse_par(self.par)
         src = [e for e in ents if e['index'] == idx]
@@ -392,6 +404,8 @@ def main():
             T.cst_split(op['cst'], [tuple(p) for p in op['points']])
         elif o == 'par_set_ranges':
             T.par_set_ranges(op['entry'], op['ranges'])
+        elif o == 'par_renumber':
+            T.par_renumber(op['entry'], op['occurrence'], op['new'])
         elif o == 'par_delete_entry':
             T.par_delete_entry(op['entry'])
         elif o == 'par_move':

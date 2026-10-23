@@ -41,6 +41,7 @@ MIN_KM2 = 0.5
 SLIVER = 0.001            # a leftover smaller than 0.1% of the entry counts as covered (dropped)
 MIN_PAIR_YEARS = 10.0     # an overlap counts when it lasts >= 10 years without a break (shorter = transient-like overlay; reported, not touched)
 ERA_RULE = False
+FORCE_ENTRIES = set()     # entries whose overlaps always count, whatever their duration (e.g. a province that expands for a few years)
 FORCE_PAIRS = set()       # (i, j) pairs treated as real overlays whatever their duration
 BIG_KM2 = 50000.0         # entries larger than this (tribal / background layers) are never carved automatically; such pairs are only reported
 MIN_RATIO = 0.05          # an overlap counts when it is >= 5% of the smaller entry (the detector's threshold)
@@ -207,6 +208,8 @@ class Session:
             self.T.par_set_refs(op['entry'], op['refs']); self.ops.append(op); self.sync()
         elif o == 'par_delete_entry':
             self.T.par_delete_entry(op['entry']); self.ops.append(op); self.sync()
+        elif o == 'par_renumber':
+            self.T.par_renumber(op['entry'], op['occurrence'], op['new']); self.ops.append(op); self.sync()
         elif o == 'par_move':
             self.move_entry(op['entry'], op['after'])
         elif o == 'par_add_entry':
@@ -221,6 +224,21 @@ class Session:
 
     def pos(self, i):
         return [e['entryIndex'] for e in self.t['par_entries']].index(i)
+
+    def fix_duplicate_indices(self):
+        """PAR entries sharing an index (a data bug: everything keyed by index sees only one of them) -> later occurrences get new indices"""
+        ents, _ = SE.parse_par(self.T.par)
+        seen, dups = {}, []
+        for e in ents:
+            seen[e['index']] = seen.get(e['index'], 0) + 1
+            if seen[e['index']] > 1:
+                dups.append((e['index'], seen[e['index']]))
+        nxt = max(seen) + 1
+        for idx, occ in dups:
+            op = {'op': 'par_renumber', 'entry': idx, 'occurrence': occ, 'new': nxt}
+            self.apply_op(op)
+            self.log.append(f'DUPLICATE INDEX: PAR entry #{idx} (occurrence {occ}, later in the file) renumbered to #{nxt}')
+            nxt += 1
 
     def next_no(self):
         return max(self.E) + 1
@@ -446,7 +464,7 @@ def significant(sess, i, j):
 
 def counts(sess, i, j):
     """a pair counts as an overlay to fix: significant in space, >= MIN_PAIR_YEARS in time, neither entry a giant."""
-    forced = (min(i, j), max(i, j)) in FORCE_PAIRS
+    forced = (min(i, j), max(i, j)) in FORCE_PAIRS or i in FORCE_ENTRIES or j in FORCE_ENTRIES
     if pair_years(sess, i, j) < MIN_PAIR_YEARS and not forced:
         return False
     if not significant(sess, i, j):
@@ -459,7 +477,7 @@ def short_pairs(sess, cand):
     for k, i in enumerate(cand):
         for j in cand[k + 1:]:
             y = pair_years(sess, i, j)
-            if 0.5 <= y < MIN_PAIR_YEARS and (min(i, j), max(i, j)) not in FORCE_PAIRS and significant(sess, i, j) and area(sess.geom(i)) <= BIG_KM2 and area(sess.geom(j)) <= BIG_KM2:
+            if 0.5 <= y < MIN_PAIR_YEARS and (min(i, j), max(i, j)) not in FORCE_PAIRS and i not in FORCE_ENTRIES and j not in FORCE_ENTRIES and significant(sess, i, j) and area(sess.geom(i)) <= BIG_KM2 and area(sess.geom(j)) <= BIG_KM2:
                 out.append((i, j, y))
     return out
 
@@ -624,11 +642,16 @@ def main():
     ap.add_argument('--big-km2', type=float, default=None, help='raise the giant-entry limit (default 50000 km2) to let a pair of big entries be carved')
     ap.add_argument('--era-rule', action='store_true', help='decide who keeps an overlap by era start (old rule) instead of MAPPER paint order')
     ap.add_argument('--force-pair', action='append', default=[], help='A:B = treat that pair as a real overlay even if it lasts < 10 years (e.g. a 6-year Kassite overlay); repeatable')
+    ap.add_argument('--force-entry', action='append', default=[], help='E = every overlap involving entry E counts as real even if short (< 10 yrs); repeatable')
+    ap.add_argument('--min-ratio', type=float, default=None, help='an overlap counts when it is >= this fraction of the smaller entry (default 0.05); lower it to catch small slivers/hatching')
     ap.add_argument('--entries', default=None, help='explicit candidate entries (comma list): no auto seeds and no neighbour hop')
     ap.add_argument('--audit-levels', default='HIGH,MED', help='registry-dropped entries rated at these levels count as real polities')
     a = ap.parse_args()
-    global BIG_KM2, ERA_RULE
+    global BIG_KM2, ERA_RULE, MIN_RATIO
+    if a.min_ratio is not None:
+        MIN_RATIO = a.min_ratio
     ERA_RULE = a.era_rule
+    FORCE_ENTRIES.update(int(v) for v in a.force_entry)
     for fp in a.force_pair:
         x, y = (int(v) for v in fp.split(':'))
         FORCE_PAIRS.add((min(x, y), max(x, y)))
@@ -651,6 +674,7 @@ def main():
         for op in json.load(open(a.pre_edits, encoding='utf-8')):
             sess.apply_op(op)
         print(f'applied {len(sess.ops)} pre-edit operations from {a.pre_edits}')
+    sess.fix_duplicate_indices()
     for m in a.move:                                      # draw-order moves go FIRST so remainders are inserted under the moved parent
         e_, after_ = (int(x) for x in m.split(':'))
         sess.move_entry(e_, after_)
