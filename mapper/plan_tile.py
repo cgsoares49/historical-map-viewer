@@ -663,6 +663,8 @@ def main():
     ap.add_argument('--force-pair', action='append', default=[], help='A:B = treat that pair as a real overlay even if it lasts < 10 years (e.g. a 6-year Kassite overlay); repeatable')
     ap.add_argument('--force-entry', action='append', default=[], help='E = every overlap involving entry E counts as real even if short (< 10 yrs); repeatable')
     ap.add_argument('--min-ratio', type=float, default=None, help='an overlap counts when it is >= this fraction of the smaller entry (default 0.05); lower it to catch small slivers/hatching')
+    ap.add_argument('--type2', action='store_true', help='also plan areaType-2 entries (deliberate overlays, e.g. Proto-Canaanites) as candidates; off by default: type 2 is an accepted overlay layer')
+    ap.add_argument('--armies', action='store_true', help='also plan entries whose real ranges are all Army ranges (default: armies stay as overlays)')
     ap.add_argument('--entries', default=None, help='explicit candidate entries (comma list): no auto seeds and no neighbour hop')
     ap.add_argument('--audit-levels', default='HIGH,MED', help='registry-dropped entries rated at these levels count as real polities')
     a = ap.parse_args()
@@ -708,7 +710,15 @@ def main():
     seeds = sorted(det | {i for i, lv in audit.items() if lv in levels and i in sess.E})
     if a.entries:
         seeds = sorted({int(x) for x in a.entries.split(',')})
-    polity = [i for i, e in sess.E.items() if e.get('areaType') in (1, 2) and e.get('dotPoint') is None and e['polyRefs'] and sess.real_ranges(i)]
+    polity = [i for i, e in sess.E.items() if e.get('areaType') in ((1, 2) if a.type2 else (1,)) and e.get('dotPoint') is None and e['polyRefs'] and sess.real_ranges(i)]
+    if not a.armies:
+        def pure_army(i):
+            rr = sess.real_ranges(i)
+            return bool(rr) and all('army' in r['name'].lower() for r in rr)
+        armies = [i for i in polity if pure_army(i)]
+        if armies:
+            sess.log.append('ARMIES left as overlays (every real range is an Army; --armies to plan them): ' + ', '.join('#%d' % i for i in sorted(armies)))
+        polity = [i for i in polity if i not in set(armies)]
     def time_overlap(i, j):
         return any(min(r['to'], q['to']) - max(r['frm'], q['frm']) > MIN_YEARS for r in sess.real_ranges(i) for q in sess.real_ranges(j))
     if a.all:

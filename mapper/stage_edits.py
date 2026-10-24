@@ -90,7 +90,10 @@ def par_refs(lines, e):
         return out
     for k in range(e['refs_start'], e['end']):
         a, b = lines[k].split(',')
-        out.append((int(a), int(b), k))
+        try:
+            out.append((int(a), int(b), k))
+        except ValueError:                       # a literal coordinate pair with a non-integer value (reported, never edited): not a POL/CST ref
+            out.append((float(a), float(b), k))
     return out
 
 
