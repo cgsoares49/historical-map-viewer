@@ -664,7 +664,8 @@ def main():
     ap.add_argument('--force-entry', action='append', default=[], help='E = every overlap involving entry E counts as real even if short (< 10 yrs); repeatable')
     ap.add_argument('--min-ratio', type=float, default=None, help='an overlap counts when it is >= this fraction of the smaller entry (default 0.05); lower it to catch small slivers/hatching')
     ap.add_argument('--type2', action='store_true', help='also plan areaType-2 entries (deliberate overlays, e.g. Proto-Canaanites) as candidates; off by default: type 2 is an accepted overlay layer')
-    ap.add_argument('--armies', action='store_true', help='also plan entries whose real ranges are all Army ranges (default: armies stay as overlays)')
+    ap.add_argument('--armies', action='store_true', help='also plan transient entries (all POLs marked (-9999,-9998)); default: transients are left alone')
+    ap.add_argument('--type2-entries', default=None, help='comma list of areaType-2 entries to plan as candidates (e.g. 48,50,51,187 = small city blobs that sit inside a bigger polity)')
     ap.add_argument('--entries', default=None, help='explicit candidate entries (comma list): no auto seeds and no neighbour hop')
     ap.add_argument('--audit-levels', default='HIGH,MED', help='registry-dropped entries rated at these levels count as real polities')
     a = ap.parse_args()
@@ -710,15 +711,28 @@ def main():
     seeds = sorted(det | {i for i, lv in audit.items() if lv in levels and i in sess.E})
     if a.entries:
         seeds = sorted({int(x) for x in a.entries.split(',')})
-    polity = [i for i, e in sess.E.items() if e.get('areaType') in ((1, 2) if a.type2 else (1,)) and e.get('dotPoint') is None and e['polyRefs'] and sess.real_ranges(i)]
+    t2_ok = {int(v) for v in a.type2_entries.split(',') if v.strip()} if a.type2_entries else set()
+    polity = [i for i, e in sess.E.items() if (e.get('areaType') == 1 or (e.get('areaType') == 2 and (a.type2 or i in t2_ok))) and e.get('dotPoint') is None and e['polyRefs'] and sess.real_ranges(i)]
     if not a.armies:
-        def pure_army(i):
-            rr = sess.real_ranges(i)
-            return bool(rr) and all('army' in r['name'].lower() for r in rr)
-        armies = [i for i in polity if pure_army(i)]
-        if armies:
-            sess.log.append('ARMIES left as overlays (every real range is an Army; --armies to plan them): ' + ', '.join('#%d' % i for i in sorted(armies)))
-        polity = [i for i in polity if i not in set(armies)]
+        # A transient (army / raid / path) is decided by its POLs, as CREATOR's _isTransientEntry does: every POL it uses (ref > 1000)
+        # carries the single date range (-9999, -9998). Such entries are left alone: they neither carve nor are carved.
+        def is_transient(i):
+            saw = False
+            for pi, fl in sess.E[i]['polyRefs']:
+                if pi <= 1000:
+                    continue
+                saw = True
+                tab = sess.t['pol_by_index'].get(pi - 1000)
+                if not tab:
+                    return False
+                dr = tab['dateRanges']
+                if not (len(dr) == 1 and dr[0][0] == -9999.0 and dr[0][1] == -9998.0):
+                    return False
+            return saw
+        trans = [i for i in polity if is_transient(i)]
+        if trans:
+            sess.log.append(f'TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): {len(trans)} entries')
+        polity = [i for i in polity if i not in set(trans)]
     def time_overlap(i, j):
         return any(min(r['to'], q['to']) - max(r['frm'], q['frm']) > MIN_YEARS for r in sess.real_ranges(i) for q in sess.real_ranges(j))
     if a.all:

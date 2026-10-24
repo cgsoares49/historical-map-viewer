@@ -1,0 +1,6 @@
+tile,entries,names,years,why CREATOR hatches it,status,notes
+120/035,"#187 (type 2); #48 (type 2); #50 (type 2); #51 (type 2) inside #215/#227/#255 (type 1)","Phoenicians - Byblos / Sidon / Biruta (Beirut) / Tyre (early range 'Proto-Canaanites') inside Phoenicians",-1145.5..-732.5,"overlay hatch, cross-hatch variant (both names share the parent 'Phoenicians'); renderer hatches type-2 pairs by design",left as is (type 2 is subtracted from the underlay at export; no carve),2026-10-24: I first planned a carve of the Phoenicians and a coast split; user said not needed. Plan set aside (staging/120-035_DO_NOT_COPY)
+120/035,"#238 (type 2)","Philistines",-1035.5..-1022.5,"overlay hatch over Israelites/Aram Damascus (#428/#205)",left as is,"PAR line 2093 has a literal pair '35 , 32.6' (non-integer; reported, not fixed)"
+120/035,"#224 (type 2)","Rebel Israelites",,overlay hatch over Phoenicians #255 (92 km2),left as is,
+125/040,"#417 (type 2) under #403","Carduchii under Persian Empire - Media - Armenia",-385.8..-384.5,overlay hatch (type 2 by design),left as is (user set #417 to type 2),
+120/045,"#142 over #208","Babylonia (Chaldaeans) over Chaldaea",-675.3..-674.5,overlay hatch (under a year),left as is (user decision),2062 km2
