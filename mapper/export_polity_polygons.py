@@ -213,6 +213,7 @@ def parse_par_full(lines):
         num_refs = float(lines[i]); i += 1
         poly_refs = []
         dot_point = None
+        dot_diameter = abs(num_refs) / 10.0     # degrees, as dataloader.js (rendered as a circle of this diameter)
         if num_refs < 0:
             coords = [t for t in re.split(r'[\s,]+', lines[i].strip()) if t]
             i += 1
@@ -233,6 +234,7 @@ def parse_par_full(lines):
         entries.append({
             'entryIndex': entry_index, 'areaType': area_type,
             'dateRanges': date_ranges, 'polyRefs': poly_refs, 'dotPoint': dot_point,
+            'dotDiameter': dot_diameter,
         })
     return entries
 
@@ -388,6 +390,19 @@ def is_semitransient_entry(entry):
     return entry['areaType'] == SEMITRANSIENT_AREA_TYPE
 
 
+def type2_dot_polygon(entry):
+    """A point-based (negative numRefs, no polygon) areaType=2 entry is rendered as a circle of
+    dotDiameter degrees around dotPoint (renderer.js _drawDots; plate carree, so a true circle in
+    lon/lat). That rendered circle IS its area: returned here so it is reported and subtracted like
+    any other type-2 footprint. None for every other entry (type 0/1 dots are untouched)."""
+    if entry.get('areaType') != SEMITRANSIENT_AREA_TYPE or not entry.get('dotPoint') or entry.get('polyRefs'):
+        return None
+    d = entry.get('dotDiameter') or 0
+    if d <= 0:
+        return None
+    return Point(entry['dotPoint'][0], entry['dotPoint'][1]).buffer(d / 2.0, 32)
+
+
 def find_semitransients(tiles_data, repair_log):
     """Every areaType=2 PAR entry across the given tiles, regardless of its
     own name/owner -- a semi-transient's whole purpose is overlaying a
@@ -402,6 +417,11 @@ def find_semitransients(tiles_data, repair_log):
     for tile in tiles_data:
         for entry in tile['par_entries']:
             if not is_semitransient_entry(entry):
+                continue
+            dot_poly = type2_dot_polygon(entry)
+            if dot_poly is not None:
+                out.append({'tile': tile, 'entry': entry, 'ring_polygon': dot_poly,
+                             'key': (tile['lat_str'], tile['lon_str'], entry['entryIndex'])})
                 continue
             ring, has_segment = build_combined_ring(entry['polyRefs'], tile['cst_by_index'], tile['pol_by_index'])
             if not has_segment or len(ring) < 4:
@@ -647,10 +667,12 @@ def find_entries_by_predicate(tiles_data, name_match, repair_log):
                 is_transient(entry['polyRefs'], tile['pol_by_index'])
                 or any(is_keyword_transient(dr['name']) for dr in matching_drs)
             )
-            ring, has_segment = build_combined_ring(entry['polyRefs'], tile['cst_by_index'], tile['pol_by_index'])
-            if not has_segment or len(ring) < 4:
-                continue
-            poly = ring_to_polygon(ring, repair_log)
+            poly = type2_dot_polygon(entry)
+            if poly is None:
+                ring, has_segment = build_combined_ring(entry['polyRefs'], tile['cst_by_index'], tile['pol_by_index'])
+                if not has_segment or len(ring) < 4:
+                    continue
+                poly = ring_to_polygon(ring, repair_log)
             if poly is None or poly.is_empty:
                 continue
             pe = {'tile': tile, 'entry': entry, 'ring_polygon': poly}
