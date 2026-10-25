@@ -211,6 +211,8 @@ class Session:
             self.T.par_delete_entry(op['entry']); self.ops.append(op); self.sync()
         elif o == 'par_renumber':
             self.T.par_renumber(op['entry'], op['occurrence'], op['new']); self.ops.append(op); self.sync()
+        elif o == 'par_set_areatype':
+            self.T.par_set_areatype(op['entry'], op['areatype']); self.ops.append(op); self.sync()
         elif o == 'par_move':
             self.move_entry(op['entry'], op['after'])
         elif o == 'par_add_entry':
