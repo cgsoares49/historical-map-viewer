@@ -51,6 +51,7 @@ def main():
     ap.add_argument('--date', default=datetime.date.today().isoformat())
     ap.add_argument('--reason', default='overlay fix')
     ap.add_argument('--workbook', default=WB)
+    ap.add_argument('--first-id', type=int, default=None, help='column-A number of the first new row (overrides the workbook A1, which lags unsaved pastes)')
     a = ap.parse_args()
     lat, lon = a.tile.split('/')
     d = datetime.date.fromisoformat(a.date)
@@ -71,7 +72,7 @@ def main():
     pol = {n: p for n, p in pol.items() if n not in ignore and not modern(p)}
     wb = openpyxl.load_workbook(a.workbook, read_only=True, data_only=True)
     rows = [list(r) + [None] * (NCOL - len(r)) for r in wb['borders'].iter_rows(values_only=True)]
-    counter = int(rows[0][0])
+    counter = int(rows[0][0]) if a.first_id is None else a.first_id - 1
     sheet = {}
     for i, r in enumerate(rows):
         if i > 0 and r[3] == a.tile and isinstance(r[4], (int, float)):
