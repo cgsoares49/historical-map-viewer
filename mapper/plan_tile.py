@@ -664,6 +664,7 @@ def main():
     ap.add_argument('--era-rule', action='store_true', help='decide who keeps an overlap by era start (old rule) instead of MAPPER paint order')
     ap.add_argument('--force-pair', action='append', default=[], help='A:B = treat that pair as a real overlay even if it lasts < 10 years (e.g. a 6-year Kassite overlay); repeatable')
     ap.add_argument('--force-entry', action='append', default=[], help='E = every overlap involving entry E counts as real even if short (< 10 yrs); repeatable')
+    ap.add_argument('--min-pair-years', type=float, default=None, help='an overlap counts when it lasts >= this many years (default 10); real polities should be carved whatever the length, so 0.5 (shorter ones are noise)')
     ap.add_argument('--min-ratio', type=float, default=None, help='an overlap counts when it is >= this fraction of the smaller entry (default 0.05); lower it to catch small slivers/hatching')
     ap.add_argument('--type2', action='store_true', help='also plan areaType-2 entries (deliberate overlays, e.g. Proto-Canaanites) as candidates; off by default: type 2 is an accepted overlay layer')
     ap.add_argument('--armies', action='store_true', help='also plan transient entries (all POLs marked (-9999,-9998)); default: transients are left alone')
@@ -671,9 +672,11 @@ def main():
     ap.add_argument('--entries', default=None, help='explicit candidate entries (comma list): no auto seeds and no neighbour hop')
     ap.add_argument('--audit-levels', default='HIGH,MED', help='registry-dropped entries rated at these levels count as real polities')
     a = ap.parse_args()
-    global BIG_KM2, ERA_RULE, MIN_RATIO
+    global BIG_KM2, ERA_RULE, MIN_RATIO, MIN_PAIR_YEARS
     if a.min_ratio is not None:
         MIN_RATIO = a.min_ratio
+    if a.min_pair_years is not None:
+        MIN_PAIR_YEARS = a.min_pair_years
     ERA_RULE = a.era_rule
     FORCE_ENTRIES.update(int(v) for v in a.force_entry)
     for fp in a.force_pair:
