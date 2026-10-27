@@ -671,6 +671,7 @@ def main():
     ap.add_argument('--type2', action='store_true', help='also plan areaType-2 entries (deliberate overlays, e.g. Proto-Canaanites) as candidates; off by default: type 2 is an accepted overlay layer')
     ap.add_argument('--armies', action='store_true', help='also plan transient entries (all POLs marked (-9999,-9998)); default: transients are left alone')
     ap.add_argument('--type2-entries', default=None, help='comma list of areaType-2 entries to plan as candidates (e.g. 48,50,51,187 = small city blobs that sit inside a bigger polity)')
+    ap.add_argument('--skip', default=None, help='comma list of entries that are NOT planned (neither carved nor used to carve): groups the user will review by hand')
     ap.add_argument('--entries', default=None, help='explicit candidate entries (comma list): no auto seeds and no neighbour hop')
     ap.add_argument('--audit-levels', default='HIGH,MED', help='registry-dropped entries rated at these levels count as real polities')
     a = ap.parse_args()
@@ -740,6 +741,10 @@ def main():
         if trans:
             sess.log.append(f'TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): {len(trans)} entries')
         polity = [i for i in polity if i not in set(trans)]
+    if a.skip:
+        skip = {int(v) for v in a.skip.split(',') if v.strip()}
+        sess.log.append(f'SKIPPED by request (not planned): {sorted(skip)}')
+        polity = [i for i in polity if i not in skip]
     def time_overlap(i, j):
         return any(min(r['to'], q['to']) - max(r['frm'], q['frm']) > MIN_YEARS for r in sess.real_ranges(i) for q in sess.real_ranges(j))
     if a.all:
