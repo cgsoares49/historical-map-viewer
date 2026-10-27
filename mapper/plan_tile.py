@@ -420,7 +420,7 @@ def build_remainder_rings(sess, e, subs):
                 if area(g.symmetric_difference(P)) > max(1.0, area(P) * 0.002):
                     yield None, f'traced ring does not reproduce the remainder ({area(g):.1f} vs {area(P):.1f} km2)'
                     return
-                yield refs, P
+                yield refs, P, k == nparts - 1
                 done = True
                 break
             did = False
@@ -576,14 +576,16 @@ def process_entry(sess, e, cand, new_entries):
         rr = as_ranges(ps)
         win = [(q['frm'], q['to']) for q in ps]
         got = False
-        for refs, V in build_remainder_rings(sess, e, list(sig)):
+        for item in build_remainder_rings(sess, e, list(sig)):
+            refs, V = item[0], item[1]
+            is_last_part = len(item) > 2 and item[2]
             if refs is None:
                 sess.manual.append(f'#{e} minus {["#%d" % f for f in sig]} ({min(q["frm"] for q in ps):g}..{max(q["to"] for q in ps):g}): {V}')
                 return
             got = True
             ge = sess.geom(e)
             cutpt = ge.intersection(unary_union([sess.geom(f) for f in sig])).representative_point()
-            if swap_first and gi == len(gl) - 1 and not swapped:
+            if swap_first and gi == len(gl) - 1 and not swapped and is_last_part:      # ref swap on the LAST part only: re-pointing #e earlier would shrink #e under the later parts
                 sess.set_ranges(e, sorted(rr + nonreal, key=lambda r: (r['pos'], r['frm'])))
                 sess.set_refs(e, refs)
                 sess.log.append(f'#{e}: ref swap -> ring of #{e} minus ' + ' & '.join(f'#{f}' for f in sig) + f' ({area(V):.1f} km2), ranges '
