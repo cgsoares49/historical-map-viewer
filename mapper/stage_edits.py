@@ -74,7 +74,8 @@ def parse_par(lines):
             j += 3
         e['ranges_end'] = j
         e['nref_line'] = j
-        nref = int(float(lines[j]))
+        nref_f = float(lines[j])
+        nref = int(nref_f) if nref_f >= 0 else min(-1, int(nref_f))   # -0.7 (a dot of 0.07 deg diameter) is a DOT, not 0 refs
         e['refs_start'] = j + 1
         e['dot'] = nref < 0                       # negative count: ONE literal 'lon lat' line follows (dot marker)
         e['end'] = j + 1 + (1 if nref < 0 else nref)
