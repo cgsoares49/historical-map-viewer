@@ -43,6 +43,7 @@ MIN_PAIR_YEARS = 10.0     # an overlap counts when it lasts >= 10 years without 
 ERA_RULE = False
 FORCE_ENTRIES = set()     # entries whose overlaps always count, whatever their duration (e.g. a province that expands for a few years)
 FORCE_PAIRS = set()       # (i, j) pairs treated as real overlays whatever their duration
+MIN_PART_KM2 = 5.0        # a remainder part smaller than this gets no ring of its own (its area is lost!): use --min-part-km2 0.5
 BIG_KM2 = 50000.0         # entries larger than this (tribal / background layers) are never carved automatically; such pairs are only reported
 MIN_RATIO = 0.05          # an overlap counts when it is >= 5% of the smaller entry (the detector's threshold)
 
@@ -394,7 +395,7 @@ def build_remainder_rings(sess, e, subs):
 
     def parts_of(V):
         gs = [g for g in (V.geoms if hasattr(V, 'geoms') else [V]) if g.geom_type == 'Polygon']
-        return sorted([g for g in gs if area(g) >= 5.0], key=lambda g: (-area(g), g.centroid.x))      # parts of >= 5 km2 get a ring
+        return sorted([g for g in gs if area(g) >= MIN_PART_KM2], key=lambda g: (-area(g), g.centroid.x))      # parts of >= 5 km2 get a ring
 
     def remainder():
         return sess.geom(e).difference(unary_union([sess.geom(f) for f in subs]))
@@ -671,15 +672,18 @@ def main():
     ap.add_argument('--type2', action='store_true', help='also plan areaType-2 entries (deliberate overlays, e.g. Proto-Canaanites) as candidates; off by default: type 2 is an accepted overlay layer')
     ap.add_argument('--armies', action='store_true', help='also plan transient entries (all POLs marked (-9999,-9998)); default: transients are left alone')
     ap.add_argument('--type2-entries', default=None, help='comma list of areaType-2 entries to plan as candidates (e.g. 48,50,51,187 = small city blobs that sit inside a bigger polity)')
+    ap.add_argument('--min-part-km2', type=float, default=None, help='smallest remainder part that gets its own PAR entry (default 5; smaller parts are DROPPED, losing their area) -- 0.5 keeps slivers')
     ap.add_argument('--skip', default=None, help='comma list of entries that are NOT planned (neither carved nor used to carve): groups the user will review by hand')
     ap.add_argument('--entries', default=None, help='explicit candidate entries (comma list): no auto seeds and no neighbour hop')
     ap.add_argument('--audit-levels', default='HIGH,MED', help='registry-dropped entries rated at these levels count as real polities')
     a = ap.parse_args()
-    global BIG_KM2, ERA_RULE, MIN_RATIO, MIN_PAIR_YEARS
+    global BIG_KM2, ERA_RULE, MIN_RATIO, MIN_PAIR_YEARS, MIN_PART_KM2
     if a.min_ratio is not None:
         MIN_RATIO = a.min_ratio
     if a.min_pair_years is not None:
         MIN_PAIR_YEARS = a.min_pair_years
+    if a.min_part_km2 is not None:
+        MIN_PART_KM2 = a.min_part_km2
     ERA_RULE = a.era_rule
     FORCE_ENTRIES.update(int(v) for v in a.force_entry)
     for fp in a.force_pair:
