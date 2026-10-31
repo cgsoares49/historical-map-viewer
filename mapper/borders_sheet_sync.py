@@ -42,7 +42,12 @@ def fmt(v):
 
 
 def close(a, b, tol=2e-4):
-    return a is not None and b is not None and abs(float(a) - float(b)) < tol
+    if a is None or b is None:
+        return False
+    try:
+        return abs(float(a) - float(b)) < tol
+    except ValueError:   # text cell (e.g. 'lon  lat' pasted into one cell): counts as a mismatch
+        return False
 
 
 def main():
