@@ -1,0 +1,4 @@
+[
+ {"op": "par_set_areatype", "entry": 115, "areatype": 2},
+ {"op": "par_set_ranges", "entry": 324, "ranges": [{"from": -293.2, "to": -293.2, "name": "Roman Ally - Lucanians", "color": 32}]}
+]

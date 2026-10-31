@@ -1,0 +1,35 @@
+WHOLE-TILE PLAN 125:015   (newer entry takes its area; older entry carved)
+
+15 edit operations; candidates [2, 119, 120, 135, 136, 193, 216, 252, 272, 273]; overlap windows before: 122, after: 0
+POL file header count: 290 -> 290;  PAR file header count: 320 -> 325;  CST file header count: 38 -> 38
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+
+DECISIONS / STEPS:
+  - PAR NUMBER CHECK: 1 duplicate index(es) [86]; missing numbers [87]
+  - DUPLICATE INDEX: PAR entry #86 (occurrence 2, later in the file) renumbered to #87
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 250 entries
+  - new #321 = #2 minus #120 & #135 (9461.9 km2), ranges -401.1..-400.1
+  - new #322 = #2 minus #135 (13775.7 km2), ranges -400.1..-390.3
+  - new #323 = #2 minus #193 (14136.4 km2), ranges -390.3..-356.5
+  - new #324 = #2 minus #120 & #193 & #272 & #273 (879.0 km2), ranges -293.2..-283.5, -283.5..-280.4, -280.4..-275.1, -275.1..-267.5
+  - #2: -356.5..-298.6 dropped (covered by #120 & #193 & #216), -298.6..-293.2 dropped (covered by #120 & #193 & #216)
+  - new #325 = #119 minus #252 (370.7 km2), ranges -311..-304.5, -304.5..-289.5, -289.5..-286.5
+  - #216: ref swap -> ring of #216 minus #193 (9822.7 km2), ranges -356.5..-300.5, -300.5..-299.5, -299.5..-293.5, -293.5..-293.2
+
+PAR EDITS (in order):
+  NEW #321 right after #2: -401.1..-400.1 Lucanians | refs [[5, 1], [37, 1], [31, 1], [1189, 0], [34, 1], [1109, 0], [1243, 0], [1165, 0], [36, 1]]
+  NEW #322 right after #2: -400.1..-390.3 Lucanians | refs [[5, 1], [37, 1], [31, 1], [6, 1], [32, 1], [34, 1], [1109, 0], [1243, 0], [1165, 0], [36, 1]]
+  NEW #323 right after #2: -390.3..-356.5 Lucanians | refs [[36, 1], [5, 1], [37, 1], [31, 1], [6, 1], [32, 1], [34, 1], [1109, 0], [1243, 0], [1166, 1], [33, 1]]
+  NEW #324 right after #2: -293.2..-283.5 Roman Ally - Lucanians; -283.5..-280.4 Lucanians; -280.4..-275.1 Epirote Ally - Lucanians; -275.1..-267.5 Lucanians | refs [[36, 1], [1167, 1], [1166, 1], [33, 1]]
+  #2: ranges = -9999..-500.1 UNKNOWN; -500.1..-436.5 Bruttii; -436.5..-401.1 UNKNOWN; -267.5..-267.5 Roman Ally - Lucanians; -1..1990 UNKNOWN; 1990..9999 Italy
+  NEW #325 right after #119: -311..-304.5 Tyranny of Syracuse; -304.5..-289.5 Kingdom of Syracuse; -289.5..-286.5 Syracuse | refs [[1073, 0], [1068, 1], [3, 0]]
+  #119: ranges = -440.5..-405.1 Syracuse; -405.1..-396.5 Sicelia; -396.5..-396.1 Carthage - Sicelia; -396.1..-392.5 Sicelia; -392.5..-356.9 Syracuse; -356.9..-346.5 Tyranny of Syracuse; -346.5..-344.5 Syracuse; -344.5..-343.3 Tyranny of Syracuse; -343.3..-316.5 Syracuse; -316.5..-311 Tyranny of Syracuse; -286.5..-261.5 UNKNOWN
+  #216: ranges = -356.5..-300.5 Bruttian League; -300.5..-299.5 Agathoclid Ally - Bruttian League; -299.5..-293.5 Bruttian League; -293.5..-293.2 Kingdom of Syracuse - Bruttian League
+  #216: refs = [[36, 1], [5, 1], [37, 1], [31, 1], [1189, 0], [34, 1], [1109, 0], [1243, 0], [1166, 1], [33, 1]]
+
+PAINT ORDER vs OLD ERA RULE disagree for these pairs (paint order = what MAPPER shows was used):
+  #216 vs #193 (first noticed at -328.5)
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical

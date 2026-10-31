@@ -1,0 +1,141 @@
+[
+ {
+  "op": "par_set_areatype",
+  "entry": 115,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 324,
+  "ranges": [
+   {
+    "from": -293.2,
+    "to": -293.2,
+    "name": "Roman Ally - Lucanians",
+    "color": 32
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 323,
+  "ranges": [
+   {
+    "from": -390.3,
+    "to": -356.5,
+    "name": "Lucanians",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_refs",
+  "entry": 323,
+  "refs": [
+   [
+    37,
+    1
+   ],
+   [
+    31,
+    1
+   ],
+   [
+    6,
+    1
+   ],
+   [
+    32,
+    1
+   ],
+   [
+    34,
+    1
+   ],
+   [
+    1109,
+    0
+   ],
+   [
+    1243,
+    0
+   ],
+   [
+    1167,
+    0
+   ],
+   [
+    5,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 216,
+  "ranges": [
+   {
+    "from": -356.5,
+    "to": -300.5,
+    "name": "Bruttian League",
+    "color": 0
+   },
+   {
+    "from": -300.5,
+    "to": -299.5,
+    "name": "Agathoclid Ally - Bruttian League",
+    "color": 6
+   },
+   {
+    "from": -299.5,
+    "to": -293.5,
+    "name": "Bruttian League",
+    "color": 0
+   },
+   {
+    "from": -293.5,
+    "to": -293.2,
+    "name": "Kingdom of Syracuse - Bruttian League",
+    "color": 6
+   }
+  ]
+ },
+ {
+  "op": "par_set_refs",
+  "entry": 216,
+  "refs": [
+   [
+    37,
+    1
+   ],
+   [
+    31,
+    1
+   ],
+   [
+    1189,
+    0
+   ],
+   [
+    34,
+    1
+   ],
+   [
+    1109,
+    0
+   ],
+   [
+    1243,
+    0
+   ],
+   [
+    1167,
+    0
+   ],
+   [
+    5,
+    1
+   ]
+  ]
+ }
+]

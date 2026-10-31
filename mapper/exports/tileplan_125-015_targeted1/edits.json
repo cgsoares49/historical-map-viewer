@@ -1,0 +1,481 @@
+[
+ {
+  "op": "par_set_areatype",
+  "entry": 38,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 92,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 181,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 183,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 229,
+  "areatype": 2
+ },
+ {
+  "op": "par_renumber",
+  "entry": 86,
+  "occurrence": 2,
+  "new": 87
+ },
+ {
+  "op": "par_add_entry",
+  "index": 321,
+  "after": 2,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -401.1,
+    "to": -400.1,
+    "name": "Lucanians",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    5,
+    1
+   ],
+   [
+    37,
+    1
+   ],
+   [
+    31,
+    1
+   ],
+   [
+    1189,
+    0
+   ],
+   [
+    34,
+    1
+   ],
+   [
+    1109,
+    0
+   ],
+   [
+    1243,
+    0
+   ],
+   [
+    1165,
+    0
+   ],
+   [
+    36,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 322,
+  "after": 2,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -400.1,
+    "to": -390.3,
+    "name": "Lucanians",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    5,
+    1
+   ],
+   [
+    37,
+    1
+   ],
+   [
+    31,
+    1
+   ],
+   [
+    6,
+    1
+   ],
+   [
+    32,
+    1
+   ],
+   [
+    34,
+    1
+   ],
+   [
+    1109,
+    0
+   ],
+   [
+    1243,
+    0
+   ],
+   [
+    1165,
+    0
+   ],
+   [
+    36,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 323,
+  "after": 2,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -390.3,
+    "to": -356.5,
+    "name": "Lucanians",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    36,
+    1
+   ],
+   [
+    5,
+    1
+   ],
+   [
+    37,
+    1
+   ],
+   [
+    31,
+    1
+   ],
+   [
+    6,
+    1
+   ],
+   [
+    32,
+    1
+   ],
+   [
+    34,
+    1
+   ],
+   [
+    1109,
+    0
+   ],
+   [
+    1243,
+    0
+   ],
+   [
+    1166,
+    1
+   ],
+   [
+    33,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 324,
+  "after": 2,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -293.2,
+    "to": -283.5,
+    "name": "Roman Ally - Lucanians",
+    "color": 32
+   },
+   {
+    "from": -283.5,
+    "to": -280.4,
+    "name": "Lucanians",
+    "color": 0
+   },
+   {
+    "from": -280.4,
+    "to": -275.1,
+    "name": "Epirote Ally - Lucanians",
+    "color": 11
+   },
+   {
+    "from": -275.1,
+    "to": -267.5,
+    "name": "Lucanians",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    36,
+    1
+   ],
+   [
+    1167,
+    1
+   ],
+   [
+    1166,
+    1
+   ],
+   [
+    33,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 2,
+  "ranges": [
+   {
+    "from": -9999.0,
+    "to": -500.1,
+    "name": "UNKNOWN",
+    "color": 0
+   },
+   {
+    "from": -500.1,
+    "to": -436.5,
+    "name": "Bruttii",
+    "color": 0
+   },
+   {
+    "from": -436.5,
+    "to": -401.1,
+    "name": "UNKNOWN",
+    "color": 0
+   },
+   {
+    "from": -267.5,
+    "to": -267.5,
+    "name": "Roman Ally - Lucanians",
+    "color": 32
+   },
+   {
+    "from": -1.0,
+    "to": 1990.0,
+    "name": "UNKNOWN",
+    "color": 0
+   },
+   {
+    "from": 1990.0,
+    "to": 9999.0,
+    "name": "Italy",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 325,
+  "after": 119,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -311.0,
+    "to": -304.5,
+    "name": "Tyranny of Syracuse",
+    "color": 0
+   },
+   {
+    "from": -304.5,
+    "to": -289.5,
+    "name": "Kingdom of Syracuse",
+    "color": 0
+   },
+   {
+    "from": -289.5,
+    "to": -286.5,
+    "name": "Syracuse",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1073,
+    0
+   ],
+   [
+    1068,
+    1
+   ],
+   [
+    3,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 119,
+  "ranges": [
+   {
+    "from": -440.5,
+    "to": -405.1,
+    "name": "Syracuse",
+    "color": 0
+   },
+   {
+    "from": -405.1,
+    "to": -396.5,
+    "name": "Sicelia",
+    "color": 0
+   },
+   {
+    "from": -396.5,
+    "to": -396.1,
+    "name": "Carthage - Sicelia",
+    "color": 36
+   },
+   {
+    "from": -396.1,
+    "to": -392.5,
+    "name": "Sicelia",
+    "color": 0
+   },
+   {
+    "from": -392.5,
+    "to": -356.9,
+    "name": "Syracuse",
+    "color": 0
+   },
+   {
+    "from": -356.9,
+    "to": -346.5,
+    "name": "Tyranny of Syracuse",
+    "color": 0
+   },
+   {
+    "from": -346.5,
+    "to": -344.5,
+    "name": "Syracuse",
+    "color": 0
+   },
+   {
+    "from": -344.5,
+    "to": -343.3,
+    "name": "Tyranny of Syracuse",
+    "color": 0
+   },
+   {
+    "from": -343.3,
+    "to": -316.5,
+    "name": "Syracuse",
+    "color": 0
+   },
+   {
+    "from": -316.5,
+    "to": -311.0,
+    "name": "Tyranny of Syracuse",
+    "color": 0
+   },
+   {
+    "from": -286.5,
+    "to": -261.5,
+    "name": "UNKNOWN",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 216,
+  "ranges": [
+   {
+    "from": -356.5,
+    "to": -300.5,
+    "name": "Bruttian League",
+    "color": 0
+   },
+   {
+    "from": -300.5,
+    "to": -299.5,
+    "name": "Agathoclid Ally - Bruttian League",
+    "color": 6
+   },
+   {
+    "from": -299.5,
+    "to": -293.5,
+    "name": "Bruttian League",
+    "color": 0
+   },
+   {
+    "from": -293.5,
+    "to": -293.2,
+    "name": "Kingdom of Syracuse - Bruttian League",
+    "color": 6
+   }
+  ]
+ },
+ {
+  "op": "par_set_refs",
+  "entry": 216,
+  "refs": [
+   [
+    36,
+    1
+   ],
+   [
+    5,
+    1
+   ],
+   [
+    37,
+    1
+   ],
+   [
+    31,
+    1
+   ],
+   [
+    1189,
+    0
+   ],
+   [
+    34,
+    1
+   ],
+   [
+    1109,
+    0
+   ],
+   [
+    1243,
+    0
+   ],
+   [
+    1166,
+    1
+   ],
+   [
+    33,
+    1
+   ]
+  ]
+ }
+]
