@@ -1,0 +1,24 @@
+WHOLE-TILE PLAN 125:020   (newer entry takes its area; older entry carved)
+
+5 edit operations; candidates [259, 367]; overlap windows before: 21, after: 0
+POL file header count: 1073 -> 1075;  PAR file header count: 1121 -> 1122;  CST file header count: 268 -> 269
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+#266 => 266, 1074, 1075
+ 23.14467    37.41509
+ 23.23539    37.34917
+72 > 8 & 64 & 2
+CST178 => 178, 269   (COAST: CST file)
+ 23.23539    37.34917
+188 > 125 & 64
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 724 entries
+  - new #1122 = #259 minus #367 (443.7 km2), ranges -460.5..-445.5, -445.5..-424.3, -424.3..-395.4, -395.4..-365.7, -365.7..-338.7, -338.7..-338.2, -338.2..-323.2, -323.2..-322.1, -322.1..-316.6, -316.6..-316.1, -316.1..-314.5, -314.5..-314.2, -314.2..-313.2, -313.2..-310.5, -310.5..-305.5, -305.5..-303.5, -303.5..-294.4, -294.4..-277.5, -277.5..-243.4, -243.4..-1
+
+PAR EDITS (in order):
+  NEW #1122 right after #259: -460.5..-445.5 Delian League - Hermionis; -445.5..-424.3 Peloponnesian League - Troezen - Hermionis; -424.3..-395.4 Troezen - Hermionis; -395.4..-365.7 Peloponnesian League - Troezen - Hermionis; -365.7..-338.7 Troezen - Hermionis; -338.7..-338.2 Anti Macedon Alliance - Troezen - Hermionis; -338.2..-323.2 Macedonian Ally - Troezen - Hermionis; -323.2..-322.1 Hellenic League - Troezen - Hermionis; -322.1..-316.6 Kingdom of Macedon - Greece - Troezen - Hermionis; -316.6..-316.1 Domain of Polyperchon - Troezen - Hermionis; -316.1..-314.5 Domain of Cassander - Troezen - Hermionis; -314.5..-314.2 Antigonid Ally - Troezen - Hermionis; -314.2..-313.2 Domain of Cassander - Troezen - Hermionis; -313.2..-310.5 Antigonid Ally - Troezen - Hermionis; -310.5..-305.5 Domain of Cassander - Troezen - Hermionis; -305.5..-303.5 Kingdom of Macedon - Greece - Troezen - Hermionis; -303.5..-294.4 Antigonid Ally - Troezen - Hermionis; -294.4..-277.5 Antigonid Kingdom - Troezen - Hermionis; -277.5..-243.4 Troezen - Hermionis; -243.4..-1 Achaean League - Troezen - Hermionis | refs [[1266, 1], [2075, 1], [1163, 0], [1164, 0], [178, 0]]
+  #259: ranges = -780.5..-670.5 Hermionis; -670.5..-494.5 Kalaurian Amphictiony - Hermionis; -494.5..-480.9 Troezen - Hermionis; -480.9..-478.3 Greek Alliance - Hermionis; -478.3..-460.5 Delian League - Hermionis
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical

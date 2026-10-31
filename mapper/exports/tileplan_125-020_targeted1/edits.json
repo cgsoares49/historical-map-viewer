@@ -1,0 +1,837 @@
+[
+ {
+  "op": "par_set_areatype",
+  "entry": 253,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 606,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 733,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 734,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 756,
+  "areatype": 2
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1116,
+  "after": 178,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -369.7,
+    "to": -365.7,
+    "name": "Peloponnesian League - Sparta",
+    "color": 1
+   }
+  ],
+  "refs": [
+   [
+    1034,
+    1
+   ],
+   [
+    147,
+    0
+   ],
+   [
+    156,
+    1
+   ],
+   [
+    158,
+    1
+   ],
+   [
+    1058,
+    1
+   ],
+   [
+    1065,
+    1
+   ],
+   [
+    1709,
+    1
+   ],
+   [
+    1051,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 178,
+  "ranges": [
+   {
+    "from": -777.5,
+    "to": -480.9,
+    "name": "Kingdom of Sparta",
+    "color": 0
+   },
+   {
+    "from": -480.9,
+    "to": -478.3,
+    "name": "Greek Alliance - Kingdom of Sparta",
+    "color": 10
+   },
+   {
+    "from": -478.3,
+    "to": -445.5,
+    "name": "Kingdom of Sparta",
+    "color": 0
+   },
+   {
+    "from": -445.5,
+    "to": -369.7,
+    "name": "Peloponnesian League - Sparta",
+    "color": 1
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1117,
+  "after": 189,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -445.5,
+    "to": -385.5,
+    "name": "Peloponnesian League - Arcadia",
+    "color": 4
+   },
+   {
+    "from": -370.7,
+    "to": -370.5,
+    "name": "Peloponnesian League - Arcadia",
+    "color": 4
+   }
+  ],
+  "refs": [
+   [
+    1066,
+    0
+   ],
+   [
+    1073,
+    1
+   ],
+   [
+    1669,
+    1
+   ],
+   [
+    1668,
+    1
+   ],
+   [
+    1727,
+    1
+   ],
+   [
+    1116,
+    1
+   ],
+   [
+    1074,
+    1
+   ],
+   [
+    1701,
+    1
+   ],
+   [
+    1071,
+    1
+   ],
+   [
+    1072,
+    0
+   ],
+   [
+    1581,
+    0
+   ],
+   [
+    1431,
+    1
+   ],
+   [
+    1672,
+    1
+   ],
+   [
+    1428,
+    1
+   ],
+   [
+    1427,
+    1
+   ],
+   [
+    1425,
+    1
+   ],
+   [
+    1429,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1118,
+  "after": 189,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -385.5,
+    "to": -375.4,
+    "name": "Peloponnesian League - Arcadia",
+    "color": 4
+   },
+   {
+    "from": -375.4,
+    "to": -375.1,
+    "name": "Stasis",
+    "color": 0
+   },
+   {
+    "from": -375.1,
+    "to": -370.7,
+    "name": "Peloponnesian League - Arcadia",
+    "color": 4
+   }
+  ],
+  "refs": [
+   [
+    1066,
+    0
+   ],
+   [
+    1073,
+    1
+   ],
+   [
+    1669,
+    1
+   ],
+   [
+    1668,
+    1
+   ],
+   [
+    1727,
+    1
+   ],
+   [
+    1116,
+    1
+   ],
+   [
+    1074,
+    1
+   ],
+   [
+    1701,
+    1
+   ],
+   [
+    1071,
+    1
+   ],
+   [
+    1072,
+    0
+   ],
+   [
+    1581,
+    0
+   ],
+   [
+    1431,
+    1
+   ],
+   [
+    1430,
+    1
+   ],
+   [
+    1426,
+    1
+   ],
+   [
+    1425,
+    1
+   ],
+   [
+    1429,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 189,
+  "ranges": [
+   {
+    "from": -742.5,
+    "to": -480.9,
+    "name": "Arcadia",
+    "color": 0
+   },
+   {
+    "from": -480.9,
+    "to": -478.3,
+    "name": "Greek Alliance - Arcadia",
+    "color": 8
+   },
+   {
+    "from": -478.3,
+    "to": -445.5,
+    "name": "Arcadia",
+    "color": 0
+   },
+   {
+    "from": -370.5,
+    "to": -370.1,
+    "name": "Arcadian League",
+    "color": 0
+   },
+   {
+    "from": -370.1,
+    "to": -363.3,
+    "name": "Theban Ally - Arcadian League",
+    "color": 15
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1119,
+  "after": 202,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -400.5,
+    "to": -370.3,
+    "name": "Peloponnesian League - Elis",
+    "color": 5
+   },
+   {
+    "from": -370.3,
+    "to": -370.1,
+    "name": "Elis",
+    "color": 0
+   },
+   {
+    "from": -370.1,
+    "to": -365.7,
+    "name": "Theban Ally - Elis",
+    "color": 16
+   },
+   {
+    "from": -365.7,
+    "to": -365.5,
+    "name": "Elis",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1727,
+    0
+   ],
+   [
+    1090,
+    0
+   ],
+   [
+    1725,
+    0
+   ],
+   [
+    170,
+    1
+   ],
+   [
+    268,
+    1
+   ],
+   [
+    267,
+    1
+   ],
+   [
+    165,
+    1
+   ],
+   [
+    1088,
+    0
+   ],
+   [
+    1723,
+    1
+   ],
+   [
+    1710,
+    1
+   ],
+   [
+    1116,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 202,
+  "ranges": [
+   {
+    "from": -725.5,
+    "to": -684.5,
+    "name": "Elis",
+    "color": 0
+   },
+   {
+    "from": -572.5,
+    "to": -480.9,
+    "name": "Elis",
+    "color": 0
+   },
+   {
+    "from": -480.9,
+    "to": -478.3,
+    "name": "Greek Alliance - Elis",
+    "color": 9
+   },
+   {
+    "from": -478.3,
+    "to": -445.5,
+    "name": "Elis",
+    "color": 0
+   },
+   {
+    "from": -445.5,
+    "to": -421.4,
+    "name": "Peloponnesian League - Elis",
+    "color": 5
+   },
+   {
+    "from": -421.4,
+    "to": -417.5,
+    "name": "League of Argos - Elis",
+    "color": 4
+   },
+   {
+    "from": -417.5,
+    "to": -400.5,
+    "name": "Elis",
+    "color": 0
+   },
+   {
+    "from": -365.5,
+    "to": -364.3,
+    "name": "Elis",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 1091,
+  "ranges": [
+   {
+    "from": -378.8,
+    "to": -338.2,
+    "name": "Boeotia",
+    "color": 0
+   },
+   {
+    "from": -338.2,
+    "to": -322.1,
+    "name": "Macedonian Ally - Boeotian League",
+    "color": 42
+   }
+  ]
+ },
+ {
+  "op": "par_set_refs",
+  "entry": 1091,
+  "refs": [
+   [
+    1610,
+    0
+   ],
+   [
+    1611,
+    0
+   ],
+   [
+    1612,
+    0
+   ],
+   [
+    1613,
+    0
+   ],
+   [
+    1614,
+    0
+   ],
+   [
+    1615,
+    0
+   ],
+   [
+    1616,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1120,
+  "after": 790,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -303.5,
+    "to": -294.4,
+    "name": "Antigonid Ally - Arcadian League",
+    "color": 12
+   },
+   {
+    "from": -294.4,
+    "to": -281.1,
+    "name": "Antigonid Kingdom - Arcadian League",
+    "color": 74
+   },
+   {
+    "from": -281.1,
+    "to": -280.9,
+    "name": "Arcadian League",
+    "color": 0
+   },
+   {
+    "from": -280.9,
+    "to": -280.4,
+    "name": "Peloponnesian League - Arcadia",
+    "color": 4
+   },
+   {
+    "from": -280.4,
+    "to": -268.2,
+    "name": "Arcadian League",
+    "color": 0
+   },
+   {
+    "from": -268.2,
+    "to": -264.8,
+    "name": "Anti Macedon Alliance - Arcadian League",
+    "color": 38
+   },
+   {
+    "from": -264.8,
+    "to": -1.0,
+    "name": "Arcadian League",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1727,
+    1
+   ],
+   [
+    1116,
+    1
+   ],
+   [
+    1074,
+    1
+   ],
+   [
+    1701,
+    1
+   ],
+   [
+    1071,
+    1
+   ],
+   [
+    1072,
+    0
+   ],
+   [
+    1581,
+    0
+   ],
+   [
+    1431,
+    1
+   ],
+   [
+    1672,
+    1
+   ],
+   [
+    1428,
+    1
+   ],
+   [
+    1427,
+    1
+   ],
+   [
+    1733,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 790,
+  "ranges": [
+   {
+    "from": -363.3,
+    "to": -338.2,
+    "name": "Arcadian League",
+    "color": 0
+   },
+   {
+    "from": -338.2,
+    "to": -331.2,
+    "name": "Macedonian Ally - Arcadian League",
+    "color": 69
+   },
+   {
+    "from": -331.2,
+    "to": -330.5,
+    "name": "Arcadian League",
+    "color": 0
+   },
+   {
+    "from": -330.5,
+    "to": -322.1,
+    "name": "Macedonian Ally - Arcadian League",
+    "color": 69
+   },
+   {
+    "from": -322.1,
+    "to": -317.5,
+    "name": "Kingdom of Macedon - Greece - Arcadian League",
+    "color": 184
+   },
+   {
+    "from": -317.5,
+    "to": -314.5,
+    "name": "Domain of Cassander - Arcadian League",
+    "color": 8
+   },
+   {
+    "from": -314.5,
+    "to": -314.2,
+    "name": "Antigonid Ally - Arcadian League",
+    "color": 12
+   },
+   {
+    "from": -314.2,
+    "to": -313.2,
+    "name": "Domain of Cassander - Arcadian League",
+    "color": 8
+   },
+   {
+    "from": -313.2,
+    "to": -309.5,
+    "name": "Antigonid Ally - Arcadian League",
+    "color": 12
+   },
+   {
+    "from": -309.5,
+    "to": -305.5,
+    "name": "Domain of Cassander - Arcadian League",
+    "color": 8
+   },
+   {
+    "from": -305.5,
+    "to": -303.5,
+    "name": "Kingdom of Macedon - Greece - Arcadian League",
+    "color": 184
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1121,
+  "after": 791,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -331.2,
+    "to": -330.5,
+    "name": "Macedonian Ally - Megalopolis",
+    "color": 10
+   },
+   {
+    "from": -317.5,
+    "to": -314.5,
+    "name": "Domain of Cassander - Megalopolis",
+    "color": 2
+   },
+   {
+    "from": -314.5,
+    "to": -314.2,
+    "name": "Antigonid Ally - Megalopolis",
+    "color": 7
+   },
+   {
+    "from": -314.2,
+    "to": -313.2,
+    "name": "Domain of Cassander - Megalopolis",
+    "color": 2
+   },
+   {
+    "from": -313.2,
+    "to": -310.5,
+    "name": "Antigonid Ally - Megalopolis",
+    "color": 7
+   },
+   {
+    "from": -310.5,
+    "to": -305.5,
+    "name": "Domain of Cassander - Megalopolis",
+    "color": 2
+   },
+   {
+    "from": -305.5,
+    "to": -303.5,
+    "name": "Kingdom of Macedon - Greece - Megalopolis",
+    "color": 188
+   },
+   {
+    "from": -303.5,
+    "to": -300.5,
+    "name": "Antigonid Ally - Megalopolis",
+    "color": 7
+   },
+   {
+    "from": -300.5,
+    "to": -294.4,
+    "name": "Megalopolis",
+    "color": 0
+   },
+   {
+    "from": -294.4,
+    "to": -281.1,
+    "name": "Antigonid Kingdom - Megalopolis",
+    "color": 70
+   },
+   {
+    "from": -281.1,
+    "to": -272.1,
+    "name": "Megalopolis",
+    "color": 0
+   },
+   {
+    "from": -272.1,
+    "to": -250.6,
+    "name": "Antigonid Ally - Megalopolis",
+    "color": 7
+   },
+   {
+    "from": -250.6,
+    "to": -250.5,
+    "name": "Stasis",
+    "color": 0
+   },
+   {
+    "from": -250.5,
+    "to": -1.0,
+    "name": "Megalopolis",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1066,
+    0
+   ],
+   [
+    1073,
+    1
+   ],
+   [
+    1669,
+    1
+   ],
+   [
+    1668,
+    1
+   ],
+   [
+    1733,
+    1
+   ],
+   [
+    1425,
+    1
+   ],
+   [
+    1429,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 791,
+  "ranges": [
+   {
+    "from": -363.3,
+    "to": -344.5,
+    "name": "Theban Ally - Arcadian League",
+    "color": 15
+   },
+   {
+    "from": -344.5,
+    "to": -331.2,
+    "name": "Macedonian Ally - Megalopolis",
+    "color": 10
+   },
+   {
+    "from": -330.5,
+    "to": -322.1,
+    "name": "Macedonian Ally - Megalopolis",
+    "color": 10
+   },
+   {
+    "from": -322.1,
+    "to": -317.9,
+    "name": "Kingdom of Macedon - Greece - Megalopolis",
+    "color": 188
+   },
+   {
+    "from": -317.9,
+    "to": -317.5,
+    "name": "Domain of Cassander - Megalopolis",
+    "color": 2
+   }
+  ]
+ }
+]

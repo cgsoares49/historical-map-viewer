@@ -1,0 +1,217 @@
+[
+ {
+  "op": "par_set_areatype",
+  "entry": 367,
+  "areatype": 1
+ },
+ {
+  "op": "pol_split",
+  "pol": 266,
+  "points": [
+   [
+    23.14467,
+    37.41509
+   ],
+   [
+    23.23539,
+    37.34917
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 178,
+  "points": [
+   [
+    23.23539,
+    37.34917
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1122,
+  "after": 259,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -460.5,
+    "to": -445.5,
+    "name": "Delian League - Hermionis",
+    "color": 6
+   },
+   {
+    "from": -445.5,
+    "to": -424.3,
+    "name": "Peloponnesian League - Troezen - Hermionis",
+    "color": 11
+   },
+   {
+    "from": -424.3,
+    "to": -395.4,
+    "name": "Troezen - Hermionis",
+    "color": 7
+   },
+   {
+    "from": -395.4,
+    "to": -365.7,
+    "name": "Peloponnesian League - Troezen - Hermionis",
+    "color": 11
+   },
+   {
+    "from": -365.7,
+    "to": -338.7,
+    "name": "Troezen - Hermionis",
+    "color": 7
+   },
+   {
+    "from": -338.7,
+    "to": -338.2,
+    "name": "Anti Macedon Alliance - Troezen - Hermionis",
+    "color": 8
+   },
+   {
+    "from": -338.2,
+    "to": -323.2,
+    "name": "Macedonian Ally - Troezen - Hermionis",
+    "color": 27
+   },
+   {
+    "from": -323.2,
+    "to": -322.1,
+    "name": "Hellenic League - Troezen - Hermionis",
+    "color": 28
+   },
+   {
+    "from": -322.1,
+    "to": -316.6,
+    "name": "Kingdom of Macedon - Greece - Troezen - Hermionis",
+    "color": 173
+   },
+   {
+    "from": -316.6,
+    "to": -316.1,
+    "name": "Domain of Polyperchon - Troezen - Hermionis",
+    "color": 15
+   },
+   {
+    "from": -316.1,
+    "to": -314.5,
+    "name": "Domain of Cassander - Troezen - Hermionis",
+    "color": 85
+   },
+   {
+    "from": -314.5,
+    "to": -314.2,
+    "name": "Antigonid Ally - Troezen - Hermionis",
+    "color": 23
+   },
+   {
+    "from": -314.2,
+    "to": -313.2,
+    "name": "Domain of Cassander - Troezen - Hermionis",
+    "color": 85
+   },
+   {
+    "from": -313.2,
+    "to": -310.5,
+    "name": "Antigonid Ally - Troezen - Hermionis",
+    "color": 23
+   },
+   {
+    "from": -310.5,
+    "to": -305.5,
+    "name": "Domain of Cassander - Troezen - Hermionis",
+    "color": 85
+   },
+   {
+    "from": -305.5,
+    "to": -303.5,
+    "name": "Kingdom of Macedon - Greece - Troezen - Hermionis",
+    "color": 173
+   },
+   {
+    "from": -303.5,
+    "to": -294.4,
+    "name": "Antigonid Ally - Troezen - Hermionis",
+    "color": 23
+   },
+   {
+    "from": -294.4,
+    "to": -277.5,
+    "name": "Antigonid Kingdom - Troezen - Hermionis",
+    "color": 81
+   },
+   {
+    "from": -277.5,
+    "to": -243.4,
+    "name": "Troezen - Hermionis",
+    "color": 7
+   },
+   {
+    "from": -243.4,
+    "to": -1.0,
+    "name": "Achaean League - Troezen - Hermionis",
+    "color": 8
+   }
+  ],
+  "refs": [
+   [
+    1266,
+    1
+   ],
+   [
+    2075,
+    1
+   ],
+   [
+    1163,
+    0
+   ],
+   [
+    1164,
+    0
+   ],
+   [
+    178,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 259,
+  "ranges": [
+   {
+    "from": -780.5,
+    "to": -670.5,
+    "name": "Hermionis",
+    "color": 0
+   },
+   {
+    "from": -670.5,
+    "to": -494.5,
+    "name": "Kalaurian Amphictiony - Hermionis",
+    "color": 7
+   },
+   {
+    "from": -494.5,
+    "to": -480.9,
+    "name": "Troezen - Hermionis",
+    "color": 7
+   },
+   {
+    "from": -480.9,
+    "to": -478.3,
+    "name": "Greek Alliance - Hermionis",
+    "color": 6
+   },
+   {
+    "from": -478.3,
+    "to": -460.5,
+    "name": "Delian League - Hermionis",
+    "color": 6
+   }
+  ]
+ }
+]

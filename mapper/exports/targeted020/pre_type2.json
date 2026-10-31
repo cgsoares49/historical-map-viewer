@@ -1,0 +1,7 @@
+[
+ {"op": "par_set_areatype", "entry": 253, "areatype": 2},
+ {"op": "par_set_areatype", "entry": 606, "areatype": 2},
+ {"op": "par_set_areatype", "entry": 733, "areatype": 2},
+ {"op": "par_set_areatype", "entry": 734, "areatype": 2},
+ {"op": "par_set_areatype", "entry": 756, "areatype": 2}
+]

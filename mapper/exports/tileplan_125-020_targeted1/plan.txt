@@ -1,0 +1,37 @@
+WHOLE-TILE PLAN 125:020   (newer entry takes its area; older entry carved)
+
+18 edit operations; candidates [178, 189, 202, 516, 517, 674, 771, 772, 790, 791, 953, 1091]; overlap windows before: 102, after: 0
+POL file header count: 1073 -> 1073;  PAR file header count: 1115 -> 1121;  CST file header count: 268 -> 268
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 724 entries
+  - new #1116 = #178 minus #771 (4176.9 km2), ranges -369.7..-365.7
+  - new #1117 = #189 minus #516 & #517 (3707.1 km2), ranges -445.5..-385.5, -370.7..-370.5
+  - new #1118 = #189 minus #517 (4030.2 km2), ranges -385.5..-375.4, -375.4..-375.1, -375.1..-370.7
+  - new #1119 = #202 minus #772 (1877.2 km2), ranges -400.5..-370.3, -370.3..-370.1, -370.1..-365.7, -365.7..-365.5
+  - #1091: ref swap -> ring of #1091 minus #674 (451.5 km2), ranges -378.8..-338.2, -338.2..-322.1
+  - new #1120 = #790 minus #953 (2292.8 km2), ranges -303.5..-294.4, -294.4..-281.1, -281.1..-280.9, -280.9..-280.4, -280.4..-268.2, -268.2..-264.8, -264.8..-1
+  - new #1121 = #791 minus #517 (1414.3 km2), ranges -331.2..-330.5, -317.5..-314.5, -314.5..-314.2, -314.2..-313.2, -313.2..-310.5, -310.5..-305.5, -305.5..-303.5, -303.5..-300.5, -300.5..-294.4, -294.4..-281.1, -281.1..-272.1, -272.1..-250.6, -250.6..-250.5, -250.5..-1
+
+PAR EDITS (in order):
+  NEW #1116 right after #178: -369.7..-365.7 Peloponnesian League - Sparta | refs [[1034, 1], [147, 0], [156, 1], [158, 1], [1058, 1], [1065, 1], [1709, 1], [1051, 1]]
+  #178: ranges = -777.5..-480.9 Kingdom of Sparta; -480.9..-478.3 Greek Alliance - Kingdom of Sparta; -478.3..-445.5 Kingdom of Sparta; -445.5..-369.7 Peloponnesian League - Sparta
+  NEW #1117 right after #189: -445.5..-385.5 Peloponnesian League - Arcadia; -370.7..-370.5 Peloponnesian League - Arcadia | refs [[1066, 0], [1073, 1], [1669, 1], [1668, 1], [1727, 1], [1116, 1], [1074, 1], [1701, 1], [1071, 1], [1072, 0], [1581, 0], [1431, 1], [1672, 1], [1428, 1], [1427, 1], [1425, 1], [1429, 0]]
+  NEW #1118 right after #189: -385.5..-375.4 Peloponnesian League - Arcadia; -375.4..-375.1 Stasis; -375.1..-370.7 Peloponnesian League - Arcadia | refs [[1066, 0], [1073, 1], [1669, 1], [1668, 1], [1727, 1], [1116, 1], [1074, 1], [1701, 1], [1071, 1], [1072, 0], [1581, 0], [1431, 1], [1430, 1], [1426, 1], [1425, 1], [1429, 0]]
+  #189: ranges = -742.5..-480.9 Arcadia; -480.9..-478.3 Greek Alliance - Arcadia; -478.3..-445.5 Arcadia; -370.5..-370.1 Arcadian League; -370.1..-363.3 Theban Ally - Arcadian League
+  NEW #1119 right after #202: -400.5..-370.3 Peloponnesian League - Elis; -370.3..-370.1 Elis; -370.1..-365.7 Theban Ally - Elis; -365.7..-365.5 Elis | refs [[1727, 0], [1090, 0], [1725, 0], [170, 1], [268, 1], [267, 1], [165, 1], [1088, 0], [1723, 1], [1710, 1], [1116, 0]]
+  #202: ranges = -725.5..-684.5 Elis; -572.5..-480.9 Elis; -480.9..-478.3 Greek Alliance - Elis; -478.3..-445.5 Elis; -445.5..-421.4 Peloponnesian League - Elis; -421.4..-417.5 League of Argos - Elis; -417.5..-400.5 Elis; -365.5..-364.3 Elis
+  #1091: ranges = -378.8..-338.2 Boeotia; -338.2..-322.1 Macedonian Ally - Boeotian League
+  #1091: refs = [[1610, 0], [1611, 0], [1612, 0], [1613, 0], [1614, 0], [1615, 0], [1616, 0]]
+  NEW #1120 right after #790: -303.5..-294.4 Antigonid Ally - Arcadian League; -294.4..-281.1 Antigonid Kingdom - Arcadian League; -281.1..-280.9 Arcadian League; -280.9..-280.4 Peloponnesian League - Arcadia; -280.4..-268.2 Arcadian League; -268.2..-264.8 Anti Macedon Alliance - Arcadian League; -264.8..-1 Arcadian League | refs [[1727, 1], [1116, 1], [1074, 1], [1701, 1], [1071, 1], [1072, 0], [1581, 0], [1431, 1], [1672, 1], [1428, 1], [1427, 1], [1733, 0]]
+  #790: ranges = -363.3..-338.2 Arcadian League; -338.2..-331.2 Macedonian Ally - Arcadian League; -331.2..-330.5 Arcadian League; -330.5..-322.1 Macedonian Ally - Arcadian League; -322.1..-317.5 Kingdom of Macedon - Greece - Arcadian League; -317.5..-314.5 Domain of Cassander - Arcadian League; -314.5..-314.2 Antigonid Ally - Arcadian League; -314.2..-313.2 Domain of Cassander - Arcadian League; -313.2..-309.5 Antigonid Ally - Arcadian League; -309.5..-305.5 Domain of Cassander - Arcadian League; -305.5..-303.5 Kingdom of Macedon - Greece - Arcadian League
+  NEW #1121 right after #791: -331.2..-330.5 Macedonian Ally - Megalopolis; -317.5..-314.5 Domain of Cassander - Megalopolis; -314.5..-314.2 Antigonid Ally - Megalopolis; -314.2..-313.2 Domain of Cassander - Megalopolis; -313.2..-310.5 Antigonid Ally - Megalopolis; -310.5..-305.5 Domain of Cassander - Megalopolis; -305.5..-303.5 Kingdom of Macedon - Greece - Megalopolis; -303.5..-300.5 Antigonid Ally - Megalopolis; -300.5..-294.4 Megalopolis; -294.4..-281.1 Antigonid Kingdom - Megalopolis; -281.1..-272.1 Megalopolis; -272.1..-250.6 Antigonid Ally - Megalopolis; -250.6..-250.5 Stasis; -250.5..-1 Megalopolis | refs [[1066, 0], [1073, 1], [1669, 1], [1668, 1], [1733, 1], [1425, 1], [1429, 0]]
+  #791: ranges = -363.3..-344.5 Theban Ally - Arcadian League; -344.5..-331.2 Macedonian Ally - Megalopolis; -330.5..-322.1 Macedonian Ally - Megalopolis; -322.1..-317.9 Kingdom of Macedon - Greece - Megalopolis; -317.9..-317.5 Domain of Cassander - Megalopolis
+
+PAINT ORDER vs OLD ERA RULE disagree for these pairs (paint order = what MAPPER shows was used):
+  #1091 vs #674 (first noticed at -374.8)
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical

@@ -1,0 +1,5562 @@
+[
+ {
+  "op": "par_set_areatype",
+  "entry": 155,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 156,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 157,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 159,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 160,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 224,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 191,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 253,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 261,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 517,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 771,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 772,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 303,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 1044,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 1045,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 669,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 670,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 671,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 672,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 673,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 676,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 582,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 583,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 584,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 684,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 331,
+  "areatype": 1
+ },
+ {
+  "op": "par_renumber",
+  "entry": 77,
+  "occurrence": 2,
+  "new": 76
+ },
+ {
+  "op": "par_renumber",
+  "entry": 207,
+  "occurrence": 2,
+  "new": 206
+ },
+ {
+  "op": "par_renumber",
+  "entry": 877,
+  "occurrence": 2,
+  "new": 878
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1074,
+  "after": 33,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -446.7,
+    "to": -446.1,
+    "name": "Euboea",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    167,
+    1
+   ],
+   [
+    193,
+    1
+   ],
+   [
+    192,
+    1
+   ],
+   [
+    31,
+    1
+   ],
+   [
+    185,
+    1
+   ],
+   [
+    1233,
+    1
+   ],
+   [
+    168,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 33,
+  "ranges": [
+   {
+    "from": -9999.0,
+    "to": -1505.5,
+    "name": "UNKNOWN",
+    "color": 0
+   },
+   {
+    "from": -1505.5,
+    "to": -1202.2,
+    "name": "Mycenaeans - Euboea",
+    "color": 21
+   },
+   {
+    "from": -1202.2,
+    "to": -776.5,
+    "name": "UNKNOWN",
+    "color": 0
+   },
+   {
+    "from": -776.5,
+    "to": -710.5,
+    "name": "Ionians - Euboeans",
+    "color": 45
+   },
+   {
+    "from": -282.7,
+    "to": -281.4,
+    "name": "Kingdom of Lysimakhos - Euboea",
+    "color": 19
+   },
+   {
+    "from": -281.4,
+    "to": -281.1,
+    "name": "Antigonid Kingdom - Euboea",
+    "color": 118
+   },
+   {
+    "from": -281.1,
+    "to": -277.0,
+    "name": "Macedon - Euboea",
+    "color": 5
+   },
+   {
+    "from": -277.0,
+    "to": -249.6,
+    "name": "Kingdom of Macedonia - Euboea",
+    "color": 10
+   },
+   {
+    "from": -249.6,
+    "to": -245.4,
+    "name": "Revolt",
+    "color": 0
+   },
+   {
+    "from": -245.4,
+    "to": -1.0,
+    "name": "Kingdom of Macedonia - Euboea",
+    "color": 10
+   },
+   {
+    "from": -1.0,
+    "to": 1990.0,
+    "name": "UNKNOWN",
+    "color": 0
+   },
+   {
+    "from": 1990.0,
+    "to": 9999.0,
+    "name": "Greece - Nisos Evvoia (Euboea)",
+    "color": 46
+   }
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 42,
+  "points": [
+   [
+    23.10559,
+    38.64898
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 42,
+  "points": [
+   [
+    23.11844,
+    38.64295
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 226,
+  "points": [
+   [
+    23.10589,
+    38.64925
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1075,
+  "after": 44,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -1223.5,
+    "to": -1204.5,
+    "name": "Mycenaeans",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    226,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 44,
+  "ranges": [
+   {
+    "from": -9999.0,
+    "to": -1505.5,
+    "name": "UNKNOWN",
+    "color": 0
+   },
+   {
+    "from": -1505.5,
+    "to": -1223.5,
+    "name": "Mycenaeans",
+    "color": 0
+   },
+   {
+    "from": -1204.5,
+    "to": -1202.2,
+    "name": "Mycenaeans",
+    "color": 0
+   },
+   {
+    "from": -1202.2,
+    "to": -475.5,
+    "name": "UNKNOWN",
+    "color": 0
+   },
+   {
+    "from": -475.5,
+    "to": -447.7,
+    "name": "Delian League",
+    "color": 0
+   },
+   {
+    "from": -447.7,
+    "to": -445.5,
+    "name": "Opuntian Locris",
+    "color": 0
+   },
+   {
+    "from": -445.5,
+    "to": -395.3,
+    "name": "Peloponnesian League - Opuntian Locris",
+    "color": 14
+   },
+   {
+    "from": -395.3,
+    "to": -386.5,
+    "name": "Anti Spartan Alliance - Opuntian Locris",
+    "color": 15
+   },
+   {
+    "from": -386.5,
+    "to": -378.9,
+    "name": "Opuntian Locris",
+    "color": 0
+   },
+   {
+    "from": -378.9,
+    "to": -370.7,
+    "name": "Opuntian Locris",
+    "color": 0
+   },
+   {
+    "from": -370.7,
+    "to": -338.2,
+    "name": "Theban Ally - Opuntian Locris",
+    "color": 8
+   },
+   {
+    "from": -338.2,
+    "to": -323.2,
+    "name": "Macedonian Ally - Opuntian Locris",
+    "color": 52
+   },
+   {
+    "from": -323.2,
+    "to": -322.1,
+    "name": "Hellenic League - Opuntian Locris",
+    "color": 10
+   },
+   {
+    "from": -322.1,
+    "to": -317.5,
+    "name": "Kingdom of Macedon - Greece - Opuntian Locris",
+    "color": 154
+   },
+   {
+    "from": -317.5,
+    "to": -313.2,
+    "name": "Domain of Cassander - Opuntian Locris",
+    "color": 11
+   },
+   {
+    "from": -313.2,
+    "to": -310.5,
+    "name": "Antigonid Ally - Opuntian Locris",
+    "color": 76
+   },
+   {
+    "from": -310.5,
+    "to": -305.5,
+    "name": "Domain of Cassander - Opuntian Locris",
+    "color": 11
+   },
+   {
+    "from": -305.5,
+    "to": -304.2,
+    "name": "Kingdom of Macedon - Greece - Opuntian Locris",
+    "color": 154
+   },
+   {
+    "from": -304.2,
+    "to": -300.5,
+    "name": "Antigonid Ally - Opuntian Locris",
+    "color": 76
+   },
+   {
+    "from": -300.5,
+    "to": -294.2,
+    "name": "Kingdom of Macedon - Greece - Opuntian Locris",
+    "color": 154
+   },
+   {
+    "from": -294.2,
+    "to": -279.8,
+    "name": "Antigonid Kingdom - Opuntian Locris",
+    "color": 100
+   },
+   {
+    "from": -279.8,
+    "to": -272.5,
+    "name": "Opuntian Locris",
+    "color": 0
+   },
+   {
+    "from": -272.5,
+    "to": -267.7,
+    "name": "Thebes - Opuntian Locris",
+    "color": 17
+   },
+   {
+    "from": -267.7,
+    "to": -1.0,
+    "name": "Antigonid Ally - Opuntian Locris",
+    "color": 76
+   },
+   {
+    "from": -1.0,
+    "to": 1990.0,
+    "name": "UNKNOWN",
+    "color": 0
+   },
+   {
+    "from": 1990.0,
+    "to": 9999.0,
+    "name": "Greece - Nisis Gaidharos",
+    "color": 203
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1076,
+  "after": 152,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -1505.5,
+    "to": -1223.5,
+    "name": "Mycenaeans",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    181,
+    0
+   ],
+   [
+    198,
+    0
+   ],
+   [
+    1027,
+    0
+   ],
+   [
+    139,
+    0
+   ],
+   [
+    175,
+    0
+   ],
+   [
+    129,
+    0
+   ],
+   [
+    130,
+    0
+   ],
+   [
+    171,
+    0
+   ],
+   [
+    172,
+    0
+   ],
+   [
+    1028,
+    0
+   ],
+   [
+    173,
+    1
+   ],
+   [
+    131,
+    1
+   ],
+   [
+    132,
+    1
+   ],
+   [
+    174,
+    1
+   ],
+   [
+    176,
+    1
+   ],
+   [
+    197,
+    1
+   ],
+   [
+    177,
+    1
+   ],
+   [
+    186,
+    1
+   ],
+   [
+    195,
+    1
+   ],
+   [
+    188,
+    1
+   ],
+   [
+    137,
+    1
+   ],
+   [
+    1026,
+    1
+   ],
+   [
+    7,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1077,
+  "after": 152,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -1505.5,
+    "to": -1223.5,
+    "name": "Mycenaeans",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1034,
+    0
+   ],
+   [
+    1051,
+    0
+   ],
+   [
+    1693,
+    0
+   ],
+   [
+    1429,
+    0
+   ],
+   [
+    1065,
+    0
+   ],
+   [
+    1057,
+    0
+   ],
+   [
+    158,
+    1
+   ],
+   [
+    155,
+    1
+   ],
+   [
+    1064,
+    1
+   ],
+   [
+    1073,
+    1
+   ],
+   [
+    1669,
+    1
+   ],
+   [
+    1035,
+    1
+   ],
+   [
+    153,
+    1
+   ],
+   [
+    1033,
+    1
+   ],
+   [
+    1032,
+    0
+   ],
+   [
+    1052,
+    0
+   ],
+   [
+    146,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 152,
+  "ranges": [
+   {
+    "from": -1505.5,
+    "to": -1223.5,
+    "name": "Mycenaeans",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_refs",
+  "entry": 152,
+  "refs": [
+   [
+    189,
+    0
+   ],
+   [
+    1031,
+    0
+   ],
+   [
+    144,
+    0
+   ],
+   [
+    160,
+    0
+   ],
+   [
+    161,
+    0
+   ],
+   [
+    1037,
+    1
+   ],
+   [
+    162,
+    1
+   ],
+   [
+    150,
+    1
+   ],
+   [
+    1205,
+    1
+   ],
+   [
+    1597,
+    1
+   ],
+   [
+    1478,
+    1
+   ],
+   [
+    1030,
+    1
+   ],
+   [
+    142,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 846,
+  "points": [
+   [
+    23.61195,
+    37.96034
+   ],
+   [
+    23.68589,
+    37.94592
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 143,
+  "points": [
+   [
+    23.61195,
+    37.96034
+   ],
+   [
+    23.68589,
+    37.94592
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1078,
+  "after": 157,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -319.5,
+    "to": -317.8,
+    "name": "Kingdom of Macedon - Greece - Athens",
+    "color": 165
+   },
+   {
+    "from": -287.9,
+    "to": -285.5,
+    "name": "Athens",
+    "color": 0
+   },
+   {
+    "from": -279.8,
+    "to": -272.5,
+    "name": "Athens",
+    "color": 0
+   },
+   {
+    "from": -271.5,
+    "to": -268.2,
+    "name": "Athens",
+    "color": 0
+   },
+   {
+    "from": -268.2,
+    "to": -266.6,
+    "name": "Anti Macedon Alliance - Athens",
+    "color": 30
+   }
+  ],
+  "refs": [
+   [
+    2032,
+    0
+   ],
+   [
+    1846,
+    0
+   ],
+   [
+    229,
+    0
+   ],
+   [
+    1031,
+    1
+   ],
+   [
+    143,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 1003,
+  "points": [
+   [
+    24.01153,
+    38.24534
+   ],
+   [
+    24.05253,
+    38.21125
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 143,
+  "points": [
+   [
+    23.81081,
+    37.82353
+   ],
+   [
+    24.01153,
+    38.24534
+   ],
+   [
+    24.05253,
+    38.21125
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 1001,
+  "points": [
+   [
+    23.68589,
+    37.94592
+   ],
+   [
+    23.81081,
+    37.82353
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1079,
+  "after": 157,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -266.6,
+    "to": -265.5,
+    "name": "Kingdom of Macedonia",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    2003,
+    1
+   ],
+   [
+    2034,
+    1
+   ],
+   [
+    231,
+    0
+   ],
+   [
+    2001,
+    1
+   ],
+   [
+    2036,
+    1
+   ],
+   [
+    228,
+    0
+   ],
+   [
+    229,
+    0
+   ],
+   [
+    1031,
+    1
+   ],
+   [
+    143,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1080,
+  "after": 157,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -265.5,
+    "to": -261.5,
+    "name": "Kingdom of Macedonia",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    2003,
+    1
+   ],
+   [
+    2034,
+    1
+   ],
+   [
+    231,
+    0
+   ],
+   [
+    232,
+    0
+   ],
+   [
+    228,
+    0
+   ],
+   [
+    229,
+    0
+   ],
+   [
+    1031,
+    1
+   ],
+   [
+    143,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 157,
+  "ranges": [
+   {
+    "from": -1505.5,
+    "to": -1202.2,
+    "name": "Mycenaean Kingdoms - Athens",
+    "color": 4
+   },
+   {
+    "from": -900.1,
+    "to": -670.5,
+    "name": "Athens",
+    "color": 0
+   },
+   {
+    "from": -670.5,
+    "to": -609.5,
+    "name": "Kalaurian Amphictiony - Athens",
+    "color": 11
+   },
+   {
+    "from": -609.5,
+    "to": -480.9,
+    "name": "Athens",
+    "color": 0
+   },
+   {
+    "from": -480.9,
+    "to": -478.3,
+    "name": "Greek Alliance - Athens",
+    "color": 1
+   },
+   {
+    "from": -478.3,
+    "to": -404.7,
+    "name": "Delian League - Athens",
+    "color": 1
+   },
+   {
+    "from": -404.7,
+    "to": -395.3,
+    "name": "Peloponnesian League - Attica",
+    "color": 81
+   },
+   {
+    "from": -395.5,
+    "to": -386.5,
+    "name": "Anti Spartan Alliance - Athens",
+    "color": 2
+   },
+   {
+    "from": -386.5,
+    "to": -378.7,
+    "name": "Athens",
+    "color": 0
+   },
+   {
+    "from": -378.7,
+    "to": -338.2,
+    "name": "Second Athenian League - Athens",
+    "color": 1
+   },
+   {
+    "from": -338.2,
+    "to": -336.2,
+    "name": "Macedonian Ally - Athens",
+    "color": 74
+   },
+   {
+    "from": -336.2,
+    "to": -335.2,
+    "name": "Athens",
+    "color": 0
+   },
+   {
+    "from": -335.2,
+    "to": -323.3,
+    "name": "Macedonian Ally - Athens",
+    "color": 74
+   },
+   {
+    "from": -323.3,
+    "to": -322.1,
+    "name": "Hellenic League - Athens",
+    "color": 2
+   },
+   {
+    "from": -322.1,
+    "to": -319.5,
+    "name": "Kingdom of Macedon - Greece - Athens",
+    "color": 165
+   },
+   {
+    "from": -317.8,
+    "to": -313.2,
+    "name": "Domain of Cassander - Athens",
+    "color": 3
+   },
+   {
+    "from": -313.2,
+    "to": -307.4,
+    "name": "Athens",
+    "color": 0
+   },
+   {
+    "from": -307.4,
+    "to": -301.3,
+    "name": "Antigonid Ally - Athens",
+    "color": 82
+   },
+   {
+    "from": -301.3,
+    "to": -294.6,
+    "name": "Athens",
+    "color": 0
+   },
+   {
+    "from": -294.6,
+    "to": -287.9,
+    "name": "Antigonid Kingdom - Athens",
+    "color": 68
+   },
+   {
+    "from": -285.5,
+    "to": -281.7,
+    "name": "Athens",
+    "color": 0
+   },
+   {
+    "from": -281.7,
+    "to": -279.8,
+    "name": "Antigonid Kingdom - Athens",
+    "color": 68
+   },
+   {
+    "from": -272.5,
+    "to": -271.5,
+    "name": "Athens",
+    "color": 0
+   },
+   {
+    "from": -261.5,
+    "to": -255.5,
+    "name": "Kingdom of Macedonia",
+    "color": 0
+   },
+   {
+    "from": -255.5,
+    "to": -1.0,
+    "name": "Kingdom of Macedonia - Athens",
+    "color": 27
+   }
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 154,
+  "points": [
+   [
+    21.57647,
+    37.07142
+   ],
+   [
+    21.78872,
+    36.80697
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 166,
+  "points": [
+   [
+    21.57647,
+    37.07142
+   ],
+   [
+    21.78872,
+    36.80697
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1081,
+  "after": 160,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -681.4,
+    "to": -621.5,
+    "name": "Kingdom of Sparta - Messenia",
+    "color": 3
+   }
+  ],
+  "refs": [
+   [
+    1669,
+    0
+   ],
+   [
+    1073,
+    0
+   ],
+   [
+    1064,
+    0
+   ],
+   [
+    234,
+    1
+   ],
+   [
+    2038,
+    0
+   ],
+   [
+    1166,
+    0
+   ],
+   [
+    154,
+    1
+   ],
+   [
+    1035,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 160,
+  "ranges": [
+   {
+    "from": -1505.5,
+    "to": -1204.5,
+    "name": "Mycenaean Kingdoms - Pylos",
+    "color": 7
+   },
+   {
+    "from": -770.5,
+    "to": -721.5,
+    "name": "Messenia",
+    "color": 0
+   },
+   {
+    "from": -721.5,
+    "to": -685.5,
+    "name": "Kingdom of Sparta - Messenia",
+    "color": 3
+   },
+   {
+    "from": -685.5,
+    "to": -681.4,
+    "name": "Messenia",
+    "color": 0
+   },
+   {
+    "from": -621.5,
+    "to": -480.9,
+    "name": "Kingdom of Sparta - Messenia",
+    "color": 3
+   },
+   {
+    "from": -480.9,
+    "to": -478.3,
+    "name": "Greek Alliance - Kingdom of Sparta",
+    "color": 10
+   },
+   {
+    "from": -478.3,
+    "to": -445.5,
+    "name": "Kingdom of Sparta",
+    "color": 0
+   },
+   {
+    "from": -445.5,
+    "to": -369.7,
+    "name": "Peloponnesian League - Sparta",
+    "color": 1
+   },
+   {
+    "from": -369.7,
+    "to": -344.5,
+    "name": "Theban Ally - Messenia",
+    "color": 17
+   },
+   {
+    "from": -344.5,
+    "to": -323.2,
+    "name": "Macedonian Ally - Messenia",
+    "color": 9
+   },
+   {
+    "from": -323.2,
+    "to": -322.1,
+    "name": "Hellenic League - Messenia",
+    "color": 33
+   },
+   {
+    "from": -322.1,
+    "to": -316.6,
+    "name": "Kingdom of Macedon - Greece - Messenia",
+    "color": 189
+   },
+   {
+    "from": -316.6,
+    "to": -316.1,
+    "name": "Domain of Polyperchon - Messenia",
+    "color": 12
+   },
+   {
+    "from": -316.1,
+    "to": -314.5,
+    "name": "Domain of Cassander - Messenia",
+    "color": 82
+   },
+   {
+    "from": -314.5,
+    "to": -314.2,
+    "name": "Antigonid Ally - Messenia",
+    "color": 6
+   },
+   {
+    "from": -314.2,
+    "to": -313.2,
+    "name": "Domain of Cassander - Messenia",
+    "color": 82
+   },
+   {
+    "from": -313.2,
+    "to": -310.5,
+    "name": "Antigonid Ally - Messenia",
+    "color": 6
+   },
+   {
+    "from": -310.5,
+    "to": -305.5,
+    "name": "Domain of Cassander - Messenia",
+    "color": 82
+   },
+   {
+    "from": -305.5,
+    "to": -301.3,
+    "name": "Kingdom of Macedon - Greece - Messenia",
+    "color": 189
+   },
+   {
+    "from": -301.3,
+    "to": -1.0,
+    "name": "Messenia",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 148,
+  "points": [
+   [
+    22.75472,
+    38.29603
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 235,
+  "points": [
+   [
+    22.76962,
+    38.28939
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 236,
+  "points": [
+   [
+    22.799,
+    38.27631
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 163,
+  "points": [
+   [
+    22.8897,
+    38.23591
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 238,
+  "points": [
+   [
+    22.89849,
+    38.23199
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 140,
+  "points": [
+   [
+    23.09603,
+    38.65347
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 240,
+  "points": [
+   [
+    23.13216,
+    38.63651
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 29,
+  "points": [
+   [
+    23.28637,
+    38.56409
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 141,
+  "points": [
+   [
+    23.28726,
+    38.56368
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 242,
+  "points": [
+   [
+    23.29234,
+    38.56129
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 243,
+  "points": [
+   [
+    23.33235,
+    38.5425
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 244,
+  "points": [
+   [
+    23.34169,
+    38.53812
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 164,
+  "points": [
+   [
+    23.3763,
+    38.52187
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 246,
+  "points": [
+   [
+    23.39972,
+    38.51087
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 247,
+  "points": [
+   [
+    23.41248,
+    38.50488
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 248,
+  "points": [
+   [
+    23.42433,
+    38.49931
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 191,
+  "points": [
+   [
+    23.63254,
+    38.40154
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1082,
+  "after": 153,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -1223.5,
+    "to": -1204.5,
+    "name": "Mycenaeans",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1034,
+    0
+   ],
+   [
+    1051,
+    0
+   ],
+   [
+    1693,
+    0
+   ],
+   [
+    1429,
+    0
+   ],
+   [
+    1065,
+    0
+   ],
+   [
+    1057,
+    0
+   ],
+   [
+    158,
+    1
+   ],
+   [
+    155,
+    1
+   ],
+   [
+    1064,
+    1
+   ],
+   [
+    1073,
+    1
+   ],
+   [
+    1669,
+    1
+   ],
+   [
+    1035,
+    1
+   ],
+   [
+    153,
+    1
+   ],
+   [
+    1033,
+    1
+   ],
+   [
+    1032,
+    0
+   ],
+   [
+    1052,
+    0
+   ],
+   [
+    146,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1083,
+  "after": 153,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -1223.5,
+    "to": -1204.5,
+    "name": "Mycenaeans",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    189,
+    0
+   ],
+   [
+    1031,
+    0
+   ],
+   [
+    144,
+    0
+   ],
+   [
+    160,
+    0
+   ],
+   [
+    161,
+    0
+   ],
+   [
+    1037,
+    1
+   ],
+   [
+    162,
+    1
+   ],
+   [
+    150,
+    1
+   ],
+   [
+    1205,
+    1
+   ],
+   [
+    1597,
+    1
+   ],
+   [
+    1478,
+    1
+   ],
+   [
+    1030,
+    1
+   ],
+   [
+    142,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1084,
+  "after": 153,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -1223.5,
+    "to": -1204.5,
+    "name": "Mycenaeans",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    250,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 246,
+  "points": [
+   [
+    23.37542,
+    38.52153
+   ],
+   [
+    23.39167,
+    38.51006
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1085,
+  "after": 153,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -1223.5,
+    "to": -1204.5,
+    "name": "Mycenaeans",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    251,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 240,
+  "points": [
+   [
+    23.13133,
+    38.63547
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1086,
+  "after": 153,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -1223.5,
+    "to": -1204.5,
+    "name": "Mycenaeans",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    240,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 238,
+  "points": [
+   [
+    22.89931,
+    38.23425
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 153,
+  "ranges": [
+   {
+    "from": -1223.5,
+    "to": -1204.5,
+    "name": "Mycenaeans",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_refs",
+  "entry": 153,
+  "refs": [
+   [
+    238,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1087,
+  "after": 178,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -365.7,
+    "to": -338.2,
+    "name": "Kingdom of Sparta",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1693,
+    1
+   ],
+   [
+    1709,
+    0
+   ],
+   [
+    1429,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 178,
+  "ranges": [
+   {
+    "from": -777.5,
+    "to": -480.9,
+    "name": "Kingdom of Sparta",
+    "color": 0
+   },
+   {
+    "from": -480.9,
+    "to": -478.3,
+    "name": "Greek Alliance - Kingdom of Sparta",
+    "color": 10
+   },
+   {
+    "from": -478.3,
+    "to": -445.5,
+    "name": "Kingdom of Sparta",
+    "color": 0
+   },
+   {
+    "from": -445.5,
+    "to": -365.7,
+    "name": "Peloponnesian League - Sparta",
+    "color": 1
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 187,
+  "ranges": [
+   {
+    "from": -747.5,
+    "to": -480.9,
+    "name": "Corinthia",
+    "color": 0
+   },
+   {
+    "from": -480.9,
+    "to": -478.3,
+    "name": "Greek Alliance - Corinthia",
+    "color": 3
+   },
+   {
+    "from": -478.3,
+    "to": -445.5,
+    "name": "Corinthia",
+    "color": 0
+   },
+   {
+    "from": -445.5,
+    "to": -421.7,
+    "name": "Peloponnesian League - Corinthia",
+    "color": 7
+   },
+   {
+    "from": -421.7,
+    "to": -420.5,
+    "name": "League of Argos - Corinth",
+    "color": 2
+   },
+   {
+    "from": -420.5,
+    "to": -395.4,
+    "name": "Peloponnesian League - Corinthia",
+    "color": 7
+   },
+   {
+    "from": -395.4,
+    "to": -392.7,
+    "name": "Anti Spartan Alliance - Corinthia",
+    "color": 3
+   },
+   {
+    "from": -392.7,
+    "to": -386.5,
+    "name": "Anti Spartan Alliance - Argos",
+    "color": 6
+   },
+   {
+    "from": -386.5,
+    "to": -375.4,
+    "name": "Peloponnesian League - Corinthia",
+    "color": 7
+   },
+   {
+    "from": -375.4,
+    "to": -375.1,
+    "name": "Stasis",
+    "color": 0
+   },
+   {
+    "from": -375.1,
+    "to": -365.7,
+    "name": "Peloponnesian League - Corinthia",
+    "color": 7
+   },
+   {
+    "from": -365.7,
+    "to": -338.7,
+    "name": "Corinthia",
+    "color": 0
+   },
+   {
+    "from": -338.7,
+    "to": -338.2,
+    "name": "Anti Macedon Alliance - Corinthia",
+    "color": 4
+   },
+   {
+    "from": -338.2,
+    "to": -322.1,
+    "name": "Macedonian Ally - Corinthia",
+    "color": 23
+   },
+   {
+    "from": -322.1,
+    "to": -316.6,
+    "name": "Kingdom of Macedon - Greece - Corinthia",
+    "color": 167
+   },
+   {
+    "from": -316.6,
+    "to": -314.5,
+    "name": "Domain of Polyperchon - Corinthia",
+    "color": 27
+   },
+   {
+    "from": -314.5,
+    "to": -314.2,
+    "name": "Antigonid Ally - Corinthia",
+    "color": 19
+   },
+   {
+    "from": -314.2,
+    "to": -313.2,
+    "name": "Domain of Cassander - Corinthia",
+    "color": 101
+   },
+   {
+    "from": -313.2,
+    "to": -309.5,
+    "name": "Domain of Polyperchon - Corinthia",
+    "color": 27
+   },
+   {
+    "from": -309.5,
+    "to": -308.5,
+    "name": "Antipatrid Ally - Corinthia",
+    "color": 4
+   },
+   {
+    "from": -308.5,
+    "to": -306.2,
+    "name": "Ptolemaic Ally - Corinthia",
+    "color": 27
+   },
+   {
+    "from": -306.2,
+    "to": -305.5,
+    "name": "Domain of Cassander - Corinthia",
+    "color": 101
+   },
+   {
+    "from": -305.5,
+    "to": -303.6,
+    "name": "Kingdom of Macedon - Greece - Corinthia",
+    "color": 167
+   },
+   {
+    "from": -303.6,
+    "to": -294.4,
+    "name": "Antigonid Ally - Corinthia",
+    "color": 19
+   },
+   {
+    "from": -294.4,
+    "to": -277.0,
+    "name": "Antigonid Kingdom - Corinthia",
+    "color": 77
+   },
+   {
+    "from": -277.0,
+    "to": -249.7,
+    "name": "Kingdom of Macedonia -  Corinthia",
+    "color": 6
+   },
+   {
+    "from": -249.7,
+    "to": -245.4,
+    "name": "Revolt",
+    "color": 0
+   },
+   {
+    "from": -245.4,
+    "to": -243.5,
+    "name": "Kingdom of Macedonia -  Corinthia",
+    "color": 6
+   },
+   {
+    "from": -243.5,
+    "to": -1.0,
+    "name": "Achaean League - Corinthia",
+    "color": 4
+   }
+  ]
+ },
+ {
+  "op": "par_set_refs",
+  "entry": 187,
+  "refs": [
+   [
+    1037,
+    0
+   ],
+   [
+    145,
+    0
+   ],
+   [
+    1161,
+    1
+   ],
+   [
+    1111,
+    1
+   ],
+   [
+    1112,
+    0
+   ],
+   [
+    151,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1088,
+  "after": 188,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -740.5,
+    "to": -730.5,
+    "name": "Megaris",
+    "color": 0
+   },
+   {
+    "from": -719.5,
+    "to": -480.9,
+    "name": "Megaris",
+    "color": 0
+   },
+   {
+    "from": -480.9,
+    "to": -478.3,
+    "name": "Greek Alliance - Megaris",
+    "color": 2
+   },
+   {
+    "from": -478.3,
+    "to": -454.3,
+    "name": "Delian League - Megaris",
+    "color": 2
+   },
+   {
+    "from": -454.3,
+    "to": -453.5,
+    "name": "Megaris",
+    "color": 0
+   },
+   {
+    "from": -454.5,
+    "to": -446.6,
+    "name": "Delian League - Megaris",
+    "color": 2
+   },
+   {
+    "from": -446.6,
+    "to": -445.5,
+    "name": "Megaris",
+    "color": 0
+   },
+   {
+    "from": -445.5,
+    "to": -424.4,
+    "name": "Peloponnesian League - Megaris",
+    "color": 8
+   },
+   {
+    "from": -408.9,
+    "to": -395.4,
+    "name": "Peloponnesian League - Megaris",
+    "color": 8
+   },
+   {
+    "from": -395.4,
+    "to": -386.5,
+    "name": "Anti Spartan Alliance - Megaris",
+    "color": 4
+   },
+   {
+    "from": -386.5,
+    "to": -378.9,
+    "name": "Megaris",
+    "color": 0
+   },
+   {
+    "from": -378.9,
+    "to": -375.4,
+    "name": "Peloponnesian League - Megaris",
+    "color": 8
+   },
+   {
+    "from": -375.4,
+    "to": -375.1,
+    "name": "Stasis",
+    "color": 0
+   },
+   {
+    "from": -375.1,
+    "to": -365.7,
+    "name": "Peloponnesian League - Megaris",
+    "color": 8
+   },
+   {
+    "from": -365.7,
+    "to": -338.7,
+    "name": "Megaris",
+    "color": 0
+   },
+   {
+    "from": -338.7,
+    "to": -338.2,
+    "name": "Anti Macedon Alliance - Megaris",
+    "color": 5
+   },
+   {
+    "from": -338.2,
+    "to": -322.1,
+    "name": "Macedonian Ally - Megaris",
+    "color": 24
+   },
+   {
+    "from": -322.1,
+    "to": -316.2,
+    "name": "Kingdom of Macedon - Greece - Megaris",
+    "color": 166
+   },
+   {
+    "from": -316.6,
+    "to": -314.5,
+    "name": "Domain of Polyperchon - Megaris",
+    "color": 26
+   },
+   {
+    "from": -314.5,
+    "to": -314.2,
+    "name": "Antigonid Ally - Megaris",
+    "color": 20
+   },
+   {
+    "from": -314.2,
+    "to": -313.2,
+    "name": "Domain of Cassander - Megaris",
+    "color": 102
+   },
+   {
+    "from": -313.2,
+    "to": -310.5,
+    "name": "Antigonid Ally - Megaris",
+    "color": 81
+   },
+   {
+    "from": -310.5,
+    "to": -308.5,
+    "name": "Domain of Cassander - Megaris",
+    "color": 102
+   },
+   {
+    "from": -308.5,
+    "to": -306.2,
+    "name": "Ptolemaic Ally - Megaris",
+    "color": 28
+   },
+   {
+    "from": -306.2,
+    "to": -305.5,
+    "name": "Domain of Cassander - Megaris",
+    "color": 102
+   },
+   {
+    "from": -305.5,
+    "to": -303.6,
+    "name": "Kingdom of Macedon - Greece - Megaris",
+    "color": 166
+   },
+   {
+    "from": -303.6,
+    "to": -294.4,
+    "name": "Antigonid Ally - Megaris",
+    "color": 81
+   },
+   {
+    "from": -294.4,
+    "to": -279.8,
+    "name": "Antigonid Kingdom - Megaris",
+    "color": 78
+   },
+   {
+    "from": -279.8,
+    "to": -268.2,
+    "name": "Megaris",
+    "color": 0
+   },
+   {
+    "from": -268.2,
+    "to": -243.4,
+    "name": "Antigonid Ally - Megaris",
+    "color": 81
+   },
+   {
+    "from": -243.4,
+    "to": -1.0,
+    "name": "Achaean League - Megaris",
+    "color": 5
+   }
+  ],
+  "refs": [
+   [
+    1069,
+    1
+   ],
+   [
+    1070,
+    1
+   ],
+   [
+    160,
+    0
+   ],
+   [
+    1075,
+    0
+   ],
+   [
+    150,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 160,
+  "points": [
+   [
+    23.36261,
+    37.98092
+   ],
+   [
+    23.38911,
+    37.98536
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 487,
+  "points": [
+   [
+    23.36261,
+    37.98092
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1089,
+  "after": 188,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -424.4,
+    "to": -408.9,
+    "name": "Peloponnesian League - Megaris",
+    "color": 8
+   }
+  ],
+  "refs": [
+   [
+    1069,
+    1
+   ],
+   [
+    1070,
+    1
+   ],
+   [
+    160,
+    0
+   ],
+   [
+    2040,
+    1
+   ],
+   [
+    256,
+    0
+   ],
+   [
+    1075,
+    0
+   ],
+   [
+    150,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 188,
+  "ranges": [
+   {
+    "from": -743.5,
+    "to": -740.5,
+    "name": "Megaris",
+    "color": 0
+   },
+   {
+    "from": -730.5,
+    "to": -719.5,
+    "name": "Corinthia - Megaris",
+    "color": 5
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1090,
+  "after": 200,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -519.5,
+    "to": -481.1,
+    "name": "Boeotia",
+    "color": 0
+   },
+   {
+    "from": -481.1,
+    "to": -479.3,
+    "name": "Persian Vassal - Boeotia",
+    "color": 13
+   },
+   {
+    "from": -479.3,
+    "to": -478.3,
+    "name": "Greek Alliance - Boeotia",
+    "color": 46
+   },
+   {
+    "from": -478.3,
+    "to": -458.2,
+    "name": "Delian League - Boeotia",
+    "color": 46
+   },
+   {
+    "from": -458.2,
+    "to": -456.7,
+    "name": "Boeotia",
+    "color": 0
+   },
+   {
+    "from": -456.7,
+    "to": -447.2,
+    "name": "Delian League - Boeotia",
+    "color": 46
+   },
+   {
+    "from": -447.2,
+    "to": -445.5,
+    "name": "Boeotia",
+    "color": 0
+   },
+   {
+    "from": -445.5,
+    "to": -427.5,
+    "name": "Peloponnesian League - Boeotia",
+    "color": 12
+   }
+  ],
+  "refs": [
+   [
+    1599,
+    0
+   ],
+   [
+    1602,
+    1
+   ],
+   [
+    1596,
+    0
+   ],
+   [
+    1601,
+    0
+   ],
+   [
+    1086,
+    0
+   ],
+   [
+    1605,
+    0
+   ],
+   [
+    1606,
+    0
+   ],
+   [
+    164,
+    0
+   ],
+   [
+    246,
+    0
+   ],
+   [
+    251,
+    0
+   ],
+   [
+    252,
+    0
+   ],
+   [
+    247,
+    0
+   ],
+   [
+    248,
+    0
+   ],
+   [
+    249,
+    0
+   ],
+   [
+    191,
+    0
+   ],
+   [
+    250,
+    0
+   ],
+   [
+    1030,
+    0
+   ],
+   [
+    1478,
+    0
+   ],
+   [
+    1597,
+    0
+   ],
+   [
+    1216,
+    0
+   ],
+   [
+    1215,
+    0
+   ],
+   [
+    149,
+    1
+   ],
+   [
+    239,
+    1
+   ],
+   [
+    254,
+    1
+   ],
+   [
+    238,
+    1
+   ],
+   [
+    163,
+    1
+   ],
+   [
+    1085,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1091,
+  "after": 200,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -378.8,
+    "to": -338.2,
+    "name": "Boeotia",
+    "color": 0
+   },
+   {
+    "from": -338.2,
+    "to": -322.1,
+    "name": "Macedonian Ally - Boeotian League",
+    "color": 42
+   }
+  ],
+  "refs": [
+   [
+    1601,
+    0
+   ],
+   [
+    1086,
+    0
+   ],
+   [
+    1603,
+    1
+   ],
+   [
+    1616,
+    0
+   ],
+   [
+    1610,
+    0
+   ],
+   [
+    1611,
+    0
+   ],
+   [
+    1612,
+    0
+   ],
+   [
+    1613,
+    0
+   ],
+   [
+    1614,
+    0
+   ],
+   [
+    1595,
+    0
+   ],
+   [
+    1596,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1092,
+  "after": 200,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -292.3,
+    "to": -291.5,
+    "name": "Antigonid Kingdom - Boeotian League",
+    "color": 113
+   }
+  ],
+  "refs": [
+   [
+    1599,
+    0
+   ],
+   [
+    1602,
+    1
+   ],
+   [
+    1596,
+    0
+   ],
+   [
+    1601,
+    0
+   ],
+   [
+    1086,
+    0
+   ],
+   [
+    1605,
+    0
+   ],
+   [
+    1608,
+    1
+   ],
+   [
+    1611,
+    0
+   ],
+   [
+    1588,
+    1
+   ],
+   [
+    1587,
+    1
+   ],
+   [
+    149,
+    1
+   ],
+   [
+    239,
+    1
+   ],
+   [
+    254,
+    1
+   ],
+   [
+    238,
+    1
+   ],
+   [
+    163,
+    1
+   ],
+   [
+    1085,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1093,
+  "after": 200,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -292.3,
+    "to": -291.5,
+    "name": "Antigonid Kingdom - Boeotian League",
+    "color": 113
+   }
+  ],
+  "refs": [
+   [
+    250,
+    0
+   ],
+   [
+    1030,
+    0
+   ],
+   [
+    1478,
+    0
+   ],
+   [
+    1586,
+    0
+   ],
+   [
+    1609,
+    0
+   ],
+   [
+    191,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 200,
+  "ranges": [
+   {
+    "from": -730.5,
+    "to": -519.5,
+    "name": "Boeotia",
+    "color": 0
+   },
+   {
+    "from": -427.5,
+    "to": -395.7,
+    "name": "Peloponnesian League - Boeotia",
+    "color": 12
+   },
+   {
+    "from": -395.7,
+    "to": -395.5,
+    "name": "Boeotia",
+    "color": 0
+   },
+   {
+    "from": -395.5,
+    "to": -386.5,
+    "name": "Anti Spartan Alliance - Boeotia",
+    "color": 1
+   },
+   {
+    "from": -386.5,
+    "to": -386.5,
+    "name": "Boeotia",
+    "color": 0
+   },
+   {
+    "from": -300.5,
+    "to": -294.2,
+    "name": "Thebes",
+    "color": 0
+   },
+   {
+    "from": -294.2,
+    "to": -293.7,
+    "name": "Antigonid Kingdom - Thebes",
+    "color": 111
+   },
+   {
+    "from": -293.7,
+    "to": -293.5,
+    "name": "Thebes",
+    "color": 0
+   },
+   {
+    "from": -293.5,
+    "to": -292.5,
+    "name": "Antigonid Kingdom - Thebes",
+    "color": 111
+   },
+   {
+    "from": -292.5,
+    "to": -292.3,
+    "name": "Thebes",
+    "color": 0
+   },
+   {
+    "from": -291.5,
+    "to": -287.9,
+    "name": "Antigonid Kingdom - Boeotian League",
+    "color": 113
+   },
+   {
+    "from": -287.9,
+    "to": -287.6,
+    "name": "Boeotia",
+    "color": 0
+   },
+   {
+    "from": -287.6,
+    "to": -279.8,
+    "name": "Antigonid Kingdom - Thebes",
+    "color": 111
+   },
+   {
+    "from": -279.8,
+    "to": -267.7,
+    "name": "Thebes",
+    "color": 0
+   },
+   {
+    "from": -267.7,
+    "to": -245.4,
+    "name": "Antigonid Ally - Thebes",
+    "color": 89
+   },
+   {
+    "from": -245.4,
+    "to": -1.0,
+    "name": "Aetolian League - Boeotia",
+    "color": 11
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1094,
+  "after": 202,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -684.5,
+    "to": -572.5,
+    "name": "Elis",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1088,
+    0
+   ],
+   [
+    1711,
+    0
+   ],
+   [
+    1074,
+    0
+   ],
+   [
+    1117,
+    1
+   ],
+   [
+    1115,
+    0
+   ],
+   [
+    165,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 202,
+  "ranges": [
+   {
+    "from": -725.5,
+    "to": -684.5,
+    "name": "Elis",
+    "color": 0
+   },
+   {
+    "from": -572.5,
+    "to": -480.9,
+    "name": "Elis",
+    "color": 0
+   },
+   {
+    "from": -480.9,
+    "to": -478.3,
+    "name": "Greek Alliance - Elis",
+    "color": 9
+   },
+   {
+    "from": -478.3,
+    "to": -445.5,
+    "name": "Elis",
+    "color": 0
+   },
+   {
+    "from": -445.5,
+    "to": -421.4,
+    "name": "Peloponnesian League - Elis",
+    "color": 5
+   },
+   {
+    "from": -421.4,
+    "to": -417.5,
+    "name": "League of Argos - Elis",
+    "color": 4
+   },
+   {
+    "from": -417.5,
+    "to": -400.5,
+    "name": "Elis",
+    "color": 0
+   },
+   {
+    "from": -400.5,
+    "to": -370.3,
+    "name": "Peloponnesian League - Elis",
+    "color": 5
+   },
+   {
+    "from": -370.3,
+    "to": -370.1,
+    "name": "Elis",
+    "color": 0
+   },
+   {
+    "from": -370.1,
+    "to": -365.7,
+    "name": "Theban Ally - Elis",
+    "color": 16
+   },
+   {
+    "from": -365.7,
+    "to": -364.3,
+    "name": "Elis",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1095,
+  "after": 205,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -367.9,
+    "to": -366.6,
+    "name": "Achaea",
+    "color": 0
+   },
+   {
+    "from": -366.6,
+    "to": -366.4,
+    "name": "Theban Ally - Achaea",
+    "color": 29
+   },
+   {
+    "from": -366.4,
+    "to": -365.7,
+    "name": "Peloponnesian League - Achaea",
+    "color": 176
+   },
+   {
+    "from": -365.7,
+    "to": -338.7,
+    "name": "Achaea",
+    "color": 0
+   },
+   {
+    "from": -338.7,
+    "to": -338.2,
+    "name": "Anti Macedon Alliance - Achaea",
+    "color": 1
+   },
+   {
+    "from": -338.2,
+    "to": -331.2,
+    "name": "Macedonian Ally - Achaea",
+    "color": 20
+   },
+   {
+    "from": -331.2,
+    "to": -330.5,
+    "name": "Achaea",
+    "color": 0
+   },
+   {
+    "from": -330.5,
+    "to": -322.1,
+    "name": "Macedonian Ally - Achaea",
+    "color": 20
+   },
+   {
+    "from": -322.1,
+    "to": -316.1,
+    "name": "Kingdom of Macedon - Greece - Achaea",
+    "color": 182
+   },
+   {
+    "from": -316.6,
+    "to": -316.1,
+    "name": "Domain of Polyperchon - Achaea",
+    "color": 8
+   },
+   {
+    "from": -316.1,
+    "to": -314.5,
+    "name": "Domain of Cassander - Achaea",
+    "color": 78
+   },
+   {
+    "from": -314.5,
+    "to": -314.2,
+    "name": "Antigonid Ally - Achaea",
+    "color": 16
+   },
+   {
+    "from": -313.2,
+    "to": -309.5,
+    "name": "Antigonid Ally - Achaea",
+    "color": 16
+   },
+   {
+    "from": -309.5,
+    "to": -305.5,
+    "name": "Domain of Cassander - Achaea",
+    "color": 78
+   },
+   {
+    "from": -305.5,
+    "to": -303.5,
+    "name": "Kingdom of Macedon - Greece - Achaea",
+    "color": 182
+   },
+   {
+    "from": -303.5,
+    "to": -301.3,
+    "name": "Antigonid Ally - Achaea",
+    "color": 16
+   },
+   {
+    "from": -301.3,
+    "to": -280.4,
+    "name": "Achaea",
+    "color": 0
+   },
+   {
+    "from": -280.4,
+    "to": -268.2,
+    "name": "Achaean League",
+    "color": 0
+   },
+   {
+    "from": -268.2,
+    "to": -264.8,
+    "name": "Anti Macedon Alliance - Achaean League",
+    "color": 42
+   },
+   {
+    "from": -264.8,
+    "to": -1.0,
+    "name": "Achaean League",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1711,
+    1
+   ],
+   [
+    1088,
+    1
+   ],
+   [
+    152,
+    1
+   ],
+   [
+    194,
+    1
+   ],
+   [
+    1700,
+    1
+   ],
+   [
+    1701,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 194,
+  "points": [
+   [
+    22.0411,
+    38.2814
+   ],
+   [
+    22.1319,
+    38.2551
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 863,
+  "points": [
+   [
+    22.0411,
+    38.2814
+   ],
+   [
+    22.1319,
+    38.2551
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1096,
+  "after": 205,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -314.2,
+    "to": -313.2,
+    "name": "Domain of Cassander - Achaea",
+    "color": 78
+   }
+  ],
+  "refs": [
+   [
+    1711,
+    1
+   ],
+   [
+    1088,
+    1
+   ],
+   [
+    152,
+    1
+   ],
+   [
+    258,
+    1
+   ],
+   [
+    2042,
+    0
+   ],
+   [
+    1863,
+    0
+   ],
+   [
+    194,
+    1
+   ],
+   [
+    1700,
+    1
+   ],
+   [
+    1701,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 205,
+  "ranges": [
+   {
+    "from": -720.5,
+    "to": -454.6,
+    "name": "Achaea",
+    "color": 0
+   },
+   {
+    "from": -454.6,
+    "to": -454.3,
+    "name": "Delian League - Achaea",
+    "color": 141
+   },
+   {
+    "from": -454.3,
+    "to": -393.1,
+    "name": "Achaea",
+    "color": 0
+   },
+   {
+    "from": -393.1,
+    "to": -367.9,
+    "name": "Peloponnesian League - Achaea",
+    "color": 176
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 101,
+  "points": [
+   [
+    20.78246,
+    39.12967
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 149,
+  "points": [
+   [
+    20.78246,
+    39.12967
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 101,
+  "points": [
+   [
+    20.78363,
+    39.19449
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 149,
+  "points": [
+   [
+    20.78363,
+    39.19449
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1097,
+  "after": 216,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -667.5,
+    "to": -365.7,
+    "name": "Elis - Bouchetion",
+    "color": 1
+   }
+  ],
+  "refs": [
+   [
+    2043,
+    1
+   ],
+   [
+    2044,
+    0
+   ],
+   [
+    1149,
+    0
+   ],
+   [
+    1101,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 216,
+  "ranges": [
+   {
+    "from": -701.5,
+    "to": -667.5,
+    "name": "Elis - Bouchetion",
+    "color": 1
+   }
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 192,
+  "points": [
+   [
+    23.01211,
+    38.92111
+   ],
+   [
+    23.13378,
+    39.01309
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 585,
+  "points": [
+   [
+    23.01211,
+    38.92111
+   ],
+   [
+    23.13378,
+    39.01309
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1098,
+  "after": 300,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -380.5,
+    "to": -377.7,
+    "name": "Chalcis",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    193,
+    1
+   ],
+   [
+    260,
+    1
+   ],
+   [
+    2048,
+    0
+   ],
+   [
+    1585,
+    0
+   ],
+   [
+    192,
+    1
+   ],
+   [
+    31,
+    1
+   ],
+   [
+    1103,
+    1
+   ],
+   [
+    1104,
+    0
+   ],
+   [
+    167,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1099,
+  "after": 300,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -377.7,
+    "to": -370.6,
+    "name": "Second Athenian League - Chalcis",
+    "color": 11
+   },
+   {
+    "from": -370.6,
+    "to": -357.9,
+    "name": "Theban Ally - Chalcis",
+    "color": 11
+   },
+   {
+    "from": -357.9,
+    "to": -357.6,
+    "name": "Revolt",
+    "color": 0
+   },
+   {
+    "from": -357.6,
+    "to": -348.7,
+    "name": "Second Athenian League - Chalcis",
+    "color": 11
+   },
+   {
+    "from": -348.7,
+    "to": -348.4,
+    "name": "Revolt",
+    "color": 0
+   },
+   {
+    "from": -348.4,
+    "to": -343.5,
+    "name": "Euboea - Chalcis",
+    "color": 2
+   },
+   {
+    "from": -341.4,
+    "to": -338.2,
+    "name": "Second Athenian League - Chalcis",
+    "color": 11
+   },
+   {
+    "from": -338.2,
+    "to": -322.1,
+    "name": "Macedonian Ally - Euboean League - Chalcis",
+    "color": 37
+   },
+   {
+    "from": -322.1,
+    "to": -317.5,
+    "name": "Kingdom of Macedon - Greece - Chalcis",
+    "color": 160
+   },
+   {
+    "from": -317.5,
+    "to": -313.2,
+    "name": "Domain of Cassander - Chalcis",
+    "color": 24
+   },
+   {
+    "from": -313.2,
+    "to": -309.5,
+    "name": "Antigonid Ally - Chalcis",
+    "color": 78
+   },
+   {
+    "from": -309.5,
+    "to": -304.4,
+    "name": "Domain of Cassander - Chalcis",
+    "color": 24
+   },
+   {
+    "from": -305.5,
+    "to": -304.4,
+    "name": "Kingdom of Macedon - Greece - Chalcis",
+    "color": 160
+   },
+   {
+    "from": -304.4,
+    "to": -300.5,
+    "name": "Antigonid Ally - Chalcis",
+    "color": 78
+   },
+   {
+    "from": -300.5,
+    "to": -294.2,
+    "name": "Chalcis",
+    "color": 0
+   },
+   {
+    "from": -294.2,
+    "to": -282.7,
+    "name": "Antigonid Kingdom - Chalcis",
+    "color": 96
+   }
+  ],
+  "refs": [
+   [
+    193,
+    1
+   ],
+   [
+    1624,
+    1
+   ],
+   [
+    31,
+    1
+   ],
+   [
+    1103,
+    1
+   ],
+   [
+    1104,
+    0
+   ],
+   [
+    167,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1100,
+  "after": 300,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -343.5,
+    "to": -341.7,
+    "name": "Euboea - Chalcis",
+    "color": 2
+   },
+   {
+    "from": -341.7,
+    "to": -341.4,
+    "name": "Second Athenian League - Chalcis",
+    "color": 11
+   }
+  ],
+  "refs": [
+   [
+    193,
+    1
+   ],
+   [
+    1624,
+    1
+   ],
+   [
+    31,
+    1
+   ],
+   [
+    1103,
+    1
+   ],
+   [
+    1104,
+    0
+   ],
+   [
+    167,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 300,
+  "ranges": [
+   {
+    "from": -700.5,
+    "to": -506.4,
+    "name": "Chalcis",
+    "color": 0
+   },
+   {
+    "from": -506.4,
+    "to": -490.3,
+    "name": "Athens - Chalcis",
+    "color": 14
+   },
+   {
+    "from": -490.3,
+    "to": -490.0,
+    "name": "Persian Vassal - Chalcis",
+    "color": 7
+   },
+   {
+    "from": -490.0,
+    "to": -480.9,
+    "name": "Athens - Chalcis",
+    "color": 14
+   },
+   {
+    "from": -480.9,
+    "to": -478.3,
+    "name": "Greek Alliance - Chalcis",
+    "color": 16
+   },
+   {
+    "from": -478.3,
+    "to": -446.7,
+    "name": "Delian League - Chalcis",
+    "color": 16
+   },
+   {
+    "from": -446.1,
+    "to": -411.2,
+    "name": "Delian League - Chalcis",
+    "color": 16
+   },
+   {
+    "from": -411.2,
+    "to": -395.4,
+    "name": "Peloponnesian League - Chalcis",
+    "color": 59
+   },
+   {
+    "from": -395.4,
+    "to": -386.5,
+    "name": "Anti Spartan Alliance - Chalcis",
+    "color": 7
+   },
+   {
+    "from": -386.5,
+    "to": -380.5,
+    "name": "Chalcis",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 130,
+  "points": [
+   [
+    21.91314,
+    38.45693
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 284,
+  "points": [
+   [
+    21.91314,
+    38.45693
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 174,
+  "points": [
+   [
+    21.93283,
+    38.4005
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 1050,
+  "points": [
+   [
+    21.93283,
+    38.4005
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1101,
+  "after": 234,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -456.5,
+    "to": -395.3,
+    "name": "Ozolian Locris",
+    "color": 0
+   },
+   {
+    "from": -395.3,
+    "to": -386.5,
+    "name": "Anti Spartan Alliance - Ozolian Locris",
+    "color": 17
+   },
+   {
+    "from": -386.5,
+    "to": -378.9,
+    "name": "Ozolian Locris",
+    "color": 0
+   },
+   {
+    "from": -378.9,
+    "to": -370.7,
+    "name": "Peloponnesian League - Ozolian Locris",
+    "color": 191
+   },
+   {
+    "from": -370.7,
+    "to": -338.2,
+    "name": "Theban Ally - Ozolian Locris",
+    "color": 4
+   },
+   {
+    "from": -338.2,
+    "to": -323.2,
+    "name": "Macedonian Ally - Ozolian Locris",
+    "color": 54
+   }
+  ],
+  "refs": [
+   [
+    1129,
+    0
+   ],
+   [
+    1892,
+    1
+   ],
+   [
+    1126,
+    1
+   ],
+   [
+    131,
+    1
+   ],
+   [
+    132,
+    1
+   ],
+   [
+    261,
+    1
+   ],
+   [
+    2051,
+    0
+   ],
+   [
+    1284,
+    0
+   ],
+   [
+    1130,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 234,
+  "ranges": [
+   {
+    "from": -695.5,
+    "to": -456.5,
+    "name": "Ozolian Locris",
+    "color": 0
+   },
+   {
+    "from": -323.2,
+    "to": -322.1,
+    "name": "Hellenic League - Ozolian Locris",
+    "color": 12
+   },
+   {
+    "from": -322.1,
+    "to": -317.5,
+    "name": "Kingdom of Macedon - Greece - Ozolian Locris",
+    "color": 156
+   },
+   {
+    "from": -317.5,
+    "to": -313.2,
+    "name": "Domain of Cassander - Ozolian Locris",
+    "color": 13
+   },
+   {
+    "from": -313.2,
+    "to": -310.5,
+    "name": "Antigonid Ally - Ozolian Locris",
+    "color": 73
+   },
+   {
+    "from": -310.5,
+    "to": -305.5,
+    "name": "Domain of Cassander - Ozolian Locris",
+    "color": 13
+   },
+   {
+    "from": -305.5,
+    "to": -304.2,
+    "name": "Kingdom of Macedon - Greece - Ozolian Locris",
+    "color": 156
+   },
+   {
+    "from": -304.2,
+    "to": -301.3,
+    "name": "Antigonid Ally - Ozolian Locris",
+    "color": 73
+   },
+   {
+    "from": -301.3,
+    "to": -1.0,
+    "name": "Aetolian League - Ozolian Locris",
+    "color": 1
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 1049,
+  "points": [
+   [
+    21.7472,
+    38.4456
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 283,
+  "points": [
+   [
+    21.6267,
+    38.3484
+   ],
+   [
+    21.7472,
+    38.4456
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 176,
+  "points": [
+   [
+    21.6267,
+    38.3484
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1102,
+  "after": 238,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -695.5,
+    "to": -395.4,
+    "name": "Aetolia",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1819,
+    1
+   ],
+   [
+    1139,
+    1
+   ],
+   [
+    1140,
+    0
+   ],
+   [
+    1306,
+    0
+   ],
+   [
+    1351,
+    0
+   ],
+   [
+    1144,
+    0
+   ],
+   [
+    1135,
+    1
+   ],
+   [
+    1128,
+    0
+   ],
+   [
+    1130,
+    0
+   ],
+   [
+    2049,
+    0
+   ],
+   [
+    2053,
+    0
+   ],
+   [
+    176,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 704,
+  "points": [
+   [
+    21.46011,
+    38.36936
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 176,
+  "points": [
+   [
+    21.46011,
+    38.36936
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1103,
+  "after": 238,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -367.9,
+    "to": -339.1,
+    "name": "Theban Ally - Aetolia",
+    "color": 1
+   },
+   {
+    "from": -339.1,
+    "to": -336.2,
+    "name": "Macedonian Ally - Aetolia",
+    "color": 56
+   },
+   {
+    "from": -336.2,
+    "to": -335.2,
+    "name": "Aetolia",
+    "color": 0
+   },
+   {
+    "from": -339.1,
+    "to": -323.3,
+    "name": "Macedonian Ally - Aetolia",
+    "color": 56
+   },
+   {
+    "from": -323.3,
+    "to": -323.2,
+    "name": "Hellenic League - Aetolia",
+    "color": 1
+   }
+  ],
+  "refs": [
+   [
+    1819,
+    1
+   ],
+   [
+    1139,
+    1
+   ],
+   [
+    1140,
+    0
+   ],
+   [
+    1306,
+    0
+   ],
+   [
+    1351,
+    0
+   ],
+   [
+    1144,
+    0
+   ],
+   [
+    1135,
+    1
+   ],
+   [
+    1128,
+    0
+   ],
+   [
+    1130,
+    0
+   ],
+   [
+    2049,
+    0
+   ],
+   [
+    2052,
+    0
+   ],
+   [
+    262,
+    1
+   ],
+   [
+    1704,
+    0
+   ],
+   [
+    176,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 238,
+  "ranges": [
+   {
+    "from": -395.4,
+    "to": -370.7,
+    "name": "Aetolia",
+    "color": 0
+   },
+   {
+    "from": -370.7,
+    "to": -367.9,
+    "name": "Theban Ally - Aetolia",
+    "color": 1
+   },
+   {
+    "from": -323.2,
+    "to": -322.1,
+    "name": "Hellenic League - Aetolia",
+    "color": 1
+   },
+   {
+    "from": -322.1,
+    "to": -313.7,
+    "name": "Aetolia",
+    "color": 0
+   },
+   {
+    "from": -313.7,
+    "to": -309.5,
+    "name": "Antigonid Ally - Aetolia",
+    "color": 68
+   },
+   {
+    "from": -309.5,
+    "to": -304.3,
+    "name": "Aetolian League",
+    "color": 0
+   },
+   {
+    "from": -304.3,
+    "to": -301.3,
+    "name": "Antigonid Ally - Aetolia",
+    "color": 68
+   },
+   {
+    "from": -301.3,
+    "to": -1.0,
+    "name": "Aetolian League",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 109,
+  "points": [
+   [
+    20.65468,
+    39.20705
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 1046,
+  "points": [
+   [
+    20.65468,
+    39.20705
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 1056,
+  "points": [
+   [
+    20.73866,
+    39.23471
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 1046,
+  "points": [
+   [
+    20.73866,
+    39.23471
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1104,
+  "after": 222,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -667.5,
+    "to": -342.7,
+    "name": "Elis - Pandosia",
+    "color": 3
+   }
+  ],
+  "refs": [
+   [
+    2058,
+    1
+   ],
+   [
+    2059,
+    0
+   ],
+   [
+    1109,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 222,
+  "ranges": [
+   {
+    "from": -685.1,
+    "to": -667.5,
+    "name": "Elis - Pandosia",
+    "color": 3
+   }
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 138,
+  "points": [
+   [
+    22.93608,
+    39.35204
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 496,
+  "points": [
+   [
+    22.93608,
+    39.35204
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 1060,
+  "points": [
+   [
+    22.8429,
+    39.4819
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1105,
+  "after": 268,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -410.5,
+    "to": -395.3,
+    "name": "Thessaly",
+    "color": 0
+   },
+   {
+    "from": -395.3,
+    "to": -386.5,
+    "name": "Anti Spartan Alliance - Thessaly",
+    "color": 24
+   },
+   {
+    "from": -386.5,
+    "to": -375.3,
+    "name": "Thessaly",
+    "color": 0
+   },
+   {
+    "from": -370.1,
+    "to": -365.5,
+    "name": "Thessaly",
+    "color": 0
+   },
+   {
+    "from": -365.5,
+    "to": -364.4,
+    "name": "Pherae",
+    "color": 0
+   },
+   {
+    "from": -364.4,
+    "to": -352.4,
+    "name": "Theban Ally - Thessaly",
+    "color": 35
+   }
+  ],
+  "refs": [
+   [
+    198,
+    0
+   ],
+   [
+    138,
+    0
+   ],
+   [
+    2060,
+    0
+   ],
+   [
+    1783,
+    1
+   ],
+   [
+    1912,
+    1
+   ],
+   [
+    1775,
+    1
+   ],
+   [
+    1173,
+    1
+   ],
+   [
+    181,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 268,
+  "ranges": [
+   {
+    "from": -650.5,
+    "to": -580.5,
+    "name": "Magnesia",
+    "color": 0
+   },
+   {
+    "from": -580.5,
+    "to": -481.1,
+    "name": "Thessaly",
+    "color": 0
+   },
+   {
+    "from": -481.1,
+    "to": -477.5,
+    "name": "Persian Vassal - Thessaly",
+    "color": 9
+   },
+   {
+    "from": -477.5,
+    "to": -457.2,
+    "name": "Delian League - Thessaly",
+    "color": 54
+   },
+   {
+    "from": -457.2,
+    "to": -410.5,
+    "name": "Thessaly",
+    "color": 0
+   },
+   {
+    "from": -375.3,
+    "to": -370.1,
+    "name": "Pherae",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 1061,
+  "points": [
+   [
+    22.7285,
+    39.6019
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1106,
+  "after": 269,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -410.5,
+    "to": -404.3,
+    "name": "Thessaly",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1173,
+    0
+   ],
+   [
+    1775,
+    0
+   ],
+   [
+    1912,
+    0
+   ],
+   [
+    2062,
+    0
+   ],
+   [
+    1503,
+    0
+   ],
+   [
+    1502,
+    0
+   ],
+   [
+    1498,
+    0
+   ],
+   [
+    1501,
+    0
+   ],
+   [
+    1504,
+    0
+   ],
+   [
+    1500,
+    0
+   ],
+   [
+    190,
+    0
+   ],
+   [
+    139,
+    0
+   ],
+   [
+    1134,
+    1
+   ],
+   [
+    1138,
+    1
+   ],
+   [
+    1505,
+    1
+   ],
+   [
+    1142,
+    1
+   ],
+   [
+    1174,
+    0
+   ],
+   [
+    1345,
+    0
+   ],
+   [
+    1778,
+    0
+   ],
+   [
+    7,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1107,
+  "after": 269,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -404.3,
+    "to": -395.3,
+    "name": "Thessaly",
+    "color": 0
+   },
+   {
+    "from": -395.3,
+    "to": -386.5,
+    "name": "Anti Spartan Alliance - Thessaly",
+    "color": 24
+   },
+   {
+    "from": -386.5,
+    "to": -375.3,
+    "name": "Thessaly",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1173,
+    0
+   ],
+   [
+    1775,
+    0
+   ],
+   [
+    1912,
+    0
+   ],
+   [
+    2062,
+    0
+   ],
+   [
+    1503,
+    0
+   ],
+   [
+    1502,
+    0
+   ],
+   [
+    1498,
+    0
+   ],
+   [
+    1501,
+    0
+   ],
+   [
+    1506,
+    0
+   ],
+   [
+    1142,
+    1
+   ],
+   [
+    1174,
+    0
+   ],
+   [
+    1345,
+    0
+   ],
+   [
+    1778,
+    0
+   ],
+   [
+    7,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1108,
+  "after": 269,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -375.3,
+    "to": -370.1,
+    "name": "Pherae",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1173,
+    0
+   ],
+   [
+    1775,
+    0
+   ],
+   [
+    1912,
+    0
+   ],
+   [
+    1783,
+    0
+   ],
+   [
+    1911,
+    0
+   ],
+   [
+    1779,
+    0
+   ],
+   [
+    182,
+    0
+   ],
+   [
+    196,
+    0
+   ],
+   [
+    1500,
+    1
+   ],
+   [
+    1504,
+    1
+   ],
+   [
+    1506,
+    0
+   ],
+   [
+    1142,
+    1
+   ],
+   [
+    1174,
+    0
+   ],
+   [
+    1345,
+    0
+   ],
+   [
+    1778,
+    0
+   ],
+   [
+    7,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1109,
+  "after": 269,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -370.1,
+    "to": -365.5,
+    "name": "Thessaly",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1173,
+    0
+   ],
+   [
+    1775,
+    0
+   ],
+   [
+    1912,
+    0
+   ],
+   [
+    2062,
+    0
+   ],
+   [
+    1497,
+    0
+   ],
+   [
+    1498,
+    0
+   ],
+   [
+    1501,
+    0
+   ],
+   [
+    1504,
+    0
+   ],
+   [
+    1500,
+    0
+   ],
+   [
+    190,
+    0
+   ],
+   [
+    139,
+    0
+   ],
+   [
+    1134,
+    1
+   ],
+   [
+    1138,
+    1
+   ],
+   [
+    1505,
+    1
+   ],
+   [
+    1142,
+    1
+   ],
+   [
+    1174,
+    0
+   ],
+   [
+    1345,
+    0
+   ],
+   [
+    1778,
+    0
+   ],
+   [
+    7,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1110,
+  "after": 269,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -365.5,
+    "to": -364.4,
+    "name": "Thessaly",
+    "color": 0
+   },
+   {
+    "from": -364.4,
+    "to": -352.4,
+    "name": "Theban Ally - Thessaly",
+    "color": 35
+   }
+  ],
+  "refs": [
+   [
+    1173,
+    0
+   ],
+   [
+    1775,
+    0
+   ],
+   [
+    1912,
+    0
+   ],
+   [
+    2062,
+    0
+   ],
+   [
+    1497,
+    0
+   ],
+   [
+    1498,
+    0
+   ],
+   [
+    1501,
+    0
+   ],
+   [
+    1506,
+    0
+   ],
+   [
+    1142,
+    1
+   ],
+   [
+    1174,
+    0
+   ],
+   [
+    1345,
+    0
+   ],
+   [
+    1778,
+    0
+   ],
+   [
+    7,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 269,
+  "ranges": [
+   {
+    "from": -650.5,
+    "to": -481.1,
+    "name": "Thessaly",
+    "color": 0
+   },
+   {
+    "from": -481.1,
+    "to": -477.5,
+    "name": "Persian Vassal - Thessaly",
+    "color": 9
+   },
+   {
+    "from": -477.5,
+    "to": -457.2,
+    "name": "Delian League - Thessaly",
+    "color": 54
+   },
+   {
+    "from": -457.2,
+    "to": -410.5,
+    "name": "Thessaly",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 144,
+  "points": [
+   [
+    23.498,
+    38.0345
+   ],
+   [
+    23.57775,
+    38.0475
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 914,
+  "points": [
+   [
+    23.498,
+    38.0345
+   ],
+   [
+    23.57775,
+    38.0475
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1111,
+  "after": 288,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -287.9,
+    "to": -286.5,
+    "name": "Athens",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    189,
+    0
+   ],
+   [
+    1031,
+    0
+   ],
+   [
+    144,
+    0
+   ],
+   [
+    2064,
+    0
+   ],
+   [
+    1914,
+    0
+   ],
+   [
+    266,
+    0
+   ],
+   [
+    1070,
+    0
+   ],
+   [
+    1205,
+    1
+   ],
+   [
+    1597,
+    1
+   ],
+   [
+    1478,
+    1
+   ],
+   [
+    1030,
+    1
+   ],
+   [
+    142,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 1002,
+  "points": [
+   [
+    23.4697,
+    38.0745
+   ],
+   [
+    23.59261,
+    38.04056
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 70,
+  "points": [
+   [
+    23.4697,
+    38.0745
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1112,
+  "after": 288,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -266.6,
+    "to": -261.6,
+    "name": "Kingdom of Macedonia",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    189,
+    0
+   ],
+   [
+    1031,
+    0
+   ],
+   [
+    2002,
+    1
+   ],
+   [
+    2066,
+    1
+   ],
+   [
+    2067,
+    0
+   ],
+   [
+    1205,
+    1
+   ],
+   [
+    1597,
+    1
+   ],
+   [
+    1478,
+    1
+   ],
+   [
+    1030,
+    1
+   ],
+   [
+    142,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 288,
+  "ranges": [
+   {
+    "from": -565.5,
+    "to": -480.9,
+    "name": "Athens",
+    "color": 0
+   },
+   {
+    "from": -480.9,
+    "to": -478.3,
+    "name": "Greek Alliance - Athens",
+    "color": 1
+   },
+   {
+    "from": -478.3,
+    "to": -404.7,
+    "name": "Delian League - Athens",
+    "color": 1
+   },
+   {
+    "from": -404.7,
+    "to": -395.3,
+    "name": "Peloponnesian League - Attica",
+    "color": 81
+   },
+   {
+    "from": -395.5,
+    "to": -386.5,
+    "name": "Anti Spartan Alliance - Athens",
+    "color": 2
+   },
+   {
+    "from": -386.5,
+    "to": -378.7,
+    "name": "Athens",
+    "color": 0
+   },
+   {
+    "from": -378.7,
+    "to": -338.2,
+    "name": "Second Athenian League - Athens",
+    "color": 1
+   },
+   {
+    "from": -338.2,
+    "to": -336.2,
+    "name": "Macedonian Ally - Athens",
+    "color": 74
+   },
+   {
+    "from": -336.2,
+    "to": -335.2,
+    "name": "Athens",
+    "color": 0
+   },
+   {
+    "from": -335.2,
+    "to": -323.3,
+    "name": "Macedonian Ally - Athens",
+    "color": 74
+   },
+   {
+    "from": -323.3,
+    "to": -322.1,
+    "name": "Hellenic League - Athens",
+    "color": 2
+   },
+   {
+    "from": -322.1,
+    "to": -317.8,
+    "name": "Kingdom of Macedon - Greece - Athens",
+    "color": 165
+   },
+   {
+    "from": -317.8,
+    "to": -313.2,
+    "name": "Domain of Cassander - Athens",
+    "color": 3
+   },
+   {
+    "from": -313.2,
+    "to": -307.4,
+    "name": "Athens",
+    "color": 0
+   },
+   {
+    "from": -307.4,
+    "to": -301.3,
+    "name": "Antigonid Ally - Athens",
+    "color": 82
+   },
+   {
+    "from": -301.3,
+    "to": -294.6,
+    "name": "Athens",
+    "color": 0
+   },
+   {
+    "from": -294.6,
+    "to": -287.9,
+    "name": "Antigonid Kingdom - Athens",
+    "color": 68
+   },
+   {
+    "from": -286.5,
+    "to": -281.7,
+    "name": "Athens",
+    "color": 0
+   },
+   {
+    "from": -281.7,
+    "to": -279.8,
+    "name": "Antigonid Kingdom - Athens",
+    "color": 68
+   },
+   {
+    "from": -279.8,
+    "to": -268.2,
+    "name": "Athens",
+    "color": 0
+   },
+   {
+    "from": -268.2,
+    "to": -266.6,
+    "name": "Anti Macedon Alliance - Athens",
+    "color": 30
+   },
+   {
+    "from": -261.6,
+    "to": -255.5,
+    "name": "Kingdom of Macedonia",
+    "color": 0
+   },
+   {
+    "from": -255.5,
+    "to": -1.0,
+    "name": "Kingdom of Macedonia - Athens",
+    "color": 27
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1113,
+  "after": 684,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -343.5,
+    "to": -341.4,
+    "name": "Euboea - Oreus/Hestiaea",
+    "color": 2
+   }
+  ],
+  "refs": [
+   [
+    1624,
+    0
+   ],
+   [
+    260,
+    1
+   ],
+   [
+    2048,
+    0
+   ],
+   [
+    1585,
+    0
+   ],
+   [
+    192,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 684,
+  "ranges": [
+   {
+    "from": -377.7,
+    "to": -377.1,
+    "name": "Peloponnesian League - Oreus/Hestiaea",
+    "color": 187
+   },
+   {
+    "from": -377.7,
+    "to": -370.6,
+    "name": "Second Athenian League - Oreus/Hestiaea",
+    "color": 19
+   },
+   {
+    "from": -370.6,
+    "to": -357.9,
+    "name": "Theban Ally - Oreus/Hestiaea",
+    "color": 10
+   },
+   {
+    "from": -357.9,
+    "to": -357.6,
+    "name": "Revolt",
+    "color": 0
+   },
+   {
+    "from": -357.6,
+    "to": -348.7,
+    "name": "Second Athenian League - Oreus/Hestiaea",
+    "color": 19
+   },
+   {
+    "from": -348.7,
+    "to": -348.4,
+    "name": "Revolt",
+    "color": 0
+   },
+   {
+    "from": -348.4,
+    "to": -343.5,
+    "name": "Euboea - Oreus/Hestiaea",
+    "color": 2
+   },
+   {
+    "from": -341.4,
+    "to": -338.2,
+    "name": "Second Athenian League - Oreus/Hestiaea",
+    "color": 19
+   },
+   {
+    "from": -338.2,
+    "to": -322.1,
+    "name": "Macedonian Ally - Euboean League - Oreus/Hestiaea",
+    "color": 40
+   },
+   {
+    "from": -322.1,
+    "to": -317.5,
+    "name": "Kingdom of Macedon - Greece - Oreus/Hestiaea",
+    "color": 159
+   },
+   {
+    "from": -317.5,
+    "to": -313.8,
+    "name": "Domain of Cassander - Oreus/Hestiaea",
+    "color": 23
+   },
+   {
+    "from": -313.8,
+    "to": -313.2,
+    "name": "Revolt",
+    "color": 0
+   },
+   {
+    "from": -313.2,
+    "to": -309.5,
+    "name": "Euboea - Oreus/Hestiaea",
+    "color": 2
+   },
+   {
+    "from": -309.5,
+    "to": -305.5,
+    "name": "Domain of Cassander - Oreus/Hestiaea",
+    "color": 23
+   },
+   {
+    "from": -305.5,
+    "to": -304.4,
+    "name": "Kingdom of Macedon - Greece - Oreus/Hestiaea",
+    "color": 159
+   },
+   {
+    "from": -304.4,
+    "to": -300.5,
+    "name": "Antigonid Ally - Oreus/Hestiaea",
+    "color": 87
+   },
+   {
+    "from": -300.5,
+    "to": -294.2,
+    "name": "Kingdom of Macedon - Greece - Oreus/Hestiaea",
+    "color": 159
+   },
+   {
+    "from": -294.2,
+    "to": -282.7,
+    "name": "Antigonid Kingdom - Oreus/Hestiaea",
+    "color": 95
+   }
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 165,
+  "points": [
+   [
+    21.11422,
+    37.89256
+   ],
+   [
+    21.1935,
+    37.9347
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 860,
+  "points": [
+   [
+    21.11422,
+    37.89256
+   ],
+   [
+    21.1935,
+    37.9347
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1114,
+  "after": 782,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -314.2,
+    "to": -313.2,
+    "name": "Domain of Cassander - Elis",
+    "color": 5
+   }
+  ],
+  "refs": [
+   [
+    1088,
+    0
+   ],
+   [
+    1723,
+    1
+   ],
+   [
+    1722,
+    0
+   ],
+   [
+    1724,
+    0
+   ],
+   [
+    1725,
+    0
+   ],
+   [
+    170,
+    1
+   ],
+   [
+    268,
+    1
+   ],
+   [
+    2069,
+    0
+   ],
+   [
+    1860,
+    0
+   ],
+   [
+    165,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 782,
+  "ranges": [
+   {
+    "from": -364.3,
+    "to": -338.2,
+    "name": "Elis",
+    "color": 0
+   },
+   {
+    "from": -338.2,
+    "to": -331.2,
+    "name": "Macedonian Ally - Elis",
+    "color": 68
+   },
+   {
+    "from": -331.2,
+    "to": -330.5,
+    "name": "Elis",
+    "color": 0
+   },
+   {
+    "from": -330.5,
+    "to": -323.2,
+    "name": "Macedonian Ally - Elis",
+    "color": 68
+   },
+   {
+    "from": -323.2,
+    "to": -322.1,
+    "name": "Hellenic League - Elis",
+    "color": 32
+   },
+   {
+    "from": -322.1,
+    "to": -317.5,
+    "name": "Kingdom of Macedon - Greece - Elis",
+    "color": 183
+   },
+   {
+    "from": -317.5,
+    "to": -314.5,
+    "name": "Domain of Cassander - Elis",
+    "color": 5
+   },
+   {
+    "from": -314.5,
+    "to": -314.2,
+    "name": "Antigonid Ally - Elis",
+    "color": 15
+   },
+   {
+    "from": -313.2,
+    "to": -312.7,
+    "name": "Antigonid Ally - Elis",
+    "color": 15
+   },
+   {
+    "from": -312.7,
+    "to": -312.4,
+    "name": "Elis - Revolt of Telesphorus",
+    "color": 6
+   },
+   {
+    "from": -312.4,
+    "to": -309.5,
+    "name": "Antigonid Ally - Elis",
+    "color": 15
+   },
+   {
+    "from": -309.5,
+    "to": -305.5,
+    "name": "Domain of Cassander - Elis",
+    "color": 5
+   },
+   {
+    "from": -305.5,
+    "to": -303.5,
+    "name": "Kingdom of Macedon - Greece - Elis",
+    "color": 183
+   },
+   {
+    "from": -303.5,
+    "to": -301.3,
+    "name": "Antigonid Ally - Elis",
+    "color": 15
+   },
+   {
+    "from": -301.3,
+    "to": -280.9,
+    "name": "Elis",
+    "color": 0
+   },
+   {
+    "from": -280.9,
+    "to": -280.4,
+    "name": "Peloponnesian League - Elis",
+    "color": 5
+   },
+   {
+    "from": -280.4,
+    "to": -272.1,
+    "name": "Elis",
+    "color": 0
+   },
+   {
+    "from": -272.1,
+    "to": -268.2,
+    "name": "Antigonid Ally - Elis",
+    "color": 15
+   },
+   {
+    "from": -268.2,
+    "to": -261.5,
+    "name": "Anti Macedon Alliance - Elis",
+    "color": 39
+   },
+   {
+    "from": -261.5,
+    "to": -1.0,
+    "name": "Elis",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 123,
+  "points": [
+   [
+    22.7641,
+    38.68225
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 915,
+  "points": [
+   [
+    22.7641,
+    38.68225
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 123,
+  "points": [
+   [
+    22.77376,
+    38.68508
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 915,
+  "points": [
+   [
+    22.77376,
+    38.68508
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 1115,
+  "after": 958,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -287.6,
+    "to": -285.5,
+    "name": "Phocis",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1121,
+    0
+   ],
+   [
+    1601,
+    1
+   ],
+   [
+    1596,
+    1
+   ],
+   [
+    1602,
+    0
+   ],
+   [
+    1599,
+    1
+   ],
+   [
+    1085,
+    1
+   ],
+   [
+    237,
+    1
+   ],
+   [
+    236,
+    1
+   ],
+   [
+    235,
+    1
+   ],
+   [
+    148,
+    1
+   ],
+   [
+    173,
+    1
+   ],
+   [
+    2015,
+    1
+   ],
+   [
+    1891,
+    1
+   ],
+   [
+    1892,
+    0
+   ],
+   [
+    1125,
+    1
+   ],
+   [
+    1124,
+    1
+   ],
+   [
+    2070,
+    1
+   ],
+   [
+    2071,
+    0
+   ],
+   [
+    1915,
+    0
+   ],
+   [
+    1123,
+    1
+   ],
+   [
+    172,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 958,
+  "ranges": [
+   {
+    "from": -300.5,
+    "to": -287.6,
+    "name": "Phocis",
+    "color": 0
+   },
+   {
+    "from": -285.5,
+    "to": -259.5,
+    "name": "Phocis",
+    "color": 0
+   }
+  ]
+ }
+]
