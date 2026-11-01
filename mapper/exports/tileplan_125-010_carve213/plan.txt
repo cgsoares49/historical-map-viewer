@@ -1,0 +1,17 @@
+WHOLE-TILE PLAN 125:010   (newer entry takes its area; older entry carved)
+
+3 edit operations; candidates [50, 213]; overlap windows before: 9, after: 0
+POL file header count: 329 -> 329;  PAR file header count: 377 -> 378;  CST file header count: 43 -> 43
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 245 entries
+  - new #378 = #50 minus #213 (232.4 km2), ranges -311..-304.5, -304.5..-289.5, -289.5..-286.5, -286.5..-278.2, -278.2..-277.4, -277.4..-276.3, -276.3..-265.5
+
+PAR EDITS (in order):
+  NEW #378 right after #50: -311..-304.5 Tyranny of Syracuse; -304.5..-289.5 Kingdom of Syracuse; -289.5..-286.5 Syracuse; -286.5..-278.2 Tyranny of Syracuse; -278.2..-277.4 Epirote Ally - Syracuse; -277.4..-276.3 Kingdom of Epirus - Sicily - Syracuse; -276.3..-265.5 Syracuse | refs [[1180, 0], [1013, 0]]
+  #50: ranges = -643.5..-485.5 Syracuse; -485.5..-478.5 Gela; -478.5..-466.5 Tyranny of Syracuse; -466.5..-356.9 Syracuse; -356.9..-346.5 Tyranny of Syracuse; -346.5..-344.5 Syracuse; -344.5..-343.3 Tyranny of Syracuse; -343.3..-316.5 Syracuse; -316.5..-311 Tyranny of Syracuse; -265.5..-263.3 Kingdom of Syracuse; -263.3..-1 Roman Ally - Kingdom of Syracuse
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical

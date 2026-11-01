@@ -1,0 +1,38 @@
+[
+ {
+  "op": "par_renumber",
+  "entry": 155,
+  "occurrence": 2,
+  "new": 183
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 166,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 188,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 338,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 348,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 183,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 54,
+  "areatype": 2
+ }
+]
