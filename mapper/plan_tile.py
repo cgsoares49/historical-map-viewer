@@ -22,6 +22,7 @@ staging/<lat>-<lon>/ .  Canonical data is never written.  A case it cannot do sa
 """
 import argparse
 import csv
+import datetime
 import json
 import os
 import shutil
@@ -64,8 +65,10 @@ class Session:
     def __init__(self, lat, lon, stage_root):
         self.lat, self.lon = lat, lon
         self.root = os.path.join(stage_root, f'{lat}-{lon}')
-        if os.path.isdir(self.root):
-            shutil.rmtree(self.root)
+        if os.path.isdir(self.root):        # NEVER delete an earlier staged plan: move it aside
+            keep = f'{self.root}_prev_{datetime.datetime.fromtimestamp(os.path.getmtime(self.root)).strftime("%Y%m%d-%H%M%S")}'
+            os.rename(self.root, keep)
+            print(f'(earlier staged files kept in {keep})')
         self.rel = {'par': os.path.join('polareas', lat, f'PAR{lon}.ASC'), 'pol': os.path.join('pols', lat, f'POL{lon}.PRN'),
                     'cst': os.path.join('coasts', lat, f'CST{lon}.PRN')}
         for r in self.rel.values():
@@ -786,6 +789,10 @@ def main():
             cov_bad.append((round((x + y) / 2, 1), round(d, 1)))
 
     out_dir = os.path.join(EXPORTS, f'tileplan_{lat}-{lon}')
+    if os.path.isdir(out_dir) and os.listdir(out_dir):      # NEVER overwrite an earlier plan's outputs: move them aside
+        keep = f'{out_dir}_prev_{datetime.datetime.fromtimestamp(os.path.getmtime(out_dir)).strftime("%Y%m%d-%H%M%S")}'
+        os.rename(out_dir, keep)
+        print(f'(earlier plan outputs kept in {keep})')
     os.makedirs(out_dir, exist_ok=True)
     json.dump(sess.ops, open(os.path.join(out_dir, 'edits.json'), 'w', encoding='utf-8'), indent=1)
     L = [f'WHOLE-TILE PLAN {a.tile}   (newer entry takes its area; older entry carved)', '',
