@@ -103,6 +103,11 @@
   "areatype": 1
  },
  {
+  "op": "par_set_areatype",
+  "entry": 210,
+  "areatype": 2
+ },
+ {
   "op": "par_add_entry",
   "index": 831,
   "after": 160,
@@ -1157,32 +1162,18 @@
   ]
  },
  {
-  "op": "par_set_ranges",
-  "entry": 117,
+  "op": "par_add_entry",
+  "index": 844,
+  "after": 117,
+  "areaType": 1,
   "ranges": [
-   {
-    "from": -9999.0,
-    "to": -500.1,
-    "name": "UNKNOWN",
-    "color": 0
-   },
    {
     "from": -500.1,
     "to": -1.0,
     "name": "Illyrioi",
     "color": 0
-   },
-   {
-    "from": -1.0,
-    "to": 1990.0,
-    "name": "UNKNOWN",
-    "color": 0
    }
-  ]
- },
- {
-  "op": "par_set_refs",
-  "entry": 117,
+  ],
   "refs": [
    [
     120,
@@ -1206,6 +1197,24 @@
     23,
     1
    ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 117,
+  "ranges": [
+   {
+    "from": -9999.0,
+    "to": -500.1,
+    "name": "UNKNOWN",
+    "color": 0
+   },
+   {
+    "from": -1.0,
+    "to": 1990.0,
+    "name": "UNKNOWN",
+    "color": 0
+   }
   ]
  },
  {
@@ -1240,7 +1249,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 844,
+  "index": 845,
   "after": 346,
   "areaType": 1,
   "ranges": [
@@ -1324,7 +1333,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 845,
+  "index": 846,
   "after": 346,
   "areaType": 1,
   "ranges": [
@@ -1388,7 +1397,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 846,
+  "index": 847,
   "after": 346,
   "areaType": 1,
   "ranges": [
@@ -1464,7 +1473,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 847,
+  "index": 848,
   "after": 829,
   "areaType": 1,
   "ranges": [
@@ -1648,7 +1657,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 848,
+  "index": 849,
   "after": 371,
   "areaType": 1,
   "ranges": [
@@ -1726,7 +1735,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 849,
+  "index": 850,
   "after": 520,
   "areaType": 1,
   "ranges": [
@@ -1994,7 +2003,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 850,
+  "index": 851,
   "after": 464,
   "areaType": 1,
   "ranges": [
@@ -2084,7 +2093,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 851,
+  "index": 852,
   "after": 747,
   "areaType": 1,
   "ranges": [
@@ -2166,7 +2175,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 852,
+  "index": 853,
   "after": 747,
   "areaType": 1,
   "ranges": [
@@ -2192,7 +2201,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 853,
+  "index": 854,
   "after": 747,
   "areaType": 1,
   "ranges": [
@@ -2264,7 +2273,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 854,
+  "index": 855,
   "after": 747,
   "areaType": 1,
   "ranges": [
@@ -2284,7 +2293,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 855,
+  "index": 856,
   "after": 747,
   "areaType": 1,
   "ranges": [
@@ -2352,7 +2361,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 856,
+  "index": 857,
   "after": 747,
   "areaType": 1,
   "ranges": [
@@ -2384,7 +2393,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 857,
+  "index": 858,
   "after": 753,
   "areaType": 1,
   "ranges": [
@@ -2458,7 +2467,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 858,
+  "index": 859,
   "after": 595,
   "areaType": 1,
   "ranges": [
@@ -2550,7 +2559,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 859,
+  "index": 860,
   "after": 650,
   "areaType": 1,
   "ranges": [
@@ -2856,7 +2865,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 860,
+  "index": 861,
   "after": 767,
   "areaType": 1,
   "ranges": [

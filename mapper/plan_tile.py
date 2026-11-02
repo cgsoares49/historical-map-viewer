@@ -579,6 +579,11 @@ def process_entry(sess, e, cand, new_entries):
     gl = sorted(groups.items(), key=lambda kv: min(p['frm'] for p in kv[1]))
     has_full = any(sess.real(r) for r in kept_ranges)
     swap_first = (not has_full) and bool(gl)
+    # An UNKNOWN placeholder range (land of unknown ownership, meant to stay under the real polities) must keep the ORIGINAL ring: a ref swap
+    # would cut the carver's footprint out of the placeholder too (130/012 #117 Illyrioi: the Liburnian coast fell out of the UNKNOWN land).
+    # So such an entry is never re-pointed; the real piece goes to a new remainder entry instead.
+    if swap_first and any(r['name'].strip().upper() == 'UNKNOWN' and r['to'] - r['frm'] > MIN_YEARS for r in nonreal):
+        swap_first = False
     if swap_first and len(gl) > 1:
         gl = gl[1:] + gl[:1]            # the group that reuses #e (ref swap) must be built LAST: the other groups are carved from the ORIGINAL geometry
     swapped = False
