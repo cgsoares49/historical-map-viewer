@@ -32,7 +32,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import export_polity_polygons as X
 import stage_edits as SE
-from shapely.geometry import LineString, Point
+from shapely.geometry import LineString, Point, Polygon
 from shapely.ops import transform, unary_union
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -398,6 +398,9 @@ def build_remainder_rings(sess, e, subs):
 
     def parts_of(V):
         gs = [g for g in (V.geoms if hasattr(V, 'geoms') else [V]) if g.geom_type == 'Polygon']
+        # Holes smaller than MIN_PART_KM2 are numeric slivers (130/012 Umbrii minus Hernici/Aequi/Marsi left a 4-point, 0.00 km2 hole
+        # where the neighbours' borders meet): fill them instead of refusing the whole carve.  Real holes still stop the plan.
+        gs = [Polygon(g.exterior, [r for r in g.interiors if area(Polygon(r)) >= MIN_PART_KM2]) if len(g.interiors) else g for g in gs]
         return sorted([g for g in gs if area(g) >= MIN_PART_KM2], key=lambda g: (-area(g), g.centroid.x))      # parts of >= 5 km2 get a ring
 
     def remainder():
@@ -830,7 +833,8 @@ def main():
     sk = skipped_pairs(sess, cand)
     if sk:
         L += ['', f'NOT TOUCHED (overlap >= {MIN_PAIR_YEARS:g} yrs but one entry is a giant > {BIG_KM2:.0f} km2 -- probably intended background/tribal layers):'] +              [f"  #{i} ({area(sess.geom(i)):.0f} km2) x #{j} ({area(sess.geom(j)):.0f} km2)" for i, j in sk]
-    L += ['', f'Overlaps left: {len(left)}', 'Coverage (union of polity polygons before vs after, every year): ' + ('identical' if not cov_bad else f'DIFFERENCES {cov_bad[:12]}')]
+    L += ['', f'Overlaps left: {len(left)}'] + [f'  {a_}..{b_}: #{i_} x #{j_}' for a_, b_, i_, j_ in left[:30]]
+    L += ['Coverage (union of polity polygons before vs after, every year): ' + ('identical' if not cov_bad else f'DIFFERENCES {cov_bad[:12]}')]
     open(os.path.join(out_dir, 'plan.txt'), 'w', encoding='utf-8').write('\n'.join(L) + '\n')
 
     def merge_spans(ws):

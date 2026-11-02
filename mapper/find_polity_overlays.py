@@ -260,6 +260,28 @@ def is_placeholder_entry(entry):
     return len(entry['dateRanges']) == 1 and owner_name(entry['dateRanges'][0]['name']) in SKIP_NAMES
 
 
+RULINGS_PATH = os.path.join(MAPPER_DIR, 'registry_rulings.csv')
+
+
+def load_registry_rulings(path=RULINGS_PATH):
+    """User rulings on entries the Ancient Index registry would drop. CSV columns: Tile (lat/lon),
+    EntryIndex, Ruling = real | notreal | type2. 'real' overrides the registry exclusion (entry is scanned);
+    'notreal' and 'type2' keep it excluded (type2 = to be marked areaType 2 in the PAR). Found 2026-11-02
+    (130/012): 36 entries dropped by the DATE rule, the user ruled on each one."""
+    out = {}
+    if os.path.exists(path):
+        with open(path, newline='', encoding='utf-8-sig') as f:
+            for r in csv.DictReader(f):
+                out[(r['Tile'].strip(), int(r['EntryIndex']))] = r['Ruling'].strip().lower()
+    return out
+
+
+def all_ranges_zero_length(entry):
+    """Every date range is a single instant (from == to): an event marker, never a territory.
+    Added 2026-11-02 (130/012 #226/#237/#372/#383/#384/#394 were all of this kind)."""
+    return bool(entry['dateRanges']) and all(dr['to'] - dr['from'] == 0 for dr in entry['dateRanges'])
+
+
 def load_candidates(tile, tile_key, pol_registry, date_registry):
     """Real-territory (non-dot, non-transient) areaType=1 OR areaType=2
     (semi-transient, see is_semitransient_entry) entries with a resolved
@@ -272,6 +294,7 @@ def load_candidates(tile, tile_key, pol_registry, date_registry):
     repair_log = [0]
     load_errors = 0
     registry_excluded = 0
+    rulings = load_registry_rulings()
     out = []
     for entry in tile['par_entries']:
         if entry['areaType'] not in (1, SEMITRANSIENT_AREA_TYPE):
@@ -295,9 +318,14 @@ def load_candidates(tile, tile_key, pol_registry, date_registry):
                 continue
             if is_placeholder_entry(entry):
                 continue
-            if is_known_transient(tile_key, entry, pol_registry, date_registry):
+            if all_ranges_zero_length(entry):
                 registry_excluded += 1
                 continue
+            if is_known_transient(tile_key, entry, pol_registry, date_registry):
+                ruling = rulings.get((tile_key, entry['entryIndex']))
+                if ruling != 'real':
+                    registry_excluded += 1
+                    continue
         ring, has_segment = build_combined_ring(entry['polyRefs'], tile['cst_by_index'], tile['pol_by_index'])
         if not has_segment or len(ring) < 4:
             continue

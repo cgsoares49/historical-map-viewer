@@ -1,0 +1,37 @@
+﻿Tile,EntryIndex,Name,AreaKm2,DateRanges,LifeFrom,LifeTo,LifeYears,Rule,PolHits,Suspicion,ImpactEvents
+130/012,372,Samnite Confederation,7495.7,1,-438.5,-438.5,0.0,DATE,,"HIGH: area 7,496 km2",0
+130/012,345,Samnium,6191.5,2,-500.1,-438.5,61.6,DATE,,"HIGH: area 6,191 km2, lives 62y",0
+130/012,770,Roman Ally,6083.0,3,-290.2,-1.0,289.2,DATE,,"HIGH: area 6,083 km2, lives 289y",0
+130/012,263,Volsci,4351.4,2,-495.3,-338.5,156.8,DATE,,"HIGH: area 4,351 km2, lives 157y",32
+130/012,775,Roman Republic,3536.4,3,-286.5,-1.0,285.5,DATE,,"HIGH: area 3,536 km2, lives 286y",1
+130/012,519,Aequi,1584.6,2,-492.5,-303.4,189.1,DATE,,"HIGH: area 1,585 km2, lives 189y",4
+130/012,160,Etruria,1159.5,3,-760.0,-353.5,406.5,DATE,,"HIGH: area 1,160 km2, lives 406y",6
+130/012,657,Mercenaries under Cleonymus,1595.9,1,-303.5,-303.3,0.2,DATE,,"MED: area 1,596 km2",0
+130/012,383,Campania,1513.3,2,-423.5,-421.5,2.0,DATE,,"MED: area 1,513 km2",0
+130/012,242,Roman Republic,778.0,2,-509.5,-1.0,508.5,DATE,,MED: lives 508y,4
+130/012,369,Aurunci,658.5,3,-438.5,-334.5,104.0,DATE,,MED: lives 104y,0
+130/012,768,Roman Republic,496.8,3,-290.2,-1.0,289.2,DATE,,MED: lives 289y,0
+130/012,592,Roman Latin Colony,425.5,3,-320.4,-1.0,319.4,DATE,,MED: lives 319y,8
+130/012,409,Roman Republic,174.8,3,-396.5,-1.0,395.5,DATE,,MED: lives 396y,0
+130/012,256,Roman Republic,114.8,3,-509.5,-1.0,508.5,DATE,,MED: lives 508y,0
+130/012,243,Roman Republic,111.4,3,-509.5,-1.0,508.5,DATE,,MED: lives 508y,0
+130/012,600,Roman Latin Colony,103.7,2,-315.6,-1.0,314.6,DATE,,MED: lives 315y,3
+130/012,267,Roman Ally,93.1,3,-492.5,-1.0,491.5,DATE,,MED: lives 492y,3
+130/012,238,Roman Ally,92.6,3,-495.7,-1.0,494.7,DATE,,MED: lives 495y,11
+130/012,278,Roman Republic,90.7,3,-504.5,-1.0,503.5,DATE,,MED: lives 504y,5
+130/012,599,Roman Latin Colony,85.5,2,-315.6,-1.0,314.6,DATE,,MED: lives 315y,7
+130/012,452,Roman Ally,60.1,3,-385.5,-1.0,384.5,DATE,,MED: lives 384y,3
+130/012,246,Roman Republic,58.5,3,-509.5,-1.0,508.5,DATE,,MED: lives 508y,0
+130/012,250,Roman Republic,57.6,3,-509.5,-1.0,508.5,DATE,,MED: lives 508y,0
+130/012,444,Roman Republic,35.6,3,-385.5,-319.5,66.0,DATE,,MED: lives 66y,5
+130/012,481,Roman Republic,18.1,2,-361.7,-306.6,55.1,DATE,,MED: lives 55y,2
+130/012,226,Latin League,984.4,3,-509.5,-501.5,8.0,DATE,,LOW,0
+130/012,756,Roman Ally,785.7,3,-303.4,-290.2,13.2,DATE,,LOW,6
+130/012,384,Samnite Confederation,761.2,1,-423.5,-423.5,0.0,DATE,,LOW,0
+130/012,225,Revolt,747.3,2,-509.6,-509.4,0.2,DATE,,LOW,2
+130/012,501,Tibur,569.8,2,-355.5,-338.5,17.0,DATE,,LOW,0
+130/012,394,Lucanians,317.8,1,-410.5,-410.5,0.0,DATE,,LOW,0
+130/012,522,Samnite Confederation,238.8,1,-423.5,-421.5,2.0,DATE,,LOW,1
+130/012,237,Roman Republic,44.2,1,-499.5,-499.5,0.0,DATE,,LOW,0
+130/012,637,Roman Ally,18.1,1,-307.5,-306.6,0.9,DATE,,LOW,1
+130/012,638,Roman Ally,18.1,1,-307.5,-306.6,0.9,DATE,,LOW,1

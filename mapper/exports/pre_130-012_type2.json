@@ -1,0 +1,37 @@
+[
+ {
+  "op": "par_set_areatype",
+  "entry": 444,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 481,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 637,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 638,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 149,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 400,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 432,
+  "areatype": 2
+ }
+]
