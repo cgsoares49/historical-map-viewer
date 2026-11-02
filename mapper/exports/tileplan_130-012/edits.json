@@ -33,6 +33,76 @@
   ]
  },
  {
+  "op": "par_set_areatype",
+  "entry": 169,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 177,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 178,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 181,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 182,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 193,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 199,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 277,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 312,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 588,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 616,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 741,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 761,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 797,
+  "areatype": 1
+ },
+ {
   "op": "par_add_entry",
   "index": 831,
   "after": 160,
@@ -40,58 +110,6 @@
   "ranges": [
    {
     "from": -389.3,
-    "to": -383.5,
-    "name": "Roman Ally - Caisra",
-    "color": 2
-   }
-  ],
-  "refs": [
-   [
-    1037,
-    0
-   ],
-   [
-    1722,
-    1
-   ],
-   [
-    1721,
-    1
-   ],
-   [
-    1724,
-    0
-   ],
-   [
-    1038,
-    0
-   ],
-   [
-    1341,
-    0
-   ],
-   [
-    1339,
-    0
-   ],
-   [
-    1,
-    1
-   ],
-   [
-    1026,
-    0
-   ]
-  ]
- },
- {
-  "op": "par_add_entry",
-  "index": 832,
-  "after": 160,
-  "areaType": 1,
-  "ranges": [
-   {
-    "from": -383.5,
     "to": -353.9,
     "name": "Roman Ally - Caisra",
     "color": 2
@@ -154,6 +172,90 @@
     "name": "Roman Ally - Caisra",
     "color": 2
    }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 832,
+  "after": 161,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -590.5,
+    "to": -509.6,
+    "name": "Etruria - Veii",
+    "color": 11
+   }
+  ],
+  "refs": [
+   [
+    1341,
+    1
+   ],
+   [
+    1038,
+    1
+   ],
+   [
+    1039,
+    0
+   ],
+   [
+    1040,
+    0
+   ],
+   [
+    1342,
+    0
+   ],
+   [
+    1082,
+    0
+   ],
+   [
+    1163,
+    0
+   ],
+   [
+    1044,
+    0
+   ],
+   [
+    1045,
+    0
+   ],
+   [
+    1075,
+    0
+   ],
+   [
+    1194,
+    0
+   ],
+   [
+    1192,
+    0
+   ],
+   [
+    1073,
+    0
+   ],
+   [
+    1061,
+    0
+   ],
+   [
+    128,
+    1
+   ],
+   [
+    121,
+    1
+   ],
+   [
+    1339,
+    1
+   ]
   ]
  },
  {
@@ -291,19 +393,7 @@
     0
    ],
    [
-    1192,
-    0
-   ],
-   [
-    1073,
-    0
-   ],
-   [
-    1061,
-    0
-   ],
-   [
-    128,
+    1191,
     1
    ],
    [
@@ -322,30 +412,16 @@
   "ranges": [
    {
     "from": -760.0,
+    "to": -590.5,
+    "name": "Etruria - Veii",
+    "color": 11
+   },
+   {
+    "from": -509.6,
     "to": -509.5,
     "name": "Etruria - Veii",
     "color": 11
    }
-  ]
- },
- {
-  "op": "pol_split",
-  "pol": 80,
-  "points": [
-   [
-    12.5562,
-    42.0216
-   ]
-  ]
- },
- {
-  "op": "pol_split",
-  "pol": 42,
-  "points": [
-   [
-    12.5562,
-    42.0216
-   ]
   ]
  },
  {
@@ -355,16 +431,10 @@
   "areaType": 1,
   "ranges": [
    {
-    "from": -585.4,
-    "to": -533.5,
+    "from": -725.0,
+    "to": -638.5,
     "name": "Latin League",
     "color": 0
-   },
-   {
-    "from": -533.5,
-    "to": -520.5,
-    "name": "Kingdom of Rome - Latin League",
-    "color": 8
    }
   ],
   "refs": [
@@ -409,20 +479,372 @@
     1
    ],
    [
-    1074,
+    1043,
+    0
+   ],
+   [
+    1042,
+    0
+   ],
+   [
+    1163,
     1
    ],
    [
-    1045,
+    1082,
     1
    ],
    [
-    1047,
+    1084,
+    0
+   ],
+   [
+    1094,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 836,
+  "after": 208,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -638.5,
+    "to": -635.5,
+    "name": "Latin League",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1096,
+    1
+   ],
+   [
+    1112,
+    1
+   ],
+   [
+    1095,
+    1
+   ],
+   [
+    123,
+    1
+   ],
+   [
+    122,
+    1
+   ],
+   [
+    1061,
+    1
+   ],
+   [
+    1073,
+    1
+   ],
+   [
+    1057,
+    1
+   ],
+   [
+    1056,
+    1
+   ],
+   [
+    1055,
+    0
+   ],
+   [
+    1042,
+    0
+   ],
+   [
+    1163,
+    1
+   ],
+   [
+    1082,
+    1
+   ],
+   [
+    1084,
+    0
+   ],
+   [
+    1094,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 837,
+  "after": 208,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -635.5,
+    "to": -632.5,
+    "name": "Latin League",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1096,
+    1
+   ],
+   [
+    1112,
+    1
+   ],
+   [
+    1095,
+    1
+   ],
+   [
+    123,
+    1
+   ],
+   [
+    122,
+    1
+   ],
+   [
+    1061,
+    1
+   ],
+   [
+    1073,
+    1
+   ],
+   [
+    1057,
+    1
+   ],
+   [
+    1058,
+    0
+   ],
+   [
+    1042,
+    0
+   ],
+   [
+    1163,
+    1
+   ],
+   [
+    1082,
+    1
+   ],
+   [
+    1084,
+    0
+   ],
+   [
+    1094,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 838,
+  "after": 208,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -632.5,
+    "to": -629.5,
+    "name": "Latin League",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1096,
+    1
+   ],
+   [
+    1112,
+    1
+   ],
+   [
+    1095,
+    1
+   ],
+   [
+    123,
+    1
+   ],
+   [
+    122,
+    1
+   ],
+   [
+    1061,
+    1
+   ],
+   [
+    1062,
+    0
+   ],
+   [
+    1063,
     0
    ],
    [
     1081,
+    0
+   ],
+   [
+    1042,
+    0
+   ],
+   [
+    1163,
     1
+   ],
+   [
+    1082,
+    1
+   ],
+   [
+    1084,
+    0
+   ],
+   [
+    1094,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 839,
+  "after": 208,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -629.5,
+    "to": -585.4,
+    "name": "Latin League",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1096,
+    1
+   ],
+   [
+    1112,
+    1
+   ],
+   [
+    1095,
+    1
+   ],
+   [
+    123,
+    1
+   ],
+   [
+    1064,
+    0
+   ],
+   [
+    1063,
+    0
+   ],
+   [
+    1081,
+    0
+   ],
+   [
+    1042,
+    0
+   ],
+   [
+    1163,
+    1
+   ],
+   [
+    1082,
+    1
+   ],
+   [
+    1084,
+    0
+   ],
+   [
+    1094,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 80,
+  "points": [
+   [
+    12.5562,
+    42.0216
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 42,
+  "points": [
+   [
+    12.5562,
+    42.0216
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 840,
+  "after": 208,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -585.4,
+    "to": -583.5,
+    "name": "Latin League",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1096,
+    1
+   ],
+   [
+    1112,
+    1
+   ],
+   [
+    1095,
+    1
+   ],
+   [
+    123,
+    1
+   ],
+   [
+    1064,
+    0
+   ],
+   [
+    1063,
+    0
    ],
    [
     1083,
@@ -455,12 +877,70 @@
   ]
  },
  {
+  "op": "par_add_entry",
+  "index": 841,
+  "after": 208,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -583.5,
+    "to": -533.5,
+    "name": "Latin League",
+    "color": 0
+   },
+   {
+    "from": -533.5,
+    "to": -520.5,
+    "name": "Kingdom of Rome - Latin League",
+    "color": 8
+   }
+  ],
+  "refs": [
+   [
+    1096,
+    1
+   ],
+   [
+    1112,
+    1
+   ],
+   [
+    1095,
+    1
+   ],
+   [
+    123,
+    1
+   ],
+   [
+    1064,
+    0
+   ],
+   [
+    1063,
+    0
+   ],
+   [
+    1083,
+    1
+   ],
+   [
+    1093,
+    1
+   ],
+   [
+    1094,
+    0
+   ]
+  ]
+ },
+ {
   "op": "par_set_ranges",
   "entry": 208,
   "ranges": [
    {
     "from": -730.0,
-    "to": -585.4,
+    "to": -725.0,
     "name": "Latin League",
     "color": 0
    }
@@ -468,7 +948,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 836,
+  "index": 842,
   "after": 219,
   "areaType": 1,
   "ranges": [
@@ -501,68 +981,20 @@
     1
    ],
    [
-    122,
-    1
-   ],
-   [
-    1061,
-    1
-   ],
-   [
-    1073,
-    1
-   ],
-   [
-    1057,
-    1
-   ],
-   [
-    1056,
-    1
-   ],
-   [
-    1046,
-    1
-   ],
-   [
-    1074,
-    1
-   ],
-   [
-    1045,
-    1
-   ],
-   [
-    1047,
+    1064,
     0
    ],
    [
-    1081,
-    1
+    1063,
+    0
    ],
    [
     1083,
     1
    ],
    [
-    1855,
+    1093,
     1
-   ],
-   [
-    1856,
-    0
-   ],
-   [
-    1163,
-    1
-   ],
-   [
-    1082,
-    1
-   ],
-   [
-    1084,
-    0
    ],
    [
     1104,
@@ -584,7 +1016,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 837,
+  "index": 843,
   "after": 242,
   "areaType": 1,
   "ranges": [
@@ -682,6 +1114,18 @@
    },
    {
     "from": -509.4,
+    "to": -396.5,
+    "name": "Roman Republic",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 277,
+  "ranges": [
+   {
+    "from": -504.5,
     "to": -396.5,
     "name": "Roman Republic",
     "color": 0
@@ -796,7 +1240,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 838,
+  "index": 844,
   "after": 346,
   "areaType": 1,
   "ranges": [
@@ -880,7 +1324,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 839,
+  "index": 845,
   "after": 346,
   "areaType": 1,
   "ranges": [
@@ -944,7 +1388,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 840,
+  "index": 846,
   "after": 346,
   "areaType": 1,
   "ranges": [
@@ -1020,7 +1464,191 @@
  },
  {
   "op": "par_add_entry",
-  "index": 841,
+  "index": 847,
+  "after": 829,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -467.6,
+    "to": -385.5,
+    "name": "Volsci",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1175,
+    1
+   ],
+   [
+    1174,
+    0
+   ],
+   [
+    1485,
+    0
+   ],
+   [
+    1709,
+    0
+   ],
+   [
+    1713,
+    0
+   ],
+   [
+    1714,
+    0
+   ],
+   [
+    1715,
+    0
+   ],
+   [
+    1716,
+    0
+   ],
+   [
+    1711,
+    0
+   ],
+   [
+    1477,
+    1
+   ],
+   [
+    1476,
+    0
+   ],
+   [
+    1844,
+    1
+   ],
+   [
+    1474,
+    1
+   ],
+   [
+    1749,
+    1
+   ],
+   [
+    1849,
+    1
+   ],
+   [
+    1748,
+    1
+   ],
+   [
+    1473,
+    1
+   ],
+   [
+    1465,
+    0
+   ],
+   [
+    1762,
+    0
+   ],
+   [
+    1737,
+    0
+   ],
+   [
+    1452,
+    0
+   ],
+   [
+    1451,
+    1
+   ],
+   [
+    127,
+    1
+   ],
+   [
+    148,
+    1
+   ],
+   [
+    129,
+    1
+   ],
+   [
+    1228,
+    0
+   ],
+   [
+    1136,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 829,
+  "ranges": [
+   {
+    "from": -492.5,
+    "to": -467.6,
+    "name": "Volsci",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 312,
+  "ranges": [
+   {
+    "from": -467.6,
+    "to": -459.8,
+    "name": "Roman Republic - Antium",
+    "color": 12
+   },
+   {
+    "from": -459.8,
+    "to": -459.6,
+    "name": "Volsci",
+    "color": 0
+   },
+   {
+    "from": -459.6,
+    "to": -389.9,
+    "name": "Roman Republic - Antium",
+    "color": 12
+   },
+   {
+    "from": -389.9,
+    "to": -377.4,
+    "name": "Volsci - Antium",
+    "color": 6
+   },
+   {
+    "from": -377.4,
+    "to": -347.7,
+    "name": "Roman Republic - Antium",
+    "color": 12
+   },
+   {
+    "from": -347.7,
+    "to": -341.2,
+    "name": "Volsci - Antium",
+    "color": 6
+   },
+   {
+    "from": -341.2,
+    "to": -338.5,
+    "name": "Anti Roman Alliance - Antium",
+    "color": 10
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 848,
   "after": 371,
   "areaType": 1,
   "ranges": [
@@ -1098,7 +1726,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 842,
+  "index": 849,
   "after": 520,
   "areaType": 1,
   "ranges": [
@@ -1233,8 +1861,338 @@
   ]
  },
  {
+  "op": "par_set_ranges",
+  "entry": 830,
+  "ranges": [
+   {
+    "from": -385.5,
+    "to": -341.2,
+    "name": "Volsci",
+    "color": 0
+   },
+   {
+    "from": -341.2,
+    "to": -338.5,
+    "name": "Anti Roman Alliance - Volsci",
+    "color": 11
+   }
+  ]
+ },
+ {
+  "op": "par_set_refs",
+  "entry": 830,
+  "refs": [
+   [
+    1175,
+    1
+   ],
+   [
+    1174,
+    0
+   ],
+   [
+    1485,
+    0
+   ],
+   [
+    1709,
+    0
+   ],
+   [
+    1713,
+    0
+   ],
+   [
+    1714,
+    0
+   ],
+   [
+    1718,
+    0
+   ],
+   [
+    1716,
+    0
+   ],
+   [
+    1711,
+    0
+   ],
+   [
+    1477,
+    1
+   ],
+   [
+    1476,
+    0
+   ],
+   [
+    1844,
+    1
+   ],
+   [
+    1474,
+    1
+   ],
+   [
+    1749,
+    1
+   ],
+   [
+    1849,
+    1
+   ],
+   [
+    1748,
+    1
+   ],
+   [
+    1473,
+    1
+   ],
+   [
+    1465,
+    0
+   ],
+   [
+    1762,
+    0
+   ],
+   [
+    1737,
+    0
+   ],
+   [
+    1452,
+    0
+   ],
+   [
+    1451,
+    1
+   ],
+   [
+    127,
+    1
+   ],
+   [
+    148,
+    1
+   ],
+   [
+    129,
+    1
+   ],
+   [
+    1228,
+    0
+   ],
+   [
+    1136,
+    0
+   ]
+  ]
+ },
+ {
   "op": "par_add_entry",
-  "index": 843,
+  "index": 850,
+  "after": 464,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -278.3,
+    "to": -272.5,
+    "name": "Epirote Ally - Italiote League",
+    "color": 8
+   },
+   {
+    "from": -272.5,
+    "to": -1.0,
+    "name": "Roman Ally - Tarentum",
+    "color": 44
+   }
+  ],
+  "refs": [
+   [
+    134,
+    1
+   ],
+   [
+    154,
+    1
+   ],
+   [
+    1805,
+    1
+   ],
+   [
+    1804,
+    0
+   ],
+   [
+    1669,
+    0
+   ],
+   [
+    1670,
+    0
+   ],
+   [
+    1860,
+    0
+   ],
+   [
+    135,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 464,
+  "ranges": [
+   {
+    "from": -380.5,
+    "to": -303.5,
+    "name": "Italiote League",
+    "color": 0
+   },
+   {
+    "from": -303.3,
+    "to": -300.5,
+    "name": "Italiote League",
+    "color": 0
+   },
+   {
+    "from": -300.5,
+    "to": -289.5,
+    "name": "Agathoclid Ally - Taras",
+    "color": 5
+   },
+   {
+    "from": -289.5,
+    "to": -280.4,
+    "name": "Italiote League",
+    "color": 0
+   },
+   {
+    "from": -280.4,
+    "to": -278.3,
+    "name": "Epirote Ally - Italiote League",
+    "color": 8
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 851,
+  "after": 747,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -328.5,
+    "to": -315.6,
+    "name": "Roman Ally - Volsci",
+    "color": 33
+   },
+   {
+    "from": -314.4,
+    "to": -312.5,
+    "name": "Roman Ally - Volsci",
+    "color": 33
+   }
+  ],
+  "refs": [
+   [
+    1763,
+    1
+   ],
+   [
+    1761,
+    0
+   ],
+   [
+    1727,
+    0
+   ],
+   [
+    1741,
+    1
+   ],
+   [
+    1844,
+    1
+   ],
+   [
+    1474,
+    1
+   ],
+   [
+    1749,
+    1
+   ],
+   [
+    1849,
+    1
+   ],
+   [
+    1748,
+    1
+   ],
+   [
+    1473,
+    1
+   ],
+   [
+    1465,
+    0
+   ],
+   [
+    1762,
+    0
+   ],
+   [
+    1737,
+    0
+   ],
+   [
+    1452,
+    0
+   ],
+   [
+    1740,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 852,
+  "after": 747,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -328.5,
+    "to": -315.6,
+    "name": "Roman Ally - Volsci",
+    "color": 33
+   },
+   {
+    "from": -314.4,
+    "to": -312.5,
+    "name": "Roman Ally - Volsci",
+    "color": 33
+   }
+  ],
+  "refs": [
+   [
+    1476,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 853,
   "after": 747,
   "areaType": 1,
   "ranges": [
@@ -1251,8 +2209,12 @@
     1
    ],
    [
-    1760,
-    1
+    1761,
+    0
+   ],
+   [
+    1727,
+    0
    ],
    [
     1741,
@@ -1302,7 +2264,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 844,
+  "index": 854,
   "after": 747,
   "areaType": 1,
   "ranges": [
@@ -1321,18 +2283,100 @@
   ]
  },
  {
+  "op": "par_add_entry",
+  "index": 855,
+  "after": 747,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -312.5,
+    "to": -303.5,
+    "name": "Roman Ally - Volsci",
+    "color": 33
+   }
+  ],
+  "refs": [
+   [
+    1761,
+    0
+   ],
+   [
+    1727,
+    0
+   ],
+   [
+    1741,
+    1
+   ],
+   [
+    1844,
+    1
+   ],
+   [
+    1474,
+    1
+   ],
+   [
+    1749,
+    1
+   ],
+   [
+    1849,
+    1
+   ],
+   [
+    1748,
+    1
+   ],
+   [
+    1473,
+    1
+   ],
+   [
+    1465,
+    0
+   ],
+   [
+    1762,
+    0
+   ],
+   [
+    1736,
+    0
+   ],
+   [
+    1763,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 856,
+  "after": 747,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -312.5,
+    "to": -303.5,
+    "name": "Roman Ally - Volsci",
+    "color": 33
+   }
+  ],
+  "refs": [
+   [
+    1476,
+    1
+   ]
+  ]
+ },
+ {
   "op": "par_set_ranges",
   "entry": 747,
   "ranges": [
    {
     "from": -338.5,
-    "to": -315.6,
-    "name": "Roman Ally - Volsci",
-    "color": 33
-   },
-   {
-    "from": -314.4,
-    "to": -303.5,
+    "to": -328.5,
     "name": "Roman Ally - Volsci",
     "color": 33
    }
@@ -1340,7 +2384,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 845,
+  "index": 857,
   "after": 753,
   "areaType": 1,
   "ranges": [
@@ -1413,6 +2457,78 @@
   ]
  },
  {
+  "op": "par_add_entry",
+  "index": 858,
+  "after": 595,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -291.5,
+    "to": -1.0,
+    "name": "Roman Ally - Apulia",
+    "color": 18
+   }
+  ],
+  "refs": [
+   [
+    1559,
+    0
+   ],
+   [
+    1707,
+    0
+   ],
+   [
+    1708,
+    0
+   ],
+   [
+    1832,
+    1
+   ],
+   [
+    1831,
+    1
+   ],
+   [
+    1858,
+    1
+   ],
+   [
+    1461,
+    1
+   ],
+   [
+    1460,
+    0
+   ],
+   [
+    132,
+    0
+   ],
+   [
+    157,
+    0
+   ],
+   [
+    1558,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 595,
+  "ranges": [
+   {
+    "from": -318.5,
+    "to": -291.5,
+    "name": "Roman Ally - Apulia",
+    "color": 18
+   }
+  ]
+ },
+ {
   "op": "pol_split",
   "pol": 616,
   "points": [
@@ -1433,11 +2549,13 @@
   ]
  },
  {
-  "op": "par_set_ranges",
-  "entry": 650,
+  "op": "par_add_entry",
+  "index": 859,
+  "after": 650,
+  "areaType": 1,
   "ranges": [
    {
-    "from": -304.5,
+    "from": -291.5,
     "to": -290.5,
     "name": "Samnite Confederation",
     "color": 0
@@ -1457,6 +2575,116 @@
    {
     "from": -275.1,
     "to": -267.5,
+    "name": "Samnite Confederation",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1560,
+    0
+   ],
+   [
+    1830,
+    0
+   ],
+   [
+    1299,
+    1
+   ],
+   [
+    1448,
+    1
+   ],
+   [
+    1488,
+    1
+   ],
+   [
+    1459,
+    1
+   ],
+   [
+    1457,
+    1
+   ],
+   [
+    1455,
+    1
+   ],
+   [
+    1454,
+    0
+   ],
+   [
+    1732,
+    0
+   ],
+   [
+    1453,
+    1
+   ],
+   [
+    1737,
+    1
+   ],
+   [
+    1762,
+    1
+   ],
+   [
+    1465,
+    1
+   ],
+   [
+    1824,
+    1
+   ],
+   [
+    1861,
+    1
+   ],
+   [
+    1615,
+    1
+   ],
+   [
+    1461,
+    0
+   ],
+   [
+    1858,
+    0
+   ],
+   [
+    1729,
+    0
+   ],
+   [
+    1829,
+    0
+   ],
+   [
+    1832,
+    0
+   ],
+   [
+    1462,
+    0
+   ],
+   [
+    1768,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 650,
+  "ranges": [
+   {
+    "from": -304.5,
+    "to": -291.5,
     "name": "Samnite Confederation",
     "color": 0
    }
@@ -1624,6 +2852,58 @@
     1852,
     1
    ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 860,
+  "after": 767,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -288.5,
+    "to": -1.0,
+    "name": "Roman Ally - Vestini",
+    "color": 30
+   }
+  ],
+  "refs": [
+   [
+    1466,
+    0
+   ],
+   [
+    1470,
+    0
+   ],
+   [
+    1779,
+    1
+   ],
+   [
+    1765,
+    1
+   ],
+   [
+    1764,
+    0
+   ],
+   [
+    151,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 767,
+  "ranges": [
+   {
+    "from": -290.2,
+    "to": -288.5,
+    "name": "Roman Ally - Vestini",
+    "color": 30
+   }
   ]
  }
 ]
