@@ -1,0 +1,35 @@
+[
+ {
+  "op": "par_set_areatype",
+  "entry": 151,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 599,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 818,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 798,
+  "ranges": [
+   {
+    "from": -280.4,
+    "to": -280.4,
+    "name": "Epirote Ally - Italiote League",
+    "color": 8
+   },
+   {
+    "from": -272.5,
+    "to": -272.5,
+    "name": "Roman Ally - Tarentum",
+    "color": 44
+   }
+  ]
+ }
+]

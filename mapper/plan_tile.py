@@ -43,6 +43,8 @@ SLIVER = 0.001            # a leftover smaller than 0.1% of the entry counts as 
 MIN_PAIR_YEARS = 10.0     # an overlap counts when it lasts >= 10 years without a break (shorter = transient-like overlay; reported, not touched)
 ERA_RULE = False
 FORCE_ENTRIES = set()     # entries whose overlaps always count, whatever their duration (e.g. a province that expands for a few years)
+TRACE_TOL_FRAC = 0.002    # traced remainder ring may differ from the true remainder by this fraction of its area (or 1 km2)
+LEAVE_PAIRS = set()       # (i, j) pairs the user chose to leave overlapping (slivers etc.)
 FORCE_PAIRS = set()       # (i, j) pairs treated as real overlays whatever their duration
 MIN_PART_KM2 = 5.0        # a remainder part smaller than this gets no ring of its own (its area is lost!): use --min-part-km2 0.5
 BIG_KM2 = 50000.0         # entries larger than this (tribal / background layers) are never carved automatically; such pairs are only reported
@@ -424,7 +426,7 @@ def build_remainder_rings(sess, e, subs):
                 return
             if not cuts:
                 g = sess.geom_of_refs(refs)
-                if area(g.symmetric_difference(P)) > max(1.0, area(P) * 0.002):
+                if area(g.symmetric_difference(P)) > max(1.0, area(P) * TRACE_TOL_FRAC):
                     yield None, f'traced ring does not reproduce the remainder ({area(g):.1f} vs {area(P):.1f} km2)'
                     return
                 yield refs, P, k == nparts - 1
@@ -490,6 +492,8 @@ def counts(sess, i, j):
 
 def _counts(sess, i, j):
     """a pair counts as an overlay to fix: significant in space, >= MIN_PAIR_YEARS in time, neither entry a giant."""
+    if (min(i, j), max(i, j)) in LEAVE_PAIRS:
+        return False
     forced = (min(i, j), max(i, j)) in FORCE_PAIRS or i in FORCE_ENTRIES or j in FORCE_ENTRIES
     if pair_years(sess, i, j) < MIN_PAIR_YEARS and not forced:
         return False
@@ -672,6 +676,8 @@ def main():
     ap.add_argument('--big-km2', type=float, default=None, help='raise the giant-entry limit (default 50000 km2) to let a pair of big entries be carved')
     ap.add_argument('--era-rule', action='store_true', help='decide who keeps an overlap by era start (old rule) instead of MAPPER paint order')
     ap.add_argument('--force-pair', action='append', default=[], help='A:B = treat that pair as a real overlay even if it lasts < 10 years (e.g. a 6-year Kassite overlay); repeatable')
+    ap.add_argument('--trace-tol', type=float, default=None, help='fraction of the remainder area the traced ring may miss (default 0.002)')
+    ap.add_argument('--leave-pair', action='append', default=[], help='A:B = never carve that pair (user leaves the sliver overlap); repeatable')
     ap.add_argument('--force-entry', action='append', default=[], help='E = every overlap involving entry E counts as real even if short (< 10 yrs); repeatable')
     ap.add_argument('--min-pair-years', type=float, default=None, help='an overlap counts when it lasts >= this many years (default 10); real polities should be carved whatever the length, so 0.5 (shorter ones are noise)')
     ap.add_argument('--min-ratio', type=float, default=None, help='an overlap counts when it is >= this fraction of the smaller entry (default 0.05); lower it to catch small slivers/hatching')
@@ -692,6 +698,12 @@ def main():
         MIN_PART_KM2 = a.min_part_km2
     ERA_RULE = a.era_rule
     FORCE_ENTRIES.update(int(v) for v in a.force_entry)
+    global TRACE_TOL_FRAC
+    if a.trace_tol is not None:
+        TRACE_TOL_FRAC = a.trace_tol
+    for lp in a.leave_pair:
+        x, y = (int(v) for v in lp.split(':'))
+        LEAVE_PAIRS.add((min(x, y), max(x, y)))
     for fp in a.force_pair:
         x, y = (int(v) for v in fp.split(':'))
         FORCE_PAIRS.add((min(x, y), max(x, y)))
