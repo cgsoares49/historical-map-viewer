@@ -150,14 +150,17 @@ class MapRenderer {
             for (let j = 0; j < batch.length; j++) {
                 const { cst, pol, par, cities, iwa, niw, riv, ctr } = loaded[j];
                 this._terrainCache.set(batch[j].terrainFile, ctr);
-                // Per-tile draw order (user-specified, 2026-09-07): polities → terrain →
-                // tribal/other colored dots → transients → water features → city dots →
-                // boundaries (coasts+borders). Each layer paints over everything before
-                // it — transients must cover dots but must NOT obliterate water features
-                // or city dots, and boundaries must stay visible on top of all of it.
+                // Per-tile draw order (user-specified, 2026-09-07; dots merged into the polity pass
+                // 2026-11-03): polities and tribal/coordinate dots together in PAR file order → terrain →
+                // transients → water features → city dots → boundaries (coasts+borders). Each layer paints
+                // over everything before it — transients must cover dots but must NOT obliterate water
+                // features or city dots, and boundaries must stay visible on top of all of it.
                 const preparedTransients = this._drawPoliticalFill(ctx, projection, cst, pol, par, year, showDots);
                 if (showTerrain)        this._drawTerrain(ctx, projection, ctr, terrainOpacity, terrainMaskCtx);
-                if (showDots && year >= -2400) { this._drawDots(ctx, projection, par, year); allDotPars.push({ par, cst, pol }); }
+                // Coordinate (point) dots are no longer drawn here: _drawPoliticalFill paints them in PAR file
+                // order together with the polygon entries (2026-11-03), so a later-in-file polity covers an
+                // earlier dot exactly as it covers an earlier POL-valued tribal dot. Only the label list is kept.
+                if (showDots && year >= -2400) allDotPars.push({ par, cst, pol });
                 this._drawTransients(ctx, preparedTransients);
                 if (showInlandWaters)   this._drawInlandWaters(ctx, projection, iwa, niw, year);
                 if (showCities) {
@@ -307,10 +310,27 @@ class MapRenderer {
         // below for why this can't just be one loop in PAR-array order.
         const prepared = [];
         for (const entry of par) {
+            // Coordinate dots (dotPoint set, any areaType): drawn as circles right here, in PAR file
+            // order, like POL-valued tribal dots (previously a separate pass after ALL polygon fills,
+            // which let a dot cover every later-in-file polity, e.g. 130/012 #209 over #210).
+            if (entry.dotPoint) {
+                if (!showDots || year < -2400) continue;
+                const dm = matchDate(entry.dateRanges, year);
+                if (!dm) continue;
+                const dotColor = this._colors.toCss(dm, null, null);
+                if (!dotColor) continue;
+                const { x, y } = projection.geoToPixel(entry.dotPoint.lon, entry.dotPoint.lat);
+                // Radius scales with zoom; skip dots that would be sub-pixel at current zoom
+                const radiusPx = (entry.dotDiameter / 2) * projection.xScale;
+                if (radiusPx < 0.5) continue;
+                const dotPath = new Path2D();
+                dotPath.arc(x, y, radiusPx, 0, Math.PI * 2);
+                prepared.push({ dateMatch: dm, fillColor: dotColor, combined: null, path: dotPath, isTransient: false, isDot: true });
+                continue;
+            }
             // areaType=0 → only shown when ShowDots enabled.
-            // Coord-dot entries (dotPoint set) are drawn separately by _drawDots; skip them here.
             // Poly-ref areaType=0 entries are drawn as fills when showDots is on.
-            if (entry.areaType === 0 && (!showDots || entry.dotPoint)) continue;
+            if (entry.areaType === 0 && !showDots) continue;
 
             const dateMatch = matchDate(entry.dateRanges, year);
             if (!dateMatch) continue;
@@ -334,7 +354,7 @@ class MapRenderer {
 
         // Pass 1b: overlay hatching — wherever two real polities overlap, show
         // both colors in stripes (CREATOR option; see _drawOverlayHatch).
-        if (this.showOverlayHatch) this._drawOverlayHatch(ctx, projection, prepared.filter(p => !p.isTransient));
+        if (this.showOverlayHatch) this._drawOverlayHatch(ctx, projection, prepared.filter(p => !p.isTransient && !p.isDot));
 
         // Pass 2: snapshot every transient's "underneath" BEFORE any transient is
         // drawn. If two transients overlap (e.g. two armies crossing paths at
@@ -443,6 +463,7 @@ class MapRenderer {
     _drawSolidPath(ctx, p) {
         ctx.fillStyle   = p.fillColor;
         ctx.fill(p.path, 'evenodd');   // GDI+ FillPolygon default = Alternate = evenodd
+        if (p.isDot) return;           // coordinate dots: plain fill, no seam stroke (keeps the old dot size)
         // Cover the ~0.5px anti-aliasing seam at tile-boundary connector edges.
         // Canvas 2D AA leaves a thin gap where adjacent tile fills meet exactly;
         // stroking with the same fill color closes it. Coast/border strokes drawn
@@ -709,6 +730,8 @@ class MapRenderer {
     }
 
     // ── Dots ───────────────────────────────────────────────────────────────────
+    // NOTE (2026-11-03): no longer called by render(); coordinate dots are painted inside
+    // _drawPoliticalFill in PAR file order. Kept for reference only.
 
     _drawDots(ctx, projection, par, year) {
         for (const entry of par) {
