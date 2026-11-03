@@ -17,6 +17,7 @@ K..N and T..AK draw-window years (the POL's date ranges without the -9998..-9997
 import argparse
 import datetime
 import os
+import re
 import sys
 
 import openpyxl
@@ -57,6 +58,7 @@ def main():
     ap.add_argument('--reason', default='overlay fix')
     ap.add_argument('--workbook', default=WB)
     ap.add_argument('--first-id', type=int, default=None, help='column-A number of the first new row (overrides the workbook A1, which lags unsaved pastes)')
+    ap.add_argument('--split-map', default=None, help='file with the planner POL SPLITS lines ("#p => p, c"): the authoritative parent of every new POL, used instead of the geometric guess (needed when two parents are split at the same node)')
     a = ap.parse_args()
     lat, lon = a.tile.split('/')
     d = datetime.date.fromisoformat(a.date)
@@ -107,6 +109,14 @@ def main():
             if r[5] != len(pts) or not (close(r[8], pts[-1][0]) and close(r[9], pts[-1][1])):
                 changed.add(n)
 
+    split_parent = {}
+    if a.split_map:
+        for ln in open(a.split_map, encoding='utf-8'):
+            mm = re.match(r'\s*#(\d+)\s*=>\s*(\d+)\s*,\s*(.+?)\s*(\(|$)', ln)
+            if mm and not ln.startswith('CST'):
+                for c in re.findall(r'\d+', mm.group(3)):
+                    split_parent[int(c)] = int(mm.group(1))
+
     def span(n):
         return {v for w in windows(n) for v in w}
 
@@ -114,6 +124,8 @@ def main():
         """The POL this one was split from: it ENDS where this one STARTS and is either a truncated parent (sheet row differs) or itself a
         new piece (chain of a multi-point split).  Date ranges are only used to choose between several candidates (they may have been
         adjusted by hand after the split)."""
+        if n in split_parent:
+            return split_parent[n]
         pts = pol[n]['points']
         cands = []
         for p in pol:
