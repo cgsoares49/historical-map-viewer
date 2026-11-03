@@ -1,0 +1,69 @@
+[
+ {
+  "op": "par_renumber",
+  "entry": 22,
+  "occurrence": 1,
+  "new": 21
+ },
+ {
+  "op": "par_renumber",
+  "entry": 32,
+  "occurrence": 2,
+  "new": 82
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 124,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 95,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 116,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 154,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 153,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 86,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 63,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 167,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 75,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 129,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 69,
+  "areatype": 2
+ }
+]

@@ -1,0 +1,18 @@
+130/018 carve walk decisions (plan from exports/tileplan_130-018 auto run, being reviewed one by one)
+1 #75 Poteidaia carves #69 Olynthus -> carve as planned (#311)
+2 #86 Thronion vs #158 Taulanti -> #86 Type 2 (added to pre_130-018.json); also drops #109 minus #86
+3 #161 Illyria carves #120 Lynkestis -> carve as planned (#313)
+4 #63 Acanthus -> Type 2 (pre_130-018.json); #75 alone carves #85 in -512.5..-511.5
+5 #97 Poteidaia carves #85 -> carve (#317/#318); 6 #98 Macedon carves #85 -> carve (#318/#319)
+7 #123 Odrysian carves #108 Paiones -> carve (#320/#321)
+8 #160 Illyria/Grabaei carves #108 -> carve (#321/#322)
+9 #158 Taulanti carves #109 Chaonians -> carve (#323; drop 7.6km2 sliver #324)
+10 #177,#178 Peloponnesian League - Army = armies, NOT carved/carvers (use --skip 177,178)
+11 #75 Poteidaia carves #101 (-432.3..-430.2, -382.2..-379.5, -364.6..-357.1) -> carve (#327/#328,#335/#336); #70 Army of Brasidas treated as army (skip 70) unless user objects
+12 #69 Olynthus Revolt carves #101 (-430.2..-422) -> carve (#329/#330)
+13 #97 Poteidaia carves #101 (-422..-404.7) -> carve (#333); 14 #153 carves #101 (-422..-357.1) -> carve (#333-#336)
+15 #198 Illyria/Revolt carves #115 (-359.8..-358.6, -277..-276.7) -> carve (#338). (#115 minus #154 dropped: #154 Type 2)
+16 #167 Lissos -> Type 2 (pre_130-018.json); #209 not carved
+17 #75 Poteidaia -> Type 2 (pre_130-018.json): REVERSES carve 1 (#69), 4 (#85 1y), 11 (#101 #75 parts), 17 (#215). #97 stays carver unless user rules otherwise
+18 #129 Therme -> Type 2; #216 and #98 not carved by it. Planner carve list complete. Re-plan with --entries 85,97,98,101,153,120,161,108,123,160,109,158,115,198 --skip 70,177,178
+19 #69 Olynthus -> Type 2 (pre_130-018.json): also reverses carve 12 (#69 carving #101)
