@@ -1,0 +1,123 @@
+WHOLE-TILE PLAN 130:018   (newer entry takes its area; older entry carved)
+
+55 edit operations; candidates [69, 85, 97, 98, 101, 108, 109, 115, 120, 123, 153, 158, 160, 161, 198]; overlap windows before: 133, after: 0
+POL file header count: 351 -> 371;  PAR file header count: 310 -> 324;  CST file header count: 36 -> 41
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+CST8 => 8, 37   (COAST: CST file)
+ 23.44672    40.27575
+119 > 81 & 39
+#68 => 68, 352, 353
+ 23.25758    40.25506
+ 23.44672    40.27575
+56 > 31 & 25 & 2
+CST17 => 17, 38   (COAST: CST file)
+ 23.25758    40.25506
+99 > 37 & 63
+CST17 => 17, 39   (COAST: CST file)
+ 23.33620    40.18731
+37 > 30 & 8
+#352 => 352, 354, 355
+ 23.33620    40.18731
+ 23.35808    40.18508
+25 > 8 & 2 & 17
+CST37 => 37, 40   (COAST: CST file)
+ 23.35808    40.18508
+39 > 17 & 23
+CST37 => 37, 41   (COAST: CST file)
+ 23.37772    40.26634
+17 > 10 & 8
+#98 => 98, 356, 357
+ 23.25758    40.25506
+ 23.37772    40.26634
+67 > 30 & 2 & 37
+#113 => 113, 358
+ 23.11371    42.31920
+17 > 14 & 5
+#141 => 141, 359
+ 23.11371    42.31920
+62 > 19 & 45
+#115 => 115, 360
+ 21.03507    41.23356
+7 > 7 & 2
+#193 => 193, 361
+ 21.03507    41.23356
+10 > 9 & 3
+#112 => 112, 362
+ 21.03750    41.79086
+8 > 7 & 3
+#196 => 196, 363
+ 21.03750    41.79086
+16 > 10 & 8
+#112 => 112, 364
+ 21.05000    41.87879
+7 > 6 & 3
+#196 => 196, 365
+ 21.05000    41.87879
+10 > 9 & 3
+#112 => 112, 366
+ 21.05000    42.02693
+6 > 6 & 2
+#196 => 196, 367
+ 21.05000    42.02693
+9 > 6 & 5
+#117 => 117, 368
+ 20.13244    40.84001
+10 > 3 & 9
+#304 => 304, 369
+ 20.13244    40.84001
+8 > 3 & 7
+#368 => 368, 370
+ 20.15516    40.64965
+9 > 4 & 7
+#369 => 369, 371
+ 20.15516    40.64965
+7 > 5 & 4
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 162 entries
+  - new #311 = #120 minus #161 (1496.9 km2), ranges -397.5..-392.5, -392.5..-358.5
+  - new #312 = #85 minus #69 (7718.1 km2), ranges -512.5..-511.5
+  - new #313 = #85 minus #69 (199.5 km2), ranges -512.5..-511.5
+  - new #314 = #85 minus #97 (7916.4 km2), ranges -479.7..-478.3
+  - new #315 = #85 minus #97 & #98 (2729.4 km2), ranges -478.3..-475.8
+  - new #316 = #85 minus #98 (2955.4 km2), ranges -475.8..-475.5
+  - new #317 = #108 minus #123 (30516.2 km2), ranges -433.5..-399.5
+  - new #318 = #108 minus #123 & #160 (29381.7 km2), ranges -399.5..-359.7
+  - new #319 = #108 minus #160 (31868.2 km2), ranges -359.7..-356.5
+  - #109: ref swap -> ring of #109 minus #158 (1861.8 km2), ranges -500.1..-430.8
+  - new #320 = #101 minus #69 (2417.4 km2), ranges -432.3..-422
+  - new #321 = #101 minus #69 (199.5 km2), ranges -432.3..-422
+  - new #322 = #101 minus #97 & #153 (2372.1 km2), ranges -422..-421.7, -421.7..-421.3, -421.3..-417.5, -417.5..-404.7
+  - new #323 = #101 minus #153 (2598.1 km2), ranges -404.7..-395.4, -395.4..-386.5, -386.5..-379.5, -379.5..-375.5, -375.5..-368.2, -368.2..-357.1
+  - new #324 = #115 minus #198 (3973.8 km2), ranges -359.8..-359.5, -359.5..-358.6, -277..-276.7
+
+PAR EDITS (in order):
+  NEW #311 right after #120: -397.5..-392.5 Lynkestis; -392.5..-358.5 Kingdom of Illyria - Lynkestis | refs [[1102, 1], [1131, 1], [1132, 0], [1138, 1], [1198, 1], [1199, 0]]
+  #120: ranges = -540.5..-475.5 Lynkestis; -475.5..-425.5 Kingdom of Macedon - Lynkestis; -425.5..-397.5 Lynkestis; -358.5..-323.4 Kingdom of Macedon - Lynkestis; -323.4..-321.9 Kingdom of Macedon - Macedonia; -321.9..-321 Revolt of Antipater; -321..-317.5 Kingdom of Macedon - Macedonia; -317.5..-317.2 Domain of Cassander - Macedonia; -317.2..-317 Kingdom of Macedon - Macedonia; -317..-305.5 Domain of Cassander - Macedonia; -305.5..-294.2 Kingdom of Macedon - Macedonia; -294.2..-288.2 Antigonid Kingdom - Macedonia; -288.2..-285.5 Kingdom of Epirus; -285.5..-281.4 Kingdom of Lysimakhos; -281.4..-277 Macedon; -277..-274.4 Kingdom of Macedonia; -274.4..-273.3 Kingdom of Epirus - Macedonia; -273.3..-1 Kingdom of Macedonia
+  NEW #312 right after #85: -512.5..-511.5 Persian Empire - Lydia - Lydia - Thrace | refs [[35, 0], [31, 0], [13, 0], [12, 0], [11, 0], [9, 0], [7, 0], [8, 0], [1353, 0], [1068, 0], [38, 0], [34, 0], [29, 0], [1062, 0], [1262, 1], [1084, 1], [1099, 1], [1184, 1], [1079, 1], [28, 0]]
+  NEW #313 right after #85: -512.5..-511.5 Persian Empire - Lydia - Lydia - Thrace | refs [[17, 0], [1354, 0], [40, 0]]
+  NEW #314 right after #85: -479.7..-478.3 Persian Empire - Lydia - Lydia - Thrace | refs [[35, 0], [31, 0], [13, 0], [12, 0], [11, 0], [9, 0], [7, 0], [8, 0], [37, 0], [1356, 0], [38, 0], [34, 0], [29, 0], [1062, 0], [1262, 1], [1084, 1], [1099, 1], [1184, 1], [1079, 1], [28, 0]]
+  NEW #315 right after #85: -478.3..-475.8 Persian Empire - Lydia - Lydia - Thrace | refs [[35, 0], [31, 0], [13, 0], [12, 0], [11, 0], [9, 0], [7, 0], [8, 0], [37, 0], [1356, 0], [38, 0], [1257, 1], [1256, 1], [1252, 1], [1253, 1], [1105, 1], [1100, 1], [1184, 1], [1079, 1], [28, 0]]
+  NEW #316 right after #85: -475.8..-475.5 Persian Empire - Lydia - Lydia - Thrace | refs [[35, 0], [31, 0], [13, 0], [12, 0], [11, 0], [9, 0], [7, 0], [8, 0], [37, 0], [41, 0], [40, 0], [17, 0], [39, 0], [38, 0], [1257, 1], [1256, 1], [1252, 1], [1253, 1], [1105, 1], [1100, 1], [1184, 1], [1079, 1], [28, 0]]
+  #85: ranges = -511.5..-497.5 Persian Empire - Lydia - Lydia - Thrace; -492.1..-479.7 Persian Empire - Lydia - Lydia - Thrace
+  NEW #317 right after #108: -433.5..-399.5 Paiones | refs [[1084, 0], [1262, 0], [1063, 0], [1322, 0], [1123, 0], [1102, 0], [1139, 0], [1197, 0], [1115, 1], [1112, 1], [1113, 0], [1359, 0], [1293, 0], [1083, 1]]
+  NEW #318 right after #108: -399.5..-359.7 Paiones | refs [[1113, 0], [1359, 0], [1293, 0], [1083, 1], [1084, 0], [1262, 0], [1063, 0], [1322, 0], [1123, 0], [1102, 0], [1139, 0], [1363, 1], [1364, 1], [1367, 1], [1112, 1]]
+  NEW #319 right after #108: -359.7..-356.5 Paiones | refs [[1113, 0], [1358, 0], [1244, 1], [1083, 1], [1084, 0], [1262, 0], [1063, 0], [1322, 0], [1123, 0], [1102, 0], [1139, 0], [1363, 1], [1364, 1], [1367, 1], [1112, 1]]
+  #108: ranges = -500.1..-433.5 Paiones
+  #109: ranges = -500.1..-430.8 Chaonians
+  #109: refs = [[32, 1], [1156, 0], [1158, 0], [1371, 1], [1370, 0]]
+  NEW #320 right after #101: -432.3..-422 Delian League | refs [[28, 0], [35, 0], [31, 0], [13, 0], [12, 0], [11, 0], [9, 0], [7, 0], [8, 0], [1353, 0], [1068, 0], [38, 0], [1257, 1], [1256, 1], [1252, 1], [1253, 1], [1105, 1], [1142, 1], [1106, 1], [18, 0]]
+  NEW #321 right after #101: -432.3..-422 Delian League | refs [[17, 0], [1354, 0], [40, 0]]
+  NEW #322 right after #101: -422..-421.7 Revolt; -421.7..-421.3 Chalcidian League; -421.3..-417.5 League of Argos - Chalcidian League; -417.5..-404.7 Chalcidian League | refs [[35, 0], [31, 0], [13, 0], [12, 0], [11, 0], [9, 0], [7, 0], [8, 0], [37, 0], [1356, 0], [38, 0], [1257, 1], [1256, 1], [1252, 1], [1253, 1], [1105, 1], [1142, 1], [1079, 1], [28, 0]]
+  NEW #323 right after #101: -404.7..-395.4 Chalcidian League; -395.4..-386.5 Anti Spartan Alliance - Chalcidian League; -386.5..-379.5 Chalcidian League; -379.5..-375.5 Peloponnesian League - Chalcidian city states; -375.5..-368.2 Second Athenian League - Chalcidian League; -368.2..-357.1 Chalcidian League | refs [[35, 0], [31, 0], [13, 0], [12, 0], [11, 0], [9, 0], [7, 0], [8, 0], [37, 0], [41, 0], [40, 0], [17, 0], [39, 0], [38, 0], [1257, 1], [1256, 1], [1252, 1], [1253, 1], [1105, 1], [1142, 1], [1079, 1], [28, 0]]
+  #101: ranges = -475.8..-432.3 Delian League
+  NEW #324 right after #115: -359.8..-359.5 Theban Ally - Kingdom of Macedon - Upper Macedon; -359.5..-358.6 Kingdom of Macedon; -277..-276.7 Kingdom of Macedonia | refs [[1130, 1], [1129, 0], [1235, 0], [1237, 0], [30, 0], [26, 0], [1064, 0]]
+  #115: ranges = -454.5..-392.5 Kingdom of Macedon - Upper Macedon; -392.5..-392.5 Kingdom of Illyria - Upper Macedon; -391.5..-383.5 Kingdom of Macedon - Upper Macedon; -383.5..-382.5 Kingdom of Illyria - Upper Macedon; -382.5..-372.5 Kingdom of Macedon - Upper Macedon; -372.5..-370.5 Illyrian Tributary - Kingdom of Macedon - Upper Macedon; -370.5..-369.3 Kingdom of Macedon - Upper Macedon; -369.3..-359.8 Theban Ally - Kingdom of Macedon - Upper Macedon; -358.6..-323.4 Kingdom of Macedon; -323.4..-321.9 Kingdom of Macedon - Macedonia; -321.9..-321 Revolt of Antipater; -321..-317.5 Kingdom of Macedon - Macedonia; -317.5..-317.2 Domain of Cassander - Macedonia; -317.2..-317 Kingdom of Macedon - Macedonia; -317..-305.5 Domain of Cassander - Macedonia; -305.5..-294.2 Kingdom of Macedon - Macedonia; -294.2..-288.2 Antigonid Kingdom - Macedonia; -288.2..-285.5 Kingdom of Epirus; -285.5..-281.4 Kingdom of Lysimakhos; -281.4..-277 Macedon; -276.7..-274.4 Kingdom of Macedonia; -274.4..-273.3 Kingdom of Epirus - Macedonia; -273.3..-1 Kingdom of Macedonia
+
+PAINT ORDER vs OLD ERA RULE disagree for these pairs (paint order = what MAPPER shows was used):
+  #85 vs #69 (first noticed at -512.0)
+  #109 vs #158 (first noticed at -465.5)
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): DIFFERENCES [(-498.8, 7.6), (-494.8, 7.6), (-485.9, 7.6), (-479.0, 7.6), (-477.1, 7.6), (-475.6, 7.6), (-465.0, 7.6), (-444.0, 7.6), (-432.9, 7.6), (-431.9, 7.6), (-431.1, 7.6)]

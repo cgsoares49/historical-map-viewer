@@ -1,0 +1,14 @@
+WHOLE-TILE PLAN 130:018   (newer entry takes its area; older entry carved)
+
+0 edit operations; candidates [109, 159]; overlap windows before: 0, after: 0
+POL file header count: 367 -> 367;  PAR file header count: 320 -> 320;  CST file header count: 38 -> 38
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 162 entries
+
+PAR EDITS (in order):
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical

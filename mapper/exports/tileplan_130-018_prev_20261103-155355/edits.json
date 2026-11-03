@@ -1,0 +1,1415 @@
+[
+ {
+  "op": "par_renumber",
+  "entry": 22,
+  "occurrence": 1,
+  "new": 21
+ },
+ {
+  "op": "par_renumber",
+  "entry": 32,
+  "occurrence": 2,
+  "new": 82
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 124,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 95,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 116,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 154,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 153,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 86,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 63,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 167,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 75,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 129,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 69,
+  "areatype": 2
+ },
+ {
+  "op": "par_add_entry",
+  "index": 311,
+  "after": 120,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -397.5,
+    "to": -392.5,
+    "name": "Lynkestis",
+    "color": 0
+   },
+   {
+    "from": -392.5,
+    "to": -358.5,
+    "name": "Kingdom of Illyria - Lynkestis",
+    "color": 4
+   }
+  ],
+  "refs": [
+   [
+    1102,
+    1
+   ],
+   [
+    1131,
+    1
+   ],
+   [
+    1132,
+    0
+   ],
+   [
+    1138,
+    1
+   ],
+   [
+    1198,
+    1
+   ],
+   [
+    1199,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 120,
+  "ranges": [
+   {
+    "from": -540.5,
+    "to": -475.5,
+    "name": "Lynkestis",
+    "color": 0
+   },
+   {
+    "from": -475.5,
+    "to": -425.5,
+    "name": "Kingdom of Macedon - Lynkestis",
+    "color": 5
+   },
+   {
+    "from": -425.5,
+    "to": -397.5,
+    "name": "Lynkestis",
+    "color": 0
+   },
+   {
+    "from": -358.5,
+    "to": -323.4,
+    "name": "Kingdom of Macedon - Lynkestis",
+    "color": 5
+   },
+   {
+    "from": -323.4,
+    "to": -321.9,
+    "name": "Kingdom of Macedon - Macedonia",
+    "color": 133
+   },
+   {
+    "from": -321.9,
+    "to": -321.0,
+    "name": "Revolt of Antipater",
+    "color": 0
+   },
+   {
+    "from": -321.0,
+    "to": -317.5,
+    "name": "Kingdom of Macedon - Macedonia",
+    "color": 133
+   },
+   {
+    "from": -317.5,
+    "to": -317.2,
+    "name": "Domain of Cassander - Macedonia",
+    "color": 68
+   },
+   {
+    "from": -317.2,
+    "to": -317.0,
+    "name": "Kingdom of Macedon - Macedonia",
+    "color": 133
+   },
+   {
+    "from": -317.0,
+    "to": -305.5,
+    "name": "Domain of Cassander - Macedonia",
+    "color": 68
+   },
+   {
+    "from": -305.5,
+    "to": -294.2,
+    "name": "Kingdom of Macedon - Macedonia",
+    "color": 133
+   },
+   {
+    "from": -294.2,
+    "to": -288.2,
+    "name": "Antigonid Kingdom - Macedonia",
+    "color": 109
+   },
+   {
+    "from": -288.2,
+    "to": -285.5,
+    "name": "Kingdom of Epirus",
+    "color": 0
+   },
+   {
+    "from": -285.5,
+    "to": -281.4,
+    "name": "Kingdom of Lysimakhos",
+    "color": 0
+   },
+   {
+    "from": -281.4,
+    "to": -277.0,
+    "name": "Macedon",
+    "color": 0
+   },
+   {
+    "from": -277.0,
+    "to": -274.4,
+    "name": "Kingdom of Macedonia",
+    "color": 0
+   },
+   {
+    "from": -274.4,
+    "to": -273.3,
+    "name": "Kingdom of Epirus - Macedonia",
+    "color": 15
+   },
+   {
+    "from": -273.3,
+    "to": -1.0,
+    "name": "Kingdom of Macedonia",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 8,
+  "points": [
+   [
+    23.37772,
+    40.26634
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 98,
+  "points": [
+   [
+    23.25758,
+    40.25506
+   ],
+   [
+    23.37772,
+    40.26634
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 17,
+  "points": [
+   [
+    23.25758,
+    40.25506
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 312,
+  "after": 85,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -479.7,
+    "to": -478.3,
+    "name": "Persian Empire - Lydia - Lydia - Thrace",
+    "color": 96
+   }
+  ],
+  "refs": [
+   [
+    35,
+    0
+   ],
+   [
+    31,
+    0
+   ],
+   [
+    13,
+    0
+   ],
+   [
+    12,
+    0
+   ],
+   [
+    11,
+    0
+   ],
+   [
+    9,
+    0
+   ],
+   [
+    7,
+    0
+   ],
+   [
+    8,
+    0
+   ],
+   [
+    1352,
+    0
+   ],
+   [
+    38,
+    0
+   ],
+   [
+    34,
+    0
+   ],
+   [
+    29,
+    0
+   ],
+   [
+    1062,
+    0
+   ],
+   [
+    1262,
+    1
+   ],
+   [
+    1084,
+    1
+   ],
+   [
+    1099,
+    1
+   ],
+   [
+    1184,
+    1
+   ],
+   [
+    1079,
+    1
+   ],
+   [
+    28,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 313,
+  "after": 85,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -478.3,
+    "to": -475.8,
+    "name": "Persian Empire - Lydia - Lydia - Thrace",
+    "color": 96
+   }
+  ],
+  "refs": [
+   [
+    35,
+    0
+   ],
+   [
+    31,
+    0
+   ],
+   [
+    13,
+    0
+   ],
+   [
+    12,
+    0
+   ],
+   [
+    11,
+    0
+   ],
+   [
+    9,
+    0
+   ],
+   [
+    7,
+    0
+   ],
+   [
+    8,
+    0
+   ],
+   [
+    1352,
+    0
+   ],
+   [
+    38,
+    0
+   ],
+   [
+    1257,
+    1
+   ],
+   [
+    1256,
+    1
+   ],
+   [
+    1252,
+    1
+   ],
+   [
+    1253,
+    1
+   ],
+   [
+    1105,
+    1
+   ],
+   [
+    1100,
+    1
+   ],
+   [
+    1184,
+    1
+   ],
+   [
+    1079,
+    1
+   ],
+   [
+    28,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 314,
+  "after": 85,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -475.8,
+    "to": -475.5,
+    "name": "Persian Empire - Lydia - Lydia - Thrace",
+    "color": 96
+   }
+  ],
+  "refs": [
+   [
+    35,
+    0
+   ],
+   [
+    31,
+    0
+   ],
+   [
+    13,
+    0
+   ],
+   [
+    12,
+    0
+   ],
+   [
+    11,
+    0
+   ],
+   [
+    9,
+    0
+   ],
+   [
+    7,
+    0
+   ],
+   [
+    8,
+    0
+   ],
+   [
+    37,
+    0
+   ],
+   [
+    17,
+    0
+   ],
+   [
+    38,
+    0
+   ],
+   [
+    1257,
+    1
+   ],
+   [
+    1256,
+    1
+   ],
+   [
+    1252,
+    1
+   ],
+   [
+    1253,
+    1
+   ],
+   [
+    1105,
+    1
+   ],
+   [
+    1100,
+    1
+   ],
+   [
+    1184,
+    1
+   ],
+   [
+    1079,
+    1
+   ],
+   [
+    28,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 85,
+  "ranges": [
+   {
+    "from": -512.5,
+    "to": -497.5,
+    "name": "Persian Empire - Lydia - Lydia - Thrace",
+    "color": 96
+   },
+   {
+    "from": -492.1,
+    "to": -479.7,
+    "name": "Persian Empire - Lydia - Lydia - Thrace",
+    "color": 96
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 113,
+  "points": [
+   [
+    23.11371,
+    42.3192
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 141,
+  "points": [
+   [
+    23.11371,
+    42.3192
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 315,
+  "after": 108,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -433.5,
+    "to": -399.5,
+    "name": "Paiones",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1084,
+    0
+   ],
+   [
+    1262,
+    0
+   ],
+   [
+    1063,
+    0
+   ],
+   [
+    1322,
+    0
+   ],
+   [
+    1123,
+    0
+   ],
+   [
+    1102,
+    0
+   ],
+   [
+    1139,
+    0
+   ],
+   [
+    1197,
+    0
+   ],
+   [
+    1115,
+    1
+   ],
+   [
+    1112,
+    1
+   ],
+   [
+    1113,
+    0
+   ],
+   [
+    1355,
+    0
+   ],
+   [
+    1293,
+    0
+   ],
+   [
+    1083,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 115,
+  "points": [
+   [
+    21.03507,
+    41.23356
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 193,
+  "points": [
+   [
+    21.03507,
+    41.23356
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 112,
+  "points": [
+   [
+    21.0375,
+    41.79086
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 196,
+  "points": [
+   [
+    21.0375,
+    41.79086
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 112,
+  "points": [
+   [
+    21.05,
+    41.87879
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 196,
+  "points": [
+   [
+    21.05,
+    41.87879
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 112,
+  "points": [
+   [
+    21.05,
+    42.02693
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 196,
+  "points": [
+   [
+    21.05,
+    42.02693
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 316,
+  "after": 108,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -399.5,
+    "to": -359.7,
+    "name": "Paiones",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1113,
+    0
+   ],
+   [
+    1355,
+    0
+   ],
+   [
+    1293,
+    0
+   ],
+   [
+    1083,
+    1
+   ],
+   [
+    1084,
+    0
+   ],
+   [
+    1262,
+    0
+   ],
+   [
+    1063,
+    0
+   ],
+   [
+    1322,
+    0
+   ],
+   [
+    1123,
+    0
+   ],
+   [
+    1102,
+    0
+   ],
+   [
+    1139,
+    0
+   ],
+   [
+    1359,
+    1
+   ],
+   [
+    1360,
+    1
+   ],
+   [
+    1363,
+    1
+   ],
+   [
+    1112,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 317,
+  "after": 108,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -359.7,
+    "to": -356.5,
+    "name": "Paiones",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1113,
+    0
+   ],
+   [
+    1354,
+    0
+   ],
+   [
+    1244,
+    1
+   ],
+   [
+    1083,
+    1
+   ],
+   [
+    1084,
+    0
+   ],
+   [
+    1262,
+    0
+   ],
+   [
+    1063,
+    0
+   ],
+   [
+    1322,
+    0
+   ],
+   [
+    1123,
+    0
+   ],
+   [
+    1102,
+    0
+   ],
+   [
+    1139,
+    0
+   ],
+   [
+    1359,
+    1
+   ],
+   [
+    1360,
+    1
+   ],
+   [
+    1363,
+    1
+   ],
+   [
+    1112,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 108,
+  "ranges": [
+   {
+    "from": -500.1,
+    "to": -433.5,
+    "name": "Paiones",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 117,
+  "points": [
+   [
+    20.13244,
+    40.84001
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 304,
+  "points": [
+   [
+    20.13244,
+    40.84001
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 364,
+  "points": [
+   [
+    20.15516,
+    40.64965
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 365,
+  "points": [
+   [
+    20.15516,
+    40.64965
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 109,
+  "ranges": [
+   {
+    "from": -500.1,
+    "to": -430.8,
+    "name": "Chaonians",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_refs",
+  "entry": 109,
+  "refs": [
+   [
+    32,
+    1
+   ],
+   [
+    1156,
+    0
+   ],
+   [
+    1158,
+    0
+   ],
+   [
+    1367,
+    1
+   ],
+   [
+    1366,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 318,
+  "after": 101,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -422.0,
+    "to": -421.7,
+    "name": "Revolt",
+    "color": 0
+   },
+   {
+    "from": -421.7,
+    "to": -421.3,
+    "name": "Chalcidian League",
+    "color": 0
+   },
+   {
+    "from": -421.3,
+    "to": -417.5,
+    "name": "League of Argos - Chalcidian League",
+    "color": 5
+   },
+   {
+    "from": -417.5,
+    "to": -404.7,
+    "name": "Chalcidian League",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    35,
+    0
+   ],
+   [
+    31,
+    0
+   ],
+   [
+    13,
+    0
+   ],
+   [
+    12,
+    0
+   ],
+   [
+    11,
+    0
+   ],
+   [
+    9,
+    0
+   ],
+   [
+    7,
+    0
+   ],
+   [
+    8,
+    0
+   ],
+   [
+    1352,
+    0
+   ],
+   [
+    38,
+    0
+   ],
+   [
+    1257,
+    1
+   ],
+   [
+    1256,
+    1
+   ],
+   [
+    1252,
+    1
+   ],
+   [
+    1253,
+    1
+   ],
+   [
+    1105,
+    1
+   ],
+   [
+    1142,
+    1
+   ],
+   [
+    1079,
+    1
+   ],
+   [
+    28,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 319,
+  "after": 101,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -404.7,
+    "to": -395.4,
+    "name": "Chalcidian League",
+    "color": 0
+   },
+   {
+    "from": -395.4,
+    "to": -386.5,
+    "name": "Anti Spartan Alliance - Chalcidian League",
+    "color": 13
+   },
+   {
+    "from": -386.5,
+    "to": -379.5,
+    "name": "Chalcidian League",
+    "color": 0
+   },
+   {
+    "from": -379.5,
+    "to": -375.5,
+    "name": "Peloponnesian League - Chalcidian city states",
+    "color": 189
+   },
+   {
+    "from": -375.5,
+    "to": -368.2,
+    "name": "Second Athenian League - Chalcidian League",
+    "color": 45
+   },
+   {
+    "from": -368.2,
+    "to": -357.1,
+    "name": "Chalcidian League",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    35,
+    0
+   ],
+   [
+    31,
+    0
+   ],
+   [
+    13,
+    0
+   ],
+   [
+    12,
+    0
+   ],
+   [
+    11,
+    0
+   ],
+   [
+    9,
+    0
+   ],
+   [
+    7,
+    0
+   ],
+   [
+    8,
+    0
+   ],
+   [
+    37,
+    0
+   ],
+   [
+    17,
+    0
+   ],
+   [
+    38,
+    0
+   ],
+   [
+    1257,
+    1
+   ],
+   [
+    1256,
+    1
+   ],
+   [
+    1252,
+    1
+   ],
+   [
+    1253,
+    1
+   ],
+   [
+    1105,
+    1
+   ],
+   [
+    1142,
+    1
+   ],
+   [
+    1079,
+    1
+   ],
+   [
+    28,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 101,
+  "ranges": [
+   {
+    "from": -475.8,
+    "to": -422.0,
+    "name": "Delian League",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 320,
+  "after": 115,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -359.8,
+    "to": -359.5,
+    "name": "Theban Ally - Kingdom of Macedon - Upper Macedon",
+    "color": 21
+   },
+   {
+    "from": -359.5,
+    "to": -358.6,
+    "name": "Kingdom of Macedon",
+    "color": 0
+   },
+   {
+    "from": -277.0,
+    "to": -276.7,
+    "name": "Kingdom of Macedonia",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1130,
+    1
+   ],
+   [
+    1129,
+    0
+   ],
+   [
+    1235,
+    0
+   ],
+   [
+    1237,
+    0
+   ],
+   [
+    30,
+    0
+   ],
+   [
+    26,
+    0
+   ],
+   [
+    1064,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 115,
+  "ranges": [
+   {
+    "from": -454.5,
+    "to": -392.5,
+    "name": "Kingdom of Macedon - Upper Macedon",
+    "color": 1
+   },
+   {
+    "from": -392.5,
+    "to": -392.5,
+    "name": "Kingdom of Illyria - Upper Macedon",
+    "color": 8
+   },
+   {
+    "from": -391.5,
+    "to": -383.5,
+    "name": "Kingdom of Macedon - Upper Macedon",
+    "color": 1
+   },
+   {
+    "from": -383.5,
+    "to": -382.5,
+    "name": "Kingdom of Illyria - Upper Macedon",
+    "color": 8
+   },
+   {
+    "from": -382.5,
+    "to": -372.5,
+    "name": "Kingdom of Macedon - Upper Macedon",
+    "color": 1
+   },
+   {
+    "from": -372.5,
+    "to": -370.5,
+    "name": "Illyrian Tributary - Kingdom of Macedon - Upper Macedon",
+    "color": 1
+   },
+   {
+    "from": -370.5,
+    "to": -369.3,
+    "name": "Kingdom of Macedon - Upper Macedon",
+    "color": 1
+   },
+   {
+    "from": -369.3,
+    "to": -359.8,
+    "name": "Theban Ally - Kingdom of Macedon - Upper Macedon",
+    "color": 21
+   },
+   {
+    "from": -358.6,
+    "to": -323.4,
+    "name": "Kingdom of Macedon",
+    "color": 0
+   },
+   {
+    "from": -323.4,
+    "to": -321.9,
+    "name": "Kingdom of Macedon - Macedonia",
+    "color": 133
+   },
+   {
+    "from": -321.9,
+    "to": -321.0,
+    "name": "Revolt of Antipater",
+    "color": 0
+   },
+   {
+    "from": -321.0,
+    "to": -317.5,
+    "name": "Kingdom of Macedon - Macedonia",
+    "color": 133
+   },
+   {
+    "from": -317.5,
+    "to": -317.2,
+    "name": "Domain of Cassander - Macedonia",
+    "color": 68
+   },
+   {
+    "from": -317.2,
+    "to": -317.0,
+    "name": "Kingdom of Macedon - Macedonia",
+    "color": 133
+   },
+   {
+    "from": -317.0,
+    "to": -305.5,
+    "name": "Domain of Cassander - Macedonia",
+    "color": 68
+   },
+   {
+    "from": -305.5,
+    "to": -294.2,
+    "name": "Kingdom of Macedon - Macedonia",
+    "color": 133
+   },
+   {
+    "from": -294.2,
+    "to": -288.2,
+    "name": "Antigonid Kingdom - Macedonia",
+    "color": 109
+   },
+   {
+    "from": -288.2,
+    "to": -285.5,
+    "name": "Kingdom of Epirus",
+    "color": 0
+   },
+   {
+    "from": -285.5,
+    "to": -281.4,
+    "name": "Kingdom of Lysimakhos",
+    "color": 0
+   },
+   {
+    "from": -281.4,
+    "to": -277.0,
+    "name": "Macedon",
+    "color": 0
+   },
+   {
+    "from": -276.7,
+    "to": -274.4,
+    "name": "Kingdom of Macedonia",
+    "color": 0
+   },
+   {
+    "from": -274.4,
+    "to": -273.3,
+    "name": "Kingdom of Epirus - Macedonia",
+    "color": 15
+   },
+   {
+    "from": -273.3,
+    "to": -1.0,
+    "name": "Kingdom of Macedonia",
+    "color": 0
+   }
+  ]
+ }
+]

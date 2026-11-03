@@ -16,3 +16,4 @@
 17 #75 Poteidaia -> Type 2 (pre_130-018.json): REVERSES carve 1 (#69), 4 (#85 1y), 11 (#101 #75 parts), 17 (#215). #97 stays carver unless user rules otherwise
 18 #129 Therme -> Type 2; #216 and #98 not carved by it. Planner carve list complete. Re-plan with --entries 85,97,98,101,153,120,161,108,123,160,109,158,115,198 --skip 70,177,178
 19 #69 Olynthus -> Type 2 (pre_130-018.json): also reverses carve 12 (#69 carving #101)
+20 Dassaretis wedge: #159 carves #109 (40.8 km2, -500.1..-430.8), incremental plan on canonical: exports/tileplan_130-018 (stage staging_cut/130-018; POL 367->369 splits 366,187 at 20.19343/40.49710; PAR #109 refs + 1369/1368 appended to users of 187/366; CST unchanged). Old full plan archived exports/tileplan_130-018_prev_*
