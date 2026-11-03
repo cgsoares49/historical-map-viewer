@@ -22,3 +22,4 @@ make_shortcut.vbs
 
 # ── Build/scratch artifacts ───────────────────────────────────────────────────
 __pycache__/
+staging/
