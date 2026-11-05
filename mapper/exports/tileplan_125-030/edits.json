@@ -1,0 +1,176 @@
+[
+ {
+  "op": "par_add_entry",
+  "index": 340,
+  "after": 56,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -552.5,
+    "to": -547.1,
+    "name": "Lydia",
+    "color": 0
+   }
+  ],
+  "refs": [
+   {
+    "lit": [
+     30,
+     40
+    ]
+   },
+   [
+    1060,
+    0
+   ],
+   [
+    1174,
+    1
+   ],
+   [
+    1175,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 56,
+  "ranges": [
+   {
+    "from": -1535.5,
+    "to": -1334.3,
+    "name": "Masa",
+    "color": 0
+   },
+   {
+    "from": -1334.3,
+    "to": -1252.5,
+    "name": "New Hittite Kingdom - Masa",
+    "color": 50
+   },
+   {
+    "from": -1252.5,
+    "to": -1228.4,
+    "name": "Masa",
+    "color": 0
+   },
+   {
+    "from": -1228.4,
+    "to": -1205.5,
+    "name": "New Hittite Kingdom - Masa",
+    "color": 50
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 44,
+  "points": [
+   [
+    32.91231,
+    39.43737
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 159,
+  "points": [
+   [
+    32.91231,
+    39.43737
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 341,
+  "after": 57,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -552.5,
+    "to": -547.1,
+    "name": "Lydia",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1375,
+    1
+   ],
+   [
+    1060,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 57,
+  "ranges": [
+   {
+    "from": -1535.5,
+    "to": -1437.5,
+    "name": "Tummanna",
+    "color": 0
+   },
+   {
+    "from": -1437.5,
+    "to": -1385.8,
+    "name": "New Hittite Kingdom - Tummanna",
+    "color": 20
+   },
+   {
+    "from": -1385.8,
+    "to": -1381.5,
+    "name": "Tummanna",
+    "color": 0
+   },
+   {
+    "from": -1381.5,
+    "to": -1347.8,
+    "name": "New Hittite Kingdom - Tummanna",
+    "color": 20
+   },
+   {
+    "from": -1347.8,
+    "to": -1347.5,
+    "name": "Tummanna",
+    "color": 0
+   },
+   {
+    "from": -1347.5,
+    "to": -1346.7,
+    "name": "New Hittite Kingdom - Tummanna",
+    "color": 20
+   },
+   {
+    "from": -1346.7,
+    "to": -1337.5,
+    "name": "Tummanna",
+    "color": 0
+   },
+   {
+    "from": -1337.5,
+    "to": -1326.5,
+    "name": "New Hittite Kingdom - Tummanna",
+    "color": 20
+   },
+   {
+    "from": -1326.5,
+    "to": -1325.5,
+    "name": "Tummanna",
+    "color": 0
+   },
+   {
+    "from": -1325.5,
+    "to": -1201.3,
+    "name": "New Hittite Kingdom - Tummanna",
+    "color": 20
+   }
+  ]
+ }
+]

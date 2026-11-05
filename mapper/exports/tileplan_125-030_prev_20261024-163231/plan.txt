@@ -1,0 +1,67 @@
+WHOLE-TILE PLAN 125:030   (newer entry takes its area; older entry carved)
+
+20 edit operations; candidates [1, 2, 3, 4, 5, 6, 7, 31, 34, 35, 36, 40, 42, 52, 53, 54, 55, 56, 57, 91, 95, 97, 119, 121, 124, 125, 126, 127, 128, 133, 134, 139, 152, 156, 157, 158, 159, 160, 162, 163, 165, 171, 173, 176, 177, 178, 179, 180, 183, 184, 185, 186, 187, 188, 189, 190, 191, 245, 246, 284, 285, 286, 287, 311, 317, 318, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 333]; overlap windows before: 96, after: 0
+POL file header count: 373 -> 377;  PAR file header count: 333 -> 339;  CST file header count: 18 -> 20
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+#60 => 60, 374
+ 30.68652    39.88207
+12 > 7 & 7
+#174 => 174, 375
+ 30.68652    39.88207
+4 > 2 & 4
+CST16 => 16, 19, 20   (COAST: CST file)
+ 34.47430    36.70300
+ 34.59161    36.78303
+26 > 9 & 10 & 9
+#170 => 170, 376, 377
+ 34.47430    36.70300
+ 34.59161    36.78303
+34 > 24 & 10 & 2
+
+DECISIONS / STEPS:
+  - PAR NUMBER CHECK: 2 duplicate index(es) [31, 256]; missing numbers [41, 257]
+  - DUPLICATE INDEX: PAR entry #31 (occurrence 2, later in the file) renumbered to #41
+  - DUPLICATE INDEX: PAR entry #256 (occurrence 2, later in the file) renumbered to #257
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 212 entries
+  - new #334 = #34 minus #119 (2938.9 km2), ranges -1180.5..-1000.1
+  - new #335 = #56 minus #121 (3236.0 km2), ranges -732.5..-696.5
+  - new #336 = #57 minus #121 (204.9 km2), ranges -732.5..-696.5
+  - new #337 = #119 minus #152 (1780.7 km2), ranges -660.5..-612.3, -612.3..-588.5, -588.5..-539.2, -539.2..-527.5
+  - new #338 = #171 minus #246 (2528.8 km2), ranges -323.4..-321.9, -321.9..-321, -321..-319.8, -319.8..-306.3, -306.3..-301.4
+  - new #339 = #176 minus #245 (1302.9 km2), ranges -323.4..-318.6, -318.6..-310.5, -310.5..-308.8, -308.8..-306.3, -306.3..-302.3, -302.3..-301.4
+  - #311: ref swap -> ring of #311 minus #323 (989.8 km2), ranges -244.5..-1
+
+PAR EDITS (in order):
+  NEW #334 right after #34: -1180.5..-1000.1 Tabal | refs [[1028, 1], [1125, 0], [1133, 0], [1029, 1]]
+  #34: ranges = -1850.5..-1652.5 Kingdom of Adanaya; -1652.5..-1648.5 Old Hittite Kingdom - Adanaya; -1648.5..-1644.5 Kingdom of Adanaya; -1644.5..-1545.5 Old Hittite Kingdom - Adanaya; -1545.5..-1518.5 Kingdom of Adanaya; -1518.5..-1514.8 Old Hittite Kingdom - Kizzuwatna; -1514.8..-1514.5 Kizzuwatna; -1514.5..-1510.8 Old Hittite Kingdom - Kizzuwatna; -1510.8..-1485.5 Kizzuwatna; -1485.5..-1471.5 Kingdom of Mitanni - Kizzuwatna; -1471.5..-1438.4 Old Hittite Kingdom - Kizzuwatna; -1438.4..-1419.5 Kizzuwatna; -1419.5..-1387.5 New Hittite Kingdom - Kizzuwatna; -1387.5..-1371.4 Kingdom of Mitanni - Kizzuwatna; -1371.4..-1199.6 New Hittite Kingdom - Kizzuwatna; -1190.5..-1180.5 Tabal
+  NEW #335 right after #56: -732.5..-696.5 Phrygian Kingdom | refs [{'lit': [30, 40]}, [1060, 0], [1174, 1], [1150, 1], [1034, 1]]
+  #56: ranges = -1535.5..-1334.3 Masa; -1334.3..-1252.5 New Hittite Kingdom - Masa; -1252.5..-1228.4 Masa; -1228.4..-1205.5 New Hittite Kingdom - Masa; -552.5..-547.1 Lydia
+  NEW #336 right after #57: -732.5..-696.5 Phrygian Kingdom | refs [[1375, 1], [1060, 1]]
+  #57: ranges = -1535.5..-1437.5 Tummanna; -1437.5..-1385.8 New Hittite Kingdom - Tummanna; -1385.8..-1381.5 Tummanna; -1381.5..-1347.8 New Hittite Kingdom - Tummanna; -1347.8..-1347.5 Tummanna; -1347.5..-1346.7 New Hittite Kingdom - Tummanna; -1346.7..-1337.5 Tummanna; -1337.5..-1326.5 New Hittite Kingdom - Tummanna; -1326.5..-1325.5 Tummanna; -1325.5..-1201.3 New Hittite Kingdom - Tummanna; -552.5..-547.1 Lydia
+  NEW #337 right after #119: -660.5..-612.3 Neo Assyrian Empire - Que province; -612.3..-588.5 Que; -588.5..-539.2 Neo-Babylonian Empire; -539.2..-527.5 Persian Empire - Babylonia - Assyria - Kilikia | refs [[16, 0], [1377, 0], [1170, 0], [20, 0], [1133, 1], [1125, 1], [6, 0]]
+  #119: ranges = -1180.5..-833.5 Que; -833.5..-826.8 Neo Assyrian Tributary - Que; -826.8..-738.5 Que; -738.5..-713.5 Neo Assyrian Tributary - Que; -713.5..-705.4 Neo Assyrian Empire - Que province; -705.4..-696.5 Que; -696.5..-660.5 Neo Assyrian Empire - Que province; -527.5..-333.3 Persian Empire - Babylonia - Assyria - Kilikia; -333.3..-321.8 Kingdom of Macedon - Kilikia; -321.8..-321.6 Revolt; -321.6..-319.5 Kingdom of Macedon - Kilikia; -319.5..-318.8 Domain of Philoxenos; -318.8..-306.3 Domain of Antigonus - Kilikia; -306.3..-301.4 Antigonid Kingdom - Kilikia
+  NEW #338 right after #171: -323.4..-321.9 Kingdom of Macedon - Greater Phrygia; -321.9..-321 Revolt of Antigonus; -321..-319.8 Kingdom of Macedon - Greater Phrygia; -319.8..-306.3 Domain of Antigonus - Greater Phrygia; -306.3..-301.4 Antigonid Kingdom - Greater Phrygia | refs [[11, 0], [1279, 1], [1190, 1]]
+  #171: ranges = -554.5..-547.1 Lydia; -547.1..-545.5 Lycians; -545.5..-543.5 Persian Empire - Lydia - Lykia; -543.5..-497.6 Persian Empire - Lydia - Lydia - Karia; -497.6..-493.8 Ionian League; -493.8..-420.5 Persian Empire - Lydia - Lydia - Karia; -420.5..-415.5 Revolt of Pissuthnes - Karia; -415.5..-400.1 Persian Empire - Lydia - Lydia - Karia; -400.1..-362.5 Lycians; -362.5..-360.5 Revolt of Autophradates - Lycia; -360.5..-334 Persian Empire - Lydia - Lydia - Karia; -334..-323.4 Kingdom of Macedon - Karia
+  NEW #339 right after #176: -323.4..-318.6 Kingdom of Macedon - Hellespontine Phrygia; -318.6..-310.5 Domain of Antigonus -  Hellespontine Phrygia; -310.5..-308.8 Antipatrid Ally - Hellespontine Phrygia; -308.8..-306.3 Domain of Antigonus -  Hellespontine Phrygia; -306.3..-302.3 Antigonid Kingdom - Hellespontine Phrygia; -302.3..-301.4 Kingdom of Lysimakhos - Hellespontine Phrygia | refs [[1200, 1], [1278, 0], [1201, 1]]
+  #176: ranges = -547.1..-375.8 Persian Empire - Lydia - Kappadocia - Paphlagonia; -375.8..-375.4 Revolt; -375.4..-371.5 Persian Empire - Lydia - Kappadocia - Paphlagonia; -371.5..-360.5 Revolt of Datames - Paphlagonia; -360.5..-330.5 Persian Empire - Lydia - Kappadocia - Paphlagonia; -330.5..-323.4 Kingdom of Macedon - Hellespontine Phrygia; -301.4..-281.6 Kingdom of Lysimakhos - Hellespontine Phrygia; -281.6..-240.5 Seleucid Kingdom - Hellespontine Phrygia
+  #311: ranges = -275.4..-275.4 Ptolemaic Kingdom; -244.5..-1 Ptolemaic Kingdom
+  #311: refs = [[1358, 0], [1348, 1]]
+
+PAINT ORDER vs OLD ERA RULE disagree for these pairs (paint order = what MAPPER shows was used):
+  #121 vs #56 (first noticed at -714.5)
+  #121 vs #57 (first noticed at -714.5)
+  #311 vs #323 (first noticed at -122.8)
+
+SHORT OVERLAPS (< 10 yrs without a break; treated as transient-like overlays, NOT touched):
+  #35 x #173: 0.5 yrs, 1216 km2
+  #52 x #91: 4.0 yrs, 15323 km2
+  #52 x #95: 2.0 yrs, 7799 km2
+  #52 x #97: 1.0 yrs, 9045 km2
+  #56 x #139: 5.4 yrs, 945 km2
+  #56 x #156: 5.4 yrs, 2065 km2
+  #57 x #139: 5.4 yrs, 10109 km2
+  #57 x #159: 5.4 yrs, 2238 km2
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): DIFFERENCES [(-1913.0, 699.2), (-1863.0, 699.2), (-1813.0, 699.2), (-1767.5, 21448.5), (-1750.0, 21448.5), (-1708.0, 21448.5), (-1670.5, 21448.5), (-1659.0, 21448.5), (-1650.5, 21448.5), (-1648.3, 21448.5), (-1647.3, 21448.5), (-1645.5, 21448.5)]

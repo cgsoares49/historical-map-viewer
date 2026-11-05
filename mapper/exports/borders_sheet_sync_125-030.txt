@@ -1,0 +1,21 @@
+BORDERS SHEET sync for tile 125/030, 2026-11-05   (POL file wins; workbook only read: C:\My stuff\VID\ancient index.xlsx)
+
+1) NEW ROWS: 2 lines in exports/borders_sheet_sync_125-030.tsv (columns A..AK), POL 378..379. Insert after Excel row 3272 (POL 377), in order. (A1 is =MAX(A2:A14168), so it updates itself: 5875 -> 5886)
+
+2) PARENT ROW EDITS (2): Excel row, cell: old -> new, then the split note
+   POL   44 (row 3158): F3158: 30 -> 23; I3158/J3158: 33.39381, 39.41797 -> 32.91231, 39.43737;  Q3158 = "split 11/5/26 for overlay fix (Lydia): #44 => 44, 378"
+   POL  159 (row 3199): F3199: 20 -> 15; I3199/J3199: 32.9483, 39.2442 -> 32.91231, 39.43737;  Q3199 = "split 11/5/26 for overlay fix (Lydia): #159 => 159, 379"
+
+3) BORDER POLs (not transient/blob) in the file but missing from the sheet, numbered below its last row: [161, 164, 166, 168, 170, 172, 241, 259]
+
+NOTES:
+   POL 131: in the sheet but NOT in the POL file
+
+2b) SPLIT PARENT ROWS TO PASTE: exports/borders_sheet_sync_125-030_parents.tsv = 2 lines (columns A..AK), one per split parent, in Excel-row order.
+    Paste each line over the existing row (select A<row>):
+      line  1 -> A3158   (POL 44: F=23, stop 32.91231, 39.43737)
+      line  2 -> A3199   (POL 159: F=15, stop 32.91231, 39.43737)
+
+4) NEW ROW PREVIEW (A..P):
+   5885 | 2026-11-05 | POLBND | 125/030 | 378 | 9 | 32.91231 | 39.43737 | 33.39381 | 39.41797 | -1775.5 | -1201.3 |  |  | (overlay fix (Lydia)) | split from #44   windows: -1775.5, -1201.3
+   5886 | 2026-11-05 | POLBND | 125/030 | 379 | 7 | 32.91231 | 39.43737 | 32.9483 | 39.2442 | -696.5 | -653.5 |  |  | (overlay fix (Lydia)) | split from #159   windows: -696.5, -653.5

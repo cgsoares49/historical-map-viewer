@@ -1,0 +1,32 @@
+WHOLE-TILE PLAN 125:030   (newer entry takes its area; older entry carved)
+
+6 edit operations; candidates [56, 57, 139, 156, 159]; overlap windows before: 4, after: 0
+POL file header count: 377 -> 379;  PAR file header count: 339 -> 341;  CST file header count: 20 -> 20
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+#44 => 44, 378
+ 32.91231    39.43737
+30 > 23 & 9
+#159 => 159, 379
+ 32.91231    39.43737
+20 > 15 & 7
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 211 entries
+  - new #340 = #56 minus #139 & #156 (1171.2 km2), ranges -552.5..-547.1
+  - new #341 = #57 minus #139 & #159 (204.9 km2), ranges -552.5..-547.1
+
+PAR EDITS (in order):
+  NEW #340 right after #56: -552.5..-547.1 Lydia | refs [{'lit': [30, 40]}, [1060, 0], [1174, 1], [1175, 0]]
+  #56: ranges = -1535.5..-1334.3 Masa; -1334.3..-1252.5 New Hittite Kingdom - Masa; -1252.5..-1228.4 Masa; -1228.4..-1205.5 New Hittite Kingdom - Masa
+  NEW #341 right after #57: -552.5..-547.1 Lydia | refs [[1375, 1], [1060, 1]]
+  #57: ranges = -1535.5..-1437.5 Tummanna; -1437.5..-1385.8 New Hittite Kingdom - Tummanna; -1385.8..-1381.5 Tummanna; -1381.5..-1347.8 New Hittite Kingdom - Tummanna; -1347.8..-1347.5 Tummanna; -1347.5..-1346.7 New Hittite Kingdom - Tummanna; -1346.7..-1337.5 Tummanna; -1337.5..-1326.5 New Hittite Kingdom - Tummanna; -1326.5..-1325.5 Tummanna; -1325.5..-1201.3 New Hittite Kingdom - Tummanna
+
+PAINT ORDER vs OLD ERA RULE disagree for these pairs (paint order = what MAPPER shows was used):
+  #139 vs #56 (first noticed at -549.8)
+  #156 vs #56 (first noticed at -549.8)
+  #139 vs #57 (first noticed at -549.8)
+  #159 vs #57 (first noticed at -549.8)
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical
