@@ -1,0 +1,25 @@
+WHOLE-TILE PLAN 130:030   (newer entry takes its area; older entry carved)
+
+7 edit operations; candidates [65, 72]; overlap windows before: 1, after: 0
+POL file header count: 154 -> 156;  PAR file header count: 136 -> 137;  CST file header count: 13 -> 13
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+#70 => 70, 155, 156
+ 31.27050    40.67930
+ 31.34290    40.69670
+5 > 2 & 2 & 3
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 71 entries
+  - new #137 = #65 minus #72 (4149.3 km2), ranges -552.5..-547.1
+
+PAR EDITS (in order):
+  #82: ranges = -547.1..-375.8 Persian Empire - Lydia - Kappadocia - Paphlagonia; -375.8..-375.4 Revolt; -375.4..-371.5 Persian Empire - Lydia - Kappadocia - Paphlagonia; -371.5..-360.5 Revolt of Datames - Paphlagonia; -360.5..-330.5 Persian Empire - Lydia - Kappadocia - Paphlagonia; -330.5..-323.4 Kingdom of Macedon - Hellespontine Phrygia
+  NEW #137 right after #65: -552.5..-547.1 Lydia | refs [[12, 1], [7, 1], [1077, 0], [1142, 1], [1156, 1], [1070, 1], [1071, 1]]
+  #65: ranges = -735.5..-696.5 Phrygian Kingdom
+
+PAINT ORDER vs OLD ERA RULE disagree for these pairs (paint order = what MAPPER shows was used):
+  #72 vs #65 (first noticed at -549.8)
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical

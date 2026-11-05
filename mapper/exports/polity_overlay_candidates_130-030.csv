@@ -1,0 +1,8 @@
+GroupID,GroupSize,Tile,EntryIndex,LastNameSegment,StackDepth,Role,Overlays,OverlaidBy,AreaKm2,FirstOverlapFrom,FirstOverlapTo,DistinctWindows,MaxIntersectionRatio,Semitransient,ConfirmedByLog,AllOwnersEver
+1,3,130/030,82,Hellespontine Phrygia,,AMBIGUOUS (cyclic evidence),,,52174.7,-323.4,-301.4,10,0.985,,,Antigonid Kingdom; Antipatrid Ally; Domain of Antigonus; Kingdom of Lysimakhos; Kingdom of Macedon; Persian Empire; Revolt; Revolt of Datames
+1,3,130/030,96,Hellespontine Phrygia,,AMBIGUOUS (cyclic evidence),,,21386.3,-323.4,-301.4,6,0.985,,,Antigonid Kingdom; Antipatrid Ally; Domain of Antigonus; Kingdom of Lysimakhos; Kingdom of Macedon
+1,3,130/030,97,Paphlagonia,,AMBIGUOUS (cyclic evidence),,,36931.8,-323.4,-301.4,9,0.985,,,Antigonid Kingdom; Domain of Antigonus; Paphlagonia; Revolt of Eumenes
+2,2,130/030,65,Lydia,2,OVERLAY,Lydia (69% of its own area) [-552.5..-547.1],,13326.7,-552.5,-547.1,1,0.689,,,Lydia; Phrygian Kingdom
+2,2,130/030,72,Lydia,1,BASE,,Lydia (69% of THIS entity covered) [-552.5..-547.1],45215.1,-552.5,-547.1,1,0.689,,,Lydia
+3,2,130/030,84,Scythia,1,BASE,,Bosporan Kingdom; Theodosia (100% of THIS entity covered) [-546.5..-1.0],751.5,-546.5,-1.0,4,0.997,,,Scythia
+3,2,130/030,85,Bosporan Kingdom; Theodosia,2,OVERLAY,Scythia (100% of its own area) [-546.5..-1.0],,22.4,-546.5,-1.0,4,0.997,,,Bosporan Kingdom; Ionians

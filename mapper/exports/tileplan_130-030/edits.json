@@ -1,0 +1,129 @@
+[
+ {
+  "op": "par_set_areatype",
+  "entry": 115,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 102,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 82,
+  "ranges": [
+   {
+    "from": -547.1,
+    "to": -375.8,
+    "name": "Persian Empire - Lydia - Kappadocia - Paphlagonia",
+    "color": 14
+   },
+   {
+    "from": -375.8,
+    "to": -375.4,
+    "name": "Revolt",
+    "color": 0
+   },
+   {
+    "from": -375.4,
+    "to": -371.5,
+    "name": "Persian Empire - Lydia - Kappadocia - Paphlagonia",
+    "color": 14
+   },
+   {
+    "from": -371.5,
+    "to": -360.5,
+    "name": "Revolt of Datames - Paphlagonia",
+    "color": 1
+   },
+   {
+    "from": -360.5,
+    "to": -330.5,
+    "name": "Persian Empire - Lydia - Kappadocia - Paphlagonia",
+    "color": 14
+   },
+   {
+    "from": -330.5,
+    "to": -323.4,
+    "name": "Kingdom of Macedon - Hellespontine Phrygia",
+    "color": 36
+   }
+  ]
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 85,
+  "areatype": 2
+ },
+ {
+  "op": "pol_split",
+  "pol": 70,
+  "points": [
+   [
+    31.2705,
+    40.6793
+   ],
+   [
+    31.3429,
+    40.6967
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 137,
+  "after": 65,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -552.5,
+    "to": -547.1,
+    "name": "Lydia",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    12,
+    1
+   ],
+   [
+    7,
+    1
+   ],
+   [
+    1077,
+    0
+   ],
+   [
+    1142,
+    1
+   ],
+   [
+    1156,
+    1
+   ],
+   [
+    1070,
+    1
+   ],
+   [
+    1071,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 65,
+  "ranges": [
+   {
+    "from": -735.5,
+    "to": -696.5,
+    "name": "Phrygian Kingdom",
+    "color": 0
+   }
+  ]
+ }
+]
