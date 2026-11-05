@@ -1,0 +1,9 @@
+GroupID,GroupSize,Tile,EntryIndex,LastNameSegment,StackDepth,Role,Overlays,OverlaidBy,AreaKm2,FirstOverlapFrom,FirstOverlapTo,DistinctWindows,MaxIntersectionRatio,Semitransient,ConfirmedByLog,AllOwnersEver
+1,2,130/036,48,Diauekhi,1,BASE,,Colchis (20% of THIS entity covered) [-755.5..-744.5],4577.7,-755.5,-744.5,1,0.438,,,Diauekhi; Media; Urartu Tributary
+1,2,130/036,52,Colchis,2,OVERLAY,Diauekhi (20% of its own area) [-755.5..-744.5],,10127.1,-755.5,-744.5,1,0.438,,,Colchis
+2,2,130/036,57,Cimmerian Kingdom; Phrygians,,AMBIGUOUS (cyclic evidence),,,30845.3,-643.5,-612.3,2,1.0,,,Cimmerian Kingdom; Media; Phrygians
+2,2,130/036,59,Scythia,,AMBIGUOUS (cyclic evidence),,,6540.9,-643.5,-612.3,2,1.0,,,Scythia
+3,2,130/036,57,Phrygians,1,BASE,,Media (100% of THIS entity covered) [-587.5..-585.5],30845.3,-587.5,-585.5,1,1.0,,,Cimmerian Kingdom; Media; Phrygians
+3,2,130/036,65,Media,2,OVERLAY,Phrygians (100% of its own area) [-587.5..-585.5],,7753.7,-587.5,-585.5,1,1.0,,,Media
+4,2,130/036,84,Armenia,2,OVERLAY,Kappadokia (42% of its own area) [-330.5..-323.4],,35785.9,-330.5,-323.4,1,1.0,,,Kingdom of Macedon
+4,2,130/036,86,Kappadokia,1,BASE,,Armenia (42% of THIS entity covered) [-330.5..-323.4],15031.4,-330.5,-323.4,1,1.0,,,Antigonid Kingdom; Domain of Antigonus; Kappadokia; Kingdom of Macedon; Revolt of Eumenes

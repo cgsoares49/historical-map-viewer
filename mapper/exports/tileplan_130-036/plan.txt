@@ -1,0 +1,28 @@
+WHOLE-TILE PLAN 130:036   (newer entry takes its area; older entry carved)
+
+8 edit operations; candidates [48, 52, 57, 59, 65, 84, 86]; overlap windows before: 5, after: 0
+POL file header count: 101 -> 102;  PAR file header count: 94 -> 97;  CST file header count: 19 -> 19
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+#48 => 48, 102
+ 41.74380    40.66690
+25 > 13 & 13
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 20 entries
+  - new #95 = #48 minus #52 (2574.0 km2), ranges -755.5..-744.5
+  - new #96 = #57 minus #59 (24304.4 km2), ranges -643.5..-637.5, -637.5..-612.3
+  - new #97 = #57 minus #65 (23091.5 km2), ranges -587.5..-585.5
+  - #84: ref swap -> ring of #84 minus #86 (20754.6 km2), ranges -330.5..-323.4
+
+PAR EDITS (in order):
+  NEW #95 right after #48: -755.5..-744.5 Urartu Tributary - Diauekhi | refs [{'lit': [42, 40]}, [1102, 1], [1057, 0]]
+  #48: ranges = -931.1..-801.5 Diauekhi; -801.5..-786.5 Urartu Tributary - Diauekhi; -786.5..-785.6 Diauekhi; -785.6..-769.5 Urartu Tributary - Diauekhi; -769.5..-768.5 Diauekhi; -768.5..-755.5 Urartu Tributary - Diauekhi; -744.5..-735.4 Urartu Tributary - Diauekhi; -735.4..-591.5 Diauekhi; -591.5..-550.5 Media
+  NEW #96 right after #57: -643.5..-637.5 Cimmerian Kingdom; -637.5..-612.3 Phrygians | refs [{'lit': [36, 40]}, [1, 0], [9, 0], [19, 0], [15, 0], [18, 0], [1026, 1], [1064, 0]]
+  NEW #97 right after #57: -587.5..-585.5 Phrygians | refs [{'lit': [36, 40]}, [1, 0], [9, 0], [19, 0], [15, 0], [18, 0], [1026, 1], [1025, 1], [1023, 0]]
+  #57: ranges = -653.5..-643.5 Cimmerian Kingdom; -612.3..-587.5 Phrygians; -585.5..-550.5 Media
+  #84: ranges = -330.5..-323.4 Kingdom of Macedon - Armenia
+  #84: refs = [[1069, 0], [1087, 0], {'lit': [42, 40]}, [1063, 0], [1089, 0], [14, 0]]
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical

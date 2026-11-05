@@ -1,0 +1,280 @@
+[
+ {
+  "op": "pol_split",
+  "pol": 48,
+  "points": [
+   [
+    41.7438,
+    40.6669
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 95,
+  "after": 48,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -755.5,
+    "to": -744.5,
+    "name": "Urartu Tributary - Diauekhi",
+    "color": 2
+   }
+  ],
+  "refs": [
+   {
+    "lit": [
+     42,
+     40
+    ]
+   },
+   [
+    1102,
+    1
+   ],
+   [
+    1057,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 48,
+  "ranges": [
+   {
+    "from": -931.1,
+    "to": -801.5,
+    "name": "Diauekhi",
+    "color": 0
+   },
+   {
+    "from": -801.5,
+    "to": -786.5,
+    "name": "Urartu Tributary - Diauekhi",
+    "color": 2
+   },
+   {
+    "from": -786.5,
+    "to": -785.6,
+    "name": "Diauekhi",
+    "color": 0
+   },
+   {
+    "from": -785.6,
+    "to": -769.5,
+    "name": "Urartu Tributary - Diauekhi",
+    "color": 2
+   },
+   {
+    "from": -769.5,
+    "to": -768.5,
+    "name": "Diauekhi",
+    "color": 0
+   },
+   {
+    "from": -768.5,
+    "to": -755.5,
+    "name": "Urartu Tributary - Diauekhi",
+    "color": 2
+   },
+   {
+    "from": -744.5,
+    "to": -735.4,
+    "name": "Urartu Tributary - Diauekhi",
+    "color": 2
+   },
+   {
+    "from": -735.4,
+    "to": -591.5,
+    "name": "Diauekhi",
+    "color": 0
+   },
+   {
+    "from": -591.5,
+    "to": -550.5,
+    "name": "Media",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 96,
+  "after": 57,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -643.5,
+    "to": -637.5,
+    "name": "Cimmerian Kingdom",
+    "color": 0
+   },
+   {
+    "from": -637.5,
+    "to": -612.3,
+    "name": "Phrygians",
+    "color": 0
+   }
+  ],
+  "refs": [
+   {
+    "lit": [
+     36,
+     40
+    ]
+   },
+   [
+    1,
+    0
+   ],
+   [
+    9,
+    0
+   ],
+   [
+    19,
+    0
+   ],
+   [
+    15,
+    0
+   ],
+   [
+    18,
+    0
+   ],
+   [
+    1026,
+    1
+   ],
+   [
+    1064,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 97,
+  "after": 57,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -587.5,
+    "to": -585.5,
+    "name": "Phrygians",
+    "color": 0
+   }
+  ],
+  "refs": [
+   {
+    "lit": [
+     36,
+     40
+    ]
+   },
+   [
+    1,
+    0
+   ],
+   [
+    9,
+    0
+   ],
+   [
+    19,
+    0
+   ],
+   [
+    15,
+    0
+   ],
+   [
+    18,
+    0
+   ],
+   [
+    1026,
+    1
+   ],
+   [
+    1025,
+    1
+   ],
+   [
+    1023,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 57,
+  "ranges": [
+   {
+    "from": -653.5,
+    "to": -643.5,
+    "name": "Cimmerian Kingdom",
+    "color": 0
+   },
+   {
+    "from": -612.3,
+    "to": -587.5,
+    "name": "Phrygians",
+    "color": 0
+   },
+   {
+    "from": -585.5,
+    "to": -550.5,
+    "name": "Media",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 84,
+  "ranges": [
+   {
+    "from": -330.5,
+    "to": -323.4,
+    "name": "Kingdom of Macedon - Armenia",
+    "color": 117
+   }
+  ]
+ },
+ {
+  "op": "par_set_refs",
+  "entry": 84,
+  "refs": [
+   [
+    1069,
+    0
+   ],
+   [
+    1087,
+    0
+   ],
+   {
+    "lit": [
+     42,
+     40
+    ]
+   },
+   [
+    1063,
+    0
+   ],
+   [
+    1089,
+    0
+   ],
+   [
+    14,
+    0
+   ]
+  ]
+ }
+]

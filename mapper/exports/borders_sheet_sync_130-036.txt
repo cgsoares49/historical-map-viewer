@@ -1,0 +1,22 @@
+BORDERS SHEET sync for tile 130/036, 2026-11-05   (POL file wins; workbook only read: C:\My stuff\VID\ancient index.xlsx)
+
+1) NEW ROWS: 1 lines in exports/borders_sheet_sync_130-036.tsv (columns A..AK), POL 102..102. Insert after Excel row 5441 (POL 101), in order. (A1 is =MAX(A2:A14168), so it updates itself: 5875 -> 5888)
+
+2) PARENT ROW EDITS (2): Excel row, cell: old -> new, then the split note
+   POL   24 (row 5402): F5402: 24 -> 18   [no new child POL found: changed by hand?]
+   POL   48 (row 5408): F5408: 25 -> 13; I5408/J5408: 41.32442, 40 -> 41.7438, 40.6669;  Q5408 = "split 11/5/26 for overlay fix: #48 => 48, 102"
+
+3) BORDER POLs (not transient/blob) in the file but missing from the sheet, numbered below its last row: [32, 33, 34, 35, 36, 37, 38, 39, 41, 42, 43, 44, 45, 46, 47, 55, 73, 91]
+
+NOTES:
+   POL 20: in the sheet but NOT in the POL file
+
+2b) SPLIT PARENT ROWS TO PASTE: exports/borders_sheet_sync_130-036_parents.tsv = 1 lines (columns A..AK), one per split parent, in Excel-row order.
+    Paste each line over the existing row (select A<row>):
+      line  1 -> A5408   (POL 48: F=13, stop 41.7438, 40.6669)
+
+2c) OTHER ROWS WHOSE COUNT/STOP DIFFER FROM THE POL FILE (no split child found; your own edits): exports/borders_sheet_sync_130-036_other_changed_rows.tsv
+      line 1 -> A5402   (POL 24: F=18)
+
+4) NEW ROW PREVIEW (A..P):
+   5888 | 2026-11-05 | POLBND | 130/036 | 102 | 13 | 41.7438 | 40.6669 | 41.32442 | 40 | -1505.5 | -1200.4 | -755.5 | -744.5 | (overlay fix) | split from #48   windows: -1505.5, -1200.4, -755.5, -744.5
