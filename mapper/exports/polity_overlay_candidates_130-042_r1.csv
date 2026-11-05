@@ -1,0 +1,5 @@
+GroupID,GroupSize,Tile,EntryIndex,LastNameSegment,StackDepth,Role,Overlays,OverlaidBy,AreaKm2,FirstOverlapFrom,FirstOverlapTo,DistinctWindows,MaxIntersectionRatio,Semitransient,ConfirmedByLog,AllOwnersEver
+1,2,130/042,48,Urartu,,AMBIGUOUS (cyclic evidence),,,3879.7,-785.4,-752.4,3,1.0,,,Etiuni; Media; Neo Assyrian Tributary; Urartu
+1,2,130/042,55,Etiuni,,AMBIGUOUS (cyclic evidence),,,925.7,-785.4,-752.4,3,1.0,,,Etiuni; Uelikukhi
+2,2,130/042,79,East Armenia,2,OVERLAY,East Armenia (100% of its own area) [-514.5..-330.5],,15899.2,-514.5,-330.5,3,1.0,,,Media; Persian Empire; Revolt of Orontes
+2,2,130/042,85,East Armenia,1,BASE,,East Armenia (100% of THIS entity covered) [-514.5..-330.5],57323.0,-514.5,-330.5,3,1.0,,,Persian Empire; Revolt of Orontes

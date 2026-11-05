@@ -1,0 +1,124 @@
+[
+ {
+  "op": "par_add_entry",
+  "index": 95,
+  "after": 48,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -785.4,
+    "to": -783.5,
+    "name": "Urartu",
+    "color": 0
+   },
+   {
+    "from": -758.5,
+    "to": -757.5,
+    "name": "Urartu",
+    "color": 0
+   },
+   {
+    "from": -752.6,
+    "to": -752.4,
+    "name": "Urartu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1043,
+    1
+   ],
+   [
+    1046,
+    0
+   ],
+   [
+    1065,
+    0
+   ],
+   [
+    1047,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 48,
+  "ranges": [
+   {
+    "from": -880.1,
+    "to": -785.4,
+    "name": "Etiuni",
+    "color": 0
+   },
+   {
+    "from": -783.5,
+    "to": -782.5,
+    "name": "Etiuni",
+    "color": 0
+   },
+   {
+    "from": -782.5,
+    "to": -758.5,
+    "name": "Urartu",
+    "color": 0
+   },
+   {
+    "from": -757.5,
+    "to": -752.6,
+    "name": "Urartu",
+    "color": 0
+   },
+   {
+    "from": -752.4,
+    "to": -735.4,
+    "name": "Urartu",
+    "color": 0
+   },
+   {
+    "from": -735.4,
+    "to": -732.5,
+    "name": "Etiuni",
+    "color": 0
+   },
+   {
+    "from": -732.5,
+    "to": -714.1,
+    "name": "Urartu",
+    "color": 0
+   },
+   {
+    "from": -714.1,
+    "to": -703.5,
+    "name": "Etiuni",
+    "color": 0
+   },
+   {
+    "from": -703.5,
+    "to": -636.5,
+    "name": "Urartu",
+    "color": 0
+   },
+   {
+    "from": -636.5,
+    "to": -612.4,
+    "name": "Neo Assyrian Tributary - Urartu",
+    "color": 104
+   },
+   {
+    "from": -612.4,
+    "to": -597.5,
+    "name": "Urartu",
+    "color": 0
+   },
+   {
+    "from": -597.5,
+    "to": -550.5,
+    "name": "Media",
+    "color": 0
+   }
+  ]
+ }
+]
