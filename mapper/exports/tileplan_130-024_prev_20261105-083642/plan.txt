@@ -1,0 +1,181 @@
+WHOLE-TILE PLAN 130:024   (newer entry takes its area; older entry carved)
+
+79 edit operations; candidates [70, 71, 76, 84, 88, 99, 107, 109, 111, 117, 120, 124, 127, 132, 141, 143, 152, 158, 159, 160, 161, 164, 171, 173, 174, 177, 179, 217, 261, 276, 279, 288, 295, 311, 323, 327, 365, 379]; overlap windows before: 413, after: 0
+POL file header count: 378 -> 402;  PAR file header count: 401 -> 425;  CST file header count: 87 -> 98
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+CST67 => 67, 88   (COAST: CST file)
+ 26.61439    40.29136
+72 > 43 & 30
+#64 => 64, 379, 380
+ 26.61439    40.29136
+ 26.77750    40.41197
+57 > 27 & 30 & 2
+#35 => 35, 381
+ 27.41987    40.20595
+20 > 9 & 13
+#128 => 128, 382
+ 27.41987    40.20595
+42 > 31 & 13
+#89 => 89, 383
+ 28.27997    40.15907
+19 > 13 & 8
+#128 => 128, 384
+ 28.27997    40.15907
+31 > 19 & 14
+#36 => 36, 385
+ 29.28851    40.33575
+23 > 8 & 17
+#128 => 128, 386
+ 29.28851    40.33575
+19 > 8 & 13
+#85 => 85, 387, 388
+ 26.34440    40.12150
+ 26.47830    40.25680
+52 > 31 & 21 & 2
+CST16 => 16, 89, 90   (COAST: CST file)
+ 26.34440    40.12150
+ 26.47830    40.25680
+92 > 21 & 21 & 52
+CST47 => 47, 91   (COAST: CST file)
+ 29.05645    41.08561
+35 > 23 & 13
+#53 => 53, 389, 390
+ 28.89283    40.98461
+ 29.05645    41.08561
+43 > 22 & 21 & 2
+CST65 => 65, 92   (COAST: CST file)
+ 28.89283    40.98461
+49 > 42 & 8
+CST85 => 85, 93   (COAST: CST file)
+ 28.34711    41.06367
+39 > 12 & 28
+#49 => 49, 391, 392
+ 28.14830    41.07270
+ 28.34711    41.06367
+43 > 28 & 15 & 2
+CST66 => 66, 94, 95, 96   (COAST: CST file)
+ 27.85206    40.99569
+ 28.02186    41.03892
+ 28.14830    41.07270
+38 > 5 & 23 & 9 & 4
+#82 => 82, 393, 394
+ 27.85206    40.99569
+ 28.02186    41.03892
+41 > 18 & 23 & 2
+#149 => 149, 395
+ 26.07185    40.91219
+4 > 4 & 2
+#254 => 254, 396
+ 26.07185    40.91219
+51 > 22 & 31
+#369 => 369, 397
+ 26.18986    40.77722
+5 > 4 & 3
+#396 => 396, 398
+ 26.18986    40.77722
+31 > 20 & 13
+#110 => 110, 399
+ 26.83700    40.62392
+8 > 4 & 5
+CST55 => 55, 97   (COAST: CST file)
+ 26.83700    40.62392
+54 > 4 & 51
+CST6 => 6, 98   (COAST: CST file)
+ 24.08460    40.72840
+90 > 83 & 8
+#76 => 76, 400
+ 24.08460    40.72840
+20 > 8 & 13
+#3 => 3, 401
+ 26.25702    40.91033
+207 > 180 & 29
+#254 => 254, 402
+ 26.25702    40.91033
+22 > 3 & 21
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 232 entries
+  - new #402 = #70 minus #99 (3443.6 km2), ranges -654.5..-547.1
+  - new #403 = #71 minus #124 (6011.8 km2), ranges -547.1..-475.8, -404.7..-366.8, -366.8..-362.3, -362.3..-356.3, -356.3..-353.2, -353.2..-334.5, -334.5..-318.6, -318.6..-310.5, -310.5..-308.8, -308.8..-306.3, -306.3..-302.3, -302.3..-281.6, -281.6..-272.5
+  - new #404 = #71 minus #124 & #160 (4979.5 km2), ranges -475.8..-404.7
+  - new #405 = #76 minus #159 & #160 (4920.2 km2), ranges -475.8..-404.7
+  - new #406 = #127 minus #120 (782.8 km2), ranges -394.1..-386.5, -361.5..-360.5
+  - new #407 = #124 minus #99 (6808.3 km2), ranges -547.1..-542.5, -542.5..-513.8
+  - new #408 = #124 minus #141 (5019.3 km2), ranges -498.4..-493.5
+  - new #409 = #124 minus #160 (2931.3 km2), ranges -475.8..-411.5, -411.4..-404.7
+  - new #410 = #124 minus #99 & #160 (2931.3 km2), ranges -411.5..-411.4
+  - new #411 = #124 minus #311 (6318.2 km2), ranges -336.6..-335.5, -242.5..-240.5
+  - new #412 = #152 minus #88 (48157.8 km2), ranges -478.3..-475.5
+  - new #413 = #158 minus #88 (4446.5 km2), ranges -475.8..-471.5, -440.5..-440.1, -408.3..-408.2, -403.2..-402.8, -378.7..-375.4, -357.5..-357.2, -357.2..-355.5, -355.5..-347.2
+  - new #414 = #158 minus #84 & #88 & #117 (4185.9 km2), ranges -411.3..-410.6
+  - new #415 = #158 minus #84 & #88 (4291.9 km2), ranges -410.6..-408.3
+  - new #416 = #161 minus #276 (3277.8 km2), ranges -475.5..-465.5
+  - new #417 = #161 minus #111 (3281.3 km2), ranges -423.9..-422.4
+  - new #418 = #174 minus #276 (10496.0 km2), ranges -347.3..-342.7, -342.7..-341.5, -341.5..-338.2
+  - new #419 = #177 minus #217 (13284.7 km2), ranges -407.5..-359.7, -359.7..-352.1, -352.1..-347.3, -338.2..-336.2, -336.2..-335.6, -335.6..-331.6, -331.6..-330.9, -330.9..-325.5
+  - new #420 = #177 minus #217 & #276 (13228.0 km2), ranges -347.3..-342.7, -342.7..-341.5, -341.5..-338.2
+  - new #421 = #217 minus #164 (6637.7 km2), ranges -407.5..-402.8, -401.3..-400.3
+  - new #422 = #261 minus #276 (2329.8 km2), ranges -347.3..-338.2
+  - new #423 = #279 minus #117 & #295 (2068.0 km2), ranges -340.8..-323.4, -323.4..-321.9, -321.9..-321, -321..-319.8, -319.8..-305.5, -305.5..-281.6
+  - new #424 = #279 minus #295 (2068.0 km2), ranges -281.6..-281.4, -281.4..-277.1, -277.1..-240.5
+  - #279: ref swap -> ring of #279 minus #117 (3080.8 km2), ranges -347.2..-346.5, -346.5..-340.8
+  - new #425 = #295 minus #117 (1012.8 km2), ranges -340.8..-281.6
+
+PAR EDITS (in order):
+  #171: ranges = -500.1..-445.5 Thraikes
+  NEW #402 right after #70: -654.5..-547.1 Lydia | refs [[67, 0], [1380, 0], [1064, 0], [68, 0], [82, 0], [1035, 0], [34, 0]]
+  #70: ranges = -1535.5..-1366.5 Wilusa; -1366.5..-1319.7 New Hittite Kingdom - Wilusa; -1319.7..-1318.4 Wilusa; -1318.4..-1252.5 New Hittite Kingdom - Wilusa; -1252.5..-1251.3 Arzawa - Wilusa; -1251.3..-1248.3 New Hittite Kingdom - Wilusa; -1248.3..-1247.5 Wilusa; -1247.5..-1235.5 New Hittite Kingdom - Wilusa; -1235.5..-1225.5 Arzawa - Wilusa; -1225.5..-1205.5 Wilusa; -667.5..-654.5 Lydia
+  NEW #403 right after #71: -547.1..-475.8 Persian Empire - Lydia - Lydia - Hellespontine Phrygia; -404.7..-366.8 Persian Empire - Lydia - Lydia - Hellespontine Phrygia; -366.8..-362.3 Revolt of Ariobarzanes; -362.3..-356.3 Persian Empire - Lydia - Lydia - Hellespontine Phrygia; -356.3..-353.2 Revolt of Artabazus; -353.2..-334.5 Persian Empire - Lydia - Lydia - Hellespontine Phrygia; -334.5..-318.6 Kingdom of Macedon - Hellespontine Phrygia; -318.6..-310.5 Domain of Antigonus -  Hellespontine Phrygia; -310.5..-308.8 Antipatrid Ally - Hellespontine Phrygia; -308.8..-306.3 Domain of Antigonus -  Hellespontine Phrygia; -306.3..-302.3 Antigonid Kingdom - Hellespontine Phrygia; -302.3..-281.6 Kingdom of Lysimakhos - Hellespontine Phrygia; -281.6..-272.5 Seleucid Kingdom - Hellespontine Phrygia | refs [[54, 1], [1036, 0], [1037, 0], {'lit': [30, 40]}, [1089, 1], [76, 1]]
+  NEW #404 right after #71: -475.8..-404.7 Persian Empire - Lydia - Lydia - Hellespontine Phrygia | refs [[1037, 0], {'lit': [30, 40]}, [1383, 1], [1386, 1], [1385, 0]]
+  #71: ranges = -1535.5..-1334.3 Masa; -1334.3..-1252.5 New Hittite Kingdom - Masa; -1252.5..-1228.4 Masa; -1228.4..-1205.5 New Hittite Kingdom - Masa; -732.5..-696.5 Phrygian Kingdom; -552.5..-547.1 Lydia
+  NEW #405 right after #76: -475.8..-404.7 Persian Empire - Lydia - Lydia - Hellespontine Phrygia | refs [[73, 0], [1037, 1], [1385, 1], [1128, 1], [79, 1], [72, 1], [69, 1], [74, 1], [58, 1], [1125, 1], [57, 0]]
+  #76: ranges = -732.5..-696.5 Phrygian Kingdom; -552.5..-547.1 Lydia; -547.1..-475.8 Persian Empire - Lydia - Lydia - Hellespontine Phrygia; -404.7..-366.8 Persian Empire - Lydia - Lydia - Hellespontine Phrygia; -366.8..-362.3 Revolt of Ariobarzanes; -362.3..-356.3 Persian Empire - Lydia - Lydia - Hellespontine Phrygia; -356.3..-353.2 Revolt of Artabazus; -353.2..-334.5 Persian Empire - Lydia - Lydia - Hellespontine Phrygia; -334.5..-323.4 Kingdom of Macedon - Hellespontine Phrygia
+  NEW #406 right after #127: -394.1..-386.5 Anti Spartan Alliance - Thracian Chersonese; -361.5..-360.5 Odrysian Kingdom - Thracian Chersonese | refs [[1388, 0], [1085, 0], [16, 1], [51, 0], [1092, 0], [90, 1]]
+  #127: ranges = -550.5..-516.6 Athens - Thracian Chersonese; -516.6..-516.5 Revolt; -516.5..-512.5 Athens - Thracian Chersonese; -512.5..-498.4 Persian Empire - Lydia - Lydia - Thrace - Thracian Chersonese; -498.4..-493.5 Ionian League - Thracian Chersonese; -493.5..-479 Persian Empire - Lydia - Lydia - Thrace - Thracian Chersonese; -479..-478.3 Greek Alliance - Thracian Chersonese; -478.3..-405.1 Delian League - Thracian Chersonese; -405.1..-394.1 Peloponnesian League - Thracian Chersonese; -386.5..-375.4 Ionians - Thracian Chersonese; -375.4..-362.6 Second Athenian League - Thracian Chersonese; -362.6..-361.5 Odrysian Kingdom - Thracian Chersonese; -360.5..-353.2 Odrysian Kingdom - Thracian Chersonese; -353.2..-338.2 Second Athenian League - Thracian Chersonese; -338.2..-323.4 Kingdom of Macedon; -323.4..-321.9 Kingdom of Macedon - Thrace; -321.9..-321 Revolt of Lysimachus; -321..-319.8 Kingdom of Macedon - Thrace; -319.8..-305.5 Domain of Lysimakhos - Thrace; -305.5..-281.4 Kingdom of Lysimakhos - Thrace; -281.4..-277.1 Macedon - Thrace; -277.1..-240.5 Thrace; -240.5..-1 Ptolemaic Kingdom
+  NEW #407 right after #124: -547.1..-542.5 Mysians; -542.5..-513.8 Persian Empire - Lydia - Lydia - Hellespontine Phrygia | refs [[67, 0], [1380, 0], [1064, 0], [68, 0], [82, 0], [53, 0], [80, 0], [81, 0], [1089, 0], [1383, 0], [34, 0]]
+  NEW #408 right after #124: -498.4..-493.5 Persian Empire - Lydia - Lydia - Hellespontine Phrygia | refs [[80, 0], [81, 0], [1089, 0], [1383, 0], [1108, 0], [53, 0]]
+  NEW #409 right after #124: -475.8..-411.5 Persian Empire - Lydia - Lydia - Hellespontine Phrygia; -411.4..-404.7 Persian Empire - Lydia - Lydia - Hellespontine Phrygia | refs [[1382, 1], [1384, 1], [1383, 0]]
+  NEW #410 right after #124: -411.5..-411.4 Persian Empire - Lydia - Lydia - Hellespontine Phrygia | refs [[1382, 1], [1384, 1], [1383, 0]]
+  NEW #411 right after #124: -336.6..-335.5 Persian Empire - Lydia - Lydia - Hellespontine Phrygia; -242.5..-240.5 Seleucid Kingdom - Hellespontine Phrygia | refs [[1285, 1], [68, 0], [82, 0], [53, 0], [80, 0], [81, 0], [1089, 0], [1383, 0], [34, 0]]
+  #124: ranges = -513.8..-498.4 Persian Empire - Lydia - Lydia - Hellespontine Phrygia; -493.5..-475.8 Persian Empire - Lydia - Lydia - Hellespontine Phrygia; -404.7..-366.8 Persian Empire - Lydia - Lydia - Hellespontine Phrygia; -366.8..-362.3 Revolt of Ariobarzanes; -362.3..-356.3 Persian Empire - Lydia - Lydia - Hellespontine Phrygia; -356.3..-353.2 Revolt of Artabazus; -353.2..-336.6 Persian Empire - Lydia - Lydia - Hellespontine Phrygia; -335.5..-334.5 Persian Empire - Lydia - Lydia - Hellespontine Phrygia; -334.5..-318.6 Kingdom of Macedon - Hellespontine Phrygia; -318.6..-310.5 Domain of Antigonus -  Hellespontine Phrygia; -310.5..-308.8 Antipatrid Ally - Hellespontine Phrygia; -308.8..-306.3 Domain of Antigonus -  Hellespontine Phrygia; -306.3..-302.3 Antigonid Kingdom - Hellespontine Phrygia; -302.3..-281.6 Kingdom of Lysimakhos - Hellespontine Phrygia; -281.6..-242.5 Seleucid Kingdom - Hellespontine Phrygia
+  NEW #412 right after #152: -478.3..-475.5 Persian Empire - Lydia - Lydia - Thrace | refs [[14, 1], [48, 0], [61, 0], [84, 0], [60, 0], [47, 0], [1390, 0], [1053, 0], [65, 1], [85, 1], [66, 1], [83, 1], [56, 1], [1092, 1], [55, 0], [77, 0], [50, 0], [78, 1], [17, 1], [24, 0], [23, 0], [6, 0], [1155, 1], [1303, 1], [1119, 1], [13, 0]]
+  #152: ranges = -485.5..-478.3 Persian Empire - Lydia - Lydia - Thrace
+  NEW #413 right after #158: -475.8..-471.5 Delian League; -440.5..-440.1 Delian League; -408.3..-408.2 Delian League; -403.2..-402.8 Peloponnesian League; -378.7..-375.4 Ionians; -357.5..-357.2 Second Athenian League; -357.2..-355.5 Revolt; -355.5..-347.2 Byzantium | refs [[1390, 0], [1053, 0], [65, 1], [85, 1], [66, 1], [83, 1], [56, 1], [1092, 1], [1110, 0], [1129, 0], [1133, 0], [1127, 1], [60, 0], [47, 0]]
+  NEW #414 right after #158: -411.3..-410.6 Delian League | refs [[1390, 0], [1053, 0], [65, 1], [93, 1], [1392, 0], [1049, 0], [95, 1], [1394, 0], [1082, 0], [66, 1], [83, 1], [56, 1], [1092, 1], [1110, 0], [1129, 0], [1133, 0], [1127, 1], [60, 0], [47, 0]]
+  NEW #415 right after #158: -410.6..-408.3 Delian League | refs [[1390, 0], [1053, 0], [65, 1], [93, 1], [1392, 0], [1049, 0], [95, 1], [94, 1], [66, 1], [83, 1], [56, 1], [1092, 1], [1110, 0], [1129, 0], [1133, 0], [1127, 1], [60, 0], [47, 0]]
+  #158: ranges = -478.4..-478.3 Greek Alliance; -471.5..-440.5 Delian League; -440.1..-411.3 Delian League; -408.2..-405.1 Delian League; -405.1..-403.2 Peloponnesian League; -402.8..-394.1 Peloponnesian League; -394.1..-386.5 Anti Spartan Alliance; -386.5..-378.7 Ionians; -375.4..-357.5 Second Athenian League
+  NEW #416 right after #161: -475.5..-465.5 Delian League | refs [[77, 0], [50, 0], [78, 1], [17, 1], [24, 0], [23, 0], [6, 0], [1239, 1], [1152, 1], [1368, 1], [1376, 1], [1395, 1], [1396, 0], [1369, 1], [1130, 1], [1399, 1], [97, 0]]
+  NEW #417 right after #161: -423.9..-422.4 Delian League | refs [[77, 0], [50, 0], [78, 1], [17, 1], [24, 0], [23, 0], [6, 0], [1400, 0], [1239, 1], [1152, 1], [1368, 1], [1376, 1], [1395, 1], [1149, 1], [1397, 1], [1369, 1], [1130, 1], [1399, 1], [97, 0]]
+  #161: ranges = -475.8..-475.5 Delian League; -465.5..-423.9 Delian League; -422.4..-405.1 Delian League; -405.1..-394.1 Peloponnesian League; -394.1..-386.5 Anti Spartan Alliance; -386.5..-375.6 Ionians; -375.6..-355.1 Second Athenian League
+  NEW #418 right after #174: -347.3..-342.7 Macedonian Ally - Odrysia; -342.7..-341.5 Odrysia; -341.5..-338.2 Kingdom of Macedon | refs [[1150, 1], [1003, 0], [1402, 0], [1395, 0], [1376, 0], [1368, 0], [1153, 1], [1137, 1], [1131, 0]]
+  #174: ranges = -439.5..-359.7 Odrysian Kingdom; -359.7..-352.1 Odrysia; -352.1..-347.3 Macedonian Ally - Odrysia; -338.2..-336.2 Kingdom of Macedon; -336.2..-335.6 Revolt; -335.6..-331.6 Kingdom of Macedon; -331.6..-330.9 Revolt; -330.9..-325.5 Kingdom of Macedon
+  NEW #419 right after #177: -407.5..-359.7 Odrysian Kingdom; -359.7..-352.1 Odrysia; -352.1..-347.3 Macedonian Ally - Odrysia; -338.2..-336.2 Kingdom of Macedon; -336.2..-335.6 Revolt; -335.6..-331.6 Kingdom of Macedon; -331.6..-330.9 Revolt; -330.9..-325.5 Kingdom of Macedon | refs [[1130, 0], [1369, 0], [1397, 0], [1401, 1], [1003, 1], [1150, 0], [1147, 0], [1157, 1], [1196, 0], [1195, 0], [1129, 1]]
+  NEW #420 right after #177: -347.3..-342.7 Macedonian Ally - Odrysia; -342.7..-341.5 Odrysia; -341.5..-338.2 Kingdom of Macedon | refs [[1150, 0], [1147, 0], [1157, 1], [1196, 0], [1195, 0], [1129, 1], [1130, 0], [1369, 0], [1398, 0], [1254, 0], [1003, 1]]
+  #177: ranges = -437.5..-407.5 Odrysian Kingdom
+  NEW #421 right after #217: -407.5..-402.8 Odrysian Kingdom - Eastern Odrysia; -401.3..-400.3 Odrysian Kingdom - Eastern Odrysia | refs [[1303, 1], [1119, 1], [13, 0], [14, 1], [48, 0], [1134, 0], [1196, 1]]
+  #217: ranges = -402.8..-401.3 Odrysian Kingdom - Eastern Odrysia; -400.3..-391.4 Odrysian Kingdom - Eastern Odrysia; -391.5..-390.7 Revolt; -390.7..-384.5 Odrysian Kingdom - Eastern Odrysia; -384.5..-383.5 Revolt; -383.5..-362.5 Odrysian Kingdom; -362.5..-361.6 Revolt; -361.6..-341.5 Odrysian Kingdom; -341.5..-325.5 Kingdom of Macedon
+  NEW #422 right after #261: -347.3..-338.2 Second Athenian League | refs [[1152, 1], [1368, 1], [1376, 1], [1395, 1], [1396, 0], [1369, 1], [1130, 1], [1399, 1], [97, 0], [77, 0], [50, 0], [78, 1], [17, 1], [1238, 1]]
+  #261: ranges = -355.1..-347.3 Second Athenian League; -338.2..-323.4 Kingdom of Macedon; -323.4..-321.9 Kingdom of Macedon - Thrace; -321.9..-321 Revolt of Lysimachus; -321..-319.8 Kingdom of Macedon - Thrace; -319.8..-305.5 Domain of Lysimakhos - Thrace; -305.5..-281.4 Kingdom of Lysimakhos - Thrace; -281.4..-277.1 Macedon - Thrace; -277.1..-242.5 Thrace
+  NEW #423 right after #279: -340.8..-323.4 Kingdom of Macedon; -323.4..-321.9 Kingdom of Macedon - Thrace; -321.9..-321 Revolt of Lysimachus; -321..-319.8 Kingdom of Macedon - Thrace; -319.8..-305.5 Domain of Lysimakhos - Thrace; -305.5..-281.6 Kingdom of Lysimakhos - Thrace | refs [[56, 1], [1092, 1], [1110, 0], [1399, 0], [1129, 0], [1133, 0], [1271, 0], [83, 1]]
+  NEW #424 right after #279: -281.6..-281.4 Kingdom of Lysimakhos - Thrace; -281.4..-277.1 Macedon - Thrace; -277.1..-240.5 Thrace | refs [[56, 1], [1092, 1], [1110, 0], [1399, 0], [1129, 0], [1133, 0], [1271, 0], [83, 1]]
+  #279: ranges = -347.2..-346.5 Odrysian Kingdom; -346.5..-340.8 Kingdom of Macedon
+  #279: refs = [[85, 1], [96, 1], [95, 1], [1394, 0], [1082, 0], [66, 1], [83, 1], [56, 1], [1092, 1], [1110, 0], [1399, 0], [1129, 0], [1133, 0], [1256, 0], [93, 1]]
+  NEW #425 right after #295: -340.8..-281.6 Byzantium | refs [[1256, 0], [93, 1], [85, 1], [96, 1], [95, 1], [1394, 0], [1082, 0], [66, 1], [1271, 1]]
+  #295: ranges = -281.6..-274.5 Northern League - Byzantium; -274.5..-240.5 Byzantium
+
+PAINT ORDER vs OLD ERA RULE disagree for these pairs (paint order = what MAPPER shows was used):
+  #158 vs #88 (first noticed at -475.6)
+  #124 vs #99 (first noticed at -544.8)
+  #295 vs #117 (first noticed at -332.1)
+  #217 vs #164 (first noticed at -405.1)
+
+NOT TOUCHED (overlap >= 0.5 yrs but one entry is a giant > 50000 km2 -- probably intended background/tribal layers):
+  #88 (127 km2) x #132 (102859 km2)
+  #132 (102859 km2) x #143 (4424 km2)
+  #132 (102859 km2) x #152 (48285 km2)
+  #132 (102859 km2) x #412 (48158 km2)
+  #379 (61358 km2) x #424 (2068 km2)
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): DIFFERENCES [(-617.5, 66.2), (-601.5, 66.2), (-576.5, 66.2), (-551.5, 66.2), (-548.8, 66.2), (-544.8, 66.2), (-529.5, 66.2), (-516.5, 66.2), (-515.1, 66.2), (-513.1, 66.2), (-495.5, 66.2), (-492.8, 66.2)]

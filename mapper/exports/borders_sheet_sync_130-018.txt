@@ -1,0 +1,63 @@
+BORDERS SHEET sync for tile 130/018, 2026-11-04   (POL file wins; workbook only read: C:\My stuff\VID\ancient index.xlsx)
+
+1) NEW ROWS: 18 lines in exports/borders_sheet_sync_130-018.tsv (columns A..AK), POL 352..369. Insert after Excel row 5231 (POL 336), in order. (A1 is =MAX(A2:A14168), so it updates itself: 5857 -> 5875)
+
+2) PARENT ROW EDITS (14): Excel row, cell: old -> new, then the split note
+   POL   65 (row 5125): F5125: 23 -> 11   [no new child POL found: changed by hand?]
+   POL  112 (row 5142): F5142: 8 -> 6; I5142/J5142: 20.6917, 41.3833 -> 21.05, 42.02693;  Q5142 = "split 11/4/26 for overlay fix: #112 => 112, 362, 360, 358"
+   POL  113 (row 5143): F5143: 17 -> 14; I5143/J5143: 23.5009, 42.0986 -> 23.11371, 42.3192;  Q5143 = "split 11/4/26 for overlay fix: #113 => 113, 354"
+   POL  115 (row 5145): I5145/J5145: 21.075, 41.2158 -> 21.03507, 41.23356;  Q5145 = "split 11/4/26 for overlay fix: #115 => 115, 356"
+   POL  116 (row 5146): F5146: 14 -> 24   [no new child POL found: changed by hand?]
+   POL  117 (row 5147): F5147: 10 -> 3; I5147/J5147: 20.3093, 40 -> 20.13244, 40.84001;  Q5147 = "split 11/4/26 for overlay fix: #117 => 117, 364, 366, 368"
+   POL  141 (row 5169): F5169: 62 -> 19; I5169/J5169: 23.07247, 41.99283 -> 23.11371, 42.3192;  Q5169 = "split 11/4/26 for overlay fix: #141 => 141, 355"
+   POL  146 (row 5173): F5173: 17 -> 15   [no new child POL found: changed by hand?]
+   POL  187 (row 5187): F5187: 16 -> 4; I5187/J5187: 20.548, 40.5736 -> 20.19343, 40.4971;  Q5187 = "split 11/4/26 for overlay fix: #187 => 187, 369"
+   POL  193 (row 5193): F5193: 10 -> 9; I5193/J5193: 21.075, 41.2158 -> 21.03507, 41.23356;  Q5193 = "split 11/4/26 for overlay fix: #193 => 193, 357"
+   POL  196 (row 5196): F5196: 16 -> 6; I5196/J5196: 21.1875, 41.4558 -> 21.05, 42.02693;  Q5196 = "split 11/4/26 for overlay fix: #196 => 196, 363, 361, 359"
+   POL  199 (row 5199): F5199: 14 -> 15   [no new child POL found: changed by hand?]
+   POL  278 (row 5216): F5216: 26 -> 16   [no new child POL found: changed by hand?]
+   POL  304 (row 5227): F5227: 8 -> 3; I5227/J5227: 20.123, 40.5386 -> 20.13244, 40.84001;  Q5227 = "split 11/4/26 for overlay fix: #304 => 304, 365, 367"
+
+3) BORDER POLs (not transient/blob) in the file but missing from the sheet, numbered below its last row: [8, 56, 57, 58, 59, 60, 68, 69, 73, 74, 77, 82, 86, 96, 98, 153, 174, 181, 205, 215, 216, 255]
+
+NOTES:
+   POL 121: in the sheet but NOT in the POL file
+
+2b) SPLIT PARENT ROWS TO PASTE: exports/borders_sheet_sync_130-018_parents.tsv = 9 lines (columns A..AK), one per split parent, in Excel-row order.
+    Paste each line over the existing row (select A<row>):
+      line  1 -> A5142   (POL 112: F=6, stop 21.05, 42.02693)
+      line  2 -> A5143   (POL 113: F=14, stop 23.11371, 42.3192)
+      line  3 -> A5145   (POL 115: F=7, stop 21.03507, 41.23356)
+      line  4 -> A5147   (POL 117: F=3, stop 20.13244, 40.84001)
+      line  5 -> A5169   (POL 141: F=19, stop 23.11371, 42.3192)
+      line  6 -> A5187   (POL 187: F=4, stop 20.19343, 40.4971)
+      line  7 -> A5193   (POL 193: F=9, stop 21.03507, 41.23356)
+      line  8 -> A5196   (POL 196: F=6, stop 21.05, 42.02693)
+      line  9 -> A5227   (POL 304: F=3, stop 20.13244, 40.84001)
+
+2c) OTHER ROWS WHOSE COUNT/STOP DIFFER FROM THE POL FILE (no split child found; your own edits): exports/borders_sheet_sync_130-018_other_changed_rows.tsv
+      line 1 -> A5125   (POL 65: F=11)
+      line 2 -> A5146   (POL 116: F=24)
+      line 3 -> A5173   (POL 146: F=15)
+      line 4 -> A5199   (POL 199: F=15)
+      line 5 -> A5216   (POL 278: F=16)
+
+4) NEW ROW PREVIEW (A..P):
+   5858 | 2026-11-04 | POLBND | 130/018 | 352 | 2 | 23.37772 | 40.26634 | 23.25758 | 40.25506 | -479.7 | -475.8 | -421.7 | -404.7 | (overlay fix) | split from #98   windows: -479.7, -475.8, -421.7, -404.7
+   5859 | 2026-11-04 | POLBND | 130/018 | 353 | 37 | 23.25758 | 40.25506 | 23.38256 | 40 | -479.7 | -475.8 | -421.7 | -404.7 | (overlay fix) | split from #98   windows: -479.7, -475.8, -421.7, -404.7
+   5860 | 2026-11-04 | POLBND | 130/018 | 354 | 5 | 23.11371 | 42.3192 | 23.5009 | 42.0986 |  |  |  |  | (overlay fix) | split from #113   windows: 
+   5861 | 2026-11-04 | POLBND | 130/018 | 355 | 45 | 23.11371 | 42.3192 | 23.07247 | 41.99283 | -433.5 | -359.7 |  |  | (overlay fix) | split from #141   windows: -433.5, -359.7
+   5862 | 2026-11-04 | POLBND | 130/018 | 356 | 2 | 21.03507 | 41.23356 | 21.075 | 41.2158 |  |  |  |  | (overlay fix) | split from #115   windows: 
+   5863 | 2026-11-04 | POLBND | 130/018 | 357 | 3 | 21.03507 | 41.23356 | 21.075 | 41.2158 | -500.1 | -399.5 | -358.5 | -295.5 | (overlay fix) | split from #193   windows: -500.1, -399.5, -358.5, -295.5, -255.5, -1
+   5864 | 2026-11-04 | POLBND | 130/018 | 358 | 3 | 21.0375 | 41.79086 | 20.6917 | 41.3833 |  |  |  |  | (overlay fix) | split from #112   windows: 
+   5865 | 2026-11-04 | POLBND | 130/018 | 359 | 8 | 21.0375 | 41.79086 | 21.1875 | 41.4558 | -399.5 | -1 |  |  | (overlay fix) | split from #196   windows: -399.5, -1
+   5866 | 2026-11-04 | POLBND | 130/018 | 360 | 3 | 21.05 | 41.87879 | 21.0375 | 41.79086 |  |  |  |  | (overlay fix) | split from #112   windows: 
+   5867 | 2026-11-04 | POLBND | 130/018 | 361 | 3 | 21.05 | 41.87879 | 21.0375 | 41.79086 | -399.5 | -1 |  |  | (overlay fix) | split from #196   windows: -399.5, -1
+   5868 | 2026-11-04 | POLBND | 130/018 | 362 | 2 | 21.05 | 42.02693 | 21.05 | 41.87879 |  |  |  |  | (overlay fix) | split from #112   windows: 
+   5869 | 2026-11-04 | POLBND | 130/018 | 363 | 5 | 21.05 | 42.02693 | 21.05 | 41.87879 | -399.5 | -1 |  |  | (overlay fix) | split from #196   windows: -399.5, -1
+   5870 | 2026-11-04 | POLBND | 130/018 | 364 | 4 | 20.13244 | 40.84001 | 20.15516 | 40.64965 |  |  |  |  | (overlay fix) | split from #117   windows: 
+   5871 | 2026-11-04 | POLBND | 130/018 | 365 | 5 | 20.13244 | 40.84001 | 20.15516 | 40.64965 | -650.1 | -314.4 | -313.6 | -279.1 | (overlay fix) | split from #304   windows: -650.1, -314.4, -313.6, -279.1
+   5872 | 2026-11-04 | POLBND | 130/018 | 366 | 3 | 20.15516 | 40.64965 | 20.19343 | 40.4971 |  |  |  |  | (overlay fix) | split from #117   windows: 
+   5873 | 2026-11-04 | POLBND | 130/018 | 367 | 4 | 20.15516 | 40.64965 | 20.123 | 40.5386 | -650.1 | -314.4 | -313.6 | -279.1 | (overlay fix) | split from #304   windows: -650.1, -314.4, -313.6, -279.1
+   5874 | 2026-11-04 | POLBND | 130/018 | 368 | 6 | 20.19343 | 40.4971 | 20.3093 | 40 |  |  |  |  | (overlay fix) | split from #117   windows: 
+   5875 | 2026-11-04 | POLBND | 130/018 | 369 | 14 | 20.19343 | 40.4971 | 20.548 | 40.5736 | -650.1 | -314.4 | -283.6 | -255.5 | (overlay fix) | split from #187   windows: -650.1, -314.4, -283.6, -255.5

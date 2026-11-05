@@ -1,0 +1,27 @@
+WHOLE-TILE PLAN 130:024   (newer entry takes its area; older entry carved)
+
+20 edit operations; candidates [71, 76, 124, 132, 177, 217, 279, 328, 379]; overlap windows before: 71, after: 0
+POL file header count: 378 -> 378;  PAR file header count: 401 -> 405;  CST file header count: 87 -> 87
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 232 entries
+  - SKIPPED by request (not planned): [84, 99, 117, 120, 276]
+  - new #402 = #71 minus #124 (6011.8 km2), ranges -547.1..-366.8, -366.8..-362.3, -362.3..-356.3, -356.3..-353.2, -353.2..-334.5, -334.5..-318.6, -318.6..-310.5, -310.5..-308.8, -308.8..-306.3, -306.3..-302.3, -302.3..-281.6, -281.6..-272.5
+  - new #403 = #177 minus #217 (13284.7 km2), ranges -407.5..-359.7, -359.7..-352.1, -352.1..-342.7, -342.7..-341.5, -341.5..-336.2, -336.2..-335.6, -335.6..-331.6, -331.6..-330.9, -330.9..-325.5
+  - new #404 = #279 minus #379 (1299.8 km2), ranges -277.1..-240.5
+  - new #405 = #279 minus #379 (1118.8 km2), ranges -277.1..-240.5
+
+PAR EDITS (in order):
+  #171: ranges = -500.1..-445.5 Thraikes
+  NEW #402 right after #71: -547.1..-366.8 Persian Empire - Lydia - Lydia - Hellespontine Phrygia; -366.8..-362.3 Revolt of Ariobarzanes; -362.3..-356.3 Persian Empire - Lydia - Lydia - Hellespontine Phrygia; -356.3..-353.2 Revolt of Artabazus; -353.2..-334.5 Persian Empire - Lydia - Lydia - Hellespontine Phrygia; -334.5..-318.6 Kingdom of Macedon - Hellespontine Phrygia; -318.6..-310.5 Domain of Antigonus -  Hellespontine Phrygia; -310.5..-308.8 Antipatrid Ally - Hellespontine Phrygia; -308.8..-306.3 Domain of Antigonus -  Hellespontine Phrygia; -306.3..-302.3 Antigonid Kingdom - Hellespontine Phrygia; -302.3..-281.6 Kingdom of Lysimakhos - Hellespontine Phrygia; -281.6..-272.5 Seleucid Kingdom - Hellespontine Phrygia | refs [[54, 1], [1036, 0], [1037, 0], {'lit': [30, 40]}, [1089, 1], [76, 1]]
+  #71: ranges = -1535.5..-1334.3 Masa; -1334.3..-1252.5 New Hittite Kingdom - Masa; -1252.5..-1228.4 Masa; -1228.4..-1205.5 New Hittite Kingdom - Masa; -732.5..-696.5 Phrygian Kingdom; -552.5..-547.1 Lydia
+  NEW #403 right after #177: -407.5..-359.7 Odrysian Kingdom; -359.7..-352.1 Odrysia; -352.1..-342.7 Macedonian Ally - Odrysia; -342.7..-341.5 Odrysia; -341.5..-336.2 Kingdom of Macedon; -336.2..-335.6 Revolt; -335.6..-331.6 Kingdom of Macedon; -331.6..-330.9 Revolt; -330.9..-325.5 Kingdom of Macedon | refs [[1130, 0], [1369, 0], [1003, 1], [1150, 0], [1147, 0], [1157, 1], [1196, 0], [1195, 0], [1129, 1]]
+  #177: ranges = -437.5..-407.5 Odrysian Kingdom
+  NEW #404 right after #279: -277.1..-240.5 Thrace | refs [[56, 1], [1092, 1], [1110, 0], [1129, 0], [1357, 0], [83, 1]]
+  NEW #405 right after #279: -277.1..-240.5 Thrace | refs [[66, 1], [1271, 1], [1256, 0], [85, 1]]
+  #279: ranges = -347.2..-346.5 Odrysian Kingdom; -346.5..-323.4 Kingdom of Macedon; -323.4..-321.9 Kingdom of Macedon - Thrace; -321.9..-321 Revolt of Lysimachus; -321..-319.8 Kingdom of Macedon - Thrace; -319.8..-305.5 Domain of Lysimakhos - Thrace; -305.5..-281.4 Kingdom of Lysimakhos - Thrace; -281.4..-277.1 Macedon - Thrace
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical

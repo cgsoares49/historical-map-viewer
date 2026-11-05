@@ -1,0 +1,17 @@
+WHOLE-TILE PLAN 130:024   (newer entry takes its area; older entry carved)
+
+2 edit operations; candidates [132, 152, 158, 161, 409]; overlap windows before: 3, after: 0
+POL file header count: 385 -> 385;  PAR file header count: 414 -> 415;  CST file header count: 88 -> 88
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 232 entries
+  - new #415 = #152 minus #158 (43711.3 km2), ranges -478.4..-475.5
+
+PAR EDITS (in order):
+  NEW #415 right after #152: -478.4..-475.5 Persian Empire - Lydia - Lydia - Thrace | refs [[14, 1], [48, 0], [61, 0], [84, 0], [1127, 0], [1133, 1], [1129, 1], [1385, 1], [88, 0], [77, 0], [50, 0], [78, 1], [17, 1], [24, 0], [23, 0], [6, 0], [1155, 1], [1303, 1], [1119, 1], [13, 0]]
+  #152: ranges = -485.5..-478.4 Persian Empire - Lydia - Lydia - Thrace
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical

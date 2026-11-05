@@ -1,0 +1,18 @@
+GroupID,GroupSize,Tile,EntryIndex,LastNameSegment,StackDepth,Role,Overlays,OverlaidBy,AreaKm2,FirstOverlapFrom,FirstOverlapTo,DistinctWindows,MaxIntersectionRatio,Semitransient,ConfirmedByLog,AllOwnersEver
+1,5,130/024,163,Getae,2,OVERLAY,Thraikes (9% of its own area) [-469.5..-341.5],,11900.2,-469.5,-341.5,4,1.0,,,Domain of Lysimakhos; Getae; Kingdom of Lysimakhos; Macedonian Ally; Odrysian Kingdom
+1,5,130/024,171,Thraikes,1,BASE,,Triballi (100% of THIS entity covered) [-445.5..-341.5]; Scythia (97% of THIS entity covered) [-355.5..-341.5]; Getae; Odrysian Kingdom (39% of THIS entity covered) [-435.5..-341.5]; Getae (9% of THIS entity covered) [-469.5..-341.5],62732.2,-469.5,-341.5,6,1.0,,,Thraikes
+1,5,130/024,173,Triballi,2,OVERLAY,Thraikes (100% of its own area) [-445.5..-341.5],,12646.9,-445.5,-341.5,1,1.0,,,Macedonian Ally; Triballi
+1,5,130/024,179,Getae; Odrysian Kingdom,2,OVERLAY,Thraikes (39% of its own area) [-435.5..-341.5],,32913.6,-435.5,-341.5,3,1.0,,,Getae; Macedonian Ally; Odrysian Kingdom
+1,5,130/024,288,Scythia,2,OVERLAY,Thraikes (97% of its own area) [-355.5..-341.5],,32272.6,-355.5,-341.5,1,1.0,,,Scythia
+2,4,130/024,132,Thrace,,AMBIGUOUS (cyclic evidence),,,102859.0,-480.4,-475.5,3,1.0,,,Persian Empire
+2,4,130/024,152,Thrace,,AMBIGUOUS (cyclic evidence),,,48284.5,-480.4,-475.5,3,1.0,,,Persian Empire
+2,4,130/024,158,Delian League; Greek Alliance,,AMBIGUOUS (cyclic evidence),,,4573.2,-478.4,-475.5,2,1.0,,,Anti Spartan Alliance; Byzantium; Delian League; Greek Alliance; Ionians; Peloponnesian League; Revolt; Second Athenian League
+2,4,130/024,161,Delian League,,AMBIGUOUS (cyclic evidence),,,3347.5,-475.8,-475.5,1,1.0,,,Anti Spartan Alliance; Delian League; Ionians; Peloponnesian League; Second Athenian League
+3,2,130/024,71,Hellespontine Phrygia; Revolt of Ariobarzanes; Revolt of Artabazus,,AMBIGUOUS (cyclic evidence),,,9376.5,-547.1,-272.5,13,0.482,,,Antigonid Kingdom; Antipatrid Ally; Domain of Antigonus; Kingdom of Lysimakhos; Kingdom of Macedon; Lydia; Masa; New Hittite Kingdom; Persian Empire; Phrygian Kingdom; Revolt of Ariobarzanes; Revolt of Artabazus; Seleucid Kingdom
+3,2,130/024,124,Hellespontine Phrygia; Mysians; Revolt of Ariobarzanes; Revolt of Artabazus,,AMBIGUOUS (cyclic evidence),,,6983.8,-547.1,-272.5,13,0.482,,,Antigonid Kingdom; Antipatrid Ally; Domain of Antigonus; Kingdom of Lysimakhos; Kingdom of Macedon; Mysians; Persian Empire; Revolt of Ariobarzanes; Revolt of Artabazus; Seleucid Kingdom
+4,2,130/024,177,Kingdom of Macedon; Odrysia; Odrysian Kingdom; Revolt,,AMBIGUOUS (cyclic evidence),,,19922.4,-407.5,-325.5,15,0.516,,,Kingdom of Macedon; Macedonian Ally; Odrysia; Odrysian Kingdom; Revolt
+4,2,130/024,217,Eastern Odrysia; Kingdom of Macedon; Odrysian Kingdom; Revolt,,AMBIGUOUS (cyclic evidence),,,12852.0,-407.5,-325.5,15,0.516,,,Kingdom of Macedon; Odrysian Kingdom; Revolt
+5,2,130/024,279,Thrace,2,OVERLAY,Kingdom of Tylis (24% of its own area) [-277.1..-240.5],,3186.8,-277.1,-240.5,1,0.241,,,Domain of Lysimakhos; Kingdom of Lysimakhos; Kingdom of Macedon; Macedon; Odrysian Kingdom; Revolt of Lysimachus; Thrace
+5,2,130/024,379,Kingdom of Tylis,1,BASE,,Thrace (24% of THIS entity covered) [-277.1..-240.5],61358.3,-277.1,-240.5,1,0.241,,,Kingdom of Tylis
+6,2,130/024,107,Neapolis (Thrace),,AMBIGUOUS (cyclic evidence),,,154.1,-635.5,-492.1,2,0.075,,,Ionians
+6,2,130/024,109,Oisyme,,AMBIGUOUS (cyclic evidence),,,132.0,-635.5,-492.1,2,0.075,,,Ionians

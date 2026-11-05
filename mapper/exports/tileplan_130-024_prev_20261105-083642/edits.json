@@ -1,0 +1,2870 @@
+[
+ {
+  "op": "par_renumber",
+  "entry": 10,
+  "occurrence": 2,
+  "new": 19
+ },
+ {
+  "op": "par_renumber",
+  "entry": 20,
+  "occurrence": 2,
+  "new": 38
+ },
+ {
+  "op": "par_renumber",
+  "entry": 111,
+  "occurrence": 2,
+  "new": 112
+ },
+ {
+  "op": "par_renumber",
+  "entry": 206,
+  "occurrence": 2,
+  "new": 255
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 141,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 295,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 311,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 276,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 120,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 99,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 84,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 117,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 171,
+  "ranges": [
+   {
+    "from": -500.1,
+    "to": -445.5,
+    "name": "Thraikes",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 67,
+  "points": [
+   [
+    26.61439,
+    40.29136
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 64,
+  "points": [
+   [
+    26.61439,
+    40.29136
+   ],
+   [
+    26.7775,
+    40.41197
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 402,
+  "after": 70,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -654.5,
+    "to": -547.1,
+    "name": "Lydia",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    67,
+    0
+   ],
+   [
+    1380,
+    0
+   ],
+   [
+    1064,
+    0
+   ],
+   [
+    68,
+    0
+   ],
+   [
+    82,
+    0
+   ],
+   [
+    1035,
+    0
+   ],
+   [
+    34,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 70,
+  "ranges": [
+   {
+    "from": -1535.5,
+    "to": -1366.5,
+    "name": "Wilusa",
+    "color": 0
+   },
+   {
+    "from": -1366.5,
+    "to": -1319.7,
+    "name": "New Hittite Kingdom - Wilusa",
+    "color": 43
+   },
+   {
+    "from": -1319.7,
+    "to": -1318.4,
+    "name": "Wilusa",
+    "color": 0
+   },
+   {
+    "from": -1318.4,
+    "to": -1252.5,
+    "name": "New Hittite Kingdom - Wilusa",
+    "color": 43
+   },
+   {
+    "from": -1252.5,
+    "to": -1251.3,
+    "name": "Arzawa - Wilusa",
+    "color": 11
+   },
+   {
+    "from": -1251.3,
+    "to": -1248.3,
+    "name": "New Hittite Kingdom - Wilusa",
+    "color": 43
+   },
+   {
+    "from": -1248.3,
+    "to": -1247.5,
+    "name": "Wilusa",
+    "color": 0
+   },
+   {
+    "from": -1247.5,
+    "to": -1235.5,
+    "name": "New Hittite Kingdom - Wilusa",
+    "color": 43
+   },
+   {
+    "from": -1235.5,
+    "to": -1225.5,
+    "name": "Arzawa - Wilusa",
+    "color": 11
+   },
+   {
+    "from": -1225.5,
+    "to": -1205.5,
+    "name": "Wilusa",
+    "color": 0
+   },
+   {
+    "from": -667.5,
+    "to": -654.5,
+    "name": "Lydia",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 403,
+  "after": 71,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -547.1,
+    "to": -475.8,
+    "name": "Persian Empire - Lydia - Lydia - Hellespontine Phrygia",
+    "color": 15
+   },
+   {
+    "from": -404.7,
+    "to": -366.8,
+    "name": "Persian Empire - Lydia - Lydia - Hellespontine Phrygia",
+    "color": 15
+   },
+   {
+    "from": -366.8,
+    "to": -362.3,
+    "name": "Revolt of Ariobarzanes",
+    "color": 0
+   },
+   {
+    "from": -362.3,
+    "to": -356.3,
+    "name": "Persian Empire - Lydia - Lydia - Hellespontine Phrygia",
+    "color": 15
+   },
+   {
+    "from": -356.3,
+    "to": -353.2,
+    "name": "Revolt of Artabazus",
+    "color": 0
+   },
+   {
+    "from": -353.2,
+    "to": -334.5,
+    "name": "Persian Empire - Lydia - Lydia - Hellespontine Phrygia",
+    "color": 15
+   },
+   {
+    "from": -334.5,
+    "to": -318.6,
+    "name": "Kingdom of Macedon - Hellespontine Phrygia",
+    "color": 36
+   },
+   {
+    "from": -318.6,
+    "to": -310.5,
+    "name": "Domain of Antigonus -  Hellespontine Phrygia",
+    "color": 15
+   },
+   {
+    "from": -310.5,
+    "to": -308.8,
+    "name": "Antipatrid Ally - Hellespontine Phrygia",
+    "color": 2
+   },
+   {
+    "from": -308.8,
+    "to": -306.3,
+    "name": "Domain of Antigonus -  Hellespontine Phrygia",
+    "color": 15
+   },
+   {
+    "from": -306.3,
+    "to": -302.3,
+    "name": "Antigonid Kingdom - Hellespontine Phrygia",
+    "color": 15
+   },
+   {
+    "from": -302.3,
+    "to": -281.6,
+    "name": "Kingdom of Lysimakhos - Hellespontine Phrygia",
+    "color": 4
+   },
+   {
+    "from": -281.6,
+    "to": -272.5,
+    "name": "Seleucid Kingdom - Hellespontine Phrygia",
+    "color": 16
+   }
+  ],
+  "refs": [
+   [
+    54,
+    1
+   ],
+   [
+    1036,
+    0
+   ],
+   [
+    1037,
+    0
+   ],
+   {
+    "lit": [
+     30,
+     40
+    ]
+   },
+   [
+    1089,
+    1
+   ],
+   [
+    76,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 35,
+  "points": [
+   [
+    27.41987,
+    40.20595
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 128,
+  "points": [
+   [
+    27.41987,
+    40.20595
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 89,
+  "points": [
+   [
+    28.27997,
+    40.15907
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 128,
+  "points": [
+   [
+    28.27997,
+    40.15907
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 36,
+  "points": [
+   [
+    29.28851,
+    40.33575
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 128,
+  "points": [
+   [
+    29.28851,
+    40.33575
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 404,
+  "after": 71,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -475.8,
+    "to": -404.7,
+    "name": "Persian Empire - Lydia - Lydia - Hellespontine Phrygia",
+    "color": 15
+   }
+  ],
+  "refs": [
+   [
+    1037,
+    0
+   ],
+   {
+    "lit": [
+     30,
+     40
+    ]
+   },
+   [
+    1383,
+    1
+   ],
+   [
+    1386,
+    1
+   ],
+   [
+    1385,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 71,
+  "ranges": [
+   {
+    "from": -1535.5,
+    "to": -1334.3,
+    "name": "Masa",
+    "color": 0
+   },
+   {
+    "from": -1334.3,
+    "to": -1252.5,
+    "name": "New Hittite Kingdom - Masa",
+    "color": 50
+   },
+   {
+    "from": -1252.5,
+    "to": -1228.4,
+    "name": "Masa",
+    "color": 0
+   },
+   {
+    "from": -1228.4,
+    "to": -1205.5,
+    "name": "New Hittite Kingdom - Masa",
+    "color": 50
+   },
+   {
+    "from": -732.5,
+    "to": -696.5,
+    "name": "Phrygian Kingdom",
+    "color": 0
+   },
+   {
+    "from": -552.5,
+    "to": -547.1,
+    "name": "Lydia",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 405,
+  "after": 76,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -475.8,
+    "to": -404.7,
+    "name": "Persian Empire - Lydia - Lydia - Hellespontine Phrygia",
+    "color": 15
+   }
+  ],
+  "refs": [
+   [
+    73,
+    0
+   ],
+   [
+    1037,
+    1
+   ],
+   [
+    1385,
+    1
+   ],
+   [
+    1128,
+    1
+   ],
+   [
+    79,
+    1
+   ],
+   [
+    72,
+    1
+   ],
+   [
+    69,
+    1
+   ],
+   [
+    74,
+    1
+   ],
+   [
+    58,
+    1
+   ],
+   [
+    1125,
+    1
+   ],
+   [
+    57,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 76,
+  "ranges": [
+   {
+    "from": -732.5,
+    "to": -696.5,
+    "name": "Phrygian Kingdom",
+    "color": 0
+   },
+   {
+    "from": -552.5,
+    "to": -547.1,
+    "name": "Lydia",
+    "color": 0
+   },
+   {
+    "from": -547.1,
+    "to": -475.8,
+    "name": "Persian Empire - Lydia - Lydia - Hellespontine Phrygia",
+    "color": 15
+   },
+   {
+    "from": -404.7,
+    "to": -366.8,
+    "name": "Persian Empire - Lydia - Lydia - Hellespontine Phrygia",
+    "color": 15
+   },
+   {
+    "from": -366.8,
+    "to": -362.3,
+    "name": "Revolt of Ariobarzanes",
+    "color": 0
+   },
+   {
+    "from": -362.3,
+    "to": -356.3,
+    "name": "Persian Empire - Lydia - Lydia - Hellespontine Phrygia",
+    "color": 15
+   },
+   {
+    "from": -356.3,
+    "to": -353.2,
+    "name": "Revolt of Artabazus",
+    "color": 0
+   },
+   {
+    "from": -353.2,
+    "to": -334.5,
+    "name": "Persian Empire - Lydia - Lydia - Hellespontine Phrygia",
+    "color": 15
+   },
+   {
+    "from": -334.5,
+    "to": -323.4,
+    "name": "Kingdom of Macedon - Hellespontine Phrygia",
+    "color": 36
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 85,
+  "points": [
+   [
+    26.3444,
+    40.1215
+   ],
+   [
+    26.4783,
+    40.2568
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 16,
+  "points": [
+   [
+    26.3444,
+    40.1215
+   ],
+   [
+    26.4783,
+    40.2568
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 406,
+  "after": 127,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -394.1,
+    "to": -386.5,
+    "name": "Anti Spartan Alliance - Thracian Chersonese",
+    "color": 51
+   },
+   {
+    "from": -361.5,
+    "to": -360.5,
+    "name": "Odrysian Kingdom - Thracian Chersonese",
+    "color": 9
+   }
+  ],
+  "refs": [
+   [
+    1388,
+    0
+   ],
+   [
+    1085,
+    0
+   ],
+   [
+    16,
+    1
+   ],
+   [
+    51,
+    0
+   ],
+   [
+    1092,
+    0
+   ],
+   [
+    90,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 127,
+  "ranges": [
+   {
+    "from": -550.5,
+    "to": -516.6,
+    "name": "Athens - Thracian Chersonese",
+    "color": 12
+   },
+   {
+    "from": -516.6,
+    "to": -516.5,
+    "name": "Revolt",
+    "color": 0
+   },
+   {
+    "from": -516.5,
+    "to": -512.5,
+    "name": "Athens - Thracian Chersonese",
+    "color": 12
+   },
+   {
+    "from": -512.5,
+    "to": -498.4,
+    "name": "Persian Empire - Lydia - Lydia - Thrace - Thracian Chersonese",
+    "color": 97
+   },
+   {
+    "from": -498.4,
+    "to": -493.5,
+    "name": "Ionian League - Thracian Chersonese",
+    "color": 54
+   },
+   {
+    "from": -493.5,
+    "to": -479.0,
+    "name": "Persian Empire - Lydia - Lydia - Thrace - Thracian Chersonese",
+    "color": 97
+   },
+   {
+    "from": -479.0,
+    "to": -478.3,
+    "name": "Greek Alliance - Thracian Chersonese",
+    "color": 70
+   },
+   {
+    "from": -478.3,
+    "to": -405.1,
+    "name": "Delian League - Thracian Chersonese",
+    "color": 70
+   },
+   {
+    "from": -405.1,
+    "to": -394.1,
+    "name": "Peloponnesian League - Thracian Chersonese",
+    "color": 74
+   },
+   {
+    "from": -386.5,
+    "to": -375.4,
+    "name": "Ionians - Thracian Chersonese",
+    "color": 109
+   },
+   {
+    "from": -375.4,
+    "to": -362.6,
+    "name": "Second Athenian League - Thracian Chersonese",
+    "color": 46
+   },
+   {
+    "from": -362.6,
+    "to": -361.5,
+    "name": "Odrysian Kingdom - Thracian Chersonese",
+    "color": 9
+   },
+   {
+    "from": -360.5,
+    "to": -353.2,
+    "name": "Odrysian Kingdom - Thracian Chersonese",
+    "color": 9
+   },
+   {
+    "from": -353.2,
+    "to": -338.2,
+    "name": "Second Athenian League - Thracian Chersonese",
+    "color": 46
+   },
+   {
+    "from": -338.2,
+    "to": -323.4,
+    "name": "Kingdom of Macedon",
+    "color": 0
+   },
+   {
+    "from": -323.4,
+    "to": -321.9,
+    "name": "Kingdom of Macedon - Thrace",
+    "color": 132
+   },
+   {
+    "from": -321.9,
+    "to": -321.0,
+    "name": "Revolt of Lysimachus",
+    "color": 0
+   },
+   {
+    "from": -321.0,
+    "to": -319.8,
+    "name": "Kingdom of Macedon - Thrace",
+    "color": 132
+   },
+   {
+    "from": -319.8,
+    "to": -305.5,
+    "name": "Domain of Lysimakhos - Thrace",
+    "color": 3
+   },
+   {
+    "from": -305.5,
+    "to": -281.4,
+    "name": "Kingdom of Lysimakhos - Thrace",
+    "color": 3
+   },
+   {
+    "from": -281.4,
+    "to": -277.1,
+    "name": "Macedon - Thrace",
+    "color": 2
+   },
+   {
+    "from": -277.1,
+    "to": -240.5,
+    "name": "Thrace",
+    "color": 0
+   },
+   {
+    "from": -240.5,
+    "to": -1.0,
+    "name": "Ptolemaic Kingdom",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 407,
+  "after": 124,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -547.1,
+    "to": -542.5,
+    "name": "Mysians",
+    "color": 0
+   },
+   {
+    "from": -542.5,
+    "to": -513.8,
+    "name": "Persian Empire - Lydia - Lydia - Hellespontine Phrygia",
+    "color": 15
+   }
+  ],
+  "refs": [
+   [
+    67,
+    0
+   ],
+   [
+    1380,
+    0
+   ],
+   [
+    1064,
+    0
+   ],
+   [
+    68,
+    0
+   ],
+   [
+    82,
+    0
+   ],
+   [
+    53,
+    0
+   ],
+   [
+    80,
+    0
+   ],
+   [
+    81,
+    0
+   ],
+   [
+    1089,
+    0
+   ],
+   [
+    1383,
+    0
+   ],
+   [
+    34,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 408,
+  "after": 124,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -498.4,
+    "to": -493.5,
+    "name": "Persian Empire - Lydia - Lydia - Hellespontine Phrygia",
+    "color": 15
+   }
+  ],
+  "refs": [
+   [
+    80,
+    0
+   ],
+   [
+    81,
+    0
+   ],
+   [
+    1089,
+    0
+   ],
+   [
+    1383,
+    0
+   ],
+   [
+    1108,
+    0
+   ],
+   [
+    53,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 409,
+  "after": 124,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -475.8,
+    "to": -411.5,
+    "name": "Persian Empire - Lydia - Lydia - Hellespontine Phrygia",
+    "color": 15
+   },
+   {
+    "from": -411.4,
+    "to": -404.7,
+    "name": "Persian Empire - Lydia - Lydia - Hellespontine Phrygia",
+    "color": 15
+   }
+  ],
+  "refs": [
+   [
+    1382,
+    1
+   ],
+   [
+    1384,
+    1
+   ],
+   [
+    1383,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 410,
+  "after": 124,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -411.5,
+    "to": -411.4,
+    "name": "Persian Empire - Lydia - Lydia - Hellespontine Phrygia",
+    "color": 15
+   }
+  ],
+  "refs": [
+   [
+    1382,
+    1
+   ],
+   [
+    1384,
+    1
+   ],
+   [
+    1383,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 411,
+  "after": 124,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -336.6,
+    "to": -335.5,
+    "name": "Persian Empire - Lydia - Lydia - Hellespontine Phrygia",
+    "color": 15
+   },
+   {
+    "from": -242.5,
+    "to": -240.5,
+    "name": "Seleucid Kingdom - Hellespontine Phrygia",
+    "color": 16
+   }
+  ],
+  "refs": [
+   [
+    1285,
+    1
+   ],
+   [
+    68,
+    0
+   ],
+   [
+    82,
+    0
+   ],
+   [
+    53,
+    0
+   ],
+   [
+    80,
+    0
+   ],
+   [
+    81,
+    0
+   ],
+   [
+    1089,
+    0
+   ],
+   [
+    1383,
+    0
+   ],
+   [
+    34,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 124,
+  "ranges": [
+   {
+    "from": -513.8,
+    "to": -498.4,
+    "name": "Persian Empire - Lydia - Lydia - Hellespontine Phrygia",
+    "color": 15
+   },
+   {
+    "from": -493.5,
+    "to": -475.8,
+    "name": "Persian Empire - Lydia - Lydia - Hellespontine Phrygia",
+    "color": 15
+   },
+   {
+    "from": -404.7,
+    "to": -366.8,
+    "name": "Persian Empire - Lydia - Lydia - Hellespontine Phrygia",
+    "color": 15
+   },
+   {
+    "from": -366.8,
+    "to": -362.3,
+    "name": "Revolt of Ariobarzanes",
+    "color": 0
+   },
+   {
+    "from": -362.3,
+    "to": -356.3,
+    "name": "Persian Empire - Lydia - Lydia - Hellespontine Phrygia",
+    "color": 15
+   },
+   {
+    "from": -356.3,
+    "to": -353.2,
+    "name": "Revolt of Artabazus",
+    "color": 0
+   },
+   {
+    "from": -353.2,
+    "to": -336.6,
+    "name": "Persian Empire - Lydia - Lydia - Hellespontine Phrygia",
+    "color": 15
+   },
+   {
+    "from": -335.5,
+    "to": -334.5,
+    "name": "Persian Empire - Lydia - Lydia - Hellespontine Phrygia",
+    "color": 15
+   },
+   {
+    "from": -334.5,
+    "to": -318.6,
+    "name": "Kingdom of Macedon - Hellespontine Phrygia",
+    "color": 36
+   },
+   {
+    "from": -318.6,
+    "to": -310.5,
+    "name": "Domain of Antigonus -  Hellespontine Phrygia",
+    "color": 15
+   },
+   {
+    "from": -310.5,
+    "to": -308.8,
+    "name": "Antipatrid Ally - Hellespontine Phrygia",
+    "color": 2
+   },
+   {
+    "from": -308.8,
+    "to": -306.3,
+    "name": "Domain of Antigonus -  Hellespontine Phrygia",
+    "color": 15
+   },
+   {
+    "from": -306.3,
+    "to": -302.3,
+    "name": "Antigonid Kingdom - Hellespontine Phrygia",
+    "color": 15
+   },
+   {
+    "from": -302.3,
+    "to": -281.6,
+    "name": "Kingdom of Lysimakhos - Hellespontine Phrygia",
+    "color": 4
+   },
+   {
+    "from": -281.6,
+    "to": -242.5,
+    "name": "Seleucid Kingdom - Hellespontine Phrygia",
+    "color": 16
+   }
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 47,
+  "points": [
+   [
+    29.05645,
+    41.08561
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 53,
+  "points": [
+   [
+    28.89283,
+    40.98461
+   ],
+   [
+    29.05645,
+    41.08561
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 65,
+  "points": [
+   [
+    28.89283,
+    40.98461
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 412,
+  "after": 152,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -478.3,
+    "to": -475.5,
+    "name": "Persian Empire - Lydia - Lydia - Thrace",
+    "color": 96
+   }
+  ],
+  "refs": [
+   [
+    14,
+    1
+   ],
+   [
+    48,
+    0
+   ],
+   [
+    61,
+    0
+   ],
+   [
+    84,
+    0
+   ],
+   [
+    60,
+    0
+   ],
+   [
+    47,
+    0
+   ],
+   [
+    1390,
+    0
+   ],
+   [
+    1053,
+    0
+   ],
+   [
+    65,
+    1
+   ],
+   [
+    85,
+    1
+   ],
+   [
+    66,
+    1
+   ],
+   [
+    83,
+    1
+   ],
+   [
+    56,
+    1
+   ],
+   [
+    1092,
+    1
+   ],
+   [
+    55,
+    0
+   ],
+   [
+    77,
+    0
+   ],
+   [
+    50,
+    0
+   ],
+   [
+    78,
+    1
+   ],
+   [
+    17,
+    1
+   ],
+   [
+    24,
+    0
+   ],
+   [
+    23,
+    0
+   ],
+   [
+    6,
+    0
+   ],
+   [
+    1155,
+    1
+   ],
+   [
+    1303,
+    1
+   ],
+   [
+    1119,
+    1
+   ],
+   [
+    13,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 152,
+  "ranges": [
+   {
+    "from": -485.5,
+    "to": -478.3,
+    "name": "Persian Empire - Lydia - Lydia - Thrace",
+    "color": 96
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 413,
+  "after": 158,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -475.8,
+    "to": -471.5,
+    "name": "Delian League",
+    "color": 0
+   },
+   {
+    "from": -440.5,
+    "to": -440.1,
+    "name": "Delian League",
+    "color": 0
+   },
+   {
+    "from": -408.3,
+    "to": -408.2,
+    "name": "Delian League",
+    "color": 0
+   },
+   {
+    "from": -403.2,
+    "to": -402.8,
+    "name": "Peloponnesian League",
+    "color": 0
+   },
+   {
+    "from": -378.7,
+    "to": -375.4,
+    "name": "Ionians",
+    "color": 0
+   },
+   {
+    "from": -357.5,
+    "to": -357.2,
+    "name": "Second Athenian League",
+    "color": 0
+   },
+   {
+    "from": -357.2,
+    "to": -355.5,
+    "name": "Revolt",
+    "color": 0
+   },
+   {
+    "from": -355.5,
+    "to": -347.2,
+    "name": "Byzantium",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1390,
+    0
+   ],
+   [
+    1053,
+    0
+   ],
+   [
+    65,
+    1
+   ],
+   [
+    85,
+    1
+   ],
+   [
+    66,
+    1
+   ],
+   [
+    83,
+    1
+   ],
+   [
+    56,
+    1
+   ],
+   [
+    1092,
+    1
+   ],
+   [
+    1110,
+    0
+   ],
+   [
+    1129,
+    0
+   ],
+   [
+    1133,
+    0
+   ],
+   [
+    1127,
+    1
+   ],
+   [
+    60,
+    0
+   ],
+   [
+    47,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 85,
+  "points": [
+   [
+    28.34711,
+    41.06367
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 49,
+  "points": [
+   [
+    28.1483,
+    41.0727
+   ],
+   [
+    28.34711,
+    41.06367
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 66,
+  "points": [
+   [
+    27.85206,
+    40.99569
+   ],
+   [
+    28.02186,
+    41.03892
+   ],
+   [
+    28.1483,
+    41.0727
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 82,
+  "points": [
+   [
+    27.85206,
+    40.99569
+   ],
+   [
+    28.02186,
+    41.03892
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 414,
+  "after": 158,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -411.3,
+    "to": -410.6,
+    "name": "Delian League",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1390,
+    0
+   ],
+   [
+    1053,
+    0
+   ],
+   [
+    65,
+    1
+   ],
+   [
+    93,
+    1
+   ],
+   [
+    1392,
+    0
+   ],
+   [
+    1049,
+    0
+   ],
+   [
+    95,
+    1
+   ],
+   [
+    1394,
+    0
+   ],
+   [
+    1082,
+    0
+   ],
+   [
+    66,
+    1
+   ],
+   [
+    83,
+    1
+   ],
+   [
+    56,
+    1
+   ],
+   [
+    1092,
+    1
+   ],
+   [
+    1110,
+    0
+   ],
+   [
+    1129,
+    0
+   ],
+   [
+    1133,
+    0
+   ],
+   [
+    1127,
+    1
+   ],
+   [
+    60,
+    0
+   ],
+   [
+    47,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 415,
+  "after": 158,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -410.6,
+    "to": -408.3,
+    "name": "Delian League",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1390,
+    0
+   ],
+   [
+    1053,
+    0
+   ],
+   [
+    65,
+    1
+   ],
+   [
+    93,
+    1
+   ],
+   [
+    1392,
+    0
+   ],
+   [
+    1049,
+    0
+   ],
+   [
+    95,
+    1
+   ],
+   [
+    94,
+    1
+   ],
+   [
+    66,
+    1
+   ],
+   [
+    83,
+    1
+   ],
+   [
+    56,
+    1
+   ],
+   [
+    1092,
+    1
+   ],
+   [
+    1110,
+    0
+   ],
+   [
+    1129,
+    0
+   ],
+   [
+    1133,
+    0
+   ],
+   [
+    1127,
+    1
+   ],
+   [
+    60,
+    0
+   ],
+   [
+    47,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 158,
+  "ranges": [
+   {
+    "from": -478.4,
+    "to": -478.3,
+    "name": "Greek Alliance",
+    "color": 0
+   },
+   {
+    "from": -471.5,
+    "to": -440.5,
+    "name": "Delian League",
+    "color": 0
+   },
+   {
+    "from": -440.1,
+    "to": -411.3,
+    "name": "Delian League",
+    "color": 0
+   },
+   {
+    "from": -408.2,
+    "to": -405.1,
+    "name": "Delian League",
+    "color": 0
+   },
+   {
+    "from": -405.1,
+    "to": -403.2,
+    "name": "Peloponnesian League",
+    "color": 0
+   },
+   {
+    "from": -402.8,
+    "to": -394.1,
+    "name": "Peloponnesian League",
+    "color": 0
+   },
+   {
+    "from": -394.1,
+    "to": -386.5,
+    "name": "Anti Spartan Alliance",
+    "color": 0
+   },
+   {
+    "from": -386.5,
+    "to": -378.7,
+    "name": "Ionians",
+    "color": 0
+   },
+   {
+    "from": -375.4,
+    "to": -357.5,
+    "name": "Second Athenian League",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 149,
+  "points": [
+   [
+    26.07185,
+    40.91219
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 254,
+  "points": [
+   [
+    26.07185,
+    40.91219
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 369,
+  "points": [
+   [
+    26.18986,
+    40.77722
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 396,
+  "points": [
+   [
+    26.18986,
+    40.77722
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 110,
+  "points": [
+   [
+    26.837,
+    40.62392
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 55,
+  "points": [
+   [
+    26.837,
+    40.62392
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 416,
+  "after": 161,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -475.5,
+    "to": -465.5,
+    "name": "Delian League",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    77,
+    0
+   ],
+   [
+    50,
+    0
+   ],
+   [
+    78,
+    1
+   ],
+   [
+    17,
+    1
+   ],
+   [
+    24,
+    0
+   ],
+   [
+    23,
+    0
+   ],
+   [
+    6,
+    0
+   ],
+   [
+    1239,
+    1
+   ],
+   [
+    1152,
+    1
+   ],
+   [
+    1368,
+    1
+   ],
+   [
+    1376,
+    1
+   ],
+   [
+    1395,
+    1
+   ],
+   [
+    1396,
+    0
+   ],
+   [
+    1369,
+    1
+   ],
+   [
+    1130,
+    1
+   ],
+   [
+    1399,
+    1
+   ],
+   [
+    97,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "cst_split",
+  "cst": 6,
+  "points": [
+   [
+    24.0846,
+    40.7284
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 76,
+  "points": [
+   [
+    24.0846,
+    40.7284
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 417,
+  "after": 161,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -423.9,
+    "to": -422.4,
+    "name": "Delian League",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    77,
+    0
+   ],
+   [
+    50,
+    0
+   ],
+   [
+    78,
+    1
+   ],
+   [
+    17,
+    1
+   ],
+   [
+    24,
+    0
+   ],
+   [
+    23,
+    0
+   ],
+   [
+    6,
+    0
+   ],
+   [
+    1400,
+    0
+   ],
+   [
+    1239,
+    1
+   ],
+   [
+    1152,
+    1
+   ],
+   [
+    1368,
+    1
+   ],
+   [
+    1376,
+    1
+   ],
+   [
+    1395,
+    1
+   ],
+   [
+    1149,
+    1
+   ],
+   [
+    1397,
+    1
+   ],
+   [
+    1369,
+    1
+   ],
+   [
+    1130,
+    1
+   ],
+   [
+    1399,
+    1
+   ],
+   [
+    97,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 161,
+  "ranges": [
+   {
+    "from": -475.8,
+    "to": -475.5,
+    "name": "Delian League",
+    "color": 0
+   },
+   {
+    "from": -465.5,
+    "to": -423.9,
+    "name": "Delian League",
+    "color": 0
+   },
+   {
+    "from": -422.4,
+    "to": -405.1,
+    "name": "Delian League",
+    "color": 0
+   },
+   {
+    "from": -405.1,
+    "to": -394.1,
+    "name": "Peloponnesian League",
+    "color": 0
+   },
+   {
+    "from": -394.1,
+    "to": -386.5,
+    "name": "Anti Spartan Alliance",
+    "color": 0
+   },
+   {
+    "from": -386.5,
+    "to": -375.6,
+    "name": "Ionians",
+    "color": 0
+   },
+   {
+    "from": -375.6,
+    "to": -355.1,
+    "name": "Second Athenian League",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 3,
+  "points": [
+   [
+    26.25702,
+    40.91033
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 254,
+  "points": [
+   [
+    26.25702,
+    40.91033
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 418,
+  "after": 174,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -347.3,
+    "to": -342.7,
+    "name": "Macedonian Ally - Odrysia",
+    "color": 4
+   },
+   {
+    "from": -342.7,
+    "to": -341.5,
+    "name": "Odrysia",
+    "color": 0
+   },
+   {
+    "from": -341.5,
+    "to": -338.2,
+    "name": "Kingdom of Macedon",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1150,
+    1
+   ],
+   [
+    1003,
+    0
+   ],
+   [
+    1402,
+    0
+   ],
+   [
+    1395,
+    0
+   ],
+   [
+    1376,
+    0
+   ],
+   [
+    1368,
+    0
+   ],
+   [
+    1153,
+    1
+   ],
+   [
+    1137,
+    1
+   ],
+   [
+    1131,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 174,
+  "ranges": [
+   {
+    "from": -439.5,
+    "to": -359.7,
+    "name": "Odrysian Kingdom",
+    "color": 0
+   },
+   {
+    "from": -359.7,
+    "to": -352.1,
+    "name": "Odrysia",
+    "color": 0
+   },
+   {
+    "from": -352.1,
+    "to": -347.3,
+    "name": "Macedonian Ally - Odrysia",
+    "color": 4
+   },
+   {
+    "from": -338.2,
+    "to": -336.2,
+    "name": "Kingdom of Macedon",
+    "color": 0
+   },
+   {
+    "from": -336.2,
+    "to": -335.6,
+    "name": "Revolt",
+    "color": 0
+   },
+   {
+    "from": -335.6,
+    "to": -331.6,
+    "name": "Kingdom of Macedon",
+    "color": 0
+   },
+   {
+    "from": -331.6,
+    "to": -330.9,
+    "name": "Revolt",
+    "color": 0
+   },
+   {
+    "from": -330.9,
+    "to": -325.5,
+    "name": "Kingdom of Macedon",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 419,
+  "after": 177,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -407.5,
+    "to": -359.7,
+    "name": "Odrysian Kingdom",
+    "color": 0
+   },
+   {
+    "from": -359.7,
+    "to": -352.1,
+    "name": "Odrysia",
+    "color": 0
+   },
+   {
+    "from": -352.1,
+    "to": -347.3,
+    "name": "Macedonian Ally - Odrysia",
+    "color": 4
+   },
+   {
+    "from": -338.2,
+    "to": -336.2,
+    "name": "Kingdom of Macedon",
+    "color": 0
+   },
+   {
+    "from": -336.2,
+    "to": -335.6,
+    "name": "Revolt",
+    "color": 0
+   },
+   {
+    "from": -335.6,
+    "to": -331.6,
+    "name": "Kingdom of Macedon",
+    "color": 0
+   },
+   {
+    "from": -331.6,
+    "to": -330.9,
+    "name": "Revolt",
+    "color": 0
+   },
+   {
+    "from": -330.9,
+    "to": -325.5,
+    "name": "Kingdom of Macedon",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1130,
+    0
+   ],
+   [
+    1369,
+    0
+   ],
+   [
+    1397,
+    0
+   ],
+   [
+    1401,
+    1
+   ],
+   [
+    1003,
+    1
+   ],
+   [
+    1150,
+    0
+   ],
+   [
+    1147,
+    0
+   ],
+   [
+    1157,
+    1
+   ],
+   [
+    1196,
+    0
+   ],
+   [
+    1195,
+    0
+   ],
+   [
+    1129,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 420,
+  "after": 177,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -347.3,
+    "to": -342.7,
+    "name": "Macedonian Ally - Odrysia",
+    "color": 4
+   },
+   {
+    "from": -342.7,
+    "to": -341.5,
+    "name": "Odrysia",
+    "color": 0
+   },
+   {
+    "from": -341.5,
+    "to": -338.2,
+    "name": "Kingdom of Macedon",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1150,
+    0
+   ],
+   [
+    1147,
+    0
+   ],
+   [
+    1157,
+    1
+   ],
+   [
+    1196,
+    0
+   ],
+   [
+    1195,
+    0
+   ],
+   [
+    1129,
+    1
+   ],
+   [
+    1130,
+    0
+   ],
+   [
+    1369,
+    0
+   ],
+   [
+    1398,
+    0
+   ],
+   [
+    1254,
+    0
+   ],
+   [
+    1003,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 177,
+  "ranges": [
+   {
+    "from": -437.5,
+    "to": -407.5,
+    "name": "Odrysian Kingdom",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 421,
+  "after": 217,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -407.5,
+    "to": -402.8,
+    "name": "Odrysian Kingdom - Eastern Odrysia",
+    "color": 5
+   },
+   {
+    "from": -401.3,
+    "to": -400.3,
+    "name": "Odrysian Kingdom - Eastern Odrysia",
+    "color": 5
+   }
+  ],
+  "refs": [
+   [
+    1303,
+    1
+   ],
+   [
+    1119,
+    1
+   ],
+   [
+    13,
+    0
+   ],
+   [
+    14,
+    1
+   ],
+   [
+    48,
+    0
+   ],
+   [
+    1134,
+    0
+   ],
+   [
+    1196,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 217,
+  "ranges": [
+   {
+    "from": -402.8,
+    "to": -401.3,
+    "name": "Odrysian Kingdom - Eastern Odrysia",
+    "color": 5
+   },
+   {
+    "from": -400.3,
+    "to": -391.4,
+    "name": "Odrysian Kingdom - Eastern Odrysia",
+    "color": 5
+   },
+   {
+    "from": -391.5,
+    "to": -390.7,
+    "name": "Revolt",
+    "color": 0
+   },
+   {
+    "from": -390.7,
+    "to": -384.5,
+    "name": "Odrysian Kingdom - Eastern Odrysia",
+    "color": 5
+   },
+   {
+    "from": -384.5,
+    "to": -383.5,
+    "name": "Revolt",
+    "color": 0
+   },
+   {
+    "from": -383.5,
+    "to": -362.5,
+    "name": "Odrysian Kingdom",
+    "color": 0
+   },
+   {
+    "from": -362.5,
+    "to": -361.6,
+    "name": "Revolt",
+    "color": 0
+   },
+   {
+    "from": -361.6,
+    "to": -341.5,
+    "name": "Odrysian Kingdom",
+    "color": 0
+   },
+   {
+    "from": -341.5,
+    "to": -325.5,
+    "name": "Kingdom of Macedon",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 422,
+  "after": 261,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -347.3,
+    "to": -338.2,
+    "name": "Second Athenian League",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1152,
+    1
+   ],
+   [
+    1368,
+    1
+   ],
+   [
+    1376,
+    1
+   ],
+   [
+    1395,
+    1
+   ],
+   [
+    1396,
+    0
+   ],
+   [
+    1369,
+    1
+   ],
+   [
+    1130,
+    1
+   ],
+   [
+    1399,
+    1
+   ],
+   [
+    97,
+    0
+   ],
+   [
+    77,
+    0
+   ],
+   [
+    50,
+    0
+   ],
+   [
+    78,
+    1
+   ],
+   [
+    17,
+    1
+   ],
+   [
+    1238,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 261,
+  "ranges": [
+   {
+    "from": -355.1,
+    "to": -347.3,
+    "name": "Second Athenian League",
+    "color": 0
+   },
+   {
+    "from": -338.2,
+    "to": -323.4,
+    "name": "Kingdom of Macedon",
+    "color": 0
+   },
+   {
+    "from": -323.4,
+    "to": -321.9,
+    "name": "Kingdom of Macedon - Thrace",
+    "color": 132
+   },
+   {
+    "from": -321.9,
+    "to": -321.0,
+    "name": "Revolt of Lysimachus",
+    "color": 0
+   },
+   {
+    "from": -321.0,
+    "to": -319.8,
+    "name": "Kingdom of Macedon - Thrace",
+    "color": 132
+   },
+   {
+    "from": -319.8,
+    "to": -305.5,
+    "name": "Domain of Lysimakhos - Thrace",
+    "color": 3
+   },
+   {
+    "from": -305.5,
+    "to": -281.4,
+    "name": "Kingdom of Lysimakhos - Thrace",
+    "color": 3
+   },
+   {
+    "from": -281.4,
+    "to": -277.1,
+    "name": "Macedon - Thrace",
+    "color": 2
+   },
+   {
+    "from": -277.1,
+    "to": -242.5,
+    "name": "Thrace",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 423,
+  "after": 279,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -340.8,
+    "to": -323.4,
+    "name": "Kingdom of Macedon",
+    "color": 0
+   },
+   {
+    "from": -323.4,
+    "to": -321.9,
+    "name": "Kingdom of Macedon - Thrace",
+    "color": 132
+   },
+   {
+    "from": -321.9,
+    "to": -321.0,
+    "name": "Revolt of Lysimachus",
+    "color": 0
+   },
+   {
+    "from": -321.0,
+    "to": -319.8,
+    "name": "Kingdom of Macedon - Thrace",
+    "color": 132
+   },
+   {
+    "from": -319.8,
+    "to": -305.5,
+    "name": "Domain of Lysimakhos - Thrace",
+    "color": 3
+   },
+   {
+    "from": -305.5,
+    "to": -281.6,
+    "name": "Kingdom of Lysimakhos - Thrace",
+    "color": 3
+   }
+  ],
+  "refs": [
+   [
+    56,
+    1
+   ],
+   [
+    1092,
+    1
+   ],
+   [
+    1110,
+    0
+   ],
+   [
+    1399,
+    0
+   ],
+   [
+    1129,
+    0
+   ],
+   [
+    1133,
+    0
+   ],
+   [
+    1271,
+    0
+   ],
+   [
+    83,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 424,
+  "after": 279,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -281.6,
+    "to": -281.4,
+    "name": "Kingdom of Lysimakhos - Thrace",
+    "color": 3
+   },
+   {
+    "from": -281.4,
+    "to": -277.1,
+    "name": "Macedon - Thrace",
+    "color": 2
+   },
+   {
+    "from": -277.1,
+    "to": -240.5,
+    "name": "Thrace",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    56,
+    1
+   ],
+   [
+    1092,
+    1
+   ],
+   [
+    1110,
+    0
+   ],
+   [
+    1399,
+    0
+   ],
+   [
+    1129,
+    0
+   ],
+   [
+    1133,
+    0
+   ],
+   [
+    1271,
+    0
+   ],
+   [
+    83,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 279,
+  "ranges": [
+   {
+    "from": -347.2,
+    "to": -346.5,
+    "name": "Odrysian Kingdom",
+    "color": 0
+   },
+   {
+    "from": -346.5,
+    "to": -340.8,
+    "name": "Kingdom of Macedon",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_refs",
+  "entry": 279,
+  "refs": [
+   [
+    85,
+    1
+   ],
+   [
+    96,
+    1
+   ],
+   [
+    95,
+    1
+   ],
+   [
+    1394,
+    0
+   ],
+   [
+    1082,
+    0
+   ],
+   [
+    66,
+    1
+   ],
+   [
+    83,
+    1
+   ],
+   [
+    56,
+    1
+   ],
+   [
+    1092,
+    1
+   ],
+   [
+    1110,
+    0
+   ],
+   [
+    1399,
+    0
+   ],
+   [
+    1129,
+    0
+   ],
+   [
+    1133,
+    0
+   ],
+   [
+    1256,
+    0
+   ],
+   [
+    93,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 425,
+  "after": 295,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -340.8,
+    "to": -281.6,
+    "name": "Byzantium",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1256,
+    0
+   ],
+   [
+    93,
+    1
+   ],
+   [
+    85,
+    1
+   ],
+   [
+    96,
+    1
+   ],
+   [
+    95,
+    1
+   ],
+   [
+    1394,
+    0
+   ],
+   [
+    1082,
+    0
+   ],
+   [
+    66,
+    1
+   ],
+   [
+    1271,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 295,
+  "ranges": [
+   {
+    "from": -281.6,
+    "to": -274.5,
+    "name": "Northern League - Byzantium",
+    "color": 2
+   },
+   {
+    "from": -274.5,
+    "to": -240.5,
+    "name": "Byzantium",
+    "color": 0
+   }
+  ]
+ }
+]
