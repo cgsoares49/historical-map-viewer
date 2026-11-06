@@ -1,0 +1,20 @@
+[
+ {
+  "op": "par_set_ranges",
+  "entry": 26,
+  "ranges": [
+   {
+    "from": -1067.5,
+    "to": -1044.5,
+    "name": "Shang Dynasty",
+    "color": 0
+   },
+   {
+    "from": -1045.5,
+    "to": -1044.5,
+    "name": "Zhou Dynasty",
+    "color": 0
+   }
+  ]
+ }
+]

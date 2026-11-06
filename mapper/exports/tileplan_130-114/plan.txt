@@ -1,0 +1,16 @@
+WHOLE-TILE PLAN 130:114   (newer entry takes its area; older entry carved)
+
+1 edit operations; candidates [26, 27, 28]; overlap windows before: 4, after: 0
+POL file header count: 53 -> 53;  PAR file header count: 53 -> 53;  CST file header count: 1 -> 1
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 6 entries
+  - #26: -1044.5..-1043.5 dropped (covered by #27 & #28), -1044.5..-770.4 dropped (covered by #27 & #28)
+
+PAR EDITS (in order):
+  #26: ranges = -1067.5..-1044.5 Shang Dynasty; -1045.5..-1044.5 Zhou Dynasty
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical

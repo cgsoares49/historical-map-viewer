@@ -1,0 +1,9 @@
+GroupID,GroupSize,Tile,EntryIndex,LastNameSegment,StackDepth,Role,Overlays,OverlaidBy,AreaKm2,FirstOverlapFrom,FirstOverlapTo,DistinctWindows,MaxIntersectionRatio,Semitransient,ConfirmedByLog,AllOwnersEver
+1,2,130/048,2,Kazakhstan,2,OVERLAY,Kazakhstan (0% of its own area) [1990.0..9999.0],,64993.2,1990.0,9999.0,1,1.0,,,Kazakhstan
+1,2,130/048,12,Kazakhstan,1,BASE,,Kazakhstan (0% of THIS entity covered) [1990.0..9999.0],13.7,1990.0,9999.0,1,1.0,,,Kazakhstan; UNKNOWN
+2,2,130/048,7,Kulaly Aral,2,OVERLAY,Kulaly Aral (2% of its own area) [1990.0..9999.0],,60.8,1990.0,9999.0,1,1.0,,,Kazakhstan; UNKNOWN
+2,2,130/048,17,Kulaly Aral,1,BASE,,Kulaly Aral (2% of THIS entity covered) [1990.0..9999.0],1.3,1990.0,9999.0,1,1.0,,,Kazakhstan; UNKNOWN
+3,2,130/048,9,Ostrov Rybachiy,2,OVERLAY,Ostrov Rybachiy (100% of its own area) [1990.0..9999.0],,1.2,1990.0,9999.0,1,1.0,,,Kazakhstan; UNKNOWN
+3,2,130/048,20,Ostrov Rybachiy,1,BASE,,Ostrov Rybachiy (100% of THIS entity covered) [1990.0..9999.0],8.9,1990.0,9999.0,1,1.0,,,Kazakhstan; UNKNOWN
+4,2,130/048,11,Ostrov Podgornyy,2,OVERLAY,Ostrov Podgornyy (100% of its own area) [1990.0..9999.0],,2.2,1990.0,9999.0,1,1.0,,,Kazakhstan; UNKNOWN
+4,2,130/048,19,Ostrov Podgornyy,1,BASE,,Ostrov Podgornyy (100% of THIS entity covered) [1990.0..9999.0],19.2,1990.0,9999.0,1,1.0,,,Kazakhstan; UNKNOWN
