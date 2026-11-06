@@ -1,0 +1,5 @@
+GroupID,GroupSize,Tile,EntryIndex,LastNameSegment,StackDepth,Role,Overlays,OverlaidBy,AreaKm2,FirstOverlapFrom,FirstOverlapTo,DistinctWindows,MaxIntersectionRatio,Semitransient,ConfirmedByLog,AllOwnersEver
+1,4,125/120,102,Qi,,AMBIGUOUS (cyclic evidence),,,1101.1,-654.5,-481.4,5,0.896,,,Qi; Shang; Shang Dynasty; Tian Qi; Xue; Zhou Dynasty
+1,4,125/120,114,Lai; Qi,,AMBIGUOUS (cyclic evidence),,,1876.7,-654.5,-481.4,2,0.896,,,Lai; Qi; Tian Qi; Yan
+1,4,125/120,115,Ju; Qi,,AMBIGUOUS (cyclic evidence),,,944.9,-654.5,-481.4,2,0.896,,,Ju; Qi; Tian Qi; Yan
+1,4,125/120,116,Qi,,AMBIGUOUS (cyclic evidence),,,3439.4,-654.5,-481.4,1,0.896,,,Qi; Tian Qi; Yan; Yi

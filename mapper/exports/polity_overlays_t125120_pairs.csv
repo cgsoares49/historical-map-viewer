@@ -1,0 +1,4 @@
+﻿GroupID,Tile,A,A_Name,A_AreaKm2,B,B_Name,B_AreaKm2,OverlapWindows,WindowCount,OverlapKm2_est,PctOfA,PctOfB,Relation,ShorterLivedSide,SharedBoundarySegments
+1,125/120,102,Qi,1101.1,114,Lai; Qi,1876.7,-654.5..-481.4,1,129.1,11.7,6.9,PARTIAL,tie,
+1,125/120,102,Qi,1101.1,115,Ju; Qi,944.9,-654.5..-481.4,1,846.3,76.9,89.6,PARTIAL,tie,CST1
+1,125/120,102,Qi,1101.1,116,Qi,3439.4,-654.5..-481.4,1,125.6,11.4,3.7,PARTIAL,A,

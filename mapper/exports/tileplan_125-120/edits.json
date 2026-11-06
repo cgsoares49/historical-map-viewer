@@ -1,0 +1,62 @@
+[
+ {
+  "op": "par_set_ranges",
+  "entry": 102,
+  "ranges": [
+   {
+    "from": -1625.1,
+    "to": -1615.5,
+    "name": "Xue",
+    "color": 0
+   },
+   {
+    "from": -1615.1,
+    "to": -1600.5,
+    "name": "Shang",
+    "color": 0
+   },
+   {
+    "from": -1600.5,
+    "to": -1598.5,
+    "name": "Shang Dynasty",
+    "color": 0
+   },
+   {
+    "from": -1598.5,
+    "to": -1595.5,
+    "name": "Xue",
+    "color": 0
+   },
+   {
+    "from": -1595.5,
+    "to": -1424.5,
+    "name": "Shang Dynasty",
+    "color": 0
+   },
+   {
+    "from": -1424.5,
+    "to": -1416.5,
+    "name": "Xue",
+    "color": 0
+   },
+   {
+    "from": -1416.5,
+    "to": -1045.5,
+    "name": "Shang Dynasty",
+    "color": 0
+   },
+   {
+    "from": -1045.5,
+    "to": -1042.4,
+    "name": "Zhou Dynasty",
+    "color": 0
+   },
+   {
+    "from": -481.4,
+    "to": -481.4,
+    "name": "Tian Qi",
+    "color": 0
+   }
+  ]
+ }
+]
