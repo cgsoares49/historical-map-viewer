@@ -1,0 +1,7 @@
+[
+ {"op": "par_set_ranges", "entry": 240,
+  "ranges": [
+   {"from": -605.5, "to": -562.5, "name": "Lu", "color": 0},
+   {"from": -562.5, "to": -517.5, "name": "Lu - Partition of the Three Huan", "color": 3}
+  ]}
+]

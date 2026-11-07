@@ -1,0 +1,25 @@
+WHOLE-TILE PLAN 125:115   (newer entry takes its area; older entry carved)
+
+5 edit operations; candidates [158, 198, 240]; overlap windows before: 2, after: 0
+POL file header count: 525 -> 525;  PAR file header count: 444 -> 446;  CST file header count: 61 -> 61
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 100 entries
+  - new #445 = #158 minus #240 (433.9 km2), ranges -582.5..-562.5
+  - new #446 = #198 minus #240 (396.9 km2), ranges -582.5..-562.5
+
+PAR EDITS (in order):
+  #240: ranges = -605.5..-562.5 Lu; -562.5..-517.5 Lu - Partition of the Three Huan
+  NEW #445 right after #158: -582.5..-562.5 Ju | refs [[1129, 0], [1501, 0], [1131, 1], [1130, 1]]
+  #158: ranges = -770.1..-721.5 Xiang; -721.5..-605.5 Ju
+  NEW #446 right after #198: -582.5..-562.5 Ju | refs [[1128, 1], [2, 1], [1317, 1], [1318, 0], [1129, 1]]
+  #198: ranges = -713.5..-605.5 Ju
+
+PAINT ORDER vs OLD ERA RULE disagree for these pairs (paint order = what MAPPER shows was used):
+  #240 vs #158 (first noticed at -572.5)
+  #240 vs #198 (first noticed at -572.5)
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): DIFFERENCES [(-572.5, 400.8)]

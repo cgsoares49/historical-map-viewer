@@ -1,0 +1,98 @@
+GroupID,GroupSize,Tile,EntryIndex,LastNameSegment,StackDepth,Role,Overlays,OverlaidBy,AreaKm2,FirstOverlapFrom,FirstOverlapTo,DistinctWindows,MaxIntersectionRatio,Semitransient,ConfirmedByLog,AllOwnersEver
+1,21,125/115,264,Partition of the Three Huan,1,BASE,,Partition of the Three Huan (1% of THIS entity covered) [-412.5..-356.5],200.7,-412.5,-356.5,1,1.0,,,Lu
+1,21,125/115,268,Tian Qi,2,OVERLAY,Wei (1% of its own area) [-369.5..-284.5],Zhao (100% of THIS entity covered) [-344.5..-332.5]; Wei (17% of THIS entity covered) [-404.5..-369.5]; Tian Qi (10% of THIS entity covered) [-344.5..-284.5]; Tian Qi (8% of THIS entity covered) [-411.5..-284.5]; Zhao (7% of THIS entity covered) [-313.5..-284.5]; Zhao (7% of THIS entity covered) [-404.5..-313.5]; Zhao (7% of THIS entity covered) [-369.5..-361.5]; Zhao (7% of THIS entity covered) [-361.5..-344.5]; Tian Qi (4% of THIS entity covered) [-412.5..-284.5]; Partition of the Three Huan (1% of THIS entity covered) [-412.5..-356.5],73281.4,-412.5,-284.5,11,1.0,,,Qi; Tian Qi
+1,21,125/115,270,Partition of the Three Huan,1,BASE,,Chu (17% of THIS entity covered) [-444.5..-356.5],102.1,-444.5,-356.5,1,1.0,,,Chu; Lu; Song; Tian Qi; Wu
+1,21,125/115,281,Partition of the Three Huan,1,BASE,,Chu (83% of THIS entity covered) [-444.5..-356.5]; Yue (77% of THIS entity covered) [-405.5..-375.5],1076.5,-444.5,-356.5,2,1.0,,,Lu; Tian Qi; Wu
+1,21,125/115,298,Chu,2,OVERLAY,Partition of the Three Huan (83% of its own area) [-444.5..-356.5]; Partition of the Three Huan (17% of its own area) [-444.5..-356.5],,589.2,-444.5,-356.5,1,1.0,,,Chu
+1,21,125/115,302,Partition of the Three Huan,5,OVERLAY,Tian Qi (11% of its own area) [-408.5..-356.5]; Tian Qi (11% of its own area) [-390.5..-356.5]; Tian Qi (7% of its own area) [-411.5..-356.5]; Tian Qi (2% of its own area) [-394.5..-356.5]; Partition of the Three Huan (1% of its own area) [-412.5..-356.5]; Tian Qi (1% of its own area) [-412.5..-356.5]; Tian Qi (1% of its own area) [-412.5..-356.5],Yue (23% of THIS entity covered) [-405.5..-375.5],17387.0,-412.5,-356.5,6,1.0,,,Lu
+1,21,125/115,304,Tian Qi,3,OVERLAY,Tian Qi (4% of its own area) [-412.5..-284.5],Tian Qi (8% of THIS entity covered) [-411.5..-284.5]; Partition of the Three Huan (1% of THIS entity covered) [-412.5..-356.5],2732.9,-412.5,-284.5,3,1.0,,,Tian Qi
+1,21,125/115,305,Tian Qi,4,OVERLAY,Tian Qi (8% of its own area) [-411.5..-284.5]; Tian Qi (8% of its own area) [-411.5..-284.5],Partition of the Three Huan (7% of THIS entity covered) [-411.5..-356.5],1187.3,-411.5,-284.5,2,1.0,,,Tian Qi
+1,21,125/115,306,Tian Qi,1,BASE,,Partition of the Three Huan (11% of THIS entity covered) [-408.5..-356.5],1858.4,-408.5,-356.5,1,1.0,,,Tian Qi
+1,21,125/115,308,Yue,6,OVERLAY,Partition of the Three Huan (77% of its own area) [-405.5..-375.5]; Partition of the Three Huan (23% of its own area) [-405.5..-375.5],,562.5,-405.5,-375.5,1,1.0,,,Yue
+1,21,125/115,311,Wei,3,OVERLAY,Tian Qi (17% of its own area) [-404.5..-369.5],,6660.4,-404.5,-369.5,1,1.0,,,Wei
+1,21,125/115,312,Zhao,3,OVERLAY,Tian Qi (7% of its own area) [-404.5..-313.5],Wei (6% of THIS entity covered) [-325.5..-313.5],25260.4,-404.5,-313.5,2,1.0,,,Zhao
+1,21,125/115,314,Tian Qi,1,BASE,,Partition of the Three Huan (2% of THIS entity covered) [-394.5..-356.5],412.1,-394.5,-356.5,1,1.0,,,Tian Qi
+1,21,125/115,315,Tian Qi,1,BASE,,Partition of the Three Huan (11% of THIS entity covered) [-390.5..-356.5],1827.1,-390.5,-356.5,1,1.0,,,Tian Qi
+1,21,125/115,330,Zhao,3,OVERLAY,Tian Qi (7% of its own area) [-369.5..-361.5],,6203.7,-369.5,-361.5,1,1.0,,,Zhao
+1,21,125/115,331,Wei,1,BASE,,Tian Qi (1% of THIS entity covered) [-369.5..-284.5],3678.4,-369.5,-284.5,1,1.0,,,Wei
+1,21,125/115,335,Zhao,3,OVERLAY,Tian Qi (7% of its own area) [-361.5..-344.5],,6329.2,-361.5,-344.5,1,1.0,,,Zhao
+1,21,125/115,339,Zhao,3,OVERLAY,Tian Qi (100% of its own area) [-344.5..-332.5],,1316.2,-344.5,-332.5,1,1.0,,,Zhao
+1,21,125/115,341,Tian Qi,3,OVERLAY,Tian Qi (10% of its own area) [-344.5..-284.5],,4092.8,-344.5,-284.5,1,1.0,,,Tian Qi
+1,21,125/115,353,Wei,4,OVERLAY,Zhao (6% of its own area) [-325.5..-313.5],,3723.8,-325.5,-313.5,1,1.0,,,Wei
+1,21,125/115,362,Zhao,3,OVERLAY,Tian Qi (7% of its own area) [-313.5..-284.5],,24539.1,-313.5,-284.5,1,1.0,,,Zhao
+2,10,125/115,163,Wey,1,BASE,,Wey (100% of THIS entity covered) [-588.5..-491.2]; Wey (100% of THIS entity covered) [-635.5..-491.2]; Duchy of Jin (13% of THIS entity covered) [-547.5..-491.2]; Qi (0% of THIS entity covered) [-517.5..-491.2],4014.1,-635.5,-491.2,4,1.0,,,Wey
+2,10,125/115,224,Wey,1,BASE,,Duchy of Jin (66% of THIS entity covered) [-502.5..-491.2]; Qi (63% of THIS entity covered) [-501.5..-491.2]; Duchy of Jin (39% of THIS entity covered) [-547.5..-491.2],5823.1,-547.5,-491.2,3,1.0,,,Wey; Xing
+2,10,125/115,234,Wey,2,OVERLAY,Wey (100% of its own area) [-635.5..-491.2],Duchy of Jin (6% of THIS entity covered) [-547.5..-491.2],93.5,-635.5,-491.2,2,1.0,,,Wey
+2,10,125/115,236,Wey,1,BASE,,Qi (0% of THIS entity covered) [-517.5..-491.2],1496.6,-517.5,-491.2,1,1.0,,,Wey
+2,10,125/115,246,Wey,1,BASE,,Duchy of Jin (48% of THIS entity covered) [-547.5..-491.2]; Qi (37% of THIS entity covered) [-501.5..-491.2]; Duchy of Jin (34% of THIS entity covered) [-502.5..-491.2],986.7,-547.5,-491.2,3,1.0,,,Wey
+2,10,125/115,248,Wey,2,OVERLAY,Wey (100% of its own area) [-588.5..-491.2],Duchy of Jin (2% of THIS entity covered) [-547.5..-491.2],22.3,-588.5,-491.2,2,1.0,,,Wey
+2,10,125/115,256,Duchy of Jin,3,OVERLAY,Wey (48% of its own area) [-547.5..-491.2]; Wey (39% of its own area) [-547.5..-491.2]; Wey (13% of its own area) [-547.5..-491.2]; Wey (6% of its own area) [-547.5..-491.2]; Wey (2% of its own area) [-547.5..-491.2],Qi (16% of THIS entity covered) [-501.5..-491.2],1475.0,-547.5,-491.2,2,1.0,,,Duchy of Jin
+2,10,125/115,268,Qi,2,OVERLAY,Wey (0% of its own area) [-517.5..-491.2]; Wey (0% of its own area) [-517.5..-491.2],,73281.4,-517.5,-491.2,1,1.0,,,Qi; Tian Qi
+2,10,125/115,271,Duchy of Jin,5,OVERLAY,Qi (92% of its own area) [-501.5..-491.2]; Wey (66% of its own area) [-502.5..-491.2]; Wey (34% of its own area) [-502.5..-491.2],,642.7,-502.5,-491.2,2,1.0,,,Duchy of Jin
+2,10,125/115,272,Qi,4,OVERLAY,Wey (63% of its own area) [-501.5..-491.2]; Wey (37% of its own area) [-501.5..-491.2]; Duchy of Jin (16% of its own area) [-501.5..-491.2],Duchy of Jin (92% of THIS entity covered) [-501.5..-491.2],700.8,-501.5,-491.2,1,1.0,,,Qi; Tian Qi
+3,4,125/115,34,Zhou Dynasty,2,OVERLAY,Zhou Dynasty (40% of its own area) [-1045.5..-1042.4]; Zhou Dynasty (17% of its own area) [-1045.5..-1042.4]; Cao (11% of its own area) [-1044.5..-1042.4],,95465.7,-1045.5,-1042.4,2,1.0,,,Shang Dynasty; Xia Dynasty; Zhou Dynasty
+3,4,125/115,46,Zhou Dynasty,1,BASE,,Zhou Dynasty (17% of THIS entity covered) [-1045.5..-1042.4],39967.7,-1045.5,-1042.4,1,1.0,,,Shang; Shang Dynasty; Zhou Dynasty
+3,4,125/115,47,Zhou Dynasty,1,BASE,,Zhou Dynasty (40% of THIS entity covered) [-1045.5..-1042.4],75124.8,-1045.5,-1042.4,1,1.0,,,Shang; Shang Dynasty; Xue; Zhou Dynasty
+3,4,125/115,61,Cao,1,BASE,,Zhou Dynasty (11% of THIS entity covered) [-1044.5..-1042.4],10660.8,-1044.5,-1042.4,1,1.0,,,Cao; Zhou Dynasty
+4,4,125/115,72,Zhou Dynasty,2,OVERLAY,Ji(2) (11% of its own area) [-1040.3..-770.5],Tan (100% of THIS entity covered) [-1038.5..-770.5]; Ju (100% of THIS entity covered) [-1038.5..-770.5],16628.8,-1040.3,-770.5,2,1.0,,,Zhou Dynasty
+4,4,125/115,75,Ju,3,OVERLAY,Zhou Dynasty (100% of its own area) [-1038.5..-770.5],,5070.1,-1038.5,-770.5,1,1.0,,,Ju; Zhou Dynasty
+4,4,125/115,76,Tan,3,OVERLAY,Zhou Dynasty (100% of its own area) [-1038.5..-770.5],,185.9,-1038.5,-770.5,1,1.0,,,Tan; Zhou Dynasty
+4,4,125/115,91,Ji(2),1,BASE,,Zhou Dynasty (11% of THIS entity covered) [-1040.3..-770.5],1879.9,-1040.3,-770.5,1,1.0,,,Zhou Dynasty
+5,4,125/115,158,Ju,1,BASE,,Lu (46% of THIS entity covered) [-605.5..-582.5],807.9,-605.5,-582.5,1,1.0,,,Ju; Xiang
+5,4,125/115,191,Huaiyi,1,BASE,,Ju (100% of THIS entity covered) [-713.5..-584.5]; Lu (54% of THIS entity covered) [-605.5..-584.5],938.4,-713.5,-584.5,2,1.0,,,Huaiyi
+5,4,125/115,198,Ju,2,OVERLAY,Huaiyi (100% of its own area) [-713.5..-584.5],Lu (5% of THIS entity covered) [-605.5..-582.5],435.4,-713.5,-582.5,2,1.0,,,Ju
+5,4,125/115,240,Lu,3,OVERLAY,Huaiyi (54% of its own area) [-605.5..-584.5]; Ju (46% of its own area) [-605.5..-582.5]; Ju (5% of its own area) [-605.5..-582.5],,813.4,-605.5,-582.5,2,1.0,,,Lu
+6,4,125/115,189,Yan,2,OVERLAY,Yan (70% of its own area) [-313.5..-251.5]; Yan (30% of its own area) [-313.5..-251.5],,5936.1,-313.5,-251.5,1,1.0,,,Lingzhi; Yan
+6,4,125/115,190,Yan,2,OVERLAY,Yan (100% of its own area) [-313.5..-251.5],,1179.2,-313.5,-251.5,1,1.0,,,Wuzhong; Yan
+6,4,125/115,359,Yan,1,BASE,,Yan (30% of THIS entity covered) [-313.5..-251.5],24940.2,-313.5,-251.5,1,1.0,,,Tian Qi; Yan
+6,4,125/115,360,Yan,1,BASE,,Yan (100% of THIS entity covered) [-313.5..-251.5]; Yan (70% of THIS entity covered) [-313.5..-251.5],6530.1,-313.5,-251.5,1,1.0,,,Yan
+7,4,125/115,261,Ju,3,OVERLAY,Partition of the Three Huan (3% of its own area) [-523.5..-469.5]; Partition of the Three Huan (3% of its own area) [-487.5..-469.5],Partition of the Three Huan (1% of THIS entity covered) [-517.5..-487.5],5886.5,-523.5,-469.5,3,1.0,,,Ju
+7,4,125/115,264,Partition of the Three Huan,1,BASE,,Ju (3% of THIS entity covered) [-523.5..-469.5]; Partition of the Three Huan (1% of THIS entity covered) [-487.5..-412.5]; Partition of the Three Huan (1% of THIS entity covered) [-517.5..-487.5],200.7,-523.5,-412.5,3,1.0,,,Lu
+7,4,125/115,269,Partition of the Three Huan,4,OVERLAY,Ju (1% of its own area) [-517.5..-487.5]; Partition of the Three Huan (1% of its own area) [-517.5..-487.5],,22758.5,-517.5,-487.5,1,1.0,,,Lu
+7,4,125/115,280,Partition of the Three Huan,2,OVERLAY,Partition of the Three Huan (1% of its own area) [-487.5..-412.5],Ju (3% of THIS entity covered) [-487.5..-469.5],21682.0,-487.5,-412.5,2,1.0,,,Lu
+8,4,125/115,281,Tian Qi,1,BASE,,Tian Qi (0% of THIS entity covered) [-332.5..-284.5]; Tian Qi (0% of THIS entity covered) [-335.5..-284.5]; Partition of the Three Huan (0% of THIS entity covered) [-335.5..-332.5],1076.5,-335.5,-284.5,3,0.002,,,Lu; Tian Qi; Wu
+8,4,125/115,347,Partition of the Three Huan,2,OVERLAY,Tian Qi (0% of its own area) [-335.5..-332.5],,7144.7,-335.5,-332.5,1,0.002,,,Lu
+8,4,125/115,348,Tian Qi,2,OVERLAY,Tian Qi (0% of its own area) [-335.5..-284.5],Tian Qi (0% of THIS entity covered) [-332.5..-284.5],4959.7,-335.5,-284.5,2,0.002,,,Tian Qi
+8,4,125/115,350,Tian Qi,3,OVERLAY,Tian Qi (0% of its own area) [-332.5..-284.5]; Tian Qi (0% of its own area) [-332.5..-284.5],,732.3,-332.5,-284.5,1,0.002,,,Tian Qi
+9,3,125/115,34,Shang Dynasty; Xia Dynasty,,AMBIGUOUS (cyclic evidence),,,95465.7,-1630.1,-1045.5,9,0.511,,,Shang Dynasty; Xia Dynasty; Zhou Dynasty
+9,3,125/115,46,Shang; Shang Dynasty,,AMBIGUOUS (cyclic evidence),,,39967.7,-1630.1,-1045.5,2,0.511,,,Shang; Shang Dynasty; Zhou Dynasty
+9,3,125/115,47,Shang; Shang Dynasty; Xue,,AMBIGUOUS (cyclic evidence),,,75124.8,-1625.1,-1045.5,7,0.511,,,Shang; Shang Dynasty; Xue; Zhou Dynasty
+10,3,125/115,58,Zhou Dynasty,2,OVERLAY,Yan (54% of its own area) [-1044.5..-1042.4]; Ji (34% of its own area) [-1044.5..-1042.4],,30810.3,-1044.5,-1042.4,1,1.0,,,Shang Dynasty; Zhou Dynasty
+10,3,125/115,59,Yan,1,BASE,,Zhou Dynasty (54% of THIS entity covered) [-1044.5..-1042.4],16586.7,-1044.5,-1042.4,1,1.0,,,Zhou Dynasty
+10,3,125/115,60,Ji,1,BASE,,Zhou Dynasty (34% of THIS entity covered) [-1044.5..-1042.4],10553.4,-1044.5,-1042.4,1,1.0,,,Ji(5); Zhou Dynasty
+11,3,125/115,64,Lu,,AMBIGUOUS (cyclic evidence),,,21249.1,-1038.5,-770.1,6,1.0,,,Lu; Three Guards Rebellion; Zhou Dynasty
+11,3,125/115,78,Teng,,AMBIGUOUS (cyclic evidence),,,1509.1,-1038.5,-770.1,5,1.0,,,Teng; Zhou Dynasty
+11,3,125/115,79,Zhu,,AMBIGUOUS (cyclic evidence),,,2363.6,-1038.5,-770.1,4,1.0,,,Zhou Dynasty; Zhu
+12,3,125/115,158,Ju,1,BASE,,Partition of the Three Huan (46% of THIS entity covered) [-562.5..-537.5],807.9,-562.5,-537.5,1,0.463,,,Ju; Xiang
+12,3,125/115,198,Ju,1,BASE,,Partition of the Three Huan (5% of THIS entity covered) [-562.5..-537.5],435.4,-562.5,-537.5,1,0.463,,,Ju
+12,3,125/115,240,Partition of the Three Huan,2,OVERLAY,Ju (46% of its own area) [-562.5..-537.5]; Ju (5% of its own area) [-562.5..-537.5],,813.4,-562.5,-537.5,1,0.463,,,Lu
+13,3,125/115,165,Lu,1,BASE,,Mou; Qi (100% of THIS entity covered) [-770.1..-608.5]; Qi (100% of THIS entity covered) [-685.5..-608.5],26098.6,-770.1,-608.5,3,1.0,,,Lu
+13,3,125/115,167,Mou; Qi,2,OVERLAY,Lu (100% of its own area) [-770.1..-608.5],,412.4,-770.1,-608.5,2,1.0,,,Mou; Qi
+13,3,125/115,206,Qi,2,OVERLAY,Lu (100% of its own area) [-685.5..-608.5],,3643.2,-685.5,-608.5,1,1.0,,,Qi
+14,3,125/115,167,Qi,1,BASE,,Lu (2% of THIS entity covered) [-608.5..-583.5],412.4,-608.5,-583.5,1,1.0,,,Mou; Qi
+14,3,125/115,206,Qi,1,BASE,,Lu (14% of THIS entity covered) [-608.5..-583.5],3643.2,-608.5,-583.5,1,1.0,,,Qi
+14,3,125/115,238,Lu,2,OVERLAY,Qi (14% of its own area) [-608.5..-583.5]; Qi (2% of its own area) [-608.5..-583.5],,26090.3,-608.5,-583.5,1,1.0,,,Lu
+15,3,125/115,272,Tian Qi,1,BASE,,Wei (100% of THIS entity covered) [-403.5..-369.5]; Zhao (100% of THIS entity covered) [-381.5..-325.5],700.8,-403.5,-325.5,2,1.0,,,Qi; Tian Qi
+15,3,125/115,313,Wei,3,OVERLAY,Tian Qi (100% of its own area) [-403.5..-369.5]; Zhao (100% of its own area) [-381.5..-369.5],,700.8,-403.5,-369.5,2,1.0,,,Wei
+15,3,125/115,316,Zhao,2,OVERLAY,Tian Qi (100% of its own area) [-381.5..-325.5],Wei (100% of THIS entity covered) [-381.5..-369.5],700.8,-381.5,-325.5,2,1.0,,,Zhao
+16,3,125/115,281,Tian Qi,1,BASE,,Tian Qi (0% of THIS entity covered) [-356.5..-335.5]; Partition of the Three Huan (0% of THIS entity covered) [-356.5..-335.5],1076.5,-356.5,-335.5,1,0.001,,,Lu; Tian Qi; Wu
+16,3,125/115,336,Partition of the Three Huan,2,OVERLAY,Tian Qi (0% of its own area) [-356.5..-335.5],,7787.1,-356.5,-335.5,1,0.001,,,Lu
+16,3,125/115,337,Tian Qi,2,OVERLAY,Tian Qi (0% of its own area) [-356.5..-335.5],,4317.3,-356.5,-335.5,1,0.001,,,Tian Qi
+17,2,125/115,42,Shandong,2,OVERLAY,Jiangsu (0% of its own area) [1990.0..9999.0],,117586.1,1990.0,9999.0,1,0.445,,,China
+17,2,125/115,43,Jiangsu,1,BASE,,Shandong (0% of THIS entity covered) [1990.0..9999.0],282.6,1990.0,9999.0,1,0.445,,,China; Shang Dynasty; Zhou Dynasty
+18,2,125/115,62,Qi,1,BASE,,Pugu (100% of THIS entity covered) [-1036.5..-1026.5],23827.0,-1036.5,-1026.5,1,1.0,,,Qi; Three Guards Rebellion; Zhou Dynasty
+18,2,125/115,80,Pugu,2,OVERLAY,Qi (100% of its own area) [-1036.5..-1026.5],,10281.3,-1036.5,-1026.5,1,1.0,,,Pugu
+19,2,125/115,66,Zhou Dynasty,2,OVERLAY,Xing (6% of its own area) [-1038.5..-850.1],,65976.0,-1038.5,-850.1,1,1.0,,,Zhou Dynasty
+19,2,125/115,77,Xing,1,BASE,,Zhou Dynasty (6% of THIS entity covered) [-1038.5..-850.1],3887.0,-1038.5,-850.1,1,1.0,,,Xing; Zhou Dynasty
+20,2,125/115,183,Qi,2,OVERLAY,Yan (2% of its own area) [-691.5..-583.5],,43289.9,-691.5,-583.5,1,1.0,,,Qi
+20,2,125/115,205,Yan,1,BASE,,Qi (2% of THIS entity covered) [-691.5..-583.5],841.6,-691.5,-583.5,1,1.0,,,Tian Qi; Yan
+21,2,125/115,184,Yan,1,BASE,,Ji(5); Yan (100% of THIS entity covered) [-770.1..-314.5],24355.1,-770.1,-314.5,2,1.0,,,Yan
+21,2,125/115,185,Ji(5); Yan,2,OVERLAY,Yan (100% of its own area) [-770.1..-314.5],,1216.8,-770.1,-314.5,2,1.0,,,Ji(5); Yan
+22,2,125/115,235,Cao,1,BASE,,Wey (100% of THIS entity covered) [-555.5..-491.2],1360.6,-555.5,-491.2,1,1.0,,,Cao
+22,2,125/115,255,Wey,2,OVERLAY,Cao (100% of its own area) [-555.5..-491.2],,173.1,-555.5,-491.2,1,1.0,,,Wey
+23,2,125/115,239,Qi,1,BASE,,Lu (100% of THIS entity covered) [-599.5..-583.5],1298.5,-599.5,-583.5,1,1.0,,,Qi
+23,2,125/115,243,Lu,2,OVERLAY,Qi (100% of its own area) [-599.5..-583.5],,1298.5,-599.5,-583.5,1,1.0,,,Lu
+24,2,125/115,258,Ju,2,OVERLAY,Partition of the Three Huan (2% of its own area) [-532.5..-523.5],,8772.3,-532.5,-523.5,1,1.0,,,Ju
+24,2,125/115,264,Partition of the Three Huan,1,BASE,,Ju (2% of THIS entity covered) [-532.5..-523.5],200.7,-532.5,-523.5,1,1.0,,,Lu
+25,2,125/115,268,Tian Qi,1,BASE,,Partition of the Three Huan (100% of THIS entity covered) [-471.5..-412.5],73281.4,-471.5,-412.5,1,1.0,,,Qi; Tian Qi
+25,2,125/115,287,Partition of the Three Huan,2,OVERLAY,Tian Qi (100% of its own area) [-471.5..-412.5],,2641.1,-471.5,-412.5,1,1.0,,,Lu

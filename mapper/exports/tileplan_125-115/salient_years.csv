@@ -1,0 +1,169 @@
+﻿ViewYear,what to look for,fix(es) involved,centre lon,centre lat
+-1630.2,year just BEFORE the fixed span: must be unchanged (no gap),#34 minus #46 -> new #392,117.031,37.482
+-1630.0,"first year of the fixed span: no overlay hatching now, area still covered",#34 minus #46 -> new #392,117.031,37.482
+-1625.2,year just BEFORE the fixed span: must be unchanged (no gap),#34 minus #46 & #47 -> new #393,117.649,36.561
+-1625.1,last year of the fixed span,#34 minus #46 -> new #392,117.031,37.482
+-1625.0,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#34 minus #46 & #47 -> new #393 | #34 minus #46 -> new #392,117.031,37.482
+-1615.6,year just BEFORE the fixed span: must be unchanged (no gap),#34 minus #46 -> new #392,117.031,37.482
+-1615.5,last year of the fixed span,#34 minus #46 & #47 -> new #393,117.649,36.561
+-1615.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#34 minus #46 & #47 -> new #393 | #34 minus #46 -> new #392,117.031,37.482
+-1615.2,year just BEFORE the fixed span: must be unchanged (no gap),#34 minus #46 & #47 -> new #393,117.649,36.561
+-1615.1,last year of the fixed span,#34 minus #46 -> new #392,117.031,37.482
+-1615.0,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#34 minus #46 & #47 -> new #393 | #34 minus #46 -> new #392,117.031,37.482
+-1329.8,middle of the fixed span,#34 minus #46 & #47 -> new #393,117.649,36.561
+-1044.6,year just BEFORE the fixed span: must be unchanged (no gap),#34 minus #46 & #47 & #61 -> new #394 | #58 minus #59 & #60 -> new #395,117.649,36.561
+-1044.5,last year of the fixed span,#34 minus #46 & #47 -> new #393,117.649,36.561
+-1044.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#34 minus #46 & #47 & #61 -> new #394 | #34 minus #46 & #47 -> new #393 | #58 minus #59 & #60 -> new #395,117.649,36.561
+-1042.4,last year of the fixed span,#34 minus #46 & #47 & #61 -> new #394 | #58 minus #59 & #60 -> new #395,117.649,36.561
+-1042.3,year just AFTER the fixed span: unchanged,#34 minus #46 & #47 & #61 -> new #394 | #58 minus #59 & #60 -> new #395,117.649,36.561
+-1040.4,year just BEFORE the fixed span: must be unchanged (no gap),#72 minus #91 (ref swap),119.501,36.975
+-1040.2,"first year of the fixed span: no overlay hatching now, area still covered",#72 minus #91 (ref swap),119.501,36.975
+-1038.6,year just BEFORE the fixed span: must be unchanged (no gap),#64 minus #78 & #79 -> new #397 | #66 minus #77 -> new #398 | #72 minus #75 & #76 & #91 -> new #399,117.136,35.273
+-1038.5,last year of the fixed span,#72 minus #91 (ref swap),119.501,36.975
+-1038.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#64 minus #78 & #79 -> new #397 | #66 minus #77 -> new #398 | #72 minus #75 & #76 & #91 -> new #399 | #72 minus #91 (ref swap),117.136,35.273
+-1036.6,year just BEFORE the fixed span: must be unchanged (no gap),#62 minus #80 -> new #396,118.52,37.652
+-1036.4,"first year of the fixed span: no overlay hatching now, area still covered",#62 minus #80 -> new #396,118.52,37.652
+-1026.5,last year of the fixed span,#62 minus #80 -> new #396,118.52,37.652
+-1026.4,year just AFTER the fixed span: unchanged,#62 minus #80 -> new #396,118.52,37.652
+-944.3,middle of the fixed span,#66 minus #77 -> new #398,115.201,37.117
+-904.5,middle of the fixed span,#72 minus #75 & #76 & #91 -> new #399,119.267,35.465
+-904.3,middle of the fixed span,#64 minus #78 & #79 -> new #397,117.136,35.273
+-850.1,last year of the fixed span,#66 minus #77 -> new #398,115.201,37.117
+-850.0,year just AFTER the fixed span: unchanged,#66 minus #77 -> new #398,115.201,37.117
+-770.5,last year of the fixed span,#72 minus #75 & #76 & #91 -> new #399,119.267,35.465
+-770.4,year just AFTER the fixed span: unchanged,#72 minus #75 & #76 & #91 -> new #399,119.267,35.465
+-770.2,year just BEFORE the fixed span: must be unchanged (no gap),#184 minus #185 (ref swap),116.367,39.827
+-770.1,last year of the fixed span,#64 minus #78 & #79 -> new #397,117.136,35.273
+-770.0,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#184 minus #185 (ref swap) | #64 minus #78 & #79 -> new #397,117.136,35.273
+-713.6,year just BEFORE the fixed span: must be unchanged (no gap),#191 minus #198 -> new #408,119.048,35.111
+-713.4,"first year of the fixed span: no overlay hatching now, area still covered",#191 minus #198 -> new #408,119.048,35.111
+-691.6,year just BEFORE the fixed span: must be unchanged (no gap),#183 minus #205 -> new #407,117.338,38.846
+-691.4,"first year of the fixed span: no overlay hatching now, area still covered",#183 minus #205 -> new #407,117.338,38.846
+-685.6,year just BEFORE the fixed span: must be unchanged (no gap),#165 minus #206 -> new #406,118.341,36.195
+-685.4,"first year of the fixed span: no overlay hatching now, area still covered",#165 minus #206 -> new #406,118.341,36.195
+-659.5,middle of the fixed span,#191 minus #198 -> new #408,119.048,35.111
+-647.0,middle of the fixed span,#165 minus #206 -> new #406,118.341,36.195
+-637.5,middle of the fixed span,#183 minus #205 -> new #407,117.338,38.846
+-635.6,year just BEFORE the fixed span: must be unchanged (no gap),#163 minus #234 -> new #401 | #163 minus #234 -> new #402,115.075,36.264
+-635.4,"first year of the fixed span: no overlay hatching now, area still covered",#163 minus #234 -> new #401 | #163 minus #234 -> new #402,115.075,36.264
+-612.0,middle of the fixed span,#163 minus #234 -> new #401 | #163 minus #234 -> new #402,115.075,36.264
+-608.6,year just BEFORE the fixed span: must be unchanged (no gap),#238 minus #206 (ref swap),118.341,36.195
+-608.5,last year of the fixed span,#165 minus #206 -> new #406,118.341,36.195
+-608.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#165 minus #206 -> new #406 | #238 minus #206 (ref swap),118.341,36.195
+-605.6,year just BEFORE the fixed span: must be unchanged (no gap),#158 minus #240 -> new #400 | #191 minus #198 & #240 -> new #409 | #198 minus #240 -> new #410,118.829,35.152
+-605.5,last year of the fixed span,#191 minus #198 -> new #408,119.048,35.111
+-605.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#158 minus #240 -> new #400 | #191 minus #198 & #240 -> new #409 | #191 minus #198 -> new #408 | #198 minus #240 -> new #410,118.829,35.152
+-599.6,year just BEFORE the fixed span: must be unchanged (no gap),#239 removed where covered by #243,116.062,35.588
+-599.4,"first year of the fixed span: no overlay hatching now, area still covered",#239 removed where covered by #243,116.062,35.588
+-588.6,year just BEFORE the fixed span: must be unchanged (no gap),#163 minus #234 & #248 -> new #403,115.063,36.25
+-588.5,last year of the fixed span,#163 minus #234 -> new #401 | #163 minus #234 -> new #402,115.075,36.264
+-588.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#163 minus #234 & #248 -> new #403 | #163 minus #234 -> new #401 | #163 minus #234 -> new #402,115.075,36.264
+-584.5,last year of the fixed span,#191 minus #198 & #240 -> new #409,119.044,35.127
+-584.4,year just AFTER the fixed span: unchanged,#191 minus #198 & #240 -> new #409,119.044,35.127
+-583.5,last year of the fixed span,#183 minus #205 -> new #407 | #238 minus #206 (ref swap) | #239 removed where covered by #243,117.338,38.846
+-583.4,year just AFTER the fixed span: unchanged,#183 minus #205 -> new #407 | #238 minus #206 (ref swap) | #239 removed where covered by #243,117.338,38.846
+-582.5,last year of the fixed span,#158 minus #240 -> new #400 | #198 minus #240 -> new #410,118.829,35.152
+-582.4,year just AFTER the fixed span: unchanged,#158 minus #240 -> new #400 | #198 minus #240 -> new #410,118.829,35.152
+-568.0,middle of the fixed span,#163 minus #234 & #248 -> new #403,115.063,36.25
+-562.6,year just BEFORE the fixed span: must be unchanged (no gap),#158 minus #240 -> new #400 | #198 minus #240 -> new #410,118.829,35.152
+-562.4,"first year of the fixed span: no overlay hatching now, area still covered",#158 minus #240 -> new #400 | #198 minus #240 -> new #410,118.829,35.152
+-555.6,year just BEFORE the fixed span: must be unchanged (no gap),#235 minus #255 -> new #414,115.3,35.084
+-555.4,"first year of the fixed span: no overlay hatching now, area still covered",#235 minus #255 -> new #414,115.3,35.084
+-547.6,year just BEFORE the fixed span: must be unchanged (no gap),#163 minus #234 & #248 & #256 -> new #404 | #224 minus #256 -> new #411 | #234 removed where covered by #256 | #246 minus #256 -> new #416 | #246 minus #256 -> new #417 | #248 removed where covered by #256,115.07,36.219
+-547.5,last year of the fixed span,#163 minus #234 & #248 -> new #403,115.063,36.25
+-547.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#163 minus #234 & #248 & #256 -> new #404 | #163 minus #234 & #248 -> new #403 | #224 minus #256 -> new #411 | #234 removed where covered by #256 | #246 minus #256 -> new #416 | #246 minus #256 -> new #417 | #248 removed where covered by #256,115.063,36.25
+-542.3,middle of the fixed span,#184 minus #185 (ref swap),116.367,39.827
+-537.5,last year of the fixed span,#158 minus #240 -> new #400 | #198 minus #240 -> new #410,118.829,35.152
+-537.4,year just AFTER the fixed span: unchanged,#158 minus #240 -> new #400 | #198 minus #240 -> new #410,118.829,35.152
+-532.6,year just BEFORE the fixed span: must be unchanged (no gap),#258 minus #264 -> new #421,118.779,35.57
+-532.4,"first year of the fixed span: no overlay hatching now, area still covered",#258 minus #264 -> new #421,118.779,35.57
+-525.0,middle of the fixed span,#224 minus #256 -> new #411 | #246 minus #256 -> new #416 | #246 minus #256 -> new #417,115.137,36.383
+-523.6,year just BEFORE the fixed span: must be unchanged (no gap),#261 minus #264 (ref swap),118.779,35.57
+-523.5,last year of the fixed span,#258 minus #264 -> new #421,118.779,35.57
+-523.4,"first year of the fixed span: no overlay hatching now, area still covered / middle of the fixed span / year just AFTER the fixed span: unchanged",#235 minus #255 -> new #414 | #258 minus #264 -> new #421 | #261 minus #264 (ref swap),115.3,35.084
+-519.4,middle of the fixed span,#234 removed where covered by #256 | #248 removed where covered by #256,115.075,36.264
+-517.6,year just BEFORE the fixed span: must be unchanged (no gap),#163 minus #234 & #248 & #256 & #268 -> new #405 | #236 minus #268 -> new #415 | #269 minus #264 (ref swap),115.07,36.219
+-517.5,last year of the fixed span,#163 minus #234 & #248 & #256 -> new #404,115.07,36.219
+-517.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#163 minus #234 & #248 & #256 & #268 -> new #405 | #163 minus #234 & #248 & #256 -> new #404 | #236 minus #268 -> new #415 | #269 minus #264 (ref swap),115.07,36.219
+-502.6,year just BEFORE the fixed span: must be unchanged (no gap),#224 minus #256 & #271 -> new #412 | #246 minus #256 & #271 -> new #418,115.647,36.788
+-502.5,last year of the fixed span,#224 minus #256 -> new #411 | #246 minus #256 -> new #416 | #246 minus #256 -> new #417,115.137,36.383
+-502.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#224 minus #256 & #271 -> new #412 | #224 minus #256 -> new #411 | #246 minus #256 & #271 -> new #418 | #246 minus #256 -> new #416 | #246 minus #256 -> new #417,115.137,36.383
+-501.6,year just BEFORE the fixed span: must be unchanged (no gap),#224 minus #256 & #271 & #272 -> new #413 | #246 minus #256 & #271 & #272 -> new #419 | #256 minus #272 -> new #420 | #271 minus #272 -> new #432 | #271 minus #272 -> new #433,115.647,36.788
+-501.5,last year of the fixed span,#224 minus #256 & #271 -> new #412 | #246 minus #256 & #271 -> new #418,115.647,36.788
+-501.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#224 minus #256 & #271 & #272 -> new #413 | #224 minus #256 & #271 -> new #412 | #246 minus #256 & #271 & #272 -> new #419 | #246 minus #256 & #271 -> new #418 | #256 minus #272 -> new #420 | #271 minus #272 -> new #432 | #271 minus #272 -> new #433,115.647,36.788
+-496.5,middle of the fixed span,#261 minus #264 (ref swap),118.779,35.57
+-491.2,last year of the fixed span,#163 minus #234 & #248 & #256 & #268 -> new #405 | #224 minus #256 & #271 & #272 -> new #413 | #234 removed where covered by #256 | #235 minus #255 -> new #414 | #236 minus #268 -> new #415 | #246 minus #256 & #271 & #272 -> new #419 | #248 removed where covered by #256 | #256 minus #272 -> new #420 | #271 minus #272 -> new #432 | #271 minus #272 -> new #433,115.07,36.219
+-491.1,year just AFTER the fixed span: unchanged,#163 minus #234 & #248 & #256 & #268 -> new #405 | #224 minus #256 & #271 & #272 -> new #413 | #234 removed where covered by #256 | #235 minus #255 -> new #414 | #236 minus #268 -> new #415 | #246 minus #256 & #271 & #272 -> new #419 | #248 removed where covered by #256 | #256 minus #272 -> new #420 | #271 minus #272 -> new #432 | #271 minus #272 -> new #433,115.07,36.219
+-487.6,year just BEFORE the fixed span: must be unchanged (no gap),#280 minus #264 (ref swap),118.779,35.57
+-487.5,last year of the fixed span,#269 minus #264 (ref swap),118.779,35.57
+-487.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#269 minus #264 (ref swap) | #280 minus #264 (ref swap),118.779,35.57
+-471.6,year just BEFORE the fixed span: must be unchanged (no gap),#268 minus #287 -> new #422,115.797,35.751
+-471.4,"first year of the fixed span: no overlay hatching now, area still covered",#268 minus #287 -> new #422,115.797,35.751
+-469.5,last year of the fixed span,#261 minus #264 (ref swap),118.779,35.57
+-469.4,year just AFTER the fixed span: unchanged,#261 minus #264 (ref swap),118.779,35.57
+-450.0,middle of the fixed span,#280 minus #264 (ref swap),118.779,35.57
+-444.6,year just BEFORE the fixed span: must be unchanged (no gap),#270 removed where covered by #298 | #281 minus #298 -> new #434,118.838,35.02
+-444.4,"first year of the fixed span: no overlay hatching now, area still covered",#270 removed where covered by #298 | #281 minus #298 -> new #434,118.838,35.02
+-442.0,middle of the fixed span,#268 minus #287 -> new #422,115.797,35.751
+-425.0,middle of the fixed span,#281 minus #298 -> new #434,118.835,35.135
+-412.6,year just BEFORE the fixed span: must be unchanged (no gap),#264 removed where covered by #302 | #268 minus #302 & #304 -> new #423 | #304 minus #302 (ref swap),118.779,35.57
+-412.5,last year of the fixed span,#268 minus #287 -> new #422 | #280 minus #264 (ref swap),115.797,35.751
+-412.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#264 removed where covered by #302 | #268 minus #287 -> new #422 | #268 minus #302 & #304 -> new #423 | #280 minus #264 (ref swap) | #304 minus #302 (ref swap),118.779,35.57
+-411.6,year just BEFORE the fixed span: must be unchanged (no gap),#268 minus #302 & #304 & #305 -> new #424 | #302 minus #305 -> new #437 | #304 minus #305 -> new #443,116.054,35.708
+-411.5,last year of the fixed span,#268 minus #302 & #304 -> new #423 | #304 minus #302 (ref swap),116.054,35.708
+-411.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#268 minus #302 & #304 & #305 -> new #424 | #268 minus #302 & #304 -> new #423 | #302 minus #305 -> new #437 | #304 minus #302 (ref swap) | #304 minus #305 -> new #443,116.054,35.708
+-408.6,year just BEFORE the fixed span: must be unchanged (no gap),#302 minus #305 & #306 -> new #438,116.454,35.61
+-408.5,last year of the fixed span,#302 minus #305 -> new #437,116.328,35.56
+-408.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#302 minus #305 & #306 -> new #438 | #302 minus #305 -> new #437,116.328,35.56
+-405.6,year just BEFORE the fixed span: must be unchanged (no gap),#281 minus #298 & #308 -> new #435 | #281 minus #298 & #308 -> new #436 | #302 minus #305 & #306 & #308 -> new #439,118.778,35.122
+-405.5,last year of the fixed span,#281 minus #298 -> new #434 | #302 minus #305 & #306 -> new #438,118.835,35.135
+-405.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#281 minus #298 & #308 -> new #435 | #281 minus #298 & #308 -> new #436 | #281 minus #298 -> new #434 | #302 minus #305 & #306 & #308 -> new #439 | #302 minus #305 & #306 -> new #438,118.835,35.135
+-404.6,year just BEFORE the fixed span: must be unchanged (no gap),#268 minus #302 & #304 & #305 & #311 & #312 -> new #425,115.702,35.681
+-404.5,last year of the fixed span,#268 minus #302 & #304 & #305 -> new #424,116.054,35.708
+-404.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#268 minus #302 & #304 & #305 & #311 & #312 -> new #425 | #268 minus #302 & #304 & #305 -> new #424,116.054,35.708
+-403.6,year just BEFORE the fixed span: must be unchanged (no gap),"#272 removed where covered by #313, #316",115.592,36.83
+-403.4,"first year of the fixed span: no overlay hatching now, area still covered","#272 removed where covered by #313, #316",115.592,36.83
+-400.5,middle of the fixed span,#270 removed where covered by #298,118.838,35.02
+-394.6,year just BEFORE the fixed span: must be unchanged (no gap),#302 minus #305 & #306 & #308 & #314 -> new #440,116.58,35.61
+-394.5,last year of the fixed span,#302 minus #305 & #306 & #308 -> new #439,116.454,35.61
+-394.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#302 minus #305 & #306 & #308 & #314 -> new #440 | #302 minus #305 & #306 & #308 -> new #439,116.454,35.61
+-390.6,year just BEFORE the fixed span: must be unchanged (no gap),#302 minus #305 & #306 & #308 & #314 & #315 -> new #441,116.576,35.631
+-390.5,last year of the fixed span,#302 minus #305 & #306 & #308 & #314 -> new #440,116.58,35.61
+-390.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#302 minus #305 & #306 & #308 & #314 & #315 -> new #441 | #302 minus #305 & #306 & #308 & #314 -> new #440,116.58,35.61
+-387.0,middle of the fixed span,#268 minus #302 & #304 & #305 & #311 & #312 -> new #425,115.702,35.681
+-384.5,middle of the fixed span,#264 removed where covered by #302,118.779,35.57
+-381.6,year just BEFORE the fixed span: must be unchanged (no gap),#313 removed where covered by #316,115.592,36.83
+-381.4,"first year of the fixed span: no overlay hatching now, area still covered",#313 removed where covered by #316,115.592,36.83
+-375.6,year just BEFORE the fixed span: must be unchanged (no gap),#281 minus #298 -> new #434 | #302 minus #305 & #306 & #314 & #315 -> new #442,118.835,35.135
+-375.5,last year of the fixed span,#281 minus #298 & #308 -> new #435 | #281 minus #298 & #308 -> new #436 | #302 minus #305 & #306 & #308 & #314 & #315 -> new #441,118.778,35.122
+-375.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#281 minus #298 & #308 -> new #435 | #281 minus #298 & #308 -> new #436 | #281 minus #298 -> new #434 | #302 minus #305 & #306 & #308 & #314 & #315 -> new #441 | #302 minus #305 & #306 & #314 & #315 -> new #442,118.835,35.135
+-369.6,year just BEFORE the fixed span: must be unchanged (no gap),#268 minus #302 & #304 & #305 & #312 & #330 & #331 -> new #426,115.679,35.725
+-369.5,last year of the fixed span,#268 minus #302 & #304 & #305 & #311 & #312 -> new #425 | #313 removed where covered by #316,115.702,35.681
+-369.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#268 minus #302 & #304 & #305 & #311 & #312 -> new #425 | #268 minus #302 & #304 & #305 & #312 & #330 & #331 -> new #426 | #313 removed where covered by #316,115.702,35.681
+-364.5,middle of the fixed span,"#272 removed where covered by #313, #316",115.592,36.83
+-361.6,year just BEFORE the fixed span: must be unchanged (no gap),#268 minus #302 & #304 & #305 & #312 & #331 & #335 -> new #427,115.679,35.725
+-361.5,last year of the fixed span,#268 minus #302 & #304 & #305 & #312 & #330 & #331 -> new #426,115.679,35.725
+-361.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#268 minus #302 & #304 & #305 & #312 & #330 & #331 -> new #426 | #268 minus #302 & #304 & #305 & #312 & #331 & #335 -> new #427,115.679,35.725
+-356.6,year just BEFORE the fixed span: must be unchanged (no gap),#268 minus #304 & #305 & #312 & #331 & #335 -> new #428,115.679,35.725
+-356.5,last year of the fixed span,#264 removed where covered by #302 | #268 minus #302 & #304 & #305 & #312 & #331 & #335 -> new #427 | #270 removed where covered by #298 | #281 minus #298 -> new #434 | #302 minus #305 & #306 & #314 & #315 -> new #442,118.779,35.57
+-356.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#264 removed where covered by #302 | #268 minus #302 & #304 & #305 & #312 & #331 & #335 -> new #427 | #268 minus #304 & #305 & #312 & #331 & #335 -> new #428 | #270 removed where covered by #298 | #281 minus #298 -> new #434 | #302 minus #305 & #306 & #314 & #315 -> new #442,118.779,35.57
+-348.0,middle of the fixed span,#304 minus #305 -> new #443,116.054,35.708
+-344.6,year just BEFORE the fixed span: must be unchanged (no gap),#268 minus #304 & #305 & #312 & #331 & #339 & #341 -> new #429,116.815,37.596
+-344.5,last year of the fixed span,#268 minus #304 & #305 & #312 & #331 & #335 -> new #428,115.679,35.725
+-344.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#268 minus #304 & #305 & #312 & #331 & #335 -> new #428 | #268 minus #304 & #305 & #312 & #331 & #339 & #341 -> new #429,115.679,35.725
+-332.6,year just BEFORE the fixed span: must be unchanged (no gap),#268 minus #304 & #305 & #312 & #331 & #341 -> new #430,115.679,35.725
+-332.5,last year of the fixed span,#268 minus #304 & #305 & #312 & #331 & #339 & #341 -> new #429,116.815,37.596
+-332.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#268 minus #304 & #305 & #312 & #331 & #339 & #341 -> new #429 | #268 minus #304 & #305 & #312 & #331 & #341 -> new #430,116.815,37.596
+-325.6,year just BEFORE the fixed span: must be unchanged (no gap),#312 minus #353 -> new #444,115.521,36.955
+-325.5,last year of the fixed span,"#272 removed where covered by #313, #316",115.592,36.83
+-325.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged","#272 removed where covered by #313, #316 | #312 minus #353 -> new #444",115.592,36.83
+-314.5,last year of the fixed span,#184 minus #185 (ref swap),116.367,39.827
+-314.4,year just AFTER the fixed span: unchanged,#184 minus #185 (ref swap),116.367,39.827
+-313.6,year just BEFORE the fixed span: must be unchanged (no gap),"#189 removed where covered by #359, #360 | #190 removed where covered by #360 | #268 minus #304 & #305 & #331 & #341 & #362 -> new #431",118.269,39.519
+-313.5,last year of the fixed span,#268 minus #304 & #305 & #312 & #331 & #341 -> new #430 | #312 minus #353 -> new #444,115.679,35.725
+-313.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged","#189 removed where covered by #359, #360 | #190 removed where covered by #360 | #268 minus #304 & #305 & #312 & #331 & #341 -> new #430 | #268 minus #304 & #305 & #331 & #341 & #362 -> new #431 | #312 minus #353 -> new #444",118.269,39.519
+-284.5,last year of the fixed span,#268 minus #304 & #305 & #331 & #341 & #362 -> new #431 | #304 minus #305 -> new #443,115.679,35.725
+-284.4,year just AFTER the fixed span: unchanged,#268 minus #304 & #305 & #331 & #341 & #362 -> new #431 | #304 minus #305 -> new #443,115.679,35.725
+-282.5,middle of the fixed span,"#189 removed where covered by #359, #360 | #190 removed where covered by #360",118.269,39.519
+-251.5,last year of the fixed span,"#189 removed where covered by #359, #360 | #190 removed where covered by #360",118.269,39.519
+-251.4,year just AFTER the fixed span: unchanged,"#189 removed where covered by #359, #360 | #190 removed where covered by #360",118.269,39.519

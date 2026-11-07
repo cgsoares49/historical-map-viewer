@@ -1,0 +1,118 @@
+﻿GroupID,Tile,EntryIndex,RoleByDuration,From,To,Name,Owner,ColorIndex,InOverlapWindow
+1,125/115,34,AMBIGUOUS (cyclic evidence),-2035.1,-1600.5,Xia Dynasty,Xia Dynasty,0,Y
+1,125/115,34,AMBIGUOUS (cyclic evidence),-1600.5,-1045.5,Shang Dynasty,Shang Dynasty,0,Y
+1,125/115,34,AMBIGUOUS (cyclic evidence),-1045.5,-1042.4,Zhou Dynasty,Zhou Dynasty,0,
+1,125/115,46,AMBIGUOUS (cyclic evidence),-1630.1,-1600.5,Shang,Shang,0,Y
+1,125/115,46,AMBIGUOUS (cyclic evidence),-1600.5,-1045.5,Shang Dynasty,Shang Dynasty,0,Y
+1,125/115,46,AMBIGUOUS (cyclic evidence),-1045.5,-1042.4,Zhou Dynasty,Zhou Dynasty,0,
+1,125/115,47,AMBIGUOUS (cyclic evidence),-1625.1,-1615.5,Xue,Xue,0,Y
+1,125/115,47,AMBIGUOUS (cyclic evidence),-1615.1,-1600.5,Shang,Shang,0,Y
+1,125/115,47,AMBIGUOUS (cyclic evidence),-1600.5,-1598.5,Shang Dynasty,Shang Dynasty,0,Y
+1,125/115,47,AMBIGUOUS (cyclic evidence),-1598.5,-1595.5,Xue,Xue,0,Y
+1,125/115,47,AMBIGUOUS (cyclic evidence),-1595.5,-1424.5,Shang Dynasty,Shang Dynasty,0,Y
+1,125/115,47,AMBIGUOUS (cyclic evidence),-1424.5,-1416.5,Xue,Xue,0,Y
+1,125/115,47,AMBIGUOUS (cyclic evidence),-1416.5,-1045.5,Shang Dynasty,Shang Dynasty,0,Y
+1,125/115,47,AMBIGUOUS (cyclic evidence),-1045.5,-1042.4,Zhou Dynasty,Zhou Dynasty,0,
+2,125/115,34,OVERLAYER,-2035.1,-1600.5,Xia Dynasty,Xia Dynasty,0,
+2,125/115,34,OVERLAYER,-1600.5,-1045.5,Shang Dynasty,Shang Dynasty,0,
+2,125/115,34,OVERLAYER,-1045.5,-1042.4,Zhou Dynasty,Zhou Dynasty,0,Y
+2,125/115,46,BASE,-1630.1,-1600.5,Shang,Shang,0,
+2,125/115,46,BASE,-1600.5,-1045.5,Shang Dynasty,Shang Dynasty,0,
+2,125/115,46,BASE,-1045.5,-1042.4,Zhou Dynasty,Zhou Dynasty,0,Y
+2,125/115,47,BASE,-1625.1,-1615.5,Xue,Xue,0,
+2,125/115,47,BASE,-1615.1,-1600.5,Shang,Shang,0,
+2,125/115,47,BASE,-1600.5,-1598.5,Shang Dynasty,Shang Dynasty,0,
+2,125/115,47,BASE,-1598.5,-1595.5,Xue,Xue,0,
+2,125/115,47,BASE,-1595.5,-1424.5,Shang Dynasty,Shang Dynasty,0,
+2,125/115,47,BASE,-1424.5,-1416.5,Xue,Xue,0,
+2,125/115,47,BASE,-1416.5,-1045.5,Shang Dynasty,Shang Dynasty,0,
+2,125/115,47,BASE,-1045.5,-1042.4,Zhou Dynasty,Zhou Dynasty,0,Y
+2,125/115,61,BASE,-1044.5,-770.2,Zhou Dynasty - Cao,Zhou Dynasty,12,Y
+2,125/115,61,BASE,-770.2,-770.1,Cao,Cao,0,
+3,125/115,42,OVERLAYER,1990.0,9999.0,China - Shandong,China,470,Y
+3,125/115,43,BASE,-1070.5,-1045.5,Shang Dynasty,Shang Dynasty,0,
+3,125/115,43,BASE,-1045.5,-1042.4,Zhou Dynasty,Zhou Dynasty,0,
+3,125/115,43,BASE,1990.0,9999.0,China - Jiangsu,China,469,Y
+4,125/115,58,OVERLAYER,-1067.5,-1045.5,Shang Dynasty,Shang Dynasty,0,
+4,125/115,58,OVERLAYER,-1045.5,-1042.4,Zhou Dynasty,Zhou Dynasty,0,Y
+4,125/115,59,BASE,-1044.5,-770.4,Zhou Dynasty - Yan,Zhou Dynasty,9,Y
+4,125/115,60,BASE,-1044.5,-770.4,Zhou Dynasty - Ji,Zhou Dynasty,10,Y
+4,125/115,60,BASE,-770.4,-770.1,Ji(5),Ji(5),0,
+5,125/115,62,BASE,-1042.4,-1040.5,Three Guards Rebellion - Pugu (Bogu),Three Guards Rebellion,7,
+5,125/115,62,BASE,-1040.5,-1038.5,Zhou Dynasty - Pugu (Bogu),Zhou Dynasty,18,
+5,125/115,62,BASE,-1038.5,-770.4,Zhou Dynasty - Qi,Zhou Dynasty,22,Y
+5,125/115,62,BASE,-770.4,-770.1,Qi,Qi,0,
+5,125/115,80,OVERLAYER,-1036.5,-1026.5,Pugu,Pugu,0,Y
+6,125/115,72,BASE,-1040.3,-770.5,Zhou Dynasty,Zhou Dynasty,0,Y
+6,125/115,75,OVERLAYER,-1038.5,-770.5,Zhou Dynasty - Ju,Zhou Dynasty,27,Y
+6,125/115,75,OVERLAYER,-770.5,-770.1,Ju,Ju,0,
+6,125/115,76,OVERLAYER,-1038.5,-770.5,Zhou Dynasty - Tan,Zhou Dynasty,28,Y
+6,125/115,76,OVERLAYER,-770.5,-770.1,Tan,Tan,0,
+7,125/115,158,BASE,-770.1,-721.5,Xiang,Xiang,0,
+7,125/115,158,BASE,-721.5,-537.5,Ju,Ju,0,Y
+7,125/115,191,BASE,-770.1,-584.5,Huaiyi,Huaiyi,0,Y
+7,125/115,240,OVERLAYER,-605.5,-582.5,Lu,Lu,0,Y
+7,125/115,240,OVERLAYER,-562.5,-517.5,Lu - Partition of the Three Huan,Lu,3,
+8,125/115,158,BASE,-770.1,-721.5,Xiang,Xiang,0,
+8,125/115,158,BASE,-721.5,-537.5,Ju,Ju,0,Y
+8,125/115,240,OVERLAYER,-605.5,-582.5,Lu,Lu,0,
+8,125/115,240,OVERLAYER,-562.5,-517.5,Lu - Partition of the Three Huan,Lu,3,Y
+9,125/115,163,BASE,-770.1,-491.2,Wey,Wey,0,Y
+9,125/115,224,BASE,-661.5,-635.5,Xing,Xing,0,
+9,125/115,224,BASE,-635.5,-491.2,Wey,Wey,0,Y
+9,125/115,246,BASE,-588.5,-491.2,Wey,Wey,0,Y
+9,125/115,256,BOTH,-547.5,-491.2,Duchy of Jin,Duchy of Jin,0,Y
+9,125/115,271,OVERLAYER,-502.5,-491.2,Duchy of Jin,Duchy of Jin,0,Y
+9,125/115,272,BOTH,-501.5,-481.4,Qi,Qi,0,Y
+9,125/115,272,BOTH,-481.4,-325.5,Tian Qi,Tian Qi,0,
+10,125/115,165,BASE,-770.1,-608.5,Lu,Lu,0,Y
+10,125/115,206,OVERLAYER,-685.5,-583.5,Qi,Qi,0,Y
+11,125/115,183,OVERLAYER,-770.1,-583.5,Qi,Qi,0,Y
+11,125/115,205,BASE,-691.5,-314.5,Yan,Yan,0,Y
+11,125/115,205,BASE,-314.5,-284.5,Tian Qi,Tian Qi,0,
+12,125/115,189,OVERLAYER,-770.1,-662.5,Lingzhi,Lingzhi,0,
+12,125/115,189,OVERLAYER,-662.5,-314.5,Yan,Yan,0,
+12,125/115,189,OVERLAYER,-313.5,-251.5,Yan,Yan,0,Y
+12,125/115,190,OVERLAYER,-770.1,-662.5,Wuzhong,Wuzhong,0,
+12,125/115,190,OVERLAYER,-662.5,-314.5,Yan,Yan,0,
+12,125/115,190,OVERLAYER,-313.5,-251.5,Yan,Yan,0,Y
+12,125/115,359,BASE,-314.5,-313.5,Tian Qi,Tian Qi,0,
+12,125/115,359,BASE,-313.5,-251.5,Yan,Yan,0,Y
+12,125/115,360,BASE,-314.5,-1.0,Yan,Yan,0,Y
+13,125/115,206,BASE,-685.5,-583.5,Qi,Qi,0,Y
+13,125/115,238,OVERLAYER,-608.5,-583.5,Lu,Lu,0,Y
+14,125/115,236,BASE,-629.5,-491.2,Wey,Wey,0,Y
+14,125/115,268,OVERLAYER,-517.5,-481.4,Qi,Qi,0,Y
+14,125/115,268,OVERLAYER,-481.4,-284.5,Tian Qi,Tian Qi,0,
+15,125/115,239,BASE,-608.5,-583.5,Qi,Qi,0,Y
+15,125/115,243,OVERLAYER,-599.5,-583.5,Lu,Lu,0,Y
+16,125/115,268,BASE,-517.5,-481.4,Qi,Qi,0,
+16,125/115,268,BASE,-481.4,-284.5,Tian Qi,Tian Qi,0,Y
+16,125/115,287,OVERLAYER,-471.5,-412.5,Lu - Partition of the Three Huan,Lu,3,Y
+17,125/115,268,BOTH,-517.5,-481.4,Qi,Qi,0,
+17,125/115,268,BOTH,-481.4,-284.5,Tian Qi,Tian Qi,0,Y
+17,125/115,311,OVERLAYER,-404.5,-369.5,Wei,Wei,0,Y
+17,125/115,312,BOTH,-404.5,-313.5,Zhao,Zhao,0,Y
+17,125/115,330,OVERLAYER,-369.5,-361.5,Zhao,Zhao,0,Y
+17,125/115,331,BASE,-369.5,-1.0,Wei,Wei,0,Y
+17,125/115,335,OVERLAYER,-361.5,-344.5,Zhao,Zhao,0,Y
+17,125/115,341,OVERLAYER,-344.5,-284.5,Tian Qi,Tian Qi,0,Y
+17,125/115,353,OVERLAYER,-325.5,-276.5,Wei,Wei,0,Y
+17,125/115,362,OVERLAYER,-313.5,-284.5,Zhao,Zhao,0,Y
+18,125/115,270,BASE,-512.5,-473.3,Wu,Wu,0,
+18,125/115,270,BASE,-473.3,-356.5,Lu - Partition of the Three Huan,Lu,3,Y
+18,125/115,270,BASE,-356.5,-301.5,Chu,Chu,0,
+18,125/115,270,BASE,-301.5,-286.5,Song,Song,0,
+18,125/115,270,BASE,-286.5,-284.5,Tian Qi,Tian Qi,0,
+18,125/115,270,BASE,-284.5,-1.0,Chu,Chu,0,
+18,125/115,281,BASE,-487.5,-473.3,Wu,Wu,0,
+18,125/115,281,BASE,-473.3,-356.5,Lu - Partition of the Three Huan,Lu,3,Y
+18,125/115,281,BASE,-356.5,-284.5,Tian Qi,Tian Qi,0,
+18,125/115,298,OVERLAYER,-444.5,-356.5,Chu,Chu,0,Y
+18,125/115,302,BOTH,-412.5,-356.5,Lu - Partition of the Three Huan,Lu,3,Y
+18,125/115,308,OVERLAYER,-405.5,-375.5,Yue,Yue,0,Y
+18,125/115,315,BASE,-390.5,-284.5,Tian Qi,Tian Qi,0,Y
+19,125/115,272,BASE,-501.5,-481.4,Qi,Qi,0,
+19,125/115,272,BASE,-481.4,-325.5,Tian Qi,Tian Qi,0,Y
+19,125/115,313,OVERLAYER,-403.5,-369.5,Wei,Wei,0,Y
+19,125/115,316,BOTH,-381.5,-325.5,Zhao,Zhao,0,Y
