@@ -1,0 +1,62 @@
+BORDERS SHEET sync for tile 125/105, 2026-11-09   (POL file wins; workbook only read: C:\My stuff\VID\ancient index.xlsx)
+
+1) NEW ROWS: 20 lines in exports/borders_sheet_sync_125-105.tsv (columns A..AK), POL 129..148. Insert after Excel row 3953 (POL 128), in order. (A1 is =MAX(A2:A14168), so it updates itself: 5917 -> 6025)
+
+2) PARENT ROW EDITS (14): Excel row, cell: old -> new, then the split note
+   POL   33 (row 3876): F3876: 25 -> 13; I3876/J3876: 109.0505, 35.2826 -> 108.69623, 35.56891;  R3876 = "split 11/9/26 for overlay fix: #33 => 33, 141, 147"
+   POL   46 (row 3881): F3881: 20 -> 6; I3881/J3881: 109.0505, 35.2826 -> 109.76815, 35.59247;  Q3881 = "split 11/9/26 for overlay fix: #46 => 46, 145, 143"
+   POL   49 (row 3882): F3882: 6 -> 3; I3882/J3882: 109.7851, 35.8794 -> 109.94309, 35.75448;  R3882 = "split 11/9/26 for overlay fix: #49 => 49, 133, 131, 129"
+   POL   61 (row 3892): F3892: 12 -> 9; I3892/J3892: 108.5759, 35.9579 -> 108.60494, 36.13802;  Q3892 = "split 11/9/26 for overlay fix: #61 => 61, 139"
+   POL   69 (row 3899): F3899: 96 -> 86; I3899/J3899: 109.4672, 35.40425 -> 109.44881, 35.45972;  Q3899 = "split 11/9/26 for overlay fix: #69 => 69, 144"
+   POL   88 (row 3918): F3918: 22 -> 3; I3918/J3918: 106.7833, 40 -> 109.77285, 39.0384;  Q3918 = "split 11/9/26 for overlay fix: #88 => 88, 137, 135"
+   POL   90 (row 3920): F3920: 11 -> 8; I3920/J3920: 108.7104, 35.8244 -> 108.69623, 35.56891;  Q3920 = "split 11/9/26 for overlay fix: #90 => 90, 142"
+   POL   95 (row 3925): F3925: 29 -> 7; I3925/J3925: 107.1191, 35.8504 -> 108.60494, 36.13802;  Q3925 = "split 11/9/26 for overlay fix: #95 => 95, 140"
+   POL   96 (row 3926): F3926: 23 -> 19; I3926/J3926: 108.7441, 35.79 -> 108.71724, 35.55323;  Q3926 = "split 11/9/26 for overlay fix: #96 => 96, 148"
+   POL   99 (row 3929): F3929: 9 -> 5; I3929/J3929: 109.8741, 35.4569 -> 109.76815, 35.59247;  Q3929 = "split 11/9/26 for overlay fix: #99 => 99, 146"
+   POL  107 (row 3933): F3933: 8 -> 3; I3933/J3933: 109.7851, 35.8794 -> 109.94309, 35.75448;  Q3933 = "split 11/9/26 for overlay fix: #107 => 107, 134, 132, 130"
+   POL  110 (row 3936): F3936: 12 -> 3; I3936/J3936: 108.1971, 38.4384 -> 109.77285, 39.0384;  Q3936 = "split 11/9/26 for overlay fix: #110 => 110, 138, 136"
+   POL  125 (row 3950): F3950: 45 -> 43   [no new child POL found: changed by hand?]
+   POL  128 (row 3953): F3953:  -> 11   [no new child POL found: changed by hand?]
+
+3) BORDER POLs (not transient/blob) in the file but missing from the sheet, numbered below its last row: [2, 3, 4, 5, 6, 7, 8]
+
+2b) SPLIT PARENT ROWS TO PASTE: exports/borders_sheet_sync_125-105_parents.tsv = 12 lines (columns A..AK), one per split parent, in Excel-row order.
+    Paste each line over the existing row (select A<row>):
+      line  1 -> A3876   (POL 33: F=13, stop 108.69623, 35.56891)
+      line  2 -> A3881   (POL 46: F=6, stop 109.76815, 35.59247)
+      line  3 -> A3882   (POL 49: F=3, stop 109.94309, 35.75448)
+      line  4 -> A3892   (POL 61: F=9, stop 108.60494, 36.13802)
+      line  5 -> A3899   (POL 69: F=86, stop 109.44881, 35.45972)
+      line  6 -> A3918   (POL 88: F=3, stop 109.77285, 39.0384)
+      line  7 -> A3920   (POL 90: F=8, stop 108.69623, 35.56891)
+      line  8 -> A3925   (POL 95: F=7, stop 108.60494, 36.13802)
+      line  9 -> A3926   (POL 96: F=19, stop 108.71724, 35.55323)
+      line 10 -> A3929   (POL 99: F=5, stop 109.76815, 35.59247)
+      line 11 -> A3933   (POL 107: F=3, stop 109.94309, 35.75448)
+      line 12 -> A3936   (POL 110: F=3, stop 109.77285, 39.0384)
+
+2c) OTHER ROWS WHOSE COUNT/STOP DIFFER FROM THE POL FILE (no split child found; your own edits): exports/borders_sheet_sync_125-105_other_changed_rows.tsv
+      line 1 -> A3950   (POL 125: F=43)
+      line 2 -> A3953   (POL 128: F=11)
+
+4) NEW ROW PREVIEW (A..P):
+   6006 | 2026-11-09 | POLBND | 125/105 | 129 | 3 | 109.83296 | 35.75333 | 109.7851 | 35.8794 |  |  |  |  | (overlay fix) | split from #49   windows: 
+   6007 | 2026-11-09 | POLBND | 125/105 | 130 | 5 | 109.83296 | 35.75333 | 109.7851 | 35.8794 | -409.5 | -333.5 |  |  | (overlay fix) | split from #107   windows: -409.5, -333.5
+   6008 | 2026-11-09 | POLBND | 125/105 | 131 | 3 | 109.91674 | 35.76067 | 109.83296 | 35.75333 |  |  |  |  | (overlay fix) | split from #49   windows: 
+   6009 | 2026-11-09 | POLBND | 125/105 | 132 | 3 | 109.91674 | 35.76067 | 109.83296 | 35.75333 | -409.5 | -333.5 |  |  | (overlay fix) | split from #107   windows: -409.5, -333.5
+   6010 | 2026-11-09 | POLBND | 125/105 | 133 | 3 | 109.94309 | 35.75448 | 109.91674 | 35.76067 |  |  |  |  | (overlay fix) | split from #49   windows: 
+   6011 | 2026-11-09 | POLBND | 125/105 | 134 | 2 | 109.94309 | 35.75448 | 109.91674 | 35.76067 | -409.5 | -333.5 |  |  | (overlay fix) | split from #107   windows: -409.5, -333.5
+   6012 | 2026-11-09 | POLBND | 125/105 | 135 | 12 | 108.20502 | 38.44114 | 106.7833 | 40 |  |  |  |  | (overlay fix) | split from #88   windows: 
+   6013 | 2026-11-09 | POLBND | 125/105 | 136 | 2 | 108.20502 | 38.44114 | 108.1971 | 38.4384 | -407.5 | -296.5 |  |  | (overlay fix) | split from #110   windows: -407.5, -296.5
+   6014 | 2026-11-09 | POLBND | 125/105 | 137 | 11 | 109.77285 | 39.0384 | 108.20502 | 38.44114 |  |  |  |  | (overlay fix) | split from #88   windows: 
+   6015 | 2026-11-09 | POLBND | 125/105 | 138 | 11 | 109.77285 | 39.0384 | 108.20502 | 38.44114 | -407.5 | -296.5 |  |  | (overlay fix) | split from #110   windows: -407.5, -296.5
+   6016 | 2026-11-09 | POLBND | 125/105 | 139 | 5 | 108.60494 | 36.13802 | 108.5759 | 35.9579 | -550.5 | -550.5 |  |  | (overlay fix) | split from #61   windows: -550.5, -550.5
+   6017 | 2026-11-09 | POLBND | 125/105 | 140 | 24 | 108.60494 | 36.13802 | 107.1191 | 35.8504 | -771.1 | -272.5 |  |  | (overlay fix) | split from #95   windows: -771.1, -272.5
+   6018 | 2026-11-09 | POLBND | 125/105 | 141 | 3 | 108.69623 | 35.56891 | 108.71724 | 35.55323 | -850.1 | -771.1 |  |  | (overlay fix) | split from #33   windows: -850.1, -771.1
+   6019 | 2026-11-09 | POLBND | 125/105 | 142 | 5 | 108.69623 | 35.56891 | 108.7104 | 35.8244 | -771.1 | -272.5 |  |  | (overlay fix) | split from #90   windows: -771.1, -272.5
+   6020 | 2026-11-09 | POLBND | 125/105 | 143 | 11 | 109.44881 | 35.45972 | 109.0505 | 35.2826 | -725.1 | -725.1 |  |  | (overlay fix) | split from #46   windows: -725.1, -725.1
+   6021 | 2026-11-09 | POLBND | 125/105 | 144 | 12 | 109.44881 | 35.45972 | 109.4672 | 35.40425 | -771.6 | -771.1 | -623.5 | -452.5 | (overlay fix) | split from #69   windows: -771.6, -771.1, -623.5, -452.5
+   6022 | 2026-11-09 | POLBND | 125/105 | 145 | 7 | 109.76815 | 35.59247 | 109.44881 | 35.45972 | -725.1 | -725.1 |  |  | (overlay fix) | split from #46   windows: -725.1, -725.1
+   6023 | 2026-11-09 | POLBND | 125/105 | 146 | 6 | 109.76815 | 35.59247 | 109.8741 | 35.4569 | -697.5 | -645.5 |  |  | (overlay fix) | split from #99   windows: -697.5, -645.5
+   6024 | 2026-11-09 | POLBND | 125/105 | 147 | 13 | 108.71724 | 35.55323 | 109.0505 | 35.2826 | -850.1 | -771.1 |  |  | (overlay fix) | split from #33   windows: -850.1, -771.1
+   6025 | 2026-11-09 | POLBND | 125/105 | 148 | 6 | 108.71724 | 35.55323 | 108.7441 | 35.79 | -697.5 | -314.5 |  |  | (overlay fix) | split from #96   windows: -697.5, -314.5

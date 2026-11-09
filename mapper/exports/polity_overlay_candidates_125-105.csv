@@ -1,0 +1,19 @@
+GroupID,GroupSize,Tile,EntryIndex,LastNameSegment,StackDepth,Role,Overlays,OverlaidBy,AreaKm2,FirstOverlapFrom,FirstOverlapTo,DistinctWindows,MaxIntersectionRatio,Semitransient,ConfirmedByLog,AllOwnersEver
+1,6,125/105,66,Dali,2,OVERLAY,Qin (38% of its own area) [-550.5..-272.5]; Yiqu (6% of its own area) [-550.5..-272.5],Duchy of Jin; Qin; Wei; Zhi (56% of THIS entity covered) [-550.5..-272.5]; Duchy of Jin; Qin; Wei; Zhi (47% of THIS entity covered) [-550.5..-272.5],12998.2,-550.5,-272.5,5,1.0,,,Dali
+1,6,125/105,73,White Di,1,BASE,,Duchy of Jin; Qin; Wei; Zhi (29% of THIS entity covered) [-623.5..-407.5],28287.0,-623.5,-407.5,4,1.0,,,White Di
+1,6,125/105,76,Yiqu,1,BASE,,Dali (6% of THIS entity covered) [-550.5..-272.5],13887.9,-550.5,-272.5,1,1.0,,,Yiqu
+1,6,125/105,81,Qin,1,BASE,,Duchy of Jin; Qin; Wei; Zhi (100% of THIS entity covered) [-623.5..-272.5]; Dali (38% of THIS entity covered) [-550.5..-272.5],11373.5,-623.5,-272.5,5,1.0,,,Qin
+1,6,125/105,82,Duchy of Jin; Qin; Wei; Zhi,3,OVERLAY,Dali (47% of its own area) [-550.5..-272.5]; White Di (29% of its own area) [-623.5..-407.5],,1044.0,-623.5,-272.5,6,1.0,,,Duchy of Jin; Qin; Wei
+1,6,125/105,84,Duchy of Jin; Qin; Wei; Zhi,3,OVERLAY,Qin (100% of its own area) [-623.5..-272.5]; Dali (56% of its own area) [-550.5..-272.5],,1845.9,-623.5,-272.5,5,1.0,,,Duchy of Jin; Qin; Wei
+2,2,125/105,20,Shang Dynasty; Zhou Dynasty,,AMBIGUOUS (cyclic evidence),,,19551.2,-1055.5,-939.5,2,1.0,,,Shang Dynasty; Xia Dynasty; Zhou Dynasty
+2,2,125/105,38,Zhou; Zhou Dynasty,,AMBIGUOUS (cyclic evidence),,,19551.2,-1055.5,-939.5,2,1.0,,,Zhou; Zhou Dynasty
+3,2,125/105,43,Bengwu,1,BASE,,Zheng; Zhou Dynasty (100% of THIS entity covered) [-806.5..-771.6],17097.7,-806.5,-771.6,2,1.0,,,Zhou Dynasty
+3,2,125/105,46,Zheng; Zhou Dynasty,2,OVERLAY,Bengwu (100% of its own area) [-806.5..-771.6],,942.5,-806.5,-771.6,2,1.0,,,Zhou Dynasty
+4,2,125/105,73,White Di,1,BASE,,Duchy of Jin; Qin (29% of THIS entity covered) [-675.5..-623.5],28287.0,-675.5,-623.5,2,0.288,,,White Di
+4,2,125/105,82,Duchy of Jin; Qin,2,OVERLAY,White Di (29% of its own area) [-675.5..-623.5],,1044.0,-675.5,-623.5,2,0.288,,,Duchy of Jin; Qin; Wei
+5,2,125/105,78,Linhu,1,BASE,,Wei (9% of THIS entity covered) [-407.5..-333.5],37548.7,-407.5,-333.5,1,0.091,,,Linhu
+5,2,125/105,91,Wei,2,OVERLAY,Linhu (9% of its own area) [-407.5..-333.5],,40004.4,-407.5,-333.5,1,0.091,,,Wei
+6,2,125/105,78,Linhu,1,BASE,,Wei (9% of THIS entity covered) [-333.5..-330.5],37548.7,-333.5,-330.5,1,0.091,,,Linhu
+6,2,125/105,94,Wei,2,OVERLAY,Linhu (9% of its own area) [-333.5..-330.5],,39440.7,-333.5,-330.5,1,0.091,,,Wei
+7,2,125/105,78,Linhu,1,BASE,,Qin; Wei (9% of THIS entity covered) [-330.5..-306.5],37548.7,-330.5,-306.5,2,0.091,,,Linhu
+7,2,125/105,96,Qin; Wei,2,OVERLAY,Linhu (9% of its own area) [-330.5..-306.5],,39199.5,-330.5,-306.5,2,0.091,,,Qin; Wei

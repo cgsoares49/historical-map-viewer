@@ -1,0 +1,10 @@
+﻿Tile,EntryIndex,Name,AreaKm2,DateRanges,LifeFrom,LifeTo,LifeYears,Rule,PolHits,Suspicion,ImpactEvents
+125/105,35,Zhou Dynasty,45395.1,3,-1107.5,-939.5,168.0,DATE,,"HIGH: area 45,395 km2, lives 168y",
+125/105,61,Qin,41906.9,1,-645.5,-645.5,0.0,DATE,,"HIGH: area 41,907 km2",
+125/105,44,Zhou Dynasty,22362.5,2,-850.1,-771.1,79.0,DATE,,"HIGH: area 22,362 km2, lives 79y",
+125/105,33,Zhou Dynasty,17635.7,3,-1108.5,-850.1,258.4,DATE,,"HIGH: area 17,636 km2, lives 258y",
+125/105,45,Zhou Dynasty,12565.8,3,-850.1,-771.1,79.0,DATE,,"HIGH: area 12,566 km2, lives 79y",
+125/105,64,Qin,6573.3,1,-634.5,-634.5,0.0,DATE,,"HIGH: area 6,573 km2",
+125/105,54,Qin,5014.5,1,-767.5,-767.5,0.0,DATE,,"HIGH: area 5,015 km2",
+125/105,70,Liang,3302.5,1,-771.6,-771.1,0.5,DATE,,"MED: area 3,302 km2",
+125/105,57,Rui,2326.9,1,-771.6,-771.1,0.5,DATE,,"MED: area 2,327 km2",

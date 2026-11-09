@@ -1,0 +1,37 @@
+﻿GroupID,Tile,EntryIndex,RoleByDuration,From,To,Name,Owner,ColorIndex,InOverlapWindow
+1,125/105,20,AMBIGUOUS (cyclic evidence),-2035.1,-1600.5,Xia Dynasty,Xia Dynasty,0,
+1,125/105,20,AMBIGUOUS (cyclic evidence),-1600.5,-1045.5,Shang Dynasty,Shang Dynasty,0,Y
+1,125/105,20,AMBIGUOUS (cyclic evidence),-1045.5,-939.5,Zhou Dynasty,Zhou Dynasty,0,Y
+1,125/105,38,AMBIGUOUS (cyclic evidence),-1055.5,-1045.5,Zhou,Zhou,0,Y
+1,125/105,38,AMBIGUOUS (cyclic evidence),-1045.5,-850.1,Zhou Dynasty,Zhou Dynasty,0,Y
+2,125/105,43,BASE,-850.1,-771.6,Zhou Dynasty - Bengwu,Zhou Dynasty,49,Y
+2,125/105,46,OVERLAYER,-806.5,-773.5,Zhou Dynasty - Zheng,Zhou Dynasty,52,Y
+2,125/105,46,OVERLAYER,-773.5,-771.6,Zhou Dynasty,Zhou Dynasty,0,Y
+3,125/105,66,BOTH,-550.5,-272.5,Dali,Dali,0,Y
+3,125/105,73,BASE,-770.1,-407.5,White Di,White Di,0,Y
+3,125/105,76,BASE,-771.1,-272.5,Yiqu,Yiqu,0,Y
+3,125/105,81,BASE,-697.5,-272.5,Qin,Qin,0,Y
+3,125/105,82,OVERLAYER,-675.5,-645.5,Duchy of Jin,Duchy of Jin,0,
+3,125/105,82,OVERLAYER,-645.5,-623.5,Qin,Qin,0,
+3,125/105,82,OVERLAYER,-623.5,-456.2,Duchy of Jin,Duchy of Jin,0,Y
+3,125/105,82,OVERLAYER,-456.2,-453.4,Duchy of Jin - Zhi,Duchy of Jin,12,Y
+3,125/105,82,OVERLAYER,-453.4,-452.5,Wei,Wei,0,Y
+3,125/105,82,OVERLAYER,-452.5,-272.5,Qin,Qin,0,Y
+3,125/105,84,OVERLAYER,-623.5,-456.2,Duchy of Jin,Duchy of Jin,0,Y
+3,125/105,84,OVERLAYER,-456.2,-453.4,Duchy of Jin - Zhi,Duchy of Jin,12,Y
+3,125/105,84,OVERLAYER,-453.4,-452.5,Wei,Wei,0,Y
+3,125/105,84,OVERLAYER,-452.5,-272.5,Qin,Qin,0,Y
+4,125/105,73,BASE,-770.1,-407.5,White Di,White Di,0,Y
+4,125/105,82,OVERLAYER,-675.5,-645.5,Duchy of Jin,Duchy of Jin,0,Y
+4,125/105,82,OVERLAYER,-645.5,-623.5,Qin,Qin,0,Y
+4,125/105,82,OVERLAYER,-623.5,-456.2,Duchy of Jin,Duchy of Jin,0,
+4,125/105,82,OVERLAYER,-456.2,-453.4,Duchy of Jin - Zhi,Duchy of Jin,12,
+4,125/105,82,OVERLAYER,-453.4,-452.5,Wei,Wei,0,
+4,125/105,82,OVERLAYER,-452.5,-272.5,Qin,Qin,0,
+5,125/105,78,BASE,-770.1,-306.5,Linhu,Linhu,0,Y
+5,125/105,91,OVERLAYER,-407.5,-333.5,Wei,Wei,0,Y
+6,125/105,78,BASE,-770.1,-306.5,Linhu,Linhu,0,Y
+6,125/105,94,OVERLAYER,-333.5,-330.5,Wei,Wei,0,Y
+7,125/105,78,BASE,-770.1,-306.5,Linhu,Linhu,0,Y
+7,125/105,96,OVERLAYER,-330.5,-328.5,Wei,Wei,0,Y
+7,125/105,96,OVERLAYER,-328.5,-296.5,Qin,Qin,0,Y

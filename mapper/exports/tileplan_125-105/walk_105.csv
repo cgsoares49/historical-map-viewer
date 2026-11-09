@@ -1,0 +1,12 @@
+Check,ViewYear,CentreLon,CentreLat,What,CompareVsMAPPER
+1,-1055.4,109.265,35.840,A #20 ends at -1055.5; Zhou #38 shows from -1055.5 (Zhou-based: border outline/click),
+2,-806.4,109.718,35.094,B Bengwu #43 minus Zheng #46 (Zhou-based: border outline/click),
+3,-675.4,109.896,35.822,C White Di #73 minus Jin #82 (#82 starts -675.5),YES
+4,-623.4,109.603,35.565,E Qin #81 minus Jin #84 (#84 starts -623.5),YES
+5,-550.4,109.052,35.653,D Dali #66 starts -550.5; minus Yiqu #76/Qin #81/#82/#84,YES
+6,-409.4,109.896,35.822,#90 Wei (now Type 1) minus #82 + White Di #110 + Dali #116,YES
+7,-407.4,108.853,38.599,F Linhu #78 minus Wei #91 (White Di ends -407.5),
+8,-333.4,108.853,38.599,F Wei #94 handover + Dali ring swap,YES
+9,-330.4,108.853,38.599,F #96 Wei/Qin handover,
+10,-314.4,109.677,35.669,D Qin #98 starts; Dali #117,YES
+11,-272.6,109.603,35.565,D last visible year of Dali/Qin #81/#84/#98,

@@ -1,0 +1,17 @@
+﻿ViewYear,what to look for,fix(es) involved,centre lon,centre lat
+-550.6,year just BEFORE the fixed span: must be unchanged (no gap),#66 minus #114 (ref swap),109.052,35.653
+-550.4,"first year of the fixed span: no overlay hatching now, area still covered",#66 minus #114 (ref swap),109.052,35.653
+-480.0,middle of the fixed span,#66 minus #114 (ref swap),109.052,35.653
+-409.6,year just BEFORE the fixed span: must be unchanged (no gap),#116 minus #114 & #115 (ref swap),109.052,35.653
+-409.5,last year of the fixed span,#66 minus #114 (ref swap),109.052,35.653
+-409.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#116 minus #114 & #115 (ref swap) | #66 minus #114 (ref swap),109.052,35.653
+-371.5,middle of the fixed span,#116 minus #114 & #115 (ref swap),109.052,35.653
+-333.6,year just BEFORE the fixed span: must be unchanged (no gap),#66 minus #114 (ref swap),109.052,35.653
+-333.5,last year of the fixed span,#116 minus #114 & #115 (ref swap),109.052,35.653
+-333.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#116 minus #114 & #115 (ref swap) | #66 minus #114 (ref swap),109.052,35.653
+-314.6,year just BEFORE the fixed span: must be unchanged (no gap),#117 minus #114 (ref swap),109.052,35.653
+-314.5,last year of the fixed span,#66 minus #114 (ref swap),109.052,35.653
+-314.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged",#117 minus #114 (ref swap) | #66 minus #114 (ref swap),109.052,35.653
+-293.5,middle of the fixed span,#117 minus #114 (ref swap),109.052,35.653
+-272.5,last year of the fixed span,#117 minus #114 (ref swap),109.052,35.653
+-272.4,year just AFTER the fixed span: unchanged,#117 minus #114 (ref swap),109.052,35.653

@@ -1,0 +1,28 @@
+WHOLE-TILE PLAN 125:105   (newer entry takes its area; older entry carved)
+
+6 edit operations; candidates [66, 114, 115, 116, 117]; overlap windows before: 5, after: 0
+POL file header count: 148 -> 148;  PAR file header count: 117 -> 117;  CST file header count: 0 -> 0
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 22 entries
+  - #66: ref swap -> ring of #66 minus #114 (6785.5 km2), ranges -550.5..-409.5, -333.5..-314.5
+  - #116: ref swap -> ring of #116 minus #114 & #115 (6785.5 km2), ranges -409.5..-333.5
+  - #117: ref swap -> ring of #117 minus #114 (6713.0 km2), ranges -314.5..-272.5
+
+PAR EDITS (in order):
+  #66: ranges = -550.5..-409.5 Dali; -333.5..-314.5 Dali
+  #66: refs = [[1109, 1], [1098, 1], [1102, 1], [1118, 1], [1148, 1], [1141, 1], [1142, 0], [1117, 0], [1095, 0], [1061, 1], [1114, 1]]
+  #116: ranges = -409.5..-333.5 Dali
+  #116: refs = [[1118, 1], [1148, 1], [1141, 1], [1142, 0], [1117, 0], [1095, 0], [1061, 1], [1114, 1], [1109, 1], [1098, 1], [1102, 1]]
+  #117: ranges = -314.5..-272.5 Dali
+  #117: refs = [[1109, 1], [1098, 1], [1102, 1], [1118, 1], [1119, 1], [1117, 0], [1095, 0], [1061, 1], [1114, 1]]
+
+PAINT ORDER vs OLD ERA RULE disagree for these pairs (paint order = what MAPPER shows was used):
+  #66 vs #114 (first noticed at -480.0)
+  #116 vs #114 (first noticed at -371.5)
+  #117 vs #114 (first noticed at -293.5)
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical
