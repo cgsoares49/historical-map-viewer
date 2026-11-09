@@ -1,37 +1,53 @@
 ﻿Tile,EntryIndex,Name,AreaKm2,DateRanges,LifeFrom,LifeTo,LifeYears,Rule,PolHits,Suspicion,ImpactEvents
-130/012,372,Samnite Confederation,7495.7,1,-438.5,-438.5,0.0,DATE,,"HIGH: area 7,496 km2",0
-130/012,345,Samnium,6191.5,2,-500.1,-438.5,61.6,DATE,,"HIGH: area 6,191 km2, lives 62y",0
-130/012,770,Roman Ally,6083.0,3,-290.2,-1.0,289.2,DATE,,"HIGH: area 6,083 km2, lives 289y",0
-130/012,263,Volsci,4351.4,2,-495.3,-338.5,156.8,DATE,,"HIGH: area 4,351 km2, lives 157y",32
-130/012,775,Roman Republic,3536.4,3,-286.5,-1.0,285.5,DATE,,"HIGH: area 3,536 km2, lives 286y",1
-130/012,519,Aequi,1584.6,2,-492.5,-303.4,189.1,DATE,,"HIGH: area 1,585 km2, lives 189y",4
-130/012,160,Etruria,1159.5,3,-760.0,-353.5,406.5,DATE,,"HIGH: area 1,160 km2, lives 406y",6
-130/012,657,Mercenaries under Cleonymus,1595.9,1,-303.5,-303.3,0.2,DATE,,"MED: area 1,596 km2",0
-130/012,383,Campania,1513.3,2,-423.5,-421.5,2.0,DATE,,"MED: area 1,513 km2",0
-130/012,242,Roman Republic,778.0,2,-509.5,-1.0,508.5,DATE,,MED: lives 508y,4
-130/012,369,Aurunci,658.5,3,-438.5,-334.5,104.0,DATE,,MED: lives 104y,0
-130/012,768,Roman Republic,496.8,3,-290.2,-1.0,289.2,DATE,,MED: lives 289y,0
-130/012,592,Roman Latin Colony,425.5,3,-320.4,-1.0,319.4,DATE,,MED: lives 319y,8
-130/012,409,Roman Republic,174.8,3,-396.5,-1.0,395.5,DATE,,MED: lives 396y,0
-130/012,256,Roman Republic,114.8,3,-509.5,-1.0,508.5,DATE,,MED: lives 508y,0
-130/012,243,Roman Republic,111.4,3,-509.5,-1.0,508.5,DATE,,MED: lives 508y,0
-130/012,600,Roman Latin Colony,103.7,2,-315.6,-1.0,314.6,DATE,,MED: lives 315y,3
-130/012,267,Roman Ally,93.1,3,-492.5,-1.0,491.5,DATE,,MED: lives 492y,3
-130/012,238,Roman Ally,92.6,3,-495.7,-1.0,494.7,DATE,,MED: lives 495y,11
-130/012,278,Roman Republic,90.7,3,-504.5,-1.0,503.5,DATE,,MED: lives 504y,5
-130/012,599,Roman Latin Colony,85.5,2,-315.6,-1.0,314.6,DATE,,MED: lives 315y,7
-130/012,452,Roman Ally,60.1,3,-385.5,-1.0,384.5,DATE,,MED: lives 384y,3
-130/012,246,Roman Republic,58.5,3,-509.5,-1.0,508.5,DATE,,MED: lives 508y,0
-130/012,250,Roman Republic,57.6,3,-509.5,-1.0,508.5,DATE,,MED: lives 508y,0
-130/012,444,Roman Republic,35.6,3,-385.5,-319.5,66.0,DATE,,MED: lives 66y,5
-130/012,481,Roman Republic,18.1,2,-361.7,-306.6,55.1,DATE,,MED: lives 55y,2
-130/012,226,Latin League,984.4,3,-509.5,-501.5,8.0,DATE,,LOW,0
-130/012,756,Roman Ally,785.7,3,-303.4,-290.2,13.2,DATE,,LOW,6
-130/012,384,Samnite Confederation,761.2,1,-423.5,-423.5,0.0,DATE,,LOW,0
-130/012,225,Revolt,747.3,2,-509.6,-509.4,0.2,DATE,,LOW,2
-130/012,501,Tibur,569.8,2,-355.5,-338.5,17.0,DATE,,LOW,0
-130/012,394,Lucanians,317.8,1,-410.5,-410.5,0.0,DATE,,LOW,0
-130/012,522,Samnite Confederation,238.8,1,-423.5,-421.5,2.0,DATE,,LOW,1
-130/012,237,Roman Republic,44.2,1,-499.5,-499.5,0.0,DATE,,LOW,0
-130/012,637,Roman Ally,18.1,1,-307.5,-306.6,0.9,DATE,,LOW,1
-130/012,638,Roman Ally,18.1,1,-307.5,-306.6,0.9,DATE,,LOW,1
+125/110,393,Shang Dynasty,125486.0,2,-1055.5,-1044.5,11.0,DATE,,"HIGH: area 125,486 km2",
+125/110,270,Duchy of Jin,71042.8,1,-456.2,-453.4,2.8,DATE,,"HIGH: area 71,043 km2",
+125/110,281,Zhao,67467.8,1,-453.4,-360.5,92.9,POL,POL441,"HIGH: area 67,468 km2, lives 93y",
+125/110,279,Duchy of Jin,64422.6,1,-456.2,-453.4,2.8,DATE,,"HIGH: area 64,423 km2",
+125/110,63,Zhou Dynasty,34629.3,3,-850.1,-490.4,359.7,DATE,,"HIGH: area 34,629 km2, lives 360y",
+125/110,150,Jin,33659.4,1,-541.5,-541.5,0.0,DATE,,"HIGH: area 33,659 km2",
+125/110,330,Wei,32265.7,1,-329.5,-328.5,1.0,DATE,,"HIGH: area 32,266 km2",
+125/110,278,Duchy of Jin,31883.4,1,-456.2,-453.4,2.8,DATE,,"HIGH: area 31,883 km2",
+125/110,186,White Di,25810.8,2,-770.1,-452.5,317.6,DATE,,"HIGH: area 25,811 km2, lives 318y",
+125/110,111,Jin,24040.5,1,-593.5,-593.5,0.0,DATE,,"HIGH: area 24,041 km2",
+125/110,332,Wei,18378.7,1,-328.5,-327.5,1.0,DATE,,"HIGH: area 18,379 km2",
+125/110,37,Zhou Dynasty,15112.6,3,-1107.5,-850.1,257.4,DATE,,"HIGH: area 15,113 km2, lives 257y",
+125/110,108,Jin,14390.0,1,-594.5,-594.5,0.0,DATE,,"HIGH: area 14,390 km2",
+125/110,105,Jin,14294.3,3,-620.4,-548.5,71.9,DATE,,"HIGH: area 14,294 km2, lives 72y",
+125/110,307,Wei,11595.4,1,-354.5,-350.5,4.0,DATE,,"HIGH: area 11,595 km2",
+125/110,276,Wei,11406.0,2,-456.2,-360.5,95.7,DATE,,"HIGH: area 11,406 km2, lives 96y",
+125/110,121,Jin,10992.0,1,-527.5,-527.5,0.0,DATE,,"HIGH: area 10,992 km2",
+125/110,153,Duchy of Jin,10085.9,3,-770.1,-456.2,313.9,DATE,,"HIGH: area 10,086 km2, lives 314y",
+125/110,209,Red Di,9075.9,1,-661.5,-660.5,1.0,DATE,,"HIGH: area 9,076 km2",
+125/110,280,Wei,8057.6,1,-453.4,-452.5,0.9,DATE,,"HIGH: area 8,058 km2",
+125/110,53,Zhou Dynasty,8015.9,3,-1042.5,-850.1,192.4,DATE,,"HIGH: area 8,016 km2, lives 192y",
+125/110,91,Jin,8003.1,1,-661.5,-661.5,0.0,DATE,,"HIGH: area 8,003 km2",
+125/110,329,Qin,7652.5,1,-329.5,-327.5,2.0,DATE,,"HIGH: area 7,653 km2",
+125/110,48,Zhou Dynasty,7593.6,3,-1044.5,-850.1,194.4,DATE,,"HIGH: area 7,594 km2, lives 194y",
+125/110,95,Jin,5563.4,1,-653.5,-653.5,0.0,DATE,,"HIGH: area 5,563 km2",
+125/110,174,Li(2),3634.0,2,-770.1,-661.5,108.6,DATE,,"HIGH: area 3,634 km2, lives 109y",
+125/110,290,Wei,3180.9,2,-412.5,-350.5,62.0,DATE,,"HIGH: area 3,181 km2, lives 62y",
+125/110,267,Wei,3045.3,2,-456.2,-330.5,125.7,DATE,,"HIGH: area 3,045 km2, lives 126y",
+125/110,282,Wei,2834.4,1,-453.4,-360.5,92.9,POL,POL441,"HIGH: area 2,834 km2, lives 93y",
+125/110,162,Duchy of Jin,2013.3,3,-770.1,-456.2,313.9,DATE,,"HIGH: area 2,013 km2, lives 314y",
+125/110,161,Duchy of Jin,1885.9,3,-770.1,-456.2,313.9,DATE,,"HIGH: area 1,886 km2, lives 314y",
+125/110,251,Duchy of Jin,1494.7,2,-491.2,-456.2,35.0,DATE,,"HIGH: area 1,495 km2, lives 35y",
+125/110,429,Qin,1012.5,2,-409.5,-350.5,59.0,DATE,,"HIGH: area 1,012 km2, lives 59y",
+125/110,250,Qi,4742.4,1,-491.2,-490.5,0.7,DATE,,"MED: area 4,742 km2",
+125/110,423,Qin,3713.1,1,-413.5,-412.5,1.0,DATE,,"MED: area 3,713 km2",
+125/110,249,Wey,3388.4,1,-491.2,-490.5,0.7,DATE,,"MED: area 3,388 km2",
+125/110,403,Red Di,3230.6,1,-661.5,-660.5,1.0,DATE,,"MED: area 3,231 km2",
+125/110,275,Duchy of Jin,2951.2,1,-456.2,-453.4,2.8,DATE,,"MED: area 2,951 km2",
+125/110,119,Wey,2802.8,1,-547.5,-547.5,0.0,DATE,,"MED: area 2,803 km2",
+125/110,265,Duchy of Jin,2573.1,1,-456.5,-456.2,0.3,DATE,,"MED: area 2,573 km2",
+125/110,205,Xianyu,2303.8,1,-666.7,-666.3,0.4,DATE,,"MED: area 2,304 km2",
+125/110,274,Duchy of Jin,2038.5,1,-456.2,-453.4,2.8,DATE,,"MED: area 2,039 km2",
+125/110,43,Shang Dynasty,1931.0,2,-1067.5,-1044.5,23.0,DATE,,"MED: area 1,931 km2",
+125/110,277,Duchy of Jin,1231.1,1,-456.2,-453.4,2.8,DATE,,"MED: area 1,231 km2",
+125/110,223,Duchy of Jin,1100.6,1,-625.5,-623.5,2.0,DATE,,"MED: area 1,101 km2",
+125/110,289,Wei,1100.6,1,-413.5,-412.5,1.0,DATE,,"MED: area 1,101 km2",
+125/110,292,Wei,412.2,2,-409.5,-350.5,59.0,DATE,,MED: lives 59y,
+125/110,273,Wei,176.7,2,-456.2,-330.5,125.7,DATE,,MED: lives 126y,
+125/110,272,Wei,153.4,2,-456.2,-289.5,166.7,DATE,,MED: lives 167y,
+125/110,266,Qin,73.1,3,-456.2,-1.0,455.2,DATE,,MED: lives 455y,
+125/110,263,Duchy of Jin,979.4,1,-456.5,-456.2,0.3,DATE,,LOW,
+125/110,315,Qin,831.8,1,-354.5,-350.5,4.0,DATE,,LOW,

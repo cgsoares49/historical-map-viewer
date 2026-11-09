@@ -1,0 +1,65 @@
+﻿GroupID,Tile,EntryIndex,RoleByDuration,From,To,Name,Owner,ColorIndex,InOverlapWindow
+1,125/110,19,BASE,-2035.1,-1600.5,Xia Dynasty,Xia Dynasty,0,
+1,125/110,19,BASE,-1600.5,-1045.5,Shang Dynasty,Shang Dynasty,0,Y
+1,125/110,19,BASE,-1045.5,-850.1,Zhou Dynasty,Zhou Dynasty,0,
+1,125/110,44,OVERLAYER,-1055.5,-1045.5,Zhou,Zhou,0,Y
+1,125/110,44,OVERLAYER,-1045.5,-939.5,Zhou Dynasty,Zhou Dynasty,0,
+2,125/110,19,BOTH,-2035.1,-1600.5,Xia Dynasty,Xia Dynasty,0,
+2,125/110,19,BOTH,-1600.5,-1045.5,Shang Dynasty,Shang Dynasty,0,
+2,125/110,19,BOTH,-1045.5,-850.1,Zhou Dynasty,Zhou Dynasty,0,Y
+2,125/110,44,OVERLAYER,-1055.5,-1045.5,Zhou,Zhou,0,
+2,125/110,44,OVERLAYER,-1045.5,-939.5,Zhou Dynasty,Zhou Dynasty,0,Y
+2,125/110,49,OVERLAYER,-1044.5,-1042.4,Zhou Dynasty - Tang,Zhou Dynasty,4,Y
+2,125/110,49,OVERLAYER,-1042.4,-1041.6,Three Guards Rebellion - Tang,Three Guards Rebellion,6,Y
+2,125/110,49,OVERLAYER,-1041.6,-1038.5,Zhou Dynasty - Tang,Zhou Dynasty,4,Y
+2,125/110,49,OVERLAYER,-1038.5,-850.1,Zhou Dynasty - Jin,Zhou Dynasty,26,Y
+2,125/110,50,OVERLAYER,-1044.5,-850.1,Zhou Dynasty - Wey,Zhou Dynasty,8,Y
+2,125/110,56,BASE,-1038.5,-770.3,Zhou Dynasty - Xing,Zhou Dynasty,32,Y
+2,125/110,56,BASE,-770.3,-770.1,Xing,Xing,0,
+3,125/110,43,OVERLAYER,-1067.5,-1045.5,Shang Dynasty,Shang Dynasty,0,
+3,125/110,43,OVERLAYER,-1045.5,-850.1,Zhou Dynasty,Zhou Dynasty,0,Y
+3,125/110,51,BASE,-1044.5,-770.4,Zhou Dynasty - Yan,Zhou Dynasty,9,Y
+3,125/110,51,BASE,-770.4,-770.1,Yan,Yan,0,
+4,125/110,167,BASE,-770.1,-635.5,Zhou Dynasty,Zhou Dynasty,0,Y
+4,125/110,167,BASE,-635.5,-456.2,Duchy of Jin,Duchy of Jin,0,
+4,125/110,200,OVERLAYER,-675.6,-673.5,Revolt of Wangzi Tui,Revolt of Wangzi Tui,0,Y
+5,125/110,178,OVERLAYER,-770.1,-660.5,Gaoluo,Gaoluo,0,Y
+5,125/110,178,OVERLAYER,-660.5,-456.2,Duchy of Jin,Duchy of Jin,0,Y
+5,125/110,180,BOTH,-770.1,-594.5,Red Di,Red Di,0,Y
+5,125/110,203,BASE,-672.5,-456.2,Duchy of Jin,Duchy of Jin,0,Y
+5,125/110,209,BASE,-661.5,-594.5,Red Di,Red Di,0,Y
+5,125/110,213,BOTH,-660.5,-594.5,Red Di,Red Di,0,Y
+5,125/110,215,BASE,-652.5,-456.2,Duchy of Jin,Duchy of Jin,0,Y
+5,125/110,221,BASE,-628.5,-547.5,Wey,Wey,0,Y
+5,125/110,227,OVERLAYER,-600.5,-593.5,Red Di - Jia,Red Di,1,Y
+5,125/110,227,OVERLAYER,-593.5,-456.2,Duchy of Jin,Duchy of Jin,0,
+5,125/110,228,OVERLAYER,-600.5,-593.5,Red Di - Liuxu,Red Di,2,Y
+5,125/110,228,OVERLAYER,-593.5,-456.2,Duchy of Jin,Duchy of Jin,0,
+5,125/110,230,OVERLAYER,-600.5,-588.5,Red Di - Qianggaoru,Red Di,4,Y
+5,125/110,231,OVERLAYER,-600.5,-594.5,Red Di - Lu(2),Red Di,5,Y
+6,125/110,185,BASE,-770.1,-457.5,Dai,Dai,0,Y
+6,125/110,206,OVERLAYER,-662.5,-457.5,Wuzhong,Wuzhong,0,Y
+7,125/110,186,BASE,-770.1,-407.5,White Di,White Di,0,Y
+7,125/110,202,OVERLAYER,-675.5,-645.5,Duchy of Jin,Duchy of Jin,0,Y
+7,125/110,202,OVERLAYER,-645.5,-623.5,Qin,Qin,0,Y
+7,125/110,202,OVERLAYER,-623.5,-456.2,Duchy of Jin,Duchy of Jin,0,
+8,125/110,186,BASE,-770.1,-407.5,White Di,White Di,0,Y
+8,125/110,202,OVERLAYER,-675.5,-645.5,Duchy of Jin,Duchy of Jin,0,
+8,125/110,202,OVERLAYER,-645.5,-623.5,Qin,Qin,0,
+8,125/110,202,OVERLAYER,-623.5,-456.2,Duchy of Jin,Duchy of Jin,0,Y
+8,125/110,241,OVERLAYER,-541.5,-456.2,Duchy of Jin,Duchy of Jin,0,Y
+9,125/110,186,BASE,-770.1,-407.5,White Di,White Di,0,Y
+9,125/110,287,OVERLAYER,-452.5,-412.5,Qin,Qin,0,Y
+9,125/110,289,BASE,-413.5,-330.5,Wei,Wei,0,Y
+10,125/110,186,BASE,-770.1,-407.5,White Di,White Di,0,Y
+10,125/110,291,OVERLAYER,-412.5,-330.5,Qin,Qin,0,Y
+11,125/110,289,BASE,-413.5,-330.5,Wei,Wei,0,Y
+11,125/110,290,BOTH,-412.5,-330.5,Wei,Wei,0,Y
+11,125/110,303,OVERLAYER,-362.5,-354.5,Qin,Qin,0,Y
+11,125/110,303,OVERLAYER,-350.5,-330.5,Qin,Qin,0,Y
+11,125/110,307,BASE,-360.5,-330.5,Wei,Wei,0,Y
+12,125/110,326,OVERLAYER,-330.5,-329.5,Wei,Wei,0,
+12,125/110,326,OVERLAYER,-327.5,-322.5,Wei,Wei,0,Y
+12,125/110,331,BASE,-328.5,-296.5,Qin,Qin,0,Y
+13,125/110,337,BASE,-314.5,-248.5,Zhao,Zhao,0,Y
+13,125/110,372,OVERLAYER,-259.5,-248.5,Zhao,Zhao,0,Y

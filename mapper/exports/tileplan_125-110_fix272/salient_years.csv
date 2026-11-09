@@ -1,0 +1,10 @@
+﻿ViewYear,what to look for,fix(es) involved,centre lon,centre lat
+-456.3,year just BEFORE the fixed span: must be unchanged (no gap),"#272 now drawn above UNKNOWN placeholder #313 (must show its colour, not blank)",112.664,35.092
+-456.1,"first year of the fixed span: no overlay hatching now, area still covered","#272 now drawn above UNKNOWN placeholder #313 (must show its colour, not blank)",112.664,35.092
+-372.9,middle of the fixed span,"#272 now drawn above UNKNOWN placeholder #313 (must show its colour, not blank)",112.664,35.092
+-358.6,year just BEFORE the fixed span: must be unchanged (no gap),#313 minus #272 (ref swap),112.679,35.063
+-358.4,"first year of the fixed span: no overlay hatching now, area still covered",#313 minus #272 (ref swap),112.679,35.063
+-349.5,last year of the fixed span,#313 minus #272 (ref swap),112.679,35.063
+-349.4,year just AFTER the fixed span: unchanged,#313 minus #272 (ref swap),112.679,35.063
+-289.5,last year of the fixed span,"#272 now drawn above UNKNOWN placeholder #313 (must show its colour, not blank)",112.664,35.092
+-289.4,year just AFTER the fixed span: unchanged,"#272 now drawn above UNKNOWN placeholder #313 (must show its colour, not blank)",112.664,35.092

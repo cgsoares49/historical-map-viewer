@@ -1,0 +1,14 @@
+Check,ViewYear,CentreLon,CentreLat,What,CompareVsMAPPER
+R,-1044.4,110.253,35.900,redo main check 2: #48 not hatched; #50/#53 Type 2 hatched by design,
+F1,-623.5,110.294,35.269,S2 Qin #163 minus Jin #223,
+F2,-491.1,114.280,37.546,B Jin #233/#235/#239 minus Wey #249/Qi #250/clan #251,YES
+F3,-490.4,114.280,37.546,B same after -490.5 (clan -> Jin),YES
+F4,-456.1,111.192,38.420,S1/B White Di minus #270/#279 + Jin pieces,YES
+F5,-453.4,111.192,38.420,S1 White Di minus #270/#279 (end -453.4),
+F6,-452.4,111.192,38.420,S1/D White Di minus #280/#281 + #413 minus #281,YES
+F7,-432.5,111.192,38.420,D White Di #413 minus Zhao #281,
+F8,-409.4,111.192,38.420,D #414/#415 minus Zhao #281,
+F9,-411.4,112.679,35.063,C Hann #283 minus Wei #272,
+F10,-359.4,112.679,35.063,C Hann #283/#422 minus Wei #272,
+F11,-360.5,110.576,35.923,S4 Wei #276 minus Qin #303,
+F12,-350.5,110.211,35.806,S3 #290/#292/#307 minus Qin #315,

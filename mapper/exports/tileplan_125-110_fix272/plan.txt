@@ -1,0 +1,22 @@
+WHOLE-TILE PLAN 125:110   (newer entry takes its area; older entry carved)
+
+3 edit operations; candidates [272, 283, 313, 422]; overlap windows before: 1, after: 0
+POL file header count: 654 -> 654;  PAR file header count: 453 -> 453;  CST file header count: 0 -> 0
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+
+DECISIONS / STEPS:
+  - draw order: #272 moved to right after #313 (requested)
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 123 entries
+  - #313: ref swap -> ring of #313 minus #272 (24136.5 km2), ranges -358.5..-349.5
+
+PAR EDITS (in order):
+  MOVE #272 to right after #313 (draw order)
+  #313: ranges = -358.5..-349.5 Hann
+  #313: refs = [[1254, 1], [1253, 1], [1238, 1], [1422, 1], [1420, 1], [1419, 1], [1417, 0], [1530, 0], [1439, 1], [1411, 1], [1533, 1], [1410, 1], [1416, 0], [1483, 1], [1540, 1], [1544, 1], [1542, 1], [1484, 1], [1446, 1], [1538, 1], [1448, 1], [1465, 1], [1464, 1], [1478, 1], [1436, 1], [1546, 1], [1434, 1], [1245, 0], [1520, 1], [1518, 1], [1431, 1], [1076, 1]]
+
+PAINT ORDER vs OLD ERA RULE disagree for these pairs (paint order = what MAPPER shows was used):
+  #313 vs #272 (first noticed at -354.0)
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical

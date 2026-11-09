@@ -1,0 +1,43 @@
+GroupID,GroupSize,Tile,EntryIndex,LastNameSegment,StackDepth,Role,Overlays,OverlaidBy,AreaKm2,FirstOverlapFrom,FirstOverlapTo,DistinctWindows,MaxIntersectionRatio,Semitransient,ConfirmedByLog,AllOwnersEver
+1,11,125/110,178,Duchy of Jin; Gaoluo,2,OVERLAY,Duchy of Jin (24% of its own area) [-672.5..-456.2],,3611.4,-672.5,-456.2,2,1.0,,,Duchy of Jin; Gaoluo
+1,11,125/110,180,Red Di,2,OVERLAY,Duchy of Jin (9% of its own area) [-652.5..-594.5]; Duchy of Jin (4% of its own area) [-672.5..-594.5],Jia (97% of THIS entity covered) [-600.5..-594.5]; Liuxu (63% of THIS entity covered) [-600.5..-594.5]; Red Di (8% of THIS entity covered) [-660.5..-594.5],19356.0,-672.5,-594.5,4,1.0,,,Red Di
+1,11,125/110,203,Duchy of Jin,1,BASE,,Duchy of Jin; Gaoluo (24% of THIS entity covered) [-672.5..-456.2]; Red Di (4% of THIS entity covered) [-672.5..-594.5],4404.4,-672.5,-456.2,3,1.0,,,Duchy of Jin
+1,11,125/110,209,Red Di,1,BASE,,Lu(2) (83% of THIS entity covered) [-600.5..-594.5]; Red Di (32% of THIS entity covered) [-660.5..-594.5]; Liuxu (5% of THIS entity covered) [-600.5..-594.5],9075.8,-660.5,-594.5,2,1.0,,,Red Di
+1,11,125/110,213,Red Di,3,OVERLAY,Red Di (32% of its own area) [-660.5..-594.5]; Red Di (8% of its own area) [-660.5..-594.5]; Wey (4% of its own area) [-628.5..-594.5],Qianggaoru (100% of THIS entity covered) [-600.5..-594.5]; Lu(2) (93% of THIS entity covered) [-600.5..-594.5]; Liuxu (54% of THIS entity covered) [-600.5..-594.5]; Jia (6% of THIS entity covered) [-600.5..-594.5],27938.6,-660.5,-594.5,3,1.0,,,Red Di
+1,11,125/110,215,Duchy of Jin,1,BASE,,Red Di (9% of THIS entity covered) [-652.5..-594.5],5719.4,-652.5,-594.5,1,1.0,,,Duchy of Jin
+1,11,125/110,221,Wey,1,BASE,,Red Di (4% of THIS entity covered) [-628.5..-594.5],6188.2,-628.5,-594.5,1,1.0,,,Wey
+1,11,125/110,227,Jia,4,OVERLAY,Red Di (97% of its own area) [-600.5..-594.5]; Red Di (6% of its own area) [-600.5..-594.5],,8868.2,-600.5,-594.5,1,1.0,,,Duchy of Jin; Red Di
+1,11,125/110,228,Liuxu,4,OVERLAY,Red Di (63% of its own area) [-600.5..-594.5]; Red Di (54% of its own area) [-600.5..-594.5]; Red Di (5% of its own area) [-600.5..-594.5],,11376.2,-600.5,-594.5,1,1.0,,,Duchy of Jin; Red Di
+1,11,125/110,230,Qianggaoru,4,OVERLAY,Red Di (100% of its own area) [-600.5..-594.5],,6516.1,-600.5,-594.5,1,1.0,,,Red Di
+1,11,125/110,231,Lu(2),4,OVERLAY,Red Di (93% of its own area) [-600.5..-594.5]; Red Di (83% of its own area) [-600.5..-594.5],,10047.3,-600.5,-594.5,1,1.0,,,Red Di
+2,5,125/110,19,Zhou Dynasty,2,OVERLAY,Xing (12% of its own area) [-1038.5..-850.1],Zhou Dynasty (100% of THIS entity covered) [-1045.5..-939.5]; Jin; Tang (100% of THIS entity covered) [-1044.5..-850.1]; Wey (100% of THIS entity covered) [-1044.5..-850.1],133744.4,-1045.5,-850.1,6,1.0,,,Shang Dynasty; Xia Dynasty; Zhou Dynasty
+2,5,125/110,44,Zhou Dynasty,3,OVERLAY,Zhou Dynasty (100% of its own area) [-1045.5..-939.5],,8258.4,-1045.5,-939.5,1,1.0,,,Zhou; Zhou Dynasty
+2,5,125/110,49,Jin; Tang,3,OVERLAY,Zhou Dynasty (100% of its own area) [-1044.5..-850.1],,17796.1,-1044.5,-850.1,4,1.0,,,Three Guards Rebellion; Zhou Dynasty
+2,5,125/110,50,Wey,3,OVERLAY,Zhou Dynasty (100% of its own area) [-1044.5..-850.1],,6278.4,-1044.5,-850.1,1,1.0,,,Zhou Dynasty
+2,5,125/110,56,Xing,1,BASE,,Zhou Dynasty (12% of THIS entity covered) [-1038.5..-850.1],15435.7,-1038.5,-850.1,1,1.0,,,Xing; Zhou Dynasty
+3,4,125/110,289,Wei,1,BASE,,Wei (28% of THIS entity covered) [-412.5..-330.5],1100.6,-412.5,-330.5,1,0.821,,,Wei
+3,4,125/110,290,Wei,2,OVERLAY,Wei (28% of its own area) [-412.5..-330.5],Qin (82% of THIS entity covered) [-362.5..-330.5],3180.9,-412.5,-330.5,3,0.821,,,Wei
+3,4,125/110,303,Qin,3,OVERLAY,Wei (82% of its own area) [-362.5..-330.5]; Wei (15% of its own area) [-360.5..-330.5],,784.4,-362.5,-330.5,3,0.821,,,Qin
+3,4,125/110,307,Wei,1,BASE,,Qin (15% of THIS entity covered) [-360.5..-330.5],11595.4,-360.5,-330.5,2,0.821,,,Wei
+4,3,125/110,186,White Di,1,BASE,,Duchy of Jin (30% of THIS entity covered) [-541.5..-456.2]; Duchy of Jin (17% of THIS entity covered) [-623.5..-456.2],25811.9,-623.5,-456.2,2,0.297,,,White Di
+4,3,125/110,202,Duchy of Jin,2,OVERLAY,White Di (17% of its own area) [-623.5..-456.2],,2769.0,-623.5,-456.2,1,0.297,,,Duchy of Jin; Qin
+4,3,125/110,241,Duchy of Jin,2,OVERLAY,White Di (30% of its own area) [-541.5..-456.2],,23533.6,-541.5,-456.2,1,0.297,,,Duchy of Jin
+5,3,125/110,186,White Di,1,BASE,,Qin (10% of THIS entity covered) [-452.5..-412.5],25811.9,-452.5,-412.5,1,1.0,,,White Di
+5,3,125/110,287,Qin,2,OVERLAY,Wei (23% of its own area) [-413.5..-412.5]; White Di (10% of its own area) [-452.5..-412.5],,4813.7,-452.5,-412.5,2,1.0,,,Qin
+5,3,125/110,289,Wei,1,BASE,,Qin (23% of THIS entity covered) [-413.5..-412.5],1100.6,-413.5,-412.5,1,1.0,,,Wei
+6,2,125/110,19,Shang Dynasty,1,BASE,,Zhou (100% of THIS entity covered) [-1055.5..-1045.5],133744.4,-1055.5,-1045.5,1,1.0,,,Shang Dynasty; Xia Dynasty; Zhou Dynasty
+6,2,125/110,44,Zhou,2,OVERLAY,Shang Dynasty (100% of its own area) [-1055.5..-1045.5],,8258.4,-1055.5,-1045.5,1,1.0,,,Zhou; Zhou Dynasty
+7,2,125/110,43,Zhou Dynasty,2,OVERLAY,Yan (80% of its own area) [-1044.5..-850.1],,1931.0,-1044.5,-850.1,1,1.0,,,Shang Dynasty; Zhou Dynasty
+7,2,125/110,51,Yan,1,BASE,,Zhou Dynasty (80% of THIS entity covered) [-1044.5..-850.1],1541.8,-1044.5,-850.1,1,1.0,,,Yan; Zhou Dynasty
+8,2,125/110,167,Zhou Dynasty,1,BASE,,Revolt of Wangzi Tui (100% of THIS entity covered) [-675.6..-673.5],349.3,-675.6,-673.5,1,1.0,,,Duchy of Jin; Zhou Dynasty
+8,2,125/110,200,Revolt of Wangzi Tui,2,OVERLAY,Zhou Dynasty (100% of its own area) [-675.6..-673.5],,349.3,-675.6,-673.5,1,1.0,,,Revolt of Wangzi Tui
+9,2,125/110,185,Dai,1,BASE,,Wuzhong (27% of THIS entity covered) [-662.5..-457.5],14660.6,-662.5,-457.5,1,0.274,,,Dai
+9,2,125/110,206,Wuzhong,2,OVERLAY,Dai (27% of its own area) [-662.5..-457.5],,2303.8,-662.5,-457.5,1,0.274,,,Wuzhong
+10,2,125/110,186,White Di,1,BASE,,Duchy of Jin; Qin (17% of THIS entity covered) [-675.5..-623.5],25811.9,-675.5,-623.5,2,0.174,,,White Di
+10,2,125/110,202,Duchy of Jin; Qin,2,OVERLAY,White Di (17% of its own area) [-675.5..-623.5],,2769.0,-675.5,-623.5,2,0.174,,,Duchy of Jin; Qin
+11,2,125/110,186,White Di,1,BASE,,Qin (29% of THIS entity covered) [-412.5..-407.5],25811.9,-412.5,-407.5,1,0.288,,,White Di
+11,2,125/110,291,Qin,2,OVERLAY,White Di (29% of its own area) [-412.5..-407.5],,1424.7,-412.5,-407.5,1,0.288,,,Qin
+12,2,125/110,326,Wei,2,OVERLAY,Qin (42% of its own area) [-327.5..-322.5],,32864.8,-327.5,-322.5,1,1.0,,,Wei
+12,2,125/110,331,Qin,1,BASE,,Wei (42% of THIS entity covered) [-327.5..-322.5],13887.0,-327.5,-322.5,1,1.0,,,Qin
+13,2,125/110,337,Zhao,1,BASE,,Zhao (0% of THIS entity covered) [-259.5..-248.5],565.0,-259.5,-248.5,1,1.0,,,Zhao
+13,2,125/110,372,Zhao,2,OVERLAY,Zhao (0% of its own area) [-259.5..-248.5],,138850.0,-259.5,-248.5,1,1.0,,,Zhao
