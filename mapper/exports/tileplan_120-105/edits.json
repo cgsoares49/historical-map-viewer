@@ -1,0 +1,555 @@
+[
+ {
+  "op": "par_set_areatype",
+  "entry": 56,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 111,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 157,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 77,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 109,
+  "areatype": 2
+ },
+ {
+  "op": "par_renumber",
+  "entry": 120,
+  "occurrence": 2,
+  "new": 121
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 19,
+  "ranges": [
+   {
+    "from": -2035.1,
+    "to": -1600.5,
+    "name": "Xia Dynasty",
+    "color": 0
+   },
+   {
+    "from": -1600.5,
+    "to": -1055.5,
+    "name": "Shang Dynasty",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 158,
+  "after": 49,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -850.1,
+    "to": -815.5,
+    "name": "Zhou Dynasty",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1045,
+    0
+   ],
+   [
+    1047,
+    0
+   ],
+   [
+    1048,
+    0
+   ],
+   [
+    1046,
+    1
+   ],
+   [
+    1054,
+    1
+   ],
+   [
+    1056,
+    0
+   ],
+   [
+    1020,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 48,
+  "points": [
+   [
+    109.69189,
+    34.57739
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 52,
+  "points": [
+   [
+    109.69189,
+    34.57739
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 48,
+  "points": [
+   [
+    109.6941,
+    34.58488
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 52,
+  "points": [
+   [
+    109.6941,
+    34.58488
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 159,
+  "after": 49,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -806.5,
+    "to": -771.6,
+    "name": "Zhou Dynasty",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1020,
+    1
+   ],
+   [
+    1045,
+    0
+   ],
+   [
+    1047,
+    0
+   ],
+   [
+    1052,
+    0
+   ],
+   [
+    1231,
+    0
+   ],
+   [
+    1230,
+    0
+   ],
+   [
+    1046,
+    1
+   ],
+   [
+    1054,
+    1
+   ],
+   [
+    1022,
+    1
+   ],
+   [
+    1021,
+    1
+   ],
+   [
+    1055,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 49,
+  "ranges": [
+   {
+    "from": -815.5,
+    "to": -806.5,
+    "name": "Zhou Dynasty",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 50,
+  "ranges": [
+   {
+    "from": -850.1,
+    "to": -806.5,
+    "name": "Zhou Dynasty - Bengwu",
+    "color": 49
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 148,
+  "points": [
+   [
+    105.7313,
+    34.68555
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 187,
+  "points": [
+   [
+    105.7313,
+    34.68555
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 233,
+  "points": [
+   [
+    105.95308,
+    34.57481
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 234,
+  "points": [
+   [
+    105.95308,
+    34.57481
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 160,
+  "after": 103,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -688.5,
+    "to": -361.5,
+    "name": "Mianzhu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1235,
+    1
+   ],
+   [
+    1234,
+    1
+   ],
+   [
+    1148,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 103,
+  "ranges": [
+   {
+    "from": -771.1,
+    "to": -688.5,
+    "name": "Mianzhu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 108,
+  "ranges": [
+   {
+    "from": -771.1,
+    "to": -451.5,
+    "name": "Di(2)",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 110,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -600.5,
+    "name": "Nu",
+    "color": 0
+   },
+   {
+    "from": -600.5,
+    "to": -376.5,
+    "name": "Ba - Nu",
+    "color": 2
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 130,
+  "ranges": [
+   {
+    "from": -670.5,
+    "to": -376.5,
+    "name": "Ba",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_refs",
+  "entry": 130,
+  "refs": [
+   [
+    1194,
+    0
+   ],
+   [
+    1144,
+    1
+   ],
+   [
+    1141,
+    0
+   ],
+   {
+    "lit": [
+     110,
+     30
+    ]
+   },
+   [
+    1157,
+    1
+   ],
+   [
+    1156,
+    1
+   ],
+   [
+    1193,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 140,
+  "ranges": [
+   {
+    "from": -600.5,
+    "to": -376.5,
+    "name": "Ba",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_refs",
+  "entry": 140,
+  "refs": [
+   [
+    1110,
+    1
+   ],
+   [
+    1108,
+    0
+   ],
+   [
+    1212,
+    1
+   ],
+   [
+    1211,
+    0
+   ],
+   [
+    1223,
+    0
+   ],
+   [
+    1213,
+    0
+   ],
+   [
+    1193,
+    1
+   ],
+   [
+    1155,
+    1
+   ],
+   [
+    1209,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 227,
+  "points": [
+   [
+    109.85859,
+    30.24199
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 228,
+  "points": [
+   [
+    109.85859,
+    30.24199
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 161,
+  "after": 149,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -279.5,
+    "to": -277.5,
+    "name": "Qin",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1227,
+    0
+   ],
+   [
+    1238,
+    0
+   ],
+   {
+    "lit": [
+     110,
+     30
+    ]
+   },
+   [
+    1224,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 149,
+  "ranges": [
+   {
+    "from": -376.5,
+    "to": -279.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -277.5,
+    "to": -1.0,
+    "name": "Qin",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 162,
+  "after": 156,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -279.5,
+    "to": -277.5,
+    "name": "Qin",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1226,
+    1
+   ],
+   [
+    1228,
+    0
+   ],
+   [
+    1227,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 156,
+  "ranges": [
+   {
+    "from": -304.5,
+    "to": -280.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -280.5,
+    "to": -279.5,
+    "name": "Qin",
+    "color": 0
+   },
+   {
+    "from": -277.5,
+    "to": -1.0,
+    "name": "Qin",
+    "color": 0
+   }
+  ]
+ }
+]

@@ -1,0 +1,80 @@
+WHOLE-TILE PLAN 120:105   (newer entry takes its area; older entry carved)
+
+33 edit operations; candidates [19, 42, 49, 50, 54, 56, 103, 108, 110, 111, 112, 127, 130, 140, 144, 146, 149, 150, 156, 157]; overlap windows before: 30, after: 0
+POL file header count: 228 -> 238;  PAR file header count: 157 -> 162;  CST file header count: 0 -> 0
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+#48 => 48, 229
+ 109.69189    34.57739
+55 > 4 & 53
+#52 => 52, 230
+ 109.69189    34.57739
+20 > 2 & 20
+#48 => 48, 231
+ 109.69410    34.58488
+4 > 3 & 3
+#52 => 52, 232
+ 109.69410    34.58488
+2 > 2 & 2
+#148 => 148, 233
+ 105.73130    34.68555
+17 > 7 & 12
+#187 => 187, 234
+ 105.73130    34.68555
+25 > 17 & 10
+#233 => 233, 235
+ 105.95308    34.57481
+12 > 6 & 8
+#234 => 234, 236
+ 105.95308    34.57481
+10 > 8 & 4
+#227 => 227, 237
+ 109.85859    30.24199
+10 > 9 & 3
+#228 => 228, 238
+ 109.85859    30.24199
+12 > 11 & 3
+
+DECISIONS / STEPS:
+  - PAR NUMBER CHECK: 1 duplicate index(es) [120]; missing numbers [121]
+  - DUPLICATE INDEX: PAR entry #120 (occurrence 2, later in the file) renumbered to #121
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 36 entries
+  - #19: -1055.5..-1045.5 dropped (covered by #42), -1045.5..-850.1 dropped (covered by #42)
+  - new #158 = #49 minus #56 (28950.0 km2), ranges -850.1..-815.5
+  - new #159 = #49 minus #54 (31679.1 km2), ranges -806.5..-771.6
+  - #50: -773.5..-771.6 dropped (covered by #54)
+  - new #160 = #103 minus #127 (592.1 km2), ranges -688.5..-361.5
+  - #108: -451.5..-441.5 dropped (covered by #144), -441.5..-361.5 dropped (covered by #146)
+  - #110: -376.5..-316.5 dropped (covered by #150)
+  - #130: ref swap -> ring of #130 minus #111 & #112 (7604.6 km2), ranges -670.5..-376.5
+  - #140: ref swap -> ring of #140 minus #110 (33573.5 km2), ranges -600.5..-376.5
+  - new #161 = #149 minus #157 (2697.2 km2), ranges -279.5..-277.5
+  - new #162 = #156 minus #157 (18032.0 km2), ranges -279.5..-277.5
+
+PAR EDITS (in order):
+  #19: ranges = -2035.1..-1600.5 Xia Dynasty; -1600.5..-1055.5 Shang Dynasty
+  NEW #158 right after #49: -850.1..-815.5 Zhou Dynasty | refs [[1045, 0], [1047, 0], [1048, 0], [1046, 1], [1054, 1], [1056, 0], [1020, 1]]
+  NEW #159 right after #49: -806.5..-771.6 Zhou Dynasty | refs [[1020, 1], [1045, 0], [1047, 0], [1052, 0], [1231, 0], [1230, 0], [1046, 1], [1054, 1], [1022, 1], [1021, 1], [1055, 1]]
+  #49: ranges = -815.5..-806.5 Zhou Dynasty
+  #50: ranges = -850.1..-806.5 Zhou Dynasty - Bengwu
+  NEW #160 right after #103: -688.5..-361.5 Mianzhu | refs [[1235, 1], [1234, 1], [1148, 1]]
+  #103: ranges = -771.1..-688.5 Mianzhu
+  #108: ranges = -771.1..-451.5 Di(2)
+  #110: ranges = -770.1..-600.5 Nu; -600.5..-376.5 Ba - Nu
+  #130: ranges = -670.5..-376.5 Ba
+  #130: refs = [[1194, 0], [1144, 1], [1141, 0], {'lit': [110, 30]}, [1157, 1], [1156, 1], [1193, 0]]
+  #140: ranges = -600.5..-376.5 Ba
+  #140: refs = [[1110, 1], [1108, 0], [1212, 1], [1211, 0], [1223, 0], [1213, 0], [1193, 1], [1155, 1], [1209, 1]]
+  NEW #161 right after #149: -279.5..-277.5 Qin | refs [[1227, 0], [1238, 0], {'lit': [110, 30]}, [1224, 0]]
+  #149: ranges = -376.5..-279.5 Chu; -277.5..-1 Qin
+  NEW #162 right after #156: -279.5..-277.5 Qin | refs [[1226, 1], [1228, 0], [1227, 1]]
+  #156: ranges = -304.5..-280.5 Chu; -280.5..-279.5 Qin; -277.5..-1 Qin
+
+PAINT ORDER vs OLD ERA RULE disagree for these pairs (paint order = what MAPPER shows was used):
+  #54 vs #50 (first noticed at -772.5)
+  #140 vs #110 (first noticed at -488.5)
+  #130 vs #111 (first noticed at -523.5)
+  #130 vs #112 (first noticed at -523.5)
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical
