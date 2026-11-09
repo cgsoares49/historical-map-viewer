@@ -1,0 +1,26 @@
+BORDERS SHEET sync for tile 120/100, 2026-11-09   (POL file wins; workbook only read: C:\My stuff\VID\ancient index.xlsx)
+
+1) NEW ROWS: 4 lines in exports/borders_sheet_sync_120-100.tsv (columns A..AK), POL 32..35. Insert after Excel row 1518 (POL 31), in order. (A1 is =MAX(A2:A14168), so it updates itself: 5917 -> 6029)
+
+2) PARENT ROW EDITS (4): Excel row, cell: old -> new, then the split note
+   POL   17 (row 1504): F1504: 16 -> 18   [no new child POL found: changed by hand?]
+   POL   23 (row 1510): F1510: 42 -> 3; I1510/J1510: 105, 32.6496 -> 104.76442, 33.34078;  Q1510 = "split 11/9/26 for overlay fix: #23 => 23, 34, 32"
+   POL   28 (row 1515): F1515: 17 -> 3; I1515/J1515: 103.675, 32.5167 -> 104.76442, 33.34078;  Q1515 = "split 11/9/26 for overlay fix: #28 => 28, 35"
+   POL   31 (row 1518): F1518: 19 -> 15; I1518/J1518: 103.649, 31.5171 -> 103.86816, 31.71169;  Q1518 = "split 11/9/26 for overlay fix: #31 => 31, 33"
+
+3) BORDER POLs (not transient/blob) in the file but missing from the sheet, numbered below its last row: [1, 2, 3, 4, 5]
+
+2b) SPLIT PARENT ROWS TO PASTE: exports/borders_sheet_sync_120-100_parents.tsv = 3 lines (columns A..AK), one per split parent, in Excel-row order.
+    Paste each line over the existing row (select A<row>):
+      line  1 -> A1510   (POL 23: F=3, stop 104.76442, 33.34078)
+      line  2 -> A1515   (POL 28: F=3, stop 104.76442, 33.34078)
+      line  3 -> A1518   (POL 31: F=15, stop 103.86816, 31.71169)
+
+2c) OTHER ROWS WHOSE COUNT/STOP DIFFER FROM THE POL FILE (no split child found; your own edits): exports/borders_sheet_sync_120-100_other_changed_rows.tsv
+      line 1 -> A1504   (POL 17: F=18)
+
+4) NEW ROW PREVIEW (A..P):
+   6026 | 2026-11-09 | POLBND | 120/100 | 32 | 8 | 103.86816 | 31.71169 | 105 | 32.6496 |  |  |  |  | (overlay fix) | split from #23   windows: 
+   6027 | 2026-11-09 | POLBND | 120/100 | 33 | 6 | 103.86816 | 31.71169 | 103.649 | 31.5171 | -451.5 | -1 |  |  | (overlay fix) | split from #31   windows: -451.5, -1
+   6028 | 2026-11-09 | POLBND | 120/100 | 34 | 35 | 104.76442 | 33.34078 | 103.86816 | 31.71169 |  |  |  |  | (overlay fix) | split from #23   windows: 
+   6029 | 2026-11-09 | POLBND | 120/100 | 35 | 16 | 104.76442 | 33.34078 | 103.675 | 32.5167 | -451.5 | -361.5 |  |  | (overlay fix) | split from #28   windows: -451.5, -361.5

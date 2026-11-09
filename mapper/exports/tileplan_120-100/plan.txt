@@ -1,0 +1,29 @@
+WHOLE-TILE PLAN 120:100   (newer entry takes its area; older entry carved)
+
+6 edit operations; candidates [31, 36]; overlap windows before: 1, after: 0
+POL file header count: 31 -> 35;  PAR file header count: 37 -> 38;  CST file header count: 0 -> 0
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+#23 => 23, 32
+ 103.86816    31.71169
+42 > 36 & 8
+#31 => 31, 33
+ 103.86816    31.71169
+19 > 15 & 6
+#23 => 23, 34
+ 104.76442    33.34078
+36 > 3 & 35
+#28 => 28, 35
+ 104.76442    33.34078
+17 > 3 & 16
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 5 entries
+  - new #38 = #31 minus #36 (22287.9 km2), ranges -451.5..-361.5
+
+PAR EDITS (in order):
+  NEW #38 right after #31: -451.5..-361.5 Di(2) | refs [[1035, 0], [1031, 0], [1034, 1]]
+  #31: ranges = -771.1..-451.5 Di(2)
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical

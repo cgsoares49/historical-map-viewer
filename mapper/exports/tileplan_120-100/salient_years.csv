@@ -1,0 +1,6 @@
+﻿ViewYear,what to look for,fix(es) involved,centre lon,centre lat
+-451.6,year just BEFORE the fixed span: must be unchanged (no gap),#31 minus #36 -> new #38,104.264,32.531
+-451.4,"first year of the fixed span: no overlay hatching now, area still covered",#31 minus #36 -> new #38,104.264,32.531
+-406.5,middle of the fixed span,#31 minus #36 -> new #38,104.264,32.531
+-361.5,last year of the fixed span,#31 minus #36 -> new #38,104.264,32.531
+-361.4,year just AFTER the fixed span: unchanged,#31 minus #36 -> new #38,104.264,32.531
