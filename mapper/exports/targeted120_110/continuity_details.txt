@@ -1,0 +1,141 @@
+#51  -1038.5..-771.8 Zhou Dynasty - Shen; -771.8..-770.1 Shen; -683.5..-683.5 Chu - Shen ...
+   first visible year -1038.4
+   refs before: POL53 POL39(rev) POL40(rev) POL56 POL190
+   refs after : POL53 POL39(rev) POL40(rev) POL190(rev) POL56(rev)
+   JUMP after POL40(rev): from (111.9793E 33.7384N) to (112.7603E 34.3497N)  0.992 deg
+   JUMP after POL190: from (111.9793E 33.7384N) to (112.7603E 34.3497N)  0.992 deg
+   ZOOM BOX: 111.979..112.760E  33.738..34.350N  (centre 112.370E 34.044N)
+   area 7168.3 -> 7168.3 km2;  shape that changes (sym.diff) = 0.00 km2  -> NO visible fill change (retrace only)
+
+#89  -750.5..-750.5 Zhou Dynasty - Qin; -697.5..-697.5 Qin
+   first visible year -750.4
+   refs before: POL91 POL576 POL600(rev) POL31 POL224 POL97(rev) POL98 POL129(rev) POL102(rev)
+   refs after : POL91 POL576 POL31 POL600 POL224 POL97(rev) POL98 POL129(rev) POL102(rev)
+   JUMP after POL576: from (110.2896E 34.6185N) to (110.6661E 34.6073N)  0.377 deg
+   JUMP after POL600(rev): from (110.3971E 34.5970N) to (110.2896E 34.6185N)  0.110 deg
+   JUMP after POL31: from (110.3971E 34.5970N) to (110.6661E 34.6073N)  0.269 deg
+   JUMP after POL102(rev): from (110.0000E 33.4741N) to (110.0000E 34.3604N)  0.886 deg
+   ZOOM BOX: 110.000..110.666E  33.474..34.618N  (centre 110.333E 34.046N)
+   area 11852.6 -> 11850.3 km2;  shape that changes (sym.diff) = 35.14 km2
+   changed area near 110.579E 34.607N  bounds 110.290..110.666E 34.596..34.618N
+
+#108  -711.5..-711.5 Jiang; -665.5..-665.5 Chu - Jiang
+   first visible year -711.4
+   refs before: POL59 POL65(rev) POL127(rev) POL60(rev)
+   refs after : POL59 POL65 POL127(rev) POL60(rev)
+   JUMP after POL59: from (113.2810E 32.3390N) to (113.7831E 32.0260N)  0.592 deg
+   JUMP after POL65(rev): from (113.2810E 32.3390N) to (113.7831E 32.0260N)  0.592 deg
+   ZOOM BOX: 113.281..113.783E  32.026..32.339N  (centre 113.532E 32.183N)
+   area 4254.1 -> 4254.1 km2;  shape that changes (sym.diff) = 0.00 km2  -> NO visible fill change (retrace only)
+
+#179  -770.1..-655.8 Yu
+   first visible year -770
+   refs before: POL204(rev) POL205(rev) POL206 POL200 POL93
+   refs after : POL204(rev) POL205 POL206 POL200 POL93
+   JUMP after POL204(rev): from (110.9655E 34.9259N) to (111.0716E 34.7585N)  0.198 deg
+   JUMP after POL205(rev): from (110.9655E 34.9259N) to (111.0716E 34.7585N)  0.198 deg
+   JUMP after POL93: from (111.6853E 35.0000N) to (111.1625E 35.0000N)  0.523 deg
+   ZOOM BOX: 110.966..111.685E  34.759..35.000N  (centre 111.325E 34.879N)
+   area 1091.4 -> 1091.4 km2;  shape that changes (sym.diff) = 0.00 km2  -> NO visible fill change (retrace only)
+
+#207  -770.1..-677.5 Zeng; -677.5..-301.5 Chu
+   first visible year -770
+   refs before: POL290(rev) POL260
+   refs after : POL290 POL260
+   JUMP after POL290(rev): from (113.3293E 33.2500N) to (112.9259E 33.3741N)  0.422 deg
+   JUMP after POL260: from (113.3293E 33.2500N) to (112.9259E 33.3741N)  0.422 deg
+   ZOOM BOX: 112.926..113.329E  33.250..33.374N  (centre 113.128E 33.312N)
+   area 596.7 -> 596.7 km2;  shape that changes (sym.diff) = 0.00 km2  -> NO visible fill change (retrace only)
+
+#224  -770.1..-690.5 Lu(3); -690.5..-301.5 Chu
+   first visible year -770
+   refs before: POL320 POL359 POL19 POL318(rev) POL319(rev)
+   refs after : POL320 POL359 POL19 POL318(rev) POL319
+   JUMP after POL318(rev): from (111.8991E 31.8517N) to (111.7853E 32.1414N)  0.311 deg
+   JUMP after POL319(rev): from (111.8991E 31.8517N) to (111.7853E 32.1414N)  0.311 deg
+   ZOOM BOX: 111.785..111.899E  31.852..32.141N  (centre 111.842E 31.997N)
+   area 1147.4 -> 1147.4 km2;  shape that changes (sym.diff) = 0.00 km2  -> NO visible fill change (retrace only)
+
+#226  -770.1..-690.5 Xirong; -690.5..-301.5 Chu
+   first visible year -770
+   refs before: POL357 POL316(rev) POL315
+   refs after : POL357 POL316(rev) POL315(rev)
+   JUMP after POL316(rev): from (112.4862E 31.6328N) to (112.2865E 31.7219N)  0.219 deg
+   JUMP after POL315: from (112.4862E 31.6328N) to (112.2865E 31.7219N)  0.219 deg
+   ZOOM BOX: 112.287..112.486E  31.633..31.722N  (centre 112.386E 31.677N)
+   area 256.5 -> 256.5 km2;  shape that changes (sym.diff) = 0.00 km2  -> NO visible fill change (retrace only)
+
+#231  -770.1..-700.5 Yun; -700.5..-301.5 Chu
+   first visible year -770
+   refs before: POL352(rev) POL355 POL360 POL361 POL122 POL351(rev) POL349(rev) POL445(rev) POL348(rev) POL344 POL346
+   refs after : POL352 POL355 POL360 POL361 POL122 POL351(rev) POL349(rev) POL445(rev) POL348(rev) POL344 POL346
+   JUMP after POL352(rev): from (112.9129E 31.3552N) to (112.6181E 31.1896N)  0.338 deg
+   JUMP after POL346: from (112.9129E 31.3552N) to (112.6181E 31.1896N)  0.338 deg
+   ZOOM BOX: 112.618..112.913E  31.190..31.355N  (centre 112.766E 31.272N)
+   area 6824.4 -> 6824.4 km2;  shape that changes (sym.diff) = 0.00 km2  -> NO visible fill change (retrace only)
+
+#362  -464.5..-439.5 Zheng
+   first visible year -464.4
+   refs before: POL230 POL544 POL579 POL536 POL545 POL560 POL468(rev) POL244(rev) POL561(rev) POL243(rev) POL597(rev) POL242(rev) POL241(rev) POL240(rev) POL250 POL384 POL558(rev) POL249(rev) POL248 POL553(rev) POL434(rev) POL427(rev) POL433 POL257 POL35 POL245 POL557
+   refs after : POL230 POL544 POL579 POL536(rev) POL545 POL560 POL468(rev) POL244(rev) POL561(rev) POL243(rev) POL597(rev) POL242(rev) POL241(rev) POL240(rev) POL250 POL384 POL558(rev) POL249(rev) POL248 POL553(rev) POL434(rev) POL427(rev) POL433 POL257 POL35 POL245 POL557
+   JUMP after POL579: from (112.9259E 34.5276N) to (112.8845E 34.4966N)  0.052 deg
+   JUMP after POL536: from (112.9259E 34.5276N) to (112.8845E 34.4966N)  0.052 deg
+   ZOOM BOX: 112.885..112.926E  34.497..34.528N  (centre 112.905E 34.512N)
+   area 18855.3 -> 18855.3 km2;  shape that changes (sym.diff) = 0.00 km2  -> NO visible fill change (retrace only)
+
+#377  -452.5..-341.5 Wei
+   first visible year -452.4
+   refs before: POL24 POL201 POL436(rev) POL457(rev) POL512 POL591 POL565(rev) POL606 POL564(rev) POL550(rev)
+   refs after : POL24 POL201 POL436(rev) POL457(rev) POL512 POL591 POL565(rev) POL606(rev) POL564(rev) POL550(rev)
+   JUMP after POL565(rev): from (111.2566E 34.5021N) to (111.4341E 34.6946N)  0.262 deg
+   JUMP after POL606: from (111.2566E 34.5021N) to (111.4341E 34.6946N)  0.262 deg
+   JUMP after POL550(rev): from (111.6853E 35.0000N) to (110.2873E 35.0000N)  1.398 deg
+   ZOOM BOX: 110.287..111.685E  34.502..35.000N  (centre 110.986E 34.751N)
+   area 10462.8 -> 10462.8 km2;  shape that changes (sym.diff) = 0.00 km2  -> NO visible fill change (retrace only)
+
+#384  -423.5..-316.5 Hann
+   first visible year -423.4
+   refs before: POL565 POL549(rev) POL505(rev) POL515(rev) POL563
+   refs after : POL565 POL549 POL505(rev) POL515(rev) POL563
+   JUMP after POL565: from (110.6172E 33.9892N) to (110.8222E 33.8753N)  0.235 deg
+   JUMP after POL549(rev): from (110.6172E 33.9892N) to (110.8222E 33.8753N)  0.235 deg
+   ZOOM BOX: 110.617..110.822E  33.875..33.989N  (centre 110.720E 33.932N)
+   area 3428.9 -> 3428.9 km2;  shape that changes (sym.diff) = 0.00 km2  -> NO visible fill change (retrace only)
+
+#385  -423.5..-400.5 Hann; -400.5..-399.5 Zheng; -399.5..-316.5 Hann
+   first visible year -423.4
+   refs before: POL560(rev) POL545(rev) POL535 POL672 POL534(rev)
+   refs after : POL560(rev) POL545(rev) POL535 POL672 POL534
+   JUMP after POL672: from (112.7714E 34.3515N) to (113.0345E 34.1138N)  0.355 deg
+   JUMP after POL534(rev): from (112.7714E 34.3515N) to (113.0345E 34.1138N)  0.355 deg
+   ZOOM BOX: 112.771..113.034E  34.114..34.352N  (centre 112.903E 34.233N)
+   area 723.3 -> 723.3 km2;  shape that changes (sym.diff) = 0.00 km2  -> NO visible fill change (retrace only)
+
+#407  -353.5..-293.5 Zhou Dynasty
+   first visible year -353.4
+   refs before: POL209(rev) POL210 POL373 POL588 POL637 POL675 POL672(rev) POL535(rev) POL536(rev) POL220 POL221 POL222(rev) POL217 POL523(rev) POL226(rev) POL225(rev) POL88(rev)
+   refs after : POL209(rev) POL210 POL373 POL588 POL637 POL675 POL672(rev) POL535(rev) POL536 POL220 POL221 POL222(rev) POL217 POL523(rev) POL226(rev) POL225(rev) POL88(rev)
+   JUMP after POL535(rev): from (112.8845E 34.4966N) to (112.9259E 34.5276N)  0.052 deg
+   JUMP after POL536(rev): from (112.8845E 34.4966N) to (112.9259E 34.5276N)  0.052 deg
+   JUMP after POL88(rev): from (112.1631E 35.0000N) to (111.8914E 35.0000N)  0.272 deg
+   ZOOM BOX: 111.891..112.926E  34.497..35.000N  (centre 112.409E 34.748N)
+   area 4288.4 -> 4288.4 km2;  shape that changes (sym.diff) = 0.00 km2  -> NO visible fill change (retrace only)
+
+#488  -256.5..-249.5 Zhou Dynasty; -249.5..-1 Qin
+   first visible year -256.4
+   refs before: POL216(rev) POL674 POL675 POL672(rev) POL535(rev) POL536 POL220 POL221 POL222(rev)
+   refs after : POL216(rev) POL674(rev) POL675 POL672(rev) POL535(rev) POL536 POL220 POL221 POL222(rev)
+   JUMP after POL216(rev): from (112.6983E 34.5121N) to (112.6541E 34.3986N)  0.122 deg
+   JUMP after POL674: from (112.6983E 34.5121N) to (112.6541E 34.3986N)  0.122 deg
+   ZOOM BOX: 112.654..112.698E  34.399..34.512N  (centre 112.676E 34.455N)
+   area 501.2 -> 501.2 km2;  shape that changes (sym.diff) = 0.00 km2  -> NO visible fill change (retrace only)
+
+#491  -249.5..-1 Hann
+   first visible year -249.4
+   refs before: POL223(rev) POL221(rev) POL220(rev) POL536(rev) POL535 POL671 POL673 POL646 POL241(rev) POL252 POL253 POL385 POL251(rev) POL558(rev) POL570(rev) POL556(rev) POL557 POL667(rev) POL677
+   refs after : POL223(rev) POL221(rev) POL220(rev) POL536(rev) POL535 POL671 POL673 POL646 POL241(rev) POL252 POL253 POL385 POL251(rev) POL558(rev) POL570(rev) POL556(rev) POL557 POL667(rev) POL677(rev)
+   JUMP after POL667(rev): from (113.2033E 34.7513N) to (112.8869E 34.6857N)  0.323 deg
+   JUMP after POL677: from (113.2033E 34.7513N) to (112.8869E 34.6857N)  0.323 deg
+   ZOOM BOX: 112.887..113.203E  34.686..34.751N  (centre 113.045E 34.718N)
+   area 14078.8 -> 14078.8 km2;  shape that changes (sym.diff) = 0.00 km2  -> NO visible fill change (retrace only)
+
