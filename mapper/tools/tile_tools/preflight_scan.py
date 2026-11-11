@@ -1,6 +1,7 @@
 import sys, collections
 sys.path.insert(0, r'C:\My stuff\ClaudeTest\mapper')
-import export_polity_polygons as X
+import export_polity_polygons as X, os
+X.DATA_DIR = os.environ.get("TILE_DATA_DIR", X.DATA_DIR)
 from shapely.strtree import STRtree
 lat, lon = sys.argv[1].split('/')
 lo = float(sys.argv[2]) if len(sys.argv) > 2 else -2100

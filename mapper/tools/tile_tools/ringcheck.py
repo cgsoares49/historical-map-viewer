@@ -4,7 +4,8 @@ segment (after applying its reverse flag) is not within tol of the START of the 
 An out-of-order POL (e.g. PAR110 #377 refs 8/9 swapped) shows up as two big jumps. Literal 'lon,lat' pairs (flag != 0/1) are treated as points."""
 import sys, math
 sys.path.insert(0, r'C:\My stuff\ClaudeTest\mapper')
-import export_polity_polygons as X
+import export_polity_polygons as X, os
+X.DATA_DIR = os.environ.get("TILE_DATA_DIR", X.DATA_DIR)
 la, lo = sys.argv[1].split('/'); tol = float(sys.argv[2]) if len(sys.argv) > 2 and not sys.argv[2].startswith('--') else 0.002
 T = X.load_tile(la, lo); pol = T['pol_by_index']; cst = T['cst_by_index']
 swap = None

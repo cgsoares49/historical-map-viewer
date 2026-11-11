@@ -1,0 +1,103 @@
+entries 493 dups [90] missing [88]
+types Counter({1: 459, 0: 18, 2: 16}) POL 678 CST 0
+Type2: [(36, 'Zhou'), (41, 'Zhou Dynasty - Tang'), (42, 'Zhou Dynasty - Guan'), (50, 'Zhou Dynasty - Ying'), (187, 'Zhou Dynasty - Wangshu'), (255, 'Duan'), (286, 'Li(3)'), (312, 'Zhou Dynasty'), (342, 'Chu - Xu(2)'), (346, 'Revolt of Wangzi Zhao'), (349, 'Xu(2)'), (356, 'Cai'), (365, 'Qin'), (378, 'Zheng'), (396, 'Qin'), (397, 'Hann')]
+type1 dots: [(31, 'Wen'), (166, 'Hann clan'), (366, 'Hann clan'), (171, 'Revolt'), (84, 'Succession struggle'), (90, 'Succession struggle'), (117, 'Succession struggle')]
+pairs 98
+#20 Zhou Dynasty x #43 Zhou Dynasty - Ying  -1044.5..-1038.5 (6.0y) max 17948 km2
+#20 Zhou Dynasty x #45 Zhou Dynasty - Cao  -1044.5..-850.1 (194.4y) max 43 km2
+#20 Zhou Dynasty x #51 Zhou Dynasty - Shen  -1038.5..-850.1 (188.4y) max 7168 km2
+#20 Zhou Dynasty x #49 Zhou Dynasty - Chen  -1038.5..-850.1 (188.4y) max 3982 km2
+#44 Zhou Dynasty x #53 Zhou Dynasty - Tang  -1038.5..-770.1 (268.4y) max 2837 km2
+#48 Zhou Dynasty x #49 Zhou Dynasty - Chen  -1038.5..-771.6 (266.9y) max 1681 km2
+#35 Chu x #59 Zhou Dynasty  -961.3..-960.5 (0.8y) max 26099 km2
+#75 Zhou Dynasty x #82 Zhou Dynasty - Western Guo  -815.5..-771.6 (43.9y) max 1432 km2
+#75 Zhou Dynasty x #81 Zhou Dynasty - Zheng  -806.5..-773.5 (33.0y) max 716 km2
+#198 Xu(2) x #249 Zheng  -763.5..-468.5 (295.0y) max 16 km2
+#246 Quaman x #251 Chu  -756.5..-752.5 (4.0y) max 1553 km2
+#246 Quaman x #250 Chu  -756.5..-752.5 (4.0y) max 76 km2
+#245 Baipu x #252 Chu  -752.5..-704.3 (48.2y) max 810 km2
+#245 Baipu x #254 Chu  -750.5..-704.3 (46.2y) max 1484 km2
+#245 Baipu x #274 Chu  -704.3..-523.5 (180.8y) max 2292 km2
+#232 Chu x #290 Chu  -700.5..-301.5 (399.0y) max 1899 km2
+#268 Zheng x #284 Song  -698.5..-505.5 (193.0y) max 1294 km2
+#177 Zhou Dynasty x #294 Revolt of Wangzi Tui  -675.6..-505.5 (170.1y) max 422 km2
+#245 Baipu x #297 Ba  -670.5..-523.5 (147.0y) max 110 km2
+#247 Manshi x #330 Chu  -606.5..-371.5 (235.0y) max 412 km2
+#200 Chu x #331 Ruo'ao revolt  -605.5..-604.5 (1.0y) max 4887 km2
+#201 Chu x #331 Ruo'ao revolt  -605.5..-604.5 (1.0y) max 1001 km2
+#205 Chu x #331 Ruo'ao revolt  -605.5..-604.5 (1.0y) max 1030 km2
+#207 Chu x #331 Ruo'ao revolt  -605.5..-604.5 (1.0y) max 597 km2
+#208 Chu x #331 Ruo'ao revolt  -605.5..-604.5 (1.0y) max 817 km2
+#211 Chu x #331 Ruo'ao revolt  -605.5..-604.5 (1.0y) max 1158 km2
+#214 Chu x #331 Ruo'ao revolt  -605.5..-604.5 (1.0y) max 82 km2
+#215 Chu x #331 Ruo'ao revolt  -605.5..-604.5 (1.0y) max 3115 km2
+#216 Chu x #331 Ruo'ao revolt  -605.5..-604.5 (1.0y) max 426 km2
+#222 Chu x #331 Ruo'ao revolt  -605.5..-604.5 (1.0y) max 2890 km2
+#223 Chu x #331 Ruo'ao revolt  -605.5..-604.5 (1.0y) max 513 km2
+#224 Chu x #331 Ruo'ao revolt  -605.5..-604.5 (1.0y) max 17 km2
+#247 Manshi x #331 Ruo'ao revolt  -605.5..-604.5 (1.0y) max 412 km2
+#274 Chu x #331 Ruo'ao revolt  -605.5..-604.5 (1.0y) max 2851 km2
+#287 Chu x #331 Ruo'ao revolt  -605.5..-604.5 (1.0y) max 7530 km2
+#288 Chu x #331 Ruo'ao revolt  -605.5..-604.5 (1.0y) max 7283 km2
+#318 Chu x #331 Ruo'ao revolt  -605.5..-604.5 (1.0y) max 5898 km2
+#330 Chu x #331 Ruo'ao revolt  -605.5..-604.5 (1.0y) max 4797 km2
+#335 Duchy of Jin x #334 Duchy of Jin - Luhun Rong  -588.5..-456.2 (132.3y) max 1070 km2
+#335 Duchy of Jin x #244 Duchy of Jin - Yi Luo Rong  -588.5..-456.2 (132.3y) max 3299 km2
+#201 Chu x #337 Xu(2)  -576.5..-533.5 (43.0y) max 485 km2
+#205 Chu x #337 Xu(2)  -576.5..-533.5 (43.0y) max 253 km2
+#287 Chu x #337 Xu(2)  -576.5..-533.5 (43.0y) max 139 km2
+#177 Zhou Dynasty x #344 Revolt of Wangzi Zhao  -520.5..-519.5 (1.0y) max 470 km2
+#177 Zhou Dynasty x #345 Revolt of Wangzi Zhao  -519.5..-516.5 (3.0y) max 3067 km2
+#186 Zhou Dynasty x #345 Revolt of Wangzi Zhao  -519.5..-516.5 (3.0y) max 140 km2
+#208 Chu x #348 Wu  -506.5..-505.3 (1.2y) max 4 km2
+#211 Chu x #348 Wu  -506.5..-505.3 (1.2y) max 1168 km2
+#220 Chu x #348 Wu  -506.5..-505.3 (1.2y) max 3332 km2
+#228 Chu x #348 Wu  -506.5..-505.3 (1.2y) max 2999 km2
+#230 Chu x #348 Wu  -506.5..-505.3 (1.2y) max 4955 km2
+#231 Chu x #348 Wu  -506.5..-505.3 (1.2y) max 4852 km2
+#232 Chu x #348 Wu  -506.5..-505.3 (1.2y) max 1282 km2
+#234 Chu x #348 Wu  -506.5..-505.3 (1.2y) max 421 km2
+#235 Chu x #348 Wu  -506.5..-505.3 (1.2y) max 693 km2
+#238 Chu x #348 Wu  -506.5..-505.3 (1.2y) max 2364 km2
+#239 Chu x #348 Wu  -506.5..-505.3 (1.2y) max 163 km2
+#274 Chu x #348 Wu  -506.5..-505.3 (1.2y) max 7247 km2
+#287 Chu x #348 Wu  -506.5..-505.3 (1.2y) max 199 km2
+#290 Chu x #348 Wu  -506.5..-505.3 (1.2y) max 6212 km2
+#291 Chu x #348 Wu  -506.5..-505.3 (1.2y) max 8450 km2
+#303 Chu x #348 Wu  -506.5..-505.3 (1.2y) max 1193 km2
+#304 Chu x #348 Wu  -506.5..-505.3 (1.2y) max 2072 km2
+#323 Chu x #348 Wu  -506.5..-505.3 (1.2y) max 465 km2
+#247 Manshi x #354 Duchy of Jin  -504.5..-456.2 (48.3y) max 69 km2
+#247 Chu x #369 Duchy of Jin - Hann  -456.2..-423.5 (32.7y) max 69 km2
+#370 Duchy of Jin - Zhi x #371 Duchy of Jin - Wei  -456.2..-453.4 (2.8y) max 303 km2
+#373 Hann x #371 Wei  -453.4..-290.5 (162.9y) max 303 km2
+#247 Chu x #386 Chu  -423.5..-316.5 (107.0y) max 69 km2
+#379 Zheng x #382 Hann  -423.5..-335.5 (88.0y) max 1584 km2
+#385 Hann x #389 Zheng  -407.5..-394.5 (13.0y) max 364 km2
+#380 Chu x #390 Zheng  -399.5..-395.5 (4.0y) max 1269 km2
+#198 Zheng x #391 Chu  -398.5..-395.5 (3.0y) max 649 km2
+#379 Zheng x #391 Chu  -398.5..-395.5 (3.0y) max 928 km2
+#385 Hann x #392 Chu  -393.5..-371.5 (22.0y) max 723 km2
+#386 Hann x #392 Chu  -393.5..-371.5 (22.0y) max 359 km2
+#247 Hann x #402 Chu  -371.5..-316.5 (55.0y) max 25 km2
+#247 Hann x #401 Wei  -371.5..-335.5 (36.0y) max 386 km2
+#247 Hann x #415 Chu  -335.5..-316.5 (19.0y) max 386 km2
+#421 Qin x #423 Qin  -329.5..-327.5 (2.0y) max 10444 km2
+#414 Wei x #425 Wei  -323.5..-322.5 (1.0y) max 1618 km2
+#207 Chu x #434 Hann - Army  -312.5..-311.5 (1.0y) max 492 km2
+#215 Chu x #434 Hann - Army  -312.5..-311.5 (1.0y) max 366 km2
+#216 Chu x #434 Hann - Army  -312.5..-311.5 (1.0y) max 540 km2
+#222 Chu x #434 Hann - Army  -312.5..-311.5 (1.0y) max 681 km2
+#224 Chu x #434 Hann - Army  -312.5..-311.5 (1.0y) max 425 km2
+#287 Chu x #434 Hann - Army  -312.5..-311.5 (1.0y) max 1852 km2
+#288 Chu x #434 Hann - Army  -312.5..-311.5 (1.0y) max 1677 km2
+#402 Chu x #434 Hann - Army  -312.5..-311.5 (1.0y) max 5037 km2
+#415 Chu x #434 Hann - Army  -312.5..-311.5 (1.0y) max 1275 km2
+#431 Chu x #434 Hann - Army  -312.5..-311.5 (1.0y) max 5965 km2
+#433 Chu x #434 Hann - Army  -312.5..-311.5 (1.0y) max 1705 km2
+#430 Hann x #436 Chu  -311.5..-307.5 (4.0y) max 1268 km2
+#441 Qin x #443 Wei  -303.5..-302.5 (1.0y) max 936 km2
+#468 Qin x #472 Chu  -279.5..-278.5 (1.0y) max 223 km2
+#470 Qin x #472 Chu  -279.5..-278.5 (1.0y) max 2293 km2
+#468 Qin x #473 Chu  -278.5..-277.5 (1.0y) max 223 km2
+#470 Qin x #473 Chu  -278.5..-277.5 (1.0y) max 1351 km2

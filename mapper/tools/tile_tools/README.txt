@@ -8,3 +8,6 @@ Registry audit: python audit_registry_exclusions.py --tiles 120:110 ; copy expor
  ringfix.py <lat/lon> [entry#...]              propose simple repairs (flag flip / swap) for flagged entries
  ringdetail.py <lat/lon> <pre_continuity.json> [out.txt]   per-fix zoom box, years, shape change
  ownermap.py <lat/lon> <year> lon0 lat0 lon1 lat1  ASCII map of top-painted polity per cell
+ pairyears.py <lat/lon> a:b ...                  spot + verified years for each overlapping pair (give these to the user)
+ (all tools: set env TILE_DATA_DIR=<staged dir> to run them on a staged copy, e.g. mapper/staging/120-110)
+ ringfix_stage.py <lat/lon> [--apply]           STAGED copy only (TILE_DATA_DIR): finds ring gaps, inserts bridging POL refs

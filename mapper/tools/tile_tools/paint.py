@@ -2,7 +2,8 @@
    Add --rep <entry#> to use that entry's representative point instead of lon lat (year then is first arg after tile)."""
 import sys
 sys.path.insert(0, r'C:\My stuff\ClaudeTest\mapper')
-import export_polity_polygons as X
+import export_polity_polygons as X, os
+X.DATA_DIR = os.environ.get("TILE_DATA_DIR", X.DATA_DIR)
 from shapely.geometry import Point
 tile, year = sys.argv[1], float(sys.argv[2])
 la, lo = tile.split('/')

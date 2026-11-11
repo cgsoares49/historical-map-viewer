@@ -1,0 +1,6935 @@
+[
+ {
+  "op": "par_set_areatype",
+  "entry": 36,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 41,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 42,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 50,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 255,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 312,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 342,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 346,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 356,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 365,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 378,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 396,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 397,
+  "areatype": 1
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 244,
+  "areatype": 2
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 334,
+  "areatype": 2
+ },
+ {
+  "op": "par_renumber",
+  "entry": 90,
+  "occurrence": 2,
+  "new": 88
+ },
+ {
+  "op": "par_add_entry",
+  "index": 494,
+  "after": 20,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -1055.5,
+    "to": -1045.5,
+    "name": "Shang Dynasty",
+    "color": 0
+   },
+   {
+    "from": -1045.5,
+    "to": -1044.5,
+    "name": "Zhou Dynasty",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1055,
+    1
+   ],
+   [
+    1054,
+    1
+   ],
+   [
+    1039,
+    1
+   ],
+   [
+    1040,
+    1
+   ],
+   [
+    1096,
+    1
+   ],
+   [
+    1026,
+    1
+   ],
+   [
+    1025,
+    1
+   ],
+   [
+    1201,
+    1
+   ],
+   [
+    1024,
+    1
+   ],
+   {
+    "lit": [
+     115,
+     35
+    ]
+   },
+   [
+    1043,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 495,
+  "after": 20,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -1044.5,
+    "to": -1038.5,
+    "name": "Zhou Dynasty",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1049,
+    1
+   ],
+   [
+    1037,
+    1
+   ],
+   [
+    1034,
+    0
+   ],
+   [
+    1035,
+    0
+   ],
+   [
+    1245,
+    0
+   ],
+   [
+    1557,
+    0
+   ],
+   [
+    1230,
+    0
+   ],
+   [
+    1032,
+    0
+   ],
+   [
+    1036,
+    0
+   ],
+   [
+    1155,
+    0
+   ],
+   [
+    1056,
+    0
+   ],
+   [
+    1190,
+    0
+   ],
+   [
+    1096,
+    1
+   ],
+   [
+    1026,
+    1
+   ],
+   [
+    1025,
+    1
+   ],
+   [
+    1031,
+    0
+   ],
+   [
+    1600,
+    0
+   ],
+   [
+    1224,
+    0
+   ],
+   [
+    1092,
+    0
+   ],
+   [
+    1206,
+    0
+   ],
+   [
+    1200,
+    0
+   ],
+   [
+    1093,
+    0
+   ],
+   [
+    1045,
+    0
+   ],
+   [
+    1043,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 496,
+  "after": 20,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -1038.5,
+    "to": -850.1,
+    "name": "Zhou Dynasty",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1052,
+    1
+   ],
+   [
+    1051,
+    0
+   ],
+   [
+    1036,
+    0
+   ],
+   [
+    1155,
+    0
+   ],
+   [
+    1056,
+    0
+   ],
+   [
+    1190,
+    0
+   ],
+   [
+    1096,
+    1
+   ],
+   [
+    1026,
+    1
+   ],
+   [
+    1025,
+    1
+   ],
+   [
+    1031,
+    0
+   ],
+   [
+    1600,
+    0
+   ],
+   [
+    1224,
+    0
+   ],
+   [
+    1092,
+    0
+   ],
+   [
+    1206,
+    0
+   ],
+   [
+    1200,
+    0
+   ],
+   [
+    1093,
+    0
+   ],
+   [
+    1045,
+    0
+   ],
+   [
+    1048,
+    1
+   ],
+   [
+    1049,
+    0
+   ],
+   [
+    1055,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 20,
+  "ranges": [
+   {
+    "from": -2035.1,
+    "to": -1600.5,
+    "name": "Xia Dynasty",
+    "color": 0
+   },
+   {
+    "from": -1600.5,
+    "to": -1055.5,
+    "name": "Shang Dynasty",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 497,
+  "after": 41,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -815.5,
+    "to": -770.1,
+    "name": "Zhou Dynasty - Jin",
+    "color": 26
+   }
+  ],
+  "refs": [
+   [
+    1600,
+    1
+   ],
+   [
+    1031,
+    1
+   ],
+   [
+    1201,
+    1
+   ],
+   [
+    1024,
+    1
+   ],
+   [
+    1093,
+    1
+   ],
+   [
+    1094,
+    1
+   ],
+   [
+    1224,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 41,
+  "ranges": [
+   {
+    "from": -1044.5,
+    "to": -1042.4,
+    "name": "Zhou Dynasty - Tang",
+    "color": 4
+   },
+   {
+    "from": -1042.4,
+    "to": -1041.6,
+    "name": "Three Guards Rebellion - Tang",
+    "color": 6
+   },
+   {
+    "from": -1041.6,
+    "to": -1038.5,
+    "name": "Zhou Dynasty - Tang",
+    "color": 4
+   },
+   {
+    "from": -1038.5,
+    "to": -815.5,
+    "name": "Zhou Dynasty - Jin",
+    "color": 26
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 498,
+  "after": 44,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -1038.5,
+    "to": -1030.5,
+    "name": "Zhou Dynasty",
+    "color": 0
+   },
+   {
+    "from": -1030.5,
+    "to": -770.2,
+    "name": "Zhou Dynasty - Cai",
+    "color": 7
+   },
+   {
+    "from": -770.2,
+    "to": -770.1,
+    "name": "Cai",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1055,
+    0
+   ],
+   [
+    1041,
+    0
+   ],
+   [
+    1042,
+    1
+   ],
+   [
+    1060,
+    1
+   ],
+   [
+    1061,
+    1
+   ],
+   [
+    1054,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 44,
+  "ranges": [
+   {
+    "from": -1044.5,
+    "to": -1042.5,
+    "name": "Zhou Dynasty - Cai",
+    "color": 7
+   },
+   {
+    "from": -1042.5,
+    "to": -1041.4,
+    "name": "Three Guards Rebellion - Cai",
+    "color": 2
+   },
+   {
+    "from": -1041.4,
+    "to": -1038.5,
+    "name": "Zhou Dynasty - Cai",
+    "color": 7
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 499,
+  "after": 75,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -815.5,
+    "to": -806.5,
+    "name": "Zhou Dynasty",
+    "color": 0
+   },
+   {
+    "from": -773.5,
+    "to": -771.6,
+    "name": "Zhou Dynasty",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1195,
+    0
+   ],
+   [
+    1436,
+    0
+   ],
+   [
+    1031,
+    0
+   ],
+   [
+    1600,
+    0
+   ],
+   [
+    1224,
+    0
+   ],
+   [
+    1097,
+    1
+   ],
+   [
+    1095,
+    1
+   ],
+   [
+    1093,
+    0
+   ],
+   [
+    1088,
+    0
+   ],
+   [
+    1225,
+    0
+   ],
+   [
+    1226,
+    0
+   ],
+   [
+    1523,
+    0
+   ],
+   [
+    1227,
+    0
+   ],
+   [
+    1154,
+    0
+   ],
+   [
+    1228,
+    0
+   ],
+   [
+    1032,
+    0
+   ],
+   [
+    1036,
+    0
+   ],
+   [
+    1155,
+    0
+   ],
+   [
+    1056,
+    0
+   ],
+   [
+    1190,
+    0
+   ],
+   [
+    1096,
+    1
+   ],
+   [
+    1026,
+    1
+   ],
+   [
+    1001,
+    1
+   ],
+   [
+    1089,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 500,
+  "after": 75,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -806.5,
+    "to": -773.5,
+    "name": "Zhou Dynasty",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1600,
+    0
+   ],
+   [
+    1224,
+    0
+   ],
+   [
+    1097,
+    1
+   ],
+   [
+    1095,
+    1
+   ],
+   [
+    1093,
+    0
+   ],
+   [
+    1088,
+    0
+   ],
+   [
+    1225,
+    0
+   ],
+   [
+    1226,
+    0
+   ],
+   [
+    1523,
+    0
+   ],
+   [
+    1227,
+    0
+   ],
+   [
+    1154,
+    0
+   ],
+   [
+    1228,
+    0
+   ],
+   [
+    1032,
+    0
+   ],
+   [
+    1036,
+    0
+   ],
+   [
+    1155,
+    0
+   ],
+   [
+    1056,
+    0
+   ],
+   [
+    1190,
+    0
+   ],
+   [
+    1096,
+    1
+   ],
+   [
+    1026,
+    1
+   ],
+   [
+    1001,
+    1
+   ],
+   [
+    1091,
+    0
+   ],
+   [
+    1576,
+    0
+   ],
+   [
+    1031,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 75,
+  "ranges": [
+   {
+    "from": -850.1,
+    "to": -815.5,
+    "name": "Zhou Dynasty",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 202,
+  "points": [
+   [
+    110.07891,
+    34.9773
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 546,
+  "points": [
+   [
+    110.07891,
+    34.9773
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 501,
+  "after": 180,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -462.5,
+    "to": -456.2,
+    "name": "Duchy of Jin",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1201,
+    0
+   ],
+   [
+    1436,
+    1
+   ],
+   [
+    1195,
+    1
+   ],
+   [
+    1194,
+    1
+   ],
+   [
+    1546,
+    0
+   ],
+   [
+    1679,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 180,
+  "ranges": [
+   {
+    "from": -771.1,
+    "to": -708.5,
+    "name": "Rui",
+    "color": 0
+   },
+   {
+    "from": -708.5,
+    "to": -707.3,
+    "name": "Zhou Dynasty - Rui",
+    "color": 61
+   },
+   {
+    "from": -707.3,
+    "to": -641.5,
+    "name": "Rui",
+    "color": 0
+   },
+   {
+    "from": -641.5,
+    "to": -623.5,
+    "name": "Qin",
+    "color": 0
+   },
+   {
+    "from": -623.5,
+    "to": -462.5,
+    "name": "Duchy of Jin",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 502,
+  "after": 181,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -462.5,
+    "to": -456.2,
+    "name": "Duchy of Jin",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1679,
+    1
+   ],
+   [
+    1680,
+    0
+   ],
+   [
+    1024,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 181,
+  "ranges": [
+   {
+    "from": -771.1,
+    "to": -641.5,
+    "name": "Liang",
+    "color": 0
+   },
+   {
+    "from": -641.5,
+    "to": -623.5,
+    "name": "Qin",
+    "color": 0
+   },
+   {
+    "from": -623.5,
+    "to": -462.5,
+    "name": "Duchy of Jin",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 503,
+  "after": 177,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -675.6,
+    "to": -674.9,
+    "name": "Zhou Dynasty",
+    "color": 0
+   },
+   {
+    "from": -635.5,
+    "to": -520.5,
+    "name": "Zhou Dynasty",
+    "color": 0
+   },
+   {
+    "from": -516.5,
+    "to": -505.5,
+    "name": "Zhou Dynasty",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1216,
+    1
+   ],
+   [
+    1215,
+    1
+   ],
+   [
+    1522,
+    1
+   ],
+   [
+    1521,
+    1
+   ],
+   [
+    1374,
+    1
+   ],
+   [
+    1537,
+    1
+   ],
+   [
+    1373,
+    1
+   ],
+   [
+    1210,
+    1
+   ],
+   [
+    1209,
+    0
+   ],
+   [
+    1088,
+    0
+   ],
+   [
+    1212,
+    0
+   ],
+   [
+    1226,
+    0
+   ],
+   [
+    1523,
+    0
+   ],
+   [
+    1217,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 504,
+  "after": 177,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -520.5,
+    "to": -519.5,
+    "name": "Zhou Dynasty",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1209,
+    0
+   ],
+   [
+    1088,
+    0
+   ],
+   [
+    1212,
+    0
+   ],
+   [
+    1226,
+    0
+   ],
+   [
+    1523,
+    0
+   ],
+   [
+    1217,
+    1
+   ],
+   [
+    1216,
+    1
+   ],
+   [
+    1215,
+    1
+   ],
+   [
+    1522,
+    1
+   ],
+   [
+    1521,
+    1
+   ],
+   [
+    1517,
+    1
+   ],
+   [
+    1210,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 212,
+  "points": [
+   [
+    112.31145,
+    34.80586
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 518,
+  "points": [
+   [
+    112.31145,
+    34.80586
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 681,
+  "points": [
+   [
+    112.3383,
+    34.91168
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 518,
+  "points": [
+   [
+    112.3383,
+    34.91168
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 505,
+  "after": 177,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -519.5,
+    "to": -518.5,
+    "name": "Zhou Dynasty",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1216,
+    1
+   ],
+   [
+    1215,
+    1
+   ],
+   [
+    1522,
+    1
+   ],
+   [
+    1519,
+    1
+   ],
+   [
+    1682,
+    1
+   ],
+   [
+    1681,
+    0
+   ],
+   [
+    1518,
+    1
+   ],
+   [
+    1523,
+    0
+   ],
+   [
+    1217,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 215,
+  "points": [
+   [
+    112.6052,
+    34.3799
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 520,
+  "points": [
+   [
+    112.6052,
+    34.3799
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 506,
+  "after": 177,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -518.5,
+    "to": -516.5,
+    "name": "Zhou Dynasty",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1216,
+    1
+   ],
+   [
+    1685,
+    1
+   ],
+   [
+    1520,
+    1
+   ],
+   [
+    1682,
+    1
+   ],
+   [
+    1681,
+    0
+   ],
+   [
+    1518,
+    1
+   ],
+   [
+    1523,
+    0
+   ],
+   [
+    1217,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 177,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -675.6,
+    "name": "Zhou Dynasty",
+    "color": 0
+   },
+   {
+    "from": -674.9,
+    "to": -673.5,
+    "name": "Revolt of Wangzi Tui",
+    "color": 0
+   },
+   {
+    "from": -673.5,
+    "to": -635.5,
+    "name": "Zhou Dynasty",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 507,
+  "after": 186,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -519.5,
+    "to": -516.5,
+    "name": "Zhou Dynasty",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1684,
+    1
+   ],
+   [
+    1681,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 186,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -563.5,
+    "name": "Zhou Dynasty - Shan",
+    "color": 67
+   },
+   {
+    "from": -563.5,
+    "to": -519.5,
+    "name": "Zhou Dynasty",
+    "color": 0
+   },
+   {
+    "from": -516.5,
+    "to": -505.5,
+    "name": "Zhou Dynasty",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 233,
+  "points": [
+   [
+    113.18866,
+    34.68696
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 400,
+  "points": [
+   [
+    113.18866,
+    34.68696
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 508,
+  "after": 191,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -743.5,
+    "to": -730.5,
+    "name": "Zheng",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1230,
+    1
+   ],
+   [
+    1232,
+    0
+   ],
+   [
+    1687,
+    1
+   ],
+   [
+    1400,
+    1
+   ],
+   [
+    1401,
+    0
+   ],
+   [
+    1228,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 191,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -767.5,
+    "name": "Eastern Guo",
+    "color": 0
+   },
+   {
+    "from": -767.5,
+    "to": -743.5,
+    "name": "Zheng",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 237,
+  "points": [
+   [
+    112.97911,
+    34.52609
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 405,
+  "points": [
+   [
+    112.97911,
+    34.52609
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 509,
+  "after": 193,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -743.5,
+    "to": -730.5,
+    "name": "Zheng",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1235,
+    0
+   ],
+   [
+    1689,
+    1
+   ],
+   [
+    1405,
+    1
+   ],
+   [
+    1688,
+    1
+   ],
+   [
+    1687,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 193,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -769.5,
+    "name": "Kuai",
+    "color": 0
+   },
+   {
+    "from": -769.5,
+    "to": -743.5,
+    "name": "Zheng",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 510,
+  "after": 198,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -763.5,
+    "to": -712.5,
+    "name": "Xu(2)",
+    "color": 0
+   },
+   {
+    "from": -712.5,
+    "to": -697.5,
+    "name": "Zheng",
+    "color": 0
+   },
+   {
+    "from": -697.5,
+    "to": -576.5,
+    "name": "Xu(2)",
+    "color": 0
+   },
+   {
+    "from": -576.5,
+    "to": -468.5,
+    "name": "Zheng",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1386,
+    0
+   ],
+   [
+    1253,
+    1
+   ],
+   [
+    1252,
+    1
+   ],
+   [
+    1240,
+    1
+   ],
+   [
+    1250,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 240,
+  "points": [
+   [
+    113.71009,
+    33.77157
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 572,
+  "points": [
+   [
+    113.71009,
+    33.77157
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 511,
+  "after": 198,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -398.5,
+    "to": -395.5,
+    "name": "Zheng",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1384,
+    0
+   ],
+   [
+    1692,
+    1
+   ],
+   [
+    1240,
+    1
+   ],
+   [
+    1250,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 198,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -763.5,
+    "name": "Xu(2)",
+    "color": 0
+   },
+   {
+    "from": -468.5,
+    "to": -398.5,
+    "name": "Zheng",
+    "color": 0
+   },
+   {
+    "from": -395.5,
+    "to": -375.5,
+    "name": "Zheng",
+    "color": 0
+   },
+   {
+    "from": -375.5,
+    "to": -316.5,
+    "name": "Hann",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 200,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -678.5,
+    "name": "Ying",
+    "color": 0
+   },
+   {
+    "from": -678.5,
+    "to": -646.5,
+    "name": "Chu - Ying",
+    "color": 31
+   },
+   {
+    "from": -646.5,
+    "to": -605.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -604.5,
+    "to": -371.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 262,
+  "points": [
+   [
+    113.37969,
+    33.34704
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 508,
+  "points": [
+   [
+    113.37969,
+    33.34704
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 262,
+  "points": [
+   [
+    113.39139,
+    33.25004
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 694,
+  "points": [
+   [
+    113.39139,
+    33.25004
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 696,
+  "points": [
+   [
+    113.39141,
+    33.25
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 512,
+  "after": 201,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -576.5,
+    "to": -533.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1597,
+    1
+   ],
+   [
+    1242,
+    1
+   ],
+   [
+    1509,
+    1
+   ],
+   [
+    1508,
+    0
+   ],
+   [
+    1693,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 201,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -763.5,
+    "name": "Hu(2)",
+    "color": 0
+   },
+   {
+    "from": -763.5,
+    "to": -678.5,
+    "name": "Ying",
+    "color": 0
+   },
+   {
+    "from": -678.5,
+    "to": -646.5,
+    "name": "Chu - Ying",
+    "color": 31
+   },
+   {
+    "from": -646.5,
+    "to": -605.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -604.5,
+    "to": -576.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -533.5,
+    "to": -371.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 298,
+  "points": [
+   [
+    114.70065,
+    32.87964
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 540,
+  "points": [
+   [
+    114.70065,
+    32.87964
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 698,
+  "points": [
+   [
+    114.92739,
+    32.81565
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 699,
+  "points": [
+   [
+    114.92739,
+    32.81565
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 513,
+  "after": 204,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -529.5,
+    "to": -301.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1295,
+    1
+   ],
+   [
+    1293,
+    1
+   ],
+   [
+    1292,
+    0
+   ],
+   [
+    1269,
+    0
+   ],
+   [
+    1255,
+    0
+   ],
+   [
+    1299,
+    0
+   ],
+   [
+    1301,
+    0
+   ],
+   [
+    1540,
+    0
+   ],
+   [
+    1298,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 514,
+  "after": 204,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -529.5,
+    "to": -301.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1700,
+    1
+   ],
+   [
+    1701,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 204,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -656.5,
+    "name": "Cai",
+    "color": 0
+   },
+   {
+    "from": -656.5,
+    "to": -655.5,
+    "name": "Qi",
+    "color": 0
+   },
+   {
+    "from": -655.5,
+    "to": -531.5,
+    "name": "Cai",
+    "color": 0
+   },
+   {
+    "from": -531.5,
+    "to": -529.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 289,
+  "points": [
+   [
+    113.69593,
+    33.18616
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 697,
+  "points": [
+   [
+    113.69593,
+    33.18616
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 515,
+  "after": 205,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -576.5,
+    "to": -533.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1268,
+    0
+   ],
+   [
+    1292,
+    1
+   ],
+   [
+    1291,
+    1
+   ],
+   [
+    1289,
+    0
+   ],
+   [
+    1703,
+    0
+   ],
+   [
+    1510,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 205,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -640.5,
+    "name": "Bo",
+    "color": 0
+   },
+   {
+    "from": -640.5,
+    "to": -605.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -604.5,
+    "to": -576.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -533.5,
+    "to": -301.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 207,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -677.5,
+    "name": "Zeng",
+    "color": 0
+   },
+   {
+    "from": -677.5,
+    "to": -605.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -604.5,
+    "to": -301.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 208,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -637.5,
+    "name": "Fang",
+    "color": 0
+   },
+   {
+    "from": -637.5,
+    "to": -605.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -604.5,
+    "to": -301.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 297,
+  "points": [
+   [
+    113.68862,
+    32.52911
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 497,
+  "points": [
+   [
+    113.68862,
+    32.52911
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 516,
+  "after": 211,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -605.5,
+    "to": -604.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1297,
+    0
+   ],
+   [
+    1705,
+    0
+   ],
+   [
+    1296,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 294,
+  "points": [
+   [
+    113.80283,
+    32.83813
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 526,
+  "points": [
+   [
+    113.80283,
+    32.83813
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 517,
+  "after": 211,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -506.5,
+    "to": -505.3,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1295,
+    0
+   ],
+   [
+    1526,
+    0
+   ],
+   [
+    1294,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 211,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -637.5,
+    "name": "Dao",
+    "color": 0
+   },
+   {
+    "from": -637.5,
+    "to": -605.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -604.5,
+    "to": -506.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -505.3,
+    "to": -301.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 306,
+  "points": [
+   [
+    111.66393,
+    32.29242
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 496,
+  "points": [
+   [
+    111.66393,
+    32.29242
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 322,
+  "points": [
+   [
+    111.68029,
+    32.27058
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 709,
+  "points": [
+   [
+    111.68029,
+    32.27058
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 710,
+  "points": [
+   [
+    111.75578,
+    32.18355
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 711,
+  "points": [
+   [
+    111.75578,
+    32.18355
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 320,
+  "points": [
+   [
+    111.79524,
+    32.1513
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 713,
+  "points": [
+   [
+    111.79524,
+    32.1513
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 714,
+  "points": [
+   [
+    111.92053,
+    32.17046
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 715,
+  "points": [
+   [
+    111.92053,
+    32.17046
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 321,
+  "points": [
+   [
+    112.11299,
+    32.19023
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 717,
+  "points": [
+   [
+    112.11299,
+    32.19023
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 518,
+  "after": 215,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -605.5,
+    "to": -604.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1716,
+    1
+   ],
+   [
+    1717,
+    0
+   ],
+   [
+    1321,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 519,
+  "after": 215,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -605.5,
+    "to": -604.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1712,
+    1
+   ],
+   [
+    1713,
+    0
+   ],
+   [
+    1320,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 520,
+  "after": 215,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -605.5,
+    "to": -604.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1708,
+    1
+   ],
+   [
+    1709,
+    0
+   ],
+   [
+    1322,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 215,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -678.5,
+    "name": "Deng",
+    "color": 0
+   },
+   {
+    "from": -678.5,
+    "to": -605.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -604.5,
+    "to": -301.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 313,
+  "points": [
+   [
+    112.24265,
+    32.10684
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 719,
+  "points": [
+   [
+    112.24265,
+    32.10684
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 521,
+  "after": 216,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -605.5,
+    "to": -604.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1359,
+    1
+   ],
+   [
+    1321,
+    0
+   ],
+   [
+    1719,
+    0
+   ],
+   [
+    1720,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 216,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -678.5,
+    "name": "Deng - You",
+    "color": 1
+   },
+   {
+    "from": -678.5,
+    "to": -605.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -604.5,
+    "to": -301.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 522,
+  "after": 220,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -529.5,
+    "to": -506.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -505.3,
+    "to": -301.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1337,
+    1
+   ],
+   [
+    1336,
+    1
+   ],
+   [
+    1335,
+    1
+   ],
+   [
+    1334,
+    0
+   ],
+   [
+    1296,
+    1
+   ],
+   [
+    1298,
+    0
+   ],
+   [
+    1699,
+    0
+   ],
+   [
+    1700,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 220,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -680.5,
+    "name": "Xi",
+    "color": 0
+   },
+   {
+    "from": -680.5,
+    "to": -529.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 222,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -700.5,
+    "name": "Liao(2)",
+    "color": 0
+   },
+   {
+    "from": -700.5,
+    "to": -605.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -604.5,
+    "to": -301.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 277,
+  "points": [
+   [
+    111.5202,
+    32.7121
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 496,
+  "points": [
+   [
+    111.5202,
+    32.7121
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 523,
+  "after": 223,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -605.5,
+    "to": -604.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1277,
+    0
+   ],
+   [
+    1723,
+    0
+   ],
+   [
+    1708,
+    0
+   ],
+   [
+    1307,
+    1
+   ],
+   [
+    1305,
+    1
+   ],
+   [
+    1302,
+    1
+   ],
+   [
+    1276,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 223,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -700.5,
+    "name": "Gu",
+    "color": 0
+   },
+   {
+    "from": -700.5,
+    "to": -605.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -604.5,
+    "to": -312.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 228,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -623.5,
+    "name": "Jiang",
+    "color": 0
+   },
+   {
+    "from": -623.5,
+    "to": -506.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -505.3,
+    "to": -301.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 230,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -700.5,
+    "name": "Er",
+    "color": 0
+   },
+   {
+    "from": -700.5,
+    "to": -506.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -505.3,
+    "to": -301.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 355,
+  "points": [
+   [
+    112.6698,
+    30.99656
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 527,
+  "points": [
+   [
+    112.6698,
+    30.99656
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 349,
+  "points": [
+   [
+    113.11856,
+    30.9572
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 527,
+  "points": [
+   [
+    113.11856,
+    30.9572
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 349,
+  "points": [
+   [
+    113.37094,
+    31.1586
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 527,
+  "points": [
+   [
+    113.37094,
+    31.1586
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 346,
+  "points": [
+   [
+    113.47283,
+    31.37681
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 527,
+  "points": [
+   [
+    113.47283,
+    31.37681
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 524,
+  "after": 231,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -506.5,
+    "to": -505.3,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1352,
+    1
+   ],
+   [
+    1730,
+    1
+   ],
+   [
+    1731,
+    0
+   ],
+   [
+    1728,
+    0
+   ],
+   [
+    1727,
+    0
+   ],
+   [
+    1355,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 231,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -700.5,
+    "name": "Yun",
+    "color": 0
+   },
+   {
+    "from": -700.5,
+    "to": -506.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -505.3,
+    "to": -301.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 232,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -700.5,
+    "name": "Zhen",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 234,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -655.5,
+    "name": "Xian",
+    "color": 0
+   },
+   {
+    "from": -655.5,
+    "to": -506.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -505.3,
+    "to": -301.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 235,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -650.5,
+    "name": "Guang",
+    "color": 0
+   },
+   {
+    "from": -650.5,
+    "to": -506.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -505.3,
+    "to": -301.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 238,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -700.5,
+    "name": "E",
+    "color": 0
+   },
+   {
+    "from": -700.5,
+    "to": -506.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -505.3,
+    "to": -301.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 364,
+  "points": [
+   [
+    114.13243,
+    30.48
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 528,
+  "points": [
+   [
+    114.13243,
+    30.48
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 525,
+  "after": 239,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -506.5,
+    "to": -505.3,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1732,
+    1
+   ],
+   [
+    1528,
+    1
+   ],
+   [
+    1371,
+    0
+   ],
+   [
+    1118,
+    0
+   ],
+   [
+    1399,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 239,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -700.5,
+    "name": "Zhou(2)",
+    "color": 0
+   },
+   {
+    "from": -700.5,
+    "to": -506.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -505.3,
+    "to": -301.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 378,
+  "points": [
+   [
+    110.88301,
+    30.61873
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 391,
+  "points": [
+   [
+    110.88301,
+    30.61873
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 734,
+  "points": [
+   [
+    111.40766,
+    30.30883
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 391,
+  "points": [
+   [
+    111.40766,
+    30.30883
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 736,
+  "points": [
+   [
+    111.49322,
+    30.26809
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 391,
+  "points": [
+   [
+    111.49322,
+    30.26809
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 738,
+  "points": [
+   [
+    111.55123,
+    30.2454
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 391,
+  "points": [
+   [
+    111.55123,
+    30.2454
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 740,
+  "points": [
+   [
+    111.58626,
+    30.2454
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 391,
+  "points": [
+   [
+    111.58626,
+    30.2454
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 742,
+  "points": [
+   [
+    111.64963,
+    30.27536
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 391,
+  "points": [
+   [
+    111.64963,
+    30.27536
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 744,
+  "points": [
+   [
+    111.77872,
+    30.28962
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 391,
+  "points": [
+   [
+    111.77872,
+    30.28962
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 746,
+  "points": [
+   [
+    111.94008,
+    30.25763
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 391,
+  "points": [
+   [
+    111.94008,
+    30.25763
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 526,
+  "after": 245,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -752.5,
+    "to": -750.5,
+    "name": "Baipu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1737,
+    1
+   ],
+   [
+    1736,
+    0
+   ],
+   [
+    1741,
+    1
+   ],
+   [
+    1740,
+    0
+   ],
+   [
+    1745,
+    1
+   ],
+   [
+    1744,
+    0
+   ],
+   [
+    1749,
+    1
+   ],
+   [
+    1748,
+    0
+   ],
+   [
+    1378,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 378,
+  "points": [
+   [
+    110.81341,
+    30.57546
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 397,
+  "points": [
+   [
+    110.81341,
+    30.57546
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 382,
+  "points": [
+   [
+    110.8335,
+    30.68184
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 749,
+  "points": [
+   [
+    111.80092,
+    30.27586
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 452,
+  "points": [
+   [
+    111.80092,
+    30.27586
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 749,
+  "points": [
+   [
+    111.85089,
+    30.27408
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 754,
+  "points": [
+   [
+    111.85089,
+    30.27408
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 527,
+  "after": 245,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -750.5,
+    "to": -704.3,
+    "name": "Baipu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1751,
+    0
+   ],
+   [
+    1452,
+    0
+   ],
+   [
+    1755,
+    1
+   ],
+   [
+    1756,
+    0
+   ],
+   [
+    1378,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 528,
+  "after": 245,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -704.3,
+    "to": -523.5,
+    "name": "Baipu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1751,
+    0
+   ],
+   [
+    1452,
+    0
+   ],
+   [
+    1754,
+    0
+   ],
+   [
+    1756,
+    0
+   ],
+   [
+    1378,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 245,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -752.5,
+    "name": "Baipu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 381,
+  "points": [
+   [
+    111.53318,
+    31.11394
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 387,
+  "points": [
+   [
+    111.53318,
+    31.11394
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 757,
+  "points": [
+   [
+    111.67266,
+    30.68144
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 395,
+  "points": [
+   [
+    111.67266,
+    30.68144
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 529,
+  "after": 246,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -756.5,
+    "to": -752.5,
+    "name": "Quaman",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1309,
+    1
+   ],
+   [
+    1323,
+    0
+   ],
+   [
+    1389,
+    0
+   ],
+   [
+    1395,
+    0
+   ],
+   [
+    1759,
+    0
+   ],
+   [
+    1380,
+    1
+   ],
+   [
+    1393,
+    1
+   ],
+   [
+    1365,
+    1
+   ],
+   [
+    1367,
+    0
+   ],
+   [
+    1311,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 246,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -756.5,
+    "name": "Quaman",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 377,
+  "points": [
+   [
+    112.24819,
+    33.95659
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 539,
+  "points": [
+   [
+    112.24819,
+    33.95659
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 530,
+  "after": 247,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -606.5,
+    "to": -605.5,
+    "name": "Manshi",
+    "color": 0
+   },
+   {
+    "from": -604.5,
+    "to": -524.5,
+    "name": "Manshi",
+    "color": 0
+   },
+   {
+    "from": -506.5,
+    "to": -504.5,
+    "name": "Manshi",
+    "color": 0
+   },
+   {
+    "from": -456.2,
+    "to": -371.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1521,
+    0
+   ],
+   [
+    1522,
+    0
+   ],
+   [
+    1524,
+    1
+   ],
+   [
+    1538,
+    1
+   ],
+   [
+    1468,
+    1
+   ],
+   [
+    1244,
+    1
+   ],
+   [
+    1258,
+    0
+   ],
+   [
+    1489,
+    0
+   ],
+   [
+    1516,
+    0
+   ],
+   [
+    1539,
+    0
+   ],
+   [
+    1377,
+    1
+   ],
+   [
+    1374,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 531,
+  "after": 247,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -605.5,
+    "to": -604.5,
+    "name": "Manshi",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1521,
+    0
+   ],
+   [
+    1522,
+    0
+   ],
+   [
+    1524,
+    1
+   ],
+   [
+    1538,
+    1
+   ],
+   [
+    1468,
+    1
+   ],
+   [
+    1244,
+    1
+   ],
+   [
+    1258,
+    0
+   ],
+   [
+    1489,
+    0
+   ],
+   [
+    1516,
+    0
+   ],
+   [
+    1539,
+    0
+   ],
+   [
+    1377,
+    1
+   ],
+   [
+    1374,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 376,
+  "points": [
+   [
+    112.19327,
+    33.71227
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 514,
+  "points": [
+   [
+    112.19327,
+    33.71227
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 376,
+  "points": [
+   [
+    112.25162,
+    33.72432
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 764,
+  "points": [
+   [
+    112.25162,
+    33.72432
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 761,
+  "points": [
+   [
+    112.31453,
+    33.78189
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 766,
+  "points": [
+   [
+    112.31453,
+    33.78189
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 532,
+  "after": 247,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -524.5,
+    "to": -506.5,
+    "name": "Manshi",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1521,
+    0
+   ],
+   [
+    1522,
+    0
+   ],
+   [
+    1524,
+    1
+   ],
+   [
+    1538,
+    1
+   ],
+   [
+    1468,
+    1
+   ],
+   [
+    1244,
+    1
+   ],
+   [
+    1258,
+    0
+   ],
+   [
+    1489,
+    0
+   ],
+   [
+    1516,
+    0
+   ],
+   [
+    1539,
+    0
+   ],
+   [
+    1377,
+    1
+   ],
+   [
+    1374,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 533,
+  "after": 247,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -504.5,
+    "to": -491.5,
+    "name": "Manshi",
+    "color": 0
+   },
+   {
+    "from": -491.5,
+    "to": -456.2,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1522,
+    0
+   ],
+   [
+    1524,
+    1
+   ],
+   [
+    1538,
+    1
+   ],
+   [
+    1468,
+    1
+   ],
+   [
+    1244,
+    1
+   ],
+   [
+    1258,
+    0
+   ],
+   [
+    1489,
+    0
+   ],
+   [
+    1516,
+    0
+   ],
+   [
+    1532,
+    0
+   ],
+   [
+    1521,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 761,
+  "points": [
+   [
+    112.2265,
+    33.89037
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 583,
+  "points": [
+   [
+    112.2265,
+    33.89037
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 769,
+  "points": [
+   [
+    112.31043,
+    33.78291
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 770,
+  "points": [
+   [
+    112.31043,
+    33.78291
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 534,
+  "after": 247,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -371.5,
+    "to": -335.5,
+    "name": "Hann",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1521,
+    0
+   ],
+   [
+    1522,
+    0
+   ],
+   [
+    1524,
+    1
+   ],
+   [
+    1538,
+    1
+   ],
+   [
+    1468,
+    1
+   ],
+   [
+    1244,
+    1
+   ],
+   [
+    1258,
+    0
+   ],
+   [
+    1489,
+    0
+   ],
+   [
+    1516,
+    0
+   ],
+   [
+    1539,
+    0
+   ],
+   [
+    1377,
+    1
+   ],
+   [
+    1374,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 535,
+  "after": 247,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -371.5,
+    "to": -335.5,
+    "name": "Hann",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1770,
+    0
+   ],
+   [
+    1769,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 536,
+  "after": 247,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -335.5,
+    "to": -316.5,
+    "name": "Hann",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1521,
+    0
+   ],
+   [
+    1522,
+    0
+   ],
+   [
+    1524,
+    1
+   ],
+   [
+    1538,
+    1
+   ],
+   [
+    1468,
+    1
+   ],
+   [
+    1244,
+    1
+   ],
+   [
+    1258,
+    0
+   ],
+   [
+    1489,
+    0
+   ],
+   [
+    1516,
+    0
+   ],
+   [
+    1539,
+    0
+   ],
+   [
+    1377,
+    1
+   ],
+   [
+    1374,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 537,
+  "after": 247,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -335.5,
+    "to": -316.5,
+    "name": "Hann",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1770,
+    0
+   ],
+   [
+    1769,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 247,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -606.5,
+    "name": "Manshi",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 538,
+  "after": 268,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -698.5,
+    "to": -636.5,
+    "name": "Zheng",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1553,
+    0
+   ],
+   [
+    1248,
+    1
+   ],
+   [
+    1249,
+    0
+   ],
+   [
+    1558,
+    0
+   ],
+   [
+    1384,
+    1
+   ],
+   [
+    1250,
+    1
+   ],
+   [
+    1240,
+    0
+   ],
+   [
+    1691,
+    0
+   ],
+   [
+    1241,
+    0
+   ],
+   [
+    1242,
+    0
+   ],
+   [
+    1597,
+    0
+   ],
+   [
+    1243,
+    0
+   ],
+   [
+    1561,
+    0
+   ],
+   [
+    1244,
+    0
+   ],
+   [
+    1468,
+    0
+   ],
+   [
+    1538,
+    0
+   ],
+   [
+    1524,
+    0
+   ],
+   [
+    1215,
+    0
+   ],
+   [
+    1685,
+    0
+   ],
+   [
+    1219,
+    0
+   ],
+   [
+    1536,
+    0
+   ],
+   [
+    1220,
+    0
+   ],
+   [
+    1221,
+    0
+   ],
+   [
+    1223,
+    0
+   ],
+   [
+    1401,
+    0
+   ],
+   [
+    1228,
+    0
+   ],
+   [
+    1230,
+    1
+   ],
+   [
+    1231,
+    1
+   ],
+   [
+    1044,
+    0
+   ],
+   [
+    1427,
+    0
+   ],
+   [
+    1434,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 539,
+  "after": 268,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -636.5,
+    "to": -518.5,
+    "name": "Zheng",
+    "color": 0
+   },
+   {
+    "from": -516.5,
+    "to": -505.5,
+    "name": "Zheng",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1221,
+    0
+   ],
+   [
+    1223,
+    0
+   ],
+   [
+    1401,
+    0
+   ],
+   [
+    1228,
+    0
+   ],
+   [
+    1230,
+    1
+   ],
+   [
+    1231,
+    1
+   ],
+   [
+    1044,
+    0
+   ],
+   [
+    1427,
+    0
+   ],
+   [
+    1434,
+    0
+   ],
+   [
+    1553,
+    0
+   ],
+   [
+    1248,
+    1
+   ],
+   [
+    1249,
+    0
+   ],
+   [
+    1558,
+    0
+   ],
+   [
+    1384,
+    1
+   ],
+   [
+    1250,
+    1
+   ],
+   [
+    1240,
+    0
+   ],
+   [
+    1691,
+    0
+   ],
+   [
+    1241,
+    0
+   ],
+   [
+    1242,
+    0
+   ],
+   [
+    1597,
+    0
+   ],
+   [
+    1243,
+    0
+   ],
+   [
+    1561,
+    0
+   ],
+   [
+    1244,
+    0
+   ],
+   [
+    1467,
+    1
+   ],
+   [
+    1220,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 540,
+  "after": 268,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -518.5,
+    "to": -516.5,
+    "name": "Zheng",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1221,
+    0
+   ],
+   [
+    1223,
+    0
+   ],
+   [
+    1401,
+    0
+   ],
+   [
+    1228,
+    0
+   ],
+   [
+    1230,
+    1
+   ],
+   [
+    1231,
+    1
+   ],
+   [
+    1044,
+    0
+   ],
+   [
+    1427,
+    0
+   ],
+   [
+    1434,
+    0
+   ],
+   [
+    1553,
+    0
+   ],
+   [
+    1248,
+    1
+   ],
+   [
+    1249,
+    0
+   ],
+   [
+    1558,
+    0
+   ],
+   [
+    1384,
+    1
+   ],
+   [
+    1250,
+    1
+   ],
+   [
+    1240,
+    0
+   ],
+   [
+    1691,
+    0
+   ],
+   [
+    1241,
+    0
+   ],
+   [
+    1242,
+    0
+   ],
+   [
+    1597,
+    0
+   ],
+   [
+    1243,
+    0
+   ],
+   [
+    1561,
+    0
+   ],
+   [
+    1244,
+    0
+   ],
+   [
+    1467,
+    1
+   ],
+   [
+    1220,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 268,
+  "ranges": [
+   {
+    "from": -713.5,
+    "to": -698.5,
+    "name": "Zheng",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 541,
+  "after": 274,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -605.5,
+    "to": -604.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1754,
+    1
+   ],
+   [
+    1452,
+    1
+   ],
+   [
+    1751,
+    1
+   ],
+   [
+    1397,
+    1
+   ],
+   [
+    1382,
+    1
+   ],
+   [
+    1393,
+    1
+   ],
+   [
+    1392,
+    1
+   ],
+   [
+    1389,
+    1
+   ],
+   [
+    1323,
+    1
+   ],
+   [
+    1308,
+    1
+   ],
+   [
+    1307,
+    0
+   ],
+   [
+    1322,
+    0
+   ],
+   [
+    1711,
+    0
+   ],
+   [
+    1712,
+    0
+   ],
+   [
+    1319,
+    1
+   ],
+   [
+    1317,
+    1
+   ],
+   [
+    1316,
+    1
+   ],
+   [
+    1315,
+    1
+   ],
+   [
+    1356,
+    1
+   ],
+   [
+    1019,
+    1
+   ],
+   [
+    1720,
+    1
+   ],
+   [
+    1721,
+    0
+   ],
+   [
+    1498,
+    0
+   ],
+   [
+    1422,
+    1
+   ],
+   [
+    1421,
+    0
+   ],
+   [
+    1529,
+    0
+   ],
+   [
+    1345,
+    1
+   ],
+   [
+    1346,
+    0
+   ],
+   [
+    1730,
+    0
+   ],
+   [
+    1352,
+    0
+   ],
+   [
+    1355,
+    0
+   ],
+   [
+    1724,
+    0
+   ],
+   [
+    1360,
+    0
+   ],
+   [
+    1361,
+    0
+   ],
+   [
+    1122,
+    0
+   ],
+   [
+    1398,
+    0
+   ],
+   [
+    1399,
+    0
+   ],
+   [
+    1756,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 398,
+  "points": [
+   [
+    113.42405,
+    30.39446
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 733,
+  "points": [
+   [
+    113.42405,
+    30.39446
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 542,
+  "after": 274,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -506.5,
+    "to": -505.3,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1754,
+    1
+   ],
+   [
+    1452,
+    1
+   ],
+   [
+    1751,
+    1
+   ],
+   [
+    1397,
+    1
+   ],
+   [
+    1382,
+    1
+   ],
+   [
+    1393,
+    1
+   ],
+   [
+    1392,
+    1
+   ],
+   [
+    1389,
+    1
+   ],
+   [
+    1323,
+    1
+   ],
+   [
+    1308,
+    1
+   ],
+   [
+    1307,
+    0
+   ],
+   [
+    1322,
+    0
+   ],
+   [
+    1710,
+    0
+   ],
+   [
+    1712,
+    0
+   ],
+   [
+    1319,
+    1
+   ],
+   [
+    1317,
+    1
+   ],
+   [
+    1316,
+    1
+   ],
+   [
+    1315,
+    1
+   ],
+   [
+    1356,
+    1
+   ],
+   [
+    1019,
+    1
+   ],
+   [
+    1720,
+    1
+   ],
+   [
+    1313,
+    1
+   ],
+   [
+    1312,
+    1
+   ],
+   [
+    1283,
+    0
+   ],
+   [
+    1284,
+    0
+   ],
+   [
+    1324,
+    0
+   ],
+   [
+    1326,
+    0
+   ],
+   [
+    1498,
+    0
+   ],
+   [
+    1422,
+    1
+   ],
+   [
+    1421,
+    0
+   ],
+   [
+    1527,
+    0
+   ],
+   [
+    1730,
+    0
+   ],
+   [
+    1352,
+    0
+   ],
+   [
+    1355,
+    0
+   ],
+   [
+    1725,
+    0
+   ],
+   [
+    1530,
+    0
+   ],
+   [
+    1756,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 543,
+  "after": 274,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -506.5,
+    "to": -505.3,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1399,
+    0
+   ],
+   [
+    1774,
+    1
+   ],
+   [
+    1773,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 274,
+  "ranges": [
+   {
+    "from": -704.3,
+    "to": -605.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -604.5,
+    "to": -506.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -505.3,
+    "to": -312.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 544,
+  "after": 290,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -506.5,
+    "to": -505.3,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1773,
+    1
+   ],
+   [
+    1733,
+    1
+   ],
+   [
+    1732,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 545,
+  "after": 290,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -506.5,
+    "to": -505.3,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1729,
+    0
+   ],
+   [
+    1728,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 290,
+  "ranges": [
+   {
+    "from": -700.5,
+    "to": -506.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -505.3,
+    "to": -301.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 546,
+  "after": 287,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -576.5,
+    "to": -533.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1288,
+    1
+   ],
+   [
+    1287,
+    1
+   ],
+   [
+    1286,
+    1
+   ],
+   [
+    1439,
+    1
+   ],
+   [
+    1438,
+    0
+   ],
+   [
+    1440,
+    0
+   ],
+   [
+    1290,
+    1
+   ],
+   [
+    1261,
+    0
+   ],
+   [
+    1697,
+    0
+   ],
+   [
+    1289,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 287,
+  "ranges": [
+   {
+    "from": -688.5,
+    "to": -687.5,
+    "name": "Shen",
+    "color": 0
+   },
+   {
+    "from": -687.5,
+    "to": -605.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -604.5,
+    "to": -576.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -533.5,
+    "to": -301.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 288,
+  "ranges": [
+   {
+    "from": -688.5,
+    "to": -605.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -604.5,
+    "to": -301.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 291,
+  "ranges": [
+   {
+    "from": -681.5,
+    "to": -506.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -505.3,
+    "to": -301.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 303,
+  "ranges": [
+   {
+    "from": -675.5,
+    "to": -648.5,
+    "name": "Huang",
+    "color": 0
+   },
+   {
+    "from": -648.5,
+    "to": -506.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -505.3,
+    "to": -301.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 304,
+  "ranges": [
+   {
+    "from": -675.5,
+    "to": -506.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -505.3,
+    "to": -301.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 547,
+  "after": 312,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -518.5,
+    "to": -516.5,
+    "name": "Zhou Dynasty",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1468,
+    0
+   ],
+   [
+    1538,
+    0
+   ],
+   [
+    1686,
+    1
+   ],
+   [
+    1685,
+    0
+   ],
+   [
+    1219,
+    0
+   ],
+   [
+    1536,
+    0
+   ],
+   [
+    1467,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 312,
+  "ranges": [
+   {
+    "from": -636.5,
+    "to": -518.5,
+    "name": "Zhou Dynasty",
+    "color": 0
+   },
+   {
+    "from": -516.5,
+    "to": -505.5,
+    "name": "Zhou Dynasty",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 481,
+  "points": [
+   [
+    110.85325,
+    33.39604
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 496,
+  "points": [
+   [
+    110.85325,
+    33.39604
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 775,
+  "points": [
+   [
+    110.86519,
+    33.3856
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 776,
+  "points": [
+   [
+    110.86519,
+    33.3856
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 275,
+  "points": [
+   [
+    110.88589,
+    33.37352
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 778,
+  "points": [
+   [
+    110.88589,
+    33.37352
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 779,
+  "points": [
+   [
+    111.25754,
+    33.10581
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 780,
+  "points": [
+   [
+    111.25754,
+    33.10581
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 781,
+  "points": [
+   [
+    111.50369,
+    32.83906
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 782,
+  "points": [
+   [
+    111.50369,
+    32.83906
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 783,
+  "points": [
+   [
+    111.50729,
+    32.82706
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 784,
+  "points": [
+   [
+    111.50729,
+    32.82706
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 548,
+  "after": 318,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -605.5,
+    "to": -604.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1782,
+    0
+   ],
+   [
+    1781,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 549,
+  "after": 318,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -605.5,
+    "to": -604.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1785,
+    1
+   ],
+   [
+    1786,
+    0
+   ],
+   [
+    1277,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 550,
+  "after": 318,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -605.5,
+    "to": -604.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1496,
+    0
+   ],
+   [
+    1481,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 318,
+  "ranges": [
+   {
+    "from": -622.5,
+    "to": -606.5,
+    "name": "Chu - Ruo",
+    "color": 37
+   },
+   {
+    "from": -606.5,
+    "to": -605.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -604.5,
+    "to": -312.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 323,
+  "ranges": [
+   {
+    "from": -615.5,
+    "to": -506.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -505.3,
+    "to": -301.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 551,
+  "after": 330,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -524.5,
+    "to": -506.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1270,
+    0
+   ],
+   [
+    1271,
+    0
+   ],
+   [
+    1479,
+    0
+   ],
+   [
+    1490,
+    1
+   ],
+   [
+    1505,
+    1
+   ],
+   [
+    1515,
+    1
+   ],
+   [
+    1514,
+    0
+   ],
+   [
+    1763,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 552,
+  "after": 330,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -524.5,
+    "to": -506.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1376,
+    0
+   ],
+   [
+    1766,
+    0
+   ],
+   [
+    1768,
+    0
+   ],
+   [
+    1489,
+    1
+   ],
+   [
+    1492,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 330,
+  "ranges": [
+   {
+    "from": -606.5,
+    "to": -605.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -604.5,
+    "to": -524.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -506.5,
+    "to": -371.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 348,
+  "ranges": [
+   {
+    "from": -506.5,
+    "to": -505.3,
+    "name": "Wu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_refs",
+  "entry": 348,
+  "refs": [
+   [
+    1018,
+    0
+   ],
+   [
+    1363,
+    0
+   ],
+   [
+    1528,
+    0
+   ],
+   [
+    1733,
+    0
+   ],
+   [
+    1774,
+    0
+   ],
+   [
+    1530,
+    1
+   ],
+   [
+    1725,
+    1
+   ],
+   [
+    1727,
+    1
+   ],
+   [
+    1729,
+    1
+   ],
+   [
+    1731,
+    1
+   ],
+   [
+    1527,
+    1
+   ],
+   [
+    1529,
+    0
+   ],
+   [
+    1423,
+    0
+   ],
+   [
+    1331,
+    1
+   ],
+   [
+    1330,
+    0
+   ],
+   [
+    1286,
+    1
+   ],
+   [
+    1707,
+    1
+   ],
+   [
+    1526,
+    1
+   ],
+   [
+    1298,
+    0
+   ],
+   [
+    1699,
+    0
+   ],
+   [
+    1700,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 553,
+  "after": 358,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -445.5,
+    "to": -439.5,
+    "name": "Song",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1553,
+    1
+   ],
+   [
+    1554,
+    1
+   ],
+   [
+    1416,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 554,
+  "after": 358,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -445.5,
+    "to": -439.5,
+    "name": "Song",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1552,
+    1
+   ],
+   [
+    1543,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 358,
+  "ranges": [
+   {
+    "from": -480.5,
+    "to": -445.5,
+    "name": "Song",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 544,
+  "points": [
+   [
+    113.2896,
+    34.9204
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 230,
+  "points": [
+   [
+    113.2984,
+    34.94328
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 370,
+  "ranges": [
+   {
+    "from": -456.2,
+    "to": -453.4,
+    "name": "Duchy of Jin - Zhi",
+    "color": 12
+   }
+  ]
+ },
+ {
+  "op": "par_set_refs",
+  "entry": 370,
+  "refs": [
+   [
+    1787,
+    0
+   ],
+   [
+    1579,
+    0
+   ],
+   [
+    1220,
+    0
+   ],
+   [
+    1221,
+    0
+   ],
+   [
+    1223,
+    0
+   ],
+   [
+    1401,
+    0
+   ],
+   [
+    1154,
+    1
+   ],
+   [
+    1227,
+    1
+   ],
+   [
+    1523,
+    1
+   ],
+   [
+    1226,
+    1
+   ],
+   [
+    1225,
+    1
+   ],
+   [
+    1088,
+    1
+   ],
+   [
+    1648,
+    1
+   ],
+   [
+    1651,
+    1
+   ],
+   [
+    1668,
+    1
+   ],
+   [
+    1650,
+    1
+   ],
+   [
+    1547,
+    1
+   ],
+   [
+    1044,
+    0
+   ],
+   [
+    1433,
+    0
+   ],
+   [
+    1257,
+    0
+   ],
+   [
+    1035,
+    0
+   ],
+   [
+    1245,
+    0
+   ],
+   [
+    1557,
+    0
+   ],
+   [
+    1230,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 373,
+  "ranges": [
+   {
+    "from": -453.4,
+    "to": -290.5,
+    "name": "Hann",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_refs",
+  "entry": 373,
+  "refs": [
+   [
+    1229,
+    0
+   ],
+   [
+    1544,
+    0
+   ],
+   [
+    1787,
+    0
+   ],
+   [
+    1579,
+    0
+   ],
+   [
+    1220,
+    0
+   ],
+   [
+    1221,
+    0
+   ],
+   [
+    1223,
+    0
+   ],
+   [
+    1401,
+    0
+   ],
+   [
+    1154,
+    1
+   ],
+   [
+    1227,
+    1
+   ],
+   [
+    1523,
+    1
+   ],
+   [
+    1226,
+    1
+   ],
+   [
+    1225,
+    1
+   ],
+   [
+    1088,
+    1
+   ],
+   [
+    1648,
+    1
+   ],
+   [
+    1651,
+    1
+   ],
+   [
+    1668,
+    1
+   ],
+   [
+    1650,
+    1
+   ],
+   [
+    1547,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 555,
+  "after": 377,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -389.5,
+    "to": -387.5,
+    "name": "Wei",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1024,
+    1
+   ],
+   [
+    1550,
+    0
+   ],
+   [
+    1564,
+    0
+   ],
+   [
+    1606,
+    0
+   ],
+   [
+    1565,
+    0
+   ],
+   [
+    1591,
+    1
+   ],
+   [
+    1512,
+    1
+   ],
+   [
+    1577,
+    1
+   ],
+   [
+    1576,
+    0
+   ],
+   [
+    1201,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 377,
+  "ranges": [
+   {
+    "from": -452.5,
+    "to": -389.5,
+    "name": "Wei",
+    "color": 0
+   },
+   {
+    "from": -387.5,
+    "to": -341.5,
+    "name": "Wei",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 556,
+  "after": 379,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -423.5,
+    "to": -400.5,
+    "name": "Zheng",
+    "color": 0
+   },
+   {
+    "from": -399.5,
+    "to": -398.5,
+    "name": "Zheng",
+    "color": 0
+   },
+   {
+    "from": -395.5,
+    "to": -385.5,
+    "name": "Zheng",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1557,
+    1
+   ],
+   [
+    1556,
+    0
+   ],
+   [
+    1570,
+    0
+   ],
+   [
+    1558,
+    0
+   ],
+   [
+    1384,
+    1
+   ],
+   [
+    1250,
+    1
+   ],
+   [
+    1240,
+    0
+   ],
+   [
+    1691,
+    0
+   ],
+   [
+    1241,
+    0
+   ],
+   [
+    1242,
+    0
+   ],
+   [
+    1597,
+    0
+   ],
+   [
+    1243,
+    0
+   ],
+   [
+    1571,
+    1
+   ],
+   [
+    1580,
+    1
+   ],
+   [
+    1559,
+    1
+   ],
+   [
+    1545,
+    1
+   ],
+   [
+    1536,
+    0
+   ],
+   [
+    1579,
+    1
+   ],
+   [
+    1787,
+    1
+   ],
+   [
+    1230,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 557,
+  "after": 379,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -398.5,
+    "to": -395.5,
+    "name": "Zheng",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1557,
+    1
+   ],
+   [
+    1556,
+    0
+   ],
+   [
+    1570,
+    0
+   ],
+   [
+    1558,
+    0
+   ],
+   [
+    1384,
+    1
+   ],
+   [
+    1250,
+    1
+   ],
+   [
+    1240,
+    0
+   ],
+   [
+    1572,
+    1
+   ],
+   [
+    1580,
+    1
+   ],
+   [
+    1559,
+    1
+   ],
+   [
+    1545,
+    1
+   ],
+   [
+    1536,
+    0
+   ],
+   [
+    1579,
+    1
+   ],
+   [
+    1787,
+    1
+   ],
+   [
+    1230,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 558,
+  "after": 379,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -385.5,
+    "to": -375.5,
+    "name": "Zheng",
+    "color": 0
+   },
+   {
+    "from": -375.5,
+    "to": -335.5,
+    "name": "Hann",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1557,
+    1
+   ],
+   [
+    1556,
+    0
+   ],
+   [
+    1570,
+    0
+   ],
+   [
+    1558,
+    0
+   ],
+   [
+    1384,
+    1
+   ],
+   [
+    1250,
+    1
+   ],
+   [
+    1240,
+    0
+   ],
+   [
+    1691,
+    0
+   ],
+   [
+    1241,
+    0
+   ],
+   [
+    1242,
+    0
+   ],
+   [
+    1597,
+    0
+   ],
+   [
+    1243,
+    0
+   ],
+   [
+    1571,
+    1
+   ],
+   [
+    1580,
+    1
+   ],
+   [
+    1578,
+    1
+   ],
+   [
+    1787,
+    1
+   ],
+   [
+    1230,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 379,
+  "ranges": [
+   {
+    "from": -439.5,
+    "to": -423.5,
+    "name": "Zheng",
+    "color": 0
+   },
+   {
+    "from": -400.5,
+    "to": -399.5,
+    "name": "Zheng",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 559,
+  "after": 380,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -399.5,
+    "to": -395.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1433,
+    1
+   ],
+   [
+    1555,
+    0
+   ],
+   [
+    1416,
+    1
+   ],
+   [
+    1248,
+    1
+   ],
+   [
+    1249,
+    0
+   ],
+   [
+    1570,
+    1
+   ],
+   [
+    1569,
+    1
+   ],
+   [
+    1257,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 380,
+  "ranges": [
+   {
+    "from": -439.5,
+    "to": -399.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -395.5,
+    "to": -391.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 560,
+  "after": 385,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -407.5,
+    "to": -400.5,
+    "name": "Hann",
+    "color": 0
+   },
+   {
+    "from": -400.5,
+    "to": -399.5,
+    "name": "Zheng",
+    "color": 0
+   },
+   {
+    "from": -399.5,
+    "to": -394.5,
+    "name": "Hann",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1534,
+    1
+   ],
+   [
+    1568,
+    1
+   ],
+   [
+    1560,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 385,
+  "ranges": [
+   {
+    "from": -423.5,
+    "to": -407.5,
+    "name": "Hann",
+    "color": 0
+   },
+   {
+    "from": -394.5,
+    "to": -393.5,
+    "name": "Hann",
+    "color": 0
+   },
+   {
+    "from": -371.5,
+    "to": -316.5,
+    "name": "Hann",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 561,
+  "after": 386,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -393.5,
+    "to": -371.5,
+    "name": "Hann",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1521,
+    1
+   ],
+   [
+    1532,
+    1
+   ],
+   [
+    1539,
+    0
+   ],
+   [
+    1762,
+    0
+   ],
+   [
+    1503,
+    0
+   ],
+   [
+    1563,
+    0
+   ],
+   [
+    1606,
+    1
+   ],
+   [
+    1564,
+    1
+   ],
+   [
+    1562,
+    1
+   ],
+   [
+    1210,
+    0
+   ],
+   [
+    1373,
+    0
+   ],
+   [
+    1533,
+    0
+   ],
+   [
+    1573,
+    0
+   ],
+   [
+    1522,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 386,
+  "ranges": [
+   {
+    "from": -423.5,
+    "to": -419.5,
+    "name": "Chu",
+    "color": 0
+   },
+   {
+    "from": -419.5,
+    "to": -393.5,
+    "name": "Hann",
+    "color": 0
+   },
+   {
+    "from": -371.5,
+    "to": -316.5,
+    "name": "Hann",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 414,
+  "ranges": [
+   {
+    "from": -335.5,
+    "to": -323.5,
+    "name": "Wei",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 421,
+  "ranges": [
+   {
+    "from": -330.5,
+    "to": -329.5,
+    "name": "Qin",
+    "color": 0
+   },
+   {
+    "from": -327.5,
+    "to": -1.0,
+    "name": "Qin",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 562,
+  "after": 430,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -311.5,
+    "to": -307.5,
+    "name": "Hann",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1557,
+    1
+   ],
+   [
+    1556,
+    0
+   ],
+   [
+    1570,
+    0
+   ],
+   [
+    1558,
+    0
+   ],
+   [
+    1251,
+    0
+   ],
+   [
+    1385,
+    1
+   ],
+   [
+    1253,
+    1
+   ],
+   [
+    1252,
+    1
+   ],
+   [
+    1241,
+    0
+   ],
+   [
+    1242,
+    0
+   ],
+   [
+    1610,
+    1
+   ],
+   [
+    1609,
+    0
+   ],
+   [
+    1618,
+    1
+   ],
+   [
+    1672,
+    1
+   ],
+   [
+    1535,
+    1
+   ],
+   [
+    1536,
+    0
+   ],
+   [
+    1579,
+    1
+   ],
+   [
+    1787,
+    1
+   ],
+   [
+    1230,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 563,
+  "after": 430,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -311.5,
+    "to": -307.5,
+    "name": "Hann",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1505,
+    0
+   ],
+   [
+    1549,
+    1
+   ],
+   [
+    1565,
+    1
+   ],
+   [
+    1606,
+    1
+   ],
+   [
+    1564,
+    1
+   ],
+   [
+    1562,
+    1
+   ],
+   [
+    1210,
+    0
+   ],
+   [
+    1373,
+    0
+   ],
+   [
+    1617,
+    0
+   ],
+   [
+    1616,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 430,
+  "ranges": [
+   {
+    "from": -316.5,
+    "to": -311.5,
+    "name": "Hann",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 441,
+  "ranges": [
+   {
+    "from": -303.5,
+    "to": -302.5,
+    "name": "Qin",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_set_refs",
+  "entry": 441,
+  "refs": [
+   [
+    1598,
+    0
+   ],
+   [
+    1623,
+    1
+   ],
+   [
+    1599,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 451,
+  "points": [
+   [
+    110.27109,
+    30.37184
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 662,
+  "points": [
+   [
+    110.27109,
+    30.37184
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 564,
+  "after": 468,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -279.5,
+    "to": -278.5,
+    "name": "Qin",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1620,
+    0
+   ],
+   [
+    1451,
+    0
+   ],
+   [
+    1790,
+    0
+   ],
+   [
+    1619,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 565,
+  "after": 468,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -278.5,
+    "to": -277.5,
+    "name": "Qin",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1620,
+    0
+   ],
+   [
+    1451,
+    0
+   ],
+   [
+    1790,
+    0
+   ],
+   [
+    1619,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 468,
+  "ranges": [
+   {
+    "from": -280.5,
+    "to": -279.5,
+    "name": "Qin",
+    "color": 0
+   },
+   {
+    "from": -277.5,
+    "to": -1.0,
+    "name": "Qin",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 566,
+  "after": 470,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -279.5,
+    "to": -278.5,
+    "name": "Qin",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1620,
+    1
+   ],
+   [
+    1627,
+    0
+   ],
+   [
+    1659,
+    1
+   ],
+   [
+    1656,
+    1
+   ],
+   [
+    1655,
+    0
+   ],
+   [
+    1662,
+    0
+   ],
+   [
+    1451,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 567,
+  "after": 470,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -279.5,
+    "to": -278.5,
+    "name": "Qin",
+    "color": 0
+   }
+  ],
+  "refs": [
+   {
+    "lit": [
+     110,
+     30
+    ]
+   },
+   [
+    1657,
+    0
+   ],
+   [
+    1661,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 568,
+  "after": 470,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -278.5,
+    "to": -277.5,
+    "name": "Qin",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1620,
+    1
+   ],
+   [
+    1627,
+    0
+   ],
+   [
+    1659,
+    1
+   ],
+   [
+    1656,
+    1
+   ],
+   [
+    1653,
+    1
+   ],
+   {
+    "lit": [
+     110,
+     30
+    ]
+   },
+   [
+    1657,
+    0
+   ],
+   [
+    1660,
+    0
+   ],
+   [
+    1662,
+    0
+   ],
+   [
+    1451,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 470,
+  "ranges": [
+   {
+    "from": -277.5,
+    "to": -1.0,
+    "name": "Qin",
+    "color": 0
+   }
+  ]
+ }
+]

@@ -2,7 +2,8 @@
 during the entry's own date ranges (>=3 km2). Use this to build the --entries list for a plan_tile carve test (planner does NOT auto-find parents)."""
 import sys
 sys.path.insert(0, r'C:\My stuff\ClaudeTest\mapper')
-import export_polity_polygons as X
+import export_polity_polygons as X, os
+X.DATA_DIR = os.environ.get("TILE_DATA_DIR", X.DATA_DIR)
 la, lo = sys.argv[1].split('/'); T = X.load_tile(la, lo); pol = T['pol_by_index']; cst = T['cst_by_index']; rl = [0]
 def poly(e):
     r, _ = X.build_combined_ring(e['polyRefs'], cst, pol) if e['polyRefs'] else (None, 0)

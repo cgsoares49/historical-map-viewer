@@ -1,7 +1,8 @@
 """ownermap.py <lat/lon> <year> <lon0> <lat0> <lon1> <lat1> [cols]  -> ASCII map of the top-painted entry per cell (file order; types 1/2, UNKNOWN shown as '.'; transients skipped)."""
 import sys
 sys.path.insert(0, r'C:\My stuff\ClaudeTest\mapper')
-import export_polity_polygons as X
+import export_polity_polygons as X, os
+X.DATA_DIR = os.environ.get("TILE_DATA_DIR", X.DATA_DIR)
 from shapely.geometry import Point
 la, lo = sys.argv[1].split('/'); yr = float(sys.argv[2]); x0, y0, x1, y1 = map(float, sys.argv[3:7]); cols = int(sys.argv[7]) if len(sys.argv) > 7 else 70
 T = X.load_tile(la, lo); pol = T['pol_by_index']; cst = T['cst_by_index']; rl = [0]
