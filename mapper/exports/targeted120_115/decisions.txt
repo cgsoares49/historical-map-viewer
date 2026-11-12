@@ -6,3 +6,5 @@ Candidates (Type 2 review, 2026-11-12):
 #196 Chu x #261 Chu 408 km2 (-470.5..-301.5, invisible, same name): carve #196 by #261 (A).
 PLAN CMD (2026-11-12): run from %TEMP%: python <mapper>/plan_tile.py --tile 120:115 --entries 269,161,178,196,127,232,257,215,260,271,279,177,175,181,200,272,275,268,276,280,245,248,258,259,274,261,273 --pre-edits exports/targeted120_115/pre_all.json --leave-pair 161:178 --min-pair-years 0.5 --min-part-km2 0.5 --min-ratio 0.001
 (pass 1 with carved entries only missed the carvers; entries list now includes carvers)
+PASS 3 (2026-11-12): drop #313 sliver (--min-part-km2 2), #279 x #280 Wei wins with --trace-tol 0.01 (pass 2 traced 615.0 vs 619.4 km2), --leave-pair 300:304 (the #161x#178 triangle reappearing in the two Song remainders).
+PASS 3 result: planner ring for #320 (#279 minus #280) lost 6.3 km2 (detour POL1451/1452 omitted); fixed by appending par_set_refs #320 -> [[1262,0],[1451,0],[1452,1],[1416,1],[1417,0],[1415,0]] (edits_final.json = replay file; staged from it, area 621.3 exact, overlap 0). #219 'no valid polygon' = renumbered dot 'Succession struggle', benign.

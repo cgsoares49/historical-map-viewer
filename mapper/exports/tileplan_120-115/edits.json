@@ -1460,30 +1460,6 @@
   ]
  },
  {
-  "op": "par_add_entry",
-  "index": 313,
-  "after": 232,
-  "areaType": 1,
-  "ranges": [
-   {
-    "from": -493.5,
-    "to": -470.5,
-    "name": "Wu",
-    "color": 0
-   }
-  ],
-  "refs": [
-   [
-    1446,
-    1
-   ],
-   [
-    1443,
-    1
-   ]
-  ]
- },
- {
   "op": "par_set_ranges",
   "entry": 232,
   "ranges": [
@@ -1497,7 +1473,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 314,
+  "index": 313,
   "after": 257,
   "areaType": 1,
   "ranges": [
@@ -1541,7 +1517,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 315,
+  "index": 314,
   "after": 260,
   "areaType": 1,
   "ranges": [
@@ -1605,7 +1581,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 316,
+  "index": 315,
   "after": 269,
   "areaType": 1,
   "ranges": [
@@ -1777,7 +1753,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 317,
+  "index": 316,
   "after": 269,
   "areaType": 1,
   "ranges": [
@@ -1905,7 +1881,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 318,
+  "index": 317,
   "after": 269,
   "areaType": 1,
   "ranges": [
@@ -2057,7 +2033,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 319,
+  "index": 318,
   "after": 269,
   "areaType": 1,
   "ranges": [
@@ -2209,7 +2185,7 @@
  },
  {
   "op": "par_add_entry",
-  "index": 320,
+  "index": 319,
   "after": 271,
   "areaType": 1,
   "ranges": [
@@ -2277,6 +2253,50 @@
     115.0948,
     33.992
    ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 320,
+  "after": 279,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -365.5,
+    "to": -301.5,
+    "name": "Chu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1262,
+    0
+   ],
+   [
+    1416,
+    1
+   ],
+   [
+    1417,
+    0
+   ],
+   [
+    1415,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 279,
+  "ranges": [
+   {
+    "from": -375.5,
+    "to": -365.5,
+    "name": "Chu",
+    "color": 0
+   }
   ]
  }
 ]
