@@ -286,6 +286,154 @@
 ]
 },
 {
+"op": "par_add_entry",
+"index": 299,
+"after": 161,
+"areaType": 1,
+"ranges": [
+{
+"from": -713.5,
+"to": -445.5,
+"name": "Song",
+"color": 0
+}
+],
+"refs": [
+[
+1268,
+1
+],
+[
+1263,
+1
+],
+[
+1264,
+0
+],
+[
+1258,
+1
+],
+[
+1257,
+1
+],
+[
+1255,
+1
+],
+[
+1254,
+0
+],
+[
+1368,
+0
+],
+[
+1369,
+0
+],
+[
+1246,
+1
+],
+[
+1243,
+1
+],
+[
+1241,
+1
+],
+[
+1238,
+0
+],
+[
+1240,
+0
+],
+[
+1226,
+1
+],
+[
+1225,
+0
+],
+[
+1207,
+1
+],
+[
+1218,
+1
+],
+[
+1259,
+0
+],
+[
+1345,
+0
+],
+[
+1330,
+0
+],
+[
+1331,
+0
+],
+[
+1414,
+0
+],
+[
+1261,
+1
+],
+[
+1262,
+0
+],
+[
+1278,
+1
+],
+[
+1270,
+1
+],
+[
+1269,
+0
+]
+]
+},
+{
+"op": "pol_split",
+"pol": 278,
+"points": [
+[
+115.07226,
+34.63238
+]
+]
+},
+{
+"op": "pol_split",
+"pol": 397,
+"points": [
+[
+115.07226,
+34.63238
+]
+]
+},
+{
 "op": "pol_split",
 "pol": 279,
 "points": [
@@ -297,7 +445,7 @@
 },
 {
 "op": "pol_split",
-"pol": 397,
+"pol": 438,
 "points": [
 [
 115.07712,
@@ -327,7 +475,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 299,
+"index": 300,
 "after": 161,
 "areaType": 1,
 "ranges": [
@@ -339,10 +487,6 @@
 }
 ],
 "refs": [
-[
-1269,
-0
-],
 [
 1268,
 1
@@ -452,18 +596,22 @@
 1
 ],
 [
-1440,
+1442,
 1
 ],
 [
 1270,
 1
+],
+[
+1269,
+0
 ]
 ]
 },
 {
 "op": "par_add_entry",
-"index": 300,
+"index": 301,
 "after": 161,
 "areaType": 1,
 "ranges": [
@@ -491,7 +639,7 @@
 "ranges": [
 {
 "from": -770.1,
-"to": -445.5,
+"to": -713.5,
 "name": "Song",
 "color": 0
 }
@@ -529,7 +677,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 301,
+"index": 302,
 "after": 177,
 "areaType": 1,
 "ranges": [
@@ -643,7 +791,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 302,
+"index": 303,
 "after": 177,
 "areaType": 1,
 "ranges": [
@@ -743,7 +891,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 303,
+"index": 304,
 "after": 177,
 "areaType": 1,
 "ranges": [
@@ -845,7 +993,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 304,
+"index": 305,
 "after": 177,
 "areaType": 1,
 "ranges": [
@@ -950,28 +1098,8 @@
 ]
 },
 {
-"op": "pol_split",
-"pol": 278,
-"points": [
-[
-115.07226,
-34.63238
-]
-]
-},
-{
-"op": "pol_split",
-"pol": 397,
-"points": [
-[
-115.07226,
-34.63238
-]
-]
-},
-{
 "op": "par_add_entry",
-"index": 305,
+"index": 306,
 "after": 178,
 "areaType": 1,
 "ranges": [
@@ -996,15 +1124,15 @@
 1
 ],
 [
+1440,
+1
+],
+[
 1438,
 1
 ],
 [
-1442,
-1
-],
-[
-1441,
+1437,
 0
 ]
 ]
@@ -1029,7 +1157,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 306,
+"index": 307,
 "after": 196,
 "areaType": 1,
 "ranges": [
@@ -1089,7 +1217,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 307,
+"index": 308,
 "after": 196,
 "areaType": 1,
 "ranges": [
@@ -1129,7 +1257,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 308,
+"index": 309,
 "after": 196,
 "areaType": 1,
 "ranges": [
@@ -1185,7 +1313,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 309,
+"index": 310,
 "after": 196,
 "areaType": 1,
 "ranges": [
@@ -1225,7 +1353,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 310,
+"index": 311,
 "after": 196,
 "areaType": 1,
 "ranges": [
@@ -1313,7 +1441,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 311,
+"index": 312,
 "after": 196,
 "areaType": 1,
 "ranges": [
@@ -1413,7 +1541,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 312,
+"index": 313,
 "after": 215,
 "areaType": 1,
 "ranges": [
@@ -1521,7 +1649,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 313,
+"index": 314,
 "after": 232,
 "areaType": 1,
 "ranges": [
@@ -1581,7 +1709,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 314,
+"index": 315,
 "after": 257,
 "areaType": 1,
 "ranges": [
@@ -1625,7 +1753,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 315,
+"index": 316,
 "after": 260,
 "areaType": 1,
 "ranges": [
@@ -1689,7 +1817,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 316,
+"index": 317,
 "after": 269,
 "areaType": 1,
 "ranges": [
@@ -1822,7 +1950,7 @@
 1
 ],
 [
-1440,
+1442,
 1
 ],
 [
@@ -1861,7 +1989,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 317,
+"index": 318,
 "after": 269,
 "areaType": 1,
 "ranges": [
@@ -1989,7 +2117,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 318,
+"index": 319,
 "after": 269,
 "areaType": 1,
 "ranges": [
@@ -2134,14 +2262,14 @@
 1
 ],
 [
-1440,
+1442,
 1
 ]
 ]
 },
 {
 "op": "par_add_entry",
-"index": 319,
+"index": 320,
 "after": 269,
 "areaType": 1,
 "ranges": [
@@ -2274,7 +2402,7 @@
 1
 ],
 [
-1440,
+1442,
 1
 ]
 ]
@@ -2293,7 +2421,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 320,
+"index": 321,
 "after": 271,
 "areaType": 1,
 "ranges": [
@@ -2365,7 +2493,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 321,
+"index": 322,
 "after": 279,
 "areaType": 1,
 "ranges": [

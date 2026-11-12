@@ -1,0 +1,32 @@
+(earlier staged files kept in C:\my stuff\claudetest\mapper\staging\120-115_prev_20261112-100557)
+applied 17 pre-edit operations from C:/my stuff/claudetest/mapper/exports/targeted120_115/pre_all.json
+seeds [127, 161, 175, 177, 178, 179, 181, 196, 200, 215, 232, 245, 248, 257, 258, 259, 260, 261, 268, 269, 271, 272, 273, 274, 275, 276, 279, 280]
+candidates (seeds + overlapping neighbours): 28
+(earlier plan outputs kept in C:\my stuff\claudetest\mapper\exports\tileplan_120-115_prev_20261112-100629)
+WHOLE-TILE PLAN 120:115   (newer entry takes its area; older entry carved)
+
+20 edit operations; candidates [127, 161, 175, 177, 178, 179, 181, 196, 200, 215, 232, 245, 248, 257, 258, 259, 260, 261, 268, 269, 271, 272, 273, 274, 275, 276, 279, 280]; overlap windows before: 25, after: 0
+POL file header count: 452 -> 452;  PAR file header count: 321 -> 322;  CST file header count: 12 -> 12
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 70 entries
+  - new #322 = #161 minus #178 (32197.2 km2), ranges -713.5..-445.5
+  - #175: -407.5..-400.5 dropped (covered by #273), -400.5..-399.5 dropped (covered by #273)
+
+PAR EDITS (in order):
+  #137: refs = [[1194, 0], [1181, 0], [1190, 1], [1191, 0], [1193, 0]]
+  #273: refs = [[1404, 0], [1408, 0], [1411, 1], [1400, 1], [1409, 1], [1402, 1], [1401, 0], [1272, 0]]
+  #175: ranges = -770.1..-593.5 Rong; -593.5..-407.5 Song; -407.5..-400.5 Chu; -400.5..-399.5 Wei; -399.5..-286.5 Song; -286.5..-284.5 Tian Qi
+  #141: ranges = -770.1..-615.5 Tong; -615.5..-508.5 Chu - Tong
+  #245: ranges = -529.5..-493.5 Cai
+  NEW #322 right after #161: -713.5..-445.5 Song | refs [[1449, 1], [1268, 1], [1263, 1], [1264, 0], [1258, 1], [1257, 1], [1255, 1], [1254, 0], [1368, 0], [1369, 0], [1246, 1], [1243, 1], [1241, 1], [1238, 0], [1240, 0], [1226, 1], [1225, 0], [1207, 1], [1218, 1], [1259, 0], [1345, 0], [1330, 0], [1331, 0], [1414, 0], [1261, 1], [1262, 0], [1451, 0], [1441, 1], [1278, 1], [1439, 1], [1270, 1], [1269, 0]]
+  #161: ranges = -770.1..-713.5 Song
+  #175: ranges = -770.1..-593.5 Rong; -593.5..-407.5 Song; -399.5..-286.5 Song; -286.5..-284.5 Tian Qi
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): DIFFERENCES [(-406.5, 197.6), (-403.0, 197.6), (-400.0, 197.6)]
+
+wrote C:\my stuff\claudetest\mapper\exports\tileplan_120-115\edits.json, plan.txt, salient_years.csv (9 rows); staged in C:\my stuff\claudetest\mapper\staging\120-115
+done
