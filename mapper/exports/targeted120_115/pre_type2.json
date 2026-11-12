@@ -50,5 +50,10 @@
 "color": 0
 }
 ]
+},
+{
+"op": "par_set_areatype",
+"entry": 179,
+"areatype": 1
 }
 ]
