@@ -248,5 +248,46 @@
 "color": 0
 }
 ]
+},
+{
+"op": "par_set_ranges",
+"entry": 107,
+"ranges": [
+{
+"from": -511.5,
+"to": -511.5,
+"name": "Yue",
+"color": 0
+}
+]
+},
+{
+"op": "par_set_ranges",
+"entry": 121,
+"ranges": [
+{
+"from": -467.5,
+"to": -467.5,
+"name": "Yue",
+"color": 0
+}
+]
+},
+{
+"op": "par_set_ranges",
+"entry": 122,
+"ranges": [
+{
+"from": -467.5,
+"to": -466.5,
+"name": "Tian Qi",
+"color": 0
+}
+]
+},
+{
+"op": "par_set_areatype",
+"entry": 122,
+"areatype": 2
 }
 ]

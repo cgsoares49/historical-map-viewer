@@ -16,3 +16,10 @@ PASS 5 on applied base was INVALID (pre-edit ref lists re-applied after POL spli
 PASS 5b (valid, from base stage1): staged PAR 322 / POL 452; #322 (#279 minus #280) hand-fixed 621.3 km2; 0 holes at 26 test years vs base; #161 carved by #178 (#299 32,197 km2 -713.5..-445.5). Remaining independent-scan pairs (50, pre-existing, out of review scope) incl. #230 Wu x #248 Cai 31 km2 (23y).
 PASS 6: walk found Chu #267 (-444.5..-301.5, 2138 km2) hatched over Lu - Partition of the Three Huan #158 (610 km2) and #260 (1528 km2, -444.5..-405.5; later years in #260-minus-#274 remainder): Chu wins (newer). Added 158,267 to --entries.
 PASS 6 staged (valid): PAR 324 / POL 454; Chu #267 carves #158 (new #299 809 km2) and #260 (#317, #318); #279 remainder is now #324 with ring fix using POL1453/1454 (POL numbers SHIFT between plans: always re-derive the detour POLs from the staged #279 refs). Hole check 0, ringcheck only #121/#122 seam.
+GROUP D: #151 -> rename Chu/Wei -407.5..-399.5 (A), in pre_all.json.
+GROUP B1: #177 x #208/#254/#253 (6,889 km2 -584.5..-470.5): CARVE #177 (A). Add 208,254,253 to --entries.
+GROUP B2: #254 Wu x #202 Wu/Yue (4,360 km2 -480.5..-470.5): CARVE #202 (A). Add 202 to --entries.
+GROUP B3: #230 Wu x #74 Chu (4,150) and #70 Chu (1,304) -529.5..-519.5: CARVE #74 and #70 (A). Add 74,70,230 to --entries.
+GROUP B4: #208 Wu x #236 Chu (488 km2 -518.5..-508.5): CARVE #208 by #236 (A). Add 236 to --entries.
+GROUP B5: #107 Yue/Wu = data error (holdover) -> INACTIVATED (single range -511.5..-511.5), kept not deleted. No carves of #215/#203/#202 for it.
+GROUP C: #121 Yue inactivated (-467.5..-467.5); #122 trimmed to Tian Qi year -467.5..-466.5 and Type 2.
