@@ -1,0 +1,11 @@
+entries 345 dups [] missing []
+types Counter({1: 323, 0: 17, 2: 5}) POL 464 CST 12
+Type2: [(122, 'Tian Qi'), (162, 'Ge'), (244, 'Xiao'), (221, 'Chu - Xu(2)'), (222, 'Revolt of Hua Clan')]
+type1 dots: [(123, 'Three Guards Rebellion - '), (124, 'Three Guards Rebellion - '), (125, 'Ge'), (126, 'Shang')]
+pairs 6
+#128 Shen(2) x #246 Cai - Allied army  -506.9..-506.6 (0.3y) max 254 km2
+#245 Cai x #246 Cai - Allied army  -506.9..-506.6 (0.3y) max 99 km2
+#128 Cai x #247 Chu - Army  -493.6..-493.4 (0.2y) max 320 km2
+#245 Cai x #247 Chu - Army  -493.6..-493.5 (0.1y) max 320 km2
+#127 Chu x #247 Chu - Army  -493.5..-493.4 (0.1y) max 136 km2
+#328 Chu x #247 Chu - Army  -493.5..-493.4 (0.1y) max 184 km2
