@@ -1,3 +1,4 @@
 Candidates (Type 2 review, 2026-11-12):
 #161 Song x #178 Zheng/Song 67 km2: LEAVE (A) - triangle at 115.029E 34.656N, border handover artifact; invisible after -698.5 (both Song). Planner: skip this pair (--skip 178 or pair) so #161 is not split.
 #177 Huaiyi/Wu/Yue x #181 Lu (61 km2, -692.5..-487.5) and x #200 Lu (41 km2, -605.5..-487.5): LU WINS (user). Carve #177 by #181 and #200 in the plan (newer entries win, #177 is older). #200 stays Type 1. Check dust slivers; box 118.42..118.68E 34.74..35.00N.
+#279 Chu x #280 Wei/Chu 41 km2 (-365.5..-301.5, visible -365.5..-335.5): Wei wins (A) - carve #279 by #280 (border-transition sliver, box 115.22..115.45E 33.91..34.22N).
