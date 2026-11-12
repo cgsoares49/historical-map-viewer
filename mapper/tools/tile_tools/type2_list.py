@@ -2,7 +2,7 @@ import sys, math
 sys.path.insert(0, r'C:\My stuff\ClaudeTest\mapper')
 import export_polity_polygons as X, os
 X.DATA_DIR = os.environ.get("TILE_DATA_DIR", X.DATA_DIR)
-T = X.load_tile('120','110'); pol=T['pol_by_index']; cst=T['cst_by_index']
+la_, lo_ = (sys.argv[1].split('/') if len(sys.argv) > 1 else ('120','110')); T = X.load_tile(la_, lo_); pol=T['pol_by_index']; cst=T['cst_by_index']
 rl=[0]
 ents=T['par_entries']
 polys={}
