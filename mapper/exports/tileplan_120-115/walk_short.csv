@@ -1,0 +1,23 @@
+Group,ViewYear,Lon,Lat,Expect (top owner after the plan; staged files verified by paint)
+W edge,-445.4,115.106,34.517,#268 Zheng on top of Song (#161/#178 remainders around it); no gap
+W edge,-408.4,115.082,34.768,#272 Hann on top of Song (#269 remainder around it)
+W edge,-403.0,115.160,34.928,#273 Chu (the Chu years #175 no longer carries)
+W edge,-407.4,115.504,34.558,#273 Chu - continuity fix: shape unchanged
+W edge,-386.0,115.021,34.437,#276 Wei inside #271 Chu remainder
+W edge,-385.0,115.317,34.301,#275 Tian Qi inside Song remainder
+W edge,-361.5,115.340,34.155,#280 Wei corridor between #275 Tian Qi / Song and #321 Chu
+W edge,-345.5,115.340,34.155,#280 Wei corridor again
+W edge,-333.5,115.787,34.040,#280 Chu next to #321 Chu: no gap between them
+SE,-529.4,115.156,32.970,#245 Cai on top (carved out of #127 and #196 Chu)
+SE,-500.0,116.465,33.428,#232 Wu over the old Chu triangle
+SE,-480.0,116.789,32.881,#248 Cai over #232 Wu
+SE,-450.0,115.156,32.970,#127 Chu (Cai gone: #245 now ends -493.5)
+SE,-386.0,116.465,33.428,#261 Chu over the triangle; no hatching
+SE,-507.0,116.857,30.797,#239 Wu where #141 Chu - Tong used to run (it now ends -508.5)
+S edge,-478.4,116.707,30.035,#259 Yue over #215 Wu remainder
+S edge,-478.4,119.447,30.159,#258 Yue over #257 Wu remainder
+NE,-649.0,118.475,34.955,#181 Lu over #177 Huaiyi
+NE,-600.0,119.167,34.960,#179 Ju over #177 Huaiyi
+NE,-546.5,118.558,34.988,#200 Lu - Partition of the Three Huan over Huaiyi
+NE,-473.2,118.843,34.798,#260 Lu - Partition of the Three Huan over Wu
+NE,-381.0,118.503,34.911,#274 Yue over #260 Lu - Partition of the Three Huan
