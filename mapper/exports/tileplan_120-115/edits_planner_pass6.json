@@ -286,8 +286,82 @@
 ]
 },
 {
+"op": "pol_split",
+"pol": 235,
+"points": [
+[
+118.46898,
+34.69072
+]
+]
+},
+{
+"op": "pol_split",
+"pol": 396,
+"points": [
+[
+118.46898,
+34.69072
+]
+]
+},
+{
 "op": "par_add_entry",
 "index": 299,
+"after": 158,
+"areaType": 1,
+"ranges": [
+{
+"from": -444.5,
+"to": -356.5,
+"name": "Lu - Partition of the Three Huan",
+"color": 3
+}
+],
+"refs": [
+[
+1238,
+1
+],
+[
+1237,
+1
+],
+[
+1437,
+1
+],
+[
+1396,
+1
+],
+[
+1239,
+1
+]
+]
+},
+{
+"op": "par_set_ranges",
+"entry": 158,
+"ranges": [
+{
+"from": -770.1,
+"to": -473.3,
+"name": "Tan",
+"color": 0
+},
+{
+"from": -473.3,
+"to": -444.5,
+"name": "Lu - Partition of the Three Huan",
+"color": 3
+}
+]
+},
+{
+"op": "par_add_entry",
+"index": 300,
 "after": 161,
 "areaType": 1,
 "ranges": [
@@ -445,7 +519,7 @@
 },
 {
 "op": "pol_split",
-"pol": 438,
+"pol": 440,
 "points": [
 [
 115.07712,
@@ -475,7 +549,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 300,
+"index": 301,
 "after": 161,
 "areaType": 1,
 "ranges": [
@@ -596,7 +670,7 @@
 1
 ],
 [
-1442,
+1444,
 1
 ],
 [
@@ -611,7 +685,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 301,
+"index": 302,
 "after": 161,
 "areaType": 1,
 "ranges": [
@@ -624,7 +698,7 @@
 ],
 "refs": [
 [
-1437,
+1439,
 1
 ],
 [
@@ -677,7 +751,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 302,
+"index": 303,
 "after": 177,
 "areaType": 1,
 "ranges": [
@@ -791,7 +865,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 303,
+"index": 304,
 "after": 177,
 "areaType": 1,
 "ranges": [
@@ -891,7 +965,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 304,
+"index": 305,
 "after": 177,
 "areaType": 1,
 "ranges": [
@@ -993,7 +1067,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 305,
+"index": 306,
 "after": 177,
 "areaType": 1,
 "ranges": [
@@ -1099,7 +1173,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 306,
+"index": 307,
 "after": 178,
 "areaType": 1,
 "ranges": [
@@ -1124,15 +1198,15 @@
 1
 ],
 [
+1442,
+1
+],
+[
 1440,
 1
 ],
 [
-1438,
-1
-],
-[
-1437,
+1439,
 0
 ]
 ]
@@ -1157,7 +1231,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 307,
+"index": 308,
 "after": 196,
 "areaType": 1,
 "ranges": [
@@ -1217,7 +1291,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 308,
+"index": 309,
 "after": 196,
 "areaType": 1,
 "ranges": [
@@ -1257,7 +1331,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 309,
+"index": 310,
 "after": 196,
 "areaType": 1,
 "ranges": [
@@ -1313,7 +1387,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 310,
+"index": 311,
 "after": 196,
 "areaType": 1,
 "ranges": [
@@ -1353,7 +1427,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 311,
+"index": 312,
 "after": 196,
 "areaType": 1,
 "ranges": [
@@ -1441,7 +1515,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 312,
+"index": 313,
 "after": 196,
 "areaType": 1,
 "ranges": [
@@ -1541,7 +1615,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 313,
+"index": 314,
 "after": 215,
 "areaType": 1,
 "ranges": [
@@ -1609,7 +1683,7 @@
 },
 {
 "op": "pol_split",
-"pol": 443,
+"pol": 445,
 "points": [
 [
 116.97196,
@@ -1629,7 +1703,7 @@
 },
 {
 "op": "pol_split",
-"pol": 445,
+"pol": 447,
 "points": [
 [
 117.009,
@@ -1649,7 +1723,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 314,
+"index": 315,
 "after": 232,
 "areaType": 1,
 "ranges": [
@@ -1690,7 +1764,7 @@
 0
 ],
 [
-1447,
+1449,
 1
 ]
 ]
@@ -1709,7 +1783,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 315,
+"index": 316,
 "after": 257,
 "areaType": 1,
 "ranges": [
@@ -1753,7 +1827,51 @@
 },
 {
 "op": "par_add_entry",
-"index": 316,
+"index": 317,
+"after": 260,
+"areaType": 1,
+"ranges": [
+{
+"from": -444.5,
+"to": -405.5,
+"name": "Lu - Partition of the Three Huan",
+"color": 3
+}
+],
+"refs": [
+[
+1237,
+0
+],
+[
+1241,
+0
+],
+[
+1381,
+1
+],
+[
+1406,
+1
+],
+[
+1418,
+1
+],
+[
+1438,
+1
+],
+[
+1437,
+0
+]
+]
+},
+{
+"op": "par_add_entry",
+"index": 318,
 "after": 260,
 "areaType": 1,
 "ranges": [
@@ -1765,18 +1883,6 @@
 }
 ],
 "refs": [
-[
-1229,
-0
-],
-[
-1231,
-0
-],
-[
-1235,
-0
-],
 [
 1237,
 0
@@ -1794,11 +1900,15 @@
 0
 ],
 [
-1406,
-0
+1418,
+1
 ],
 [
-1390,
+1438,
+1
+],
+[
+1437,
 0
 ]
 ]
@@ -1809,7 +1919,7 @@
 "ranges": [
 {
 "from": -473.3,
-"to": -405.5,
+"to": -444.5,
 "name": "Lu - Partition of the Three Huan",
 "color": 3
 }
@@ -1817,7 +1927,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 317,
+"index": 319,
 "after": 269,
 "areaType": 1,
 "ranges": [
@@ -1950,7 +2060,7 @@
 1
 ],
 [
-1442,
+1444,
 1
 ],
 [
@@ -1989,7 +2099,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 318,
+"index": 320,
 "after": 269,
 "areaType": 1,
 "ranges": [
@@ -2106,7 +2216,7 @@
 1
 ],
 [
-1450,
+1452,
 1
 ],
 [
@@ -2117,7 +2227,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 319,
+"index": 321,
 "after": 269,
 "areaType": 1,
 "ranges": [
@@ -2146,7 +2256,7 @@
 0
 ],
 [
-1449,
+1451,
 1
 ],
 [
@@ -2262,14 +2372,14 @@
 1
 ],
 [
-1442,
+1444,
 1
 ]
 ]
 },
 {
 "op": "par_add_entry",
-"index": 320,
+"index": 322,
 "after": 269,
 "areaType": 1,
 "ranges": [
@@ -2298,7 +2408,7 @@
 0
 ],
 [
-1449,
+1451,
 1
 ],
 [
@@ -2402,7 +2512,7 @@
 1
 ],
 [
-1442,
+1444,
 1
 ]
 ]
@@ -2421,7 +2531,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 321,
+"index": 323,
 "after": 271,
 "areaType": 1,
 "ranges": [
@@ -2493,7 +2603,7 @@
 },
 {
 "op": "par_add_entry",
-"index": 322,
+"index": 324,
 "after": 279,
 "areaType": 1,
 "ranges": [
