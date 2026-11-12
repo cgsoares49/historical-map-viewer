@@ -4,3 +4,5 @@ Candidates (Type 2 review, 2026-11-12):
 #279 Chu x #280 Wei/Chu 41 km2 (-365.5..-301.5, visible -365.5..-335.5): Wei wins (A) - carve #279 by #280 (border-transition sliver, box 115.22..115.45E 33.91..34.22N).
 #271 Chu x #276 Wei/Chu 98 km2 (-391.5..-375.5, visible -391.5..-381.5): Wei wins (A) - carve #271 by #276; matches 120/110 #393.
 #196 Chu x #261 Chu 408 km2 (-470.5..-301.5, invisible, same name): carve #196 by #261 (A).
+PLAN CMD (2026-11-12): run from %TEMP%: python <mapper>/plan_tile.py --tile 120:115 --entries 269,161,178,196,127,232,257,215,260,271,279,177,175,181,200,272,275,268,276,280,245,248,258,259,274,261,273 --pre-edits exports/targeted120_115/pre_all.json --leave-pair 161:178 --min-pair-years 0.5 --min-part-km2 0.5 --min-ratio 0.001
+(pass 1 with carved entries only missed the carvers; entries list now includes carvers)

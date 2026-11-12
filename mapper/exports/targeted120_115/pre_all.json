@@ -1,0 +1,198 @@
+[
+{
+"entry": 137,
+"refs": [
+[
+1194,
+0
+],
+[
+1181,
+0
+],
+[
+1190,
+1
+],
+[
+1191,
+0
+],
+[
+1193,
+0
+]
+],
+"op": "par_set_refs"
+},
+{
+"entry": 273,
+"refs": [
+[
+1404,
+0
+],
+[
+1408,
+0
+],
+[
+1411,
+1
+],
+[
+1400,
+1
+],
+[
+1409,
+1
+],
+[
+1402,
+1
+],
+[
+1401,
+0
+],
+[
+1272,
+0
+]
+],
+"op": "par_set_refs"
+},
+{
+"op": "par_set_areatype",
+"entry": 127,
+"areatype": 1
+},
+{
+"op": "par_set_areatype",
+"entry": 175,
+"areatype": 1
+},
+{
+"op": "par_set_ranges",
+"entry": 175,
+"ranges": [
+{
+"from": -770.1,
+"to": -593.5,
+"name": "Rong",
+"color": 0
+},
+{
+"from": -593.5,
+"to": -407.5,
+"name": "Song",
+"color": 0
+},
+{
+"from": -407.5,
+"to": -400.5,
+"name": "Chu",
+"color": 0
+},
+{
+"from": -400.5,
+"to": -399.5,
+"name": "Wei",
+"color": 0
+},
+{
+"from": -399.5,
+"to": -286.5,
+"name": "Song",
+"color": 0
+},
+{
+"from": -286.5,
+"to": -284.5,
+"name": "Tian Qi",
+"color": 0
+}
+]
+},
+{
+"op": "par_set_areatype",
+"entry": 179,
+"areatype": 1
+},
+{
+"op": "par_set_areatype",
+"entry": 141,
+"areatype": 1
+},
+{
+"op": "par_set_ranges",
+"entry": 141,
+"ranges": [
+{
+"from": -770.1,
+"to": -615.5,
+"name": "Tong",
+"color": 0
+},
+{
+"from": -615.5,
+"to": -508.5,
+"name": "Chu - Tong",
+"color": 36
+}
+]
+},
+{
+"op": "par_set_areatype",
+"entry": 245,
+"areatype": 1
+},
+{
+"op": "par_set_ranges",
+"entry": 245,
+"ranges": [
+{
+"from": -529.5,
+"to": -493.5,
+"name": "Cai",
+"color": 0
+}
+]
+},
+{
+"op": "par_set_areatype",
+"entry": 248,
+"areatype": 1
+},
+{
+"op": "par_set_areatype",
+"entry": 258,
+"areatype": 1
+},
+{
+"op": "par_set_areatype",
+"entry": 259,
+"areatype": 1
+},
+{
+"op": "par_set_areatype",
+"entry": 268,
+"areatype": 1
+},
+{
+"op": "par_set_areatype",
+"entry": 272,
+"areatype": 1
+},
+{
+"op": "par_set_areatype",
+"entry": 274,
+"areatype": 1
+},
+{
+"op": "par_set_areatype",
+"entry": 275,
+"areatype": 1
+}
+]
