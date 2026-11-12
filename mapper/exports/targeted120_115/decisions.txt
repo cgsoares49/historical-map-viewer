@@ -10,3 +10,4 @@ PASS 3 (2026-11-12): drop #313 sliver (--min-part-km2 2), #279 x #280 Wei wins w
 PASS 3 result: planner ring for #320 (#279 minus #280) lost 6.3 km2 (detour POL1451/1452 omitted); fixed by appending par_set_refs #320 -> [[1262,0],[1451,0],[1452,1],[1416,1],[1417,0],[1415,0]] (edits_final.json = replay file; staged from it, area 621.3 exact, overlap 0). #219 'no valid polygon' = renumbered dot 'Succession struggle', benign.
 PASS 4: #179 was missing from --entries (Type 1 decision: carve #177); added. Reapply par_set_refs #320 check after (ring detour POL1451/1452 may recur).
 PASS 4 staged: PAR 321 / POL 452; #321 = #279 minus #280 hand-fixed (621.3 km2); leftover overlap #300 x #305 (the #161x#178 triangle, accepted). Short walk = exports/tileplan_120-115/walk_short.csv (22 checks).
+User kept the two unreviewed carves (#177 x #260 Lu-Partition, #269 x #273 Chu/Wei) 2026-11-12; walk started.
