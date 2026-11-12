@@ -1,0 +1,57 @@
+entries 297 dups [98] missing [219]
+types Counter({1: 265, 0: 17, 2: 15}) POL 434 CST 12
+Type2: [(127, 'Cai'), (162, 'Ge'), (175, 'Rong'), (179, 'Ju'), (244, 'Xiao'), (221, 'Chu - Xu(2)'), (141, 'Tong'), (245, 'Cai'), (248, 'Cai'), (258, 'Yue'), (259, 'Yue'), (268, 'Zheng'), (272, 'Hann'), (274, 'Yue'), (275, 'Wei')]
+type1 dots: [(123, 'Three Guards Rebellion - '), (124, 'Three Guards Rebellion - '), (125, 'Ge'), (126, 'Shang')]
+pairs 52
+#18 Xia Dynasty x #28 Xue  -1625.1..-1042.4 (582.7y) max 707 km2
+#18 Zhou Dynasty x #38 Zhou Dynasty - Song  -1044.5..-1042.4 (2.1y) max 14206 km2
+#18 Zhou Dynasty x #39 Zhou Dynasty - Cao  -1044.5..-1042.4 (2.1y) max 3788 km2
+#37 Zhou Dynasty - Lu x #53 Zhou Dynasty - Teng  -1038.5..-770.5 (268.0y) max 1505 km2
+#43 Zhou Dynasty x #49 Zhou Dynasty - Chen  -1038.5..-770.1 (268.4y) max 2040 km2
+#44 Zhou Dynasty x #50 Zhou Dynasty - Tan  -1038.5..-770.5 (268.0y) max 7276 km2
+#48 Zhou Dynasty x #49 Zhou Dynasty - Chen  -1038.5..-770.1 (268.4y) max 2718 km2
+#35 Xu - Huaiyi x #44 Zhou Dynasty  -944.7..-770.5 (174.2y) max 5730 km2
+#35 Xu - Huaiyi x #50 Zhou Dynasty - Tan  -944.7..-770.1 (174.6y) max 5730 km2
+#161 Song x #178 Zheng  -713.5..-439.5 (274.0y) max 67 km2
+#177 Huaiyi x #181 Lu  -692.5..-487.5 (205.0y) max 61 km2
+#177 Huaiyi x #200 Lu  -605.5..-487.5 (118.0y) max 41 km2
+#177 Huaiyi x #208 Wu  -584.5..-480.5 (104.0y) max 6889 km2
+#74 Chu x #230 Wu  -529.5..-519.5 (10.0y) max 4150 km2
+#70 Chu x #230 Wu  -529.5..-519.5 (10.0y) max 1304 km2
+#161 Song x #222 Revolt of Hua Clan  -521.7..-520.5 (1.2y) max 834 km2
+#196 Chu x #232 Wu  -519.5..-470.5 (49.0y) max 408 km2
+#208 Wu x #236 Chu  -518.5..-508.5 (10.0y) max 488 km2
+#107 Yue x #215 Wu  -511.5..-490.5 (21.0y) max 2340 km2
+#107 Yue x #203 Yue  -511.5..-490.5 (21.0y) max 3037 km2
+#107 Yue x #202 Wu  -511.5..-490.5 (21.0y) max 207 km2
+#128 Shen(2) x #246 Cai - Allied army  -506.9..-506.6 (0.3y) max 254 km2
+#196 Chu x #246 Cai - Allied army  -506.9..-506.6 (0.3y) max 99 km2
+#129 Chu x #242 Wu  -506.5..-505.3 (1.2y) max 848 km2
+#130 Chu x #242 Wu  -506.5..-505.3 (1.2y) max 30 km2
+#131 Chu x #242 Wu  -506.5..-505.3 (1.2y) max 2583 km2
+#134 Chu x #242 Wu  -506.5..-505.3 (1.2y) max 1319 km2
+#196 Chu x #242 Wu  -506.5..-505.3 (1.2y) max 381 km2
+#240 Chu x #242 Wu  -506.5..-505.3 (1.2y) max 32625 km2
+#242 Wu x #143 Fan  -506.5..-505.3 (1.2y) max 1709 km2
+#128 Cai x #247 Chu - Army  -493.6..-493.4 (0.2y) max 320 km2
+#196 Chu x #247 Chu - Army  -493.6..-493.4 (0.2y) max 184 km2
+#177 Wu x #253 Wu  -487.5..-470.5 (17.0y) max 102 km2
+#177 Wu x #254 Wu  -480.5..-470.5 (10.0y) max 6889 km2
+#202 Wu x #254 Wu  -480.5..-470.5 (10.0y) max 4360 km2
+#177 Wu x #260 Lu - Partition of the Three   -473.3..-464.5 (8.8y) max 1419 km2
+#253 Wu x #260 Lu - Partition of the Three   -473.3..-470.5 (2.8y) max 1471 km2
+#196 Chu x #261 Chu  -470.5..-301.5 (169.0y) max 408 km2
+#121 Yue x #202 Yue  -467.5..-464.5 (3.0y) max 1087 km2
+#121 Yue x #262 Yue  -467.5..-464.5 (3.0y) max 2253 km2
+#121 Yue x #177 Yue  -467.5..-464.5 (3.0y) max 15424 km2
+#121 Yue x #159 Yue  -467.5..-464.5 (3.0y) max 1655 km2
+#122 Tian Qi x #177 Yue  -467.5..-464.5 (3.0y) max 2736 km2
+#122 Tian Qi x #159 Yue  -467.5..-464.5 (3.0y) max 581 km2
+#122 Tian Qi x #260 Lu - Partition of the Three   -467.5..-464.5 (3.0y) max 769 km2
+#158 Lu - Partition of the Three  x #267 Chu  -444.5..-356.5 (88.0y) max 610 km2
+#260 Lu - Partition of the Three  x #267 Chu  -444.5..-356.5 (88.0y) max 1528 km2
+#151 Song x #273 Chu  -407.5..-399.5 (8.0y) max 817 km2
+#269 Song x #273 Chu  -407.5..-399.5 (8.0y) max 3464 km2
+#271 Chu x #276 Wei  -391.5..-375.5 (16.0y) max 98 km2
+#269 Song x #280 Wei  -365.5..-301.5 (64.0y) max 1094 km2
+#279 Chu x #280 Wei  -365.5..-301.5 (64.0y) max 41 km2

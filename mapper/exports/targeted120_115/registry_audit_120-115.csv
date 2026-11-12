@@ -1,0 +1,7 @@
+﻿Tile,EntryIndex,Name,AreaKm2,DateRanges,LifeFrom,LifeTo,LifeYears,Rule,PolHits,Suspicion,ImpactEvents
+120/115,242,Wu,39495.8,1,-506.5,-505.3,1.2,DATE,,"HIGH: area 39,496 km2",
+120/115,90,Chu,38455.4,3,-645.1,-529.5,115.6,DATE,,"HIGH: area 38,455 km2, lives 116y",
+120/115,22,China,15087.7,1,1990.0,9999.0,8009.0,POL,POL7,"HIGH: area 15,088 km2, lives 8009y",
+120/115,97,Wu,2664.5,2,-584.5,-470.5,114.0,DATE,,"HIGH: area 2,665 km2, lives 114y",
+120/115,37,Zhou Dynasty,1505.2,3,-1042.4,-770.5,271.9,DATE,,"HIGH: area 1,505 km2, lives 272y",
+120/115,222,Revolt of Hua Clan,833.9,1,-521.7,-520.5,1.2,DATE,,LOW,

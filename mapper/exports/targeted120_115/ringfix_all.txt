@@ -1,0 +1,8 @@
+#121 Yue [type1] 1 jumps (0.01 deg), area 20419.2
+     no simple fix found (needs manual look)
+#122 Tian Qi [type1] 1 jumps (0.01 deg), area 3317.4
+     no simple fix found (needs manual look)
+#137 Shu Yong [type1] 2 jumps (0.58 deg), area 1976.5
+     FIX: flip ref 3 POL190                  -> area 1976.5 (+0.0)
+#273 Chu [type1] 2 jumps (0.86 deg), area 4524.1
+     FIX: swap refs 3,4 + flip both          -> area 4524.1 (+0.0)

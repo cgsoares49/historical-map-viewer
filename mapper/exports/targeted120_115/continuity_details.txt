@@ -1,0 +1,19 @@
+#137  -770.1..-601.5 Shu Yong; -601.5..-574.5 Chu - Shu Yong; -574.5..-508.5 Chu
+   first visible year -770
+   refs before: POL194 POL181 POL190 POL191 POL193
+   refs after : POL194 POL181 POL190(rev) POL191 POL193
+   JUMP after POL181: from (116.6948E 30.8103N) to (116.9017E 31.0121N)  0.289 deg
+   JUMP after POL190: from (116.6948E 30.8103N) to (116.9017E 31.0121N)  0.289 deg
+   ZOOM BOX: 116.695..116.902E  30.810..31.012N  (centre 116.798E 30.911N)
+   area 1976.5 -> 1976.5 km2;  shape that changes (sym.diff) = 0.00 km2  -> NO visible fill change (retrace only)
+
+#273  -407.5..-400.5 Chu; -400.5..-399.5 Wei
+   first visible year -407.4
+   refs before: POL404 POL408 POL400 POL411 POL409(rev) POL402(rev) POL401 POL272
+   refs after : POL404 POL408 POL411(rev) POL400(rev) POL409(rev) POL402(rev) POL401 POL272
+   JUMP after POL408: from (115.4293E 34.1155N) to (115.0583E 34.3292N)  0.428 deg
+   JUMP after POL411: from (115.4293E 34.1155N) to (115.0583E 34.3292N)  0.428 deg
+   JUMP after POL272: from (115.0626E 35.0000N) to (115.9496E 35.0000N)  0.887 deg
+   ZOOM BOX: 115.058..115.950E  34.115..35.000N  (centre 115.504E 34.558N)
+   area 4524.1 -> 4524.1 km2;  shape that changes (sym.diff) = 0.00 km2  -> NO visible fill change (retrace only)
+
