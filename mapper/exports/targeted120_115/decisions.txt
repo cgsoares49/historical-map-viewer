@@ -11,3 +11,4 @@ PASS 3 result: planner ring for #320 (#279 minus #280) lost 6.3 km2 (detour POL1
 PASS 4: #179 was missing from --entries (Type 1 decision: carve #177); added. Reapply par_set_refs #320 check after (ring detour POL1451/1452 may recur).
 PASS 4 staged: PAR 321 / POL 452; #321 = #279 minus #280 hand-fixed (621.3 km2); leftover overlap #300 x #305 (the #161x#178 triangle, accepted). Short walk = exports/tileplan_120-115/walk_short.csv (22 checks).
 User kept the two unreviewed carves (#177 x #260 Lu-Partition, #269 x #273 Chu/Wei) 2026-11-12; walk started.
+PASS 5 (user chose option 2): triangle at 115.03E 34.65N (66.7 km2, POL1278/1279 border) stays ZHENG in -713.5..-698.5; #161 Song carved by #178 over the whole overlap (no more --leave-pair 161:178 / 300:304). User saw hatching at -445.4 in the walk (check 1) from #300 x #305.
