@@ -1,0 +1,2 @@
+Candidates (Type 2 review, 2026-11-12):
+#161 Song x #178 Zheng/Song 67 km2: LEAVE (A) - triangle at 115.029E 34.656N, border handover artifact; invisible after -698.5 (both Song). Planner: skip this pair (--skip 178 or pair) so #161 is not split.
