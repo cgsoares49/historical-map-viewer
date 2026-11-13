@@ -1,0 +1,1 @@
+130/120 pre-flight 2026-11-13: 30 entries (18 type1, 12 dots), no Type 2, no pairs, no registry drops, ring jumps = tile-edge closures (+ modern 0.02deg border gap at 126E). CLEAN, nothing to do.

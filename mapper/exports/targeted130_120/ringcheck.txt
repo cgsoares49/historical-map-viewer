@@ -1,0 +1,9 @@
+#1 North Korea [type1]: 3 jump(s): POL4->POL5 0.020 deg at (126.000,40.892); POL5->lit 0.930 deg at (126.000,40.930); lit->POL1 1.636 deg at (126.000,40.000)
+#2 China - Liaoning [type1]: 1 jump(s): POL10->CST2 2.468 deg at (124.364,40.000)
+#20 China - Inner Mongolia [type1]: 1 jump(s): lit->POL6 2.084 deg at (120.000,45.000)
+#21 China - Jilin [type1]: 3 jump(s): POL7->lit 3.916 deg at (122.084,45.000); lit->POL8 4.070 deg at (126.000,45.000); POL8->POL9 0.020 deg at (126.000,40.912)
+#7 UNKNOWN [type1]: 3 jump(s): lit->lit 6.000 deg at (120.000,45.000); lit->lit 5.000 deg at (126.000,45.000); lit->CST2 4.104 deg at (126.000,40.000)
+#22 Gojoseon [type1]: 1 jump(s): POL13->CST2 2.476 deg at (124.372,40.000)
+#24 Donghu [type1]: 1 jump(s): POL15->lit 0.406 deg at (120.406,45.000)
+#29 Yan [type1]: 1 jump(s): POL21->POL13 1.509 deg at (125.881,40.000)
+entries with discontinuities: 8
