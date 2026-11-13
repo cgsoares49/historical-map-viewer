@@ -1,0 +1,6 @@
+entries 22 dups [] missing []
+types Counter({1: 14, 0: 8}) POL 19 CST 0
+Type2: []
+type1 dots: []
+pairs 1
+#19 Qiang x #20 Qin  -361.5..-1.0 (360.5y) max 83 km2

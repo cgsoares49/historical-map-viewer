@@ -1,0 +1,9 @@
+#10 China - Qinghai [type1]: 1 jump(s): POL2->lit 2.114 deg at (102.114,35.000)
+#11 China - Gansu [type1]: 1 jump(s): lit->POL3 2.886 deg at (105.000,35.000)
+#13 Shang Dynasty - Zhou [type1]: 1 jump(s): POL6->lit 0.967 deg at (104.033,35.000)
+#15 Qin [type1]: 1 jump(s): lit->POL8 0.112 deg at (105.000,35.000)
+#16 Qin [type1]: 1 jump(s): POL9->POL8 0.855 deg at (104.033,35.000)
+#17 Quanrong [type1]: 1 jump(s): lit->POL7 0.157 deg at (105.000,35.000)
+#18 Western Rong [type1]: 1 jump(s): POL11->lit 0.963 deg at (104.037,35.000)
+#20 Qin [type1]: 1 jump(s): lit->POL15 2.925 deg at (105.000,35.000)
+entries with discontinuities: 8

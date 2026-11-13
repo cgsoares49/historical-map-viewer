@@ -1,0 +1,107 @@
+applied 1 pre-edit operations from C:/my stuff/claudetest/mapper/exports/targeted125_100/pre_type2.json
+seeds [19, 20]
+candidates (seeds + overlapping neighbours): 2
+WHOLE-TILE PLAN 125:100   (newer entry takes its area; older entry carved)
+
+31 edit operations; candidates [19, 20]; overlap windows before: 1, after: 0
+POL file header count: 19 -> 47;  PAR file header count: 22 -> 23;  CST file header count: 0 -> 0
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+#12 => 12, 20
+ 102.72093    35.82507
+57 > 31 & 28
+#15 => 15, 21
+ 102.72093    35.82507
+72 > 28 & 46
+#20 => 20, 22
+ 103.09880    35.77708
+28 > 6 & 24
+#21 => 21, 23
+ 103.09880    35.77708
+46 > 13 & 35
+#22 => 22, 24
+ 103.20192    36.00598
+24 > 9 & 17
+#23 => 23, 25
+ 103.20192    36.00598
+35 > 13 & 24
+#24 => 24, 26
+ 103.24478    36.07339
+17 > 2 & 17
+#25 => 25, 27
+ 103.24478    36.07339
+24 > 4 & 22
+#22 => 22, 28
+ 103.28858    35.88108
+9 > 4 & 7
+#23 => 23, 29
+ 103.28858    35.88108
+13 > 6 & 9
+#28 => 28, 30
+ 103.31959    35.94480
+7 > 5 & 4
+#29 => 29, 31
+ 103.31959    35.94480
+9 > 4 & 7
+#26 => 26, 32
+ 103.54213    36.10944
+17 > 6 & 13
+#27 => 27, 33
+ 103.54213    36.10944
+22 > 7 & 17
+#32 => 32, 34
+ 103.70939    36.09892
+13 > 5 & 10
+#33 => 33, 35
+ 103.70939    36.09892
+17 > 5 & 14
+#34 => 34, 36
+ 104.01076    36.16166
+10 > 7 & 5
+#35 => 35, 37
+ 104.01076    36.16166
+14 > 9 & 7
+#34 => 34, 38
+ 104.02831    36.12001
+7 > 5 & 4
+#35 => 35, 39
+ 104.02831    36.12001
+9 > 7 & 4
+#38 => 38, 40
+ 104.03063    36.12700
+4 > 3 & 3
+#39 => 39, 41
+ 104.03063    36.12700
+4 > 2 & 4
+#36 => 36, 42
+ 104.03794    36.19113
+5 > 2 & 5
+#37 => 37, 43
+ 104.03794    36.19113
+7 > 3 & 6
+#42 => 42, 44
+ 104.19326    36.33996
+5 > 5 & 2
+#43 => 43, 45
+ 104.19326    36.33996
+6 > 5 & 3
+#13 => 13, 46
+ 104.23046    36.35569
+18 > 2 & 18
+#19 => 19, 47
+ 104.23046    36.35569
+7 > 2 & 7
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 1 entries
+  - new #23 = #19 minus #20 (78755.4 km2), ranges -361.5..-1
+
+PAR EDITS (in order):
+  #15: ranges = -767.5..-767.5 Qin
+  NEW #23 right after #19: -361.5..-1 Qiang | refs [[1014, 1], [1046, 1], [1019, 1], [1045, 1], [1042, 1], [1037, 1], [1040, 1], [1039, 1], [1034, 1], [1033, 1], [1026, 1], [1025, 1], [1030, 1], [1029, 1], [1022, 1], [1021, 1], [1012, 1]]
+  #19: ranges = -771.1..-361.5 Qiang
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical
+
+wrote C:\my stuff\claudetest\mapper\exports\tileplan_125-100\edits.json, plan.txt, salient_years.csv (5 rows); staged in C:\my stuff\claudetest\mapper\staging\125-100
