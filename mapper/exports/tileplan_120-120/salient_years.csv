@@ -1,0 +1,18 @@
+﻿ViewYear,what to look for,fix(es) involved,centre lon,centre lat
+-584.6,year just BEFORE the fixed span: must be unchanged (no gap),#87 minus #102 -> new #108,120.451,32.66
+-584.4,"first year of the fixed span: no overlay hatching now, area still covered",#87 minus #102 -> new #108,120.451,32.66
+-527.5,middle of the fixed span,#87 minus #102 -> new #108,120.451,32.66
+-511.6,year just BEFORE the fixed span: must be unchanged (no gap),"#101 minus #90 -> new #109 | #90 now drawn above UNKNOWN placeholder #101 (must show its colour, not blank)",121.211,30.159
+-511.4,"first year of the fixed span: no overlay hatching now, area still covered","#101 minus #90 -> new #109 | #90 now drawn above UNKNOWN placeholder #101 (must show its colour, not blank)",121.211,30.159
+-494.6,year just BEFORE the fixed span: must be unchanged (no gap),#101 minus #103 -> new #110,121.211,30.159
+-494.5,last year of the fixed span,"#101 minus #90 -> new #109 | #90 now drawn above UNKNOWN placeholder #101 (must show its colour, not blank)",121.211,30.159
+-494.4,"first year of the fixed span: no overlay hatching now, area still covered / year just AFTER the fixed span: unchanged","#101 minus #103 -> new #110 | #101 minus #90 -> new #109 | #90 now drawn above UNKNOWN placeholder #101 (must show its colour, not blank)",121.211,30.159
+-490.5,last year of the fixed span,#101 minus #103 -> new #110,121.211,30.159
+-490.4,year just AFTER the fixed span: unchanged,#101 minus #103 -> new #110,121.211,30.159
+-478.6,year just BEFORE the fixed span: must be unchanged (no gap),#106 minus #107 -> new #111,121.196,31.04
+-478.4,"first year of the fixed span: no overlay hatching now, area still covered",#106 minus #107 -> new #111,121.196,31.04
+-470.5,last year of the fixed span,#87 minus #102 -> new #108,120.451,32.66
+-470.4,year just AFTER the fixed span: unchanged,#87 minus #102 -> new #108,120.451,32.66
+-239.8,middle of the fixed span,#106 minus #107 -> new #111,121.196,31.04
+-1.0,last year of the fixed span,#106 minus #107 -> new #111,121.196,31.04
+-0.9,year just AFTER the fixed span: unchanged,#106 minus #107 -> new #111,121.196,31.04

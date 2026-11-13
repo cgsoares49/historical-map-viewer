@@ -1,0 +1,35 @@
+WHOLE-TILE PLAN 120:120   (newer entry takes its area; older entry carved)
+
+12 edit operations; candidates [87, 90, 101, 102, 103, 106, 107]; overlap windows before: 11, after: 0
+POL file header count: 23 -> 24;  PAR file header count: 107 -> 111;  CST file header count: 98 -> 99
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+CST95 => 95, 99   (COAST: CST file)
+ 120.49768    33.62002
+156 > 3 & 155
+#17 => 17, 24
+ 120.49768    33.62002
+11 > 11 & 2
+
+DECISIONS / STEPS:
+  - draw order: #90 moved to right after #101 (requested)
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 6 entries
+  - new #108 = #87 minus #102 (3170.3 km2), ranges -584.5..-512.5, -512.5..-470.5
+  - new #109 = #101 minus #90 (10956.6 km2), ranges -511.5..-494.5
+  - new #110 = #101 minus #103 (11670.7 km2), ranges -494.5..-490.5
+  - new #111 = #106 minus #107 (10000.3 km2), ranges -478.5..-470.5, -470.5..-306.5, -306.5..-1
+
+PAR EDITS (in order):
+  #105: refs = [[97, 0], [93, 0], [27, 0], [96, 0], [2, 0], [120, 30], [1014, 0], [1022, 1], [1020, 0]]
+  #107: refs = [[98, 0], [94, 0], [1020, 1], [1016, 1], [1023, 1], [1021, 0]]
+  MOVE #90 to right after #101 (draw order)
+  NEW #108 right after #87: -584.5..-512.5 Huaiyi; -512.5..-470.5 Wu | refs [[1, 0], [91, 0], [90, 0], [84, 0], [95, 0], [1017, 1]]
+  #87: ranges = -1070.5..-1045.5 Shang Dynasty; -1045.5..-1042.4 Zhou Dynasty; -944.7..-770.1 Xu - Huaiyi; -770.1..-584.5 Huaiyi; -470.5..-306.5 Yue; -306.5..-1 Chu
+  NEW #109 right after #101: -511.5..-494.5 Yue | refs [[97, 0], [93, 0], [1006, 1], [1014, 0], [1022, 1], [1016, 1], [1015, 0], [94, 0]]
+  NEW #110 right after #101: -494.5..-490.5 Wu | refs [[97, 0], [93, 0], [27, 0], [1018, 0], {'lit': [120, 30]}, [1014, 0], [1022, 1], [1016, 1], [1015, 0], [94, 0]]
+  #101: ranges = -600.5..-511.5 Yue
+  NEW #111 right after #106: -478.5..-470.5 Wu; -470.5..-306.5 Yue; -306.5..-1 Chu | refs [[79, 0], [92, 0], [63, 0], [1021, 1], [1023, 0], [1016, 0], [1022, 0], [1014, 1], [1005, 0]]
+  #106: ranges = -490.5..-478.5 Wu
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical

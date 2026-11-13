@@ -1,0 +1,3 @@
+1 tiles scanned; 1 entries dropped by the registry rule (HIGH 1, MED 0, LOW 0)
+by rule: POL 1, DATE 0, BOTH 0
+Wrote C:\my stuff\claudetest\mapper\exports\registry_exclusion_audit.csv

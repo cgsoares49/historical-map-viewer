@@ -1,0 +1,10 @@
+﻿#,ViewYear,centre lon,centre lat,what to look for,fix
+1,-584.4,120.451,32.66,"Wu #102 over Huaiyi #87, which shows only around it; no hatching",#87 minus #102
+2,-527.5,120.451,32.66,"mid-span: same, no hatching",#87 minus #102
+3,-511.4,121.211,30.159,"Yue #90 corner inside the Yue remainder: no hatching, no hole",#101 minus #90
+4,-494.4,121.211,30.159,Wu - Yue #103 corner over Wu: no hatching,#101 minus #103
+5,-490.4,121.211,30.159,"just after: Yue everywhere in the corner, no gap",#103 end / #105
+6,-480.0,120.238,30.929,"#105 Yue / Wu border near here is clean: no sliver, no hatching (ring fix)",#105 ring fix
+7,-478.4,121.196,31.04,"Yue strip (#107) takes its area from Wu: Wu around it, no hatching","#106 minus #107, #107 ring fix"
+8,-470.4,120.451,32.66,"after #102 ends: Yue over the whole #87 area, no gap",#87 minus #102
+9,-239.8,121.196,31.04,"Chu everywhere, strip and remainder identical colour: no hatching",#106 minus #107

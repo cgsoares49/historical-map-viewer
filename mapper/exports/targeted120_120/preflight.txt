@@ -1,0 +1,10 @@
+entries 107 dups [] missing []
+types Counter({1: 103, 0: 4}) POL 23 CST 98
+Type2: []
+type1 dots: [(96, 'Wu'), (97, 'Wu'), (85, 'Zhou')]
+pairs 5
+#87 Huaiyi x #102 Wu  -584.5..-470.5 (114.0y) max 17781 km2
+#90 Yue x #101 Yue  -511.5..-494.5 (17.0y) max 3595 km2
+#101 Wu x #103 Wu - Yue  -494.5..-490.5 (4.0y) max 2881 km2
+#105 Yue x #106 Wu  -490.5..-1.0 (489.5y) max 98 km2
+#106 Wu x #107 Yue  -478.5..-1.0 (477.5y) max 6798 km2

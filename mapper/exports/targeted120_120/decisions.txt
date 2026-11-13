@@ -1,0 +1,7 @@
+120/120 pre-flight 2026-11-13: coast seams (CST89->79, 92->63, 93->27, 96->2; 11 entries) LEFT (user: canonical VMAP0 data). Real ring errors: #105 (POL14->POL20 0.307deg), #107 (POL20->23 0.235, POL21->CST63 0.182). #107 registry drop = false (POL23 normal). Type 2: none. Pairs: 87x102, 90x101, 101x103, 105x106, 106x107.
+STAGED 2026-11-13 continuity fixes (pre_continuity.json): #105 +POL22 rev; #107 refs rewritten (no CST63, + POL16 rev). Not applied; final plan will use it as pre-edits.
+PAIR #106 x #107: CARVE #106 by #107 (A), -478.5..-1. Entries: 106,107.
+PAIR #87 x #102: CARVE #87 by #102 (A), -584.5..-470.5. Entries: 87,102.
+PAIR #90 x #101: CARVE #101 by #90 (A), -511.5..-494.5. Entries: 90,101.
+PAIR #101 x #103: CARVE #101 by #103 (A), -494.5..-490.5. ALL RULINGS DONE. PLAN: --entries 106,107,87,102,101,90,103 --pre-edits pre_continuity.json --trace-tol 0.01 --min-pair-years 0.5 --min-part-km2 2 --min-ratio 0.001 (run from TEMP, base = canonical).
+PASS 1 (2026-11-13): --move 90:101 (planner would otherwise delete #90 since #101 drawn above); edits.json = pre_continuity + planner; staged PAR 110->111 entries? see plan; 0 overlaps, 0 holes at 16 yrs, validator OK, no bare LF, ringcheck only coast seams. Walk = exports/tileplan_120-120/walk_short.csv (9 checks). Copy PAR120.ASC, POL120.PRN, CST120.PRN (CST 98->99 from CST95 split).
