@@ -1,0 +1,8 @@
+#19 China - Yunnan [type1]: 1 jump(s): POL4->lit 4.709 deg at (104.709,25.000)
+#21 China - Guizhou [type1]: 1 jump(s): lit->POL1 0.291 deg at (105.000,25.000)
+#22 Shu [type1]: 1 jump(s): POL6->lit 2.697 deg at (102.303,30.000)
+#23 Shu [type1]: 1 jump(s): POL11->POL7 2.319 deg at (102.587,30.000)
+#24 Shu [type1]: 1 jump(s): lit->POL7 0.094 deg at (105.000,30.000)
+#25 Shu [type1]: 1 jump(s): POL11->lit 2.413 deg at (102.587,30.000)
+#26 Shu [type1]: 1 jump(s): POL11->POL12 0.053 deg at (102.587,30.000)
+entries with discontinuities: 7

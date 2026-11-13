@@ -1,0 +1,1 @@
+115/100 pre-flight 2026-11-13: 26 entries (9 type 1, 17 dots), no Type 2, no pairs, no registry drops, ring jumps = tile-edge closures only. NOTHING TO DO; no borders rows. col-A next still 6193.
