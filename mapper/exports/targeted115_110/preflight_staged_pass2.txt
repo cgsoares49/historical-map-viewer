@@ -1,0 +1,5 @@
+entries 59 dups [] missing []
+types Counter({1: 43, 0: 15, 2: 1}) POL 56 CST 0
+Type2: [(30, 'Zhou Dynasty')]
+type1 dots: []
+pairs 0

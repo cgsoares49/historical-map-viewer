@@ -1,0 +1,3 @@
+﻿Tile,EntryIndex,Name,AreaKm2,DateRanges,LifeFrom,LifeTo,LifeYears,Rule,PolHits,Suspicion,ImpactEvents
+115/110,34,Chu,20127.6,3,-730.5,-690.7,39.8,DATE,,"HIGH: area 20,128 km2, lives 40y",
+115/110,30,Zhou Dynasty,6157.2,1,-961.3,-960.5,0.8,DATE,,"HIGH: area 6,157 km2",

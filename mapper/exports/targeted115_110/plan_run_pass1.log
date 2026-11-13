@@ -1,0 +1,23 @@
+applied 1 pre-edit operations from C:/my stuff/claudetest/mapper/exports/targeted115_110/pre_type2.json
+seeds [39, 40, 41, 44]
+candidates (seeds + overlapping neighbours): 4
+WHOLE-TILE PLAN 115:110   (newer entry takes its area; older entry carved)
+
+1 edit operations; candidates [39, 40, 41, 44]; overlap windows before: 0, after: 0
+POL file header count: 54 -> 54;  PAR file header count: 57 -> 57;  CST file header count: 0 -> 0
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 4 entries
+
+PAR EDITS (in order):
+
+NOT TOUCHED (overlap >= 0.5 yrs but one entry is a giant > 50000 km2 -- probably intended background/tribal layers):
+  #39 (59663 km2) x #41 (1961 km2)
+  #40 (65420 km2) x #44 (304 km2)
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical
+
+wrote C:\my stuff\claudetest\mapper\exports\tileplan_115-110\edits.json, plan.txt, salient_years.csv (0 rows); staged in C:\my stuff\claudetest\mapper\staging\115-110

@@ -1,0 +1,8 @@
+entries 57 dups [] missing []
+types Counter({1: 42, 0: 15}) POL 54 CST 0
+Type2: []
+type1 dots: []
+pairs 3
+#28 Chu x #30 Zhou Dynasty  -961.3..-960.5 (0.8y) max 6157 km2
+#39 Baipu x #41 Chu  -750.5..-523.5 (227.0y) max 111 km2
+#40 Yangyue x #44 Wu  -504.5..-500.5 (4.0y) max 304 km2

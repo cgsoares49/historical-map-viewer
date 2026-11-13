@@ -1,0 +1,103 @@
+[
+ {
+  "op": "par_set_areatype",
+  "entry": 30,
+  "areatype": 2
+ },
+ {
+  "op": "pol_split",
+  "pol": 34,
+  "points": [
+   [
+    112.25867,
+    29.8362
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 36,
+  "points": [
+   [
+    112.25867,
+    29.8362
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 58,
+  "after": 39,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -750.5,
+    "to": -523.5,
+    "name": "Baipu",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1036,
+    0
+   ],
+   [
+    1055,
+    0
+   ],
+   [
+    1033,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 39,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -750.5,
+    "name": "Baipu",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 59,
+  "after": 40,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -504.5,
+    "to": -500.5,
+    "name": "Yangyue",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1035,
+    1
+   ],
+   [
+    1040,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 40,
+  "ranges": [
+   {
+    "from": -770.1,
+    "to": -504.5,
+    "name": "Yangyue",
+    "color": 0
+   }
+  ]
+ }
+]
