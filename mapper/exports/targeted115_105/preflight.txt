@@ -1,0 +1,12 @@
+entries 47 dups [] missing []
+types Counter({1: 27, 0: 18, 2: 2}) POL 38 CST 0
+Type2: [(21, 'China - Guizhou'), (32, 'Nu')]
+type1 dots: []
+pairs 7
+#37 Ba x #35 Ba - Gong(2)  -670.5..-600.5 (70.0y) max 20517 km2
+#37 Ba x #34 Ba - Dan  -670.5..-600.5 (70.0y) max 1701 km2
+#37 Ba x #33 Ba - Rang  -670.5..-600.5 (70.0y) max 416 km2
+#40 Ba x #35 Ba - Gong(2)  -600.5..-376.5 (224.0y) max 20517 km2
+#40 Ba x #34 Ba - Dan  -600.5..-376.5 (224.0y) max 1701 km2
+#40 Ba x #33 Ba - Rang  -600.5..-376.5 (224.0y) max 416 km2
+#33 Ba - Rang x #44 Ba  -376.5..-316.5 (60.0y) max 416 km2

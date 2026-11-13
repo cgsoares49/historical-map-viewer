@@ -1,0 +1,10 @@
+﻿#,ViewYear,centre lon,centre lat,what to look for,fix
+1,-650.0,107.69,29.95,"Ba - Rang (#33) in its own colour over the north edge, Ba around it: no hatching",#37 minus #33
+2,-650.0,109.17,29.91,"Ba - Dan (#34) own colour, Ba around it: no hatching",#37 minus #34
+3,-610.0,108.13,29.26,"Gong (#35, now Type 2) shows over Ba as an overlay: no hatching, Ba all around it",#35 Type 2
+4,-500.0,106.29,29.85,"Ba - Nu (#32, now Type 1) own colour, Ba around it: no hatching",#40 minus #32
+5,-500.0,108.13,29.26,Gong still an overlay over Ba (#40 remainder): no hatching,#35 Type 2
+6,-377.0,107.69,29.95,last year before Ba #44: Ba - Rang / Ba - Dan / Ba - Nu / Gong still show,#40 minus vassals
+7,-376.0,107.69,29.95,"Ba #44 takes over: Rang gone, plain Ba, no gap, no hatching",pair 7 / #33 dropped
+8,-376.0,106.29,29.85,"Ba #44 over the old Nu area: Nu gone, plain Ba, no gap",#32 dropped
+9,-320.0,108.13,29.26,"Gong gone (ended -376.5), Ba #44/Qin as before: no hatching",#35 Type 2

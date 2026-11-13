@@ -1,0 +1,2 @@
+#21 18 km2 compact 0.88  [(1990.0, 9999.0, 'China - Guizhou')]  inside:[(1, 'UNKNOWN'), (20, 'China - Huna'), (42, 'Chu')]
+#32 2846 km2 compact 0.49  [(-770.1, -600.5, 'Nu'), (-600.5, -316.5, 'Ba - Nu')]  inside:[(1, 'UNKNOWN'), (24, 'China - Chon'), (28, 'Shu'), (40, 'Ba')]

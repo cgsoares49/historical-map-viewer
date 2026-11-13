@@ -1,0 +1,51 @@
+applied 1 pre-edit operations from C:/my stuff/claudetest/mapper/exports/targeted115_105/pre_type2.json
+seeds [32, 33, 34, 35, 37, 40, 44]
+candidates (seeds + overlapping neighbours): 7
+WHOLE-TILE PLAN 115:105   (newer entry takes its area; older entry carved)
+
+7 edit operations; candidates [32, 33, 34, 35, 37, 40, 44]; overlap windows before: 9, after: 7
+POL file header count: 38 -> 38;  PAR file header count: 47 -> 47;  CST file header count: 0 -> 0
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+
+DECISIONS / STEPS:
+  - draw order: #35 moved to right after #40 (requested)
+  - draw order: #34 moved to right after #35 (requested)
+  - draw order: #33 moved to right after #34 (requested)
+  - draw order: #32 moved to right after #33 (requested)
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 1 entries
+  - #32: -376.5..-316.5 dropped (covered by #44)
+  - #33: -376.5..-316.5 dropped (covered by #44)
+
+PAR EDITS (in order):
+  MOVE #35 to right after #40 (draw order)
+  MOVE #34 to right after #35 (draw order)
+  MOVE #33 to right after #34 (draw order)
+  MOVE #32 to right after #33 (draw order)
+  #32: ranges = -770.1..-600.5 Nu; -600.5..-376.5 Ba - Nu
+  #33: ranges = -770.1..-670.5 Rang; -670.5..-376.5 Ba - Rang
+
+NEEDS A HUMAN DECISION:
+  ! #37 minus ['#33', '#34', '#35'] (-670.5..-600.5): a remainder part has 1 hole(s)
+  ! #40 minus ['#32', '#33', '#34', '#35'] (-600.5..-376.5): a remainder part has 1 hole(s)
+
+PAINT ORDER vs OLD ERA RULE disagree for these pairs (paint order = what MAPPER shows was used):
+  #40 vs #32 (first noticed at -488.5)
+  #37 vs #33 (first noticed at -635.5)
+  #40 vs #33 (first noticed at -488.5)
+  #37 vs #34 (first noticed at -635.5)
+  #40 vs #34 (first noticed at -488.5)
+  #37 vs #35 (first noticed at -635.5)
+  #40 vs #35 (first noticed at -488.5)
+
+Overlaps left: 7
+  -670.5..-600.5: #33 x #37
+  -670.5..-600.5: #34 x #37
+  -670.5..-600.5: #35 x #37
+  -600.5..-376.5: #32 x #40
+  -600.5..-376.5: #33 x #40
+  -600.5..-376.5: #34 x #40
+  -600.5..-376.5: #35 x #40
+Coverage (union of polity polygons before vs after, every year): identical
+
+wrote C:\my stuff\claudetest\mapper\exports\tileplan_115-105\edits.json, plan.txt, salient_years.csv (9 rows); staged in C:\my stuff\claudetest\mapper\staging\115-105
