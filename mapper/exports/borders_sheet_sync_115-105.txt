@@ -1,0 +1,9 @@
+BORDERS SHEET sync for tile 115/105, 2026-11-13   (POL file wins; workbook only read: C:\My stuff\VID\ancient index.xlsx)
+
+1) NEW ROWS: 0 lines in exports/borders_sheet_sync_115-105.tsv (columns A..AK), POL -..-. Insert after Excel row 695 (POL 38), in order. (A1 is =MAX(A2:A14168), so it updates itself: 6151 -> 6192)
+
+2) PARENT ROW EDITS (0): Excel row, cell: old -> new, then the split note
+
+3) BORDER POLs (not transient/blob) in the file but missing from the sheet, numbered below its last row: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+
+4) NEW ROW PREVIEW (A..P):
