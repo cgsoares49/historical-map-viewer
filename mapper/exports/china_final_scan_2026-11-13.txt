@@ -1,0 +1,8 @@
+China block scan 2026-11-13 (preflight_scan.py, independent overlap scan, no registry filter), lat codes 110-130 x lon 095-126.
+Tiles with 0 pairs: 110/095..110/125 (all), 115/095..115/125 (all), 120/095, 120/100, 120/105, 120/115, 120/120, 120/125, 125/095, 125/105, 125/120, 125/125, 130/096, 130/102, 130/108, 130/120, 130/126.
+Leftover pairs in already-processed tiles (not re-reviewed this session):
+  120/110: 25 pairs, 20,829 km2 total (max per pair 5,965 km2 = Chu x #434 Hann - Army, 1.0y at -312.5; mostly 1-year army/revolt events and slivers under ~200 km2)
+  125/115: 14 pairs, 17,558 km2 total (mostly 1-year events: Yan x Shanrong -664.5, Qi -663.5, Tian Qi x Wei -378.5, etc.; one 9y: Tian Qi x Zhao 1,517 km2)
+  125/110: 1 pair (#185 Dai x #205 Xianyu 0.4y, 632 km2)
+  130/114: 1 pair (#35 Shanrong x #45 Yan 380y, 765 km2)
+  125/100: 1 pair (#19 Qiang x #20 Qin, 83 km2 border slivers; user ruled LEAVE 2026-11-13)
