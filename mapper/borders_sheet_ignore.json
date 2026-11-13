@@ -1,19 +1,35 @@
 {
-  "_why": "POLs that are deliberately NOT (or no longer) on the 'borders' sheet; the sync tool never reports them. Rule also built in: POLs whose date ranges are all modern (>=1900) are ignored.",
-  "120/040": {
-    "44": "scrapped border kept in case it is wanted",
-    "1": "modern border",
-    "2": "modern border",
-    "119": "modern border",
-    "279": "old friendly-army black border: belongs to transients",
-    "280": "same",
-    "281": "same"
-  },
-  "125/010": {
-    "277": "tribal dot (Carthage enclave) - lives on the 'tribal dots' worksheet, not borders",
-    "282": "tribal dot (Carthage enclave) - lives on the 'tribal dots' worksheet, not borders",
-    "283": "tribal dot (Carthage enclave) - lives on the 'tribal dots' worksheet, not borders",
-    "299": "tribal dot (Carthage enclave) - lives on the 'tribal dots' worksheet, not borders",
-    "309": "tribal dot (Carthage enclave) - lives on the 'tribal dots' worksheet, not borders"
-  }
+ "_why": "POLs that are deliberately NOT (or no longer) on the 'borders' sheet; the sync tool never reports them. Rule also built in: POLs whose date ranges are all modern (>=1900) are ignored.",
+ "120/040": {
+  "44": "scrapped border kept in case it is wanted",
+  "1": "modern border",
+  "2": "modern border",
+  "119": "modern border",
+  "279": "old friendly-army black border: belongs to transients",
+  "280": "same",
+  "281": "same"
+ },
+ "125/010": {
+  "277": "tribal dot (Carthage enclave) - lives on the 'tribal dots' worksheet, not borders",
+  "282": "tribal dot (Carthage enclave) - lives on the 'tribal dots' worksheet, not borders",
+  "283": "tribal dot (Carthage enclave) - lives on the 'tribal dots' worksheet, not borders",
+  "299": "tribal dot (Carthage enclave) - lives on the 'tribal dots' worksheet, not borders",
+  "309": "tribal dot (Carthage enclave) - lives on the 'tribal dots' worksheet, not borders"
+ },
+ "120/115": {
+  "2": "modern border (not on the ancient list)",
+  "3": "modern border (not on the ancient list)",
+  "4": "modern border (not on the ancient list)",
+  "5": "modern border (not on the ancient list)",
+  "6": "modern border (not on the ancient list)",
+  "7": "modern border (not on the ancient list)",
+  "8": "modern border (not on the ancient list)",
+  "9": "modern border (not on the ancient list)",
+  "10": "modern border (not on the ancient list)",
+  "11": "modern border (not on the ancient list)",
+  "12": "modern border (not on the ancient list)",
+  "13": "modern border (not on the ancient list)",
+  "14": "modern border (not on the ancient list)",
+  "15": "modern border (not on the ancient list)"
+ }
 }

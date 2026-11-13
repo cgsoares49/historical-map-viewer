@@ -27,8 +27,6 @@ BORDERS SHEET sync for tile 120/115, 2026-11-13   (POL file wins; workbook only 
    POL  416 (row 2624): F2624: 7 -> 5; I2624/J2624: 115, 33.9793 -> 115.0948, 33.992;  Q2624 = "split 11/13/26 for overlay fix: #416 => 416, 464"
    POL  425 (row 2632): F2632: 8 -> 7; I2632/J2632: 117.0262, 34.8765 -> 117.0655, 34.8631;  Q2632 = "split 11/13/26 for overlay fix: #425 => 425, 436"
 
-3) BORDER POLs (not transient/blob) in the file but missing from the sheet, numbered below its last row: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 375, 376]
-
 2b) SPLIT PARENT ROWS TO PASTE: exports/borders_sheet_sync_120-115_parents.tsv = 20 lines (columns A..AK), one per split parent, in Excel-row order.
     Paste each line over the existing row (select A<row>):
       line  1 -> A2325   (POL 19: F=10, stop 117.0655, 34.8631)
