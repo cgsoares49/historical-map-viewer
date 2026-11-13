@@ -1,0 +1,131 @@
+<title>MAPPER Tile Status</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: a world strip map on top, an Asia-block grid below it with ring numbers, then the to-do lists. Colour = state of each tile's overlay clean-up. */
+:root{
+  --bg:#f4f5f3; --panel:#ffffff; --fg:#1d2420; --muted:#5b665f; --line:#d6dbd6;
+  --finished:#1f7a63; --accepted:#4a9e8a; --accent:#d9822b;
+  --todo-pairs:#c8442f; --todo-scanned:#e3b341; --worked:#4f6d93; --detector:#a9b8c9; --none:#e4e7e3;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141a17; --panel:#1c2420; --fg:#e5ebe6; --muted:#9aa89f; --line:#2f3a34;
+  --finished:#3fae92; --accepted:#2f7f6d; --accent:#e8963f;
+  --todo-pairs:#e0634e; --todo-scanned:#d3a62f; --worked:#6f8fb8; --detector:#46576b; --none:#232c27; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141a17; --panel:#1c2420; --fg:#e5ebe6; --muted:#9aa89f; --line:#2f3a34;
+  --finished:#3fae92; --accepted:#2f7f6d; --accent:#e8963f;
+  --todo-pairs:#e0634e; --todo-scanned:#d3a62f; --worked:#6f8fb8; --detector:#46576b; --none:#232c27; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:15px;line-height:1.5;padding-block:24px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+h1{font-size:26px;line-height:1.15;margin:0;font-weight:600;text-wrap:balance}
+h2{font-size:17px;margin:0 0 6px;font-weight:600}
+.sub{color:var(--muted);margin:4px 0 0;max-width:68ch}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:16px;min-width:0}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;margin:8px 0 10px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:14px;height:14px;border-radius:2px;display:inline-block;border:1px solid rgba(0,0,0,.15)}
+.s-finished{background:var(--finished)}
+.s-accepted{background-color:var(--accepted);background-image:repeating-linear-gradient(45deg,transparent 0 3px,rgba(255,255,255,.55) 3px 5px)}
+.s-todo_pairs{background:var(--todo-pairs)} .s-todo_scanned{background:var(--todo-scanned)} .s-worked{background:var(--worked)} .s-detector{background:var(--detector)} .s-none{background:var(--none)}
+svg{width:100%;height:auto;display:block}
+svg .t{stroke:var(--panel);stroke-width:.12}
+svg .t:hover,svg .t:focus{stroke:var(--fg);stroke-width:.5;outline:none}
+.grat{stroke:var(--muted);stroke-width:.08;opacity:.4}
+.lbl{fill:var(--muted);font-family:var(--mono);font-size:3px}
+.block{fill:none;stroke:var(--accent);stroke-width:.5}
+.info{min-height:3.2em;font-size:14px;margin-top:8px}
+.info b{font-family:var(--mono)}
+.grid{display:grid;grid-template-columns:auto repeat(10,minmax(54px,1fr));gap:3px;min-width:640px;font-family:var(--mono);font-size:12px;margin-top:10px}
+.scroll{overflow-x:auto}
+.cell{border-radius:3px;padding:6px 4px;text-align:center;color:#fff;min-height:44px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;border:2px solid transparent}
+.cell[data-ring="1"]{border-color:var(--accent)}
+.cell.s-todo_scanned,.cell.s-detector,.cell.s-none{color:#1d2420}
+.cell small{font-size:10px}
+.ax{color:var(--muted);align-self:center;text-align:right;padding-right:4px;font-size:11px}
+.axc{color:var(--muted);text-align:center;font-size:11px}
+table{border-collapse:collapse;width:100%;font-size:13px;min-width:520px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+td.n{font-variant-numeric:tabular-nums;font-family:var(--mono)}
+.counts{display:flex;flex-wrap:wrap;gap:6px 22px;font-size:14px;margin-top:12px}
+.counts b{font-variant-numeric:tabular-nums}
+.note{font-size:13px;color:var(--muted);max-width:75ch;margin:0}
+@media (max-width:520px){h1{font-size:22px}}
+</style>
+<div class="wrap">
+<header>
+  <h1>MAPPER tile status</h1>
+  <p class="sub">Where the overlay clean-up stands, tile by tile, as of 13 Nov 2026. Colours come from today's live scans (China and the central and South Asia block) and from plan files left by earlier sessions. A grey tile has no record, which means unknown and not clean.</p>
+</header>
+
+<section class="panel">
+  <h2>World</h2>
+  <div class="legend" id="legend"></div>
+  <svg id="world" viewBox="-8 -7 376 193" role="img" aria-label="World map of tile clean-up status"></svg>
+  <div class="info" id="info">Hover or tap a tile.</div>
+</section>
+
+<section class="panel">
+  <h2>Central and South Asia block</h2>
+  <p class="sub">Lat codes 95 to 125 by lon 50 to 95. The orange outline marks ring 1, the outer ring, where we start (clockwise from 125/050). The number under each tile is the overlap pairs found by today's scan.</p>
+  <div class="scroll"><div class="grid" id="asia"></div></div>
+  <div class="counts" id="asiacounts"></div>
+</section>
+
+<section class="panel">
+  <h2>Asia block tiles with overlap pairs</h2>
+  <div class="scroll"><table id="todo"><thead><tr><th>Tile</th><th>Ring</th><th>Pairs</th><th>Largest overlap</th><th>Other items to check</th></tr></thead><tbody></tbody></table></div>
+</section>
+
+<section class="panel">
+  <h2>China leftovers you accepted</h2>
+  <div class="scroll"><table><thead><tr><th>Tile</th><th>Pairs left</th><th>What they are</th></tr></thead><tbody>
+  <tr><td class="n">120/110</td><td class="n">25</td><td>Mostly one-year army and revolt events. The biggest is Chu with Hann Army at -312.5 (5,965 km2).</td></tr>
+  <tr><td class="n">125/115</td><td class="n">14</td><td>Mostly one-year events (Yan with Shanrong at -664.5, Tian Qi with Wei at -378.5) and one 9-year pair, Tian Qi with Zhao (1,517 km2).</td></tr>
+  <tr><td class="n">125/110</td><td class="n">1</td><td>Dai with Xianyu, 0.4 years, 632 km2.</td></tr>
+  <tr><td class="n">130/114</td><td class="n">1</td><td>Shanrong with Yan, 380 years, 765 km2.</td></tr>
+  <tr><td class="n">125/100</td><td class="n">1</td><td>Qiang with Qin, seven border slivers totalling 83 km2. Carving would need 28 new POLs.</td></tr>
+  </tbody></table></div>
+</section>
+
+<p class="note">Next free borders-sheet number: 6193. Tiles with no marker may simply not have been scanned yet. A full-world scan would turn the grey into real answers.</p>
+</div>
+<script>
+const DATA=__DATA__;
+const LABEL={finished:"Finished",accepted:"Finished, leftovers accepted",todo_pairs:"Asia block, has overlap pairs",todo_scanned:"Asia block, scanned, pre-flight to do",worked:"Worked in an earlier session",detector:"Detector only",none:"No record"};
+const ORDER=["finished","accepted","todo_pairs","todo_scanned","worked","detector","none"];
+const VAR={todo_pairs:"todo-pairs",todo_scanned:"todo-scanned"};
+const counts={};Object.values(DATA).forEach(v=>{counts[v.status]=(counts[v.status]||0)+1});
+const legend=document.getElementById('legend');
+ORDER.forEach(k=>{const s=document.createElement('span');s.innerHTML='<i class="sw s-'+k+'"></i>'+LABEL[k]+' ('+(counts[k]||0)+')';legend.appendChild(s)});
+const info=document.getElementById('info');
+function show(t){const d=DATA[t];info.innerHTML='<b>'+t+'</b> &nbsp;'+LABEL[d.status]+'. '+d.text}
+const NS='http://www.w3.org/2000/svg';const svg=document.getElementById('world');
+function mk(tag,attrs){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);return e}
+for(let lon=-180;lon<=180;lon+=30){svg.appendChild(mk('line',{x1:lon+180,x2:lon+180,y1:0,y2:180,class:'grat'}));const tx=mk('text',{x:lon+180,y:-2,'text-anchor':'middle',class:'lbl'});tx.textContent=lon+'E';svg.appendChild(tx)}
+for(let lat=-90;lat<=90;lat+=30){const y=90-lat;svg.appendChild(mk('line',{x1:0,x2:360,y1:y,y2:y,class:'grat'}));const tx=mk('text',{x:-1.5,y:y+1,'text-anchor':'end',class:'lbl'});tx.textContent=lat+'N';svg.appendChild(tx)}
+Object.keys(DATA).forEach(t=>{const p=t.split('/').map(Number);const la=p[0],lo=p[1];const w=la>=130?6:5;const sl=lo<180?lo:lo-360;
+ const r=mk('rect',{x:sl+180,y:175-la,width:w,height:5,class:'t',fill:'var(--'+(VAR[DATA[t].status]||DATA[t].status)+')',tabindex:'0','aria-label':t+' '+LABEL[DATA[t].status]});
+ r.addEventListener('mouseenter',()=>show(t));r.addEventListener('focus',()=>show(t));r.addEventListener('click',()=>show(t));svg.appendChild(r)});
+svg.appendChild(mk('rect',{x:230,y:50,width:50,height:35,class:'block'}));
+const g=document.getElementById('asia');const rows=[125,120,115,110,105,100,95],cols=[50,55,60,65,70,75,80,85,90,95];
+g.appendChild(document.createElement('div'));cols.forEach(c=>{const d=document.createElement('div');d.className='axc';d.textContent=c+'E';g.appendChild(d)});
+const pad=n=>String(n).padStart(3,'0');const ac={};const todo=[];
+rows.forEach((la,ri)=>{const a=document.createElement('div');a.className='ax';a.textContent=(la-90)+'-'+(la-85)+'N';g.appendChild(a);
+ cols.forEach((lo,ci)=>{const t=pad(la)+'/'+pad(lo);const d=DATA[t];const ring=Math.min(ri,rows.length-1-ri,ci,cols.length-1-ci)+1;
+  const cell=document.createElement('div');cell.className='cell s-'+d.status;cell.dataset.ring=ring;cell.tabIndex=0;
+  const m=d.text.match(/(\d+) overlap pair/);const done=(d.status==='finished'||d.status==='accepted');
+  cell.innerHTML='<span>'+t+'</span><small>'+(done?'done':(m?m[1]:'0')+' pairs')+'</small>';
+  cell.addEventListener('mouseenter',()=>show(t));cell.addEventListener('focus',()=>show(t));cell.addEventListener('click',()=>show(t));g.appendChild(cell);
+  ac[d.status]=(ac[d.status]||0)+1;
+  if(d.status==='todo_pairs')todo.push({t:t,ring:ring,d:d});})});
+const acn=document.getElementById('asiacounts');
+[['finished','finished'],['todo_pairs','with overlap pairs'],['todo_scanned','scanned, pre-flight still to do']].forEach(a=>{const s=document.createElement('span');s.innerHTML='<b>'+(ac[a[0]]||0)+'</b> '+a[1];acn.appendChild(s)});
+todo.sort((a,b)=>a.ring-b.ring||a.t.localeCompare(b.t));
+const tb=document.querySelector('#todo tbody');
+todo.forEach(x=>{const m=x.d.text.match(/(\d+) overlap pair\(s\)(?: \(largest (\d+) km2\))?/);
+ const rest=x.d.text.replace(/^Asia block, to do\. /,'').split(', ').filter(s=>!/entries|overlap pair|largest/.test(s)).join(', ').replace(/\.$/,'');
+ const tr=document.createElement('tr');tr.innerHTML='<td class="n">'+x.t+'</td><td class="n">'+x.ring+'</td><td class="n">'+m[1]+'</td><td class="n">'+(m[2]?Number(m[2]).toLocaleString()+' km2':'')+'</td><td>'+rest+'</td>';tb.appendChild(tr)});
+</script>

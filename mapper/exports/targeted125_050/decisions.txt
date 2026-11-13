@@ -1,0 +1,1 @@
+125/050 pre-flight 2026-11-13: 49 entries (32 normal, 17 dots), no Type 2, no pairs; registry #46 Macedon (-323.4..-318.1, 46,469 km2) = FALSE drop (real POLs, clean succession Media->Macedon->Peithon/Seleucid); ring jumps = edge closures + Caspian coast seam 0.074deg at 54E 37N (LEFT, VMAP0 as ruled for 120/120). CLEAN, nothing to do. Next ring-1 tile: 125/055.
