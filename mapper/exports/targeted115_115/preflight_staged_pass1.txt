@@ -1,0 +1,5 @@
+entries 117 dups [] missing []
+types Counter({1: 100, 0: 17}) POL 63 CST 59
+Type2: []
+type1 dots: []
+pairs 0

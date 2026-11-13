@@ -1,0 +1,11 @@
+entries 113 dups [] missing []
+types Counter({1: 96, 0: 17}) POL 55 CST 59
+Type2: []
+type1 dots: []
+pairs 6
+#93 Three Yi Tribes x #99 Yue  -505.5..-494.5 (11.0y) max 573 km2
+#93 Three Yi Tribes x #103 Wu  -494.5..-490.5 (4.0y) max 573 km2
+#93 Three Yi Tribes x #106 Yue  -490.5..-1.0 (489.5y) max 573 km2
+#95 Wu x #104 Wu  -480.5..-478.5 (2.0y) max 63 km2
+#95 Wu x #105 Chu  -480.5..-478.5 (2.0y) max 134 km2
+#104 Wu x #105 Chu  -480.5..-478.5 (2.0y) max 63 km2

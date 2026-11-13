@@ -1,0 +1,10 @@
+﻿#,ViewYear,centre lon,centre lat,what to look for,fix
+1,-505.4,118.77,28.27,Yue #99 over the NW corner of the tribes' land: no hatching; tribes (#114 remainder) around it,Group A #93 minus #99
+2,-494.4,118.77,28.27,"Wu #103 over the same corner: no hatching, no hole",Group A #93 minus #103
+3,-492.0,118.13,29.02,"Wu #103 outline clean near its old spur (POL25 flip): no spike, no hatching",#103 ring fix
+4,-490.4,118.77,28.27,Yue #106 over the corner: no hatching,Group A #93 minus #106
+5,-300.0,118.77,28.27,"Chu #106 over the corner, tribes around it: no hatching",Group A
+6,-480.4,116.16,29.79,"Chu #105 holds the wedge (suppress inland waters!): no hatching, Wu #95/#104 carved around it",Group B
+7,-479.5,116.28,28.8,"#104 Wu clean (ring fix with POL28): no hatching, no hole near 116.06-116.26E 29.75N",#104 ring fix + Group B
+8,-478.4,116.16,29.79,"last days of #95/#104: same, no hatching",Group B
+9,-477.5,116.16,29.79,"after: Chu, no gap",Group B

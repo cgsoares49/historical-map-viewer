@@ -1,0 +1,59 @@
+(earlier staged files kept in C:\my stuff\claudetest\mapper\staging\115-115_prev_20261113-132014)
+applied 2 pre-edit operations from C:/my stuff/claudetest/mapper/exports/targeted115_115/pre_continuity.json
+seeds [93, 95, 99, 103, 104, 105, 106]
+candidates (seeds + overlapping neighbours): 7
+WHOLE-TILE PLAN 115:115   (newer entry takes its area; older entry carved)
+
+18 edit operations; candidates [93, 95, 99, 103, 104, 105, 106]; overlap windows before: 9, after: 0
+POL file header count: 55 -> 63;  PAR file header count: 113 -> 117;  CST file header count: 59 -> 59
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+#23 => 23, 56
+ 118.57133    28.14140
+19 > 9 & 12
+#43 => 43, 57
+ 118.57133    28.14140
+13 > 5 & 10
+#23 => 23, 58
+ 118.95884    28.39730
+9 > 7 & 4
+#57 => 57, 59
+ 118.95884    28.39730
+10 > 8 & 4
+#26 => 26, 60
+ 116.21020    29.75100
+879 > 10 & 870
+#45 => 45, 61
+ 116.21020    29.75100
+278 > 276 & 3
+#60 => 60, 62
+ 116.20680    29.74772
+870 > 2 & 869
+#45 => 45, 63
+ 116.20680    29.74772
+276 > 275 & 2
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 6 entries
+  - new #114 = #93 minus #99 (25394.5 km2), ranges -505.5..-494.5
+  - new #115 = #93 minus #103 (25394.5 km2), ranges -494.5..-490.5
+  - new #116 = #93 minus #106 (25394.5 km2), ranges -490.5..-1
+  - new #117 = #95 minus #104 & #105 (28452.2 km2), ranges -480.5..-478.5
+  - #104: ref swap -> ring of #104 minus #105 (12669.9 km2), ranges -480.5..-478.5
+
+PAR EDITS (in order):
+  #103: refs = [[1021, 1], [1036, 1], [1043, 1], [1051, 1], [1040, 1], [1025, 1]]
+  #104: refs = [[1045, 0], [1028, 1], [1026, 0], [1034, 1], [1032, 1], [1041, 1], [1038, 1]]
+  NEW #114 right after #93: -505.5..-494.5 Three Yi Tribes | refs [[1056, 1], [1057, 0], [1023, 1]]
+  NEW #115 right after #93: -494.5..-490.5 Three Yi Tribes | refs [[1056, 1], [1057, 0], [1023, 1]]
+  NEW #116 right after #93: -490.5..-1 Three Yi Tribes | refs [[1056, 1], [1057, 0], [1023, 1]]
+  #93: ranges = -770.1..-505.5 Three Yi Tribes
+  NEW #117 right after #95: -480.5..-478.5 Wu | refs [[1025, 0], [1044, 0], [1034, 0], [1060, 1], [1061, 0], [1046, 0], [1027, 1]]
+  #95: ranges = -541.5..-480.5 Wu
+  #104: ranges = -480.5..-478.5 Wu
+  #104: refs = [[1062, 0], [1034, 1], [1032, 1], [1041, 1], [1038, 1], [1045, 0]]
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical
+
+wrote C:\my stuff\claudetest\mapper\exports\tileplan_115-115\edits.json, plan.txt, salient_years.csv (15 rows); staged in C:\my stuff\claudetest\mapper\staging\115-115
