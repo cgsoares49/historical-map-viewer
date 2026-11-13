@@ -197,60 +197,6 @@
  },
  {
   "op": "par_set_ranges",
-  "entry": 151,
-  "ranges": [
-   {
-    "from": -770.1,
-    "to": -487.5,
-    "name": "Cao",
-    "color": 0
-   },
-   {
-    "from": -487.5,
-    "to": -481.5,
-    "name": "Song",
-    "color": 0
-   },
-   {
-    "from": -481.5,
-    "to": -480.5,
-    "name": "Revolt",
-    "color": 0
-   },
-   {
-    "from": -480.5,
-    "to": -407.5,
-    "name": "Song",
-    "color": 0
-   },
-   {
-    "from": -407.5,
-    "to": -400.5,
-    "name": "Chu",
-    "color": 0
-   },
-   {
-    "from": -400.5,
-    "to": -399.5,
-    "name": "Wei",
-    "color": 0
-   },
-   {
-    "from": -399.5,
-    "to": -286.5,
-    "name": "Song",
-    "color": 0
-   },
-   {
-    "from": -286.5,
-    "to": -284.5,
-    "name": "Tian Qi",
-    "color": 0
-   }
-  ]
- },
- {
-  "op": "par_set_ranges",
   "entry": 107,
   "ranges": [
    {
