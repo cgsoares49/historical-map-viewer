@@ -5,3 +5,5 @@ PAIR #87 x #102: CARVE #87 by #102 (A), -584.5..-470.5. Entries: 87,102.
 PAIR #90 x #101: CARVE #101 by #90 (A), -511.5..-494.5. Entries: 90,101.
 PAIR #101 x #103: CARVE #101 by #103 (A), -494.5..-490.5. ALL RULINGS DONE. PLAN: --entries 106,107,87,102,101,90,103 --pre-edits pre_continuity.json --trace-tol 0.01 --min-pair-years 0.5 --min-part-km2 2 --min-ratio 0.001 (run from TEMP, base = canonical).
 PASS 1 (2026-11-13): --move 90:101 (planner would otherwise delete #90 since #101 drawn above); edits.json = pre_continuity + planner; staged PAR 110->111 entries? see plan; 0 overlaps, 0 holes at 16 yrs, validator OK, no bare LF, ringcheck only coast seams. Walk = exports/tileplan_120-120/walk_short.csv (9 checks). Copy PAR120.ASC, POL120.PRN, CST120.PRN (CST 98->99 from CST95 split).
+Pass 2 APPLIED + byte-verified 2026-11-13.
+Borders TSVs 120/120 generated 2026-11-13: id 6182 (POL 24, split of #17); parent row POL17 edited; POL 1-3 ignored (modern); POL18 sheet row has swapped I/J (refresh row provided). Next col-A 6183.
