@@ -2,3 +2,5 @@ RING FIXES approved+staged 2026-11-13 (pre_continuity.json): #103 flip POL25; #1
 GROUP A: CARVE #93 by #99, #103, #106 (A) over -505.5..-1. Entries: 93,99,103,106.
 GROUP B: CHU WINS the wedge (A): carve #104 and #95 by #105 over -480.5..-478.5 (133.5 km2 at 116.16E 29.79N; user saw hatching only after suppressing inland waters). Entries: 95,104,105. ALL RULINGS DONE. PLAN: --entries 93,99,103,106,95,104,105 --pre-edits pre_continuity.json (--trace-tol 0.01 --min-pair-years 0.5 --min-part-km2 2 --min-ratio 0.001).
 PASS 1 staged 2026-11-13: new #114/#115/#116 = #93 minus #99/#103/#106; #117 = #95 minus #104&#105; #104 ref swap (minus #105); #103/#104 ring fixes; PAR 113->117, POL 55->63, CST 59 unchanged; 0 overlaps, 0 holes at 18 yrs; validator OK; no bare LF. Copy PAR115.ASC + POL115.PRN. Walk 9 checks (suppress inland waters at -480.4).
+Pass 1 APPLIED + byte-verified 2026-11-13.
+Borders TSVs 115/115 generated 2026-11-13: ids 6183-6190 (POL 56-63), 4 split parents (POL 23,26,43,45), POL20 refresh row (stale F 28->25), POL 1-7 modern ignored; sheet-only POLs 12,13,15,16,27,36,37 noted. Next col-A 6191. Walk 9 checks OK.

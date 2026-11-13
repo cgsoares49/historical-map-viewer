@@ -1,0 +1,39 @@
+BORDERS SHEET sync for tile 115/115, 2026-11-13   (POL file wins; workbook only read: C:\My stuff\VID\ancient index.xlsx)
+
+1) NEW ROWS: 8 lines in exports/borders_sheet_sync_115-115.tsv (columns A..AK), POL 56..63. Insert after Excel row 771 (POL 55), in order. (A1 is =MAX(A2:A14168), so it updates itself: 6151 -> 6190)
+
+2) PARENT ROW EDITS (5): Excel row, cell: old -> new, then the split note
+   POL   20 (row 738): F738: 28 -> 25   [no new child POL found: changed by hand?]
+   POL   23 (row 741): F741: 19 -> 7; I741/J741: 120, 27.0308 -> 118.95884, 28.3973;  Q741 = "split 11/13/26 for overlay fix: #23 => 23, 58, 56"
+   POL   26 (row 744): F744: 879 -> 10; I744/J744: 116.557, 28.82478 -> 116.2102, 29.751;  Q744 = "split 11/13/26 for overlay fix: #26 => 26, 60, 62"
+   POL   43 (row 761): F761: 13 -> 5; I761/J761: 119.0949, 28.5611 -> 118.57133, 28.1414;  Q761 = "split 11/13/26 for overlay fix: #43 => 43, 57, 59"
+   POL   45 (row 763): F763: 278 -> 275; I763/J763: 116.2616, 29.79184 -> 116.2068, 29.74772;  Q763 = "split 11/13/26 for overlay fix: #45 => 45, 63, 61"
+
+NOTES:
+   POL 12: in the sheet but NOT in the POL file
+   POL 13: in the sheet but NOT in the POL file
+   POL 15: in the sheet but NOT in the POL file
+   POL 16: in the sheet but NOT in the POL file
+   POL 27: in the sheet but NOT in the POL file
+   POL 36: in the sheet but NOT in the POL file
+   POL 37: in the sheet but NOT in the POL file
+
+2b) SPLIT PARENT ROWS TO PASTE: exports/borders_sheet_sync_115-115_parents.tsv = 4 lines (columns A..AK), one per split parent, in Excel-row order.
+    Paste each line over the existing row (select A<row>):
+      line  1 -> A741   (POL 23: F=7, stop 118.95884, 28.3973)
+      line  2 -> A744   (POL 26: F=10, stop 116.2102, 29.751)
+      line  3 -> A761   (POL 43: F=5, stop 118.57133, 28.1414)
+      line  4 -> A763   (POL 45: F=275, stop 116.2068, 29.74772)
+
+2c) OTHER ROWS WHOSE COUNT/STOP DIFFER FROM THE POL FILE (no split child found; your own edits): exports/borders_sheet_sync_115-115_other_changed_rows.tsv
+      line 1 -> A738   (POL 20: F=25)
+
+4) NEW ROW PREVIEW (A..P):
+   6183 | 2026-11-13 | POLBND | 115/115 | 56 | 12 | 118.57133 | 28.1414 | 120 | 27.0308 |  |  |  |  | (overlay fix) | split from #23   windows: 
+   6184 | 2026-11-13 | POLBND | 115/115 | 57 | 8 | 118.57133 | 28.1414 | 118.95884 | 28.3973 | -505.5 | -1 |  |  | (overlay fix) | split from #43   windows: -505.5, -1
+   6185 | 2026-11-13 | POLBND | 115/115 | 58 | 4 | 118.95884 | 28.3973 | 118.57133 | 28.1414 |  |  |  |  | (overlay fix) | split from #23   windows: 
+   6186 | 2026-11-13 | POLBND | 115/115 | 59 | 4 | 118.95884 | 28.3973 | 119.0949 | 28.5611 | -505.5 | -1 |  |  | (overlay fix) | split from #43   windows: -505.5, -1
+   6187 | 2026-11-13 | POLBND | 115/115 | 60 | 2 | 116.2102 | 29.751 | 116.2068 | 29.74772 | -541.5 | -504.5 |  |  | (overlay fix) | split from #26   windows: -541.5, -504.5
+   6188 | 2026-11-13 | POLBND | 115/115 | 61 | 3 | 116.2102 | 29.751 | 116.2616 | 29.79184 | -480.5 | -476.5 |  |  | (overlay fix) | split from #45   windows: -480.5, -476.5
+   6189 | 2026-11-13 | POLBND | 115/115 | 62 | 869 | 116.2068 | 29.74772 | 116.557 | 28.82478 | -541.5 | -504.5 |  |  | (overlay fix) | split from #26   windows: -541.5, -504.5
+   6190 | 2026-11-13 | POLBND | 115/115 | 63 | 2 | 116.2068 | 29.74772 | 116.2102 | 29.751 | -480.5 | -476.5 |  |  | (overlay fix) | split from #45   windows: -480.5, -476.5
