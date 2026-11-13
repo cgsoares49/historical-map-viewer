@@ -1,0 +1,6 @@
+entries 180 dups [] missing []
+types Counter({1: 177, 0: 3}) POL 9 CST 175
+Type2: []
+type1 dots: []
+pairs 1
+#178 Wu x #179 Wu - Yue  -494.5..-490.5 (4.0y) max 9154 km2

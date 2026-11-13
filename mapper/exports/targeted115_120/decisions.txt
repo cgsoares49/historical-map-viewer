@@ -1,0 +1,2 @@
+115/120 pre-flight 2026-11-13: 180 entries, no Type 2, no dots, no registry drops; ring jumps = tile-edge closures only (left); #175 already inactivated (-511.5). PAIR #178 x #179: CARVE #178 by #179 (A), -494.5..-490.5. PLAN: --entries 178,179 (--trace-tol 0.01 --min-pair-years 0.5 --min-part-km2 2 --min-ratio 0.001).
+PASS 1 staged 2026-11-13: new #181 = #178 minus #179 (5,948.3 km2); PAR 180->181, POL 9, CST 175 unchanged; 0 overlaps, 0 holes at 10 yrs; validator OK; no bare LF. Copy PAR120.ASC only (polareas/115). Walk 4 checks.

@@ -1,0 +1,5 @@
+﻿#,ViewYear,centre lon,centre lat,what to look for,fix
+1,-494.4,121.096,29.595,"Wu - Yue #179 corner over Wu #178 remainder: no hatching, no hole",#178 minus #179
+2,-490.5,121.096,29.595,"last year of the carve: same, no hatching",#178 minus #179
+3,-490.4,121.096,29.595,"just after: Yue everywhere, no gap",#178 minus #179
+4,-494.6,121.096,29.595,"just before: Yue everywhere (#178), unchanged",#178 minus #179

@@ -1,0 +1,7 @@
+#1 UNKNOWN [type1]: 1 jump(s): lit->CST175 1.642 deg at (120.000,30.000)
+#174 UNKNOWN [type1]: 1 jump(s): lit->CST175 1.642 deg at (120.000,30.000)
+#2 UNKNOWN [type1]: 1 jump(s): CST7->CST8 0.970 deg at (121.985,25.000)
+#178 Yue [type1]: 1 jump(s): CST175->lit 1.642 deg at (121.642,30.000)
+#175 Yue [type1]: 1 jump(s): CST175->lit 1.642 deg at (121.642,30.000)
+#179 Wu - Yue [type1]: 1 jump(s): CST175->POL7 1.249 deg at (121.642,30.000)
+entries with discontinuities: 6
