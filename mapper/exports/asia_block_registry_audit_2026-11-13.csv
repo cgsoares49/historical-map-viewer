@@ -1,0 +1,11 @@
+﻿Tile,EntryIndex,Name,AreaKm2,DateRanges,LifeFrom,LifeTo,LifeYears,Rule,PolHits,Suspicion,ImpactEvents
+120/070,51,Persian Empire,90448.2,1,-516.5,-516.5,0.0,DATE,,"HIGH: area 90,448 km2",
+120/075,25,Persian Empire,68423.4,1,-516.5,-516.5,0.0,DATE,,"HIGH: area 68,423 km2",
+120/075,26,Persian Empire,56116.5,1,-516.5,-516.5,0.0,DATE,,"HIGH: area 56,117 km2",
+125/050,46,Kingdom of Macedon,46468.8,2,-323.4,-318.1,5.3,DATE,,"HIGH: area 46,469 km2",
+115/080,33,Kasi,27052.2,3,-850.1,-485.5,364.6,DATE,,"HIGH: area 27,052 km2, lives 365y",
+115/070,33,Persian Empire,20875.8,1,-515.5,-515.5,0.0,DATE,,"HIGH: area 20,876 km2",
+120/070,73,Gandhara,15012.9,2,-518.5,-516.5,2.0,DATE,,"HIGH: area 15,013 km2",
+120/070,50,Persian Empire,12649.9,1,-516.5,-516.5,0.0,DATE,,"HIGH: area 12,650 km2",
+115/080,39,Kasi,7854.4,3,-575.5,-485.5,90.0,DATE,,"HIGH: area 7,854 km2, lives 90y",
+120/070,55,Persian Empire,7344.6,1,-515.5,-515.5,0.0,DATE,,"HIGH: area 7,345 km2",
