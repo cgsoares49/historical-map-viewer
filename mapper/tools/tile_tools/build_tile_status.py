@@ -17,7 +17,7 @@ ROOT = r'C:\My stuff\mapper\polareas'
 out_dir = sys.argv[1] if len(sys.argv) > 1 else '.'
 
 ACCEPTED = {'120/110': 25, '125/115': 14, '125/110': 1, '130/114': 1, '125/100': 1}   # leftover pairs the user accepted
-FINISHED_SINCE = {'125/050', '125/055'}        # Asia-block tiles REVIEWED WITH THE USER (add only after the user has confirmed; automated scans alone do NOT count)
+FINISHED_SINCE = {'125/050', '125/055', '125/060', '125/065'}        # Asia-block tiles REVIEWED WITH THE USER (add only after the user has confirmed; automated scans alone do NOT count)
 ASIA_SCAN = 'asia_block_scan_2026-11-13.txt'
 ASIA_RING = 'asia_block_ringcheck_2026-11-13.txt'
 ASIA_REG = 'asia_block_registry_audit_2026-11-13.csv'
