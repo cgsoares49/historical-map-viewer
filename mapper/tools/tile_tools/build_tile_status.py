@@ -7,7 +7,7 @@ Evidence used (edit the sets below as blocks get finished):
   * China block (lat codes 110-125 x lon 095-125, lat 130 x lon 096-126)  -> 'finished' / 'accepted' (user: China done 2026-11-13)
   * Asia block (lat codes 95-125 x lon 50-95) -> from mapper/exports/asia_block_scan_*.txt (+ ringcheck + registry audit files)
   * everything else -> markers in mapper/exports (targeted*, tileplan_*, borders_sheet_sync_*, polity_overlay_candidates_*)
-Statuses: finished, accepted, todo_pairs, todo_scanned, worked, detector, none.
+Statuses: finished (REVIEWED WITH THE USER), accepted, preflight (automated scan clean only, NOT yet reviewed with the user), todo_pairs, todo_scanned, worked, detector, none.
 """
 import os, re, sys, json, csv
 
@@ -17,7 +17,7 @@ ROOT = r'C:\My stuff\mapper\polareas'
 out_dir = sys.argv[1] if len(sys.argv) > 1 else '.'
 
 ACCEPTED = {'120/110': 25, '125/115': 14, '125/110': 1, '130/114': 1, '125/100': 1}   # leftover pairs the user accepted
-FINISHED_SINCE = {'125/050'}        # Asia-block tiles finished so far (add each as it is cleared)
+FINISHED_SINCE = {'125/050'}        # Asia-block tiles REVIEWED WITH THE USER (add only after the user has confirmed; automated scans alone do NOT count)
 ASIA_SCAN = 'asia_block_scan_2026-11-13.txt'
 ASIA_RING = 'asia_block_ringcheck_2026-11-13.txt'
 ASIA_REG = 'asia_block_registry_audit_2026-11-13.csv'
@@ -70,7 +70,7 @@ for la, lo in tiles:
                       text='China, finished.' if not p else 'China, finished; %d leftover pair(s) accepted by you.' % p)
     elif in_asia:
         if t in FINISHED_SINCE:
-            out[t] = dict(status='finished', text='Cleared (see exports/targeted%s_%s).' % (t[:3], t[4:]))
+            out[t] = dict(status='finished', text='Reviewed with you and confirmed clear (see exports/targeted%s_%s).' % (t[:3], t[4:]))
             continue
         a = asia.get(t)
         bits = []
@@ -83,7 +83,11 @@ for la, lo in tiles:
             bits.append('%d possible ring gap(s)' % ring[t])
         if reg.get(t):
             bits.append('registry drops: ' + '; '.join(reg[t]))
-        out[t] = dict(status='todo_pairs' if (a and a['pairs'] > 0) else 'todo_scanned', text='Asia block, to do. ' + ', '.join(bits) + '.')
+        auto_clean = bool(a) and a['pairs'] == 0 and a['type2'] == 0 and not ring.get(t) and not reg.get(t)
+        if auto_clean:
+            out[t] = dict(status='preflight', text='Asia block: automated scan clean (%d entries, 0 pairs, 0 Type 2, 0 ring gaps, no registry drops). NOT yet reviewed with you.' % a['entries'])
+        else:
+            out[t] = dict(status='todo_pairs' if (a and a['pairs'] > 0) else 'todo_scanned', text='Asia block, to do. ' + ', '.join(bits) + '.')
     else:
         if mk:
             worked = bool(mk & {'tileplan', 'borders', 'targeted'})

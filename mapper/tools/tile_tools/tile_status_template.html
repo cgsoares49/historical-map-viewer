@@ -5,17 +5,17 @@
 /* Layout: a world strip map on top, an Asia-block grid below it with ring numbers, then the to-do lists. Colour = state of each tile's overlay clean-up. */
 :root{
   --bg:#f4f5f3; --panel:#ffffff; --fg:#1d2420; --muted:#5b665f; --line:#d6dbd6;
-  --finished:#1f7a63; --accepted:#4a9e8a; --accent:#d9822b;
+  --finished:#1f7a63; --accepted:#4a9e8a; --preflight:#a9d3c6; --accent:#d9822b;
   --todo-pairs:#c8442f; --todo-scanned:#e3b341; --worked:#4f6d93; --detector:#a9b8c9; --none:#e4e7e3;
   --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#141a17; --panel:#1c2420; --fg:#e5ebe6; --muted:#9aa89f; --line:#2f3a34;
-  --finished:#3fae92; --accepted:#2f7f6d; --accent:#e8963f;
+  --finished:#3fae92; --accepted:#2f7f6d; --preflight:#2c4a41; --accent:#e8963f;
   --todo-pairs:#e0634e; --todo-scanned:#d3a62f; --worked:#6f8fb8; --detector:#46576b; --none:#232c27; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#141a17; --panel:#1c2420; --fg:#e5ebe6; --muted:#9aa89f; --line:#2f3a34;
-  --finished:#3fae92; --accepted:#2f7f6d; --accent:#e8963f;
+  --finished:#3fae92; --accepted:#2f7f6d; --preflight:#2c4a41; --accent:#e8963f;
   --todo-pairs:#e0634e; --todo-scanned:#d3a62f; --worked:#6f8fb8; --detector:#46576b; --none:#232c27; color-scheme:dark}
 body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:15px;line-height:1.5;padding-block:24px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
@@ -28,6 +28,7 @@ h2{font-size:17px;margin:0 0 6px;font-weight:600}
 .sw{width:14px;height:14px;border-radius:2px;display:inline-block;border:1px solid rgba(0,0,0,.15)}
 .s-finished{background:var(--finished)}
 .s-accepted{background-color:var(--accepted);background-image:repeating-linear-gradient(45deg,transparent 0 3px,rgba(255,255,255,.55) 3px 5px)}
+.s-preflight{background-color:var(--preflight);background-image:repeating-linear-gradient(-45deg,transparent 0 3px,rgba(128,128,128,.45) 3px 5px)}
 .s-todo_pairs{background:var(--todo-pairs)} .s-todo_scanned{background:var(--todo-scanned)} .s-worked{background:var(--worked)} .s-detector{background:var(--detector)} .s-none{background:var(--none)}
 svg{width:100%;height:auto;display:block}
 svg .t{stroke:var(--panel);stroke-width:.12}
@@ -94,8 +95,8 @@ td.n{font-variant-numeric:tabular-nums;font-family:var(--mono)}
 </div>
 <script>
 const DATA=__DATA__;
-const LABEL={finished:"Finished",accepted:"Finished, leftovers accepted",todo_pairs:"Asia block, has overlap pairs",todo_scanned:"Asia block, scanned, pre-flight to do",worked:"Worked in an earlier session",detector:"Detector only",none:"No record"};
-const ORDER=["finished","accepted","todo_pairs","todo_scanned","worked","detector","none"];
+const LABEL={finished:"Finished (reviewed with you)",preflight:"Asia block, automated scan clean, NOT yet reviewed with you",accepted:"Finished, leftovers accepted",todo_pairs:"Asia block, has overlap pairs",todo_scanned:"Asia block, scanned, pre-flight to do",worked:"Worked in an earlier session",detector:"Detector only",none:"No record"};
+const ORDER=["finished","accepted","preflight","todo_pairs","todo_scanned","worked","detector","none"];
 const VAR={todo_pairs:"todo-pairs",todo_scanned:"todo-scanned"};
 const counts={};Object.values(DATA).forEach(v=>{counts[v.status]=(counts[v.status]||0)+1});
 const legend=document.getElementById('legend');
@@ -117,12 +118,12 @@ rows.forEach((la,ri)=>{const a=document.createElement('div');a.className='ax';a.
  cols.forEach((lo,ci)=>{const t=pad(la)+'/'+pad(lo);const d=DATA[t];const ring=Math.min(ri,rows.length-1-ri,ci,cols.length-1-ci)+1;
   const cell=document.createElement('div');cell.className='cell s-'+d.status;cell.dataset.ring=ring;cell.tabIndex=0;
   const m=d.text.match(/(\d+) overlap pair/);const done=(d.status==='finished'||d.status==='accepted');
-  cell.innerHTML='<span>'+t+'</span><small>'+(done?'done':(m?m[1]:'0')+' pairs')+'</small>';
+  cell.innerHTML='<span>'+t+'</span><small>'+(done?'done':d.status==='preflight'?'auto-clean':(m?m[1]:'0')+' pairs')+'</small>';
   cell.addEventListener('mouseenter',()=>show(t));cell.addEventListener('focus',()=>show(t));cell.addEventListener('click',()=>show(t));g.appendChild(cell);
   ac[d.status]=(ac[d.status]||0)+1;
   if(d.status==='todo_pairs')todo.push({t:t,ring:ring,d:d});})});
 const acn=document.getElementById('asiacounts');
-[['finished','finished'],['todo_pairs','with overlap pairs'],['todo_scanned','scanned, pre-flight still to do']].forEach(a=>{const s=document.createElement('span');s.innerHTML='<b>'+(ac[a[0]]||0)+'</b> '+a[1];acn.appendChild(s)});
+[['finished','reviewed & finished'],['preflight','auto-clean, not reviewed'],['todo_pairs','with overlap pairs'],['todo_scanned','scanned, pre-flight still to do']].forEach(a=>{const s=document.createElement('span');s.innerHTML='<b>'+(ac[a[0]]||0)+'</b> '+a[1];acn.appendChild(s)});
 todo.sort((a,b)=>a.ring-b.ring||a.t.localeCompare(b.t));
 const tb=document.querySelector('#todo tbody');
 todo.forEach(x=>{const m=x.d.text.match(/(\d+) overlap pair\(s\)(?: \(largest (\d+) km2\))?/);
