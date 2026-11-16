@@ -1,0 +1,27 @@
+WHOLE-TILE PLAN 120:065   (newer entry takes its area; older entry carved)
+
+4 edit operations; candidates [47, 51, 52]; overlap windows before: 4, after: 0
+POL file header count: 30 -> 32;  PAR file header count: 64 -> 65;  CST file header count: 0 -> 0
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+#3 => 3, 31
+ 69.44044    33.96189
+22 > 12 & 12
+#18 => 18, 32
+ 69.44044    33.96189
+20 > 9 & 13
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 11 entries
+  - new #65 = #47 minus #51 & #52 (189083.0 km2), ranges -543.5..-516.5
+
+PAR EDITS (in order):
+  NEW #65 right after #47: -543.5..-516.5 Persian Empire - Arakhosia - Arakhosia | refs [[1013, 1], {'lit': [65, 30]}, [1011, 1], [1012, 0], [1009, 0], [1004, 1], [1031, 1], [1018, 1], [1019, 0]]
+  #47: ranges = -516.5..-329.7 Persian Empire - Arakhosia - Arakhosia; -329.7..-325.7 Kingdom of Macedon - Arakhosia; -325.7..-325.3 Revolt - Arakhosia; -325.3..-323.4 Kingdom of Macedon - Arakhosia
+
+PAINT ORDER vs OLD ERA RULE disagree for these pairs (paint order = what MAPPER shows was used):
+  #47 vs #51 (first noticed at -539.5)
+  #47 vs #52 (first noticed at -530.0)
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical

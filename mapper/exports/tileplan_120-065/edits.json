@@ -1,0 +1,106 @@
+[
+ {
+  "op": "pol_split",
+  "pol": 3,
+  "points": [
+   [
+    69.44044,
+    33.96189
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 18,
+  "points": [
+   [
+    69.44044,
+    33.96189
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 65,
+  "after": 47,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -543.5,
+    "to": -516.5,
+    "name": "Persian Empire - Arakhosia - Arakhosia",
+    "color": 30
+   }
+  ],
+  "refs": [
+   [
+    1013,
+    1
+   ],
+   {
+    "lit": [
+     65,
+     30
+    ]
+   },
+   [
+    1011,
+    1
+   ],
+   [
+    1012,
+    0
+   ],
+   [
+    1009,
+    0
+   ],
+   [
+    1004,
+    1
+   ],
+   [
+    1031,
+    1
+   ],
+   [
+    1018,
+    1
+   ],
+   [
+    1019,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 47,
+  "ranges": [
+   {
+    "from": -516.5,
+    "to": -329.7,
+    "name": "Persian Empire - Arakhosia - Arakhosia",
+    "color": 30
+   },
+   {
+    "from": -329.7,
+    "to": -325.7,
+    "name": "Kingdom of Macedon - Arakhosia",
+    "color": 115
+   },
+   {
+    "from": -325.7,
+    "to": -325.3,
+    "name": "Revolt - Arakhosia",
+    "color": 13
+   },
+   {
+    "from": -325.3,
+    "to": -323.4,
+    "name": "Kingdom of Macedon - Arakhosia",
+    "color": 115
+   }
+  ]
+ }
+]
