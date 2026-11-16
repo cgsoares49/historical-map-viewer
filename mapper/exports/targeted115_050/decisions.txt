@@ -1,0 +1,1 @@
+115/050 2026-11-16: clean (85 entries, 0 pairs, 0 Type 2, no registry flags). Ring jumps = edge closures + small coastline seams (<=0.013deg, #5 Dilmun x3, #51 Pashime) LEFT. #80 type-1 dot noted. Confirmed DONE by user. Nothing changed.
