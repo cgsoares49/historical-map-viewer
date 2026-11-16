@@ -43,6 +43,7 @@ svg .t:hover,svg .t:focus{stroke:var(--fg);stroke-width:.5;outline:none}
 .cell{border-radius:3px;padding:6px 4px;text-align:center;color:#fff;min-height:44px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;border:2px solid transparent}
 .cell[data-ring="1"]{border-color:var(--accent)}
 .cell.s-todo_scanned,.cell.s-detector,.cell.s-none{color:#1d2420}
+.cell.s-preflight{color:var(--fg)}
 .cell small{font-size:10px}
 .ax{color:var(--muted);align-self:center;text-align:right;padding-right:4px;font-size:11px}
 .axc{color:var(--muted);text-align:center;font-size:11px}
@@ -58,7 +59,7 @@ td.n{font-variant-numeric:tabular-nums;font-family:var(--mono)}
 <div class="wrap">
 <header>
   <h1>MAPPER tile status</h1>
-  <p class="sub">Where the overlay clean-up stands, tile by tile, as of 13 Nov 2026. Colours come from today's live scans (China and the central and South Asia block) and from plan files left by earlier sessions. A grey tile has no record, which means unknown and not clean.</p>
+  <p class="sub">Where the overlay clean-up stands, tile by tile, as of 16 Nov 2026. Colours come from today's live scans (China and the central and South Asia block) and from plan files left by earlier sessions. A grey tile has no record, which means unknown and not clean.</p>
 </header>
 
 <section class="panel">
@@ -70,7 +71,7 @@ td.n{font-variant-numeric:tabular-nums;font-family:var(--mono)}
 
 <section class="panel">
   <h2>Central and South Asia block</h2>
-  <p class="sub">Lat codes 95 to 125 by lon 50 to 95. The orange outline marks ring 1, the outer ring, where we start (clockwise from 125/050). The number under each tile is the overlap pairs found by today's scan.</p>
+  <p class="sub">Lat codes 95 to 125 by lon 50 to 95. The orange outline marks ring 1, the outer ring. Solid teal tiles have been reviewed with you and are done. Hatched pale tiles passed the automated scan (no pairs, no Type 2, no ring gaps) but you have not reviewed them yet. The number under each other tile is the overlap pairs found by the scan.</p>
   <div class="scroll"><div class="grid" id="asia"></div></div>
   <div class="counts" id="asiacounts"></div>
 </section>
@@ -91,7 +92,7 @@ td.n{font-variant-numeric:tabular-nums;font-family:var(--mono)}
   </tbody></table></div>
 </section>
 
-<p class="note">Next free borders-sheet number: 6193. Tiles with no marker may simply not have been scanned yet. A full-world scan would turn the grey into real answers.</p>
+<p class="note">Next free borders-sheet number: 6197. Tiles with no marker may simply not have been scanned yet. A full-world scan would turn the grey into real answers.</p>
 </div>
 <script>
 const DATA=__DATA__;

@@ -61,8 +61,9 @@ for r in csv.DictReader(open(os.path.join(EX, ASIA_REG), encoding='utf-8-sig')):
 out = {}
 for la, lo in tiles:
     t = tid(la, lo)
-    in_china = (la in (110, 115, 120, 125) and 95 <= lo <= 125) or (la == 130 and 96 <= lo <= 126)
     in_asia = 95 <= la <= 125 and 50 <= lo <= 95
+    china_block = (la in (110, 115, 120, 125) and 95 <= lo <= 125) or (la == 130 and 96 <= lo <= 126)
+    in_china = china_block and not in_asia      # Asia-block tiles (lon 95) count only once reviewed with the user, even if China work assumed them done
     mk = markers.get(t, set())
     if in_china:
         p = ACCEPTED.get(t, 0)
@@ -70,7 +71,7 @@ for la, lo in tiles:
                       text='China, finished.' if not p else 'China, finished; %d leftover pair(s) accepted by you.' % p)
     elif in_asia:
         if t in FINISHED_SINCE:
-            out[t] = dict(status='finished', text='Reviewed with you and confirmed clear (see exports/targeted%s_%s).' % (t[:3], t[4:]))
+            out[t] = dict(status='finished', text='Reviewed with you and confirmed done (see exports/targeted%s_%s).' % (t[:3], t[4:]))
             continue
         a = asia.get(t)
         bits = []
@@ -85,7 +86,7 @@ for la, lo in tiles:
             bits.append('registry drops: ' + '; '.join(reg[t]))
         auto_clean = bool(a) and a['pairs'] == 0 and a['type2'] == 0 and not ring.get(t) and not reg.get(t)
         if auto_clean:
-            out[t] = dict(status='preflight', text='Asia block: automated scan clean (%d entries, 0 pairs, 0 Type 2, 0 ring gaps, no registry drops). NOT yet reviewed with you.' % a['entries'])
+            out[t] = dict(status='preflight', text='Asia block: automated scan clean (%d entries, 0 pairs, 0 Type 2, 0 ring gaps, no registry drops). NOT yet reviewed with you.' % a['entries'] + (' China work had assumed this tile done; it still needs a fresh check.' if china_block else ''))
         else:
             out[t] = dict(status='todo_pairs' if (a and a['pairs'] > 0) else 'todo_scanned', text='Asia block, to do. ' + ', '.join(bits) + '.')
     else:
