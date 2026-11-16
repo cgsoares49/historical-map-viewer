@@ -5,3 +5,5 @@ RULING 4 (120/070): Ksudrakas #58 x Paurava #87 (4,378 km2, -337.5..-325.6): opt
 RULING 5+6 (120/070): #106 Eudemus/Maurya ring had stray POL77 spike (0.792deg jump); user removed (1077,0) from #106 refs. Resolves #44x#106 (274) and #100x#106 (118).
 RULING 7+8 (120/070): Revolt #108 (-272.8..-272.2, -269.5..-268.5; 15,013 km2 inside Maurya #100) -> Type 2 (option a); user applied. Resolves #100x#108 and #99x#108.
 RULING 4 applied: carve #58 by #87 -> new #110 Ksudrakas -337.5..-325.6 (6686 km2), POL114/115 splits; staged plan copied by user and byte-verified; carve walked OK (user). Pairs 0. Remaining: #60 Aparytae ring jump 0.891deg at 70.835E 31.537N, tiny 0.010deg jumps at POL77/78 junction.
+CONFIRMED DONE by user 2026-11-16 (borders TSVs next, col-A 6193).
+BORDERS 120/070 generated 2026-11-16: exports/borders_sheet_sync_120-070.tsv = NEW rows ids 6193-6194 (POL114 split from #47, POL115 split from #56; both 2-vertex ~1 m stubs from the planner splitting at existing end vertices); _other_changed_rows.tsv = stale-row refresh rows A4086 (POL58 stop 31.185) and A4105 (POL77 stop 71.43553,32.8327, user own edit 2024). Next free col-A = 6195 (assuming pasted).

@@ -1,0 +1,15 @@
+BORDERS SHEET sync for tile 120/070, 2026-11-16   (POL file wins; workbook only read: C:\My stuff\VID\ancient index.xlsx)
+
+1) NEW ROWS: 2 lines in exports/borders_sheet_sync_120-070.tsv (columns A..AK), POL 114..115. Insert after Excel row 1440 (POL 113), in order. (A1 is =MAX(A2:A14168), so it updates itself: 6192 -> 6194)
+
+2) PARENT ROW EDITS (2): Excel row, cell: old -> new, then the split note
+   POL   58 (row 1398): I1398/J1398: 72.13545, 31.18561 -> 72.13545, 31.185   [no new child POL found: changed by hand?]
+   POL   77 (row 1417): I1417/J1417: 71.4339, 32.84217 -> 71.43553, 32.8327   [no new child POL found: changed by hand?]
+
+2c) OTHER ROWS WHOSE COUNT/STOP DIFFER FROM THE POL FILE (no split child found; your own edits): exports/borders_sheet_sync_120-070_other_changed_rows.tsv
+      line 1 -> A1398   (POL 58: F=81)
+      line 2 -> A1417   (POL 77: F=91)
+
+4) NEW ROW PREVIEW (A..P):
+   6193 | 2026-11-16 | POLBND | 120/070 | 114 | 2 | 72.13546 | 31.18561 | 72.13545 | 31.18561 | -610.1 | -610.1 |  |  | (overlay fix) | split from #47   windows: -610.1, -610.1
+   6194 | 2026-11-16 | POLBND | 120/070 | 115 | 2 | 72.13546 | 31.18561 | 72.13545 | 31.1856 | -950.1 | -875.5 | -825.5 | -610.1 | (overlay fix) | split from #56   windows: -950.1, -875.5, -825.5, -610.1, -337.5, -325.1
