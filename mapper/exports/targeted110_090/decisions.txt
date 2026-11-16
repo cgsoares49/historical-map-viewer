@@ -1,0 +1,1 @@
+110/090 2026-11-16: 234 entries, 0 pairs, 0 Type 2, no registry flags. #234 Vanga POL8 flag flipped (1008,0) by user, 0.74deg jumps gone, 0.010deg seam left. Other ring jumps edge-only/tiny seams. Confirmed DONE. No borders rows (PAR only).
