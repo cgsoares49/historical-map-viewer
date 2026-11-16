@@ -1,0 +1,2 @@
+RULING 1 (115/075): #56 Sankissa ring flag POL54 flipped to f0 by user; then carve #43 Dakshina Panchala around #56 (option a), planner.
+RULING 2 (115/075): Salva #39 x #54 -> Salva wins; #54 starts -600.5 (user applied). Carve #43 around #56 -> new #67 applied+byte-verified; #56 POL54 flag flipped. Pairs 0. Confirmed DONE by user. No borders rows (PAR only).

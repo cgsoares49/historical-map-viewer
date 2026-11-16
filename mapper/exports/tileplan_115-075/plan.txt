@@ -1,0 +1,17 @@
+WHOLE-TILE PLAN 115:075   (newer entry takes its area; older entry carved)
+
+2 edit operations; candidates [43, 56]; overlap windows before: 1, after: 0
+POL file header count: 63 -> 63;  PAR file header count: 66 -> 67;  CST file header count: 0 -> 0
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 1 entries
+  - new #67 = #43 minus #56 (27839.9 km2), ranges -570.5..-355.5
+
+PAR EDITS (in order):
+  NEW #67 right after #43: -570.5..-355.5 Panchala - Dakshina Panchala | refs [[1032, 0], [1053, 1], [1055, 0], [1029, 1], [1026, 0], [1020, 1], [1018, 1]]
+  #43: ranges = -610.1..-570.5 Panchala - Dakshina Panchala; -355.5..-321.5 Nanda Empire; -321.5..-1 Maurya Empire
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical
