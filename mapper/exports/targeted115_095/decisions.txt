@@ -1,0 +1,1 @@
+115/095 2026-11-16: checked fresh (had only been assumed done via China block): 22 entries, 0 pairs, 0 Type 2, no registry flags, edge-only ring jumps. Confirmed DONE by user. Nothing changed. 115 row (050-095) complete.
