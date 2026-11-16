@@ -1,3 +1,4 @@
 125/070 2026-11-14: 0 pairs. Type 2 #5 Tajikistan / #6 Uzbekistan = modern enclaves in Kyrgyzstan, fine. Ring jumps: edge closures + 2 mid-tile.
  A) #27 Baktriane POL25 flag flip (1.132deg jump at 70.128E 37.523N): user agreed, STAGED (edits_final.json, staging/125-070), awaiting user copy + byte-verify.
  B) #31 Daradas open ring A(73.492E 35.346N)-B(72.948E 36.189N): user ruled LEAVE (invisible border, no overlaps). Unowned wedge vs Gandara #26 / Taxila #29 accepted.
+125/070 CONFIRMED DONE by user 2026-11-14/16: PAR070/POL070 copied to canonical and byte-verified (flip applied). Daradas left.
