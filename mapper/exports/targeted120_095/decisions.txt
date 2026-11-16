@@ -1,0 +1,1 @@
+120/095 2026-11-16: checked fresh (previously only assumed done via China block): 16 entries, 0 pairs, 0 Type 2, no registry flags, no ring jumps. Confirmed DONE by user. Nothing changed.
