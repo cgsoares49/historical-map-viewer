@@ -1,0 +1,1 @@
+115/070 2026-11-16: 50 entries, 0 pairs. Type 2 #43 (inside Sindhu #37 which ends -515.5): user set Type 1 start -515.5 (option b), applied. #31 POL26 flag flipped (1026,1) by user, mid-tile jumps gone. #33 zero-length tombstone ignored. Confirmed DONE. No borders rows (PAR only).
