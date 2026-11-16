@@ -1,3 +1,4 @@
 RULING 1 (120/065): carve #47 Arakhosia (192,309 km2 background) around #52 Sattagydia and #51 Kamboja, option (a); needs --big-km2.
 RULING 2: #48 x #51 Kamboja wins, #48 emptied (tombstone, only -516.5..-516.5 left): user edited.
 CONFIRMED DONE by user 2026-11-16. Rulings: carve #47 around #52/#51 -> new #65 (POL31 from POL3, POL32 from POL18); #48 tombstoned. Borders: new rows 6195-6196, parents A1331 (POL3) + A1342 (POL18), stale row A(POL13 row 1340 F 60->59). Next col-A 6197.
+NOTE: sheet row A1290 (POL3) had K..N window "610.1" (sign missing); parents TSV corrected to -610.1 (POL file wins). Tell user to expect that cell to change.
