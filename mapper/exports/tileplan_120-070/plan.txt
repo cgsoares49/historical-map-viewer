@@ -1,0 +1,23 @@
+WHOLE-TILE PLAN 120:070   (newer entry takes its area; older entry carved)
+
+4 edit operations; candidates [58, 87]; overlap windows before: 2, after: 0
+POL file header count: 113 -> 115;  PAR file header count: 109 -> 110;  CST file header count: 0 -> 0
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+#47 => 47, 114
+ 72.13546    31.18561
+39 > 39 & 2
+#56 => 56, 115
+ 72.13546    31.18561
+181 > 181 & 2
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 13 entries
+  - new #110 = #58 minus #87 (6686.2 km2), ranges -337.5..-325.6
+
+PAR EDITS (in order):
+  NEW #110 right after #58: -337.5..-325.6 Ksudrakas | refs [[1046, 0], [1047, 0], [1056, 1], [1045, 1]]
+  #58: ranges = -610.1..-337.5 Ksudrakas
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical

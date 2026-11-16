@@ -1,0 +1,66 @@
+[
+ {
+  "op": "pol_split",
+  "pol": 47,
+  "points": [
+   [
+    72.13546,
+    31.18561
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 56,
+  "points": [
+   [
+    72.13546,
+    31.18561
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 110,
+  "after": 58,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -337.5,
+    "to": -325.6,
+    "name": "Ksudrakas",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1046,
+    0
+   ],
+   [
+    1047,
+    0
+   ],
+   [
+    1056,
+    1
+   ],
+   [
+    1045,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 58,
+  "ranges": [
+   {
+    "from": -610.1,
+    "to": -337.5,
+    "name": "Ksudrakas",
+    "color": 0
+   }
+  ]
+ }
+]
