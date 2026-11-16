@@ -1,0 +1,4 @@
+RULING 1 (115/080): Type 2 #73 Mithila (-364.5..-363.5, 1534 km2 inside Magadha #44): option (b) set to Type 1 and carve #44 around it (planner, after all rulings).
+RULING 2 (115/080): #33 Kosala-Kasi range -547.5..-490.5 (+ -485.5 leftover) removed by user (fully hidden under #59/#66/#57/#56/#48/#60); #33 now Kasi -850.1..-610.1. Resolves 6 pairs + #33 registry flag. #39 zero-length tombstone ignored.
+RULING 3 (115/080): Magadha #70/#71 carved around #72 Ikshvakus (50,510) and #74 Kasheyas (10,376) for -364.5..-361.5 (option a, planner, --big-km2 needed).
+CONFIRMED DONE by user 2026-11-16. PAR080/POL080 byte-verified. Borders: new rows 6197-6208 (POL97-108), 7 parent rows (A3970 POL34, A3985 POL49, A4406 POL91, A4407 POL92, A4457 POL93, A4458 POL94, A4461 POL96), 2 stale rows (A3977 POL41, A3995 POL57). POL5 border POL missing from sheet (info only). Next col-A 6209.

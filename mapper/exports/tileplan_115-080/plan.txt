@@ -1,0 +1,66 @@
+WHOLE-TILE PLAN 115:080   (newer entry takes its area; older entry carved)
+
+22 edit operations; candidates [44, 51, 70, 71, 72, 73, 74]; overlap windows before: 6, after: 0
+POL file header count: 96 -> 108;  PAR file header count: 74 -> 80;  CST file header count: 0 -> 0
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+#34 => 34, 97
+ 84.73960    27.46461
+16 > 4 & 14
+#94 => 94, 98
+ 84.73960    27.46461
+16 > 4 & 14
+#91 => 91, 99
+ 83.38200    25.55530
+36 > 3 & 35
+#96 => 96, 100
+ 83.38200    25.55530
+74 > 44 & 32
+#92 => 92, 101
+ 83.49934    25.50943
+62 > 46 & 18
+#100 => 100, 102
+ 83.49934    25.50943
+32 > 6 & 28
+#101 => 101, 103
+ 83.54502    25.43510
+18 > 7 & 13
+#102 => 102, 104
+ 83.54502    25.43510
+28 > 4 & 26
+#103 => 103, 105
+ 83.54817    25.42933
+13 > 3 & 12
+#104 => 104, 106
+ 83.54817    25.42933
+26 > 2 & 26
+#93 => 93, 107
+ 82.93440    27.38340
+88 > 73 & 16
+#49 => 49, 108
+ 82.93440    27.38340
+26 > 16 & 11
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 2 entries
+  - new #75 = #44 minus #73 (2623.4 km2), ranges -364.5..-363.5
+  - new #76 = #51 minus #73 (3122.9 km2), ranges -364.5..-363.5
+  - new #77 = #70 minus #72 & #74 (35510.3 km2), ranges -364.5..-363.5
+  - new #78 = #70 minus #72 (35651.4 km2), ranges -363.5..-361.5
+  - new #79 = #71 minus #74 (4809.6 km2), ranges -364.5..-363.5
+  - new #80 = #71 minus #74 (4119.3 km2), ranges -364.5..-363.5
+
+PAR EDITS (in order):
+  NEW #75 right after #44: -364.5..-363.5 Magadha | refs [[1036, 1], [1035, 1], [1097, 1], [1098, 0]]
+  #44: ranges = -610.1..-468.5 Vajjika League - Videha; -468.5..-364.5 Magadha; -363.5..-355.5 Magadha; -355.5..-321.5 Nanda Empire; -321.5..-1 Maurya Empire
+  NEW #76 right after #51: -364.5..-363.5 Magadha | refs [[1038, 0], [1057, 0], [1039, 1], [1033, 1], [1094, 0], [1097, 0]]
+  #51: ranges = -610.1..-467.5 Allakappa; -467.5..-364.5 Magadha; -363.5..-355.5 Magadha; -355.5..-321.5 Nanda Empire; -321.5..-1 Maurya Empire
+  NEW #77 right after #70: -364.5..-363.5 Magadha | refs [[1067, 0], [1066, 0], [1063, 0], [1062, 0], [1050, 0], [1092, 0], [1100, 1], [1099, 0], [1073, 0], [1077, 0], [1080, 0], [1093, 0], [1108, 0]]
+  NEW #78 right after #70: -363.5..-361.5 Magadha | refs [[1067, 0], [1066, 0], [1063, 0], [1062, 0], [1050, 0], [1092, 0], [1101, 0], [1103, 0], [1105, 0], [1091, 0], [1099, 0], [1073, 0], [1077, 0], [1080, 0], [1093, 0], [1108, 0]]
+  #70: ranges = -490.5..-465.5 Kosala; -465.5..-364.5 Magadha; -361.5..-355.5 Magadha; -355.5..-321.5 Nanda Empire; -321.5..-1 Maurya Empire
+  NEW #79 right after #71: -364.5..-363.5 Magadha | refs [[1076, 0], [1074, 0], [1071, 0], [1099, 1], [1096, 1]]
+  NEW #80 right after #71: -364.5..-363.5 Magadha | refs [[1065, 0], [1086, 0], [1087, 0], [1106, 1], [1103, 1], [1102, 1], [1092, 1]]
+  #71: ranges = -490.5..-364.5 Magadha; -363.5..-355.5 Magadha; -355.5..-321.5 Nanda Empire; -321.5..-1 Maurya Empire
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical

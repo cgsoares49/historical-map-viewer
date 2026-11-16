@@ -1,0 +1,560 @@
+[
+ {
+  "op": "pol_split",
+  "pol": 34,
+  "points": [
+   [
+    84.7396,
+    27.46461
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 94,
+  "points": [
+   [
+    84.7396,
+    27.46461
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 75,
+  "after": 44,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -364.5,
+    "to": -363.5,
+    "name": "Magadha",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1036,
+    1
+   ],
+   [
+    1035,
+    1
+   ],
+   [
+    1097,
+    1
+   ],
+   [
+    1098,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 44,
+  "ranges": [
+   {
+    "from": -610.1,
+    "to": -468.5,
+    "name": "Vajjika League - Videha",
+    "color": 4
+   },
+   {
+    "from": -468.5,
+    "to": -364.5,
+    "name": "Magadha",
+    "color": 0
+   },
+   {
+    "from": -363.5,
+    "to": -355.5,
+    "name": "Magadha",
+    "color": 0
+   },
+   {
+    "from": -355.5,
+    "to": -321.5,
+    "name": "Nanda Empire",
+    "color": 0
+   },
+   {
+    "from": -321.5,
+    "to": -1.0,
+    "name": "Maurya Empire",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 76,
+  "after": 51,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -364.5,
+    "to": -363.5,
+    "name": "Magadha",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1038,
+    0
+   ],
+   [
+    1057,
+    0
+   ],
+   [
+    1039,
+    1
+   ],
+   [
+    1033,
+    1
+   ],
+   [
+    1094,
+    0
+   ],
+   [
+    1097,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 51,
+  "ranges": [
+   {
+    "from": -610.1,
+    "to": -467.5,
+    "name": "Allakappa",
+    "color": 0
+   },
+   {
+    "from": -467.5,
+    "to": -364.5,
+    "name": "Magadha",
+    "color": 0
+   },
+   {
+    "from": -363.5,
+    "to": -355.5,
+    "name": "Magadha",
+    "color": 0
+   },
+   {
+    "from": -355.5,
+    "to": -321.5,
+    "name": "Nanda Empire",
+    "color": 0
+   },
+   {
+    "from": -321.5,
+    "to": -1.0,
+    "name": "Maurya Empire",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 91,
+  "points": [
+   [
+    83.382,
+    25.5553
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 96,
+  "points": [
+   [
+    83.382,
+    25.5553
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 92,
+  "points": [
+   [
+    83.49934,
+    25.50943
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 100,
+  "points": [
+   [
+    83.49934,
+    25.50943
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 101,
+  "points": [
+   [
+    83.54502,
+    25.4351
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 102,
+  "points": [
+   [
+    83.54502,
+    25.4351
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 103,
+  "points": [
+   [
+    83.54817,
+    25.42933
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 104,
+  "points": [
+   [
+    83.54817,
+    25.42933
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 93,
+  "points": [
+   [
+    82.9344,
+    27.3834
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 49,
+  "points": [
+   [
+    82.9344,
+    27.3834
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 77,
+  "after": 70,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -364.5,
+    "to": -363.5,
+    "name": "Magadha",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1067,
+    0
+   ],
+   [
+    1066,
+    0
+   ],
+   [
+    1063,
+    0
+   ],
+   [
+    1062,
+    0
+   ],
+   [
+    1050,
+    0
+   ],
+   [
+    1092,
+    0
+   ],
+   [
+    1100,
+    1
+   ],
+   [
+    1099,
+    0
+   ],
+   [
+    1073,
+    0
+   ],
+   [
+    1077,
+    0
+   ],
+   [
+    1080,
+    0
+   ],
+   [
+    1093,
+    0
+   ],
+   [
+    1108,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 78,
+  "after": 70,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -363.5,
+    "to": -361.5,
+    "name": "Magadha",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1067,
+    0
+   ],
+   [
+    1066,
+    0
+   ],
+   [
+    1063,
+    0
+   ],
+   [
+    1062,
+    0
+   ],
+   [
+    1050,
+    0
+   ],
+   [
+    1092,
+    0
+   ],
+   [
+    1101,
+    0
+   ],
+   [
+    1103,
+    0
+   ],
+   [
+    1105,
+    0
+   ],
+   [
+    1091,
+    0
+   ],
+   [
+    1099,
+    0
+   ],
+   [
+    1073,
+    0
+   ],
+   [
+    1077,
+    0
+   ],
+   [
+    1080,
+    0
+   ],
+   [
+    1093,
+    0
+   ],
+   [
+    1108,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 70,
+  "ranges": [
+   {
+    "from": -490.5,
+    "to": -465.5,
+    "name": "Kosala",
+    "color": 0
+   },
+   {
+    "from": -465.5,
+    "to": -364.5,
+    "name": "Magadha",
+    "color": 0
+   },
+   {
+    "from": -361.5,
+    "to": -355.5,
+    "name": "Magadha",
+    "color": 0
+   },
+   {
+    "from": -355.5,
+    "to": -321.5,
+    "name": "Nanda Empire",
+    "color": 0
+   },
+   {
+    "from": -321.5,
+    "to": -1.0,
+    "name": "Maurya Empire",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 79,
+  "after": 71,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -364.5,
+    "to": -363.5,
+    "name": "Magadha",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1076,
+    0
+   ],
+   [
+    1074,
+    0
+   ],
+   [
+    1071,
+    0
+   ],
+   [
+    1099,
+    1
+   ],
+   [
+    1096,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 80,
+  "after": 71,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -364.5,
+    "to": -363.5,
+    "name": "Magadha",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1065,
+    0
+   ],
+   [
+    1086,
+    0
+   ],
+   [
+    1087,
+    0
+   ],
+   [
+    1106,
+    1
+   ],
+   [
+    1103,
+    1
+   ],
+   [
+    1102,
+    1
+   ],
+   [
+    1092,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 71,
+  "ranges": [
+   {
+    "from": -490.5,
+    "to": -364.5,
+    "name": "Magadha",
+    "color": 0
+   },
+   {
+    "from": -363.5,
+    "to": -355.5,
+    "name": "Magadha",
+    "color": 0
+   },
+   {
+    "from": -355.5,
+    "to": -321.5,
+    "name": "Nanda Empire",
+    "color": 0
+   },
+   {
+    "from": -321.5,
+    "to": -1.0,
+    "name": "Maurya Empire",
+    "color": 0
+   }
+  ]
+ }
+]
