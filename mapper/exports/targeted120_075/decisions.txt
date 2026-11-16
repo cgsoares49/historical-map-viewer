@@ -3,3 +3,4 @@ RULING 1 (user, 2026-11-16): Kuru #24 (-516.5..-500.5, 26,324 km2) = #30 + #31 (
 RULING 2 (user): Madra #33 x #35 -> option (b): #35 first range starts at -600.5 (trim -610.1..-600.5 range off #35); #33 stays whole to -600.5. Area-neutral. User tried it: clean.
 RULING 3 (user): registry flags #25/#26 Persian Empire zero-length = killed tombstones holding PAR numbering; IGNORE.
 STATE 2026-11-16: user had ALREADY applied rulings 1+2 in canonical PAR075 (mtime 08:07): #24 Kuru set to -516.5..-516.5 (tombstone), #35 starts -600.5. Rescan: 0 pairs, ringcheck clean. Nothing to plan/stage.
+CONFIRMED DONE by user 2026-11-16.
