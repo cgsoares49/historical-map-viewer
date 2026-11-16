@@ -1,0 +1,17 @@
+WHOLE-TILE PLAN 120:050   (newer entry takes its area; older entry carved)
+
+2 edit operations; candidates [8, 73]; overlap windows before: 3, after: 0
+POL file header count: 101 -> 101;  PAR file header count: 100 -> 101;  CST file header count: 4 -> 4
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 40 entries
+  - new #101 = #8 minus #73 (12694.4 km2), ranges -603.5..-586.5, -586.5..-550.5, -550.5..-539.2
+
+PAR EDITS (in order):
+  NEW #101 right after #8: -603.5..-586.5 Elam; -586.5..-550.5 Median Vassal - Elam; -550.5..-539.2 Elam | refs [[1001, 1], [1076, 1], [1075, 0]]
+  #8: ranges = -9999..-2349.6 Elam; -2349.6..-2348.5 Kingdom of Adab - Elam; -2348.5..-2295.4 Elam; -2295.4..-2286.5 Akkadian Tributary - Elam; -2286.5..-2281.3 Elam; -2281.3..-2279.3 Akkadian Tributary - Elam; -2279.3..-2276.3 Elam; -2276.3..-2270.4 Akkadian Tributary - Elam; -2270.4..-2268.5 Elam; -2268.5..-2220.5 Akkadian Tributary - Elam; -2220.5..-2219.4 Elam; -2219.4..-2212.5 Kingdom of Awan - Elam; -2212.5..-2210.5 Elam; -2210.5..-2204.4 Kingdom of Awan - Elam; -2204.4..-2202.5 (Marhashi) - Elam; -2202.5..-2188.4 Kingdom of Awan - Elam; -2188.4..-2140.5 Guti Tributary - Elam; -2140.5..-2108.5 Shimashki - Elam; -2108.5..-2068.3 Ur III Tributary - Elam; -2068.3..-2067.4 Elam; -2067.4..-2028.5 Ur III Tributary - Elam; -2028.5..-1970.5 Shimashki - Elam; -1970.5..-1752.5 Elam; -1752.5..-1741.5 Babylonian Tributary - Elam; -1741.5..-1323.5 Elam; -1323.5..-1322.5 Kassites - Elam; -1322.5..-1108.5 Elam; -1108.5..-977.5 Babylonia (Isin Dynasty) - Elam; -977.5..-970.1 Babylonia - Elam; -970.1..-653.4 Elam; -653.4..-652.7 Neo Assyrian Tributary - Elam; -652.7..-649.2 Elam; -649.2..-648.8 Neo Assyrian Tributary - Elam; -648.8..-648.5 Elam; -648.5..-648.3 Neo Assyrian Tributary - Elam; -648.3..-646.5 Elam; -646.5..-617.5 Neo Assyrian Tributary - Elam; -617.5..-603.5 Elam
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical

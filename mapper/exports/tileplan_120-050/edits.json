@@ -1,0 +1,276 @@
+[
+ {
+  "op": "par_add_entry",
+  "index": 101,
+  "after": 8,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -603.5,
+    "to": -586.5,
+    "name": "Elam",
+    "color": 0
+   },
+   {
+    "from": -586.5,
+    "to": -550.5,
+    "name": "Median Vassal - Elam",
+    "color": 1
+   },
+   {
+    "from": -550.5,
+    "to": -539.2,
+    "name": "Elam",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1001,
+    1
+   ],
+   [
+    1076,
+    1
+   ],
+   [
+    1075,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 8,
+  "ranges": [
+   {
+    "from": -9999.0,
+    "to": -2349.6,
+    "name": "Elam",
+    "color": 0
+   },
+   {
+    "from": -2349.6,
+    "to": -2348.5,
+    "name": "Kingdom of Adab - Elam",
+    "color": 16
+   },
+   {
+    "from": -2348.5,
+    "to": -2295.4,
+    "name": "Elam",
+    "color": 0
+   },
+   {
+    "from": -2295.4,
+    "to": -2286.5,
+    "name": "Akkadian Tributary - Elam",
+    "color": 3
+   },
+   {
+    "from": -2286.5,
+    "to": -2281.3,
+    "name": "Elam",
+    "color": 0
+   },
+   {
+    "from": -2281.3,
+    "to": -2279.3,
+    "name": "Akkadian Tributary - Elam",
+    "color": 3
+   },
+   {
+    "from": -2279.3,
+    "to": -2276.3,
+    "name": "Elam",
+    "color": 0
+   },
+   {
+    "from": -2276.3,
+    "to": -2270.4,
+    "name": "Akkadian Tributary - Elam",
+    "color": 3
+   },
+   {
+    "from": -2270.4,
+    "to": -2268.5,
+    "name": "Elam",
+    "color": 0
+   },
+   {
+    "from": -2268.5,
+    "to": -2220.5,
+    "name": "Akkadian Tributary - Elam",
+    "color": 3
+   },
+   {
+    "from": -2220.5,
+    "to": -2219.4,
+    "name": "Elam",
+    "color": 0
+   },
+   {
+    "from": -2219.4,
+    "to": -2212.5,
+    "name": "Kingdom of Awan - Elam",
+    "color": 3
+   },
+   {
+    "from": -2212.5,
+    "to": -2210.5,
+    "name": "Elam",
+    "color": 0
+   },
+   {
+    "from": -2210.5,
+    "to": -2204.4,
+    "name": "Kingdom of Awan - Elam",
+    "color": 3
+   },
+   {
+    "from": -2204.4,
+    "to": -2202.5,
+    "name": "(Marhashi) - Elam",
+    "color": 6
+   },
+   {
+    "from": -2202.5,
+    "to": -2188.4,
+    "name": "Kingdom of Awan - Elam",
+    "color": 3
+   },
+   {
+    "from": -2188.4,
+    "to": -2140.5,
+    "name": "Guti Tributary - Elam",
+    "color": 15
+   },
+   {
+    "from": -2140.5,
+    "to": -2108.5,
+    "name": "Shimashki - Elam",
+    "color": 3
+   },
+   {
+    "from": -2108.5,
+    "to": -2068.3,
+    "name": "Ur III Tributary - Elam",
+    "color": 3
+   },
+   {
+    "from": -2068.3,
+    "to": -2067.4,
+    "name": "Elam",
+    "color": 0
+   },
+   {
+    "from": -2067.4,
+    "to": -2028.5,
+    "name": "Ur III Tributary - Elam",
+    "color": 3
+   },
+   {
+    "from": -2028.5,
+    "to": -1970.5,
+    "name": "Shimashki - Elam",
+    "color": 3
+   },
+   {
+    "from": -1970.5,
+    "to": -1752.5,
+    "name": "Elam",
+    "color": 0
+   },
+   {
+    "from": -1752.5,
+    "to": -1741.5,
+    "name": "Babylonian Tributary - Elam",
+    "color": 9
+   },
+   {
+    "from": -1741.5,
+    "to": -1323.5,
+    "name": "Elam",
+    "color": 0
+   },
+   {
+    "from": -1323.5,
+    "to": -1322.5,
+    "name": "Kassites - Elam",
+    "color": 13
+   },
+   {
+    "from": -1322.5,
+    "to": -1108.5,
+    "name": "Elam",
+    "color": 0
+   },
+   {
+    "from": -1108.5,
+    "to": -977.5,
+    "name": "Babylonia (Isin Dynasty) - Elam",
+    "color": 3
+   },
+   {
+    "from": -977.5,
+    "to": -970.1,
+    "name": "Babylonia - Elam",
+    "color": 1
+   },
+   {
+    "from": -970.1,
+    "to": -653.4,
+    "name": "Elam",
+    "color": 0
+   },
+   {
+    "from": -653.4,
+    "to": -652.7,
+    "name": "Neo Assyrian Tributary - Elam",
+    "color": 59
+   },
+   {
+    "from": -652.7,
+    "to": -649.2,
+    "name": "Elam",
+    "color": 0
+   },
+   {
+    "from": -649.2,
+    "to": -648.8,
+    "name": "Neo Assyrian Tributary - Elam",
+    "color": 59
+   },
+   {
+    "from": -648.8,
+    "to": -648.5,
+    "name": "Elam",
+    "color": 0
+   },
+   {
+    "from": -648.5,
+    "to": -648.3,
+    "name": "Neo Assyrian Tributary - Elam",
+    "color": 59
+   },
+   {
+    "from": -648.3,
+    "to": -646.5,
+    "name": "Elam",
+    "color": 0
+   },
+   {
+    "from": -646.5,
+    "to": -617.5,
+    "name": "Neo Assyrian Tributary - Elam",
+    "color": 59
+   },
+   {
+    "from": -617.5,
+    "to": -603.5,
+    "name": "Elam",
+    "color": 0
+   }
+  ]
+ }
+]
