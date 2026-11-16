@@ -1,0 +1,48 @@
+WHOLE-TILE PLAN 115:085   (newer entry takes its area; older entry carved)
+
+14 edit operations; candidates [35, 37, 43]; overlap windows before: 2, after: 0
+POL file header count: 52 -> 60;  PAR file header count: 45 -> 49;  CST file header count: 0 -> 0
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+#35 => 35, 53
+ 85.80552    26.56510
+40 > 33 & 9
+#48 => 48, 54
+ 85.80552    26.56510
+34 > 19 & 17
+#35 => 35, 55
+ 86.22503    26.37677
+33 > 26 & 9
+#54 => 54, 56
+ 86.22503    26.37677
+17 > 11 & 8
+#35 => 35, 57
+ 86.43187    26.27715
+26 > 23 & 5
+#56 => 56, 58
+ 86.43187    26.27715
+8 > 5 & 5
+#35 => 35, 59
+ 86.62734    26.30592
+23 > 20 & 5
+#49 => 49, 60
+ 86.62734    26.30592
+88 > 84 & 6
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 5 entries
+  - new #46 = #35 minus #43 (15574.3 km2), ranges -364.5..-363.5
+  - new #47 = #37 minus #43 (11810.9 km2), ranges -364.5..-363.5
+  - new #48 = #37 minus #43 (2527.9 km2), ranges -364.5..-363.5
+  - new #49 = #37 minus #43 (18.2 km2), ranges -364.5..-363.5
+
+PAR EDITS (in order):
+  NEW #46 right after #35: -364.5..-363.5 Magadha | refs [[1045, 1], [1026, 1], [1034, 1], [1033, 1], [1019, 0], [1036, 0], [1037, 1], [1053, 1], [1054, 0], [1057, 1], [1058, 0], [1060, 1], [1035, 1]]
+  #35: ranges = -610.1..-468.5 Vajjika League - Vajji; -468.5..-364.5 Magadha; -363.5..-355.5 Magadha; -355.5..-321.5 Nanda Empire; -321.5..-1 Maurya Empire
+  NEW #47 right after #37: -364.5..-363.5 Magadha | refs [[1027, 1], [1035, 0], [1049, 1], [1028, 1]]
+  NEW #48 right after #37: -364.5..-363.5 Magadha | refs [[1038, 0], [1048, 0], [1053, 0]]
+  NEW #49 right after #37: -364.5..-363.5 Magadha | refs [[1056, 0], [1057, 0]]
+  #37: ranges = -610.1..-468.5 Vajjika League - Videha; -468.5..-364.5 Magadha; -363.5..-355.5 Magadha; -355.5..-321.5 Nanda Empire; -321.5..-1 Maurya Empire
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical
