@@ -1,0 +1,17 @@
+WHOLE-TILE PLAN 115:025   (newer entry takes its area; older entry carved)
+
+2 edit operations; candidates [14, 22]; overlap windows before: 12, after: 0
+POL file header count: 23 -> 23;  PAR file header count: 28 -> 29;  CST file header count: 0 -> 0
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 9 entries
+  - new #29 = #14 minus #22 (67271.2 km2), ranges -525.5..-400.5, -400.5..-399.2, -399.2..-380.1, -380.1..-342.5, -342.5..-331.6, -331.6..-321.9, -321.9..-321, -321..-319.7, -319.7..-305.5, -305.5..-1
+
+PAR EDITS (in order):
+  NEW #29 right after #14: -525.5..-400.5 Persian Empire - Egypt - Egypt - Upper Egypt; -400.5..-399.2 Egypt: Twenty Eighth Dynasty; -399.2..-380.1 Egypt: Twenty Ninth Dynasty; -380.1..-342.5 Egypt: Thirtieth Dynasty; -342.5..-331.6 Persian Empire - Egypt - Egypt - Egypt; -331.6..-321.9 Kingdom of Macedon - Egypt; -321.9..-321 Revolt of Ptolemy - Egypt; -321..-319.7 Kingdom of Macedon - Egypt; -319.7..-305.5 Domain of Ptolemy - Egypt; -305.5..-1 Ptolemaic Kingdom - Egypt | refs [[1018, 1], [1015, 1], [1016, 0]]
+  #14: ranges = -1866.7..-1664.5 Egypt: Middle Kingdom; -1664.5..-1568.5 Egypt: Hyksos; -1568.5..-1567.5 Egypt: Thebans; -1567.5..-1139.5 Egypt: New Kingdom; -714.1..-663.3 Kingdom of Kush; -663.3..-656.5 Neo Assyrian Empire - Egypt; -656.5..-651.5 Neo Assyrian Tributary - Egypt: Twenty Sixth Dynasty; -651.5..-525.5 Egypt: Twenty Sixth Dynasty
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical
