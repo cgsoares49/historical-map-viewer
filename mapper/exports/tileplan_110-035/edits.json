@@ -1,0 +1,58 @@
+[
+ {
+  "op": "par_set_ranges",
+  "entry": 120,
+  "ranges": [
+   {
+    "from": -523.5,
+    "to": -400.5,
+    "name": "Persian Empire - Egypt - Aithiopia",
+    "color": 81
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 121,
+  "after": 117,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -523.5,
+    "to": -400.5,
+    "name": "Kingdom of Kush",
+    "color": 0
+   }
+  ],
+  "refs": [
+   {
+    "lit": [
+     35,
+     20
+    ]
+   },
+   [
+    1008,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 117,
+  "ranges": [
+   {
+    "from": -714.1,
+    "to": -523.5,
+    "name": "Kingdom of Kush",
+    "color": 0
+   },
+   {
+    "from": -400.5,
+    "to": -1.0,
+    "name": "Kingdom of Kush",
+    "color": 0
+   }
+  ]
+ }
+]

@@ -1,0 +1,18 @@
+WHOLE-TILE PLAN 110:035   (newer entry takes its area; older entry carved)
+
+3 edit operations; candidates [117, 120]; overlap windows before: 1, after: 0
+POL file header count: 8 -> 8;  PAR file header count: 120 -> 121;  CST file header count: 114 -> 114
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 4 entries
+  - new #121 = #117 minus #120 (1013.4 km2), ranges -523.5..-400.5
+
+PAR EDITS (in order):
+  #120: ranges = -523.5..-400.5 Persian Empire - Egypt - Aithiopia
+  NEW #121 right after #117: -523.5..-400.5 Kingdom of Kush | refs [{'lit': [35, 20]}, [1008, 0]]
+  #117: ranges = -714.1..-523.5 Kingdom of Kush; -400.5..-1 Kingdom of Kush
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical
