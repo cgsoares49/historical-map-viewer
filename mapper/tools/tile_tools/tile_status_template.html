@@ -32,7 +32,7 @@ h2{font-size:17px;margin:0 0 6px;font-weight:600}
 .s-todo_pairs{background:var(--todo-pairs)} .s-todo_scanned{background:var(--todo-scanned)} .s-worked{background:var(--worked)} .s-detector{background:var(--detector)} .s-none{background:var(--none)}
 svg{width:100%;height:auto;display:block}
 svg .t{stroke:var(--panel);stroke-width:.12}
- .zl{font:11px var(--mono);fill:#fff;pointer-events:none}
+ .zl{font:11px var(--mono);fill:#fff;pointer-events:none}.zs{font:9px var(--mono);fill:#fff;pointer-events:none}
 svg .t:hover,svg .t:focus{stroke:var(--fg);stroke-width:.5;outline:none}
 .grat{stroke:var(--muted);stroke-width:.08;opacity:.4}
 .lbl{fill:var(--muted);font-family:var(--mono);font-size:3px}
@@ -72,7 +72,7 @@ td.n{font-variant-numeric:tabular-nums;font-family:var(--mono)}
 
 <section class="panel">
   <h2>Zoom: lat codes 100 to 130, lon 348 to 045</h2>
-  <p class="sub">Corner tiles 130/348, 130/042, 100/350 and 100/045. Tiles are drawn where they sit, so the lat 130 row (6 degrees wide) is offset from the rows below it (5 degrees wide). Hover or tap a tile for its status. The outlined tile is the one you tap.</p>
+  <p class="sub">Corner tiles 130/348, 130/042, 100/350 and 100/045. Tiles are drawn where they sit, so the lat 130 row (6 degrees wide) is offset from the rows below it (5 degrees wide). Hover or tap a tile for its status. Under each code: the overlap pairs found (p) and Type 2 entries (T2) from a scan on 17 Nov, or the state. Colours are the legend above. A tile marked worked was cleaned in an earlier session, and its counts are what is left.</p>
   <div class="scroll"><svg id="zoomw" viewBox="0 0 880 490" style="min-width:640px" role="img" aria-label="Zoomed map of tiles from lon 348 to 045, lat codes 100 to 130"></svg></div>
 </section>
 
@@ -103,7 +103,7 @@ td.n{font-variant-numeric:tabular-nums;font-family:var(--mono)}
 </div>
 <script>
 const DATA=__DATA__;
-const LABEL={finished:"Finished (reviewed with you)",preflight:"Asia block, automated scan clean, NOT yet reviewed with you",accepted:"Finished, leftovers accepted",todo_pairs:"Asia block, has overlap pairs",todo_scanned:"Asia block, scanned, pre-flight to do",worked:"Worked in an earlier session",detector:"Detector only",none:"No record"};
+const LABEL={finished:"Finished (reviewed with you)",preflight:"Automated scan clean, NOT yet reviewed with you",accepted:"Finished, leftovers accepted",todo_pairs:"Scanned, has overlap pairs",todo_scanned:"Scanned, Type 2 or ring jumps to review",worked:"Worked in an earlier session",detector:"Detector only",none:"No record"};
 const ORDER=["finished","accepted","preflight","todo_pairs","todo_scanned","worked","detector","none"];
 const VAR={todo_pairs:"todo-pairs",todo_scanned:"todo-scanned"};
 const counts={};Object.values(DATA).forEach(v=>{counts[v.status]=(counts[v.status]||0)+1});
@@ -125,7 +125,7 @@ Object.keys(DATA).forEach(t=>{const p=t.split('/').map(Number);const la=p[0],lo=
  const inb=la>=100&&la<=130&&(la===130?(sl>=-12&&sl<=42):(sl>=-10&&sl<=45));if(!inb)return;
  const x=(sl-X0)*SC,y=(130-la)*SC;
  const r=mk('rect',{x:x,y:y,width:w*SC-2,height:5*SC-2,rx:3,class:'t',fill:'var(--'+(VAR[DATA[t].status]||DATA[t].status)+')',tabindex:'0','aria-label':t+' '+LABEL[DATA[t].status]});
- const tx=mk('text',{x:x+(w*SC-2)/2,y:y+(5*SC-2)/2+4,'text-anchor':'middle',class:'zl'});tx.textContent=t;
+ const tx=mk('text',{x:x+(w*SC-2)/2,y:y+(5*SC-2)/2+4,'text-anchor':'middle',class:'zl'});tx.textContent=t;const d=DATA[t];const m=d.text.match(/(\d+) overlap pair/);const t2=d.text.match(/(\d+) Type 2/);const sm=mk('text',{x:x+(w*SC-2)/2,y:y+(5*SC-2)/2+17,'text-anchor':'middle',class:'zs'});sm.textContent=(d.status==='finished'||d.status==='accepted')?'done':d.status==='preflight'?'auto-clean':d.status==='none'?'no scan':(m?m[1]+'p':'')+(t2&&+t2[1]?' '+t2[1]+'T2':'')+(d.status==='worked'?' worked':'');zs.appendChild(sm);
  [r,tx].forEach(e=>{e.addEventListener('mouseenter',()=>show(t));e.addEventListener('focus',()=>show(t));e.addEventListener('click',()=>show(t))});zs.appendChild(r);zs.appendChild(tx)});
 const g=document.getElementById('asia');const rows=[125,120,115,110,105,100,95],cols=[50,55,60,65,70,75,80,85,90,95];
 g.appendChild(document.createElement('div'));cols.forEach(c=>{const d=document.createElement('div');d.className='axc';d.textContent=c+'E';g.appendChild(d)});

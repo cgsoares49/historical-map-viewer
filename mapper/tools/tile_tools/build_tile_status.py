@@ -18,6 +18,7 @@ out_dir = sys.argv[1] if len(sys.argv) > 1 else '.'
 
 ACCEPTED = {'120/110': 25, '125/115': 14, '125/110': 1, '130/114': 1, '125/100': 1}   # leftover pairs the user accepted
 FINISHED_SINCE = {'125/050', '125/055', '125/060', '125/065', '125/070', '125/075', '125/080', '125/085', '125/090', '125/095', '120/095', '120/090', '120/085', '120/080', '120/075', '120/070', '120/065', '120/060', '120/055', '120/050', '115/050', '115/055', '115/060', '115/065', '115/070', '115/075', '115/080', '115/085', '115/090', '115/095', '110/095', '110/090', '110/085', '110/080', '110/075', '110/070', '110/065', '110/060', '110/055', '110/050', '105/050', '105/055', '105/060', '105/065', '105/070', '105/075', '105/080', '105/085', '100/080', '100/075', '100/070', '095/075', '095/080'}        # Asia-block tiles REVIEWED WITH THE USER (add only after the user has confirmed; automated scans alone do NOT count)
+ZOOM_SCAN = 'zoom_scan_2026-11-17.txt'     # tools/tile_tools/zoom_scan.py: lat codes 100-130 x lon 348..045
 ASIA_SCAN = 'asia_block_scan_2026-11-13.txt'
 ASIA_RING = 'asia_block_ringcheck_2026-11-13.txt'
 ASIA_REG = 'asia_block_registry_audit_2026-11-13.csv'
@@ -49,6 +50,12 @@ for l in open(os.path.join(EX, ASIA_SCAN)):
     m = re.match(r'(\S+) \((-?\d+), (-?\d+), (\d+), (\d+)\)', l)
     if m:
         asia[m.group(1)] = dict(entries=int(m.group(2)), pairs=int(m.group(3)), type2=int(m.group(4)), maxkm2=int(m.group(5)))
+zoom = {}
+if os.path.exists(os.path.join(EX, ZOOM_SCAN)):
+    for l in open(os.path.join(EX, ZOOM_SCAN)):
+        m = re.match(r'(\S+) \((-?\d+), (-?\d+), (\d+), (\d+), (\d+)\)', l)
+        if m:
+            zoom[m.group(1)] = dict(entries=int(m.group(2)), pairs=int(m.group(3)), type2=int(m.group(4)), maxkm2=int(m.group(5)), ring=int(m.group(6)))
 ring = {}
 for l in open(os.path.join(EX, ASIA_RING)):
     m = re.match(r'(\d{3}/\d{3}) (\d+)$', l.strip())
@@ -89,6 +96,17 @@ for la, lo in tiles:
             out[t] = dict(status='preflight', text='Asia block: automated scan clean (%d entries, 0 pairs, 0 Type 2, 0 ring gaps, no registry drops). NOT yet reviewed with you.' % a['entries'] + (' China work had assumed this tile done; it still needs a fresh check.' if china_block else ''))
         else:
             out[t] = dict(status='todo_pairs' if (a and a['pairs'] > 0) else 'todo_scanned', text='Asia block, to do. ' + ', '.join(bits) + '.')
+    elif t in zoom:
+        z = zoom[t]
+        bits = ['%d entries' % z['entries'], '%d overlap pair(s)' % z['pairs'] + (' (largest %d km2)' % z['maxkm2'] if z['pairs'] else ''),
+                '%d Type 2' % z['type2'], '%d non-edge ring jump(s)' % z['ring']]
+        sc = 'Scan 17 Nov 2026: ' + ', '.join(bits) + '.'
+        if mk & {'tileplan', 'borders', 'targeted'}:
+            out[t] = dict(status='worked', text='Worked in earlier sessions (plan or borders files exist). ' + sc + ' Leftovers may be ones you accepted earlier.')
+        elif z['pairs'] == 0 and z['type2'] == 0 and z['ring'] == 0:
+            out[t] = dict(status='preflight', text='Zoom area. ' + sc + ' Automated scan clean; NOT yet reviewed with you.')
+        else:
+            out[t] = dict(status='todo_pairs' if z['pairs'] > 0 else 'todo_scanned', text='Zoom area, to do. ' + sc)
     else:
         if mk:
             worked = bool(mk & {'tileplan', 'borders', 'targeted'})
