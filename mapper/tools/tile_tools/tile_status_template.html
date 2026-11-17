@@ -32,6 +32,7 @@ h2{font-size:17px;margin:0 0 6px;font-weight:600}
 .s-todo_pairs{background:var(--todo-pairs)} .s-todo_scanned{background:var(--todo-scanned)} .s-worked{background:var(--worked)} .s-detector{background:var(--detector)} .s-none{background:var(--none)}
 svg{width:100%;height:auto;display:block}
 svg .t{stroke:var(--panel);stroke-width:.12}
+ .zl{font:11px var(--mono);fill:#fff;pointer-events:none}
 svg .t:hover,svg .t:focus{stroke:var(--fg);stroke-width:.5;outline:none}
 .grat{stroke:var(--muted);stroke-width:.08;opacity:.4}
 .lbl{fill:var(--muted);font-family:var(--mono);font-size:3px}
@@ -59,7 +60,7 @@ td.n{font-variant-numeric:tabular-nums;font-family:var(--mono)}
 <div class="wrap">
 <header>
   <h1>MAPPER tile status</h1>
-  <p class="sub">Where the overlay clean-up stands, tile by tile, as of 16 Nov 2026. Colours come from today's live scans (China and the central and South Asia block) and from plan files left by earlier sessions. A grey tile has no record, which means unknown and not clean.</p>
+  <p class="sub">Where the overlay clean-up stands, tile by tile, as of 17 Nov 2026. Colours come from today's live scans (China and the central and South Asia block) and from plan files left by earlier sessions. A grey tile has no record, which means unknown and not clean.</p>
 </header>
 
 <section class="panel">
@@ -67,6 +68,12 @@ td.n{font-variant-numeric:tabular-nums;font-family:var(--mono)}
   <div class="legend" id="legend"></div>
   <svg id="world" viewBox="-8 -7 376 193" role="img" aria-label="World map of tile clean-up status"></svg>
   <div class="info" id="info">Hover or tap a tile.</div>
+</section>
+
+<section class="panel">
+  <h2>Zoom: lat codes 100 to 130, lon 348 to 045</h2>
+  <p class="sub">Corner tiles 130/348, 130/042, 100/350 and 100/045. Tiles are drawn where they sit, so the lat 130 row (6 degrees wide) is offset from the rows below it (5 degrees wide). Hover or tap a tile for its status. The outlined tile is the one you tap.</p>
+  <div class="scroll"><svg id="zoomw" viewBox="0 0 880 490" style="min-width:640px" role="img" aria-label="Zoomed map of tiles from lon 348 to 045, lat codes 100 to 130"></svg></div>
 </section>
 
 <section class="panel">
@@ -92,7 +99,7 @@ td.n{font-variant-numeric:tabular-nums;font-family:var(--mono)}
   </tbody></table></div>
 </section>
 
-<p class="note">Next free borders-sheet number: 6197. Tiles with no marker may simply not have been scanned yet. A full-world scan would turn the grey into real answers.</p>
+<p class="note">Next free borders-sheet number: 6217. Tiles with no marker may simply not have been scanned yet. A full-world scan would turn the grey into real answers.</p>
 </div>
 <script>
 const DATA=__DATA__;
@@ -112,6 +119,14 @@ Object.keys(DATA).forEach(t=>{const p=t.split('/').map(Number);const la=p[0],lo=
  const r=mk('rect',{x:sl+180,y:175-la,width:w,height:5,class:'t',fill:'var(--'+(VAR[DATA[t].status]||DATA[t].status)+')',tabindex:'0','aria-label':t+' '+LABEL[DATA[t].status]});
  r.addEventListener('mouseenter',()=>show(t));r.addEventListener('focus',()=>show(t));r.addEventListener('click',()=>show(t));svg.appendChild(r)});
 svg.appendChild(mk('rect',{x:230,y:50,width:50,height:35,class:'block'}));
+svg.appendChild(mk('rect',{x:168,y:45,width:62,height:35,class:'block'}));
+const zs=document.getElementById('zoomw');const SC=14,X0=-12;
+Object.keys(DATA).forEach(t=>{const p=t.split('/').map(Number);const la=p[0],lo=p[1];const sl=lo<180?lo:lo-360;const w=la>=130?6:5;
+ const inb=la>=100&&la<=130&&(la===130?(sl>=-12&&sl<=42):(sl>=-10&&sl<=45));if(!inb)return;
+ const x=(sl-X0)*SC,y=(130-la)*SC;
+ const r=mk('rect',{x:x,y:y,width:w*SC-2,height:5*SC-2,rx:3,class:'t',fill:'var(--'+(VAR[DATA[t].status]||DATA[t].status)+')',tabindex:'0','aria-label':t+' '+LABEL[DATA[t].status]});
+ const tx=mk('text',{x:x+(w*SC-2)/2,y:y+(5*SC-2)/2+4,'text-anchor':'middle',class:'zl'});tx.textContent=t;
+ [r,tx].forEach(e=>{e.addEventListener('mouseenter',()=>show(t));e.addEventListener('focus',()=>show(t));e.addEventListener('click',()=>show(t))});zs.appendChild(r);zs.appendChild(tx)});
 const g=document.getElementById('asia');const rows=[125,120,115,110,105,100,95],cols=[50,55,60,65,70,75,80,85,90,95];
 g.appendChild(document.createElement('div'));cols.forEach(c=>{const d=document.createElement('div');d.className='axc';d.textContent=c+'E';g.appendChild(d)});
 const pad=n=>String(n).padStart(3,'0');const ac={};const todo=[];
