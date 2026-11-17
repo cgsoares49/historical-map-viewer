@@ -1,0 +1,29 @@
+WHOLE-TILE PLAN 115:030   (newer entry takes its area; older entry carved)
+
+7 edit operations; candidates [110, 111, 143, 144]; overlap windows before: 19, after: 0
+POL file header count: 164 -> 167;  PAR file header count: 156 -> 158;  CST file header count: 48 -> 48
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+#18 => 18, 165
+ 31.40900    29.75060
+12 > 12 & 2
+#56 => 56, 166
+ 31.40974    29.74649
+26 > 3 & 25
+#154 => 154, 167
+ 31.40974    29.74649
+20 > 20 & 2
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 70 entries
+  - new #157 = #110 minus #143 (96541.5 km2), ranges -525.5..-400.5, -400.5..-399.2, -399.2..-380.1, -380.1..-342.5, -342.5..-331.6
+  - new #158 = #111 minus #144 (58326.9 km2), ranges -525.5..-400.5, -400.5..-399.2, -399.2..-380.1, -380.1..-342.5, -342.5..-331.6, -331.6..-321.9, -321.9..-321, -321..-319.7, -319.7..-305.5, -305.5..-1
+
+PAR EDITS (in order):
+  NEW #157 right after #110: -525.5..-400.5 Persian Empire - Egypt - Egypt - Upper Egypt; -400.5..-399.2 Egypt: Twenty Eighth Dynasty; -399.2..-380.1 Egypt: Twenty Ninth Dynasty; -380.1..-342.5 Egypt: Thirtieth Dynasty; -342.5..-331.6 Persian Empire - Egypt - Egypt - Upper Egypt | refs [[1053, 1], [1019, 1], [1068, 1], [1067, 1], [1066, 1], [1065, 1], [1064, 1], [1063, 1], [1062, 1], [1061, 1], [1060, 1], [1059, 1], [1058, 1], [1057, 1], [1166, 1], [1154, 1], [45, 0], [1, 0], [46, 0], [47, 0], [1054, 1]]
+  #110: ranges = -1876.5..-1664.5 Egypt: Middle Kingdom; -1664.5..-1568.5 Egypt: Hyksos; -1568.5..-1567.5 Egypt: Thebans; -1567.5..-1085.5 Egypt: New Kingdom; -714.1..-663.3 Kingdom of Kush; -663.3..-656.5 Neo Assyrian Empire - Egypt; -656.5..-651.5 Neo Assyrian Tributary - Egypt: Twenty Sixth Dynasty; -651.5..-525.5 Egypt: Twenty Sixth Dynasty
+  NEW #158 right after #111: -525.5..-400.5 Persian Empire - Egypt - Egypt - Upper Egypt; -400.5..-399.2 Egypt: Twenty Eighth Dynasty; -399.2..-380.1 Egypt: Twenty Ninth Dynasty; -380.1..-342.5 Egypt: Thirtieth Dynasty; -342.5..-331.6 Persian Empire - Egypt - Egypt - Upper Egypt; -331.6..-321.9 Kingdom of Macedon - Egypt; -321.9..-321 Revolt of Ptolemy - Egypt; -321..-319.7 Kingdom of Macedon - Egypt; -319.7..-305.5 Domain of Ptolemy - Egypt; -305.5..-1 Ptolemaic Kingdom - Egypt | refs [[1071, 0], [1072, 0], [1073, 0], [1074, 0], [1075, 0], [1076, 0], [1077, 0], [1078, 0], [1079, 0], [1080, 0], [1081, 0], [1082, 0], [1017, 0], [1055, 0], {'lit': [30, 25]}, [1156, 1], [1155, 0]]
+  #111: ranges = -1866.7..-1664.5 Egypt: Middle Kingdom; -1664.5..-1568.5 Egypt: Hyksos; -1568.5..-1567.5 Egypt: Thebans; -1567.5..-1139.5 Egypt: New Kingdom; -714.1..-663.3 Kingdom of Kush; -663.3..-656.5 Neo Assyrian Empire - Egypt; -656.5..-651.5 Neo Assyrian Tributary - Egypt: Twenty Sixth Dynasty; -651.5..-525.5 Egypt: Twenty Sixth Dynasty
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical

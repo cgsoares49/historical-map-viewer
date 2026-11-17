@@ -1,0 +1,95 @@
+[
+ {
+  "op": "par_set_ranges",
+  "entry": 18,
+  "ranges": [
+   {
+    "from": -2283.5,
+    "to": -2260.7,
+    "name": "Egypt: Old Kdm - Nubia",
+    "color": 7
+   },
+   {
+    "from": -2260.7,
+    "to": -2260.5,
+    "name": "Nubians - Nubia",
+    "color": 1
+   },
+   {
+    "from": -2260.5,
+    "to": -2160.4,
+    "name": "Egypt: Old Kdm - Nubia",
+    "color": 7
+   },
+   {
+    "from": -2160.4,
+    "to": -2025.2,
+    "name": "Nubians - Nubia",
+    "color": 1
+   },
+   {
+    "from": -2025.2,
+    "to": -1991.5,
+    "name": "Egypt: Middle Kingdom - Nubia",
+    "color": 45
+   },
+   {
+    "from": -1991.5,
+    "to": -1990.1,
+    "name": "Egypt: Areas of Unrest - Nubia",
+    "color": 44
+   },
+   {
+    "from": -1963.6,
+    "to": -1860.5,
+    "name": "Egypt: Middle Kingdom - Nubia",
+    "color": 45
+   }
+  ]
+ },
+ {
+  "op": "par_set_areatype",
+  "entry": 18,
+  "areatype": 1
+ },
+ {
+  "op": "par_add_entry",
+  "index": 63,
+  "after": 18,
+  "areaType": 2,
+  "ranges": [
+   {
+    "from": -1563.5,
+    "to": -1562.0,
+    "name": "Egypt: New Kingdom - Nubia",
+    "color": 46
+   }
+  ],
+  "refs": [
+   [
+    1022,
+    0
+   ],
+   [
+    1034,
+    0
+   ],
+   [
+    1038,
+    1
+   ],
+   [
+    1037,
+    0
+   ],
+   [
+    1035,
+    0
+   ],
+   [
+    1020,
+    1
+   ]
+  ]
+ }
+]

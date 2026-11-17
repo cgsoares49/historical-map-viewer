@@ -1,0 +1,35 @@
+BORDERS SHEET sync for tile 115/030, 2026-11-17   (POL file wins; workbook only read: C:\My stuff\VID\ancient index.xlsx)
+
+1) NEW ROWS: 3 lines in exports/borders_sheet_sync_115-030.tsv (columns A..AK), POL 165..167. Insert after Excel row 379 (POL 164), in order. (A1 is =MAX(A2:A14168), so it updates itself: 6216 -> 6222)
+
+2) PARENT ROW EDITS (5): Excel row, cell: old -> new, then the split note
+   POL   18 (row 301): I301/J301: 31.409, 29.7465 -> 31.409, 29.7506;  Q301 = "split 11/17/26 for overlay fix: #18 => 18, 165"
+   POL   23 (row 306): I306/J306: 32.3421, 25.8724 -> 32.3421, 25.8727   [no new child POL found: changed by hand?]
+   POL   40 (row 323): I323/J323: 31.0746, 29.3001 -> 31.1974, 29.2064   [no new child POL found: changed by hand?]
+   POL   56 (row 339): F339: 26 -> 3; I339/J339: 31.3655, 29.2064 -> 31.40974, 29.74649;  Q339 = "split 11/17/26 for overlay fix: #56 => 56, 166"
+   POL  154 (row 375): I375/J375: 31.409, 29.7465 -> 31.40974, 29.74649;  Q375 = "split 11/17/26 for overlay fix: #154 => 154, 167"
+
+3) BORDER POLs (not transient/blob) in the file but missing from the sheet, numbered below its last row: [141]
+
+NOTES:
+   POL 4: in the sheet but NOT in the POL file
+   POL 5: in the sheet but NOT in the POL file
+   POL 12: in the sheet but NOT in the POL file
+   POL 13: in the sheet but NOT in the POL file
+   POL 14: in the sheet but NOT in the POL file
+   POL 108: in the sheet but NOT in the POL file
+
+2b) SPLIT PARENT ROWS TO PASTE: exports/borders_sheet_sync_115-030_parents.tsv = 3 lines (columns A..AK), one per split parent, in Excel-row order.
+    Paste each line over the existing row (select A<row>):
+      line  1 -> A301   (POL 18: F=12, stop 31.409, 29.7506)
+      line  2 -> A339   (POL 56: F=3, stop 31.40974, 29.74649)
+      line  3 -> A375   (POL 154: F=20, stop 31.40974, 29.74649)
+
+2c) OTHER ROWS WHOSE COUNT/STOP DIFFER FROM THE POL FILE (no split child found; your own edits): exports/borders_sheet_sync_115-030_other_changed_rows.tsv
+      line 1 -> A306   (POL 23: F=2)
+      line 2 -> A323   (POL 40: F=2)
+
+4) NEW ROW PREVIEW (A..P):
+   6220 | 2026-11-17 | POLBND | 115/030 | 165 | 2 | 31.409 | 29.7506 | 31.409 | 29.7465 | -2400.1 | -1 |  |  | (overlay fix) | split from #18   windows: -2400.1, -1
+   6221 | 2026-11-17 | POLBND | 115/030 | 166 | 25 | 31.40974 | 29.74649 | 31.3655 | 29.2064 | -2400.1 | -1 |  |  | (overlay fix) | split from #56   windows: -2400.1, -1
+   6222 | 2026-11-17 | POLBND | 115/030 | 167 | 2 | 31.40974 | 29.74649 | 31.409 | 29.7465 | -525.5 | -331.6 |  |  | (overlay fix) | split from #154   windows: -525.5, -331.6

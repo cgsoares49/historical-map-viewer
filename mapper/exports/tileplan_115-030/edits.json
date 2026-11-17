@@ -1,0 +1,404 @@
+[
+ {
+  "op": "pol_split",
+  "pol": 18,
+  "points": [
+   [
+    31.409,
+    29.7506
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 56,
+  "points": [
+   [
+    31.40974,
+    29.74649
+   ]
+  ]
+ },
+ {
+  "op": "pol_split",
+  "pol": 154,
+  "points": [
+   [
+    31.40974,
+    29.74649
+   ]
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 157,
+  "after": 110,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -525.5,
+    "to": -400.5,
+    "name": "Persian Empire - Egypt - Egypt - Upper Egypt",
+    "color": 58
+   },
+   {
+    "from": -400.5,
+    "to": -399.2,
+    "name": "Egypt: Twenty Eighth Dynasty",
+    "color": 0
+   },
+   {
+    "from": -399.2,
+    "to": -380.1,
+    "name": "Egypt: Twenty Ninth Dynasty",
+    "color": 0
+   },
+   {
+    "from": -380.1,
+    "to": -342.5,
+    "name": "Egypt: Thirtieth Dynasty",
+    "color": 0
+   },
+   {
+    "from": -342.5,
+    "to": -331.6,
+    "name": "Persian Empire - Egypt - Egypt - Upper Egypt",
+    "color": 58
+   }
+  ],
+  "refs": [
+   [
+    1053,
+    1
+   ],
+   [
+    1019,
+    1
+   ],
+   [
+    1068,
+    1
+   ],
+   [
+    1067,
+    1
+   ],
+   [
+    1066,
+    1
+   ],
+   [
+    1065,
+    1
+   ],
+   [
+    1064,
+    1
+   ],
+   [
+    1063,
+    1
+   ],
+   [
+    1062,
+    1
+   ],
+   [
+    1061,
+    1
+   ],
+   [
+    1060,
+    1
+   ],
+   [
+    1059,
+    1
+   ],
+   [
+    1058,
+    1
+   ],
+   [
+    1057,
+    1
+   ],
+   [
+    1166,
+    1
+   ],
+   [
+    1154,
+    1
+   ],
+   [
+    45,
+    0
+   ],
+   [
+    1,
+    0
+   ],
+   [
+    46,
+    0
+   ],
+   [
+    47,
+    0
+   ],
+   [
+    1054,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 110,
+  "ranges": [
+   {
+    "from": -1876.5,
+    "to": -1664.5,
+    "name": "Egypt: Middle Kingdom",
+    "color": 0
+   },
+   {
+    "from": -1664.5,
+    "to": -1568.5,
+    "name": "Egypt: Hyksos",
+    "color": 0
+   },
+   {
+    "from": -1568.5,
+    "to": -1567.5,
+    "name": "Egypt: Thebans",
+    "color": 0
+   },
+   {
+    "from": -1567.5,
+    "to": -1085.5,
+    "name": "Egypt: New Kingdom",
+    "color": 0
+   },
+   {
+    "from": -714.1,
+    "to": -663.3,
+    "name": "Kingdom of Kush",
+    "color": 0
+   },
+   {
+    "from": -663.3,
+    "to": -656.5,
+    "name": "Neo Assyrian Empire - Egypt",
+    "color": 84
+   },
+   {
+    "from": -656.5,
+    "to": -651.5,
+    "name": "Neo Assyrian Tributary - Egypt: Twenty Sixth Dynasty",
+    "color": 60
+   },
+   {
+    "from": -651.5,
+    "to": -525.5,
+    "name": "Egypt: Twenty Sixth Dynasty",
+    "color": 0
+   }
+  ]
+ },
+ {
+  "op": "par_add_entry",
+  "index": 158,
+  "after": 111,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -525.5,
+    "to": -400.5,
+    "name": "Persian Empire - Egypt - Egypt - Upper Egypt",
+    "color": 58
+   },
+   {
+    "from": -400.5,
+    "to": -399.2,
+    "name": "Egypt: Twenty Eighth Dynasty",
+    "color": 0
+   },
+   {
+    "from": -399.2,
+    "to": -380.1,
+    "name": "Egypt: Twenty Ninth Dynasty",
+    "color": 0
+   },
+   {
+    "from": -380.1,
+    "to": -342.5,
+    "name": "Egypt: Thirtieth Dynasty",
+    "color": 0
+   },
+   {
+    "from": -342.5,
+    "to": -331.6,
+    "name": "Persian Empire - Egypt - Egypt - Upper Egypt",
+    "color": 58
+   },
+   {
+    "from": -331.6,
+    "to": -321.9,
+    "name": "Kingdom of Macedon - Egypt",
+    "color": 61
+   },
+   {
+    "from": -321.9,
+    "to": -321.0,
+    "name": "Revolt of Ptolemy - Egypt",
+    "color": 61
+   },
+   {
+    "from": -321.0,
+    "to": -319.7,
+    "name": "Kingdom of Macedon - Egypt",
+    "color": 61
+   },
+   {
+    "from": -319.7,
+    "to": -305.5,
+    "name": "Domain of Ptolemy - Egypt",
+    "color": 61
+   },
+   {
+    "from": -305.5,
+    "to": -1.0,
+    "name": "Ptolemaic Kingdom - Egypt",
+    "color": 61
+   }
+  ],
+  "refs": [
+   [
+    1071,
+    0
+   ],
+   [
+    1072,
+    0
+   ],
+   [
+    1073,
+    0
+   ],
+   [
+    1074,
+    0
+   ],
+   [
+    1075,
+    0
+   ],
+   [
+    1076,
+    0
+   ],
+   [
+    1077,
+    0
+   ],
+   [
+    1078,
+    0
+   ],
+   [
+    1079,
+    0
+   ],
+   [
+    1080,
+    0
+   ],
+   [
+    1081,
+    0
+   ],
+   [
+    1082,
+    0
+   ],
+   [
+    1017,
+    0
+   ],
+   [
+    1055,
+    0
+   ],
+   {
+    "lit": [
+     30,
+     25
+    ]
+   },
+   [
+    1156,
+    1
+   ],
+   [
+    1155,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 111,
+  "ranges": [
+   {
+    "from": -1866.7,
+    "to": -1664.5,
+    "name": "Egypt: Middle Kingdom",
+    "color": 0
+   },
+   {
+    "from": -1664.5,
+    "to": -1568.5,
+    "name": "Egypt: Hyksos",
+    "color": 0
+   },
+   {
+    "from": -1568.5,
+    "to": -1567.5,
+    "name": "Egypt: Thebans",
+    "color": 0
+   },
+   {
+    "from": -1567.5,
+    "to": -1139.5,
+    "name": "Egypt: New Kingdom",
+    "color": 0
+   },
+   {
+    "from": -714.1,
+    "to": -663.3,
+    "name": "Kingdom of Kush",
+    "color": 0
+   },
+   {
+    "from": -663.3,
+    "to": -656.5,
+    "name": "Neo Assyrian Empire - Egypt",
+    "color": 84
+   },
+   {
+    "from": -656.5,
+    "to": -651.5,
+    "name": "Neo Assyrian Tributary - Egypt: Twenty Sixth Dynasty",
+    "color": 60
+   },
+   {
+    "from": -651.5,
+    "to": -525.5,
+    "name": "Egypt: Twenty Sixth Dynasty",
+    "color": 0
+   }
+  ]
+ }
+]
