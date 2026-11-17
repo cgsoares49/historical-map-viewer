@@ -17,7 +17,7 @@ ROOT = r'C:\My stuff\mapper\polareas'
 out_dir = sys.argv[1] if len(sys.argv) > 1 else '.'
 
 ACCEPTED = {'120/110': 25, '125/115': 14, '125/110': 1, '130/114': 1, '125/100': 1}   # leftover pairs the user accepted
-FINISHED_SINCE = {'125/050', '125/055', '125/060', '125/065', '125/070', '125/075', '125/080', '125/085', '125/090', '125/095', '120/095', '120/090', '120/085', '120/080', '120/075', '120/070', '120/065', '120/060', '120/055', '120/050', '115/050', '115/055', '115/060', '115/065', '115/070', '115/075', '115/080', '115/085', '115/090', '115/095', '110/095', '110/090', '110/085', '110/080', '110/075', '110/070', '110/065', '110/060', '110/055', '110/050', '105/050', '105/055', '105/060', '105/065', '105/070', '105/075', '105/080', '105/085', '100/080', '100/075', '100/070', '095/075', '095/080'}        # Asia-block tiles REVIEWED WITH THE USER (add only after the user has confirmed; automated scans alone do NOT count)
+FINISHED_SINCE = {'125/050', '125/055', '125/060', '125/065', '125/070', '125/075', '125/080', '125/085', '125/090', '125/095', '120/095', '120/090', '120/085', '120/080', '120/075', '120/070', '120/065', '120/060', '120/055', '120/050', '115/050', '115/055', '115/060', '115/065', '115/070', '115/075', '115/080', '115/085', '115/090', '115/095', '110/095', '110/090', '110/085', '110/080', '110/075', '110/070', '110/065', '110/060', '110/055', '110/050', '105/050', '105/055', '105/060', '105/065', '105/070', '105/075', '105/080', '105/085', '100/080', '100/075', '100/070', '095/075', '095/080', '100/045', '105/045', '110/045', '115/045', '120/045'}        # Asia-block tiles REVIEWED WITH THE USER (add only after the user has confirmed; automated scans alone do NOT count)
 ZOOM_SCAN = 'zoom_scan_2026-11-17.txt'     # tools/tile_tools/zoom_scan.py: lat codes 100-130 x lon 348..045
 ASIA_SCAN = 'asia_block_scan_2026-11-13.txt'
 ASIA_RING = 'asia_block_ringcheck_2026-11-13.txt'
@@ -76,6 +76,8 @@ for la, lo in tiles:
         p = ACCEPTED.get(t, 0)
         out[t] = dict(status='accepted' if p else 'finished',
                       text='China, finished.' if not p else 'China, finished; %d leftover pair(s) accepted by you.' % p)
+    elif t in FINISHED_SINCE:
+        out[t] = dict(status='finished', text='Reviewed with you and confirmed done (see exports/targeted%s_%s).' % (t[:3], t[4:]))
     elif in_asia:
         if t in FINISHED_SINCE:
             out[t] = dict(status='finished', text='Reviewed with you and confirmed done (see exports/targeted%s_%s).' % (t[:3], t[4:]))
