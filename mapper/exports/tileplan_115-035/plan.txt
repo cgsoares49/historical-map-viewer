@@ -1,0 +1,26 @@
+WHOLE-TILE PLAN 115:035   (newer entry takes its area; older entry carved)
+
+5 edit operations; candidates [76, 85]; overlap windows before: 7, after: 0
+POL file header count: 20 -> 23;  PAR file header count: 95 -> 96;  CST file header count: 72 -> 72
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+#9 => 9, 21
+ 35.00233    29.53077
+4 > 2 & 4
+#12 => 12, 22
+ 35.00233    29.53077
+77 > 55 & 24
+#12 => 12, 23
+ 35.10560    29.53190
+55 > 14 & 42
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 8 entries
+  - new #96 = #76 minus #85 (2655.7 km2), ranges -736.5..-732.5, -732.5..-625.5, -625.5..-604.7, -604.7..-554.5, -554.5..-553.2, -553.2..-549.5
+
+PAR EDITS (in order):
+  NEW #96 right after #76: -736.5..-732.5 Edomites; -732.5..-625.5 Neo Assyrian Tributary - Edom; -625.5..-604.7 Edomites; -604.7..-554.5 Neo Babylonian Empire Tributary - Edom; -554.5..-553.2 Edomites; -553.2..-549.5 Neo-Babylonian Empire | refs [{'lit': [35, 30]}, [1013, 1], [1023, 0], [1009, 1]]
+  #76: ranges = -1151.5..-983.5 Edomites; -983.5..-931.5 Kingdom of Israel - Edom; -931.5..-852.5 Edomites; -852.5..-847.5 Judah - Edom; -847.5..-794.5 Edomites; -794.5..-736.5 Judah Tributary - Edom; -549.5..-539.2 Neo-Babylonian Empire; -539.2..-526.5 Edomites; -526.5..-525.5 Persian Empire - Arabia; -525.5..-331.3 Persian Empire - Egypt - Arabia; -331.3..-1 Nabataean Kingdom
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical
