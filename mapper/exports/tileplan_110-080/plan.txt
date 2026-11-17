@@ -1,0 +1,16 @@
+WHOLE-TILE PLAN 110:080   (newer entry takes its area; older entry carved)
+
+2 edit operations; candidates [42, 51]; overlap windows before: 1, after: 0
+POL file header count: 47 -> 47;  PAR file header count: 58 -> 59;  CST file header count: 0 -> 0
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+
+DECISIONS / STEPS:
+  - new #59 = #42 minus #51 (212.5 km2), ranges -364.5..-363.5
+
+PAR EDITS (in order):
+  NEW #59 right after #42: -364.5..-363.5 Magadha | refs [[1034, 0], [1010, 1]]
+  #42: ranges = -610.1..-600.5 Kasi; -600.5..-490.5 Kosala; -490.5..-364.5 Magadha; -363.5..-355.5 Magadha; -355.5..-321.5 Nanda Empire; -321.5..-1 Maurya Empire
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical

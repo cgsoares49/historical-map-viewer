@@ -1,0 +1,68 @@
+[
+ {
+  "op": "par_add_entry",
+  "index": 59,
+  "after": 42,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -364.5,
+    "to": -363.5,
+    "name": "Magadha",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    1034,
+    0
+   ],
+   [
+    1010,
+    1
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 42,
+  "ranges": [
+   {
+    "from": -610.1,
+    "to": -600.5,
+    "name": "Kasi",
+    "color": 0
+   },
+   {
+    "from": -600.5,
+    "to": -490.5,
+    "name": "Kosala",
+    "color": 0
+   },
+   {
+    "from": -490.5,
+    "to": -364.5,
+    "name": "Magadha",
+    "color": 0
+   },
+   {
+    "from": -363.5,
+    "to": -355.5,
+    "name": "Magadha",
+    "color": 0
+   },
+   {
+    "from": -355.5,
+    "to": -321.5,
+    "name": "Nanda Empire",
+    "color": 0
+   },
+   {
+    "from": -321.5,
+    "to": -1.0,
+    "name": "Maurya Empire",
+    "color": 0
+   }
+  ]
+ }
+]
