@@ -1,0 +1,20 @@
+WHOLE-TILE PLAN 135:036   (newer entry takes its area; older entry carved)
+
+4 edit operations; candidates [48, 54, 62, 63]; overlap windows before: 3, after: 0
+POL file header count: 63 -> 63;  PAR file header count: 67 -> 69;  CST file header count: 15 -> 15
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 19 entries
+  - new #68 = #54 minus #48 (12723.9 km2), ranges -480.5..-480.1, -480.1..-380.5
+  - new #69 = #62 minus #63 (8957.5 km2), ranges -311.5..-310.1
+
+PAR EDITS (in order):
+  NEW #68 right after #54: -480.5..-480.1 Scythia; -480.1..-380.5 Kingdom of Sindica | refs [[1042, 1], [10, 0], [14, 0], [1049, 0], [1058, 0], [9, 1]]
+  #54: ranges = -505.5..-480.5 Scythia
+  NEW #69 right after #62: -311.5..-310.1 Bosporan Kingdom | refs [[14, 0], [1049, 0], [1057, 1], [1054, 1]]
+  #62: ranges = -325.5..-311.5 Bosporan Kingdom; -310.1..-1 Bosporan Kingdom
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical
