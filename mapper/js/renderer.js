@@ -74,7 +74,7 @@ const SENTINEL_FROM = -2500;
 // reserves for code-drawn (non-palette-data) canvas colors, so this can never
 // collide with a user-assigned polity color. 128 → 127 is the nearest such value.
 const HATCH_STRIPE_COLOR        = '#7f7f7f';
-const HATCH_PERIOD_PX           = 4;    // stripe repeat spacing
+const HATCH_PERIOD_PX           = 8;    // cross-hatch repeat spacing (was 4 for the single diagonal; doubled so two diagonals keep the same line density)
 const HATCH_MIN_BBOX_PX         = 8;    // below this on-screen size (narrower dimension), skip hatching entirely
 const HATCH_COLOR_DIST_THRESHOLD = 40;  // max Euclidean RGB distance still counted as "nearly the same color"
                                          // (real offset-only pairs measured ~12-15; different entities / water are 100+)
@@ -345,7 +345,7 @@ class MapRenderer {
             if (!path) continue;
 
             const isTransient = ENABLE_HATCH_FILL && this._isTransientEntry(entry.polyRefs, polByIndex);
-            prepared.push({ dateMatch, fillColor, combined, path, isTransient });
+            prepared.push({ dateMatch, fillColor, combined, path, isTransient, isType2: entry.areaType === 2 });
         }
 
         // Pass 1: all REAL (non-transient) territory — establishes the true base
@@ -375,6 +375,7 @@ class MapRenderer {
         return prepared.filter(p => p.isTransient);
     }
 
+    // (Type 2 pairs get horizontal stripes instead of diagonal; see type2Pair below.)
     // Overlay-pair hatching. For every pair of real (non-transient) entries
     // active this year whose filled areas genuinely overlap, paints the
     // overlap region with alternating diagonal stripes of both polity colors.
@@ -424,6 +425,7 @@ class MapRenderer {
                 const md = mctx.getImageData(0, 0, w, h);
 
                 const sameParent = A.root === B.root;
+                const type2Pair = !!(A.p.isType2 || B.p.isType2);
                 const out = mctx.createImageData(w, h);
                 const od = out.data, sd = md.data;
                 let any = false;
@@ -433,7 +435,11 @@ class MapRenderer {
                         if (sd[k + 3] < 200) continue;
                         const gx = x0 + x, gy = y0 + y;
                         let c;
-                        if (sameParent && ((gx - gy) % PERIOD + PERIOD) % PERIOD === 0) c = stripe;
+                        if (type2Pair) {
+                            // Type 2 overlay (areaType=2): HORIZONTAL stripes, so it never reads as an ordinary overlap.
+                            if (sameParent && gy % PERIOD === 0) c = stripe;
+                            else c = (gy % PERIOD) < PERIOD / 2 ? A.rgb : B.rgb;
+                        } else if (sameParent && ((gx - gy) % PERIOD + PERIOD) % PERIOD === 0) c = stripe;
                         else c = ((gx + gy) % PERIOD) < PERIOD / 2 ? A.rgb : B.rgb;
                         od[k] = c.r; od[k + 1] = c.g; od[k + 2] = c.b; od[k + 3] = 255;
                         any = true;
@@ -520,7 +526,7 @@ class MapRenderer {
         }
     }
 
-    // A repeating diagonal-stripe tile, HATCH_STRIPE_COLOR on transparent —
+    // A repeating cross-hatch tile (both diagonals), HATCH_STRIPE_COLOR on transparent —
     // used as the overlay source (masked per pixel below), not drawn directly.
     _getHatchStripeTile() {
         if (this._hatchStripeTile) return this._hatchStripeTile;
@@ -531,9 +537,11 @@ class MapRenderer {
         tctx.strokeStyle = HATCH_STRIPE_COLOR;
         tctx.lineWidth   = 1;
         tctx.beginPath();
-        // A single diagonal touching both corners tiles seamlessly when repeated.
+        // Cross-hatch: both diagonals, each touching two corners, tile seamlessly when repeated.
         tctx.moveTo(0, p);
         tctx.lineTo(p, 0);
+        tctx.moveTo(0, 0);
+        tctx.lineTo(p, p);
         tctx.stroke();
         this._hatchStripeTile = tile;
         return tile;
