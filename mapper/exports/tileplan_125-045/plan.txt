@@ -1,0 +1,17 @@
+WHOLE-TILE PLAN 125:045   (newer entry takes its area; older entry carved)
+
+2 edit operations; candidates [106, 119]; overlap windows before: 1, after: 0
+POL file header count: 242 -> 242;  PAR file header count: 206 -> 207;  CST file header count: 10 -> 10
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 100 entries
+  - new #207 = #106 minus #119 (16843.8 km2), ranges -812.5..-805.5
+
+PAR EDITS (in order):
+  NEW #207 right after #106: -812.5..-805.5 Mannaea | refs [[1117, 1], [1115, 1], [1138, 1], [1114, 1], [1151, 1], [1135, 1], [1113, 1], [1103, 1], [1145, 0], [1178, 0]]
+  #106: ranges = -843.1..-812.5 Mannaea
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical
