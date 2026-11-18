@@ -1,0 +1,68 @@
+[
+ {
+  "op": "par_add_entry",
+  "index": 68,
+  "after": 55,
+  "areaType": 1,
+  "ranges": [
+   {
+    "from": -308.6,
+    "to": -307.6,
+    "name": "Carthage",
+    "color": 0
+   }
+  ],
+  "refs": [
+   [
+    15,
+    1
+   ],
+   [
+    1020,
+    1
+   ],
+   [
+    1035,
+    1
+   ],
+   [
+    1033,
+    1
+   ],
+   [
+    17,
+    0
+   ]
+  ]
+ },
+ {
+  "op": "par_set_ranges",
+  "entry": 55,
+  "ranges": [
+   {
+    "from": -350.0,
+    "to": -308.6,
+    "name": "Carthage",
+    "color": 0
+   },
+   {
+    "from": -307.6,
+    "to": -240.9,
+    "name": "Carthage",
+    "color": 0
+   },
+   {
+    "from": -240.9,
+    "to": -238.2,
+    "name": "Revolt",
+    "color": 0
+   },
+   {
+    "from": -238.2,
+    "to": -1.0,
+    "name": "Carthage",
+    "color": 0
+   }
+  ]
+ }
+]

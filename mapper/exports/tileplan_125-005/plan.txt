@@ -1,0 +1,17 @@
+WHOLE-TILE PLAN 125:005   (newer entry takes its area; older entry carved)
+
+2 edit operations; candidates [40, 55]; overlap windows before: 1, after: 0
+POL file header count: 45 -> 45;  PAR file header count: 67 -> 68;  CST file header count: 17 -> 17
+
+POL SPLITS (your notation; new POLs keep the date ranges of the POL they are split from):
+
+DECISIONS / STEPS:
+  - TRANSIENTS left alone (every POL carries the (-9999,-9998) transient mark; --armies to plan them): 24 entries
+  - new #68 = #55 minus #40 (13701.5 km2), ranges -308.6..-307.6
+
+PAR EDITS (in order):
+  NEW #68 right after #55: -308.6..-307.6 Carthage | refs [[15, 1], [1020, 1], [1035, 1], [1033, 1], [17, 0]]
+  #55: ranges = -350..-308.6 Carthage; -307.6..-240.9 Carthage; -240.9..-238.2 Revolt; -238.2..-1 Carthage
+
+Overlaps left: 0
+Coverage (union of polity polygons before vs after, every year): identical
