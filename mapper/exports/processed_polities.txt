@@ -17,16 +17,16 @@ Abilianikhi                               2
 Abisara                                   1
 Aboriginal Peoples                       29
 Acarnania                                 5
-Achaea                                   55
-Achaean League                           37
+Achaea                                   57
+Achaean League                           38
 Achaeans                                  5
 Adena Culture                             1
 Aegina                                   10
 Aeniania                                  3
-Aeolian League                            8
+Aeolian League                            9
 Aeolians                                 42
 Aequi                                    41
-Aetolia                                   5
+Aetolia                                   6
 Aetolian League                          25
 Agathoclid Ally                          11
 Ahhiya                                   40
@@ -51,7 +51,7 @@ Ambashthas                                1
 Ambracia                                  3
 Ammonites                                10
 Amorite Ebla                              1
-Amorite Mari                             20
+Amorite Mari                             21
 Amorite Tuttul                            1
 Amorites                                188
 Amurru                                   22
@@ -61,11 +61,11 @@ Andhra                                    1
 Anga                                      4
 Anshan                                   12
 Antandros                                 2
-Anti Macedon Alliance                    60
+Anti Macedon Alliance                    62
 Anti Roman Alliance                      23
 Anti Spartan Alliance                   123
 Antigonid Ally                          216
-Antigonid Kingdom                       219
+Antigonid Kingdom                       221
 Antipatrid Ally                           9
 Anupa                                     1
 Anuradhapura                              1
@@ -77,7 +77,7 @@ Aram-Naharim                              2
 Aram-Zobah                                6
 Aramaeans                                39
 Arcadia                                   3
-Arcadian League                           8
+Arcadian League                           9
 Arctic Marine Mammal Hunters              1
 Arctic Peoples                            1
 Ardiaei                                   3
@@ -93,7 +93,7 @@ Assyrian revolt                           5
 Asvaka                                    1
 Athamania                                 3
 Athenian ally                             2
-Athens                                   76
+Athens                                   80
 Atropatene                                1
 Atuna                                     2
 Audumbaras                                2
@@ -102,18 +102,18 @@ Austro-Asiatic Peoples                    2
 Austronesians                            30
 Avanti                                    9
 Azzi-Hayasa                               6
-Ba                                       16
-Babylonia                                17
+Ba                                       15
+Babylonia                                19
 Babylonia (Chaldaeans)                   34
 Babylonia (Isin Dynasty)                 20
 Babylonian Tributary                     24
 Babylonian revolt                        13
 Bactrians                                 3
-Baipu                                     1
+Baipu                                     4
 Balts                                     2
 Bantu Peoples                            37
 Bao                                       1
-Bao clan                                  1
+Bao clan                                  2
 Bedouins                                 17
 Bell Beaker Peoples                       1
 Berbers                                   5
@@ -125,31 +125,31 @@ Bit-Adini                                 4
 Bit-Bahiani                               1
 Bit-Halupe                                1
 Bit-Zamani                                2
-Bithynia                                  9
+Bithynia                                 11
 Bithynians                                1
 Biyang                                    1
 Bo                                        1
-Boeotia                                  18
-Bosporan Kingdom                         16
+Boeotia                                  19
+Bosporan Kingdom                         21
 Bottiaeans                                6
 Brahmana                                  1
 Bruttian League                          10
 Bruttians                                 2
-Bruttii                                   2
+Bruttii                                   3
 Bu geng                                   1
 Byzantium                                12
-Cai                                      10
+Cai                                      12
 California Peoples                        1
 Callatis                                  1
-Campania                                  5
+Campania                                  6
 Canaanites                               19
 Cao                                       7
 Carduchii                                 1
-Carians                                   5
+Carians                                   6
 Caribbean Peoples                         1
-Carthage                                291
+Carthage                                292
 Carthaginian Ally                        23
-Carthaginian Tributary                   13
+Carthaginian Tributary                   15
 Carystus                                  2
 Catane                                    4
 Caucasians                               43
@@ -159,13 +159,13 @@ Celto-Ligurians                          24
 Celts                                   107
 Central African Peoples                  39
 Chadian People                            1
-Chalcidian League                        11
-Chalcis                                   5
+Chalcidian League                        15
+Chalcis                                   6
 Chaldaea                                  1
 Changdi                                   1
 Chao                                      4
 Chaonia                                   5
-Chaonians                                 2
+Chaonians                                 1
 Chavin Culture                            1
 Chen                                     10
 Cheng                                     2
@@ -174,9 +174,9 @@ Chinchorro Culture                        1
 Chios                                     5
 Chola                                     1
 Chorrera Culture                          1
-Chu                                     186
+Chu                                     194
 Cilicia                                   3
-Cimmerian Kingdom                         6
+Cimmerian Kingdom                         7
 Cimmerians                               55
 Cities                                 2593
 Colchis                                   6
@@ -189,12 +189,12 @@ Cretan City States                      146
 Croton                                   14
 Cushitic People                           1
 Cycladic Islands                         23
-Cypriot Kingdoms                         64
+Cypriot Kingdoms                         74
 Cyzicus                                   2
 D'mt                                      1
-Dai                                       1
+Dai                                       2
 Dai(2)                                    1
-Dali                                      3
+Dali                                      2
 Dan                                       1
 Dao                                       1
 Daoi                                      1
@@ -204,20 +204,20 @@ Dardani                                   3
 Dasarnas                                  1
 Dassaretis                                3
 Daunians                                  1
-Dayenu                                    1
-Delian League                           504
+Dayenu                                    2
+Delian League                           529
 Deng                                      3
 Desert Cultures                           1
 Di                                       21
-Di(2)                                     1
+Di(2)                                     2
 Diauekhi                                  4
 Dilmun                                    1
 Dolopia                                   2
 Domain of Amphimakhos                     1
 Domain of Antigenes                       1
-Domain of Antigonus                     137
+Domain of Antigonus                     141
 Domain of Asandros                       23
-Domain of Cassander                     227
+Domain of Cassander                     231
 Domain of Eudemus                         1
 Domain of Eumenes                         6
 Domain of Lysimakhos                      8
@@ -228,7 +228,7 @@ Domain of Peithon (son of Agenor)         1
 Domain of Peukestas                       2
 Domain of Philip                          1
 Domain of Philoxenos                      2
-Domain of Polyperchon                    40
+Domain of Polyperchon                    41
 Domain of Ptolemy                       141
 Domain of Seleucus                       19
 Domain of Sibyrtios                       2
@@ -242,7 +242,7 @@ Doris                                     6
 Dravidians                               30
 Du                                        1
 Duan                                      2
-Duchy of Jin                             93
+Duchy of Jin                            107
 Dun                                       1
 Dvaraka                                   1
 E                                         6
@@ -255,7 +255,7 @@ Egypt: (Hermopolis)                       2
 Egypt: Areas of Unrest                  103
 Egypt: Heracleopolitans                  71
 Egypt: Hyksos                            88
-Egypt: Middle Kingdom                   249
+Egypt: Middle Kingdom                   250
 Egypt: New Kingdom                      272
 Egypt: Old Kdm                           83
 Egypt: Rebellion of Pedubast             13
@@ -266,15 +266,15 @@ Egypt: Thirtieth Dynasty                 51
 Egypt: Twenty Eighth Dynasty             47
 Egypt: Twenty Fourth Dynasty             42
 Egypt: Twenty Ninth Dynasty              44
-Egypt: Twenty Second Dynasty             73
+Egypt: Twenty Second Dynasty             74
 Egypt: Twenty Sixth Dynasty             110
 Egypt: Twenty Sixth Dynasty Tributary     2
 Egypt: Twenty Third Dynasty              61
 El Paraiso Culture                        2
-Elam                                    169
+Elam                                    172
 Elamite Tributary                        34
 Elimiotis                                 2
-Elis                                     43
+Elis                                     45
 Ellipi                                    8
 Elymians                                  3
 Enchele                                   1
@@ -282,7 +282,7 @@ Enzite                                    1
 Eordaia                                   1
 Epicnemidian Locris                       7
 Epidauria                                 1
-Epirote Ally                             39
+Epirote Ally                             41
 Er                                        1
 Eretria                                   9
 Eriakhi                                   3
@@ -291,11 +291,11 @@ Erligang Culture                          1
 Erlitou Culture                           2
 Etiukhi                                   3
 Etiuni                                    5
-Etruria                                 164
+Etruria                                 170
 Etruscans                                20
-Euboea                                    9
-Fan                                       1
-Fan clan                                  2
+Euboea                                   11
+Fan                                       2
+Fan clan                                  3
 Fan(2)                                    1
 Fang                                      1
 Fei                                       1
@@ -304,7 +304,7 @@ Finns                                     9
 Galatians                                 4
 Gandhara                                  8
 Gao                                       2
-Gaoluo                                    1
+Gaoluo                                    2
 Garamantes                                1
 Ge                                        1
 Gedrosia                                  1
@@ -323,7 +323,7 @@ Greco-Bactrian Kingdom                    1
 Greek Alliance                          101
 Greek mercenaries                         6
 Greeks                                   20
-Gu                                        1
+Gu                                        2
 Gu(2)                                     1
 Guang                                     1
 Gui                                       1
@@ -333,34 +333,34 @@ Gurgum                                    5
 Guti                                     66
 Guti Tributary                           29
 Gutian Tributary                          2
-Guzanu                                    2
+Guzanu                                    4
 Guzhu                                     1
 Haihayas                                  1
 Haliartos                                 1
 Hamaranu                                  1
 Han                                       1
 Han(2)                                    1
-Hann                                     34
+Hann                                     38
 Hann clan                                 5
 Hapalla                                   1
 Harhar                                    3
 Harshi                                    2
 Hattians                                 22
-Hellenic League                          54
+Hellenic League                          55
 Helmand and Jiroft Cultures              25
 Helot Revolt                              1
 Heraklea Pontica                          3
 Hermionis                                 7
-Hernici                                   5
+Hernici                                   6
 Hilakku                                   3
 Himera                                    4
 Hindanu                                   5
-Hittites                                 46
+Hittites                                 48
 Hu                                        1
 Hu(2)                                     1
 Hu(3)                                     1
 Hua                                       1
-Huaiyi                                    3
+Huaiyi                                    5
 Huaiyi Peoples                            6
 Huang                                     2
 Hubushkia                                 6
@@ -369,7 +369,7 @@ Hupis(h)na                                1
 Hurrian Kingdom                           6
 Hurrian Kingdoms                          5
 Hurrians                                 44
-Iapygii                                   1
+Iapygii                                   3
 Iberians                                  6
 Idamaraz                                  6
 Ikshvakus                                 1
@@ -381,7 +381,7 @@ Imbros                                    1
 Indo-Aryans                              34
 Indus Valley Civilization                 1
 Indus Valley Peoples                     14
-Ionian League                            79
+Ionian League                            85
 Ionians                                 498
 Iranians                                129
 Ishtu(a)nda                               3
@@ -391,7 +391,7 @@ Istros                                    2
 Isuwa                                     2
 Itabalhum                                 3
 Italics                                   7
-Italiote League                          47
+Italiote League                          49
 Ji                                        1
 Ji(2)                                     1
 Ji(3)                                     1
@@ -404,9 +404,9 @@ Jiang Qi                                  1
 Jiang(2)                                  1
 Jiao                                      1
 Jie                                       1
-Jin                                       5
+Jin                                       7
 Jomon Culture                             1
-Ju                                       14
+Ju                                       15
 Ju(2)                                     1
 Judah                                    37
 Judah Tributary                           4
@@ -428,13 +428,13 @@ Kasheyas                                  1
 Kasi                                      2
 Kaskas                                   66
 Kasmira                                   1
-Kassites                                 93
+Kassites                                 95
 Kekaya                                    4
 Khoisan Peoples                           1
 Khorasmia                                 2
 Kimash                                    1
 Kingdom of Adab                          30
-Kingdom of Adanaya                        5
+Kingdom of Adanaya                        3
 Kingdom of Akshak                        11
 Kingdom of Alakhtum                       2
 Kingdom of Andarig                        3
@@ -445,10 +445,10 @@ Kingdom of Assyria                       91
 Kingdom of Awan                          35
 Kingdom of Babylon                      120
 Kingdom of Carchemish                    16
-Kingdom of Cyrene                        18
+Kingdom of Cyrene                        20
 Kingdom of Der                           14
 Kingdom of Ebla                          18
-Kingdom of Epirus                        81
+Kingdom of Epirus                        83
 Kingdom of Eshnunna                      48
 Kingdom of Hamath                        11
 Kingdom of Illyria                       39
@@ -461,25 +461,25 @@ Kingdom of Kazallu                       15
 Kingdom of Kish                          28
 Kingdom of Kisurra                        1
 Kingdom of Kummuh                         5
-Kingdom of Kush                          93
-Kingdom of Kussara                        5
+Kingdom of Kush                          97
+Kingdom of Kussara                        6
 Kingdom of Lagash                        18
 Kingdom of Larsa                         57
-Kingdom of Lysimakhos                    69
-Kingdom of Macedon                      815
-Kingdom of Macedonia                     73
+Kingdom of Lysimakhos                    71
+Kingdom of Macedon                      831
+Kingdom of Macedonia                     79
 Kingdom of Malgium                        1
 Kingdom of Mari                          26
 Kingdom of Melid                         11
-Kingdom of Mitanni                      107
+Kingdom of Mitanni                      114
 Kingdom of Purushanda                     6
 Kingdom of Qadesh                         3
 Kingdom of Qatna                          3
-Kingdom of Rome                          53
+Kingdom of Rome                          54
 Kingdom of Sam'al                         3
 Kingdom of Sindica                        3
-Kingdom of Sparta                       109
-Kingdom of Syracuse                      27
+Kingdom of Sparta                       113
+Kingdom of Syracuse                      28
 Kingdom of Terqa                          2
 Kingdom of Tuttul                         6
 Kingdom of Tylis                          2
@@ -487,7 +487,7 @@ Kingdom of Ugarit                         5
 Kingdom of Ur                           160
 Kingdom of Uruk                          38
 Kingdom of Zalpa                          8
-Kingdom of the Grabaei                    6
+Kingdom of the Grabaei                    7
 Kios                                      3
 Kirati                                    1
 Kirruru                                   2
@@ -496,19 +496,19 @@ Koliya                                    1
 Konkana                                   2
 Kopai                                     1
 Koreans                                   1
-Kosala                                   10
+Kosala                                    8
 Kotosh Culture                            1
 Kotyora                                   2
-Ksudrakas                                 1
+Ksudrakas                                 2
 Kuai                                      1
 Kui                                       1
 Kuninda                                   2
 Kuntala                                   1
 Kunti                                     1
-Kuru                                     13
+Kuru                                     12
 Kush Tributary                           54
 Kyme                                      5
-Lagash                                   13
+Lagash                                   15
 Lai                                       3
 Lai(2)                                    1
 Laiyi                                     1
@@ -518,13 +518,13 @@ Land of Tartanu Shamshi-ilu               1
 Laqe                                      3
 Larak                                     3
 Larissa                                   3
-Latin League                             41
+Latin League                             42
 Latins                                    7
 Lauhitya                                  1
 League of Argos                          16
 Lebadeia                                  1
 Leontini                                  4
-Lesbos                                    5
+Lesbos                                    6
 Li                                        1
 Li Rong                                   1
 Li(2)                                     1
@@ -537,33 +537,33 @@ Libyans                                  58
 Libyphoenices                             1
 Ligurians                                 2
 Lingzhi                                   1
-Linhu                                     2
+Linhu                                     3
 Little Guo                                1
 Liu                                       1
-Locri                                     2
+Locri                                     3
 Longshan Culture                          2
 Loufan                                    3
 Lower Macedon                             1
-Lu                                       68
+Lu                                       73
 Lu(2)                                     1
 Lu(3)                                     1
 Lucani                                    1
-Lucanians                                21
+Lucanians                                22
 Luhun Rong                                4
-Lukka                                    10
+Lukka                                    14
 Lullubi                                   2
 Lullubum                                  2
 Luo                                       2
 Luwians                                  39
 Lycians                                   4
-Lydia                                    36
+Lydia                                    37
 Lydians                                   1
-Lynkestis                                 2
-Macedon                                  19
-Macedonian Ally                         250
+Lynkestis                                 3
+Macedon                                  20
+Macedonian Ally                         260
 Madra                                     6
 Maeotians                                 1
-Magadha                                  26
+Magadha                                  27
 Magan                                     1
 Magnesia                                  1
 Malavas                                   2
@@ -573,7 +573,7 @@ Mama                                      2
 Mamertine Mercenaries                     2
 Mamertines                               11
 Manchurian Peoples                        6
-Mannaea                                  19
+Mannaea                                  21
 Manshi                                    3
 Mantineia                                 8
 Mao                                       1
@@ -587,7 +587,7 @@ Massagetai                                1
 Massylii                                  2
 Matsya                                    3
 Maurya                                    3
-Maurya Empire                            13
+Maurya Empire                            17
 Maya                                      2
 Medes                                     4
 Media                                    43
@@ -607,8 +607,8 @@ Mesoamerican Peoples                      5
 Messapians                               11
 Messapii                                  1
 Messenia                                 13
-Mianzhu                                   1
-Middle Assyrian Empire                  186
+Mianzhu                                   2
+Middle Assyrian Empire                  196
 Minoans                                  20
 Mithila                                   1
 Mixtecs                                   2
@@ -632,14 +632,14 @@ Namri                                     5
 Nanda Empire                              7
 Nanyan                                    1
 Naxos                                     2
-Neo Assyrian Empire                     751
-Neo Assyrian Tributary                  394
+Neo Assyrian Empire                     755
+Neo Assyrian Tributary                  400
 Neo Assyrian revolt                       5
 Neo Babylonian Empire                    40
 Neo Babylonian Empire Tributary          22
-Neo-Assyrian Empire                      33
-Neo-Babylonian Empire                    23
-New Hittite Kingdom                     487
+Neo-Assyrian Empire                      40
+Neo-Babylonian Empire                    25
+New Hittite Kingdom                     499
 Ni                                        1
 Nilotic Peoples                           1
 Nok People                                1
@@ -655,24 +655,24 @@ Nuhashshi                                 3
 Numidians                                 2
 Odra                                      1
 Odrysia                                   5
-Odrysian Kingdom                         48
+Odrysian Kingdom                         57
 Oetaea                                    4
-Old Hittite Kingdom                     127
+Old Hittite Kingdom                     129
 Olmecs                                    1
 Opuntian Locris                           8
 Oreitai                                   1
 Orestis                                   1
 Oxycanus                                  1
-Ozolian Locris                           42
+Ozolian Locris                           43
 Paeligni                                  2
 Paeonia                                   3
 Paeonians                                10
-Paiones                                   1
+Paiones                                   4
 Pala                                      2
 Paleosiberians                            1
 Pampas Cultures                           1
 Pamphylians                               6
-Panchala                                  8
+Panchala                                 11
 Pandya                                    1
 Paphlagonia                               4
 Papuans                                   1
@@ -686,21 +686,21 @@ Patin (Unqi)                              7
 Paurava                                   1
 Pelagonia                                 1
 Pelasgians                               10
-Peloponnesian League                    586
+Peloponnesian League                    611
 Peng                                      2
 Pengzhi                                   1
-Pergamon                                  4
+Pergamon                                  5
 Persia                                    6
-Persian Empire                         1350
+Persian Empire                         1406
 Persian Revolt                            5
-Persian Vassal                           29
+Persian Vassal                           31
 Peucetians                                4
 Pharsalos                                 2
 Pherae                                   14
 Philistia                                21
 Philistines                              19
 Phlius                                    4
-Phocis                                   39
+Phocis                                   41
 Phoenicians                             138
 Phrygian Kingdom                         16
 Phrygians                                51
@@ -727,8 +727,8 @@ Proto-Greeks                             10
 Proto-Mongol Peoples                      1
 Proto-Tibetans                            6
 Proto-Turkic Peoples                      2
-Ptolemaic Ally                           34
-Ptolemaic Kingdom                       193
+Ptolemaic Ally                           36
+Ptolemaic Kingdom                       194
 Pu                                        1
 Pugu                                      1
 Pulinda                                   1
@@ -736,14 +736,14 @@ Pundra                                    1
 Punt                                      1
 Qedarite Confederation                   12
 Qedarites                                 5
-Qi                                       69
+Qi                                       94
 Qi(2)                                     3
 Qi(3)                                     1
 Qiang                                     1
-Qin                                     124
-Qiuyou                                    1
+Qin                                     125
+Qiuyou                                    2
 Qu                                        1
-Quaman                                    2
+Quaman                                    3
 Quan                                      1
 Quanrong                                 43
 Que                                       4
@@ -755,7 +755,7 @@ Rebel Irridu                              1
 Rebel Israelites                          2
 Red Di                                   15
 Ren                                       1
-Revolt                                  179
+Revolt                                  185
 Revolt of Antigonus                       1
 Revolt of Antipater                       2
 Revolt of Ariobarzanes                    3
@@ -778,9 +778,9 @@ Revolt of Wangzi Tui                      3
 Revolt of Wangzi Zhao                     4
 Rhegion                                  17
 Rhodos                                   19
-Roman Ally                              150
-Roman Latin Colony                       55
-Roman Republic                          524
+Roman Ally                              159
+Roman Latin Colony                       57
+Roman Republic                          527
 Rong                                      4
 Rui                                       3
 Ruo                                       1
@@ -797,7 +797,7 @@ Salwa                                     1
 Sambus                                    1
 Samian Thalassocracy                     21
 Samnite Ally                              9
-Samnite Confederation                    72
+Samnite Confederation                    73
 Samnites                                  3
 Samnium                                   1
 Samos                                     4
@@ -810,15 +810,15 @@ Sauromatians                              7
 Sauvira                                   1
 Savanna Peoples                           1
 Savaras                                   1
-Scythia                                  36
+Scythia                                  39
 Scythians                                42
 Sea Peoples                              46
 Sealand                                   7
-Second Athenian League                  243
-Seleucid Ally                            14
-Seleucid Kingdom                        100
+Second Athenian League                  246
+Seleucid Ally                            15
+Seleucid Kingdom                        107
 Semitic Nomads                            3
-Shang                                    28
+Shang                                    31
 Shang Dynasty                            60
 Shanrong                                  7
 Shao                                      1
@@ -836,32 +836,32 @@ Shu(2)                                    1
 Shubria                                   1
 Shurparaka                                1
 Sicans                                    8
-Sicelia                                   5
+Sicelia                                   6
 Sicels                                    5
 Sicyon                                    4
 Sidicini                                  3
 Sikanoi                                   2
-Sikeloi                                   2
+Sikeloi                                   4
 Simurrum                                  4
-Sindhu                                    2
+Sindhu                                    1
 Sinope                                    2
 Sivi                                      1
 Slavs                                     1
 Sogdians                                  3
-Song                                     32
+Song                                     35
 South China Peoples                      32
-Stasis                                   36
+Stasis                                   40
 Su                                        1
 Subarctic Peoples                         1
 Subartum                                  1
-Succession struggle                       5
+Succession struggle                      24
 Suhma                                     1
 Suhne                                     1
 Suhu                                      5
 Sui                                       5
 Sui(2)                                    1
 Surasena                                  3
-Syracuse                                210
+Syracuse                                214
 Syracuse exiles                          15
 Tabal                                    18
 Tan                                       2
@@ -870,8 +870,8 @@ Tanagra                                   1
 Tang                                      3
 Taras                                     7
 Tarhuntassa                               4
-Tartessos                                 4
-Taulanti                                 26
+Tartessos                                 5
+Taulanti                                 24
 Tauromenion                               2
 Taxila                                    3
 Tegea                                     5
@@ -879,21 +879,21 @@ Teng                                      3
 Terramare Culture                         1
 Teutons                                   4
 Thai Peoples                              4
-Theban Ally                             111
+Theban Ally                             113
 Thebes                                   67
 Thespiae                                  1
 Thesprotia                                1
 Thesprotians                              1
-Thessaly                                 24
+Thessaly                                 25
 Thrace                                    3
 Thracians                                39
 Thraco Cimmerians                         2
-Thraikes                                  2
-Three Guards Rebellion                   16
-Three Yi Tribes                           1
+Thraikes                                  1
+Three Guards Rebellion                   18
+Three Yi Tribes                           2
 Thyni                                     2
-Tian Qi                                  32
-Tian clan                                 4
+Tian Qi                                  34
+Tian clan                                 5
 Tibur                                     2
 Tong                                      1
 Trapezous                                 2
@@ -905,16 +905,16 @@ Tuhe                                      3
 Tummanna                                  7
 Tuwana                                    2
 Tymphaea                                  1
-Tyranny of Syracuse                      89
+Tyranny of Syracuse                      91
 Uelikukhi                                 9
 Ugrians                                   2
 Umbri                                     2
 Umbria                                    4
-Umbrii                                    1
-Umma                                     13
+Umbrii                                    3
+Umma                                     15
 Ur III Tributary                         69
-Urartu                                  177
-Urartu Tributary                         17
+Urartu                                  183
+Urartu Tributary                         22
 Usinara                                   2
 Utica                                     1
 Utkala                                    1
@@ -929,25 +929,25 @@ Vidarbha                                  3
 Videha                                    1
 Vitihotras                                1
 Volga Battle Axe Culture                  2
-Volsci                                   61
+Volsci                                   73
 Vriji                                     1
 Wahsusana                                 1
-Wei                                      74
-Wei clan                                  5
+Wei                                      79
+Wei clan                                  7
 West African Peoples                      4
 Western Guo                               5
 Western Mediterraneans                   18
 Western Odrysia                           2
 Western Rong                              2
-Wey                                      25
-White Di                                  2
+Wey                                      28
+White Di                                  4
 Wilusa                                   12
-Wu                                       55
+Wu                                       54
 Wucheng Culture                          23
 Wushi Rong                                1
 Wuzhong                                   3
 Xi                                        3
-Xia Dynasty                               1
+Xia Dynasty                               6
 Xian                                      1
 Xian Peoples                              2
 Xiang                                     1
@@ -957,13 +957,13 @@ Xiao                                      1
 Xing                                      4
 Xirong                                    1
 Xu                                       21
-Xu(2)                                     4
-Xue                                       5
+Xu(2)                                     5
+Xue                                       6
 Xun                                       1
 Xuqu                                      1
 Yaminites                                 2
-Yamkhad                                  19
-Yan                                      18
+Yamkhad                                  25
+Yan                                      19
 Yan(2)                                    1
 Yan(3)                                    1
 Yang                                      1
@@ -996,16 +996,16 @@ Zeng(2)                                   1
 Zhang                                     1
 Zhangzhung                                1
 Zhao                                     51
-Zhao clan                                 5
+Zhao clan                                 7
 Zhen                                      1
-Zheng                                    44
-Zhi clan                                  4
-Zhonghang clan                            3
+Zheng                                    47
+Zhi clan                                  5
+Zhonghang clan                            4
 Zhongli                                   1
 Zhongshan                                 4
 Zhongwu                                   1
 Zhou                                     10
-Zhou Dynasty                            213
+Zhou Dynasty                            224
 Zhou(2)                                   1
 Zhou(3)                                   1
 Zhoulai                                   1
