@@ -1047,6 +1047,7 @@ Aptera,24.141397,35.462662,Aptera,-1300,650,1
 Polyrrhenia,23.656412,35.458635,Polyrrhenia,-1100,700,1
 Axos,24.844133,35.308042,Axos,-1150,,1
 Rhamnous,24.026915,38.219286,Rhamnous,-750,400,1
+Medion,21.125024,38.782497,Medion,-450,-25,1
 Marmara,25.489,35.3001,Malia,-2000,-1225,0
 Marmara,25.489,35.3001,Marmara,100,550,1
 Zakros,26.2614,35.0981,Zakros,-2000,-1450,1
@@ -1155,8 +1156,9 @@ Praisos,26.09054,35.123297,Praisos,-1800,-140,1
 Hierapytna,25.73875,35.009529,Hierapytna,-1850,950,1
 Olous,25.738816,35.257679,Olous,-1950,750,1
 Minoa (Amorgos),25.86138,36.821508,Minoa (Amorgos),-1050,350,1
-Antalya,33.70051,36.89379,Attalya/Attalea,-150,1310,0
-Antalya,33.70051,36.89379,Antalya,1310,,1
+Caicus River,27.93,39.21,Caicus River,-240,-220,1
+Antalya,30.7,36.8903,Attalya/Attalea,-150,1310,0
+Antalya,30.7,36.8903,Antalya,1310,,1
 Tarsus,34.89263,36.91412,Tarsa,-2400,-333,0
 Tarsus,34.89263,36.91412,Tarsos,-333,-65,0
 Tarsus,34.89263,36.91412,Antiochia ad Cydnum,-180,-171,0
@@ -1250,6 +1252,7 @@ Sarhuyok,30.51684,39.77489,Sarhuyok,1071,1350,1
 Pessinus,31.58356,39.332882,Pessinus,-400,715,1
 Tavium,34.51833,39.85833,Taouion,-330,-36,0
 Tavium,34.51833,39.85833,Tavium,-36,800,1
+Ancyra (battle),32.9422,39.8799,Ancyra (battle),-239,-219,1
 Hama,36.74199,35.14463,Hamath,-2400,-170,0
 Hama,36.74199,35.14463,Epiphaneia,-170,300,0
 Hama,36.74199,35.14463,Amathe,300,640,0
