@@ -25,3 +25,5 @@ Conventions learned (see Claude's memory `reference_content_creation_start_here.
 a rerun = add a date range to the EXISTING PAR entry; transient POL range is exactly (-9999.0,-9998.0); later PAR entries draw on top;
 tile-crossing pieces use exact lon 30.0 vertices shared by both tiles; time: year runs ~-239.9 (Jan) to -239.0 (Dec); 0.1 yr = 36.5 days;
 army pace 10 mi/day; use "Attalus" not "Attalus I" for a first appearance (Roman numerals only for later namesakes).
+
+| `par_pol_range_edit.py` | NEW 2026-11-24: line-accurate editors for canonical PAR and POL files: `par_set_ranges(lines, entry, [(from,to,name,color),...])` replaces an entry's date-range block, `pol_set_ranges(lines, pol, [(from,to),...])` replaces a border POL's draw windows (keep the leading (-9998,-9997) marker range). Unchanged ranges keep their original lines; blank lines/CRLF/Ctrl-Z preserved. Used for the Sardinia/Corsica natives-hold-all window (draft_sard.py logic). |
